@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/root/or/bench/protocol.py", line 313, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/or/bench/protocol.py", line 243, in main
+    summ["prefill"] = vllm_bench_prefill(a, os.path.join(a.out, "cells", f"prefill_c{a.prefill_c}_{a.prefill_tokens}.json"))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/or/bench/protocol.py", line 167, in vllm_bench_prefill
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/root/vb/bin/vllm'

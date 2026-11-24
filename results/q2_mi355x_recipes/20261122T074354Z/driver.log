@@ -1,0 +1,15 @@
+2026-11-22T07:43:54Z [q2_mi355x_recipes] creating spot sandbox (MI355X x1, $4.7565/h, ttl 40 min, budget $3.0; project so far ~$111.17)
+2026-11-22T07:44:22Z [q2_mi355x_recipes] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:44:45Z [q2_mi355x_recipes] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T07:47:33Z [q2_mi355x_recipes] server or_recipe ready=True after 167.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T07:47:37Z [q2_mi355x_recipes] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T07:48:20Z [q2_mi355x_recipes] q_agree400_or_recipe rc=0 44s :: [q_agree400_or_recipe] agree: 0.000 (0/400, noans 400, err 0, trunc 258) wall=36s
+2026-11-22T07:48:54Z [q2_mi355x_recipes] q_agree400_or_recipe_rep2 rc=0 33s :: [q_agree400_or_recipe_rep2] agree: 0.000 (0/400, noans 400, err 0, trunc 258) wall=24s
+2026-11-22T07:49:22Z [q2_mi355x_recipes] done: elapsed 5.5 min, est $0.43; project est $116.33

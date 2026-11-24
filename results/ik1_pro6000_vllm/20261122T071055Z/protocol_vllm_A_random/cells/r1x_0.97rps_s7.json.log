@@ -1,0 +1,134 @@
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0x7ed9c990efb0>, trust_remote_code=False, seed=7, num_prompts=116, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, custom_ensure_client_side_data=False, spec_bench_output_len=256, spec_bench_category=None, sharegpt_output_len=None, timed_trace_chunk_hash_size=16, timed_trace_sec_multiplier=1, timed_trace_label_timestamp='timestamp', timed_trace_label_input_length='input_length', timed_trace_label_output_length='output_length', timed_trace_label_hash_ids='hash_ids', blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=9500, random_output_len=380, random_range_ratio='0.8', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai', base_url='http://127.0.0.1:8000', host='127.0.0.1', port=8000, endpoint='/v1/completions', header=None, max_concurrency=None, model='inkling', input_len=None, output_len=None, tokenizer='/root/models/inkling', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=0.97, burstiness=1.0, probe_request_rate=0.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/root/or/out/protocol_vllm_A_random/cells', result_filename='r1x_0.97rps_s7.json', ignore_eos=False, self_timed=None, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,95,99', goodput=None, request_id_prefix='bench-8e6efb7c-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name=None, lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False, log_config_file=None, logging_config=LoggingConfig(log_level='INFO', formatter='text', configure_logging=True, pylogging_config_file=None))
+(MainProcess pid=3677) ERROR 11-22 07:32:51 [repo_utils.py:126] Error parsing config for /root/models/inkling: The checkpoint you are trying to load has model type `inkling2_loop` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+(MainProcess pid=3677) ERROR 11-22 07:32:51 [repo_utils.py:126] 
+(MainProcess pid=3677) ERROR 11-22 07:32:51 [repo_utils.py:126] You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`, retrying 1 of 2
+(MainProcess pid=3677) ERROR 11-22 07:32:53 [repo_utils.py:124] Error parsing config for /root/models/inkling: The checkpoint you are trying to load has model type `inkling2_loop` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+(MainProcess pid=3677) ERROR 11-22 07:32:53 [repo_utils.py:124] 
+(MainProcess pid=3677) ERROR 11-22 07:32:53 [repo_utils.py:124] You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+(MainProcess pid=3677) INFO 11-22 07:32:54 [utils.py:88] Sampling input_len from [1899, 17100] and output_len from [75, 684]
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 0.97
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     116       
+Failed requests:                         0         
+Request rate configured (RPS):           0.97      
+Benchmark duration (s):                  164.51    
+Total input tokens:                      1136432   
+Total generated tokens:                  45402     
+Request throughput (req/s):              0.71      
+Output token throughput (tok/s):         275.99    
+Peak output token throughput (tok/s):    1899.00   
+Peak concurrent requests:                113.00    
+Total token throughput (tok/s):          7184.08   
+---------------Time to First Token----------------
+Mean TTFT (ms):                          5369.80   
+Median TTFT (ms):                        3789.87   
+P50 TTFT (ms):                           3789.87   
+P95 TTFT (ms):                           18426.70  
+P99 TTFT (ms):                           22123.42  
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          292.43    
+Median TPOT (ms):                        232.29    
+P50 TPOT (ms):                           232.29    
+P95 TPOT (ms):                           718.31    
+P99 TPOT (ms):                           833.98    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           226.48    
+Median ITL (ms):                         52.56     
+P50 ITL (ms):                            52.56     
+P95 ITL (ms):                            2627.66   
+P99 ITL (ms):                            3066.02   
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          93786.35  
+Median E2EL (ms):                        93650.07  
+P50 E2EL (ms):                           93650.07  
+P95 E2EL (ms):                           146459.88 
+P99 E2EL (ms):                           150716.88 
+==================================================
+W1122 07:32:47.952000 3677 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1122 07:32:47.953000 3677 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1122 07:32:47.953000 3677 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+[transformers] You are using a model of type `inkling2_loop` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+
+  0%|          | 0/116 [00:00<?, ?it/s]
+  1%|          | 1/116 [01:20<2:34:27, 80.59s/it]
+  2%|▏         | 2/116 [01:25<1:08:41, 36.15s/it]
+  3%|▎         | 3/116 [01:35<45:53, 24.37s/it]  
+  3%|▎         | 4/116 [02:14<55:33, 29.76s/it]
+  4%|▍         | 5/116 [02:20<39:44, 21.48s/it]
+  5%|▌         | 6/116 [02:20<26:06, 14.24s/it]
+  6%|▌         | 7/116 [02:21<17:28,  9.62s/it]
+  7%|▋         | 8/116 [02:21<12:08,  6.75s/it]
+  8%|▊         | 9/116 [02:21<08:25,  4.73s/it]
+  9%|▊         | 10/116 [02:22<05:52,  3.32s/it]
+  9%|▉         | 11/116 [02:22<04:15,  2.43s/it]
+ 11%|█         | 13/116 [02:23<02:25,  1.42s/it]
+ 12%|█▏        | 14/116 [02:23<02:08,  1.26s/it]
+ 13%|█▎        | 15/116 [02:24<01:44,  1.03s/it]
+ 15%|█▍        | 17/116 [02:24<01:04,  1.54it/s]
+ 16%|█▌        | 18/116 [02:24<00:53,  1.82it/s]
+ 16%|█▋        | 19/116 [02:25<00:46,  2.08it/s]
+ 17%|█▋        | 20/116 [02:25<00:38,  2.51it/s]
+ 18%|█▊        | 21/116 [02:25<00:34,  2.74it/s]
+ 19%|█▉        | 22/116 [02:25<00:29,  3.24it/s]
+ 21%|██        | 24/116 [02:25<00:21,  4.33it/s]
+ 22%|██▏       | 25/116 [02:27<00:48,  1.87it/s]
+ 24%|██▍       | 28/116 [02:28<00:36,  2.42it/s]
+ 27%|██▋       | 31/116 [02:28<00:26,  3.21it/s]
+ 28%|██▊       | 32/116 [02:29<00:37,  2.25it/s]
+ 28%|██▊       | 33/116 [02:30<00:34,  2.40it/s]
+ 30%|███       | 35/116 [02:30<00:27,  2.95it/s]
+ 31%|███       | 36/116 [02:30<00:24,  3.22it/s]
+ 33%|███▎      | 38/116 [02:31<00:25,  3.11it/s]
+ 34%|███▍      | 40/116 [02:31<00:19,  3.84it/s]
+ 36%|███▌      | 42/116 [02:32<00:18,  4.09it/s]
+ 37%|███▋      | 43/116 [02:33<00:29,  2.48it/s]
+ 39%|███▉      | 45/116 [02:33<00:20,  3.40it/s]
+ 41%|████      | 47/116 [02:33<00:15,  4.59it/s]
+ 42%|████▏     | 49/116 [02:33<00:12,  5.24it/s]
+ 43%|████▎     | 50/116 [02:34<00:14,  4.52it/s]
+ 45%|████▍     | 52/116 [02:34<00:14,  4.27it/s]
+ 46%|████▌     | 53/116 [02:34<00:13,  4.52it/s]
+ 47%|████▋     | 54/116 [02:35<00:12,  5.00it/s]
+ 48%|████▊     | 56/116 [02:35<00:10,  5.87it/s]
+ 49%|████▉     | 57/116 [02:35<00:09,  6.25it/s]
+ 50%|█████     | 58/116 [02:35<00:10,  5.31it/s]
+ 52%|█████▏    | 60/116 [02:35<00:09,  5.96it/s]
+ 53%|█████▎    | 61/116 [02:36<00:09,  6.06it/s]
+ 53%|█████▎    | 62/116 [02:36<00:08,  6.52it/s]
+ 55%|█████▌    | 64/116 [02:36<00:05,  8.76it/s]
+ 57%|█████▋    | 66/116 [02:37<00:10,  4.88it/s]
+ 59%|█████▊    | 68/116 [02:37<00:08,  5.80it/s]
+ 60%|██████    | 70/116 [02:37<00:06,  6.62it/s]
+ 62%|██████▏   | 72/116 [02:37<00:05,  7.37it/s]
+ 63%|██████▎   | 73/116 [02:37<00:05,  7.38it/s]
+ 64%|██████▍   | 74/116 [02:38<00:07,  5.39it/s]
+ 65%|██████▍   | 75/116 [02:38<00:08,  5.07it/s]
+ 66%|██████▋   | 77/116 [02:39<00:11,  3.46it/s]
+ 67%|██████▋   | 78/116 [02:39<00:12,  3.01it/s]
+ 68%|██████▊   | 79/116 [02:40<00:13,  2.83it/s]
+ 72%|███████▏  | 83/116 [02:40<00:06,  5.06it/s]
+ 72%|███████▏  | 84/116 [02:40<00:07,  4.35it/s]
+ 74%|███████▍  | 86/116 [02:41<00:05,  5.09it/s]
+ 75%|███████▌  | 87/116 [02:41<00:05,  5.09it/s]
+ 77%|███████▋  | 89/116 [02:41<00:04,  6.62it/s]
+ 79%|███████▉  | 92/116 [02:41<00:02,  8.16it/s]
+ 80%|████████  | 93/116 [02:42<00:03,  5.78it/s]
+ 81%|████████  | 94/116 [02:42<00:03,  5.99it/s]
+ 82%|████████▏ | 95/116 [02:42<00:03,  6.01it/s]
+ 84%|████████▎ | 97/116 [02:42<00:02,  8.05it/s]
+ 86%|████████▌ | 100/116 [02:42<00:01, 11.44it/s]
+ 88%|████████▊ | 102/116 [02:42<00:01, 10.72it/s]
+ 91%|█████████ | 105/116 [02:43<00:01, 10.51it/s]
+ 92%|█████████▏| 107/116 [02:43<00:01,  8.80it/s]
+ 95%|█████████▍| 110/116 [02:43<00:00, 10.00it/s]
+ 97%|█████████▋| 112/116 [02:43<00:00, 10.93it/s]
+ 98%|█████████▊| 114/116 [02:44<00:00, 11.69it/s]
+100%|██████████| 116/116 [02:44<00:00,  8.45it/s]
+100%|██████████| 116/116 [02:44<00:00,  1.42s/it]

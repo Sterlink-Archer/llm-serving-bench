@@ -1,0 +1,50 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "dsa",
+  "global_512": "dsa"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 07:48:41] server_args={'model_path': '/root/models/glm', 'tokenizer_path': '/root/models/glm', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_extra_co"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  12,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64
+ ],
+ "kv_cache_tokens": 6273536,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "bfloat16",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "prefill_cuda_graph": false,
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "glm1_sglang0523/20261122T074555Z",
+ "config_id": "glm1_sglang0523:glm_sgl",
+ "image": "lmsysorg/sglang:v0.5.23-rocm10-mi35x",
+ "image_digest": "sha256:cff45eca86da10fbe140f85df196ef241e932bbae8036afa45942e633c3ed6c5",
+ "model_repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+ "model_rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 252728 MB\n        FREE_VRAM: 41864 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 252728 MB\n        FREE_VISIBLE_VRAM: 41864 MB",
+ "source_log": "results/glm1_sglang0523/20261122T074555Z/server_glm_sgl.log",
+ "sub_phases": []
+}

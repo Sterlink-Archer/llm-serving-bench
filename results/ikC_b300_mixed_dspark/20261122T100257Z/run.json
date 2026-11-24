@@ -1,0 +1,121 @@
+{
+ "label": "ikC_b300_mixed_dspark",
+ "run_id": "ikC_b300_mixed_dspark/20261122T100257Z",
+ "config_file": "recipes/inkling/configs/ikC_b300_mixed_dspark.json",
+ "t_start": "2026-11-22T10:02:57Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 6.1073
+ },
+ "phases": {
+  "snapshot_build_s": 272.9,
+  "create_s": 17.4
+ },
+ "servers": {
+  "mixed_dspark": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 32.4,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:01,  6.24it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:01<00:00,  8.62it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:03<00:00,  2.93it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:25<00:00,  3.67s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:25<00:00,  2.13s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590714 secs=26.1 GBps=0.774 method=huggingface_hub\n",
+    "bytes": 20191590714,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 464.3,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --bf16-gemm-backend torch --enable-mixed-chunk --speculative-algorithm DSPARK --max-running-requests 128",
+    "env": {},
+    "gpu_mem_after_load": "231957 MiB, 275040 MiB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 3710720,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --bf16-gemm-backend torch --enable-mixed-chunk --speculative-algorithm DSPARK --max-running-requests 128",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "setup_vllm_client": {
+     "rc": 0,
+     "secs": 43.4,
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "tail": "[setup_vllm_client] vllm==0.33.0 client in /root/vb after 16 s: 0.33.0\n"
+    },
+    "eval_claim": {
+     "rc": 0,
+     "secs": 147.5,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl,data/eval/mmlupro_200.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label eval_claim --out /root/or/out/eval_claim.json --limit 250 --gate-task gsm8kor --gate-threshold 0.9",
+     "tail": "[eval_claim] gsm8kor: 0.968 (242/250, noans 2, err 0, trunc 2) mmlupro: 0.770 (154/200, noans 22, err 0, trunc 22) wall=141s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.9,
+      "acc": 0.968,
+      "n": 250,
+      "passed": 242,
+      "pass": true
+     }
+    },
+    "protocol_b300_B_text": {
+     "rc": 0,
+     "secs": 2230.4,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_b300_B_text --breakeven-rps 2.0526 --client traffic --stratify --ttft-basis token --tokenizer /root/models/inkling --rates 2.053,3.079,4.105,5.131,6.158 --seeds 7,8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ikC_b300_mixed_dspark/20261122T100257Z --config-id ikC_b300_mixed_dspark:mixed_dspark --max-minutes 220.3",
+     "tail": "e ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r2x_s8] R=4.105 win=300s done=1167 err=0 drop=0 req/s=3.52 out=1334 in=33542 tok/s cache=0.00 TTFT p50=31.185s p95=44.689s TPOT p50=92.9ms srv=1333.1953263338255\n[protocol] max_rate_at_slo=3.079 req/s (break-even 2.0526); prefill=None tok/s -> /root/or/out/protocol_b300_B_text/protocol_summary.json\n",
+     "breakeven_rps": 2.0526
+    },
+    "protocol_b300_A_random": {
+     "rc": 0,
+     "secs": 3218.4,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_b300_A_random --breakeven-rps 2.0526 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/inkling --rates 2.053,3.079,4.105,5.131,6.158 --seeds 7,8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ikC_b300_mixed_dspark/20261122T100257Z --config-id ikC_b300_mixed_dspark:mixed_dspark --prefill-shot --max-minutes 183.1",
+     "tail": "[vllmbench r=4.105 s=7] done=1231 failed=0 req/s=3.0418876525459537 p95 TTFT=92.06960015301593 median TPOT=106.11294603805585 ms in tok/s=29234\n[vllmbench r=4.105 s=8] done=1231 failed=0 req/s=3.0891704000528084 p95 TTFT=83.73526950809173 median TPOT=107.83182712773291 ms in tok/s=29299\n[protocol] max_rate_at_slo=2.053 req/s (break-even 2.0526); prefill=44849.81943074751 tok/s -> /root/or/out/protocol_b300_A_random/protocol_summary.json\n",
+     "breakeven_rps": 2.0526
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 217.39,
+  "this_run_ceiling_usd": 24.43,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "sandbox_id": "651353be-bf72-4069-8bfa-0eafb8d2ee72",
+ "elapsed_s": 6228.8,
+ "est_cost_usd": 10.567,
+ "t_saved": "2026-11-22T11:51:19Z",
+ "system": "ok\nNVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W\n224\nMem:            3527         103        2275           0        1170        3424\noverlay         150G  8.4M  150G   1% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T11:50:49Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 292.78,
+  "metered_usd": 254.6825
+ }
+}

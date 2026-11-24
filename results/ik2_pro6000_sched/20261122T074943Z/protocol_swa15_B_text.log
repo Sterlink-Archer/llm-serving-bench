@@ -1,0 +1,27 @@
+[transformers] You are using a model of type `inkling2_loop` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+Traceback (most recent call last):
+  File "/root/or/bench/protocol.py", line 378, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/or/bench/protocol.py", line 307, in main
+    d = run_cell(a, ["--workload", "synthetic", "--params", json.dumps({"input_tokens": a.prefill_tokens, "output_tokens": 1}),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/or/bench/protocol.py", line 153, in run_cell
+    d = asyncio.run(T.run(ns))
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/or/bench/traffic.py", line 375, in run
+    s = summarize(a, params, cal, reqs, t0, t_end, t_stop, m0, m1, peak_inflight, nonce)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/or/bench/traffic.py", line 417, in summarize
+    done_win = [r for r in done if w_lo <= r.t_last <= w_hi]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'float' and 'NoneType'

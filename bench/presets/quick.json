@@ -1,0 +1,12 @@
+{
+ "name": "quick",
+ "note": "Short matrix for comparing optimization configs (~12 min): the cost headline curve, a long-input point, the prefix-cache effect, and one production shape.",
+ "defaults": {"duration": 60, "warmup": 10},
+ "slo": {"ttft_p95_s": 2.0, "ttft_p95_s_long": 6.0, "long_input_tokens": 4000, "tpot_p50_ms": 50},
+ "series": [
+  {"id": "s1k_1k", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 1024}, "sweep": {"concurrency": [1, 32, 64, 128, 256]}, "stop_past_knee": true},
+  {"id": "s8k_1k", "workload": "synthetic", "params": {"input_tokens": 8192, "output_tokens": 1024}, "sweep": {"concurrency": [16, 64]}},
+  {"id": "prefix_8k", "workload": "synthetic", "params": {"input_tokens": 8192, "output_tokens": 256, "prefix_pool": 4}, "sweep": {"params.prefix_ratio": [0.0, 0.9]}, "concurrency": 32},
+  {"id": "ciu_open", "workload": "ciu_screen", "sweep": {"rate": [16]}, "max_inflight": 512}
+ ]
+}

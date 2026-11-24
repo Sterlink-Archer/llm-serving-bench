@@ -1,0 +1,5 @@
+127.0.0.1 - - [22/Nov/2026 09:27:02] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 09:27:03] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [22/Nov/2026 09:27:03] "POST /v1/chat/completions HTTP/1.1" 501 -
+127.0.0.1 - - [22/Nov/2026 09:27:27] code 404, message File not found
+127.0.0.1 - - [22/Nov/2026 09:27:27] "GET /metrics HTTP/1.1" 404 -

@@ -1,0 +1,20 @@
+{
+ "name": "core",
+ "note": "Full workload matrix for one serving config (~40 min at duration 60). Fixed-shape cells use ignore_eos so every request has exactly its output length; production-shaped cells replay real length/prefix shapes with public or synthetic text.",
+ "defaults": {"duration": 60, "warmup": 10},
+ "slo": {"ttft_p95_s": 2.0, "ttft_p95_s_long": 6.0, "long_input_tokens": 4000, "tpot_p50_ms": 50},
+ "series": [
+  {"id": "s1k_1k", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 1024}, "sweep": {"concurrency": [1, 8, 32, 64, 128, 256]}, "stop_past_knee": true},
+  {"id": "s8k_1k", "workload": "synthetic", "params": {"input_tokens": 8192, "output_tokens": 1024}, "sweep": {"concurrency": [1, 16, 64, 128]}, "stop_past_knee": true},
+  {"id": "s1k_16", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 16}, "sweep": {"concurrency": [16, 64, 256]}, "duration": 45},
+  {"id": "s2k_2k", "workload": "synthetic", "params": {"input_tokens": 2048, "output_tokens": 2048}, "sweep": {"concurrency": [32, 128]}, "duration": 90},
+  {"id": "ctx_c1", "workload": "synthetic", "params": {"output_tokens": 256}, "sweep": {"params.input_tokens": [128, 1024, 4096, 16384, 32768]}, "concurrency": 1, "duration": 40, "warmup": 5},
+  {"id": "prefix_8k", "workload": "synthetic", "params": {"input_tokens": 8192, "output_tokens": 256, "prefix_pool": 4}, "sweep": {"params.prefix_ratio": [0.0, 0.5, 0.9, 0.99]}, "concurrency": 32},
+  {"id": "ciu_open", "workload": "ciu_screen", "sweep": {"rate": [4, 16, 64]}, "max_inflight": 512},
+  {"id": "ciu_c128", "workload": "ciu_screen", "concurrency": 128},
+  {"id": "fin_extract", "workload": "fin_extract", "params": {"max_out": 4096, "max_in": 32000}, "sweep": {"concurrency": [4, 16]}, "duration": 120, "warmup": 20},
+  {"id": "console_chat", "workload": "console_chat", "params": {"system_tokens": 10000, "conversations": 128, "turns": 4}, "sweep": {"concurrency": [16, 64]}},
+  {"id": "chat_natural", "workload": "chat_natural", "params": {"max_tokens": 1024}, "sweep": {"concurrency": [1, 32]}},
+  {"id": "longdoc_qa", "workload": "longdoc_qa", "params": {"doc_tokens": 16000, "docs": 4, "output_tokens": 256}, "concurrency": 8}
+ ]
+}

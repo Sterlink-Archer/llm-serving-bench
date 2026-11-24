@@ -1,0 +1,4 @@
+[vllmbench r=0.6 s=7] done=180 failed=0 req/s=0.5812048370197331 p95 TTFT=3.3267254515085356 median TPOT=15.09238714031081 ms in tok/s=5665
+[vllmbench r=0.75 s=7] done=225 failed=0 req/s=0.7339551766326738 p95 TTFT=3.7597397351637474 median TPOT=22.294884292482212 ms in tok/s=7215
+[vllmbench r=0.9 s=7] done=270 failed=0 req/s=0.8830526196706588 p95 TTFT=4.733111058920621 median TPOT=39.75857108514291 ms in tok/s=8659
+[protocol] max_rate_at_slo=0.75 req/s (break-even 1.3074); prefill=12681.427842477127 tok/s -> /root/or/out/pr_patched_s7/protocol_summary.json

@@ -1,0 +1,18 @@
+2026-11-22T07:57:43Z [ik4_mi355x_aiter] creating spot sandbox (MI355X x1, $4.4973/h, ttl 140 min, budget $12.0; project so far ~$123.98)
+2026-11-22T07:58:05Z [ik4_mi355x_aiter] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:58:18Z [ik4_mi355x_aiter] download base: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:02:23Z [ik4_mi355x_aiter] server base ready=True after 244.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 277520 MB
+        FREE_VRAM: 17072 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 277520 MB
+        FREE_VISIBLE_VRAM: 17072 MB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 4828288 graphs 52
+2026-11-22T08:02:36Z [ik4_mi355x_aiter] inspect_base rc=0 12s :: log /root/or/server_base.log: untuned-shape lines 263, distinct 263
+2026-11-22T08:03:30Z [ik4_mi355x_aiter] gate_base_gsm8kor100 rc=0 54s :: [gate_base_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=43s
+2026-11-22T08:03:32Z [ik4_mi355x_aiter] profile_prefill_base rc=1 2s :: urllib.error.HTTPError: HTTP Error 403: Forbidden
+2026-11-22T08:11:10Z [ik4_mi355x_aiter] protocol_base_B_text rc=0 458s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.5115); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json
+2026-11-22T08:38:11Z [ik4_mi355x_aiter] signal 15: tearing down
+2026-11-22T08:38:29Z [ik4_mi355x_aiter] done: elapsed 40.8 min, est $3.06; project est $146.61
+2026-11-22T08:38:42Z [ik4_mi355x_aiter] done: elapsed 41.0 min, est $3.07; project est $146.67

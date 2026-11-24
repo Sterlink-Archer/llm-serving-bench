@@ -1,0 +1,73 @@
+{
+ "label": "ik6_5090_mem",
+ "run_id": "ik6_5090_mem/20261122T082104Z",
+ "config_file": "recipes/inkling/configs/ik6_5090_mem.json",
+ "t_start": "2026-11-22T08:21:04Z",
+ "usd_per_h": {
+  "gpu": 0.74,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 1.6773
+ },
+ "phases": {
+  "create_s": 2.4
+ },
+ "servers": {
+  "mem88": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 56.6,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:02,  5.36it/s]\rFetching 12 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 8/12 [00:00<00:00, 31.68it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:20<00:00, 31.68it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:50<00:00,  5.42s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:50<00:00,  4.25s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590713 secs=51.6 GBps=0.392 method=huggingface_hub\n",
+    "bytes": 20191590713,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": false,
+    "ready_s": 177.6,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --disable-prefill-cuda-graph --mem-fraction-static 0.88 --cuda-graph-max-bs-decode 24",
+    "env": {},
+    "gpu_mem_after_load": "2 MiB, 32607 MiB"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 181120,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 140.37,
+  "this_run_ceiling_usd": 2.38,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 25,
+ "sandbox_id": "78cf5fb1-e238-4d19-b2e0-7fe3aadc41b2",
+ "elapsed_s": 355.1,
+ "est_cost_usd": 0.165,
+ "t_saved": "2026-11-22T08:26:59Z",
+ "system": "ok\nNVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W\n144\nMem:             253          27          57           0         174         225\noverlay         1.8T  558G  1.2T  32% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T08:26:23Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 142.37,
+  "metered_usd": 119.5386
+ }
+}

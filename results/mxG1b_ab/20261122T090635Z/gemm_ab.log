@@ -1,0 +1,289 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:1024, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:08:25Z] ab qkv_s M=1024 r0: engine 40.9 us @1993.1 | ps 41.0 us @1820.1 (0.997x, err 0.0)
+[2026-11-22T09:08:26Z] ab qkv_s M=1024 r1: engine 40.6 us @1752.2 | ps 40.7 us @1683.8 (0.996x, err 0.0)
+[2026-11-22T09:08:26Z] ab qkv_s M=1024 r2: engine 40.7 us @1730.2 | ps 40.5 us @1808.4 (1.005x, err 0.0)
+[aiter] shape is M:1536, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[2026-11-22T09:08:27Z] ab qkv_s M=1536 r0: engine 65.7 us @2049.2 | ps 63.4 us @1886.9 (1.035x, err 0.0)
+[2026-11-22T09:08:28Z] ab qkv_s M=1536 r1: engine 65.4 us @1877.0 | ps 63.4 us @1870.6 (1.032x, err 0.0)
+[2026-11-22T09:08:29Z] ab qkv_s M=1536 r2: engine 65.5 us @1836.4 | ps 63.6 us @1884.0 (1.029x, err 0.0)
+[aiter] shape is M:2048, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:30Z] ab qkv_s M=2048 r0: engine 78.7 us @1954.4 | ps 78.4 us @1769.0 (1.003x, err 0.0)
+[2026-11-22T09:08:31Z] ab qkv_s M=2048 r1: engine 78.4 us @1678.1 | ps 78.5 us @1664.9 (0.999x, err 0.0)
+[2026-11-22T09:08:31Z] ab qkv_s M=2048 r2: engine 78.5 us @1659.3 | ps 78.3 us @1767.2 (1.003x, err 0.0)
+[aiter] shape is M:3072, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:32Z] ab qkv_s M=3072 r0: engine 118.0 us @2025.6 | ps 116.1 us @1745.6 (1.017x, err 0.0)
+[2026-11-22T09:08:33Z] ab qkv_s M=3072 r1: engine 117.2 us @1629.1 | ps 116.1 us @1665.2 (1.010x, err 0.0)
+[2026-11-22T09:08:34Z] ab qkv_s M=3072 r2: engine 117.2 us @1613.4 | ps 116.2 us @1758.5 (1.009x, err 0.0)
+[aiter] shape is M:4096, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:35Z] ab qkv_s M=4096 r0: engine 154.7 us @1994.8 | ps 150.5 us @1731.1 (1.028x, err 0.0)
+[2026-11-22T09:08:36Z] ab qkv_s M=4096 r1: engine 153.3 us @1658.4 | ps 150.1 us @1632.6 (1.021x, err 0.0)
+[2026-11-22T09:08:36Z] ab qkv_s M=4096 r2: engine 153.7 us @1644.2 | ps 150.6 us @1717.1 (1.020x, err 0.0)
+[aiter] shape is M:5120, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:37Z] ab qkv_s M=5120 r0: engine 192.5 us @1985.2 | ps 188.0 us @1710.6 (1.024x, err 0.0)
+[2026-11-22T09:08:38Z] ab qkv_s M=5120 r1: engine 193.3 us @1609.9 | ps 188.3 us @1624.2 (1.027x, err 0.0)
+[2026-11-22T09:08:39Z] ab qkv_s M=5120 r2: engine 193.5 us @1601.5 | ps 188.1 us @1677.2 (1.028x, err 0.0)
+[aiter] shape is M:6144, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:40Z] ab qkv_s M=6144 r0: engine 232.3 us @1923.0 | ps 225.9 us @1677.0 (1.029x, err 0.0)
+[2026-11-22T09:08:41Z] ab qkv_s M=6144 r1: engine 235.1 us @1629.0 | ps 226.0 us @1624.0 (1.040x, err 0.0)
+[2026-11-22T09:08:42Z] ab qkv_s M=6144 r2: engine 235.9 us @1623.0 | ps 226.0 us @1675.4 (1.044x, err 0.0)
+[aiter] shape is M:6912, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:43Z] ab qkv_s M=6912 r0: engine 267.9 us @1912.1 | ps 258.1 us @1708.2 (1.038x, err 0.0)
+[2026-11-22T09:08:43Z] ab qkv_s M=6912 r1: engine 270.2 us @1646.0 | ps 259.0 us @1641.5 (1.043x, err 0.0)
+[2026-11-22T09:08:44Z] ab qkv_s M=6912 r2: engine 270.2 us @1633.4 | ps 258.2 us @1681.1 (1.046x, err 0.0)
+[aiter] shape is M:7680, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:45Z] ab qkv_s M=7680 r0: engine 294.4 us @1965.3 | ps 287.6 us @1748.4 (1.024x, err 0.0)
+[2026-11-22T09:08:46Z] ab qkv_s M=7680 r1: engine 299.8 us @1664.6 | ps 288.5 us @1658.8 (1.039x, err 0.0)
+[2026-11-22T09:08:47Z] ab qkv_s M=7680 r2: engine 300.7 us @1654.4 | ps 288.1 us @1743.2 (1.044x, err 0.0)
+[aiter] shape is M:8192, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:48Z] ab qkv_s M=8192 r0: engine 312.8 us @1930.2 | ps 291.5 us @1647.5 (1.073x, err 0.0)
+[2026-11-22T09:08:49Z] ab qkv_s M=8192 r1: engine 314.6 us @1619.2 | ps 291.0 us @1584.8 (1.081x, err 0.0)
+[2026-11-22T09:08:50Z] ab qkv_s M=8192 r2: engine 314.3 us @1615.1 | ps 291.4 us @1622.6 (1.079x, err 0.0)
+[2026-11-22T09:08:50Z] ab done in 30s
+[2026-11-22T09:08:51Z] ab qkv_s: rc 0 in 31s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:08:55Z] ab qkv_g M=1024 r0: engine 62.3 us @2039.2 | ps 59.6 us @2019.4 (1.046x, err 0.0)
+[2026-11-22T09:08:56Z] ab qkv_g M=1024 r1: engine 62.6 us @1923.2 | ps 59.8 us @2017.2 (1.047x, err 0.0)
+[2026-11-22T09:08:57Z] ab qkv_g M=1024 r2: engine 62.5 us @1869.6 | ps 60.0 us @2016.2 (1.042x, err 0.0)
+[aiter] shape is M:1536, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:08:58Z] ab qkv_g M=1536 r0: engine 78.7 us @1867.5 | ps 73.9 us @1757.1 (1.064x, err 0.0)
+[2026-11-22T09:08:58Z] ab qkv_g M=1536 r1: engine 78.3 us @1715.1 | ps 74.0 us @1625.9 (1.058x, err 0.0)
+[2026-11-22T09:08:59Z] ab qkv_g M=1536 r2: engine 78.4 us @1700.5 | ps 73.8 us @1729.0 (1.061x, err 0.0)
+[aiter] shape is M:2048, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:00Z] ab qkv_g M=2048 r0: engine 108.7 us @1771.2 | ps 104.4 us @1757.2 (1.041x, err 0.0)
+[2026-11-22T09:09:01Z] ab qkv_g M=2048 r1: engine 108.7 us @2020.4 | ps 104.9 us @1821.1 (1.036x, err 0.0)
+[2026-11-22T09:09:02Z] ab qkv_g M=2048 r2: engine 108.0 us @1920.2 | ps 104.6 us @1774.1 (1.032x, err 0.0)
+[aiter] shape is M:3072, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:02Z] ab qkv_g M=3072 r0: engine 152.5 us @1738.8 | ps 146.8 us @1715.8 (1.039x, err 0.0)
+[2026-11-22T09:09:03Z] ab qkv_g M=3072 r1: engine 151.7 us @1684.8 | ps 147.2 us @1651.5 (1.031x, err 0.0)
+[2026-11-22T09:09:04Z] ab qkv_g M=3072 r2: engine 152.6 us @1660.6 | ps 146.8 us @1733.0 (1.040x, err 0.0)
+[aiter] shape is M:4096, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:05Z] ab qkv_g M=4096 r0: engine 197.6 us @1651.2 | ps 189.3 us @1661.0 (1.044x, err 0.0)
+[2026-11-22T09:09:05Z] ab qkv_g M=4096 r1: engine 196.6 us @1635.5 | ps 189.2 us @1606.6 (1.039x, err 0.0)
+[2026-11-22T09:09:06Z] ab qkv_g M=4096 r2: engine 197.2 us @1625.0 | ps 189.4 us @1677.8 (1.041x, err 0.0)
+[aiter] shape is M:5120, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:07Z] ab qkv_g M=5120 r0: engine 256.4 us @1694.1 | ps 242.4 us @1711.9 (1.058x, err 0.0)
+[2026-11-22T09:09:08Z] ab qkv_g M=5120 r1: engine 254.6 us @1773.2 | ps 241.9 us @1717.6 (1.053x, err 0.0)
+[2026-11-22T09:09:09Z] ab qkv_g M=5120 r2: engine 255.9 us @1765.5 | ps 241.8 us @1713.6 (1.058x, err 0.0)
+[aiter] shape is M:6144, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:09Z] ab qkv_g M=6144 r0: engine 304.1 us @1698.8 | ps 286.8 us @1682.5 (1.060x, err 0.0)
+[2026-11-22T09:09:10Z] ab qkv_g M=6144 r1: engine 304.1 us @1703.1 | ps 287.3 us @1626.8 (1.058x, err 0.0)
+[2026-11-22T09:09:11Z] ab qkv_g M=6144 r2: engine 304.3 us @1685.5 | ps 286.7 us @1702.9 (1.061x, err 0.0)
+[aiter] shape is M:6912, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:12Z] ab qkv_g M=6912 r0: engine 344.1 us @1658.9 | ps 320.0 us @1685.0 (1.075x, err 0.0)
+[2026-11-22T09:09:13Z] ab qkv_g M=6912 r1: engine 343.1 us @1675.9 | ps 320.3 us @1617.8 (1.071x, err 0.0)
+[2026-11-22T09:09:14Z] ab qkv_g M=6912 r2: engine 343.3 us @1669.2 | ps 319.7 us @1684.5 (1.074x, err 0.0)
+[aiter] shape is M:7680, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:14Z] ab qkv_g M=7680 r0: engine 380.8 us @1657.1 | ps 354.3 us @1730.1 (1.075x, err 0.0)
+[2026-11-22T09:09:15Z] ab qkv_g M=7680 r1: engine 380.3 us @1668.9 | ps 354.9 us @1623.6 (1.072x, err 0.0)
+[2026-11-22T09:09:16Z] ab qkv_g M=7680 r2: engine 380.7 us @1665.4 | ps 354.9 us @1720.0 (1.073x, err 0.0)
+[aiter] shape is M:8192, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:17Z] ab qkv_g M=8192 r0: engine 398.2 us @1628.9 | ps 365.5 us @1622.5 (1.089x, err 0.0)
+[2026-11-22T09:09:18Z] ab qkv_g M=8192 r1: engine 398.0 us @1624.6 | ps 365.9 us @1574.1 (1.088x, err 0.0)
+[2026-11-22T09:09:18Z] ab qkv_g M=8192 r2: engine 397.5 us @1618.8 | ps 365.8 us @1602.5 (1.087x, err 0.0)
+[2026-11-22T09:09:18Z] ab done in 27s
+[2026-11-22T09:09:20Z] ab qkv_g: rc 0 in 29s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:1024, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:09:24Z] ab o_s M=1024 r0: engine 26.9 us @2035.4 | ps 39.0 us @2384.9 (0.691x, err 0.0)
+[2026-11-22T09:09:25Z] ab o_s M=1024 r1: engine 27.1 us @1997.5 | ps 39.0 us @2385.5 (0.694x, err 0.0)
+[2026-11-22T09:09:26Z] ab o_s M=1024 r2: engine 27.0 us @1809.5 | ps 39.0 us @2383.9 (0.692x, err 0.0)
+[aiter] shape is M:1536, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[2026-11-22T09:09:27Z] ab o_s M=1536 r0: engine 63.5 us @2382.2 | ps 39.1 us @2371.1 (1.622x, err 0.0)
+[2026-11-22T09:09:28Z] ab o_s M=1536 r1: engine 63.3 us @2385.5 | ps 39.2 us @2365.5 (1.616x, err 0.0)
+[2026-11-22T09:09:28Z] ab o_s M=1536 r2: engine 63.3 us @2386.9 | ps 39.1 us @2370.0 (1.620x, err 0.0)
+[aiter] shape is M:2048, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[2026-11-22T09:09:29Z] ab o_s M=2048 r0: engine 48.6 us @2032.2 | ps 43.9 us @2030.9 (1.108x, err 0.0)
+[2026-11-22T09:09:30Z] ab o_s M=2048 r1: engine 48.5 us @1834.8 | ps 43.9 us @2026.8 (1.105x, err 0.0)
+[2026-11-22T09:09:31Z] ab o_s M=2048 r2: engine 48.3 us @1756.8 | ps 43.9 us @2031.1 (1.100x, err 0.0)
+[aiter] shape is M:3072, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:32Z] ab o_s M=3072 r0: engine 59.8 us @1984.9 | ps 55.1 us @1793.9 (1.086x, err 0.0)
+[2026-11-22T09:09:33Z] ab o_s M=3072 r1: engine 60.3 us @1604.2 | ps 55.0 us @1651.5 (1.097x, err 0.0)
+[2026-11-22T09:09:34Z] ab o_s M=3072 r2: engine 60.4 us @1577.4 | ps 55.2 us @1794.8 (1.095x, err 0.0)
+[aiter] shape is M:4096, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:09:34Z] ab o_s M=4096 r0: engine 94.6 us @2000.9 | ps 84.9 us @1955.0 (1.115x, err 0.0)
+[2026-11-22T09:09:35Z] ab o_s M=4096 r1: engine 95.2 us @1815.8 | ps 84.8 us @1956.5 (1.122x, err 0.0)
+[2026-11-22T09:09:36Z] ab o_s M=4096 r2: engine 95.2 us @1746.4 | ps 84.8 us @1953.4 (1.122x, err 0.0)
+[2026-11-22T09:09:37Z] ab o_s M=5120 r0: engine 107.8 us @1975.8 | ps 95.8 us @1732.2 (1.125x, err 0.0)
+[2026-11-22T09:09:38Z] ab o_s M=5120 r1: engine 108.5 us @1727.5 | ps 95.9 us @1721.6 (1.131x, err 0.0)
+[2026-11-22T09:09:39Z] ab o_s M=5120 r2: engine 108.6 us @1717.6 | ps 95.9 us @1725.6 (1.132x, err 0.0)
+[2026-11-22T09:09:39Z] ab o_s M=6144 r0: engine 117.7 us @1935.0 | ps 106.0 us @1713.7 (1.110x, err 0.0)
+[2026-11-22T09:09:40Z] ab o_s M=6144 r1: engine 118.9 us @1587.0 | ps 106.2 us @1593.0 (1.120x, err 0.0)
+[2026-11-22T09:09:41Z] ab o_s M=6144 r2: engine 119.1 us @1574.9 | ps 106.2 us @1715.5 (1.122x, err 0.0)
+[2026-11-22T09:09:42Z] ab o_s M=6912 r0: engine 149.3 us @2043.9 | ps 135.5 us @1840.9 (1.102x, err 0.0)
+[2026-11-22T09:09:43Z] ab o_s M=6912 r1: engine 149.9 us @1848.2 | ps 135.3 us @1842.9 (1.108x, err 0.0)
+[2026-11-22T09:09:44Z] ab o_s M=6912 r2: engine 149.3 us @1868.1 | ps 135.3 us @1837.4 (1.104x, err 0.0)
+[2026-11-22T09:09:45Z] ab o_s M=7680 r0: engine 158.3 us @1996.1 | ps 139.5 us @1752.1 (1.135x, err 0.0)
+[2026-11-22T09:09:46Z] ab o_s M=7680 r1: engine 159.2 us @1788.8 | ps 139.6 us @1757.5 (1.140x, err 0.0)
+[2026-11-22T09:09:46Z] ab o_s M=7680 r2: engine 158.9 us @1787.0 | ps 139.8 us @1745.9 (1.137x, err 0.0)
+[2026-11-22T09:09:47Z] ab o_s M=8192 r0: engine 166.9 us @1949.5 | ps 146.0 us @1664.5 (1.143x, err 0.0)
+[2026-11-22T09:09:48Z] ab o_s M=8192 r1: engine 167.5 us @1697.1 | ps 145.6 us @1676.0 (1.151x, err 0.0)
+[2026-11-22T09:09:49Z] ab o_s M=8192 r2: engine 167.9 us @1693.8 | ps 145.8 us @1652.0 (1.152x, err 0.0)
+[2026-11-22T09:09:49Z] ab done in 29s
+[2026-11-22T09:09:50Z] ab o_s: rc 0 in 30s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:1024, N:5376, K:16384, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:09:55Z] ab o_g M=1024 r0: engine 49.7 us @1996.1 | ps 71.0 us @2380.5 (0.699x, err 0.0)
+[2026-11-22T09:09:56Z] ab o_g M=1024 r1: engine 49.7 us @1964.4 | ps 71.0 us @2384.2 (0.701x, err 0.0)
+[2026-11-22T09:09:56Z] ab o_g M=1024 r2: engine 49.8 us @1665.1 | ps 70.9 us @2380.4 (0.702x, err 0.0)
+[2026-11-22T09:09:57Z] ab o_g M=1536 r0: engine 78.0 us @2263.6 | ps 72.1 us @2305.0 (1.082x, err 0.0)
+[2026-11-22T09:09:58Z] ab o_g M=1536 r1: engine 78.0 us @2202.8 | ps 72.3 us @2327.6 (1.078x, err 0.0)
+[2026-11-22T09:09:59Z] ab o_g M=1536 r2: engine 78.1 us @2191.6 | ps 72.3 us @2287.4 (1.082x, err 0.0)
+[2026-11-22T09:10:00Z] ab o_g M=2048 r0: engine 84.1 us @2056.4 | ps 82.1 us @1928.4 (1.024x, err 0.0)
+[2026-11-22T09:10:01Z] ab o_g M=2048 r1: engine 85.2 us @1753.0 | ps 82.3 us @1956.6 (1.036x, err 0.0)
+[2026-11-22T09:10:02Z] ab o_g M=2048 r2: engine 85.3 us @1694.1 | ps 82.2 us @1895.6 (1.037x, err 0.0)
+[2026-11-22T09:10:02Z] ab o_g M=3072 r0: engine 137.0 us @2137.0 | ps 103.2 us @1762.5 (1.328x, err 0.0)
+[2026-11-22T09:10:03Z] ab o_g M=3072 r1: engine 136.7 us @1760.4 | ps 103.4 us @1583.5 (1.322x, err 0.0)
+[2026-11-22T09:10:04Z] ab o_g M=3072 r2: engine 136.5 us @1910.5 | ps 103.4 us @1763.5 (1.320x, err 0.0)
+[2026-11-22T09:10:05Z] ab o_g M=4096 r0: engine 158.7 us @1955.2 | ps 161.8 us @1882.9 (0.981x, err 0.0)
+[2026-11-22T09:10:06Z] ab o_g M=4096 r1: engine 160.3 us @1710.1 | ps 161.4 us @1913.2 (0.993x, err 0.0)
+[2026-11-22T09:10:07Z] ab o_g M=4096 r2: engine 160.6 us @1633.9 | ps 161.4 us @1887.1 (0.995x, err 0.0)
+[2026-11-22T09:10:07Z] ab o_g M=5120 r0: engine 199.5 us @1989.0 | ps 182.3 us @1685.8 (1.094x, err 0.0)
+[2026-11-22T09:10:08Z] ab o_g M=5120 r1: engine 201.6 us @1638.1 | ps 181.9 us @1691.4 (1.108x, err 0.0)
+[2026-11-22T09:10:09Z] ab o_g M=5120 r2: engine 201.8 us @1627.5 | ps 182.2 us @1681.6 (1.107x, err 0.0)
+[2026-11-22T09:10:10Z] ab o_g M=6144 r0: engine 221.3 us @1902.8 | ps 199.0 us @1666.5 (1.112x, err 0.0)
+[2026-11-22T09:10:11Z] ab o_g M=6144 r1: engine 220.6 us @1484.9 | ps 198.3 us @1598.2 (1.112x, err 0.0)
+[2026-11-22T09:10:12Z] ab o_g M=6144 r2: engine 220.8 us @1476.8 | ps 199.5 us @1698.1 (1.106x, err 0.0)
+[2026-11-22T09:10:13Z] ab o_g M=6912 r0: engine 278.7 us @2006.4 | ps 258.5 us @1784.4 (1.078x, err 0.0)
+[2026-11-22T09:10:13Z] ab o_g M=6912 r1: engine 278.0 us @1764.1 | ps 257.6 us @1796.9 (1.079x, err 0.0)
+[2026-11-22T09:10:14Z] ab o_g M=6912 r2: engine 278.3 us @1782.4 | ps 258.2 us @1782.5 (1.078x, err 0.0)
+[2026-11-22T09:10:15Z] ab o_g M=7680 r0: engine 297.4 us @1986.5 | ps 267.5 us @1739.2 (1.112x, err 0.0)
+[2026-11-22T09:10:16Z] ab o_g M=7680 r1: engine 297.3 us @1692.8 | ps 267.7 us @1753.0 (1.111x, err 0.0)
+[2026-11-22T09:10:17Z] ab o_g M=7680 r2: engine 297.4 us @1690.9 | ps 267.5 us @1740.2 (1.112x, err 0.0)
+[2026-11-22T09:10:18Z] ab o_g M=8192 r0: engine 308.9 us @1923.4 | ps 277.5 us @1665.6 (1.113x, err 0.0)
+[2026-11-22T09:10:19Z] ab o_g M=8192 r1: engine 307.7 us @1607.5 | ps 277.0 us @1696.8 (1.111x, err 0.0)
+[2026-11-22T09:10:19Z] ab o_g M=8192 r2: engine 308.9 us @1607.6 | ps 277.0 us @1665.5 (1.115x, err 0.0)
+[2026-11-22T09:10:19Z] ab done in 29s
+[2026-11-22T09:10:20Z] ab o_g: rc 0 in 30s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:1024, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:10:25Z] ab gate_up M=1024 r0: engine 113.3 us @1994.6 | ps 112.3 us @1747.0 (1.009x, err 0.0)
+[2026-11-22T09:10:26Z] ab gate_up M=1024 r1: engine 113.7 us @1759.6 | ps 111.8 us @1683.0 (1.017x, err 0.0)
+[2026-11-22T09:10:27Z] ab gate_up M=1024 r2: engine 113.9 us @1746.8 | ps 112.0 us @1743.4 (1.017x, err 0.0)
+[aiter] shape is M:1536, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:27Z] ab gate_up M=1536 r0: engine 161.9 us @1655.6 | ps 156.0 us @1751.0 (1.038x, err 0.0)
+[2026-11-22T09:10:28Z] ab gate_up M=1536 r1: engine 160.9 us @1682.9 | ps 155.7 us @1725.4 (1.033x, err 0.0)
+[2026-11-22T09:10:29Z] ab gate_up M=1536 r2: engine 161.4 us @1626.6 | ps 155.6 us @1650.6 (1.037x, err 0.0)
+[aiter] shape is M:2048, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:30Z] ab gate_up M=2048 r0: engine 225.1 us @1743.1 | ps 214.7 us @1706.6 (1.048x, err 0.0)
+[2026-11-22T09:10:31Z] ab gate_up M=2048 r1: engine 223.7 us @1816.4 | ps 214.9 us @1738.0 (1.041x, err 0.0)
+[2026-11-22T09:10:31Z] ab gate_up M=2048 r2: engine 224.1 us @1839.2 | ps 214.1 us @1696.1 (1.046x, err 0.0)
+[aiter] shape is M:3072, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:32Z] ab gate_up M=3072 r0: engine 319.4 us @1686.1 | ps 300.0 us @1622.5 (1.065x, err 0.0)
+[2026-11-22T09:10:33Z] ab gate_up M=3072 r1: engine 318.4 us @1625.9 | ps 300.5 us @1576.5 (1.060x, err 0.0)
+[2026-11-22T09:10:34Z] ab gate_up M=3072 r2: engine 319.1 us @1616.1 | ps 300.2 us @1636.2 (1.063x, err 0.0)
+[aiter] shape is M:4096, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:35Z] ab gate_up M=4096 r0: engine 427.2 us @1633.9 | ps 404.9 us @1642.8 (1.055x, err 0.0)
+[2026-11-22T09:10:35Z] ab gate_up M=4096 r1: engine 425.4 us @1670.4 | ps 404.9 us @1598.6 (1.051x, err 0.0)
+[2026-11-22T09:10:36Z] ab gate_up M=4096 r2: engine 426.6 us @1663.4 | ps 405.3 us @1619.6 (1.053x, err 0.0)
+[aiter] shape is M:5120, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:37Z] ab gate_up M=5120 r0: engine 534.6 us @1642.6 | ps 496.5 us @1611.4 (1.077x, err 0.0)
+[2026-11-22T09:10:38Z] ab gate_up M=5120 r1: engine 532.0 us @1673.9 | ps 496.7 us @1575.9 (1.071x, err 0.0)
+[2026-11-22T09:10:39Z] ab gate_up M=5120 r2: engine 532.0 us @1670.2 | ps 496.1 us @1620.9 (1.072x, err 0.0)
+[aiter] shape is M:6144, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:40Z] ab gate_up M=6144 r0: engine 631.0 us @1615.5 | ps 591.5 us @1627.8 (1.067x, err 0.0)
+[2026-11-22T09:10:40Z] ab gate_up M=6144 r1: engine 629.5 us @1628.9 | ps 592.6 us @1545.8 (1.062x, err 0.0)
+[2026-11-22T09:10:41Z] ab gate_up M=6144 r2: engine 630.3 us @1627.6 | ps 591.5 us @1624.4 (1.066x, err 0.0)
+[aiter] shape is M:6912, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:42Z] ab gate_up M=6912 r0: engine 708.8 us @1591.8 | ps 652.4 us @1661.2 (1.086x, err 0.0)
+[2026-11-22T09:10:43Z] ab gate_up M=6912 r1: engine 690.0 us @1687.4 | ps 651.2 us @1613.4 (1.060x, err 0.0)
+[2026-11-22T09:10:44Z] ab gate_up M=6912 r2: engine 691.0 us @1670.5 | ps 650.1 us @1689.2 (1.063x, err 0.0)
+[aiter] shape is M:7680, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:44Z] ab gate_up M=7680 r0: engine 763.9 us @1663.4 | ps 735.0 us @1654.9 (1.039x, err 0.0)
+[2026-11-22T09:10:45Z] ab gate_up M=7680 r1: engine 781.5 us @1614.2 | ps 734.5 us @1569.6 (1.064x, err 0.0)
+[2026-11-22T09:10:46Z] ab gate_up M=7680 r2: engine 781.8 us @1603.7 | ps 733.3 us @1644.5 (1.066x, err 0.0)
+[aiter] shape is M:8192, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:10:47Z] ab gate_up M=8192 r0: engine 832.0 us @1611.8 | ps 776.3 us @1619.5 (1.072x, err 0.0)
+[2026-11-22T09:10:48Z] ab gate_up M=8192 r1: engine 831.9 us @1620.4 | ps 776.4 us @1537.2 (1.071x, err 0.0)
+[2026-11-22T09:10:49Z] ab gate_up M=8192 r2: engine 832.1 us @1612.2 | ps 776.0 us @1617.9 (1.072x, err 0.0)
+[2026-11-22T09:10:49Z] ab done in 28s
+[2026-11-22T09:10:50Z] ab gate_up: rc 0 in 29s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:1024, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:10:55Z] ab down M=1024 r0: engine 63.5 us @1941.4 | ps 93.5 us @2380.5 (0.679x, err 0.0)
+[2026-11-22T09:10:55Z] ab down M=1024 r1: engine 63.7 us @1937.1 | ps 93.4 us @2385.6 (0.682x, err 0.0)
+[2026-11-22T09:10:56Z] ab down M=1024 r2: engine 63.7 us @1632.2 | ps 93.5 us @2378.2 (0.681x, err 0.0)
+[2026-11-22T09:10:57Z] ab down M=1536 r0: engine 101.9 us @2262.6 | ps 94.9 us @2303.9 (1.074x, err 0.0)
+[2026-11-22T09:10:58Z] ab down M=1536 r1: engine 101.7 us @2210.1 | ps 94.6 us @2334.1 (1.075x, err 0.0)
+[2026-11-22T09:10:59Z] ab down M=1536 r2: engine 101.8 us @2188.5 | ps 94.7 us @2282.8 (1.075x, err 0.0)
+[2026-11-22T09:11:00Z] ab down M=2048 r0: engine 108.9 us @2052.6 | ps 107.2 us @1953.8 (1.016x, err 0.0)
+[2026-11-22T09:11:00Z] ab down M=2048 r1: engine 110.4 us @1735.2 | ps 107.2 us @1966.6 (1.030x, err 0.0)
+[2026-11-22T09:11:01Z] ab down M=2048 r2: engine 110.5 us @1690.9 | ps 107.3 us @1883.1 (1.029x, err 0.0)
+[aiter] shape is M:3072, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:11:02Z] ab down M=3072 r0: engine 145.4 us @1906.8 | ps 132.9 us @1744.8 (1.093x, err 0.0)
+[2026-11-22T09:11:03Z] ab down M=3072 r1: engine 143.4 us @1484.8 | ps 132.1 us @1616.0 (1.085x, err 0.0)
+[2026-11-22T09:11:04Z] ab down M=3072 r2: engine 143.5 us @1458.5 | ps 133.6 us @1752.9 (1.075x, err 0.0)
+[aiter] shape is M:4096, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[2026-11-22T09:11:05Z] ab down M=4096 r0: engine 219.9 us @1945.8 | ps 208.9 us @1899.1 (1.053x, err 0.0)
+[2026-11-22T09:11:05Z] ab down M=4096 r1: engine 223.5 us @1655.2 | ps 209.1 us @1910.8 (1.069x, err 0.0)
+[2026-11-22T09:11:06Z] ab down M=4096 r2: engine 223.4 us @1569.5 | ps 208.9 us @1897.5 (1.070x, err 0.0)
+[2026-11-22T09:11:07Z] ab down M=5120 r0: engine 255.1 us @1955.4 | ps 236.6 us @1677.8 (1.078x, err 0.0)
+[2026-11-22T09:11:08Z] ab down M=5120 r1: engine 259.6 us @1627.1 | ps 235.7 us @1682.9 (1.101x, err 0.0)
+[2026-11-22T09:11:09Z] ab down M=5120 r2: engine 259.7 us @1625.9 | ps 236.3 us @1673.2 (1.099x, err 0.0)
+[2026-11-22T09:11:10Z] ab down M=6144 r0: engine 347.4 us @2039.4 | ps 258.8 us @1692.8 (1.343x, err 0.0)
+[2026-11-22T09:11:11Z] ab down M=6144 r1: engine 347.8 us @1685.6 | ps 257.9 us @1586.9 (1.348x, err 0.0)
+[2026-11-22T09:11:11Z] ab down M=6144 r2: engine 348.0 us @1832.2 | ps 258.7 us @1716.6 (1.345x, err 0.0)
+[2026-11-22T09:11:12Z] ab down M=6912 r0: engine 368.1 us @2016.1 | ps 335.4 us @1789.6 (1.097x, err 0.0)
+[2026-11-22T09:11:13Z] ab down M=6912 r1: engine 367.6 us @1766.4 | ps 335.5 us @1794.9 (1.096x, err 0.0)
+[2026-11-22T09:11:14Z] ab down M=6912 r2: engine 367.9 us @1783.9 | ps 336.2 us @1775.2 (1.094x, err 0.0)
+[2026-11-22T09:11:15Z] ab down M=7680 r0: engine 382.3 us @1938.5 | ps 350.2 us @1726.4 (1.092x, err 0.0)
+[2026-11-22T09:11:16Z] ab down M=7680 r1: engine 382.3 us @1677.0 | ps 350.2 us @1737.8 (1.092x, err 0.0)
+[2026-11-22T09:11:17Z] ab down M=7680 r2: engine 382.4 us @1681.5 | ps 350.9 us @1727.1 (1.090x, err 0.0)
+[2026-11-22T09:11:18Z] ab down M=8192 r0: engine 396.0 us @1920.4 | ps 361.9 us @1649.5 (1.094x, err 0.0)
+[2026-11-22T09:11:18Z] ab down M=8192 r1: engine 395.7 us @1584.4 | ps 361.1 us @1684.9 (1.096x, err 0.0)
+[2026-11-22T09:11:19Z] ab down M=8192 r2: engine 396.1 us @1584.8 | ps 362.4 us @1657.6 (1.093x, err 0.0)
+[2026-11-22T09:11:19Z] ab done in 29s
+[2026-11-22T09:11:20Z] ab down: rc 0 in 31s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:11:25Z] ab sq8k M=8192 r0: engine 218.1 us @1897.4 | ps 208.4 us @1653.4 (1.047x, err 0.0)
+[2026-11-22T09:11:25Z] ab sq8k M=8192 r1: engine 218.7 us @1640.8 | ps 208.4 us @1623.0 (1.049x, err 0.0)
+[2026-11-22T09:11:26Z] ab sq8k M=8192 r2: engine 218.8 us @1637.0 | ps 208.8 us @1650.0 (1.048x, err 0.0)
+[2026-11-22T09:11:26Z] ab done in 5s
+[2026-11-22T09:11:27Z] ab sq8k: rc 0 in 7s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:11:32Z] ab sq16k M=16384 r0: engine 1624.6 us @1819.1 | ps 1575.4 us @1599.9 (1.031x, err 0.0)
+[2026-11-22T09:11:33Z] ab sq16k M=16384 r1: engine 1633.6 us @1554.8 | ps 1575.4 us @1568.9 (1.037x, err 0.0)
+[2026-11-22T09:11:34Z] ab sq16k M=16384 r2: engine 1634.7 us @1556.2 | ps 1578.4 us @1582.8 (1.036x, err 0.0)
+[2026-11-22T09:11:34Z] ab done in 6s
+[2026-11-22T09:11:35Z] ab sq16k: rc 0 in 8s
+[2026-11-22T09:11:35Z] ab done in 195s

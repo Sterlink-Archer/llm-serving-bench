@@ -1,0 +1,104 @@
+{
+ "label": "d2_b300_prefill_diag",
+ "run_id": "d2_b300_prefill_diag/20261122T051320Z",
+ "config_file": "configs/d2_b300_prefill_diag.json",
+ "t_start": "2026-11-22T05:13:20Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.8064,
+  "mem": 2.0736,
+  "disk": 0.0427,
+  "total": 8.0927
+ },
+ "phases": {
+  "create_s": 4.5
+ },
+ "servers": {
+  "nvfp4_nospec": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 73.3,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:   7%|\u258b         | 1/15 [00:00<00:02,  5.96it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:01<00:00, 10.36it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:07<00:00,  6.34s/it]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:07<00:00,  4.51s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640261 secs=68.1 GBps=0.342 method=huggingface_hub\n",
+    "bytes": 23297640261,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 198.0,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}' --attention-backend FLASHINFER --block-size 64 --kv-cache-dtype fp8 --attention-config '{\"use_trtllm_attention\":false,\"disable_flashinfer_q_quantization\":true}' --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+    "env": {},
+    "gpu_mem_after_load": "250178 MiB, 275040 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.34.0-70a07f07\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 919768,
+    "kv_cache_gib": 224.51,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}' --attention-backend FLASHINFER --block-size 64 --kv-cache-dtype fp8 --attention-config '{\"use_trtllm_attention\":false,\"disable_flashinfer_q_quantization\":true}' --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "profile_prefill_4x10k": {
+     "rc": 0,
+     "secs": 12.2,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "[profile] prefill 24395 tok/s over 4x10000; attention=85.3% fused_elementwise=12.8% other=1.7% gemm=0.1% memcpy/memset=0.0%\n"
+    },
+    "prefill_probe_nospec": {
+     "rc": 0,
+     "secs": 85.1,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/nvfp4 --out /root/or/out/prefill_probe_nospec.json",
+     "tail": "[prefill_probe] 24256 tok/s (16 x 10000, 2nd run)\n"
+    },
+    "prefill_sweep": {
+     "rc": 0,
+     "secs": 12.3,
+     "cmd": "python3 bench/prefill_sweep.py --model gemma --lengths 2000,4000,10000,16000 --reps 3 --out /root/or/out/prefill_sweep.json",
+     "tail": "[sweep]  10000 tokens: 22374 tok/s single-prompt prefill (0.422 s)\n[sweep]  16000 tokens: 18721 tok/s single-prompt prefill (0.805 s)\n[sweep] tok/s longest/shortest = 0.69\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 22.46,
+  "this_run_ceiling_usd": 6.0,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "sandbox_id": "1f17d1f7-b8ed-4726-90ad-71bfaf747a43",
+ "elapsed_s": 430.8,
+ "est_cost_usd": 0.968,
+ "t_saved": "2026-11-22T05:20:31Z",
+ "system": "ok\nNVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W\n224\nMem:            3527         100        2327           0        1122        3427\noverlay         400G  5.2M  400G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.34.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T05:20:21Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 28.93,
+  "metered_usd": 19.784
+ }
+}

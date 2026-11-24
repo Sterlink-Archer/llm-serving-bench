@@ -1,0 +1,10 @@
+2026-11-22T07:49:45Z [ik2_pro6000_spec] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 100 min, budget $7.0; project so far ~$116.80)
+2026-11-22T07:50:17Z [ik2_pro6000_spec] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          14          85           0          46         127 | overlay         713G  380G  304G  56% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T07:51:02Z [ik2_pro6000_spec] download swa15: rc=0 43s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:54:18Z [ik2_pro6000_spec] server swa15 ready=True after 196.0s; gpu mem 91775 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1071872 graphs 36
+2026-11-22T07:55:03Z [ik2_pro6000_spec] gate_swa15_gsm8kor100 rc=0 44s :: [gate_swa15_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=34s
+2026-11-22T07:55:27Z [ik2_pro6000_spec] protocol_swa15_B_text rc=1 24s :: TypeError: '<=' not supported between instances of 'float' and 'NoneType'
+2026-11-22T07:55:41Z [ik2_pro6000_spec] download swa15_dspark: rc=0 2s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:56:02Z [ik2_pro6000_spec] signal 15: tearing down
+2026-11-22T07:56:18Z [ik2_pro6000_spec] done: elapsed 6.5 min, est $0.32; project est $122.93
+2026-11-22T07:56:29Z [ik2_pro6000_spec] done: elapsed 6.7 min, est $0.32; project est $123.06

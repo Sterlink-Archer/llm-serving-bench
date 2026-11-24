@@ -1,0 +1,219 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  8555,
+  10221,
+  9140,
+  8709
+ ],
+ "latencies_s": [
+  0.377,
+  1.012,
+  1.333,
+  1.498
+ ],
+ "wall_s": 1.5013322830200195,
+ "prefill_tok_s": 24394.999304435543,
+ "trace": "/root/or/out/prof/rank0.1795324700063918574.pt.trace.json.gz",
+ "categories": {
+  "attention": {
+   "us": 920073.5430000001,
+   "share": 0.6340524577508202
+  },
+  "gemm": {
+   "us": 320176.5899999996,
+   "share": 0.22064405106340115
+  },
+  "fused_elementwise": {
+   "us": 185235.97900000008,
+   "share": 0.12765210851066647
+  },
+  "other": {
+   "us": 25420.99900000002,
+   "share": 0.017518433191629285
+  },
+  "not in top 25": {
+   "us": 192.92300000227988,
+   "share": 0.0001329494834828731
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "void flashinfer::BatchPrefillWithPagedKVCacheKernel<true, flashinfer::KernelTraits<(flashinfer::MaskMode)1, 32u, 2u, 2u, 32u, 32u, 1u, 4u, (flashinfer::PosEncod",
+   "cat": "attention",
+   "us": 663480.6730000001,
+   "share": 0.45722600610179515
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinfergemmkernelsdense_blockscaled_gemm_sm100Sm100BlockScaledPersistentDenseGemmKernel_object_at__TiledMMA_ThrLayoutVMNK21111000_Permu",
+   "cat": "gemm",
+   "us": 318022.6559999996,
+   "share": 0.21915970542937713
+  },
+  {
+   "name": "void flashinfer::BatchPrefillWithPagedKVCacheKernel<true, flashinfer::KernelTraits<(flashinfer::MaskMode)1, 64u, 1u, 4u, 16u, 16u, 4u, 1u, (flashinfer::PosEncod",
+   "cat": "attention",
+   "us": 256592.87000000005,
+   "share": 0.1768264516490251
+  },
+  {
+   "name": "triton_poi_fused_gelu_mul_scaled_fp4_quant_slice_1",
+   "cat": "fused_elementwise",
+   "us": 52706.99100000001,
+   "share": 0.03632209342226501
+  },
+  {
+   "name": "void vllm::cvt_fp16_to_fp4<__nv_bfloat16, false, false>(int, int, int, int, __nv_bfloat16 const*, float const*, unsigned int*, unsigned int*)",
+   "cat": "fused_elementwise",
+   "us": 39272.384000000035,
+   "share": 0.027063870911603866
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3",
+   "cat": "fused_elementwise",
+   "us": 31504.023000000034,
+   "share": 0.02171044191430292
+  },
+  {
+   "name": "void vllm::reshape_and_cache_flash_kernel<__nv_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1>(__nv_bfloat16 const*, __nv_bfloat16 const*, unsigned char*,",
+   "cat": "other",
+   "us": 24678.944000000018,
+   "share": 0.017007059073640668
+  },
+  {
+   "name": "triton_red_fused_add_mul_rms_norm_scaled_fp4_quant_2",
+   "cat": "fused_elementwise",
+   "us": 21736.08599999999,
+   "share": 0.014979040376757347
+  },
+  {
+   "name": "triton_red_fused_add_rms_norm_scaled_fp4_quant_0",
+   "cat": "fused_elementwise",
+   "us": 19752.59500000001,
+   "share": 0.013612152530622834
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_4",
+   "cat": "fused_elementwise",
+   "us": 13891.252999999999,
+   "share": 0.00957291204914959
+  },
+  {
+   "name": "triton_per_fused_rms_norm_split_with_sizes_view_5",
+   "cat": "fused_elementwise",
+   "us": 4888.988000000007,
+   "share": 0.003369159868684835
+  },
+  {
+   "name": "nvjet_sm103_tst_256x8_64x6_2x1_v_bz_TNT",
+   "cat": "gemm",
+   "us": 2153.9339999999997,
+   "share": 0.001484345634024013
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_1",
+   "cat": "fused_elementwise",
+   "us": 506.91400000000004,
+   "share": 0.0003493308442717598
+  },
+  {
+   "name": "triton_red_fused_add_mul_rms_norm_2",
+   "cat": "fused_elementwise",
+   "us": 420.803,
+   "share": 0.00028998896708729553
+  },
+  {
+   "name": "Memcpy HtoD (Pinned -> Device)",
+   "cat": "other",
+   "us": 356.4850000000001,
+   "share": 0.0002456653515590777
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_2",
+   "cat": "fused_elementwise",
+   "us": 263.84299999999996,
+   "share": 0.00018182275089106612
+  },
+  {
+   "name": "triton_red_fused__to_copy_embedding_mul_rms_norm_scaled_fp4_quant_0",
+   "cat": "fused_elementwise",
+   "us": 203.01000000000002,
+   "share": 0.00013990076165899926
+  },
+  {
+   "name": "_apply_write_kernel",
+   "cat": "other",
+   "us": 97.471,
+   "share": 6.717042086431366e-05
+  },
+  {
+   "name": "triton_per_fused_rms_norm_split_with_sizes_view_3",
+   "cat": "fused_elementwise",
+   "us": 89.089,
+   "share": 6.139411337095997e-05
+  },
+  {
+   "name": "_gumbel_sample_kernel",
+   "cat": "other",
+   "us": 61.345,
+   "share": 4.227482500355307e-05
+  },
+  {
+   "name": "_prepare_prefill_inputs_kernel",
+   "cat": "other",
+   "us": 56.034000000000006,
+   "share": 3.8614843006750235e-05
+  },
+  {
+   "name": "_compute_slot_mappings_kernel",
+   "cat": "other",
+   "us": 54.56100000000001,
+   "share": 3.7599751031361305e-05
+  },
+  {
+   "name": "_copy_page_indices_kernel",
+   "cat": "other",
+   "us": 53.727000000000004,
+   "share": 3.702501463796391e-05
+  },
+  {
+   "name": "Memcpy DtoH (Device -> Pinned)",
+   "cat": "other",
+   "us": 37.472,
+   "share": 2.5823168025644156e-05
+  },
+  {
+   "name": "_gather_block_tables_kernel",
+   "cat": "other",
+   "us": 24.96,
+   "share": 1.7200743859950847e-05
+  }
+ ],
+ "gpu_kernel_us_total": 1451100.034000002,
+ "kernel_events": 5187,
+ "categories_original_classifier": {
+  "attention": {
+   "us": 1238096.1990000017,
+   "share": 0.8532121631801987
+  },
+  "fused_elementwise": {
+   "us": 185235.9789999999,
+   "share": 0.12765210851066636
+  },
+  "other": {
+   "us": 25219.965000000007,
+   "share": 0.017379894155525856
+  },
+  "gemm": {
+   "us": 2153.9339999999997,
+   "share": 0.001484345634024013
+  },
+  "memcpy/memset": {
+   "us": 393.9570000000001,
+   "share": 0.00027148851958472183
+  }
+ },
+ "reclassified_at": "2026-11-22T05:22:13Z",
+ "reclassify_note": "Recomputed from this file's top_kernels with the fixed classifier (FlashInfer's FP4 GEMM was filed under attention). The full-trace reclassification run on the box before deletion printed attention=63.4% gemm=22.1% fused_elementwise=12.8% other=1.7%; the trace itself was not pulled (size)."
+}

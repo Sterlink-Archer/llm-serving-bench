@@ -1,0 +1,37 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": null,
+  "global_512": null
+ },
+ "attention_backend_lines": [],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": null,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": null,
+ "max_concurrency_at_max_len": null,
+ "max_model_len": null,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "missing": [
+  "kv_cache_tokens",
+  "cuda_graph_sizes"
+ ],
+ "startup_rules": {
+  "require_global_512": false,
+  "triton_ok": true
+ },
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+ "schema": "startup_facts/1",
+ "run_id": "ik6_5090_mem/20261122T081801Z",
+ "config_id": "ik6_5090_mem:mem88",
+ "image": "lmsysorg/sglang:inkling-2-mini",
+ "image_digest": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+ "model_repo": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "gpu_mem_after_load": "2 MiB, 32607 MiB",
+ "source_log": "results/ik6_5090_mem/20261122T081801Z/server_mem88.log",
+ "sub_phases": []
+}

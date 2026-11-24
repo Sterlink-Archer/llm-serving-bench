@@ -1,0 +1,4 @@
+[r1.474x_s8] R=2.5 win=240s done=738 err=0 drop=0 req/s=2.53 out=934 in=23754 tok/s cache=0.00 TTFT p50=0.433s p95=1.189s TPOT p50=14.2ms srv=934.3204053109811
+[r1.769x_s8] R=3.0 win=240s done=862 err=0 drop=0 req/s=3.01 out=1121 in=28398 tok/s cache=0.00 TTFT p50=0.577s p95=1.588s TPOT p50=22.0ms srv=1121.1313048459147
+[r1.916x_s8] R=3.25 win=240s done=918 err=0 drop=0 req/s=3.28 out=1220 in=30934 tok/s cache=0.00 TTFT p50=0.808s p95=2.889s TPOT p50=33.0ms srv=1219.6738452947811
+[protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_B_text/protocol_summary.json

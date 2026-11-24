@@ -1,0 +1,105 @@
+{
+ "label": "s1_l40s_w4a16_fi",
+ "run_id": "s1_l40s_w4a16_fi/20261122T043255Z",
+ "config_file": "configs/s1_l40s_w4a16_fi.json",
+ "t_start": "2026-11-22T04:32:55Z",
+ "usd_per_h": {
+  "gpu": 1.14,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 2.0697
+ },
+ "phases": {
+  "create_s": 1.3
+ },
+ "servers": {
+  "w4a16qat_fi": {
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it-qat-w4a16-ct",
+     "rev": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "resolved_sha": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "files": 7,
+     "bytes": 23297565093
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 165.5,
+    "tail": "\rFetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 7 files:  57%|\u2588\u2588\u2588\u2588\u2588\u258b    | 4/7 [00:00<00:00, 33.55it/s]\rFetching 7 files:  86%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c | 6/7 [00:19<00:00, 33.55it/s]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [02:42<00:00, 27.94s/it]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [02:42<00:00, 23.15s/it]\nDL repo=google/gemma-4-31B-it-qat-w4a16-ct rev=52f3f65bc7 files=7 bytes=23297567409 secs=162.4 GBps=0.143 method=huggingface_hub\n",
+    "bytes": 23297567409,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 253.2,
+    "launch": "vllm serve /root/models/w4a16qat --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+    "env": {},
+    "gpu_mem_after_load": "41719 MiB, 46068 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-d4ed98ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 69963,
+    "kv_cache_gib": 16.86,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "steps": {
+    "gate_gsm8kor100": {
+     "rc": 0,
+     "secs": 32.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_gsm8kor100 --out /root/or/out/gate_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=27s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.98,
+      "n": 100,
+      "passed": 98,
+      "pass": true
+     }
+    },
+    "protocol_w4a16qat_fi": {
+     "rc": 0,
+     "secs": 1010.0,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_w4a16qat_fi --breakeven-rps 0.7380 --client vllmbench --tokenizer /root/models/w4a16qat --multiples 1.0,1.5,2.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_l40s_w4a16_fi/20261122T043255Z --config-id s1_l40s_w4a16_fi:w4a16qat_fi --prefill-shot --max-minutes 39.5",
+     "tail": "[vllmbench r=0.738 s=7] done=88 failed=0 req/s=0.1919057637831501 p95 TTFT=301.12375758712585 median TPOT=179.93450157313185 ms in tok/s=1932\n[protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=2570.3771535094857 tok/s -> /root/or/out/protocol_w4a16qat_fi/protocol_summary.json\n",
+     "breakeven_rps": 0.7380188275566966
+    },
+    "protocol_w4a16qat_fi_textclient": {
+     "rc": 0,
+     "secs": 136.8,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_w4a16qat_fi_textclient --breakeven-rps 0.7380 --client traffic --multiples 1.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_l40s_w4a16_fi/20261122T043255Z --config-id s1_l40s_w4a16_fi:w4a16qat_fi --max-minutes 22.7",
+     "tail": "[r1x_s7] R=0.738 win=96s done=15 err=0 drop=0 req/s=0.16 out=99 in=2008 tok/s cache=0.00 TTFT p50=51.395s p95=74.081s TPOT p50=138.4ms srv=98.80002010906048\n[protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=None tok/s -> /root/or/out/protocol_w4a16qat_fi_textclient/protocol_summary.json\n",
+     "breakeven_rps": 0.7380188275566966
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 2.93,
+  "this_run_ceiling_usd": 1.9,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 9,
+ "sandbox_id": "d170b64c-2a96-4a2f-ba2b-12965790c772",
+ "elapsed_s": 1648.6,
+ "est_cost_usd": 0.948,
+ "t_saved": "2026-11-22T05:00:24Z",
+ "system": "ok\nNVIDIA L40S, 46068 MiB, 580.126.16, 350.00 W\n12\nMem:              70          10          57           0           9          60\noverlay         614G  245G  344G  42% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T05:00:17Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 12.42,
+  "metered_usd": 5.9475
+ }
+}

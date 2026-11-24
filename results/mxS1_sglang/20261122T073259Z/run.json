@@ -1,0 +1,173 @@
+{
+ "label": "mxS1_sglang",
+ "run_id": "mxS1_sglang/20261122T073259Z",
+ "config_file": "recipes/mi355x/configs/mxS1_sglang.json",
+ "t_start": "2026-11-22T07:32:59Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "snapshot_build_s": 755.3,
+  "create_s": 3.3
+ },
+ "servers": {
+  "sgl_mxfp4": {
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "resolved_sha": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "files": 7,
+     "bytes": 19554630356
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.6,
+    "tail": "\rFetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 7 files:  14%|\u2588\u258d        | 1/7 [00:00<00:01,  4.80it/s]\rFetching 7 files:  86%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c | 6/7 [00:00<00:00,  6.89it/s]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [00:09<00:00,  1.75s/it]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [00:09<00:00,  1.29s/it]\nDL repo=amd/gemma-4-31B-it-MXFP4 rev=0606edf12b files=7 bytes=19554632671 secs=9.4 GBps=2.071 method=huggingface_hub\n",
+    "bytes": 19554632671,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": false,
+    "ready_s": 26.5,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+    "env": {
+     "SGLANG_USE_AITER": "1"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "aiter",
+     "global_512": "aiter"
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+     "env": {
+      "SGLANG_USE_AITER": "1"
+     },
+     "ok": false,
+     "rejected": true,
+     "reason": "engine did not become healthy"
+    }
+   ]
+  },
+  "sgl_fp8": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 21.9,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:   6%|\u258b         | 1/16 [00:00<00:02,  5.08it/s]\rFetching 16 files:  81%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f | 13/16 [00:00<00:00, 50.66it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:12<00:00,  1.27it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469166 secs=12.8 GBps=2.600 method=huggingface_hub\n",
+    "bytes": 33300469166,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 118.9,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+    "env": {
+     "SGLANG_USE_AITER": "1"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 225194 MB\n        FREE_VRAM: 69398 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 225194 MB\n        FREE_VISIBLE_VRAM: 69398 MB",
+    "smoke": "es\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hi!\",\"reasoning_content\":null},\"logprobs\":null,\"finish_reason\":\"stop\",\"matched_stop\":106}],\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":null,\"reasoning_tokens\":0,\"completion_tokens_details\":null},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":3}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "aiter",
+     "global_512": "aiter"
+    },
+    "kv_cache_tokens": 530791,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+     "env": {
+      "SGLANG_USE_AITER": "1"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_sgl_fp8": {
+     "rc": 0,
+     "secs": 1.5,
+     "cmd": "tail -n 3 out/inspect.txt",
+     "tail": "  File \"<stdin>\", line 8, in <module>\nAttributeError: 'NoneType' object has no attribute 'origin'\nmx file: inspect.sh\n"
+    },
+    "gate_sgl_fp8_gsm8kor100": {
+     "rc": 0,
+     "secs": 22.3,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_sgl_fp8_gsm8kor100 --out /root/or/out/gate_sgl_fp8_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_sgl_fp8_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=18s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "protocol_sgl_fp8": {
+     "rc": 0,
+     "secs": 756.4,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_fp8 --breakeven-rps 1.6961 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/fp8dyn --rates 2.5,3.0,3.25 --seeds 8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id mxS1_sglang/20261122T073259Z --config-id mxS1_sglang:sgl_fp8 --prefill-shot --max-minutes 83.4",
+     "tail": "\n[vllmbench r=2.5 s=8] done=750 failed=0 req/s=1.2880129042894692 p95 TTFT=261.95264091044663 median TPOT=105.98416870170047 ms in tok/s=12338\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=17217.341358580703 tok/s -> /root/or/out/protocol_sgl_fp8/protocol_summary.json\n",
+     "breakeven_rps": 1.6960847240051347
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 112.66,
+  "this_run_ceiling_usd": 7.5,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 234,
+ "sandbox_id": "0a20abf7-1345-4e5d-bdea-7a9d053f5079",
+ "elapsed_s": 1038.8,
+ "est_cost_usd": 1.372,
+ "t_saved": "2026-11-22T08:02:53Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x004C9DE21EE09B59\n        OAM_ID: 0\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015         291        1012           4         732        1724\noverlay         150G  9.9M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nsglang 0.5.23\ntorch 2.11.0+rocm10.0.0 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "== date 2026-11-22T07:46:02Z\nversion vllm: ? (PackageNotFoundError)\nversion torch: 2.11.0+rocm10.0.0\nversion triton: 3.8.0+git4cff872c.rocm10.0.0\nversion amd-aiter: 0.1.26.dev144+g285579b62.d20261030\nversion aiter: ? (PackageNotFoundError)\nTraceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\nAttributeError: 'NoneType' object has no attribute 'origin'\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T08:02:30Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 128.26,
+  "metered_usd": 108.258
+ }
+}

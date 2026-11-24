@@ -1,0 +1,14 @@
+2026-11-22T09:15:37Z [mxP_ours_profile] creating spot sandbox (MI355X x1, $4.7565/h, ttl 40 min, budget $3.5; project so far ~$160.66)
+2026-11-22T09:16:26Z [mxP_ours_profile] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:16:50Z [mxP_ours_profile] download prof_ours: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:19:38Z [mxP_ours_profile] server prof_ours ready=True after 168.2s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T09:19:42Z [mxP_ours_profile] inspect_prof_ours rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:25:56Z [mxP_ours_profile] profile_knee rc=0 375s ::       15.3 ms   0.1% x1617  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x256_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0_
+2026-11-22T09:26:30Z [mxP_ours_profile] done: elapsed 10.9 min, est $0.86; project est $172.82

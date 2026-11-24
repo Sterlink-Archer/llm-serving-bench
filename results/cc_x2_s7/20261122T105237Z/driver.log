@@ -1,0 +1,27 @@
+2026-11-22T10:52:37Z [cc_x2_s7] creating spot sandbox (MI355X x1, $4.7565/h, ttl 111 min, budget $9.8; project so far ~$256.39)
+2026-11-22T10:53:12Z [cc_x2_s7] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T10:53:35Z [cc_x2_s7] download mx_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T10:56:15Z [cc_x2_s7] server mx_recipe ready=True after 159.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T10:56:18Z [cc_x2_s7] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T11:14:47Z [cc_x2_s7] protocol_mx_recipe_c1fit rc=0 1109s :: [protocol] max_rate_at_slo=8.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_c1fit/protocol_summary.json
+2026-11-22T11:27:14Z [cc_x2_s7] protocol_mx_recipe_c2agent rc=0 747s :: [protocol] max_rate_at_slo=7.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_c2agent/protocol_summary.json
+2026-11-22T11:27:39Z [cc_x2_s7] download or_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T11:28:56Z [cc_x2_s7] server or_recipe ready=True after 76.6s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T11:28:59Z [cc_x2_s7] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T11:41:26Z [cc_x2_s7] protocol_or_recipe_c1fit rc=0 747s :: [protocol] max_rate_at_slo=7.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c1fit/protocol_summary.json
+2026-11-22T11:53:53Z [cc_x2_s7] protocol_or_recipe_c2agent rc=0 747s :: [protocol] max_rate_at_slo=7.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c2agent/protocol_summary.json
+2026-11-22T11:54:34Z [cc_x2_s7] done: elapsed 61.9 min, est $4.91; project est $293.99

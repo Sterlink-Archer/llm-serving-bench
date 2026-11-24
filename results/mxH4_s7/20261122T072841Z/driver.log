@@ -1,0 +1,17 @@
+2026-11-22T07:28:41Z [mxH4_s7] creating spot sandbox (MI355X x1, $4.1661/h, ttl 60 min, budget $4.5; project so far ~$101.49)
+2026-11-22T07:28:58Z [mxH4_s7] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:29:21Z [mxH4_s7] download mx_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T07:32:19Z [mxH4_s7] server mx_recipe ready=True after 177.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T07:32:22Z [mxH4_s7] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T07:32:35Z [mxH4_s7] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T07:51:03Z [mxH4_s7] protocol_mx_recipe rc=0 1109s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=44248.811595677624 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T07:56:16Z [mxH4_s7] protocol_mx_recipe_text rc=0 313s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json
+2026-11-22T07:56:18Z [mxH4_s7] cpumon rc=0 2s :: 21  0      0 1182651904 200352 675105984    0    0     0     8 62295 24136 10  1 90  0  0
+2026-11-22T07:56:47Z [mxH4_s7] done: elapsed 28.1 min, est $1.95; project est $123.26

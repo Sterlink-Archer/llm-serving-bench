@@ -1,0 +1,42 @@
+2026-11-22T10:06:36Z [mxC2_s7_r1] creating spot sandbox (MI355X x1, $4.1661/h, ttl 125 min, budget $9.0; project so far ~$216.54)
+2026-11-22T10:07:17Z [mxC2_s7_r1] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T10:07:40Z [mxC2_s7_r1] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T10:10:39Z [mxC2_s7_r1] server or_recipe ready=True after 177.6s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T10:10:48Z [mxC2_s7_r1] inspect_or_recipe rc=0 6s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:11:10Z [mxC2_s7_r1] gate_or_recipe_gsm8kor100 rc=0 22s :: [gate_or_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T10:24:02Z [mxC2_s7_r1] protocol_or_recipe rc=0 772s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=41535.93610211962 tok/s -> /root/or/out/protocol_or_recipe/protocol_summary.json
+2026-11-22T10:30:17Z [mxC2_s7_r1] protocol_or_recipe_text rc=0 375s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_or_recipe_text/protocol_summary.json
+2026-11-22T10:30:41Z [mxC2_s7_r1] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T10:32:24Z [mxC2_s7_r1] server mx_recipe ready=True after 102.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T10:32:27Z [mxC2_s7_r1] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:32:39Z [mxC2_s7_r1] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T10:51:29Z [mxC2_s7_r1] protocol_mx_recipe rc=0 1130s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=43066.97644598504 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T11:03:56Z [mxC2_s7_r1] protocol_mx_recipe_text rc=0 747s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json
+2026-11-22T11:04:19Z [mxC2_s7_r1] download mx_stack: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T11:05:37Z [mxC2_s7_r1] server mx_stack ready=True after 76.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270048 MB
+        FREE_VRAM: 24544 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270048 MB
+        FREE_VISIBLE_VRAM: 24544 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T11:05:40Z [mxC2_s7_r1] inspect_mx_stack rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T11:05:52Z [mxC2_s7_r1] gate_mx_stack_gsm8kor250 rc=0 13s :: [gate_mx_stack_gsm8kor250] gsm8kor: 0.984 (246/250, noans 0, err 0, trunc 0) wall=6s
+2026-11-22T11:30:23Z [mxC2_s7_r1] protocol_mx_stack rc=0 1471s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=44776.48826850261 tok/s -> /root/or/out/protocol_mx_stack/protocol_summary.json
+2026-11-22T11:36:38Z [mxC2_s7_r1] protocol_mx_stack_text rc=0 375s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_stack_text/protocol_summary.json
+2026-11-22T11:37:16Z [mxC2_s7_r1] done: elapsed 90.7 min, est $6.30; project est $288.4

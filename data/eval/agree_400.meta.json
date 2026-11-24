@@ -1,0 +1,15 @@
+{
+ "n": 400,
+ "shapes": {
+  "agentic_extract_json": 75,
+  "agentic_tool_plan": 75,
+  "chat_short": 150,
+  "longdoc_qa": 100
+ },
+ "sources": [
+  "data/chat/ultrachat_400.jsonl (HuggingFaceH4/ultrachat_200k, see its meta)",
+  "data/corpus/wiki_articles.jsonl (Wikipedia, see its meta)"
+ ],
+ "built_by": "data/make_agree_set.py (seed 22)",
+ "note": "public text only; greedy outputs compared across configs"
+}

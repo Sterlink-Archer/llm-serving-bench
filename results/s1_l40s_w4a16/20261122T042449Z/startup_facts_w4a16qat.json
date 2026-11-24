@@ -1,0 +1,121 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "TRITON_ATTN",
+  "global_512": "TRITON_ATTN"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=766) INFO 11-22 04:32:28 [config.py:364] Gemma4 model has heterogeneous head dimensions {'sliding_attention': 256, 'full_attention': 512}. FA4 not available, forcing TRITON_ATTN backend.",
+  "(EngineCore pid=1047) INFO 11-22 04:32:45 [cuda.py:448] Using AttentionBackendEnum.TRITON_ATTN backend.",
+  "(EngineCore pid=1047) INFO 11-22 04:32:45 [cuda.py:448] Using AttentionBackendEnum.TRITON_ATTN backend."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 78979,
+ "kv_cache_gib": 19.03,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 2.41,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.33.0",
+ "missing": [],
+ "rejected": true,
+ "reject_reason": "TRITON_ATTN on global 512-dim layers",
+ "schema": "startup_facts/1",
+ "run_id": "s1_l40s_w4a16/20261122T042449Z",
+ "config_id": "s1_l40s_w4a16:w4a16qat",
+ "image": "vllm/vllm-openai:v0.33.0",
+ "image_digest": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+ "model_repo": "google/gemma-4-31B-it-qat-w4a16-ct",
+ "model_rev": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+ "gpu_mem_after_load": "40685 MiB, 46068 MiB",
+ "source_log": "results/s1_l40s_w4a16/20261122T042449Z/server_w4a16qat.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T04:32:45Z",
+   "t_end": "2026-11-22T04:32:49Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T04:32:58Z",
+   "t_end": "2026-11-22T04:33:39Z",
+   "detail": {
+    "compile_s": 40.75
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:33:47Z",
+   "t_end": "2026-11-22T04:34:03Z",
+   "detail": {
+    "s": 16.0,
+    "gib": 0.72
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:34:05Z",
+   "t_end": "2026-11-22T04:34:19Z",
+   "detail": {
+    "s": 14.0,
+    "gib": 0.39
+   }
+  }
+ ]
+}

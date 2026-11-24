@@ -1,0 +1,8 @@
+{
+ "source": "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/test.jsonl",
+ "why": "the file OpenRelay's gate downloads (inference-recipes @6767b4d gemma-4-31b-mi355x/bench/gsm8k.py); their gate = first 250, >= 96.5%",
+ "fetched_at": "20261122T041313Z",
+ "n": 1319,
+ "sha256": "b3fcff175f59a92a076c703b809a62dcd6b1b69dd89868cb9a7c419a75301f7f",
+ "license": "MIT"
+}

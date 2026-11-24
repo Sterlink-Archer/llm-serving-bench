@@ -1,0 +1,2 @@
+[vllmbench r=0.738 s=7] done=88 failed=0 req/s=0.1919057637831501 p95 TTFT=301.12375758712585 median TPOT=179.93450157313185 ms in tok/s=1932
+[protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=2570.3771535094857 tok/s -> /root/or/out/protocol_w4a16qat_fi/protocol_summary.json

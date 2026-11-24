@@ -1,0 +1,149 @@
+{
+ "label": "e5_b300_sglang_textonly",
+ "run_id": "e5_b300_sglang_textonly/20261122T090736Z",
+ "config_file": "configs/e5_b300_sglang_textonly.json",
+ "t_start": "2026-11-22T09:07:36Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.4032,
+  "mem": 1.0368,
+  "disk": 0.0319,
+  "total": 6.6419
+ },
+ "phases": {
+  "snapshot_build_s": 1209.8,
+  "create_s": 58.6
+ },
+ "servers": {
+  "sgl_rh_nvfp4_textonly": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 32.5,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:   7%|\u258b         | 1/15 [00:00<00:02,  5.85it/s]\rFetching 15 files:  87%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b | 13/15 [00:00<00:00, 54.39it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:20<00:00, 54.39it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:25<00:00,  2.33s/it]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:25<00:00,  1.70s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640258 secs=26.3 GBps=0.886 method=huggingface_hub\n",
+    "bytes": 23297640258,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 449.0,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha",
+    "env": {
+     "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+    },
+    "gpu_mem_after_load": "246089 MiB, 275040 MiB",
+    "smoke": "How can I help you today\",\"reasoning_content\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":0,\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "trtllm_mha",
+     "global_512": "trtllm_mha"
+    },
+    "kv_cache_tokens": 628288,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha",
+     "env": {
+      "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "gate_gsm8kor100": {
+     "rc": 0,
+     "secs": 12.2,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_gsm8kor100 --out /root/or/out/gate_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "q_gsm8kor250_sgl_rh_nvfp4": {
+     "rc": 0,
+     "secs": 12.2,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label q_gsm8kor250_sgl_rh_nvfp4 --out /root/or/out/q_gsm8kor250_sgl_rh_nvfp4.json --limit 250",
+     "tail": "[q_gsm8kor250_sgl_rh_nvfp4] gsm8kor: 0.976 (244/250, noans 0, err 0, trunc 0) wall=9s\n"
+    },
+    "q_mmlupro200_sgl_rh_nvfp4": {
+     "rc": 0,
+     "secs": 33.0,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/mmlupro_200.jsonl --concurrency 64 --max-tokens 2048 --label q_mmlupro200_sgl_rh_nvfp4 --out /root/or/out/q_mmlupro200_sgl_rh_nvfp4.json",
+     "tail": "[q_mmlupro200_sgl_rh_nvfp4] mmlupro: 0.850 (170/200, noans 4, err 0, trunc 4) wall=23s\n"
+    },
+    "q_agree400_sgl_rh_nvfp4": {
+     "rc": 0,
+     "secs": 43.5,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_sgl_rh_nvfp4 --out /root/or/out/q_agree400_sgl_rh_nvfp4.json",
+     "tail": "[q_agree400_sgl_rh_nvfp4] agree: 0.000 (0/400, noans 400, err 0, trunc 251) wall=38s\n"
+    },
+    "profile_prefill_4x10k": {
+     "rc": 1,
+     "secs": 1.8,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "  File \"/opt/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/urllib/request.py\", line 639, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 403: Forbidden\n"
+    },
+    "protocol_sgl_rh_nvfp4_textonly_A_random": {
+     "rc": 0,
+     "secs": 1220.2,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_rh_nvfp4_textonly_A_random --breakeven-rps 2.3684 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/nvfp4 --multiples 1.0,1.25,1.5 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id e5_b300_sglang_textonly/20261122T090736Z --config-id e5_b300_sglang_textonly:sgl_rh_nvfp4_textonly --prefill-shot --max-minutes 106.2",
+     "tail": "[vllmbench r=2.9605 s=7] done=888 failed=0 req/s=2.913726457730764 p95 TTFT=1.0477907107211646 median TPOT=25.14136319752423 ms in tok/s=28303\n[vllmbench r=3.5526 s=7] done=1065 failed=0 req/s=3.385290465783482 p95 TTFT=8.634447472169994 median TPOT=44.791646030487364 ms in tok/s=32740\n[protocol] max_rate_at_slo=2.9605 req/s (break-even 2.3684); prefill=49032.00122248745 tok/s -> /root/or/out/protocol_sgl_rh_nvfp4_textonly_A_random/protocol_summary.json\n",
+     "breakeven_rps": 2.3683853943802595
+    },
+    "protocol_sgl_rh_nvfp4_textonly_B_text": {
+     "rc": 0,
+     "secs": 749.0,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_rh_nvfp4_textonly_B_text --breakeven-rps 2.3684 --client traffic --stratify --tokenizer /root/models/nvfp4 --multiples 1.0,1.25 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id e5_b300_sglang_textonly/20261122T090736Z --config-id e5_b300_sglang_textonly:sgl_rh_nvfp4_textonly --max-minutes 85.9",
+     "tail": "[r1x_s7] R=2.3684 win=300s done=834 err=0 drop=0 req/s=2.34 out=876 in=22317 tok/s cache=0.00 TTFT p50=0.313s p95=0.714s TPOT p50=14.5ms srv=888.7456963230593\n[r1.25x_s7] R=2.9605 win=300s done=1042 err=0 drop=0 req/s=2.93 out=1138 in=27822 tok/s cache=0.00 TTFT p50=0.382s p95=2.449s TPOT p50=23.7ms srv=1122.704800762738\n[protocol] max_rate_at_slo=2.9605 req/s (break-even 2.3684); prefill=None tok/s -> /root/or/out/protocol_sgl_rh_nvfp4_textonly_B_text/protocol_summary.json\n",
+     "breakeven_rps": 2.3683853943802595
+    }
+   },
+   "end": "ok"
+  },
+  "sgl_rh_fp8_textonly": {
+   "skipped": "sgl_rh_nvfp4_textonly ran ok"
+  },
+  "sgl_nv_nvfp4_textonly": {
+   "skipped": "sgl_rh_nvfp4_textonly ran ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 174.79,
+  "this_run_ceiling_usd": 13.84,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "sandbox_id": "c504e37e-0ea3-438a-918d-b5414a3686e9",
+ "elapsed_s": 2689.1,
+ "est_cost_usd": 4.961,
+ "t_saved": "2026-11-22T10:12:35Z",
+ "system": "ok\nNVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W\n224\nMem:            3527         103        2288           0        1157        3424\noverlay         300G  8.4M  300G   1% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+ga8ac86595\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T10:12:07Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 222.33,
+  "metered_usd": 181.5432
+ }
+}

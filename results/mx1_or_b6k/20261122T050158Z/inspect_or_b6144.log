@@ -1,0 +1,3 @@
+vllm is_asm_fp4_gemm_tuned present: False | MX force patch: False
+VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False
+mx file: inspect.sh

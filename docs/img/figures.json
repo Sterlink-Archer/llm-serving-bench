@@ -1,0 +1,79 @@
+{
+ "knee": {
+  "alt": "p95 time to first token against offered load on the same four MI355X boxes, OpenRelay's client. OpenRelay's recipe stays under the 4 second target up to 3.25 requests per second on all four boxes of this test; ours up to 3.50, 6.5% more completed requests per GPU.",
+  "caption": "In the first paired test, the same four MI355X GPUs each served OpenRelay's recipe and ours back to back with OpenRelay's own load generator (300 s per rate, two seeds, log scale). Lines follow the slowest box at each rate, dots are single boxes. Ours holds the 4 s target at 3.50 req/s on all four boxes, theirs at 3.25: 6.5% more completed requests per GPU-hour. At 3.50 req/s the slowest box answers in 2.69 s with ours and 10.0 s with theirs. In a later test on four other boxes this recipe missed 3.50 req/s on one of them; the final recipe, with the persistent GEMM kernel, held it on all four.",
+  "light": "docs/img/knee-light.svg",
+  "dark": "docs/img/knee-dark.svg",
+  "sources": [
+   "results/protocol_rows.json",
+   "results/claims.json",
+   "results/mxC2_s7_r1/20261122T100636Z/protocol_mx_recipe/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s7_r1/20261122T100636Z/protocol_mx_stack/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s7_r2/20261122T100638Z/protocol_mx_recipe/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s7_r2/20261122T100638Z/protocol_mx_stack/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s8_r1/20261122T100640Z/protocol_mx_recipe/cells/r2.356x_3.5rps_s8.json",
+   "results/mxC2_s8_r1/20261122T100640Z/protocol_mx_stack/cells/r2.356x_3.5rps_s8.json",
+   "results/mxC2_s8_r2/20261122T100642Z/protocol_mx_recipe/cells/r2.356x_3.5rps_s8.json",
+   "results/mxC2_s8_r2/20261122T100642Z/protocol_mx_stack/cells/r2.356x_3.5rps_s8.json"
+  ]
+ },
+ "knee-final": {
+  "alt": "p95 time to first token against offered load on the same two MI355X boxes, OpenRelay's client. OpenRelay's recipe stays under the 4 second target up to 3.00 requests per second on both boxes of this test; ours up to 3.50, 16.7% more completed requests per GPU.",
+  "caption": "In the fill-in paired test, the same two MI355X GPUs each served OpenRelay's recipe and our final recipe back to back with OpenRelay's own load generator (300 s per rate, two seeds, log scale). Lines follow the slowest box at each rate, dots are single boxes. Ours holds the 4 s target at 3.50 req/s on both boxes, theirs at 3.00: 16.7% more completed requests per GPU-hour. At 3.50 req/s the slowest box answers in 2.42 s with ours and 14.4 s with theirs. Across every same-box test on their client, the final recipe held 3.50 req/s on 6 of 6 boxes; theirs held 3.00 on 2 of 2, 3.25 on 7 of 10 and 3.50 on 0 of 10.",
+  "light": "docs/img/knee-final-light.svg",
+  "dark": "docs/img/knee-final-dark.svg",
+  "sources": [
+   "results/protocol_rows.json",
+   "results/claims.json",
+   "results/box_counts.json"
+  ]
+ },
+ "ablation": {
+  "alt": "Cumulative ablation from OpenRelay's recipe, one change per row: p95 time to first token at 3.5 requests per second on OpenRelay's client: OpenRelay's recipe 9.23 s; 3 draft tokens instead of 2 5.85 s; 96 sequences, graphs to 384 4.16 s; drafter's first pass compacted 3.06 s; persistent MXFP4 GEMM kernel 2.41 s. The target is 4 seconds; the first row under it is 'drafter's first pass compacted'.",
+  "caption": "Each row adds one of our changes to the row above, starting from OpenRelay's published recipe, measured at 3.5 req/s with their load generator. The first four rows are screens, one box each (seed 8), on different boxes; the last row is the slowest of four boxes in the paired confirm. The drafter fix is the change that crosses the 4 s target.",
+  "light": "docs/img/ablation-light.svg",
+  "dark": "docs/img/ablation-dark.svg",
+  "sources": [
+   "results/mx10_best_dc_s8/20261122T060314Z/protocol_best_dc/cells/r2.064x_3.5rps_s8.json",
+   "results/mx1_or_mtp3/20261122T050200Z/protocol_or_mtp3/cells/r2.064x_3.5rps_s8.json",
+   "results/mx5_or_mtp3_seqs96/20261122T052526Z/protocol_or_mtp3_seqs96/cells/r2.064x_3.5rps_s8.json",
+   "results/mxC2_s7_r1/20261122T100636Z/protocol_mx_stack/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s7_r2/20261122T100638Z/protocol_mx_stack/cells/r2.356x_3.5rps_s7.json",
+   "results/mxC2_s8_r1/20261122T100640Z/protocol_mx_stack/cells/r2.356x_3.5rps_s8.json",
+   "results/mxC2_s8_r2/20261122T100642Z/protocol_mx_stack/cells/r2.356x_3.5rps_s8.json",
+   "results/s2_mi355x_or_recipe_seed8/20261122T043705Z/protocol_or_recipe/cells/r2.064x_3.5rps_s8.json",
+   "results/experiments.jsonl"
+  ]
+ },
+ "price": {
+  "alt": "Our cost per request against the price we compare with, per model and load: Gemma 4 31B on MI355X their benchmark: $0.000336, 0.43 times OpenRelay Sync; Gemma 4 31B on MI355X real text: $0.000453, 0.58 times OpenRelay Sync; Inkling 2 Mini B300, their benchmark: $0.000839, 1.02 times cheapest on OpenRouter; Inkling 2 Mini B300, real text: $0.000542, 0.66 times cheapest on OpenRouter; Inkling 2 Mini RTX PRO 6000, their benchmark: $0.000640, 0.77 times cheapest on OpenRouter; Inkling 2 Mini RTX PRO 6000, real text: $0.000687, 0.83 times cheapest on OpenRouter; GLM-5.3-Flash on MI355X their benchmark: $0.000938, 1.89 times OpenRelay's price; GLM-5.3-Flash on MI355X real text: $0.000900, 1.81 times OpenRelay's price.",
+  "caption": "Our cost per request at each model's claim rate, on OpenRelay's random-token benchmark and on real text, against the price we compare with: OpenRelay's Sync and Batch tiers for Gemma, the cheapest OpenRouter provider for Inkling 2 Mini, and OpenRelay's own price for GLM-5.3-Flash. Gemma comes in at 0.43× their Sync price (0.86× Batch) and Inkling at 0.66× at best; GLM costs 1.81× or more, so there we lose.",
+  "light": "docs/img/price-light.svg",
+  "dark": "docs/img/price-dark.svg",
+  "sources": [
+   "results/claims.json",
+   "bench/pricebar.py"
+  ]
+ },
+ "gpu-time": {
+  "alt": "Share of GPU kernel time in a 12-second load window at each recipe's knee: OpenRelay's recipe at 3.25 req/s: matrix multiplies 42%, attention 28%, everything else 22%, drafter and samplers 7.8%; + 3 drafts, 96 sequences at 3.5 req/s: matrix multiplies 42%, attention 28%, everything else 22%, drafter and samplers 8.1%; + drafter fix (our recipe) at 3.5 req/s: matrix multiplies 44%, attention 29%, everything else 22%, drafter and samplers 5.6%.",
+  "caption": "Where the GPU's time goes in a 12-second window at each recipe's knee, from a torch profile (the profiler slows the engine, so these are shares, not speeds). The drafter and samplers run outside the target model's forward pass; skipping the drafter's wasted first pass cut their share from 8.1% to 5.6% at the same load, and the matrix multiplies (the MXFP4 GEMM kernels themselves), where a GPU should spend its time, rose to 44%.",
+  "light": "docs/img/gpu-time-light.svg",
+  "dark": "docs/img/gpu-time-dark.svg",
+  "sources": [
+   "results/mx1_or_profile/20261122T050154Z/prof_summary.txt",
+   "results/mx7_prof_mtp3_seqs96/20261122T054335Z/prof_summary.txt",
+   "results/mxP_ours_profile/20261122T091537Z/prof_summary.txt"
+  ]
+ },
+ "drafter-fix": {
+  "alt": "Illustration, not a trace. Before: in a step that carries a prefill chunk, the drafter's first pass runs over every token in the step, about 6.9 thousand rows, and keeps one row per request. After: it runs on one token per request.",
+  "caption": "Illustration, not a trace. vLLM runs the Gemma 4 MTP drafter's first pass over every token the target scheduled, so a step carrying a prefill chunk sends about 6.9K rows through it at the knee, and only the last row of each request is used. Gemma 4's drafter reads the target's KV cache and writes none, so the fix runs that pass on one token per request; the outputs stay token-identical.",
+  "light": "docs/img/drafter-fix-light.svg",
+  "dark": "docs/img/drafter-fix-dark.svg",
+  "sources": [
+   "results/mx7_prof_mtp3_seqs96/20261122T054335Z/prof_summary.txt",
+   "results/mxP_ours_profile/20261122T091537Z/prof_summary.txt"
+  ]
+ }
+}

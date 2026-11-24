@@ -1,0 +1,43 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "fa4",
+  "global_512": "fa4"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 08:14:50] server_args={'model_path': '/root/models/inkling', 'tokenizer_path': '/root/models/inkling', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_",
+  "[2026-11-22 08:15:08 PID4817] Initialized DSpark draft runner. attention_backend=fa4, model=Inkling2ForConditionalGenerationMTP, gamma=7, verify_num_draft_tokens=8, query_token_num=8, sample_from_anchor=False, mask_token_id=0, markov_head=Inkling2MTPHead"
+ ],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": 915584,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "kv_pool_tokens": {
+  "full_layers": 915584,
+  "sliding_layers": 137216
+ },
+ "missing": [
+  "cuda_graph_sizes"
+ ],
+ "startup_rules": {
+  "require_global_512": false,
+  "triton_ok": true
+ },
+ "rejected": true,
+ "reject_reason": "missing cuda_graph_sizes",
+ "schema": "startup_facts/1",
+ "run_id": "ik2_pro6000_spec/20261122T075736Z",
+ "config_id": "ik2_pro6000_spec:swa15_dspark",
+ "image": "lmsysorg/sglang:inkling-2-mini",
+ "image_digest": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+ "model_repo": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "gpu_mem_after_load": "86159 MiB, 97887 MiB",
+ "source_log": "results/ik2_pro6000_spec/20261122T075736Z/server_swa15_dspark.log",
+ "sub_phases": []
+}

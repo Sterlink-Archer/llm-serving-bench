@@ -1,0 +1,35 @@
+{
+ "run_id": "ikC_pro6000_mixed_dspark_s7/20261122T092529Z",
+ "configs": [
+  {
+   "run_id": "ikC_pro6000_mixed_dspark_s7/20261122T092529Z",
+   "config_id": "ikC_pro6000_mixed_dspark_s7:mixed_dspark",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.2016,
+    "mem": 0.3888,
+    "disk": 0.0157,
+    "total": 2.5561
+   },
+   "steady_usd": 2.0945,
+   "steady_gpu_usd": 1.5979,
+   "steady_host_usd": 0.4966,
+   "eval_usd": 0.202,
+   "cold_start_usd": {
+    "weight_download": 0.0448,
+    "engine_start": 0.169,
+    "warmup": 0.0006,
+    "create_share": 0.0038
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 2.5487,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0008265,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

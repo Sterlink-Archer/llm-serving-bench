@@ -1,0 +1,99 @@
+{
+ "source": "https://openrelay.inc/inference-pricing",
+ "saved_file": "research/raw/openrelay/inference-pricing_20261122T032303Z.html",
+ "fetched_utc": "20261122T032303Z",
+ "models": {
+  "openrelay/gemma-4-31b": {
+   "name": "Model Tier Input Cached input Output Gemma 4 31B",
+   "id": "openrelay/gemma-4-31b",
+   "context": "256K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.07,
+     "cached_in_usd_per_m": 0.007,
+     "out_usd_per_m": 0.3
+    },
+    "Batch": {
+     "in_usd_per_m": 0.035,
+     "cached_in_usd_per_m": 0.0035,
+     "out_usd_per_m": 0.15
+    }
+   }
+  },
+  "openrelay/glm-5.3": {
+   "name": "GLM 5.3",
+   "id": "openrelay/glm-5.3",
+   "context": "256K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.079,
+     "cached_in_usd_per_m": 0.062,
+     "out_usd_per_m": 3.0
+    }
+   }
+  },
+  "openrelay/glm-5.3-flash": {
+   "name": "GLM 5.3 Flash",
+   "id": "openrelay/glm-5.3-flash",
+   "context": "256K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.045,
+     "cached_in_usd_per_m": 0.009,
+     "out_usd_per_m": 0.18
+    },
+    "Async, within 1 hour": {
+     "in_usd_per_m": 0.036,
+     "cached_in_usd_per_m": 0.0072,
+     "out_usd_per_m": 0.144
+    },
+    "Async, within 24 hours": {
+     "in_usd_per_m": 0.0225,
+     "cached_in_usd_per_m": 0.0045,
+     "out_usd_per_m": 0.09
+    }
+   }
+  },
+  "openrelay/deepseek-v4.1-flash": {
+   "name": "DeepSeek V4.1-Flash",
+   "id": "openrelay/deepseek-v4.1-flash",
+   "context": "384K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.035,
+     "cached_in_usd_per_m": 0.01,
+     "out_usd_per_m": 0.33
+    }
+   }
+  },
+  "openrelay/kimi-k3.1-pro": {
+   "name": "Kimi K3.1 Pro",
+   "id": "openrelay/kimi-k3.1-pro",
+   "context": "256K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.24,
+     "cached_in_usd_per_m": 0.2,
+     "out_usd_per_m": 7.0
+    }
+   }
+  },
+  "openrelay/deepseek-ocr-2": {
+   "name": "DeepSeek-OCR 2",
+   "id": "openrelay/deepseek-ocr-2",
+   "context": "8K",
+   "tiers": {
+    "Sync": {
+     "in_usd_per_m": 0.039,
+     "cached_in_usd_per_m": null,
+     "out_usd_per_m": 0.039
+    },
+    "Batch": {
+     "in_usd_per_m": 0.0195,
+     "cached_in_usd_per_m": null,
+     "out_usd_per_m": 0.0195
+    }
+   }
+  }
+ }
+}

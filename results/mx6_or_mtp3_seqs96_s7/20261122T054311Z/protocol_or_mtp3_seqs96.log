@@ -1,0 +1,4 @@
+[vllmbench r=3.25 s=7] done=975 failed=0 req/s=3.1847780952519713 p95 TTFT=2.9758043684763833 median TPOT=24.666962695062537 ms in tok/s=30938
+[vllmbench r=3.5 s=7] done=1050 failed=0 req/s=3.4481144655336307 p95 TTFT=2.684973353729583 median TPOT=36.20777353781723 ms in tok/s=33412
+[vllmbench r=3.75 s=7] done=1125 failed=0 req/s=3.5721570259875572 p95 TTFT=6.751720929145813 median TPOT=56.54631634569914 ms in tok/s=34377
+[protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=43520.78514124868 tok/s -> /root/or/out/protocol_or_mtp3_seqs96/protocol_summary.json

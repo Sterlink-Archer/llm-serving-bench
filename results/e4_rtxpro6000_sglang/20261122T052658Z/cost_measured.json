@@ -1,0 +1,65 @@
+{
+ "run_id": "e4_rtxpro6000_sglang/20261122T052658Z",
+ "configs": [
+  {
+   "run_id": "e4_rtxpro6000_sglang/20261122T052658Z",
+   "config_id": "e4_rtxpro6000_sglang:sgl_nvfp4_rh",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0337,
+    "engine_start": 0.0759,
+    "warmup": 0,
+    "create_share": 0.0037
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6174,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "e4_rtxpro6000_sglang/20261122T052658Z",
+   "config_id": "e4_rtxpro6000_sglang:sgl_nvfp4_nv",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0.2945,
+   "steady_gpu_usd": 0.1989,
+   "steady_host_usd": 0.0956,
+   "eval_usd": 0.0265,
+   "cold_start_usd": {
+    "weight_download": 0.05,
+    "engine_start": 0.0646,
+    "warmup": 0.0007,
+    "create_share": 0.0037
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6174,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

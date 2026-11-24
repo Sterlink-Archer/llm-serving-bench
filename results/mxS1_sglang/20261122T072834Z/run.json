@@ -1,0 +1,23 @@
+{
+ "label": "mxS1_sglang",
+ "run_id": "mxS1_sglang/20261122T072834Z",
+ "config_file": "recipes/mi355x/configs/mxS1_sglang.json",
+ "t_start": "2026-11-22T07:28:34Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {},
+ "servers": {},
+ "error": "RuntimeError('snapshot or-sglang0523rocm720-mi355x-c8m48d150 failed: Snapshot size (22.20GB) exceeds maximum allowed size of 20GB')",
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T07:28:58Z",
+ "project_spend": {
+  "est_usd": 101.55,
+  "metered_usd": 89.4249
+ }
+}

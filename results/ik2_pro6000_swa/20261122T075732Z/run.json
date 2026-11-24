@@ -1,0 +1,192 @@
+{
+ "label": "ik2_pro6000_swa",
+ "run_id": "ik2_pro6000_swa/20261122T075732Z",
+ "config_file": "recipes/inkling/configs/ik2_pro6000_swa.json",
+ "t_start": "2026-11-22T07:57:32Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 2.8873
+ },
+ "phases": {
+  "create_s": 10.3
+ },
+ "servers": {
+  "base": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 76.5,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:01,  6.37it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:01<00:00,  7.98it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:04<00:00,  2.04it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:06<00:00,  9.81s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:06<00:00,  5.58s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590716 secs=67.4 GBps=0.300 method=huggingface_hub\n",
+    "bytes": 20191590716,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 190.0,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4",
+    "env": {},
+    "gpu_mem_after_load": "91763 MiB, 97887 MiB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 1250560,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "setup_vllm_client": {
+     "rc": 0,
+     "secs": 46.9,
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "tail": "[setup_vllm_client] vllm==0.33.0 client in /root/vb after 24 s: 0.33.0\n"
+    },
+    "gate_base_gsm8kor100": {
+     "rc": 0,
+     "secs": 68.5,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label gate_base_gsm8kor100 --out /root/or/out/gate_base_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_base_gsm8kor100] gsm8kor: 0.960 (96/100, noans 0, err 0, trunc 0) wall=60s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.96,
+      "n": 100,
+      "passed": 96,
+      "pass": true
+     }
+    },
+    "protocol_base_B_text": {
+     "rc": 0,
+     "secs": 458.2,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_base_B_text --breakeven-rps 0.9704 --client traffic --stratify --tokenizer /root/models/inkling --rates 0.97,1.456,1.941,2.426 --seeds 7 --duration 180 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik2_pro6000_swa/20261122T075732Z --config-id ik2_pro6000_swa:base --max-minutes 90.1",
+     "tail": "ype ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r1.5x_s7] R=1.456 win=180s done=228 err=0 drop=0 req/s=1.18 out=504 in=13649 tok/s cache=0.00 TTFT p50=5.519s p95=12.738s TPOT p50=141.7ms srv=432.3375895927483\n[protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json\n",
+     "breakeven_rps": 0.9704
+    },
+    "protocol_base_A_random": {
+     "rc": 0,
+     "secs": 295.3,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_base_A_random --breakeven-rps 0.9704 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/inkling --rates 0.97 --seeds 7 --duration 180 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik2_pro6000_swa/20261122T075732Z --config-id ik2_pro6000_swa:base --prefill-shot --max-minutes 82.4",
+     "tail": "[vllmbench r=0.97 s=7] done=174 failed=0 req/s=0.937508656372868 p95 TTFT=1.9219535021111367 median TPOT=33.80028683873951 ms in tok/s=9204\n[protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=20836.706246691298 tok/s -> /root/or/out/protocol_base_A_random/protocol_summary.json\n",
+     "breakeven_rps": 0.9704
+    }
+   },
+   "end": "ok"
+  },
+  "swa15": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 3.5,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:00<00:00, 866.98it/s]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590716 secs=0.1 GBps=173.169 method=huggingface_hub\n",
+    "bytes": 20191590716,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 65.9,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15",
+    "env": {},
+    "gpu_mem_after_load": "91775 MiB, 97887 MiB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 1071872,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "gate_swa15_gsm8kor100": {
+     "rc": 0,
+     "secs": 46.8,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label gate_swa15_gsm8kor100 --out /root/or/out/gate_swa15_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_swa15_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=40s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.98,
+      "n": 100,
+      "passed": 98,
+      "pass": true
+     }
+    },
+    "protocol_swa15_B_text": {
+     "rc": 0,
+     "secs": 457.9,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_swa15_B_text --breakeven-rps 0.9704 --client traffic --stratify --tokenizer /root/models/inkling --rates 0.97,1.456,1.941,2.426 --seeds 7 --duration 180 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik2_pro6000_swa/20261122T075732Z --config-id ik2_pro6000_swa:swa15 --max-minutes 75.2",
+     "tail": "e ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r1.5x_s7] R=1.456 win=180s done=234 err=0 drop=0 req/s=1.21 out=522 in=13715 tok/s cache=0.00 TTFT p50=3.187s p95=14.689s TPOT p50=146.2ms srv=443.55434434135327\n[protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_swa15_B_text/protocol_summary.json\n",
+     "breakeven_rps": 0.9704
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 123.86,
+  "this_run_ceiling_usd": 5.05,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 109,
+ "sandbox_id": "1d29edfb-ffd8-4243-817a-93fba74eedad",
+ "elapsed_s": 1836.2,
+ "est_cost_usd": 1.473,
+ "t_saved": "2026-11-22T08:28:09Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n60\nMem:             176          23          71           0          87         153\noverlay         150G  8.4M  150G   1% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T08:27:46Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 142.71,
+  "metered_usd": 119.5386
+ }
+}

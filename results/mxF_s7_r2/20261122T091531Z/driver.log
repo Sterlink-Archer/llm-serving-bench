@@ -1,0 +1,29 @@
+2026-11-22T09:15:32Z [mxF_s7_r2] creating spot sandbox (MI355X x1, $4.7565/h, ttl 85 min, budget $7.0; project so far ~$160.59)
+2026-11-22T09:16:27Z [mxF_s7_r2] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:16:50Z [mxF_s7_r2] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:19:39Z [mxF_s7_r2] server or_recipe ready=True after 168.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T09:19:42Z [mxF_s7_r2] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:19:54Z [mxF_s7_r2] cpumon_start rc=0 12s :: 2026-11-22T09:19:45,192,18.0,34.58,200.0,0.0,0.0,0.0,25
+2026-11-22T09:20:07Z [mxF_s7_r2] gate_or_recipe_gsm8kor100 rc=0 13s :: [gate_or_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=5s
+2026-11-22T09:37:44Z [mxF_s7_r2] protocol_or_recipe rc=0 1057s :: [protocol] max_rate_at_slo=3.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe/protocol_summary.json
+2026-11-22T09:38:08Z [mxF_s7_r2] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T09:39:42Z [mxF_s7_r2] server mx_recipe ready=True after 93.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T09:39:45Z [mxF_s7_r2] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:39:57Z [mxF_s7_r2] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=5s
+2026-11-22T09:57:44Z [mxF_s7_r2] protocol_mx_recipe rc=0 1067s :: [protocol] max_rate_at_slo=3.6 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T09:57:47Z [mxF_s7_r2] cpumon_pull rc=0 2s :: 2026-11-22T09:57:45,8.00,2.14,26.7,0,11,0,199.7,0.0,0.0,2.0
+2026-11-22T09:58:21Z [mxF_s7_r2] done: elapsed 42.8 min, est $3.39; project est $209.82

@@ -1,0 +1,93 @@
+{
+ "label": "e1a_h100_vllm_quant_8bit",
+ "note": "Quantization on 1x H100, vLLM v0.33.0. BF16 with default KV is the BASELINE (and the quality reference); FP8 dynamic and FP8 block with FP8 KV per the vLLM recipe.",
+ "snapshot": {
+  "name": "or-vllm0330-h100-c8m48d150",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 110,
+ "budget_usd": 8.0,
+ "servers": [
+  {
+   "name": "bf16_base",
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it",
+     "rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "dir": "/root/models/bf16"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_bf16_base",
+     "conc": 64,
+     "est_s": 420
+    }
+   ]
+  },
+  {
+   "name": "fp8dyn",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_fp8dyn",
+     "conc": 64,
+     "est_s": 420
+    }
+   ]
+  },
+  {
+   "name": "fp8block",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-block",
+     "rev": "d7242548c457ab4b45bd3adb8937f2659af4739d",
+     "dir": "/root/models/fp8block"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8block --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_fp8block",
+     "conc": 64,
+     "est_s": 420
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "label": "s2c_mi355x_or_recipe_seed8",
+ "run_id": "s2c_mi355x_or_recipe_seed8/20261122T054922Z",
+ "config_file": "configs/s2c_mi355x_or_recipe_seed8.json",
+ "t_start": "2026-11-22T05:49:22Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 4.0
+ },
+ "servers": {},
+ "rerun_of_evicted": 1,
+ "spend_guard": {
+  "project_est_usd_before": 49.21,
+  "this_run_ceiling_usd": 7.53,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 231,
+ "sandbox_id": "b155e289-f543-4eb4-b833-ab3324afa0c8",
+ "elapsed_s": 28.9,
+ "est_cost_usd": 0.038,
+ "t_saved": "2026-11-22T05:49:51Z",
+ "deleted": "2026-11-22T05:49:34Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 49.51,
+  "metered_usd": 36.6967
+ }
+}

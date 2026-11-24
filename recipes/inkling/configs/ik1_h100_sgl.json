@@ -1,0 +1,112 @@
+{
+ "label": "ik1_h100_sgl",
+ "stage": "ik-screen",
+ "claim_group": "ik1_h100_sgl",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 1.1452,
+ "note": "Phase-2 screen, Inkling-2-Mini @b85c3cf (NVFP4 experts L0-19, MXFP8 L20-23, rest BF16). Vendor Balanced recipe at TP1, no speculation, text-only (no --enable-multimodal / image limit 0), context 32768. Gate: GSM8K test[:100], OpenRelay prompt and '####' scoring, reasoning effort = chat-template default 0.9, temperature 0, max_tokens 16384. Then OpenRelay's prefill probe and column A (vllm bench serve, random tokens) and column B (traffic.py real text, tokenizer-exact, stratified) at multiples of break-even vs the PrimeIntellect bar ($0.0008265/req), seed 7, 120 s rungs (screen only). Engine: SGLang lmsysorg/sglang:inkling-2-mini (PR sgl-project/sglang#51926 build).",
+ "snapshot": {
+  "name": "or-sglang-ik2m-h100-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 100,
+ "budget_usd": 9.0,
+ "servers": [
+  {
+   "name": "sgl",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --bf16-gemm-backend torch",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "setup_vllm_client",
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "gate_sgl_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "breakeven_rps": 1.1452,
+     "rates": [
+      1.145,
+      1.718,
+      2.29,
+      3.435,
+      4.581
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_B_text",
+     "client": "traffic",
+     "breakeven_rps": 1.1452,
+     "rates": [
+      1.145,
+      1.718,
+      2.29,
+      3.435,
+      4.581
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "allow_rejected_why": "Gemma rule (global 512-dim layers, Triton stop) does not apply to Inkling: no 512-dim heads; asked the build session for model-aware startup rules",
+   "fallbacks": [
+    {
+     "flags": "--attention-backend triton",
+     "why": "FA4 failed to start on this card"
+    }
+   ]
+  }
+ ]
+}

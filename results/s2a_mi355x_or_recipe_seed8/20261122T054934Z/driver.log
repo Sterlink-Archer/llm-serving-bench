@@ -1,0 +1,14 @@
+2026-11-22T05:49:34Z [s2a_mi355x_or_recipe_seed8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $9.0; project so far ~$49.35)
+2026-11-22T05:49:51Z [s2a_mi355x_or_recipe_seed8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:50:14Z [s2a_mi355x_or_recipe_seed8] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:52:54Z [s2a_mi355x_or_recipe_seed8] server or_recipe ready=True after 159.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T05:53:08Z [s2a_mi355x_or_recipe_seed8] gate_gsm8kor100 rc=0 13s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T06:11:17Z [s2a_mi355x_or_recipe_seed8] protocol_or_recipe_A_random rc=0 1089s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=43096.470945791756 tok/s -> /root/or/out/protocol_or_recipe_A_random/protocol_summary.json
+2026-11-22T06:11:41Z [s2a_mi355x_or_recipe_seed8] done: elapsed 22.1 min, est $1.75; project est $71.19

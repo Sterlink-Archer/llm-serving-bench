@@ -1,0 +1,104 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASHINFER",
+  "global_512": "FLASHINFER"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=885) INFO 11-22 04:42:56 [config.py:582] Gemma4 model has heterogeneous head dimensions {'sliding_attention': 256, 'full_attention': 512}. Using FA4 for all layers to avoid mixed FA3/FA4 penalty.",
+  "(EngineCore pid=1675) INFO 11-22 04:43:34 [cuda.py:549] Using FLASHINFER attention backend out of potential backends: ['FLASHINFER', 'TRITON_ATTN'].",
+  "(EngineCore pid=1675) WARNING 11-22 04:43:34 [fa_utils.py:204] FA4 on Blackwell does not support head_size=512 due to TMEM capacity limits, defaulting to FA version 2."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  8,
+  9,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  24,
+  28,
+  32,
+  33,
+  36,
+  40,
+  44,
+  48,
+  56,
+  64,
+  66,
+  72,
+  80,
+  81,
+  88,
+  96,
+  104,
+  112,
+  114,
+  120,
+  128,
+  129,
+  160,
+  162,
+  192,
+  224,
+  225,
+  256,
+  258,
+  320,
+  321,
+  384
+ ],
+ "kv_cache_tokens": null,
+ "kv_cache_gib": 223.21,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": {
+  "method": "draft_model",
+  "draft_model": "/root/models/nvfp4/assistant",
+  "num_speculative_tokens": 2
+ },
+ "engine_version": "0.34.0",
+ "missing": [
+  "kv_cache_tokens"
+ ],
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens",
+ "schema": "startup_facts/1",
+ "run_id": "s1_b300_nvfp4_mtp2_v034snap/20261122T044102Z",
+ "config_id": "s1_b300_nvfp4_mtp2_v034snap:nvfp4_mtp2",
+ "image": "vllm/vllm-openai:v0.34.0",
+ "image_digest": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+ "model_repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+ "model_rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+ "gpu_mem_after_load": "0 MiB, 275040 MiB",
+ "source_log": "results/s1_b300_nvfp4_mtp2_v034snap/20261122T044102Z/server_nvfp4_mtp2.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T04:43:46Z",
+   "t_end": "2026-11-22T04:43:47Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T04:44:36Z",
+   "t_end": "2026-11-22T04:44:42Z",
+   "detail": {
+    "compile_s": 6.06
+   }
+  }
+ ]
+}

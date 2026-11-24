@@ -1,0 +1,3 @@
+[aiter_tune] 117 shapes, tuner /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py
+[aiter_tune] torch: rc=0 32s rows=117
+Terminated

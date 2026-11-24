@@ -1,0 +1,16 @@
+2026-11-22T08:50:09Z [mxG1_alt] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $5.0; project so far ~$150.31)
+2026-11-22T08:50:33Z [mxG1_alt] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:50:35Z [mxG1_alt] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T08:50:37Z [mxG1_alt] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T08:50:50Z [mxG1_alt] gemm_inventory rc=0 13s :: [2026-11-22T08:50:43Z] inventory done in 4s
+2026-11-22T08:51:44Z [mxG1_alt] gemm_hipblaslt rc=0 54s :: [2026-11-22T08:51:36Z] hipblaslt done in 44s
+2026-11-22T08:52:07Z [mxG1_alt] gemm_triton rc=0 23s :: [2026-11-22T08:52:02Z] triton done in 16s
+2026-11-22T08:58:23Z [mxG1_alt] gemm_ck rc=0 376s :: [2026-11-22T08:58:18Z] ck done in 369s
+2026-11-22T08:58:54Z [mxG1_alt] done: elapsed 8.8 min, est $0.69; project est $154.11

@@ -1,0 +1,11 @@
+2026-11-22T03:43:04Z [pilot_h100_vllm_fp8] building snapshot or-vllm0330-h100-c8m48d150 from vllm/vllm-openai:v0.33.0
+2026-11-22T03:43:20Z [pilot_h100_vllm_fp8] creating spot sandbox (H100 x1, $3.6665/h, ttl 42 min, budget $3.0)
+2026-11-22T03:43:42Z [pilot_h100_vllm_fp8] system: ok | NVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W | 26 | Mem:             221          13          25           0         188         207 | overlay         2.7T  892G  1.8T  33% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T03:55:22Z [pilot_h100_vllm_fp8] download fp8dyn: DL rc=0 bytes=33300464640 secs=694.6 GBps=0.048
+2026-11-22T03:57:56Z [pilot_h100_vllm_fp8] server fp8dyn ready=True after 151.9s; gpu mem 69753 MiB, 81559 MiB
+2026-11-22T04:00:47Z [pilot_h100_vllm_fp8] m_fp8dyn_smoke rc=0 170s :: [matrix smoke] done in 2.7 min -> /root/or/out/m_fp8dyn_smoke/matrix_summary.md
+2026-11-22T04:01:52Z [pilot_h100_vllm_fp8] m_fp8dyn_xcheck rc=0 65s :: [matrix xcheck] done in 1.0 min -> /root/or/out/m_fp8dyn_xcheck/matrix_summary.md
+2026-11-22T04:03:49Z [pilot_h100_vllm_fp8] vllm_bench_c32 rc=0 117s :: ==================================================
+2026-11-22T04:04:13Z [pilot_h100_vllm_fp8] eval_smoke rc=0 24s :: [eval_smoke] gsm8k: 1.000 (25/25, noans 0, err 0, trunc 0) mmlupro: 1.000 (25/25, noans 0, err 0, trunc 0) wall=17s
+2026-11-22T04:13:28Z [pilot_h100_vllm_fp8] m_fp8dyn_quick rc=0 555s :: [matrix quick] done in 9.0 min -> /root/or/out/m_fp8dyn_quick/matrix_summary.md
+2026-11-22T04:13:44Z [pilot_h100_vllm_fp8] done: elapsed 30.4 min, est $1.86 (Daytona metered spend: infra/spend.py)

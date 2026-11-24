@@ -1,0 +1,23 @@
+2026-11-22T15:34:55Z [up1_h100_draft_compact] waiting for pulling snapshot or-vllmnightly647a-h100-c8m48d150 from vllm/vllm-openai:nightly-647a76866b4559a74e27d1c6b55fbffe85c07ce4
+2026-11-22T15:46:45Z [up1_h100_draft_compact] creating spot sandbox (H100 x1, $3.6665/h, ttl 170 min, budget $9.5; project so far ~$314.49)
+2026-11-22T15:47:35Z [up1_h100_draft_compact] system: ok | NVIDIA H100 80GB HBM3, 81559 MiB, 595.71.05, 700.00 W | 192 | Mem:            2015         297         675          14        1072        1717 | overlay         150G  8.4M  150G   1% / | Python 3.14.10 | /usr/bin/curl | vllm 0.34.0rc1.dev1133+g647a76866
+2026-11-22T15:47:37Z [up1_h100_draft_compact] download tests: rc=0 1s 0.0 GB via []
+2026-11-22T15:47:39Z [up1_h100_draft_compact] server tests ready=True after 0.9s; gpu mem 0 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T15:48:01Z [up1_h100_draft_compact] t_unit_base rc=1 22s :: ======================= 1 failed, 35 deselected in 2.68s =======================
+2026-11-22T15:48:33Z [up1_h100_draft_compact] t_unit_patched rc=0 32s :: ============================= 36 passed in 14.84s ==============================
+2026-11-22T15:51:21Z [up1_h100_draft_compact] t_e2e_base rc=1 168s :: ============ 1 failed, 1 deselected, 1 warning in 148.71s (0:02:28) ============
+2026-11-22T15:53:15Z [up1_h100_draft_compact] t_e2e_patched rc=1 114s :: ============ 1 failed, 1 deselected, 1 warning in 98.54s (0:01:38) =============
+2026-11-22T15:53:58Z [up1_h100_draft_compact] download unpatched_s7: rc=0 32s 34.3 GB via ['huggingface_hub']
+2026-11-22T15:56:36Z [up1_h100_draft_compact] server unpatched_s7 ready=True after 157.4s; gpu mem 71619 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162867 graphs 115
+2026-11-22T15:56:48Z [up1_h100_draft_compact] verify_unpatched_s7 rc=0 12s :: (EngineCore pid=4554) INFO 11-22 15:54:32 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T15:58:42Z [up1_h100_draft_compact] idprobe_unpatched_c1 rc=0 114s :: identity_probe: 60 requests, conc 1, 104s -> out/idprobe_unpatched_c1.json; lengths [256]
+2026-11-22T16:17:31Z [up1_h100_draft_compact] pr_unpatched_s7 rc=0 1129s :: [protocol] max_rate_at_slo=0.75 req/s (break-even 1.3074); prefill=12369.14150088992 tok/s -> /root/or/out/pr_unpatched_s7/protocol_summary.json
+2026-11-22T16:17:53Z [up1_h100_draft_compact] download patched_s7: rc=0 11s 34.3 GB via ['huggingface_hub']
+2026-11-22T16:19:09Z [up1_h100_draft_compact] server patched_s7 ready=True after 75.0s; gpu mem 71619 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162867 graphs 115
+2026-11-22T16:19:21Z [up1_h100_draft_compact] verify_patched_s7 rc=0 12s :: (EngineCore pid=8627) INFO 11-22 16:18:24 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T16:21:05Z [up1_h100_draft_compact] idprobe_patched_c1 rc=0 104s :: identity_probe: 60 requests, conc 1, 102s -> out/idprobe_patched_c1.json; lengths [256]
+2026-11-22T16:21:06Z [up1_h100_draft_compact] idcompare_unpatched_vs_patched rc=0 1s :: }
+2026-11-22T16:32:23Z [up1_h100_draft_compact] ERROR ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/cf1234e9-5732-4970-bb4b-c3dbfbb9bba2/process/execute: {"statusCode":404,"message":"not found: sandbox cf1234e9-5732-4970-bb4b-c3dbfbb9bba2 not found (it has been deleted)","code":"NOT_FOUND","timestamp":"2026-11-22T16:32:23.290176451Z","path":"/toolbox/cf1234e9-5732-4970-bb4b-c3dbfbb9bba2/process/execute","method":"POST"}')
+2026-11-22T16:32:23Z [up1_h100_draft_compact] EVICTED (spot preemption, outside our control): {'server': 'patched_s7', 'step': 'pr_patched_s7'} lost 11.2 min / $0.68
+2026-11-22T16:32:43Z [up1_h100_draft_compact] done: elapsed 46.0 min, est $2.81; project est $317.59
+2026-11-22T16:32:43Z [up1_h100_draft_compact] re-running up1_h100_draft_compact on a fresh box after spot eviction (retry 1/2); evicted run kept as up1_h100_draft_compact/20261122T153455Z with the interrupted step excluded

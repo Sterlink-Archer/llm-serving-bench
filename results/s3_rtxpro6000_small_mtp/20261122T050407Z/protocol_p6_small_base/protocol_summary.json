@@ -1,0 +1,244 @@
+{
+ "schema": "protocol/1",
+ "run_id": "s3_rtxpro6000_small_mtp/20261122T050407Z",
+ "config_id": "s3_rtxpro6000_small_mtp:p6_small_base",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 0.8625,
+ "duration_s": 120.0,
+ "warmup_s": 24.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "synthetic",
+ "params": {
+  "input_dist": {
+   "uniform": [
+    1900,
+    17100
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  }
+ },
+ "calibration": {
+  "cpt_prose": 4.0,
+  "cpt_table": 3.0,
+  "given": true
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 0.812,
+   "rate": 0.7,
+   "seeds": {
+    "7": "cells/r0.812x_0.7rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "client": "vllm bench serve (OpenRelay's bench.sh)",
+     "achieved_rps": 0.6162111845809934,
+     "arrived_rps": 0.7,
+     "goodput_rps": 0.6162111845809934,
+     "ttft_p50_s": 1.5124666058691218,
+     "ttft_p95_s": 3.104888900590593,
+     "ttft_p99_s": 4.124723602840679,
+     "tpot_p50_s": 0.05053735509839594,
+     "tpot_p95_s": 0.09721703335768175,
+     "e2e_p50_s": 22.96120006858837,
+     "errors": 0,
+     "requests_sent": 84,
+     "dropped": 0,
+     "slo_pass": true,
+     "out_tok_s": 232.97184285622842,
+     "in_tok_s": 6166.55736935584,
+     "cached_in_tok_s": null,
+     "server_gen_tok_s": null,
+     "spec_accept_len": null,
+     "preemptions": null,
+     "peak_inflight": 27,
+     "duration_s": 136.31690255203284,
+     "rc": 0
+    }
+   },
+   "kept_seed": 7,
+   "client": "vllm bench serve (OpenRelay's bench.sh)",
+   "achieved_rps": 0.6162111845809934,
+   "arrived_rps": 0.7,
+   "goodput_rps": 0.6162111845809934,
+   "ttft_p50_s": 1.5124666058691218,
+   "ttft_p95_s": 3.104888900590593,
+   "ttft_p99_s": 4.124723602840679,
+   "tpot_p50_s": 0.05053735509839594,
+   "tpot_p95_s": 0.09721703335768175,
+   "e2e_p50_s": 22.96120006858837,
+   "errors": 0,
+   "requests_sent": 84,
+   "dropped": 0,
+   "slo_pass": true,
+   "out_tok_s": 232.97184285622842,
+   "in_tok_s": 6166.55736935584,
+   "cached_in_tok_s": null,
+   "server_gen_tok_s": null,
+   "spec_accept_len": null,
+   "preemptions": null,
+   "peak_inflight": 27,
+   "duration_s": 136.31690255203284,
+   "rc": 0
+  },
+  {
+   "multiple": 0.997,
+   "rate": 0.86,
+   "seeds": {
+    "7": "cells/r0.997x_0.86rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "client": "vllm bench serve (OpenRelay's bench.sh)",
+     "achieved_rps": 0.7363582197954339,
+     "arrived_rps": 0.8583333333333333,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 2.057107047876343,
+     "ttft_p95_s": 4.248802339797839,
+     "ttft_p99_s": 5.483621759926901,
+     "tpot_p50_s": 0.11667552717571585,
+     "tpot_p95_s": 0.19009451087024481,
+     "e2e_p50_s": 39.78168898890726,
+     "errors": 0,
+     "requests_sent": 103,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 277.385426486047,
+     "in_tok_s": 7394.966786157272,
+     "cached_in_tok_s": null,
+     "server_gen_tok_s": null,
+     "spec_accept_len": null,
+     "preemptions": null,
+     "peak_inflight": 50,
+     "duration_s": 139.87757212598808,
+     "rc": 0
+    }
+   },
+   "kept_seed": 7,
+   "client": "vllm bench serve (OpenRelay's bench.sh)",
+   "achieved_rps": 0.7363582197954339,
+   "arrived_rps": 0.8583333333333333,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 2.057107047876343,
+   "ttft_p95_s": 4.248802339797839,
+   "ttft_p99_s": 5.483621759926901,
+   "tpot_p50_s": 0.11667552717571585,
+   "tpot_p95_s": 0.19009451087024481,
+   "e2e_p50_s": 39.78168898890726,
+   "errors": 0,
+   "requests_sent": 103,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 277.385426486047,
+   "in_tok_s": 7394.966786157272,
+   "cached_in_tok_s": null,
+   "server_gen_tok_s": null,
+   "spec_accept_len": null,
+   "preemptions": null,
+   "peak_inflight": 50,
+   "duration_s": 139.87757212598808,
+   "rc": 0
+  },
+  {
+   "multiple": 1.194,
+   "rate": 1.03,
+   "seeds": {
+    "7": "cells/r1.194x_1.03rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "client": "vllm bench serve (OpenRelay's bench.sh)",
+     "achieved_rps": 0.7938071281719198,
+     "arrived_rps": 1.025,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 4.2470348151400685,
+     "ttft_p95_s": 10.37488903042394,
+     "ttft_p99_s": 12.298385095405393,
+     "tpot_p50_s": 0.17148417930942603,
+     "tpot_p95_s": 0.29361796814253016,
+     "e2e_p50_s": 60.69243874098174,
+     "errors": 0,
+     "requests_sent": 123,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 316.03204275976213,
+     "in_tok_s": 7815.031176852551,
+     "cached_in_tok_s": null,
+     "server_gen_tok_s": null,
+     "spec_accept_len": null,
+     "preemptions": null,
+     "peak_inflight": 87,
+     "duration_s": 154.9494778199587,
+     "rc": 0
+    }
+   },
+   "kept_seed": 7,
+   "client": "vllm bench serve (OpenRelay's bench.sh)",
+   "achieved_rps": 0.7938071281719198,
+   "arrived_rps": 1.025,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 4.2470348151400685,
+   "ttft_p95_s": 10.37488903042394,
+   "ttft_p99_s": 12.298385095405393,
+   "tpot_p50_s": 0.17148417930942603,
+   "tpot_p95_s": 0.29361796814253016,
+   "e2e_p50_s": 60.69243874098174,
+   "errors": 0,
+   "requests_sent": 123,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 316.03204275976213,
+   "in_tok_s": 7815.031176852551,
+   "cached_in_tok_s": null,
+   "server_gen_tok_s": null,
+   "spec_accept_len": null,
+   "preemptions": null,
+   "peak_inflight": 87,
+   "duration_s": 154.9494778199587,
+   "rc": 0
+  }
+ ],
+ "prefill": {
+  "client": "vllm bench serve (OpenRelay's probe.sh)",
+  "concurrency": 16,
+  "prompt_tokens_target": 10000,
+  "runs": [
+   {
+    "run": 1,
+    "file": "prefill_c16_10000_run1.json",
+    "input_tok_s": 12106.084946480529,
+    "completed": 64,
+    "p95_ttft_s": 13.550837631721516,
+    "rc": 0
+   },
+   {
+    "run": 2,
+    "file": "prefill_c16_10000_run2.json",
+    "input_tok_s": 12091.791701674525,
+    "completed": 64,
+    "p95_ttft_s": 13.563695837778505,
+    "rc": 0
+   }
+  ],
+  "prefill_tok_s": 12091.791701674525,
+  "counted": "second run"
+ },
+ "t_start": "2026-11-22T05:10:35Z",
+ "client": "vllmbench",
+ "max_rate_at_slo_rps": 0.7,
+ "max_goodput_rps": 0.6162111845809934,
+ "t_end": "2026-11-22T05:20:28Z",
+ "wall_minutes": 9.884545997778575
+}

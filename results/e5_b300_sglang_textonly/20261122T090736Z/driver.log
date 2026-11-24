@@ -1,0 +1,15 @@
+2026-11-22T09:07:36Z [e5_b300_sglang_textonly] building or-sglang-nightly1121-b300-c8m64d300 from lmsysorg/sglang:nightly-dev-cu13-20261121-a8ac8659
+2026-11-22T09:27:46Z [e5_b300_sglang_textonly] creating spot sandbox (B300 x1, $6.6419/h, ttl 120 min, budget $15.0; project so far ~$174.79)
+2026-11-22T09:29:11Z [e5_b300_sglang_textonly] system: ok | NVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W | 224 | Mem:            3527         103        2288           0        1157        3424 | overlay         300G  8.4M  300G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+ga8ac86595
+2026-11-22T09:29:45Z [e5_b300_sglang_textonly] download sgl_rh_nvfp4_textonly: rc=0 33s 23.3 GB via ['huggingface_hub']
+2026-11-22T09:37:14Z [e5_b300_sglang_textonly] server sgl_rh_nvfp4_textonly ready=True after 449.0s; gpu mem 246089 MiB, 275040 MiB; attn {'sliding': 'trtllm_mha', 'global_512': 'trtllm_mha'} kv_tokens 628288 graphs 52
+2026-11-22T09:37:28Z [e5_b300_sglang_textonly] gate_gsm8kor100 rc=0 13s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T09:37:42Z [e5_b300_sglang_textonly] q_gsm8kor250_sgl_rh_nvfp4 rc=0 14s :: [q_gsm8kor250_sgl_rh_nvfp4] gsm8kor: 0.976 (244/250, noans 0, err 0, trunc 0) wall=9s
+2026-11-22T09:38:16Z [e5_b300_sglang_textonly] q_mmlupro200_sgl_rh_nvfp4 rc=0 34s :: [q_mmlupro200_sgl_rh_nvfp4] mmlupro: 0.850 (170/200, noans 4, err 0, trunc 4) wall=23s
+2026-11-22T09:39:00Z [e5_b300_sglang_textonly] q_agree400_sgl_rh_nvfp4 rc=0 44s :: [q_agree400_sgl_rh_nvfp4] agree: 0.000 (0/400, noans 400, err 0, trunc 251) wall=38s
+2026-11-22T09:39:03Z [e5_b300_sglang_textonly] profile_prefill_4x10k rc=1 2s :: urllib.error.HTTPError: HTTP Error 403: Forbidden
+2026-11-22T09:59:24Z [e5_b300_sglang_textonly] protocol_sgl_rh_nvfp4_textonly_A_random rc=0 1221s :: [protocol] max_rate_at_slo=2.9605 req/s (break-even 2.3684); prefill=49032.00122248745 tok/s -> /root/or/out/protocol_sgl_rh_nvfp4_textonly_A_random/protocol_summary.json
+2026-11-22T10:11:54Z [e5_b300_sglang_textonly] protocol_sgl_rh_nvfp4_textonly_B_text rc=0 750s :: [protocol] max_rate_at_slo=2.9605 req/s (break-even 2.3684); prefill=None tok/s -> /root/or/out/protocol_sgl_rh_nvfp4_textonly_B_text/protocol_summary.json
+2026-11-22T10:12:07Z [e5_b300_sglang_textonly] server sgl_rh_fp8_textonly skipped: sgl_rh_nvfp4_textonly ran ok
+2026-11-22T10:12:07Z [e5_b300_sglang_textonly] server sgl_nv_nvfp4_textonly skipped: sgl_rh_nvfp4_textonly ran ok
+2026-11-22T10:12:35Z [e5_b300_sglang_textonly] done: elapsed 44.8 min, est $4.96; project est $222.33

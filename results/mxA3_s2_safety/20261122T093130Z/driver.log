@@ -1,0 +1,13 @@
+2026-11-22T09:31:31Z [mxA3_s2_safety] creating spot sandbox (MI355X x1, $4.7565/h, ttl 55 min, budget $4.5; project so far ~$179.35)
+2026-11-22T09:31:57Z [mxA3_s2_safety] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:32:00Z [mxA3_s2_safety] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T09:32:02Z [mxA3_s2_safety] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T09:38:28Z [mxA3_s2_safety] s2_safety rc=0 385s ::    abort: {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} s2
+2026-11-22T09:39:01Z [mxA3_s2_safety] done: elapsed 7.5 min, est $0.59; project est $187.99

@@ -1,0 +1,228 @@
+{
+ "label": "d1_h100_prefill_diag",
+ "run_id": "d1_h100_prefill_diag/20261122T045257Z",
+ "config_file": "configs/d1_h100_prefill_diag.json",
+ "t_start": "2026-11-22T04:52:57Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "create_s": 5.5
+ },
+ "servers": {
+  "fp8dyn_mbt8192": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 23.4,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:   6%|\u258b         | 1/16 [00:00<00:01,  9.41it/s]\rFetching 16 files:  88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 14/16 [00:00<00:00, 17.23it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:12<00:00,  1.01s/it]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:12<00:00,  1.33it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469172 secs=12.4 GBps=2.688 method=huggingface_hub\n",
+    "bytes": 33300469172,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 140.9,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+    "env": {},
+    "gpu_mem_after_load": "71377 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-0180c0ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 144878,
+    "kv_cache_gib": 35.0,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "profile_prefill_4x10k": {
+     "rc": 0,
+     "secs": 24.2,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "[profile] prefill 6473 tok/s over 4x10000; gemm=95.7% other=4.3% memcpy/memset=0.0%\n"
+    },
+    "prefill_probe_mbt8192": {
+     "rc": 0,
+     "secs": 130.7,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt8192.json",
+     "tail": "[prefill_probe] 12681 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "fp8dyn_mbt16384": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 2.9,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:00<00:00, 799.06it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469172 secs=0.1 GBps=246.391 method=huggingface_hub\n",
+    "bytes": 33300469172,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 132.1,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "71291 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-fefaf915\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 83052,
+    "kv_cache_gib": 34.92,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt16384": {
+     "rc": 0,
+     "secs": 141.0,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt16384.json",
+     "tail": "[prefill_probe] 12237 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "fp8dyn_mbt32768": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 2.9,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:00<00:00, 779.45it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469172 secs=0.1 GBps=247.299 method=huggingface_hub\n",
+    "bytes": 33300469172,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 132.3,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "69661 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-fc11eddd\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 79265,
+    "kv_cache_gib": 33.33,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt32768": {
+     "excluded": "evicted"
+    }
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 9.42,
+  "this_run_ceiling_usd": 3.36,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 289,
+ "sandbox_id": "e5df49f7-7be4-4552-9620-d12f687d0ef0",
+ "elapsed_s": 906.1,
+ "est_cost_usd": 0.923,
+ "t_saved": "2026-11-22T05:08:03Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W\n128\nMem:            2015          87         936           5        1012        1928\noverlay         150G  5.2M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "error": "ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/e5df49f7-7be4-4552-9620-d12f687d0ef0/process/execute: {\"statusCode\":404,\"message\":\"not found: sandbox e5df49f7-7be4-4552-9620-d12f687d0ef0 not found, it may have been deleted or stopped - inspect audit logs for more info\",\"code\":\"SANDBOX_NOT_FOUND\",\"timestamp\":\"2026-11-22T05:08:00.287829815Z\",\"path\":\"/sandboxes/e5df49f7-7be4-4552-9620-d12f687d0ef0/toolbox/process/execute\",\"method\":\"POST\"}')",
+ "evicted": {
+  "event": "evicted",
+  "run_id": "d1_h100_prefill_diag/20261122T045257Z",
+  "sandbox_id": "e5df49f7-7be4-4552-9620-d12f687d0ef0",
+  "gpu": "H100",
+  "gpus": 1,
+  "state": "destroyed",
+  "spotEvictedAt": "2026-11-22T05:07:58.935Z",
+  "evicted_at": "2026-11-22T05:07:58Z",
+  "last_good_t": "2026-11-22T05:06:21Z",
+  "interrupted": {
+   "server": "fp8dyn_mbt32768",
+   "step": "prefill_probe_mbt32768"
+  },
+  "minutes_lost": 1.62,
+  "usd_lost": 0.099,
+  "usd_per_h": 3.6665,
+  "label": "spot preemption, outside our control"
+ },
+ "deleted": "2026-11-22T05:08:00Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 17.8,
+  "metered_usd": 9.2804
+ }
+}

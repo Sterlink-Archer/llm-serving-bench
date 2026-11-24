@@ -1,0 +1,48 @@
+{"start": 0}
+{"done": 0, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 4.028298589400947, "cfg_ms": 7.139481056947261, "speedup": 0.5642284862540681, "err": 0.0009765625}
+{"start": 1}
+{"done": 1, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 4.003551451023668, "cfg_ms": 5.225309508386999, "speedup": 0.7661845570291441, "err": 0.0009765625}
+{"start": 2}
+{"done": 2, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 4.016984801273793, "cfg_ms": 6.598674249835312, "speedup": 0.6087563424386417, "err": 0.0009765625}
+{"start": 3}
+{"done": 3, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.000774992164224, "cfg_ms": 15.671914245467635, "speedup": 0.25528310897446754, "err": 0.0009765625}
+{"start": 4}
+{"done": 4, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 3.9904791978187855, "cfg_ms": 5.714478646405041, "speedup": 0.6983102824838067, "err": 0.0}
+{"start": 5}
+{"done": 5, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 4.00444904807955, "cfg_ms": 13.273959152866155, "speedup": 0.3016770657468007, "err": 0.0}
+{"start": 6}
+{"done": 6, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 3.9844192564487453, "cfg_ms": 5.208263848908246, "speedup": 0.7650187033600377, "err": 0.0}
+{"start": 7}
+{"done": 7, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.020011401735246, "cfg_ms": 23.81707614986226, "speedup": 0.16878693994344451, "err": 0.0}
+{"start": 8}
+{"done": 8, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 3.9976786938495934, "cfg_ms": 4.867940046824515, "speedup": 0.8212259508942359, "err": 0.001312255859375}
+{"start": 9}
+{"done": 9, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 3.999064699746669, "cfg_ms": 11.181232100352645, "speedup": 0.3576586787444062, "err": 0.001312255859375}
+{"start": 10}
+{"done": 10, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 4.014767054468393, "cfg_ms": 13.674974744208157, "speedup": 0.2935849703246283, "err": 0.001312255859375}
+{"start": 11}
+{"done": 11, "cfg": {"attn_2d": {"BLOCK_M": 64, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.020900500472635, "cfg_ms": 41.95747160119936, "speedup": 0.09583276463107222, "err": 0.001312255859375}
+{"start": 12}
+{"done": 12, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 3.99829939706251, "cfg_ms": 5.981548747513443, "speedup": 0.668438821755757, "err": 0.0009765625}
+{"start": 13}
+{"done": 13, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 4.0230330429039896, "cfg_ms": 22.857338993344456, "speedup": 0.17600618532522122, "err": 0.0009765625}
+{"start": 14}
+{"done": 14, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 4.019771609455347, "cfg_ms": 8.579336199909449, "speedup": 0.4685410987271689, "err": 0.0009765625}
+{"start": 15}
+{"done": 15, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.045068344566971, "cfg_ms": 54.55553591018543, "speedup": 0.07414588230287668, "err": 0.0009765625}
+{"start": 16}
+{"done": 16, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 3.9969619479961698, "cfg_ms": 3.9921935531310737, "speedup": 1.0011944297794269, "err": 0.0}
+{"start": 17}
+{"done": 17, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 4.011624795384705, "cfg_ms": 16.676356701646, "speedup": 0.2405576270138637, "err": 0.0}
+{"start": 18}
+{"failed": 18, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 19}
+{"done": 19, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.032101400662214, "cfg_ms": 35.089134343434125, "speedup": 0.11491025572754547, "err": 0.0}
+{"start": 20}
+{"done": 20, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 4.012554243672639, "cfg_ms": 5.077780946157873, "speedup": 0.7902180669508316, "err": 0.001312255859375}
+{"start": 21}
+{"done": 21, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 4.032597003970295, "cfg_ms": 18.131055997218937, "speedup": 0.22241379677989204, "err": 0.001312255859375}
+{"start": 22}
+{"done": 22, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 4.03078111121431, "cfg_ms": 10.88656714418903, "speedup": 0.37025272134254344, "err": 0.001312255859375}
+{"start": 23}
+{"done": 23, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 4.036387545056641, "cfg_ms": 24.10018255468458, "speedup": 0.1674836917063954, "err": 0.001312255859375}

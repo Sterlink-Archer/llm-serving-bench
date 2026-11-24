@@ -1,0 +1,7 @@
+2026-11-22T16:13:12Z [up2_h100_e2e_tests] creating spot sandbox (H100 x1, $3.6665/h, ttl 40 min, budget $2.5; project so far ~$316.09)
+2026-11-22T16:13:58Z [up2_h100_e2e_tests] system: ok | NVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W | 128 | Mem:            2014          86         456           0        1498        1928 | overlay         150G  8.4M  150G   1% / | Python 3.14.10 | /usr/bin/curl | vllm 0.34.0rc1.dev1133+g647a76866
+2026-11-22T16:14:00Z [up2_h100_e2e_tests] download tests: rc=0 1s 0.0 GB via []
+2026-11-22T16:14:02Z [up2_h100_e2e_tests] server tests ready=True after 1.3s; gpu mem 0 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T16:16:29Z [up2_h100_e2e_tests] t_e2e_base rc=1 146s :: ============ 1 failed, 1 deselected, 1 warning in 130.44s (0:02:10) ============
+2026-11-22T16:18:14Z [up2_h100_e2e_tests] t_e2e_patched_sync rc=0 105s :: ============ 1 passed, 1 deselected, 1 warning in 83.55s (0:01:23) =============
+2026-11-22T16:18:50Z [up2_h100_e2e_tests] done: elapsed 5.6 min, est $0.34; project est $316.74

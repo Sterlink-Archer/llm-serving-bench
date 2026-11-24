@@ -1,0 +1,15 @@
+{
+ "name": "smoke",
+ "note": "Plumbing check, ~3 min: one cell per workload class.",
+ "defaults": {"duration": 20, "warmup": 4},
+ "slo": {"ttft_p95_s": 2.0, "tpot_p50_ms": 50},
+ "series": [
+  {"id": "s1k_256", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 256}, "sweep": {"concurrency": [1, 16]}},
+  {"id": "prefix", "workload": "synthetic", "params": {"input_tokens": 4096, "output_tokens": 64, "prefix_ratio": 0.9, "prefix_pool": 2}, "concurrency": 8},
+  {"id": "ciu", "workload": "ciu_screen", "rate": 8, "max_inflight": 256},
+  {"id": "fin", "workload": "fin_extract", "params": {"max_out": 256, "max_in": 16000}, "concurrency": 4},
+  {"id": "chat", "workload": "console_chat", "params": {"system_tokens": 10000, "conversations": 16, "turns": 3}, "concurrency": 8},
+  {"id": "natural", "workload": "chat_natural", "params": {"max_tokens": 256}, "concurrency": 8},
+  {"id": "longdoc", "workload": "longdoc_qa", "params": {"doc_tokens": 8000, "docs": 2, "output_tokens": 64}, "concurrency": 4}
+ ]
+}

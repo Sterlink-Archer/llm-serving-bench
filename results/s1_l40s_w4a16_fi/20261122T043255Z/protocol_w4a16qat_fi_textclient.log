@@ -1,0 +1,2 @@
+[r1x_s7] R=0.738 win=96s done=15 err=0 drop=0 req/s=0.16 out=99 in=2008 tok/s cache=0.00 TTFT p50=51.395s p95=74.081s TPOT p50=138.4ms srv=98.80002010906048
+[protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=None tok/s -> /root/or/out/protocol_w4a16qat_fi_textclient/protocol_summary.json

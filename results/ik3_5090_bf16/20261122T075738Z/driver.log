@@ -1,0 +1,11 @@
+2026-11-22T07:57:39Z [ik3_5090_bf16] creating spot sandbox (RTX-5090 x1, $1.6773/h, ttl 110 min, budget $4.0; project so far ~$123.93)
+2026-11-22T07:58:44Z [ik3_5090_bf16] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          22          82           0         155         231 | overlay         1.8T  539G  1.2T  31% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:01:02Z [ik3_5090_bf16] download swa25: rc=0 134s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:05:45Z [ik3_5090_bf16] server swa25 ready=True after 281.9s; gpu mem 30862 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 78848 graphs 10
+2026-11-22T08:06:48Z [ik3_5090_bf16] gate_swa25_gsm8kor100 rc=0 61s :: [gate_swa25_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=49s
+2026-11-22T08:14:35Z [ik3_5090_bf16] protocol_swa25_B_text rc=0 466s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.5637); prefill=None tok/s -> /root/or/out/protocol_swa25_B_text/protocol_summary.json
+2026-11-22T08:14:53Z [ik3_5090_bf16] download swa25_nopg: rc=0 4s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:16:03Z [ik3_5090_bf16] server swa25_nopg ready=True after 67.6s; gpu mem 29286 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 83712 graphs 10
+2026-11-22T08:17:27Z [ik3_5090_bf16] gate_swa25_nopg_gsm8kor100 rc=0 72s :: [gate_swa25_nopg_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=61s
+2026-11-22T08:25:15Z [ik3_5090_bf16] protocol_swa25_nopg_B_text rc=0 468s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.5637); prefill=None tok/s -> /root/or/out/protocol_swa25_nopg_B_text/protocol_summary.json
+2026-11-22T08:25:54Z [ik3_5090_bf16] done: elapsed 28.3 min, est $0.79; project est $142.03

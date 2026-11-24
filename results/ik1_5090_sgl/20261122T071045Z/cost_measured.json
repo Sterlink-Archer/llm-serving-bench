@@ -1,0 +1,35 @@
+{
+ "run_id": "ik1_5090_sgl/20261122T071045Z",
+ "configs": [
+  {
+   "run_id": "ik1_5090_sgl/20261122T071045Z",
+   "config_id": "ik1_5090_sgl:sgl",
+   "gpu": "RTX-5090",
+   "usd_per_h": {
+    "gpu": 0.74,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 1.6773
+   },
+   "steady_usd": 0.3562,
+   "steady_gpu_usd": 0.1571,
+   "steady_host_usd": 0.199,
+   "eval_usd": 0.0337,
+   "cold_start_usd": {
+    "weight_download": 0.0312,
+    "engine_start": 0.1313,
+    "warmup": 0.0009,
+    "create_share": 0.0299
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6188,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

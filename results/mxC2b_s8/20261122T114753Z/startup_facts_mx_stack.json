@@ -1,0 +1,91 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "ROCM_AITER_UNIFIED_ATTN",
+  "global_512": "ROCM_AITER_UNIFIED_ATTN"
+ },
+ "attention_backend_lines": [
+  "(EngineCore pid=2006) INFO 11-22 11:49:46 [rocm.py:628] Using ROCM_AITER_UNIFIED_ATTN backend (selected via --attention-backend)."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  48,
+  64,
+  80,
+  96,
+  112,
+  128,
+  144,
+  160,
+  176,
+  192,
+  224,
+  256,
+  288,
+  320,
+  352,
+  384
+ ],
+ "kv_cache_tokens": 974307,
+ "kv_cache_gib": 235.35,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 29.73,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "quark",
+  "detail": null
+ },
+ "spec_decode": {
+  "method": "mtp",
+  "draft_model": "/root/models/mxfp4/assistant",
+  "num_speculative_tokens": 3
+ },
+ "engine_version": "0.30.0",
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "mxC2b_s8/20261122T114753Z",
+ "config_id": "mxC2b_s8:mx_stack",
+ "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+ "image_digest": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+ "model_repo": "amd/gemma-4-31B-it-MXFP4",
+ "model_rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 268296 MB\n        FREE_VRAM: 26296 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 268296 MB\n        FREE_VISIBLE_VRAM: 26296 MB",
+ "source_log": "results/mxC2b_s8/20261122T114753Z/server_mx_stack.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T11:50:00Z",
+   "t_end": "2026-11-22T11:50:01Z"
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T11:50:54Z",
+   "t_end": "2026-11-22T11:51:11Z",
+   "detail": {
+    "s": 17.0,
+    "gib": 5.0
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T11:51:26Z",
+   "t_end": "2026-11-22T11:51:37Z",
+   "detail": {
+    "s": 11.0,
+    "gib": 4.89
+   }
+  }
+ ]
+}

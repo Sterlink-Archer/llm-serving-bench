@@ -1,0 +1,2 @@
+[r0.997x_s7] R=0.86 win=96s done=100 err=0 drop=0 req/s=0.95 out=398 in=7852 tok/s cache=0.00 TTFT p50=2.224s p95=5.182s TPOT p50=31.8ms srv=398.1553125897141
+[protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=None tok/s -> /root/or/out/protocol_p6_small_mtp3_textclient/protocol_summary.json

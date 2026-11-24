@@ -1,0 +1,37 @@
+{
+ "label": "e5_2xh100_vllm_fp8_tp2",
+ "note": "GPU count: 2x H100, FP8-dynamic + FP8 KV, tensor parallel 2 (vs 1x H100 in e1a/fp8dyn; 2 independent replicas = 2x e1a by construction).",
+ "snapshot": {
+  "name": "or-vllm0330-h100x2-c16m64d150",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H100",
+  "gpus": 2,
+  "cpu": 16,
+  "mem": 64,
+  "disk": 150
+ },
+ "max_minutes": 40,
+ "budget_usd": 6.0,
+ "servers": [
+  {
+   "name": "fp8dyn_tp2",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8 --tensor-parallel-size 2",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    }
+   ]
+  }
+ ]
+}

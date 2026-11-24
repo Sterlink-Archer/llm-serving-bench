@@ -1,0 +1,2 @@
+[r0.34x_s7] R=0.35 win=240s done=88 err=0 drop=0 req/s=0.34 out=128 in=3295 tok/s cache=0.00 TTFT p50=3.040s p95=17.943s TPOT p50=73.2ms srv=123.22406146637672
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=None tok/s -> /root/or/out/protocol_sgl_counter_B_text/protocol_summary.json

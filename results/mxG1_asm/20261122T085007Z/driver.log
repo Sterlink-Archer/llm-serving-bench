@@ -1,0 +1,17 @@
+2026-11-22T08:50:07Z [mxG1_asm] creating spot sandbox (MI355X x1, $4.7565/h, ttl 70 min, budget $6.0; project so far ~$150.30)
+2026-11-22T08:50:32Z [mxG1_asm] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:50:34Z [mxG1_asm] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T08:50:36Z [mxG1_asm] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T08:50:49Z [mxG1_asm] gemm_inventory rc=0 13s :: [2026-11-22T08:50:42Z] inventory done in 4s
+2026-11-22T08:51:12Z [mxG1_asm] gemm_mfma rc=0 23s :: [2026-11-22T08:51:09Z] mfma done in 18s
+2026-11-22T09:00:12Z [mxG1_asm] gemm_sweep rc=0 540s :: [2026-11-22T09:00:08Z] sweep done in 535s
+2026-11-22T09:01:07Z [mxG1_asm] gemm_ps rc=0 54s :: [2026-11-22T09:01:03Z] ps done in 49s
+2026-11-22T09:01:19Z [mxG1_asm] gemm_confirm rc=134 13s :: /root/or/jobs/018_gemm_confirm.sh: line 3:  4213 Aborted                 (core dumped) python3 /root/or/mx/gemm_headroom.py confirm --rounds 2 --min-s 0.25 --out /root/or/out/gemm
+2026-11-22T09:01:50Z [mxG1_asm] done: elapsed 11.7 min, est $0.93; project est $155.21

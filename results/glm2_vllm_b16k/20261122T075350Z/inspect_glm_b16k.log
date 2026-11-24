@@ -1,0 +1,12 @@
+== date 2026-11-22T07:54:14Z
+version vllm: 0.34.0+rocm100
+version sglang: - (PackageNotFoundError)
+version torch: 2.13.0+rocm10.0.0
+version triton: 3.8.0+git669b31ac
+version amd-aiter: 0.1.28.post1
+version transformers: 5.22.0
+version tilelang: 0.1.10
+vllm:model_executor/models/glm5next.py exists=False
+vllm:models/glm5next.py exists=False
+        MARKET_NAME: AMD Instinct MI355X VF
+        TARGET_GRAPHICS_VERSION: gfx950

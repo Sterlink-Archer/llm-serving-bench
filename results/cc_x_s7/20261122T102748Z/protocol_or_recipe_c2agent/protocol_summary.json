@@ -1,0 +1,161 @@
+{
+ "schema": "protocol/1",
+ "run_id": "cc_x_s7/20261122T102748Z",
+ "config_id": "cc_x_s7:or_recipe",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 1.6961,
+ "duration_s": 300.0,
+ "warmup_s": 60.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "agent_session",
+ "params": {
+  "start_dist": {
+   "uniform": [
+    6000,
+    8000
+   ]
+  },
+  "tool_dist": {
+   "uniform": [
+    1000,
+    2000
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  },
+  "turns": 4,
+  "think_s": [
+   0.5,
+   2.0
+  ]
+ },
+ "calibration": {
+  "tokenizer": "/root/models/mxfp4",
+  "exact_prose_tokens": true
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 3.98,
+   "rate": 6.75,
+   "seeds": {
+    "7": "cells/r3.98x_6.75rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "achieved_rps": 6.48,
+     "arrived_rps": 6.526666666666666,
+     "goodput_rps": 6.48,
+     "ttft_p50_s": 0.2811609854688868,
+     "ttft_p95_s": 0.9781,
+     "ttft_p99_s": 1.5698262632079416,
+     "tpot_p50_s": 0.020294192774178006,
+     "tpot_p95_s": 0.02749047730657126,
+     "e2e_p50_s": 8.169360665837303,
+     "errors": 0,
+     "requests_sent": 2285,
+     "dropped": 0,
+     "slo_pass": true,
+     "out_tok_s": 2526.62,
+     "in_tok_s": 63824.973333333335,
+     "cached_in_tok_s": 40407.89333333333,
+     "server_gen_tok_s": 2526.121419120337,
+     "spec_accept_len": 2.523015394656659,
+     "preemptions": 0.0,
+     "peak_inflight": 77,
+     "spec_acceptance_rate": 0.7615076973283295,
+     "server_prompt_tok_s": 63825.26185008478,
+     "prompt_tok_window_ratio": 1.0000045204366939,
+     "prompt_tok_xcheck_ratio": 1.0,
+     "prompt_tok_xcheck_pass": true,
+     "prompt_tok_xcheck_basis": "whole cell: server counter before the first request vs after all finished and settled, vs the sum of prompt tokens in the completed responses (the window ratio is informational: engines count at different moments)",
+     "window_achieved_rps": 6.48,
+     "window_ttft_p95_s": 0.9495378398918554,
+     "window_slo_pass": true,
+     "window_goodput_rps": 6.48,
+     "scored_window_s": 300.0,
+     "scored_from_s": 60.0,
+     "requests_in_window": 1958,
+     "ttft_censored": 10,
+     "ttft_p95_lower_s": 0.9680299999999992,
+     "client": "traffic.py (steady window)",
+     "prompt_tokens_mean": 9755.071208791209,
+     "completion_tokens_mean": 380.6079120879121,
+     "cached_tokens_mean": 6293.352622061483,
+     "cached_share_cell": 0.6441142183457556,
+     "cached_share_scored": 0.6528926056044082,
+     "server_prefix_cache_hit_ratio": 0.6514452659617234,
+     "sessions": 608,
+     "exact_arrivals": true,
+     "stratified_lengths": true
+    }
+   },
+   "kept_seed": 7,
+   "achieved_rps": 6.48,
+   "arrived_rps": 6.526666666666666,
+   "goodput_rps": 6.48,
+   "ttft_p50_s": 0.2811609854688868,
+   "ttft_p95_s": 0.9781,
+   "ttft_p99_s": 1.5698262632079416,
+   "tpot_p50_s": 0.020294192774178006,
+   "tpot_p95_s": 0.02749047730657126,
+   "e2e_p50_s": 8.169360665837303,
+   "errors": 0,
+   "requests_sent": 2285,
+   "dropped": 0,
+   "slo_pass": true,
+   "out_tok_s": 2526.62,
+   "in_tok_s": 63824.973333333335,
+   "cached_in_tok_s": 40407.89333333333,
+   "server_gen_tok_s": 2526.121419120337,
+   "spec_accept_len": 2.523015394656659,
+   "preemptions": 0.0,
+   "peak_inflight": 77,
+   "spec_acceptance_rate": 0.7615076973283295,
+   "server_prompt_tok_s": 63825.26185008478,
+   "prompt_tok_window_ratio": 1.0000045204366939,
+   "prompt_tok_xcheck_ratio": 1.0,
+   "prompt_tok_xcheck_pass": true,
+   "prompt_tok_xcheck_basis": "whole cell: server counter before the first request vs after all finished and settled, vs the sum of prompt tokens in the completed responses (the window ratio is informational: engines count at different moments)",
+   "window_achieved_rps": 6.48,
+   "window_ttft_p95_s": 0.9495378398918554,
+   "window_slo_pass": true,
+   "window_goodput_rps": 6.48,
+   "scored_window_s": 300.0,
+   "scored_from_s": 60.0,
+   "requests_in_window": 1958,
+   "ttft_censored": 10,
+   "ttft_p95_lower_s": 0.9680299999999992,
+   "client": "traffic.py (steady window)",
+   "prompt_tokens_mean": 9755.071208791209,
+   "completion_tokens_mean": 380.6079120879121,
+   "cached_tokens_mean": 6293.352622061483,
+   "cached_share_cell": 0.6441142183457556,
+   "cached_share_scored": 0.6528926056044082,
+   "server_prefix_cache_hit_ratio": 0.6514452659617234,
+   "sessions": 608,
+   "exact_arrivals": true,
+   "stratified_lengths": true
+  }
+ ],
+ "prefill": null,
+ "t_start": "2026-11-22T10:51:47Z",
+ "client": "traffic",
+ "ttft_basis": "text",
+ "column": "C",
+ "group_tag": "c2agent",
+ "max_rate_at_slo_rps": 6.75,
+ "max_goodput_rps": 6.48,
+ "t_end": "2026-11-22T10:57:57Z",
+ "wall_minutes": 6.166160356998444
+}

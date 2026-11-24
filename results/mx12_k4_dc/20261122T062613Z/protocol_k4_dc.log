@@ -1,0 +1,4 @@
+[vllmbench r=3.25 s=8] done=975 failed=0 req/s=3.233153885489133 p95 TTFT=2.43804565242026 median TPOT=22.23089508186637 ms in tok/s=30797
+[vllmbench r=3.5 s=8] done=1050 failed=0 req/s=3.457699378138988 p95 TTFT=3.3565817221999166 median TPOT=33.88790588681431 ms in tok/s=32985
+[vllmbench r=3.75 s=8] done=1125 failed=0 req/s=3.5975952576764474 p95 TTFT=8.446121384669095 median TPOT=46.01309974811807 ms in tok/s=34178
+[protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=43256.346657676586 tok/s -> /root/or/out/protocol_k4_dc/protocol_summary.json

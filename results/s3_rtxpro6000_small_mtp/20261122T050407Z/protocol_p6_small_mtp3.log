@@ -1,0 +1,3 @@
+[vllmbench r=0.86 s=7] done=103 failed=0 req/s=0.7928967424342037 p95 TTFT=5.630902553303167 median TPOT=35.06030133326671 ms in tok/s=7963
+[vllmbench r=1.03 s=7] done=123 failed=0 req/s=0.9311515559798605 p95 TTFT=8.19926896507386 median TPOT=98.99229066429835 ms in tok/s=9167
+[protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=None tok/s -> /root/or/out/protocol_p6_small_mtp3/protocol_summary.json

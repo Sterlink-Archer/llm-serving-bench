@@ -1,0 +1,212 @@
+{
+ "label": "d1_rtxpro6000_prefill_diag",
+ "run_id": "d1_rtxpro6000_prefill_diag/20261122T045255Z",
+ "config_file": "configs/d1_rtxpro6000_prefill_diag.json",
+ "t_start": "2026-11-22T04:52:55Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 2.8797
+ },
+ "phases": {
+  "create_s": 10.5
+ },
+ "servers": {
+  "nvfp4_fi_mbt8192": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 71.8,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:  87%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b | 13/15 [00:00<00:00, 112.78it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:20<00:00, 112.78it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:01<00:00,  5.56s/it] \rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:01<00:00,  4.11s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640258 secs=61.9 GBps=0.376 method=huggingface_hub\n",
+    "bytes": 23297640258,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 165.2,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+    "env": {},
+    "gpu_mem_after_load": "89735 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-760d1551\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 265537,
+    "kv_cache_gib": 63.99,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "profile_prefill_4x10k": {
+     "rc": 0,
+     "secs": 21.3,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "[profile] prefill 12312 tok/s over 4x10000; gemm=60.6% attention=34.8% other=4.5% memcpy/memset=0.0%\n"
+    },
+    "prefill_probe_mbt8192": {
+     "rc": 0,
+     "secs": 133.8,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/nvfp4 --out /root/or/out/prefill_probe_mbt8192.json",
+     "tail": "[prefill_probe] 12105 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "nvfp4_fi_mbt16384": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.1,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:00<00:00, 671.22it/s]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640258 secs=0.1 GBps=188.935 method=huggingface_hub\n",
+    "bytes": 23297640258,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 107.6,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+    "env": {},
+    "gpu_mem_after_load": "90673 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-e63aa00e\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 152237,
+    "kv_cache_gib": 63.91,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt16384": {
+     "rc": 0,
+     "secs": 133.7,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/nvfp4 --out /root/or/out/prefill_probe_mbt16384.json",
+     "tail": "[prefill_probe] 12091 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "nvfp4_fi_mbt32768": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.1,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:00<00:00, 502.98it/s]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640258 secs=0.1 GBps=183.967 method=huggingface_hub\n",
+    "bytes": 23297640258,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 115.8,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+    "env": {},
+    "gpu_mem_after_load": "91703 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-de83008f\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 146800,
+    "kv_cache_gib": 61.63,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt32768": {
+     "rc": "server died",
+     "secs": 21.5,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/nvfp4 --out /root/or/out/prefill_probe_mbt32768.json",
+     "tail": ""
+    }
+   },
+   "end": "server died"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 9.41,
+  "this_run_ceiling_usd": 2.64,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 105,
+ "sandbox_id": "a0b18f21-bfd1-4326-b65c-efa5fb97a673",
+ "elapsed_s": 863.9,
+ "est_cost_usd": 0.691,
+ "t_saved": "2026-11-22T05:07:19Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          14          33           0         102         127\noverlay         713G  312G  372G  46% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T05:07:11Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 17.2,
+  "metered_usd": 8.6951
+ }
+}

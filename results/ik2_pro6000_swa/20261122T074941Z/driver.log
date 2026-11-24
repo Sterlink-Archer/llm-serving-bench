@@ -1,0 +1,8 @@
+2026-11-22T07:49:41Z [ik2_pro6000_swa] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 100 min, budget $7.0; project so far ~$116.75)
+2026-11-22T07:50:27Z [ik2_pro6000_swa] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 60 | Mem:             176          23          60           0          97         153 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T07:51:47Z [ik2_pro6000_swa] download base: rc=0 77s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:55:06Z [ik2_pro6000_swa] server base ready=True after 198.0s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T07:55:56Z [ik2_pro6000_swa] setup_vllm_client rc=0 48s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 21 s: 0.33.0
+2026-11-22T07:56:02Z [ik2_pro6000_swa] signal 15: tearing down
+2026-11-22T07:56:23Z [ik2_pro6000_swa] done: elapsed 6.7 min, est $0.32; project est $122.99
+2026-11-22T07:56:34Z [ik2_pro6000_swa] done: elapsed 6.9 min, est $0.33; project est $123.12

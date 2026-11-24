@@ -1,0 +1,12 @@
+2026-11-22T08:41:49Z [ik8_pro6000_c4] building or-sglang-ik2m-pro6000-c4m24d150 from lmsysorg/sglang:inkling-2-mini
+2026-11-22T08:42:06Z [ik8_pro6000_c4] creating spot sandbox (RTX-PRO-6000 x1, $2.5561/h, ttl 90 min, budget $5.0; project so far ~$147.71)
+2026-11-22T08:43:03Z [ik8_pro6000_c4] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 240 | Mem:             708          46         293           0         361         661 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:44:27Z [ik8_pro6000_c4] download mixed: rc=0 81s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:47:53Z [ik8_pro6000_c4] server mixed ready=True after 203.6s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T08:50:25Z [ik8_pro6000_c4] gate_mixed_gsm8kor100 rc=0 150s :: [gate_mixed_gsm8kor100] gsm8kor: 0.960 (96/100, noans 1, err 0, trunc 1) wall=140s
+2026-11-22T09:05:34Z [ik8_pro6000_c4] protocol_mixed_B_text rc=0 910s :: [protocol] max_rate_at_slo=0.971 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_mixed_B_text/protocol_summary.json
+2026-11-22T09:05:58Z [ik8_pro6000_c4] download mixed_dspark: rc=0 7s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:08:26Z [ik8_pro6000_c4] server mixed_dspark ready=True after 145.3s; gpu mem 85903 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1003136 graphs 35
+2026-11-22T09:09:21Z [ik8_pro6000_c4] gate_mixed_dspark_gsm8kor100 rc=0 51s :: [gate_mixed_dspark_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=26s
+2026-11-22T09:24:32Z [ik8_pro6000_c4] protocol_mixed_dspark_B_text rc=0 911s :: [protocol] max_rate_at_slo=1.074 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_mixed_dspark_B_text/protocol_summary.json
+2026-11-22T09:25:09Z [ik8_pro6000_c4] done: elapsed 43.1 min, est $1.83; project est $171.3

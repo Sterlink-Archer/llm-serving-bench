@@ -1,0 +1,211 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  8554,
+  10221,
+  9141,
+  8709
+ ],
+ "latencies_s": [
+  2.207,
+  4.869,
+  6.31,
+  5.908
+ ],
+ "wall_s": 6.312811613082886,
+ "prefill_tok_s": 5801.69380060338,
+ "trace": "/root/or/out/prof/1795326189.5282805-TP-0.trace.json.gz",
+ "categories": {
+  "gemm": {
+   "us": 2555292.7910000035,
+   "share": 0.4434473947344691
+  },
+  "attention": {
+   "us": 2420492.1930000004,
+   "share": 0.42005399958136164
+  },
+  "other": {
+   "us": 448599.7800000009,
+   "share": 0.07785033653290502
+  },
+  "fused_elementwise": {
+   "us": 337470.4240000004,
+   "share": 0.058564866167125904
+  },
+  "memcpy/memset": {
+   "us": 480.5959999999994,
+   "share": 8.340298413959966e-05
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "_fwd_kernel",
+   "cat": "attention",
+   "us": 2420492.1930000004,
+   "share": 0.42005399958136164
+  },
+  {
+   "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8",
+   "cat": "gemm",
+   "us": 1484418.3809999996,
+   "share": 0.25760706016503115
+  },
+  {
+   "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS1_10collective13CollectiveMmaINS1_42MainloopSm120TmaWarpSpecializedBlockScaledI",
+   "cat": "gemm",
+   "us": 1061320.1129999983,
+   "share": 0.1841822748245451
+  },
+  {
+   "name": "void sglang::act_and_mul_kernel<__nv_bfloat16, (sglang::ActivationKind)2, true, false, false, false, false, false>(sglang::ActivationParams)",
+   "cat": "other",
+   "us": 179733.8960000001,
+   "share": 0.03119115281324955
+  },
+  {
+   "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::opera",
+   "cat": "other",
+   "us": 103376.217,
+   "share": 0.017939984908036735
+  },
+  {
+   "name": "_gemma_qkv_rmsnorm_kernel",
+   "cat": "fused_elementwise",
+   "us": 96325.20899999997,
+   "share": 0.016716347781651594
+  },
+  {
+   "name": "void tensorrt_llm::kernels::quantize_with_block_size_tma<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integr",
+   "cat": "fused_elementwise",
+   "us": 86815.21899999997,
+   "share": 0.015065977106203292
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinfernormkernelsfused_add_rmsnormFusedAddRMSNormKernel_object_at__tensorptrbf16gmemalign128oi64537653761_tensorptrbf16gmemalign128oi6",
+   "cat": "fused_elementwise",
+   "us": 58959.435000000034,
+   "share": 0.010231863815314247
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 256l, true, __nv_bfloat16, __nv_bfloat16, long, 32u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 57168.63800000003,
+   "share": 0.009921087583742941
+  },
+  {
+   "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl<at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binar",
+   "cat": "other",
+   "us": 52543.59699999997,
+   "share": 0.009118454558982013
+  },
+  {
+   "name": "_gemma_rmsnorm_residual_kernel",
+   "cat": "fused_elementwise",
+   "us": 41663.46800000001,
+   "share": 0.0072303089513951905
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinfernormkernelsrmsnormRMSNormKernel_object_at__tensorptrbf16gmemalign128oi64537653761_tensorptrbf16gmemalign16o53761_tensorptrbf16gm",
+   "cat": "fused_elementwise",
+   "us": 39413.714,
+   "share": 0.006839884983696746
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<4, at::native::ConvertToFloat8E4M3fnOp<c10::BFloat16>, std::array<char*, 2ul>, false>(int, at::native::ConvertToF",
+   "cat": "other",
+   "us": 27502.171999999988,
+   "share": 0.004772747203723176
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 512l, true, __nv_bfloat16, __nv_bfloat16, long, 64u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 18081.38799999999,
+   "share": 0.0031378574032783226
+  },
+  {
+   "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+   "cat": "fused_elementwise",
+   "us": 14293.379000000004,
+   "share": 0.002480483528864761
+  },
+  {
+   "name": "void sglang::store_kvcache_kernel<4096l, 4096l, 256u, true, long>(sglang::StoreKVCacheParams)",
+   "cat": "other",
+   "us": 8518.865999999996,
+   "share": 0.0014783702858229685
+  },
+  {
+   "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_64x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_64x1_tn_align8::",
+   "cat": "gemm",
+   "us": 5775.215,
+   "share": 0.0010022350686393117
+  },
+  {
+   "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8",
+   "cat": "gemm",
+   "us": 3779.082,
+   "share": 0.0006558246762525009
+  },
+  {
+   "name": "void sglang::store_kvcache_kernel<2048l, 2048l, 128u, true, long>(sglang::StoreKVCacheParams)",
+   "cat": "other",
+   "us": 570.6560000000001,
+   "share": 9.903206293262417e-05
+  },
+  {
+   "name": "Memset (Device)",
+   "cat": "memcpy/memset",
+   "us": 386.23399999999964,
+   "share": 6.702733309510305e-05
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor",
+   "cat": "other",
+   "us": 312.60800000000006,
+   "share": 5.425022277736812e-05
+  },
+  {
+   "name": "void at::native::vectorized_gather_kernel<16, long>(char*, char*, long*, int, long, long, long, long, bool)",
+   "cat": "other",
+   "us": 155.935,
+   "share": 2.7061074856654008e-05
+  },
+  {
+   "name": "void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&",
+   "cat": "other",
+   "us": 92.06499999999998,
+   "share": 1.5977027971128038e-05
+  },
+  {
+   "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#4}::opera",
+   "cat": "other",
+   "us": 71.04,
+   "share": 1.2328333971313052e-05
+  },
+  {
+   "name": "void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_put_kernel_impl<at::native::OpaqueType<8> >(at::TensorIterator&",
+   "cat": "other",
+   "us": 53.664,
+   "share": 9.312890121572966e-06
+  }
+ ],
+ "gpu_kernel_us_total": 5762335.783999998,
+ "kernel_events": 7681,
+ "reclassified_at": "2026-11-22T05:45:26Z",
+ "categories_original_classifier": {
+  "other": {
+   "us": 2970200.5709999907,
+   "share": 0.5154507967493329
+  },
+  "gemm": {
+   "us": 2791654.617000006,
+   "share": 0.4844658002665273
+  },
+  "memcpy/memset": {
+   "us": 480.5959999999994,
+   "share": 8.340298413959966e-05
+  }
+ },
+ "reclassify_note": "Full trace reclassified on the box before deletion with the fixed classifier (SGLang's Triton attention kernel '_fwd_kernel' had been filed as 'other', its '_gemma_*' norm kernels as GEMM)."
+}

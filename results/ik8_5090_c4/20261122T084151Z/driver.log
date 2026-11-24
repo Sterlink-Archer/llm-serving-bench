@@ -1,0 +1,11 @@
+2026-11-22T08:41:51Z [ik8_5090_c4] building or-sglang-ik2m-5090-c4m24d150 from lmsysorg/sglang:inkling-2-mini
+2026-11-22T08:42:07Z [ik8_5090_c4] creating spot sandbox (RTX-5090 x1, $1.3461/h, ttl 80 min, budget $3.0; project so far ~$147.72)
+2026-11-22T08:43:03Z [ik8_5090_c4] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          22          82           0         155         231 | overlay         1.8T  539G  1.2T  31% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:44:15Z [ik8_5090_c4] download mem84: rc=0 69s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:47:56Z [ik8_5090_c4] server mem84 ready=True after 219.4s; gpu mem 30926 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 156672 graphs 10
+2026-11-22T08:49:54Z [ik8_5090_c4] gate_mem84_gsm8kor100 rc=0 105s :: [gate_mem84_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=90s
+2026-11-22T08:50:22Z [ik8_5090_c4] protocol_mem84_B_text rc=server died 29s :: [transformers] You are using a model of type `inkling2_loop` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` 
+2026-11-22T08:50:40Z [ik8_5090_c4] download mem84_mixed: rc=0 4s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:50:59Z [ik8_5090_c4] signal 15: tearing down
+2026-11-22T08:51:23Z [ik8_5090_c4] done: elapsed 9.3 min, est $0.21; project est $150.76
+2026-11-22T08:51:36Z [ik8_5090_c4] done: elapsed 9.5 min, est $0.21; project est $150.86

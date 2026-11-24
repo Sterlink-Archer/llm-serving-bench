@@ -1,0 +1,3 @@
+2026-11-22T07:32:08Z [glm1_sglang0523] building or-sglang0523rocm720-mi355x-c8m48d300 from lmsysorg/sglang:v0.5.23-rocm720-mi35x
+2026-11-22T07:32:23Z [glm1_sglang0523] ERROR RuntimeError('snapshot or-sglang0523rocm720-mi355x-c8m48d300 failed: Snapshot size (22.20GB) exceeds maximum allowed size of 20GB')
+2026-11-22T07:32:32Z [glm1_sglang0523] done: elapsed 0.0 min, est $0.00; project est $103.25

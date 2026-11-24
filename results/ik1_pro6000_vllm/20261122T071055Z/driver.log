@@ -1,0 +1,9 @@
+2026-11-22T07:10:55Z [ik1_pro6000_vllm] building or-vllm-ik2m-pro6000-c8m32d150 from vllm/vllm-openai:inkling-2-mini
+2026-11-22T07:23:45Z [ik1_pro6000_vllm] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 100 min, budget $9.0; project so far ~$100.55)
+2026-11-22T07:24:18Z [ik1_pro6000_vllm] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 120 | Mem:             354          27         139           0         192         326 | overlay         150G  5.2M  150G   1% / | Python 3.14.10 | /usr/bin/curl | vllm 0.1.dev25855+g7cb5dae22
+2026-11-22T07:25:49Z [ik1_pro6000_vllm] download vllm: rc=0 88s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:29:08Z [ik1_pro6000_vllm] server vllm ready=True after 197.6s; gpu mem 90867 MiB, 97887 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 142607 graphs 51 REJECTED: missing attention_backend.global_512
+2026-11-22T07:30:34Z [ik1_pro6000_vllm] gate_vllm_gsm8kor100 rc=0 82s :: [gate_vllm_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=72s
+2026-11-22T07:35:54Z [ik1_pro6000_vllm] protocol_vllm_A_random rc=0 320s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.9704); prefill=23739.771465828435 tok/s -> /root/or/out/protocol_vllm_A_random/protocol_summary.json
+2026-11-22T07:40:09Z [ik1_pro6000_vllm] protocol_vllm_B_text rc=0 255s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_vllm_B_text/protocol_summary.json
+2026-11-22T07:40:43Z [ik1_pro6000_vllm] done: elapsed 17.0 min, est $0.82; project est $108.82

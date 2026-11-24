@@ -1,0 +1,89 @@
+{
+ "label": "s1_b300_nvfp4_mtp2_r4",
+ "stage": "1-screen (B300, launch when spot frees)",
+ "note": "RETRY 3 (r4). r3 on 2026-11-22: FA4 refused head_size=512 on Blackwell (TMEM) and fell back to FA2, which caps at 256; FLASHINFER crashed in TRTLLM-GEN (no head_dim-512 context kernel) both with FP8 and BF16 KV, because vLLM 0.34 forces TRTLLM prefill when page size >= 128 (flashinfer.py: 'Page sizes >= 128 must use trtllm-gen') and when Q is FP8; VLLM_USE_TRTLLM_ATTENTION is no longer read ('Unknown vLLM environment variable'). r4: FLASHINFER native (non-TRTLLM) path via --block-size 64 + --attention-config use_trtllm_attention=false, disable_flashinfer_q_quantization=true, FP8 KV. Fallbacks on the same box: BF16 KV; then TRITON_ATTN as a labelled last resort (allow_rejected). Snapshot and host as r3.",
+ "snapshot": {
+  "name": "t3990-vllm-cuda-v0340-b300",
+  "image": "vllm/vllm-openai:v0.34.0",
+  "image_digest_amd64": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 16,
+  "mem": 128,
+  "disk": 400
+ },
+ "max_minutes": 60,
+ "budget_usd": 9.0,
+ "servers": [
+  {
+   "name": "nvfp4_mtp2_r4",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/nvfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --speculative-config '{\"model\":\"/root/models/nvfp4/assistant\",\"num_speculative_tokens\":2}' --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}' --attention-backend FLASHINFER --block-size 64 --kv-cache-dtype fp8 --attention-config '{\"use_trtllm_attention\":false,\"disable_flashinfer_q_quantization\":true}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_mtp2_r4",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_mtp2_r4_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ],
+   "fallbacks": [
+    {
+     "flags": "--kv-cache-dtype auto"
+    },
+    {
+     "flags": "--kv-cache-dtype fp8 --attention-backend TRITON_ATTN",
+     "allow_rejected": true,
+     "why": "last resort, measured and labelled: Triton attention on the head_dim-512 global layers"
+    }
+   ]
+  }
+ ]
+}

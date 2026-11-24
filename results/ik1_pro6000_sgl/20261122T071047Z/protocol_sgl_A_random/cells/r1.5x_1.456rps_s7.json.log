@@ -1,0 +1,155 @@
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0x7d51b9f08cc0>, trust_remote_code=False, seed=7, num_prompts=174, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, custom_ensure_client_side_data=False, spec_bench_output_len=256, spec_bench_category=None, sharegpt_output_len=None, timed_trace_chunk_hash_size=16, timed_trace_sec_multiplier=1, timed_trace_label_timestamp='timestamp', timed_trace_label_input_length='input_length', timed_trace_label_output_length='output_length', timed_trace_label_hash_ids='hash_ids', blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=9500, random_output_len=380, random_range_ratio='0.8', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai', base_url='http://127.0.0.1:8000', host='127.0.0.1', port=8000, endpoint='/v1/completions', header=None, max_concurrency=None, model='inkling', input_len=None, output_len=None, tokenizer='/root/models/inkling', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=1.456, burstiness=1.0, probe_request_rate=0.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/root/or/out/protocol_sgl_A_random/cells', result_filename='r1.5x_1.456rps_s7.json', ignore_eos=False, self_timed=None, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,95,99', goodput=None, request_id_prefix='bench-af03f60c-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name=None, lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False, log_config_file=None, logging_config=LoggingConfig(log_level='INFO', formatter='text', configure_logging=True, pylogging_config_file=None))
+(MainProcess pid=3470) ERROR 11-22 07:36:29 [repo_utils.py:126] Error parsing config for /root/models/inkling: The checkpoint you are trying to load has model type `inkling2_loop` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+(MainProcess pid=3470) ERROR 11-22 07:36:29 [repo_utils.py:126] 
+(MainProcess pid=3470) ERROR 11-22 07:36:29 [repo_utils.py:126] You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`, retrying 1 of 2
+(MainProcess pid=3470) ERROR 11-22 07:36:31 [repo_utils.py:124] Error parsing config for /root/models/inkling: The checkpoint you are trying to load has model type `inkling2_loop` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.
+(MainProcess pid=3470) ERROR 11-22 07:36:31 [repo_utils.py:124] 
+(MainProcess pid=3470) ERROR 11-22 07:36:31 [repo_utils.py:124] You can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`
+(MainProcess pid=3470) INFO 11-22 07:36:32 [utils.py:88] Sampling input_len from [1899, 17100] and output_len from [75, 684]
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 1.456
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     174       
+Failed requests:                         0         
+Request rate configured (RPS):           1.46      
+Benchmark duration (s):                  136.62    
+Total input tokens:                      1708233   
+Total generated tokens:                  68641     
+Request throughput (req/s):              1.27      
+Output token throughput (tok/s):         502.43    
+Peak output token throughput (tok/s):    1650.00   
+Peak concurrent requests:                84.00     
+Total token throughput (tok/s):          13006.15  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          1110.03   
+Median TTFT (ms):                        904.07    
+P50 TTFT (ms):                           904.07    
+P95 TTFT (ms):                           2485.90   
+P99 TTFT (ms):                           3601.09   
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          103.15    
+Median TPOT (ms):                        111.84    
+P50 TPOT (ms):                           111.84    
+P95 TPOT (ms):                           146.93    
+P99 TPOT (ms):                           166.78    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           100.48    
+Median ITL (ms):                         41.58     
+P50 ITL (ms):                            41.58     
+P95 ITL (ms):                            181.57    
+P99 ITL (ms):                            2098.93   
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          40646.57  
+Median E2EL (ms):                        37557.66  
+P50 E2EL (ms):                           37557.66  
+P95 E2EL (ms):                           77134.70  
+P99 E2EL (ms):                           88074.74  
+==================================================
+/it]
+ 17%|█▋        | 29/174 [01:03<02:38,  1.09s/it]
+ 17%|█▋        | 30/174 [01:04<02:36,  1.09s/it]
+ 18%|█▊        | 31/174 [01:05<03:03,  1.29s/it]
+ 18%|█▊        | 32/174 [01:06<02:20,  1.01it/s]
+ 19%|█▉        | 33/174 [01:06<01:44,  1.35it/s]
+ 20%|█▉        | 34/174 [01:06<01:38,  1.42it/s]
+ 20%|██        | 35/174 [01:07<01:13,  1.88it/s]
+ 21%|██        | 36/174 [01:07<01:03,  2.19it/s]
+ 21%|██▏       | 37/174 [01:12<04:16,  1.88s/it]
+ 22%|██▏       | 38/174 [01:12<03:16,  1.45s/it]
+ 22%|██▏       | 39/174 [01:13<02:23,  1.06s/it]
+ 23%|██▎       | 40/174 [01:13<02:13,  1.01it/s]
+ 24%|██▎       | 41/174 [01:14<01:59,  1.12it/s]
+ 25%|██▍       | 43/174 [01:14<01:09,  1.88it/s]
+ 25%|██▌       | 44/174 [01:17<02:31,  1.16s/it]
+ 26%|██▌       | 45/174 [01:18<02:21,  1.10s/it]
+ 26%|██▋       | 46/174 [01:19<01:54,  1.12it/s]
+ 27%|██▋       | 47/174 [01:19<01:26,  1.47it/s]
+ 28%|██▊       | 49/174 [01:19<00:55,  2.24it/s]
+ 29%|██▊       | 50/174 [01:20<00:56,  2.20it/s]
+ 30%|██▉       | 52/174 [01:27<03:30,  1.73s/it]
+ 30%|███       | 53/174 [01:28<03:03,  1.52s/it]
+ 32%|███▏      | 55/174 [01:28<01:57,  1.01it/s]
+ 32%|███▏      | 56/174 [01:28<01:41,  1.16it/s]
+ 33%|███▎      | 58/174 [01:28<01:04,  1.80it/s]
+ 34%|███▍      | 59/174 [01:29<00:53,  2.15it/s]
+ 34%|███▍      | 60/174 [01:31<01:46,  1.07it/s]
+ 36%|███▌      | 62/174 [01:31<01:11,  1.57it/s]
+ 37%|███▋      | 64/174 [01:32<01:02,  1.75it/s]
+ 37%|███▋      | 65/174 [01:33<00:55,  1.97it/s]
+ 38%|███▊      | 66/174 [01:34<01:12,  1.49it/s]
+ 39%|███▊      | 67/174 [01:34<01:03,  1.69it/s]
+ 39%|███▉      | 68/174 [01:35<00:57,  1.85it/s]
+ 40%|████      | 70/174 [01:35<00:35,  2.96it/s]
+ 41%|████      | 71/174 [01:37<01:30,  1.13it/s]
+ 41%|████▏     | 72/174 [01:38<01:16,  1.34it/s]
+ 42%|████▏     | 73/174 [01:39<01:35,  1.06it/s]
+ 43%|████▎     | 74/174 [01:39<01:12,  1.39it/s]
+ 44%|████▎     | 76/174 [01:39<00:42,  2.30it/s]
+ 44%|████▍     | 77/174 [01:47<03:37,  2.24s/it]
+ 45%|████▌     | 79/174 [01:48<02:18,  1.46s/it]
+ 46%|████▌     | 80/174 [01:48<01:49,  1.16s/it]
+ 47%|████▋     | 81/174 [01:50<01:51,  1.20s/it]
+ 48%|████▊     | 83/174 [01:50<01:18,  1.16it/s]
+ 48%|████▊     | 84/174 [01:51<01:15,  1.20it/s]
+ 49%|████▉     | 85/174 [01:54<01:51,  1.25s/it]
+ 49%|████▉     | 86/174 [01:54<01:26,  1.02it/s]
+ 50%|█████     | 87/174 [01:54<01:07,  1.28it/s]
+ 52%|█████▏    | 90/174 [01:54<00:32,  2.59it/s]
+ 52%|█████▏    | 91/174 [01:54<00:30,  2.74it/s]
+ 53%|█████▎    | 93/174 [01:56<00:37,  2.18it/s]
+ 54%|█████▍    | 94/174 [01:56<00:32,  2.48it/s]
+ 55%|█████▌    | 96/174 [01:56<00:23,  3.31it/s]
+ 56%|█████▌    | 97/174 [01:56<00:22,  3.40it/s]
+ 56%|█████▋    | 98/174 [02:01<01:38,  1.29s/it]
+ 57%|█████▋    | 100/174 [02:01<01:02,  1.19it/s]
+ 59%|█████▊    | 102/174 [02:02<00:41,  1.75it/s]
+ 60%|█████▉    | 104/174 [02:03<00:42,  1.64it/s]
+ 61%|██████    | 106/174 [02:03<00:32,  2.08it/s]
+ 63%|██████▎   | 109/174 [02:04<00:23,  2.82it/s]
+ 63%|██████▎   | 110/174 [02:04<00:20,  3.15it/s]
+ 64%|██████▍   | 112/174 [02:04<00:17,  3.63it/s]
+ 65%|██████▍   | 113/174 [02:05<00:16,  3.70it/s]
+ 66%|██████▌   | 114/174 [02:05<00:16,  3.55it/s]
+ 67%|██████▋   | 116/174 [02:05<00:11,  4.85it/s]
+ 67%|██████▋   | 117/174 [02:05<00:13,  4.33it/s]
+ 68%|██████▊   | 118/174 [02:06<00:13,  4.29it/s]
+ 68%|██████▊   | 119/174 [02:06<00:14,  3.71it/s]
+ 70%|██████▉   | 121/174 [02:06<00:09,  5.53it/s]
+ 71%|███████   | 123/174 [02:06<00:06,  7.45it/s]
+ 72%|███████▏  | 125/174 [02:07<00:12,  3.92it/s]
+ 73%|███████▎  | 127/174 [02:08<00:13,  3.41it/s]
+ 74%|███████▎  | 128/174 [02:08<00:12,  3.79it/s]
+ 74%|███████▍  | 129/174 [02:09<00:15,  2.99it/s]
+ 75%|███████▌  | 131/174 [02:09<00:10,  4.17it/s]
+ 76%|███████▌  | 132/174 [02:09<00:10,  4.04it/s]
+ 76%|███████▋  | 133/174 [02:09<00:09,  4.36it/s]
+ 77%|███████▋  | 134/174 [02:10<00:12,  3.33it/s]
+ 78%|███████▊  | 136/174 [02:10<00:08,  4.53it/s]
+ 79%|███████▉  | 138/174 [02:10<00:06,  5.78it/s]
+ 80%|███████▉  | 139/174 [02:10<00:05,  6.15it/s]
+ 80%|████████  | 140/174 [02:11<00:05,  6.23it/s]
+ 82%|████████▏ | 143/174 [02:11<00:03,  9.52it/s]
+ 83%|████████▎ | 145/174 [02:11<00:03,  7.54it/s]
+ 84%|████████▍ | 146/174 [02:11<00:04,  6.98it/s]
+ 85%|████████▌ | 148/174 [02:11<00:02,  8.95it/s]
+ 86%|████████▌ | 150/174 [02:12<00:04,  5.73it/s]
+ 87%|████████▋ | 151/174 [02:12<00:03,  6.13it/s]
+ 88%|████████▊ | 153/174 [02:12<00:02,  7.11it/s]
+ 89%|████████▉ | 155/174 [02:12<00:02,  8.72it/s]
+ 90%|█████████ | 157/174 [02:12<00:01, 10.56it/s]
+ 91%|█████████▏| 159/174 [02:13<00:01,  7.60it/s]
+ 93%|█████████▎| 161/174 [02:13<00:02,  6.32it/s]
+ 94%|█████████▍| 164/174 [02:14<00:01,  6.84it/s]
+ 95%|█████████▍| 165/174 [02:14<00:02,  4.37it/s]
+ 95%|█████████▌| 166/174 [02:15<00:01,  4.57it/s]
+ 97%|█████████▋| 169/174 [02:15<00:00,  5.23it/s]
+ 98%|█████████▊| 170/174 [02:15<00:00,  5.37it/s]
+ 99%|█████████▉| 173/174 [02:15<00:00,  7.51it/s]
+100%|██████████| 174/174 [02:16<00:00,  4.24it/s]
+100%|██████████| 174/174 [02:16<00:00,  1.27it/s]

@@ -1,0 +1,4 @@
+2026-11-22T08:03:05Z [mxS3_vllm_fp8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$128.52)
+2026-11-22T08:03:17Z [mxS3_vllm_fp8] signal 15: tearing down
+2026-11-22T08:03:34Z [mxS3_vllm_fp8] done: elapsed 0.5 min, est $0.04; project est $128.71
+2026-11-22T08:03:47Z [mxS3_vllm_fp8] done: elapsed 0.7 min, est $0.05; project est $128.85

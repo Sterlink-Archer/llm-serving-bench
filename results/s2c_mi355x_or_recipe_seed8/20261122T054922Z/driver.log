@@ -1,0 +1,4 @@
+2026-11-22T05:49:22Z [s2c_mi355x_or_recipe_seed8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 90 min, budget $9.0; project so far ~$49.21)
+2026-11-22T05:49:34Z [s2c_mi355x_or_recipe_seed8] signal 15: tearing down
+2026-11-22T05:49:45Z [s2c_mi355x_or_recipe_seed8] done: elapsed 0.4 min, est $0.03; project est $49.42
+2026-11-22T05:49:51Z [s2c_mi355x_or_recipe_seed8] done: elapsed 0.5 min, est $0.04; project est $49.51

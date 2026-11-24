@@ -1,0 +1,122 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "ROCM_AITER_MLA_SPARSE",
+  "global_512": "ROCM_AITER_MLA_SPARSE"
+ },
+ "attention_backend_lines": [
+  "(EngineCore pid=4040) INFO 11-22 07:47:24 [mm_encoder_attention.py:372] Using AttentionBackendEnum.ROCM_AITER_FA for MMEncoderAttention.",
+  "(EngineCore pid=4040) INFO 11-22 07:47:24 [rocm.py:828] Using ROCM_AITER_MLA_SPARSE backend (selected via --attention-backend).",
+  "(EngineCore pid=4040) INFO 11-22 07:50:14 [base.py:237] Using AITER Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU_W8A"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  8,
+  10,
+  12,
+  14,
+  16,
+  20,
+  24,
+  28,
+  32,
+  36,
+  40,
+  44,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 2554538,
+ "kv_cache_gib": 106.83,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": 77.96,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "quark",
+  "detail": null
+ },
+ "spec_decode": {
+  "method": "mtp",
+  "draft_model": null,
+  "num_speculative_tokens": 3
+ },
+ "engine_version": "0.34.0",
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "glm2_vllm_mtp3/20261122T074424Z",
+ "config_id": "glm2_vllm_mtp3:glm_mtp3",
+ "image": "vllm/vllm-openai-rocm:v0.34.0",
+ "image_digest": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+ "model_repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+ "model_rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285666 MB\n        FREE_VRAM: 8926 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285666 MB\n        FREE_VISIBLE_VRAM: 8926 MB",
+ "source_log": "results/glm2_vllm_mtp3/20261122T074424Z/server_glm_mtp3.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T07:50:14Z",
+   "t_end": "2026-11-22T07:50:38Z"
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T07:52:36Z",
+   "t_end": "2026-11-22T07:52:51Z",
+   "detail": {
+    "s": 15.0,
+    "gib": 1.02
+   }
+  }
+ ]
+}

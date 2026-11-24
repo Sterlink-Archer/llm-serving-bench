@@ -1,0 +1,97 @@
+{
+ "endpoint": "GET https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/models/search?search=gemma (account id and token not stored)",
+ "fetched_utc": "2026-11-22T07:37:02Z",
+ "models": [
+  {
+   "name": "@cf/aisingapore/gemma-sea-lion-v4-27b-it",
+   "description": "SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.",
+   "task": "Text Generation",
+   "properties": [
+    {
+     "property_id": "context_window",
+     "value": "128000"
+    },
+    {
+     "property_id": "price",
+     "value": [
+      {
+       "unit": "per M input tokens",
+       "price": 0.351,
+       "currency": "USD"
+      },
+      {
+       "unit": "per M output tokens",
+       "price": 0.555,
+       "currency": "USD"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "@cf/google/gemma-4-26b-a4b-it",
+   "description": "Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.",
+   "task": "Text Generation",
+   "properties": [
+    {
+     "property_id": "async_queue",
+     "value": "true"
+    },
+    {
+     "property_id": "context_window",
+     "value": "256000"
+    },
+    {
+     "property_id": "function_calling",
+     "value": "true"
+    },
+    {
+     "property_id": "reasoning",
+     "value": "true"
+    },
+    {
+     "property_id": "reasoning_effort",
+     "value": {
+      "mandatory": false,
+      "default_enabled": true
+     }
+    },
+    {
+     "property_id": "terms",
+     "value": "https://ai.google.dev/gemma/docs/gemma_4_license"
+    },
+    {
+     "property_id": "vision",
+     "value": "true"
+    },
+    {
+     "property_id": "price",
+     "value": [
+      {
+       "unit": "per M input tokens",
+       "price": 0.1,
+       "currency": "USD"
+      },
+      {
+       "unit": "per M output tokens",
+       "price": 0.3,
+       "currency": "USD"
+      },
+      {
+       "unit": "per M cached input tokens",
+       "price": 0.05,
+       "currency": "USD"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "@cf/google/embeddinggemma-2",
+   "description": "EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs\u2014and combinations thereof\u2014into a single, unified 768-dimensional vector space.",
+   "task": "Multimodal Embeddings",
+   "properties": []
+  }
+ ],
+ "finding": "Gemma 4 31B is NOT in the Workers AI catalog; closest is @cf/google/gemma-4-26b-a4b-it (a different model). No precision/quantization property is published for any listed model: 'precision not disclosed'."
+}

@@ -1,0 +1,16 @@
+d40_512: 48 done, 0 failed of 48 (29 s this worker)
+d40_512: default 0.478 ms (median over 48 interleaved baselines); 0 configs aborted
+   1.047x  0.456 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 8, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   1.047x  0.456 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 8, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   1.002x  0.477 ms vs 0.478  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 4, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   1.000x  0.478 ms vs 0.478  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 4, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.946x  0.506 ms vs 0.478  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.943x  0.506 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+=== summary
+d40_512: default 0.478 ms (median over 48 interleaved baselines); 0 configs aborted
+   1.047x  0.456 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 8, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   1.047x  0.456 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 8, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   1.002x  0.477 ms vs 0.478  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 4, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   1.000x  0.478 ms vs 0.478  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 4, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.946x  0.506 ms vs 0.478  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.943x  0.506 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}

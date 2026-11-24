@@ -1,0 +1,419 @@
+W1122 04:54:33.909000 678 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1122 04:54:33.910000 678 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1122 04:54:33.910000 678 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38] 
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38]        █     █     █▄   ▄█
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.33.0
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38]   █▄█▀ █     █     █     █  model   /root/models/nvfp4
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:38] 
+(APIServer pid=678) INFO 11-22 04:54:37 [startup.py:96] non-default args: {'model_tag': '/root/models/nvfp4', 'enable_prompt_tokens_details': True, 'model': '/root/models/nvfp4', 'max_model_len': 32768, 'served_model_name': ['gemma'], 'attention_backend': 'FLASHINFER', 'reasoning_parser': 'gemma4', 'gpu_memory_utilization': 0.94, 'kv_cache_dtype': 'fp8', 'language_model_only': True, 'max_num_batched_tokens': 8192, 'async_scheduling': True, 'profiler_config': ProfilerConfig(profiler='torch', torch_profiler_dir='/root/or/out/prof', torch_profiler_activities=None, proton_profiler_dir='', proton_context='shadow', proton_data='tree', proton_backend=None, proton_mode=None, proton_hook=None, proton_output_format=None, proton_graph_attribution=False, torch_profiler_with_stack=False, torch_profiler_with_flops=False, torch_profiler_use_gzip=True, torch_profiler_dump_cuda_time_total=True, torch_profiler_record_shapes=False, torch_profiler_with_memory=False, capture_torch_profiler=False, detailed_trace_annotation=False, ignore_frontend=False, delay_iterations=0, max_iterations=0, warmup_iterations=0, active_iterations=5, wait_iterations=0)}
+(APIServer pid=678) INFO 11-22 04:54:45 [model.py:744] Resolved architecture: Gemma4ForConditionalGeneration
+(APIServer pid=678) INFO 11-22 04:54:45 [model.py:2170] Using max model len 32768
+(APIServer pid=678) INFO 11-22 04:54:48 [model.py:964] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(APIServer pid=678) INFO 11-22 04:54:48 [model.py:1021] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(APIServer pid=678) INFO 11-22 04:54:48 [cache.py:484] Using fp8 data type to store kv cache. It reduces the GPU memory footprint and boosts the performance. Meanwhile, it may cause accuracy drop without a proper scaling factor
+(APIServer pid=678) INFO 11-22 04:54:48 [scheduler.py:310] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=678) INFO 11-22 04:54:48 [kernel.py:480] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+(APIServer pid=678) INFO 11-22 04:54:48 [compilation.py:317] Enabled custom fusions: act_quant
+W1122 04:54:55.397000 897 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1122 04:54:55.397000 897 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1122 04:54:55.398000 897 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+(EngineCore pid=897) INFO 11-22 04:55:00 [core.py:139] Initializing a V1 LLM engine (v0.33.0) with config: model='/root/models/nvfp4', speculative_config=None, tokenizer='/root/models/nvfp4', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=compressed-tensors, quantization_config=None, enforce_eager=False, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=fp8, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='gemma4', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=gemma, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::qwen4_exp_ple_short_conv', 'vllm::qwen4_exp_qsa_with_output', 'vllm::qwen4_exp_qsa_prepare_with_output', 'vllm::linear_attention', 'vllm::qwen_gdn_attention_core', 'vllm::qwen_gdn_attention_core_fused_norm_packed', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_cutedsl_warmup=True, enable_jit_warmup=True, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=897) INFO 11-22 04:55:00 [parallel_state.py:1929] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_e4e5c9973c42476eb1fe81b0fdff15fd backend=nccl
+(EngineCore pid=897) INFO 11-22 04:55:00 [parallel_state.py:2385] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=897) INFO 11-22 04:55:00 [gpu_worker.py:513] Using V2 Model Runner
+(EngineCore pid=897) INFO 11-22 04:55:01 [model_runner.py:399] Loading model from scratch...
+(EngineCore pid=897) INFO 11-22 04:55:01 [model.py:1021] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(EngineCore pid=897) INFO 11-22 04:55:01 [__init__.py:1303] Using FlashInferCutlassNvFp4LinearKernel for NVFP4 GEMM
+(EngineCore pid=897) INFO 11-22 04:55:02 [cuda.py:448] Using AttentionBackendEnum.FLASHINFER backend.
+(EngineCore pid=897) INFO 11-22 04:55:02 [cuda.py:448] Using AttentionBackendEnum.FLASHINFER backend.
+(EngineCore pid=897) INFO 11-22 04:55:02 [base_loader.py:82] Initializing model took 0.759848 seconds
+(EngineCore pid=897) INFO 11-22 04:55:02 [weight_utils.py:1144] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 21.67 GiB. Available RAM: 7.73 GiB.
+(EngineCore pid=897) INFO 11-22 04:55:02 [weight_utils.py:1174] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre) and the checkpoint size (21.67 GiB) exceeds 90% of available RAM (7.73 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:02<00:00,  2.25s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:02<00:00,  2.25s/it]
+
+(EngineCore pid=897) INFO 11-22 04:55:05 [default_loader.py:506] Loading weights took 2.52 seconds
+(EngineCore pid=897) WARNING 11-22 04:55:07 [compressed_tensors_w4a4_nvfp4.py:102] In NVFP4 linear, the weight global scale is different for parallel layers (e.g. q_proj, k_proj, v_proj). This  will likely result in reduced accuracy. Please verify the model accuracy. Consider using a checkpoint with a shared global NVFP4 scale for fused layers.
+(EngineCore pid=897) INFO 11-22 04:55:08 [model_runner.py:428] Model loading took 18.69 GiB memory and 7.472594 seconds
+(EngineCore pid=897) INFO 11-22 04:55:08 [topk_topp_sampler.py:149] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=897) INFO 11-22 04:55:08 [torch_utils.py:281] Reducing Torch threads from 16 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=897) INFO 11-22 04:55:08 [utils.py:381] Using LBNHC KV cache layout.
+(EngineCore pid=897) INFO 11-22 04:55:09 [monitor.py:40] [backbone] Starting torch.compile
+(EngineCore pid=897) INFO 11-22 04:55:24 [backends.py:1125] [backbone] Using cache directory: /root/.cache/vllm/torch_compile_cache/193f4963f1/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=897) INFO 11-22 04:55:24 [backends.py:1187] [backbone] Dynamo bytecode transform time: 14.37 s
+(EngineCore pid=897) INFO 11-22 04:55:32 [backends.py:417] [backbone] Compiling a graph for compile range (1, 8192) takes 7.11 s
+(EngineCore pid=897) INFO 11-22 04:55:41 [backends.py:948] collected artifacts: 61 entries, 5 artifacts, 18163492 bytes total
+(EngineCore pid=897) INFO 11-22 04:55:41 [decorators.py:752] [backbone] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/75abef52891cd6209bf086ca545d8f65e9a81037406a363eaf6f2ae8f79ba01b/rank_0_0/model
+(EngineCore pid=897) INFO 11-22 04:55:41 [monitor.py:62] [backbone] torch.compile took 31.71 s in total
+(EngineCore pid=897) INFO 11-22 04:55:41 [monitor.py:91] [backbone] Initial profiling/warmup run took 0.05 s
+(EngineCore pid=897) INFO 11-22 04:55:45 [flashinfer.py:1106] FlashInfer resolved query dtypes: prefill=torch.bfloat16, decode=torch.bfloat16, decode_backend=xqa, kv_cache_dtype=torch.float8_e4m3fn, arch=sm120
+(EngineCore pid=897) WARNING 11-22 04:55:45 [flashinfer.py:1022] FlashInfer XQA decode does not support head_dim=512; reverting this KV-cache group to native FlashInfer decode.
+(EngineCore pid=897) INFO 11-22 04:55:45 [flashinfer.py:1106] FlashInfer resolved query dtypes: prefill=torch.bfloat16, decode=torch.bfloat16, decode_backend=flashinfer-native, kv_cache_dtype=torch.float8_e4m3fn, arch=sm120
+Capturing CUDA graphs (PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]2026-11-22 04:55:46,469 - INFO - core.py:594 - flashinfer.jit: Building JIT module batch_prefill_with_kv_cache_dtype_q_bf16_dtype_kv_e4m3_dtype_o_bf16_dtype_idx_i32_head_dim_qk_512_head_dim_vo_512_posenc_0_use_swa_False_use_logits_cap_False_f16qk_False_kv_stride_equal; this can take several minutes on first use.
+Capturing CUDA graphs (PIECEWISE):   2%|▏         | 1/51 [00:25<21:39, 25.99s/it]Capturing CUDA graphs (PIECEWISE):   4%|▍         | 2/51 [00:26<08:47, 10.77s/it]Capturing CUDA graphs (PIECEWISE):   6%|▌         | 3/51 [00:26<04:43,  5.91s/it]Capturing CUDA graphs (PIECEWISE):   8%|▊         | 4/51 [00:26<02:50,  3.62s/it]Capturing CUDA graphs (PIECEWISE):  10%|▉         | 5/51 [00:26<01:48,  2.36s/it]Capturing CUDA graphs (PIECEWISE):  12%|█▏        | 6/51 [00:26<01:11,  1.60s/it]Capturing CUDA graphs (PIECEWISE):  14%|█▎        | 7/51 [00:26<00:48,  1.11s/it]Capturing CUDA graphs (PIECEWISE):  16%|█▌        | 8/51 [00:26<00:34,  1.26it/s]Capturing CUDA graphs (PIECEWISE):  18%|█▊        | 9/51 [00:26<00:24,  1.72it/s]Capturing CUDA graphs (PIECEWISE):  20%|█▉        | 10/51 [00:27<00:17,  2.30it/s]Capturing CUDA graphs (PIECEWISE):  22%|██▏       | 11/51 [00:27<00:13,  2.99it/s]Capturing CUDA graphs (PIECEWISE):  24%|██▎       | 12/51 [00:27<00:10,  3.78it/s]Capturing CUDA graphs (PIECEWISE):  25%|██▌       | 13/51 [00:27<00:08,  4.61it/s]Capturing CUDA graphs (PIECEWISE):  27%|██▋       | 14/51 [00:27<00:06,  5.46it/s]Capturing CUDA graphs (PIECEWISE):  29%|██▉       | 15/51 [00:27<00:05,  6.26it/s]Capturing CUDA graphs (PIECEWISE):  31%|███▏      | 16/51 [00:27<00:05,  6.98it/s]Capturing CUDA graphs (PIECEWISE):  33%|███▎      | 17/51 [00:27<00:04,  7.56it/s]Capturing CUDA graphs (PIECEWISE):  35%|███▌      | 18/51 [00:27<00:04,  8.12it/s]Capturing CUDA graphs (PIECEWISE):  37%|███▋      | 19/51 [00:27<00:03,  8.60it/s]Capturing CUDA graphs (PIECEWISE):  39%|███▉      | 20/51 [00:28<00:03,  8.87it/s]Capturing CUDA graphs (PIECEWISE):  41%|████      | 21/51 [00:28<00:03,  9.16it/s]Capturing CUDA graphs (PIECEWISE):  43%|████▎     | 22/51 [00:28<00:03,  9.24it/s]Capturing CUDA graphs (PIECEWISE):  45%|████▌     | 23/51 [00:28<00:03,  9.20it/s]Capturing CUDA graphs (PIECEWISE):  47%|████▋     | 24/51 [00:28<00:02,  9.18it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▉     | 25/51 [00:28<00:02,  9.36it/s]Capturing CUDA graphs (PIECEWISE):  51%|█████     | 26/51 [00:28<00:02,  9.51it/s]Capturing CUDA graphs (PIECEWISE):  53%|█████▎    | 27/51 [00:28<00:02,  9.55it/s]Capturing CUDA graphs (PIECEWISE):  55%|█████▍    | 28/51 [00:28<00:02,  9.53it/s]Capturing CUDA graphs (PIECEWISE):  57%|█████▋    | 29/51 [00:29<00:02,  9.43it/s]Capturing CUDA graphs (PIECEWISE):  59%|█████▉    | 30/51 [00:29<00:02,  9.40it/s]Capturing CUDA graphs (PIECEWISE):  61%|██████    | 31/51 [00:29<00:02,  9.34it/s]Capturing CUDA graphs (PIECEWISE):  63%|██████▎   | 32/51 [00:29<00:02,  9.47it/s]Capturing CUDA graphs (PIECEWISE):  65%|██████▍   | 33/51 [00:29<00:01,  9.56it/s]Capturing CUDA graphs (PIECEWISE):  67%|██████▋   | 34/51 [00:29<00:01,  9.66it/s]Capturing CUDA graphs (PIECEWISE):  69%|██████▊   | 35/51 [00:29<00:01,  9.44it/s]Capturing CUDA graphs (PIECEWISE):  71%|███████   | 36/51 [00:29<00:01,  9.40it/s]Capturing CUDA graphs (PIECEWISE):  73%|███████▎  | 37/51 [00:29<00:01,  9.34it/s]Capturing CUDA graphs (PIECEWISE):  75%|███████▍  | 38/51 [00:29<00:01,  9.34it/s]Capturing CUDA graphs (PIECEWISE):  76%|███████▋  | 39/51 [00:30<00:01,  9.40it/s]Capturing CUDA graphs (PIECEWISE):  78%|███████▊  | 40/51 [00:30<00:01,  9.51it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 41/51 [00:30<00:01,  9.42it/s]Capturing CUDA graphs (PIECEWISE):  82%|████████▏ | 42/51 [00:30<00:00,  9.19it/s]Capturing CUDA graphs (PIECEWISE):  84%|████████▍ | 43/51 [00:30<00:00,  9.16it/s]Capturing CUDA graphs (PIECEWISE):  86%|████████▋ | 44/51 [00:30<00:00,  9.17it/s]Capturing CUDA graphs (PIECEWISE):  88%|████████▊ | 45/51 [00:30<00:00,  9.10it/s]Capturing CUDA graphs (PIECEWISE):  90%|█████████ | 46/51 [00:30<00:00,  9.11it/s]Capturing CUDA graphs (PIECEWISE):  92%|█████████▏| 47/51 [00:30<00:00,  9.23it/s]Capturing CUDA graphs (PIECEWISE):  94%|█████████▍| 48/51 [00:31<00:00,  9.37it/s]Capturing CUDA graphs (PIECEWISE):  96%|█████████▌| 49/51 [00:31<00:00,  9.03it/s]Capturing CUDA graphs (PIECEWISE):  98%|█████████▊| 50/51 [00:31<00:00,  8.92it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:31<00:00,  8.76it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:31<00:00,  1.62it/s]
+Capturing CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00, 11.16it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00, 11.14it/s]
+(EngineCore pid=897) INFO 11-22 04:56:20 [model_runner.py:1163] Graph capturing finished in 34 secs, took 1.53 GiB
+(EngineCore pid=897) INFO 11-22 04:56:21 [gpu_worker.py:772] Available KV cache memory: 63.99 GiB
+(EngineCore pid=897) INFO 11-22 04:56:21 [gpu_worker.py:787] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9400 is equivalent to --gpu-memory-utilization=0.9219 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9581. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=897) INFO 11-22 04:56:21 [kv_cache_utils.py:1147] GPU KV cache size: 265,537 tokens, Maximum concurrency for 32,768 tokens per request: 8.10x
+(EngineCore pid=897) INFO 11-22 04:56:21 [kv_cache_utils.py:865] kv cache group sizes (16, 16, 16, 16, 16, 32)
+(EngineCore pid=897) INFO 11-22 04:56:21 [kv_cache_utils.py:866] kv lcm block sizes 32
+(EngineCore pid=897) INFO 11-22 04:56:21 [kernel_warmup.py:179] JIT kernel warmup starting.
+(EngineCore pid=897) INFO 11-22 04:56:21 [kernel_warmup.py:192] JIT kernel warmup finished in 0.00s.
+(EngineCore pid=897) INFO 11-22 04:56:21 [kernel_warmup.py:485] Using FlashInfer managed autotune cache (root=flashinfer default). Pass --disable-flashinfer-autotune to skip autotuning.
+2026-11-22 04:56:21,670 - INFO - autotuner.py:1048 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+2026-11-22 04:56:21,732 - INFO - autotune_cache.py:495 - flashinfer.jit: [Autotuner]: Managed autotune cache attached for this process: ManagedAutotuneCache(env_dir='/root/.cache/flashinfer/autotune/v2/4168f09e1f7ec312', hits=0, misses=0)
+(EngineCore pid=897) INFO 11-22 04:56:21 [kernel_warmup.py:371] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s]2026-11-22 04:56:21,802 - INFO - core.py:594 - flashinfer.jit: Building JIT module trtllm_utils; this can take several minutes on first use.
+[AutoTuner]: Tuning fp4_gemm:   5%|▍         | 1/21 [00:03<01:08,  3.41s/profile][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:03<00:27,  1.47s/profile][AutoTuner]: Tuning fp4_gemm:  14%|█▍        | 3/21 [00:03<00:15,  1.18profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:03<00:09,  1.81profile/s][AutoTuner]: Tuning fp4_gemm:  29%|██▊       | 6/21 [00:03<00:04,  3.22profile/s][AutoTuner]: Tuning fp4_gemm:  38%|███▊      | 8/21 [00:04<00:02,  4.65profile/s][AutoTuner]: Tuning fp4_gemm:  48%|████▊     | 10/21 [00:04<00:01,  5.75profile/s][AutoTuner]: Tuning fp4_gemm:  52%|█████▏    | 11/21 [00:04<00:01,  6.00profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:04<00:01,  6.07profile/s][AutoTuner]: Tuning fp4_gemm:  62%|██████▏   | 13/21 [00:04<00:01,  5.93profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:04<00:01,  5.63profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:05<00:01,  5.29profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:05<00:01,  4.90profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:05<00:00,  4.42profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:06<00:00,  3.97profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:06<00:00,  3.56profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:06<00:00,  3.19profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:07<00:00,  2.32profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:07<00:00,  2.80profile/s]
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:00<00:01, 11.52profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:00<00:01, 11.44profile/s][AutoTuner]: Tuning fp4_gemm:  29%|██▊       | 6/21 [00:00<00:01, 11.48profile/s][AutoTuner]: Tuning fp4_gemm:  38%|███▊      | 8/21 [00:00<00:01, 11.71profile/s][AutoTuner]: Tuning fp4_gemm:  48%|████▊     | 10/21 [00:00<00:00, 11.46profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:01<00:00, 10.55profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:01<00:00,  9.33profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:01<00:00,  8.69profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:01<00:00,  8.07profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:01<00:00,  7.36profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:02<00:00,  6.66profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:02<00:00,  5.99profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:02<00:00,  5.40profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:02<00:00,  4.12profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:02<00:00,  7.33profile/s]
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s][AutoTuner]: Tuning fp4_gemm:   5%|▍         | 1/21 [00:00<00:02,  7.26profile/s][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:00<00:02,  7.23profile/s][AutoTuner]: Tuning fp4_gemm:  14%|█▍        | 3/21 [00:00<00:02,  6.85profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:00<00:02,  6.75profile/s][AutoTuner]: Tuning fp4_gemm:  24%|██▍       | 5/21 [00:00<00:02,  6.89profile/s][AutoTuner]: Tuning fp4_gemm:  29%|██▊       | 6/21 [00:00<00:02,  6.94profile/s][AutoTuner]: Tuning fp4_gemm:  33%|███▎      | 7/21 [00:00<00:01,  7.45profile/s][AutoTuner]: Tuning fp4_gemm:  38%|███▊      | 8/21 [00:01<00:01,  7.75profile/s][AutoTuner]: Tuning fp4_gemm:  43%|████▎     | 9/21 [00:01<00:01,  7.64profile/s][AutoTuner]: Tuning fp4_gemm:  48%|████▊     | 10/21 [00:01<00:01,  6.79profile/s][AutoTuner]: Tuning fp4_gemm:  52%|█████▏    | 11/21 [00:01<00:01,  5.73profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:01<00:01,  4.79profile/s][AutoTuner]: Tuning fp4_gemm:  62%|██████▏   | 13/21 [00:02<00:01,  4.02profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:02<00:02,  3.41profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:03<00:02,  2.96profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:03<00:01,  2.58profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:04<00:01,  2.20profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:04<00:01,  1.86profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:05<00:01,  1.61profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:06<00:00,  1.40profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:08<00:00,  1.04s/profile][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:08<00:00,  2.46profile/s]
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s][AutoTuner]: Tuning fp4_gemm:   5%|▍         | 1/21 [00:00<00:02,  8.70profile/s][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:00<00:02,  8.80profile/s][AutoTuner]: Tuning fp4_gemm:  14%|█▍        | 3/21 [00:00<00:02,  8.84profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:00<00:01,  8.88profile/s][AutoTuner]: Tuning fp4_gemm:  24%|██▍       | 5/21 [00:00<00:01,  9.19profile/s][AutoTuner]: Tuning fp4_gemm:  29%|██▊       | 6/21 [00:00<00:01,  9.38profile/s][AutoTuner]: Tuning fp4_gemm:  33%|███▎      | 7/21 [00:00<00:01,  9.50profile/s][AutoTuner]: Tuning fp4_gemm:  38%|███▊      | 8/21 [00:00<00:01,  9.56profile/s][AutoTuner]: Tuning fp4_gemm:  43%|████▎     | 9/21 [00:00<00:01,  9.38profile/s][AutoTuner]: Tuning fp4_gemm:  48%|████▊     | 10/21 [00:01<00:01,  8.74profile/s][AutoTuner]: Tuning fp4_gemm:  52%|█████▏    | 11/21 [00:01<00:01,  7.80profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:01<00:01,  6.94profile/s][AutoTuner]: Tuning fp4_gemm:  62%|██████▏   | 13/21 [00:01<00:01,  6.02profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:01<00:01,  5.33profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:02<00:01,  4.74profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:02<00:01,  4.29profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:02<00:01,  3.77profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:03<00:00,  3.31profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:03<00:00,  2.90profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:04<00:00,  2.56profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:05<00:00,  1.82profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:05<00:00,  4.17profile/s]
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s][AutoTuner]: Tuning fp4_gemm:   5%|▍         | 1/21 [00:00<00:02,  9.52profile/s][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:00<00:02,  9.40profile/s][AutoTuner]: Tuning fp4_gemm:  14%|█▍        | 3/21 [00:00<00:01,  9.45profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:00<00:01,  9.39profile/s][AutoTuner]: Tuning fp4_gemm:  24%|██▍       | 5/21 [00:00<00:01,  9.37profile/s][AutoTuner]: Tuning fp4_gemm:  29%|██▊       | 6/21 [00:00<00:01,  9.47profile/s][AutoTuner]: Tuning fp4_gemm:  38%|███▊      | 8/21 [00:00<00:01, 10.12profile/s][AutoTuner]: Tuning fp4_gemm:  43%|████▎     | 9/21 [00:00<00:01, 10.05profile/s][AutoTuner]: Tuning fp4_gemm:  48%|████▊     | 10/21 [00:01<00:01,  9.37profile/s][AutoTuner]: Tuning fp4_gemm:  52%|█████▏    | 11/21 [00:01<00:01,  8.40profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:01<00:01,  7.38profile/s][AutoTuner]: Tuning fp4_gemm:  62%|██████▏   | 13/21 [00:01<00:01,  6.48profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:01<00:01,  5.71profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:02<00:01,  5.08profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:02<00:01,  4.56profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:02<00:01,  4.00profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:03<00:00,  3.48profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:03<00:00,  3.05profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:03<00:00,  2.69profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:04<00:00,  1.90profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:04<00:00,  4.37profile/s]
+[AutoTuner]: Tuning fp4_gemm:   0%|          | 0/21 [00:00<?, ?profile/s][AutoTuner]: Tuning fp4_gemm:   5%|▍         | 1/21 [00:00<00:02,  9.49profile/s][AutoTuner]: Tuning fp4_gemm:  10%|▉         | 2/21 [00:00<00:01,  9.58profile/s][AutoTuner]: Tuning fp4_gemm:  14%|█▍        | 3/21 [00:00<00:01,  9.63profile/s][AutoTuner]: Tuning fp4_gemm:  19%|█▉        | 4/21 [00:00<00:01,  9.67profile/s][AutoTuner]: Tuning fp4_gemm:  24%|██▍       | 5/21 [00:00<00:01,  9.74profile/s][AutoTuner]: Tuning fp4_gemm:  33%|███▎      | 7/21 [00:00<00:01, 10.18profile/s][AutoTuner]: Tuning fp4_gemm:  43%|████▎     | 9/21 [00:00<00:01, 10.21profile/s][AutoTuner]: Tuning fp4_gemm:  52%|█████▏    | 11/21 [00:01<00:01,  9.18profile/s][AutoTuner]: Tuning fp4_gemm:  57%|█████▋    | 12/21 [00:01<00:01,  8.41profile/s][AutoTuner]: Tuning fp4_gemm:  62%|██████▏   | 13/21 [00:01<00:01,  7.52profile/s][AutoTuner]: Tuning fp4_gemm:  67%|██████▋   | 14/21 [00:01<00:01,  6.71profile/s][AutoTuner]: Tuning fp4_gemm:  71%|███████▏  | 15/21 [00:01<00:01,  5.98profile/s][AutoTuner]: Tuning fp4_gemm:  76%|███████▌  | 16/21 [00:02<00:00,  5.40profile/s][AutoTuner]: Tuning fp4_gemm:  81%|████████  | 17/21 [00:02<00:00,  4.76profile/s][AutoTuner]: Tuning fp4_gemm:  86%|████████▌ | 18/21 [00:02<00:00,  4.18profile/s][AutoTuner]: Tuning fp4_gemm:  90%|█████████ | 19/21 [00:03<00:00,  3.67profile/s][AutoTuner]: Tuning fp4_gemm:  95%|█████████▌| 20/21 [00:03<00:00,  3.26profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:04<00:00,  2.35profile/s][AutoTuner]: Tuning fp4_gemm: 100%|██████████| 21/21 [00:04<00:00,  5.03profile/s]
+2026-11-22 04:56:55,307 - INFO - autotuner.py:1071 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=897) INFO 11-22 04:56:55 [kernel_warmup.py:295] Warming up FlashInfer attention.
+Capturing CUDA graphs (PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):   2%|▏         | 1/51 [00:00<00:06,  7.68it/s]Capturing CUDA graphs (PIECEWISE):   4%|▍         | 2/51 [00:00<00:05,  8.43it/s]Capturing CUDA graphs (PIECEWISE):   6%|▌         | 3/51 [00:00<00:05,  8.78it/s]Capturing CUDA graphs (PIECEWISE):   8%|▊         | 4/51 [00:00<00:05,  8.94it/s]Capturing CUDA graphs (PIECEWISE):  10%|▉         | 5/51 [00:00<00:05,  9.15it/s]Capturing CUDA graphs (PIECEWISE):  12%|█▏        | 6/51 [00:00<00:04,  9.20it/s]Capturing CUDA graphs (PIECEWISE):  14%|█▎        | 7/51 [00:00<00:04,  9.01it/s]Capturing CUDA graphs (PIECEWISE):  16%|█▌        | 8/51 [00:00<00:04,  9.07it/s]Capturing CUDA graphs (PIECEWISE):  18%|█▊        | 9/51 [00:00<00:04,  9.20it/s]Capturing CUDA graphs (PIECEWISE):  20%|█▉        | 10/51 [00:01<00:04,  9.34it/s]Capturing CUDA graphs (PIECEWISE):  22%|██▏       | 11/51 [00:01<00:04,  9.40it/s]Capturing CUDA graphs (PIECEWISE):  24%|██▎       | 12/51 [00:01<00:04,  9.52it/s]Capturing CUDA graphs (PIECEWISE):  27%|██▋       | 14/51 [00:01<00:03,  9.81it/s]Capturing CUDA graphs (PIECEWISE):  29%|██▉       | 15/51 [00:01<00:03,  9.75it/s]Capturing CUDA graphs (PIECEWISE):  31%|███▏      | 16/51 [00:01<00:03,  9.75it/s]Capturing CUDA graphs (PIECEWISE):  33%|███▎      | 17/51 [00:01<00:03,  9.47it/s]Capturing CUDA graphs (PIECEWISE):  35%|███▌      | 18/51 [00:01<00:03,  9.30it/s]Capturing CUDA graphs (PIECEWISE):  37%|███▋      | 19/51 [00:02<00:03,  9.36it/s]Capturing CUDA graphs (PIECEWISE):  39%|███▉      | 20/51 [00:02<00:03,  9.53it/s]Capturing CUDA graphs (PIECEWISE):  43%|████▎     | 22/51 [00:02<00:02,  9.74it/s]Capturing CUDA graphs (PIECEWISE):  45%|████▌     | 23/51 [00:02<00:02,  9.76it/s]Capturing CUDA graphs (PIECEWISE):  47%|████▋     | 24/51 [00:02<00:02,  9.74it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▉     | 25/51 [00:02<00:02,  9.69it/s]Capturing CUDA graphs (PIECEWISE):  51%|█████     | 26/51 [00:02<00:02,  9.66it/s]Capturing CUDA graphs (PIECEWISE):  53%|█████▎    | 27/51 [00:02<00:02,  9.74it/s]Capturing CUDA graphs (PIECEWISE):  55%|█████▍    | 28/51 [00:02<00:02,  9.75it/s]Capturing CUDA graphs (PIECEWISE):  57%|█████▋    | 29/51 [00:03<00:02,  9.53it/s]Capturing CUDA graphs (PIECEWISE):  59%|█████▉    | 30/51 [00:03<00:02,  9.23it/s]Capturing CUDA graphs (PIECEWISE):  61%|██████    | 31/51 [00:03<00:02,  9.21it/s]Capturing CUDA graphs (PIECEWISE):  63%|██████▎   | 32/51 [00:03<00:02,  9.00it/s]Capturing CUDA graphs (PIECEWISE):  65%|██████▍   | 33/51 [00:03<00:02,  8.76it/s]Capturing CUDA graphs (PIECEWISE):  67%|██████▋   | 34/51 [00:03<00:01,  8.80it/s]Capturing CUDA graphs (PIECEWISE):  69%|██████▊   | 35/51 [00:03<00:01,  8.79it/s]Capturing CUDA graphs (PIECEWISE):  71%|███████   | 36/51 [00:03<00:01,  8.85it/s]Capturing CUDA graphs (PIECEWISE):  73%|███████▎  | 37/51 [00:03<00:01,  8.76it/s]Capturing CUDA graphs (PIECEWISE):  75%|███████▍  | 38/51 [00:04<00:01,  8.69it/s]Capturing CUDA graphs (PIECEWISE):  76%|███████▋  | 39/51 [00:04<00:01,  8.80it/s]Capturing CUDA graphs (PIECEWISE):  78%|███████▊  | 40/51 [00:04<00:01,  8.63it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 41/51 [00:04<00:01,  8.73it/s]Capturing CUDA graphs (PIECEWISE):  82%|████████▏ | 42/51 [00:04<00:01,  8.98it/s]Capturing CUDA graphs (PIECEWISE):  84%|████████▍ | 43/51 [00:04<00:00,  8.94it/s]Capturing CUDA graphs (PIECEWISE):  86%|████████▋ | 44/51 [00:04<00:00,  9.11it/s]Capturing CUDA graphs (PIECEWISE):  88%|████████▊ | 45/51 [00:04<00:00,  9.09it/s]Capturing CUDA graphs (PIECEWISE):  90%|█████████ | 46/51 [00:04<00:00,  9.10it/s]Capturing CUDA graphs (PIECEWISE):  92%|█████████▏| 47/51 [00:05<00:00,  9.12it/s]Capturing CUDA graphs (PIECEWISE):  94%|█████████▍| 48/51 [00:05<00:00,  9.35it/s]Capturing CUDA graphs (PIECEWISE):  96%|█████████▌| 49/51 [00:05<00:00,  9.33it/s]Capturing CUDA graphs (PIECEWISE):  98%|█████████▊| 50/51 [00:05<00:00,  9.37it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:05<00:00,  9.50it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:05<00:00,  9.24it/s]
+Capturing CUDA graphs (FULL):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):   4%|▍         | 2/51 [00:00<00:04, 11.89it/s]Capturing CUDA graphs (FULL):   8%|▊         | 4/51 [00:00<00:03, 12.29it/s]Capturing CUDA graphs (FULL):  12%|█▏        | 6/51 [00:00<00:03, 12.43it/s]Capturing CUDA graphs (FULL):  16%|█▌        | 8/51 [00:00<00:03, 12.59it/s]Capturing CUDA graphs (FULL):  20%|█▉        | 10/51 [00:00<00:03, 12.86it/s]Capturing CUDA graphs (FULL):  24%|██▎       | 12/51 [00:00<00:03, 12.80it/s]Capturing CUDA graphs (FULL):  27%|██▋       | 14/51 [00:01<00:02, 12.97it/s]Capturing CUDA graphs (FULL):  31%|███▏      | 16/51 [00:01<00:02, 13.11it/s]Capturing CUDA graphs (FULL):  35%|███▌      | 18/51 [00:01<00:02, 12.70it/s]Capturing CUDA graphs (FULL):  39%|███▉      | 20/51 [00:01<00:02, 12.77it/s]Capturing CUDA graphs (FULL):  43%|████▎     | 22/51 [00:01<00:02, 12.76it/s]Capturing CUDA graphs (FULL):  47%|████▋     | 24/51 [00:01<00:02, 12.97it/s]Capturing CUDA graphs (FULL):  51%|█████     | 26/51 [00:02<00:01, 13.14it/s]Capturing CUDA graphs (FULL):  55%|█████▍    | 28/51 [00:02<00:01, 13.20it/s]Capturing CUDA graphs (FULL):  59%|█████▉    | 30/51 [00:02<00:01, 13.26it/s]Capturing CUDA graphs (FULL):  63%|██████▎   | 32/51 [00:02<00:01, 13.12it/s]Capturing CUDA graphs (FULL):  67%|██████▋   | 34/51 [00:02<00:01, 13.09it/s]Capturing CUDA graphs (FULL):  71%|███████   | 36/51 [00:02<00:01, 13.20it/s]Capturing CUDA graphs (FULL):  75%|███████▍  | 38/51 [00:02<00:00, 13.08it/s]Capturing CUDA graphs (FULL):  78%|███████▊  | 40/51 [00:03<00:00, 12.83it/s]Capturing CUDA graphs (FULL):  82%|████████▏ | 42/51 [00:03<00:00, 12.56it/s]Capturing CUDA graphs (FULL):  86%|████████▋ | 44/51 [00:03<00:00, 12.40it/s]Capturing CUDA graphs (FULL):  90%|█████████ | 46/51 [00:03<00:00, 12.37it/s]Capturing CUDA graphs (FULL):  94%|█████████▍| 48/51 [00:03<00:00, 12.11it/s]Capturing CUDA graphs (FULL):  98%|█████████▊| 50/51 [00:03<00:00, 12.23it/s]Capturing CUDA graphs (FULL): 100%|██████████| 51/51 [00:04<00:00, 12.71it/s]
+(EngineCore pid=897) INFO 11-22 04:57:09 [model_runner.py:1163] Graph capturing finished in 13 secs, took 0.86 GiB
+(EngineCore pid=897) INFO 11-22 04:57:09 [gpu_worker.py:1003] CUDA graph pool memory: 0.86 GiB (actual), 1.72 GiB (estimated), difference: 0.86 GiB (100.2%).
+(EngineCore pid=897) INFO 11-22 04:57:09 [gpu_worker.py:1066] Free memory on device (94.27/94.97 GiB) on startup. Desired GPU memory utilization is (0.94, 89.27 GiB). Actual usage is 19.97 GiB for consumed memory (weights + non-torch), 5.31 GiB for peak activation, and 0.86 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=67631160300` (62.99 GiB) to fit into requested memory, or `--kv-cache-memory=72990345728` (67.98 GiB) to fully utilize gpu memory. Current kv cache memory in use is 63.99 GiB.
+(EngineCore pid=897) INFO 11-22 04:57:09 [jit_monitor.py:84] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=897) INFO 11-22 04:57:11 [core.py:405] init engine (profile, create kv cache, warmup model) took 122.28 s (compilation: 31.71 s)
+(EngineCore pid=897) INFO 11-22 04:57:12 [kernel.py:480] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=897) INFO 11-22 04:57:12 [compilation.py:317] Enabled custom fusions: act_quant
+(APIServer pid=678) INFO 11-22 04:57:12 [wrapper.py:794] Torch profiler enabled. AsyncLLM CPU traces will be collected under /root/or/out/prof
+(APIServer pid=678) INFO 11-22 04:57:12 [wrapper.py:248] Torch profiling enabled. Traces will be saved to: /root/or/out/prof
+(APIServer pid=678) INFO 11-22 04:57:12 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=678) WARNING 11-22 04:57:12 [api_router.py:63] Profiler with mode 'torch' is enabled in the API server. This should ONLY be used for local development!
+(APIServer pid=678) INFO 11-22 04:57:12 [factories.py:105] Scale-out endpoints are disabled. Restart vllm serve with --enable-scale-out to enable them.
+(APIServer pid=678) INFO 11-22 04:57:14 [hf.py:736] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=678) WARNING 11-22 04:57:14 [model.py:1907] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 64, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=678) INFO 11-22 04:57:14 [entry.py:139] Starting vLLM server on http://0.0.0.0:8000
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:188] Available routes are:
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /docs, Methods: GET, HEAD
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /load, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /version, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /kv_event_sources, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /health, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /metrics, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /start_profile, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /stop_profile, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /tokenize, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /detokenize, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/models, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/systemone, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/decisions, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /ping, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /ping, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /invocations, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/responses, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/completions, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/messages, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /generative_scoring, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/messages/render, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/completions/render, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/responses/render, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/chat/completions/derender, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /v1/completions/derender, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=678) INFO 11-22 04:57:14 [launcher.py:197] Route: /inference/v1/abort_requests, Methods: POST
+INFO:     Started server process [678]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:45126 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45138 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60134 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:57:17 [api_router.py:42] Starting profiler...
+(EngineCore pid=897) INFO 11-22 04:57:17 [wrapper.py:248] Torch profiling enabled. Traces will be saved to: /root/or/out/prof
+USDT:2026-11-22 04:57:17 897:897 SyncActivityProfilerHandler.cpp:39] profiler_start
+ERROR: External init callback must run in same thread as registerClient (820823744 != 524477184)
+USDT:2026-11-22 04:57:17 678:1801 SyncActivityProfilerHandler.cpp:39] profiler_start
+(APIServer pid=678) INFO 11-22 04:57:17 [api_router.py:47] Profiler started.
+INFO:     127.0.0.1:60140 - "POST /start_profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60144 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60166 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60172 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:57:20 [api_router.py:53] Stopping profiler...
+USDT:2026-11-22 04:57:20 678:1801 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+(APIServer pid=678) INFO 11-22 04:57:20 [wrapper.py:98] Profiler stopped successfully.
+USDT:2026-11-22 04:57:20 897:897 SyncActivityProfilerHandler.cpp:46] profiler_stop
+(APIServer pid=678) INFO 11-22 04:57:25 [loggers.py:335] Engine 000: Avg prompt throughput: 2945.7 tokens/s, Avg generation throughput: 1.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 1.1%
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                vllm::flashinfer_mm_fp4         3.85%     112.743ms        50.92%        1.493s       1.244ms        1.342s        45.71%        1.342s       1.119ms          1200  
+                execute_context_2(8192)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us        1.311s        44.63%        1.311s     655.282ms             2  
+                    vllm::unified_attention_with_output         0.79%      23.151ms        18.98%     556.436ms       1.855ms        1.023s        34.83%        1.023s       3.409ms           300  
+void flashinfer::BatchPrefillWithPagedKVCacheKernel<...         0.00%       0.000us         0.00%       0.000us       0.000us     715.649ms        24.37%     715.649ms      14.313ms            50  
+                execute_context_1(8138)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us     661.225ms        22.52%     661.225ms     661.225ms             1  
+                execute_context_1(8192)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us     641.546ms        21.85%     641.546ms     641.546ms             1  
+_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniv...         0.00%       0.000us         0.00%       0.000us       0.000us     569.549ms        19.40%     569.549ms       2.373ms           240  
+_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniv...         0.00%       0.000us         0.00%       0.000us       0.000us     351.855ms        11.98%     351.855ms       1.005ms           350  
+                execute_context_1(3494)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us     319.186ms        10.87%     319.186ms     319.186ms             1  
+void flashinfer::BatchPrefillWithPagedKVCacheKernel<...         0.00%       0.000us         0.00%       0.000us       0.000us     307.022ms        10.46%     307.022ms       1.228ms           250  
+_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniv...         0.00%       0.000us         0.00%       0.000us       0.000us     254.856ms         8.68%     254.856ms     849.519us           300  
+     triton_poi_fused_gelu_mul_scaled_fp4_quant_slice_1         0.07%       2.064ms         0.16%       4.559ms      15.197us     181.099ms         6.17%     181.099ms     603.665us           300  
+     triton_poi_fused_gelu_mul_scaled_fp4_quant_slice_1         0.00%       0.000us         0.00%       0.000us       0.000us     181.099ms         6.17%     181.099ms     603.665us           300  
+_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniv...         0.00%       0.000us         0.00%       0.000us       0.000us     164.913ms         5.62%     164.913ms     531.977us           310  
+                                   _C::scaled_fp4_quant         0.21%       6.099ms         4.46%     130.781ms     108.984us     143.211ms         4.88%     143.211ms     119.342us          1200  
+void vllm::cvt_fp16_to_fp4<__nv_bfloat16, false, fal...         0.00%       0.000us         0.00%       0.000us       0.000us     143.211ms         4.88%     143.211ms     119.342us          1200  
+triton_red_fused_add_mul_rms_norm_scaled_fp4_quant_2...         0.13%       3.833ms         2.02%      59.241ms     200.817us      63.185ms         2.15%      63.185ms     214.187us           295  
+triton_red_fused_add_mul_rms_norm_scaled_fp4_quant_2...         0.00%       0.000us         0.00%       0.000us       0.000us      63.185ms         2.15%      63.185ms     214.187us           295  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.09%       2.666ms         0.16%       4.623ms      15.670us      56.307ms         1.92%      56.307ms     190.870us           295  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%       0.000us         0.00%       0.000us       0.000us      56.307ms         1.92%      56.307ms     190.870us           295  
+       triton_red_fused_add_rms_norm_scaled_fp4_quant_0         0.13%       3.720ms         1.75%      51.423ms     171.412us      40.808ms         1.39%      40.808ms     136.026us           300  
+       triton_red_fused_add_rms_norm_scaled_fp4_quant_0         0.00%       0.000us         0.00%       0.000us       0.000us      40.808ms         1.39%      40.808ms     136.026us           300  
+                  _C_cache_ops::reshape_and_cache_flash         0.08%       2.244ms         1.77%      51.912ms     173.041us      29.401ms         1.00%      29.401ms      98.003us           300  
+void vllm::reshape_and_cache_flash_kernel<__nv_bfloa...         0.00%       0.000us         0.00%       0.000us       0.000us      29.401ms         1.00%      29.401ms      98.003us           300  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.06%       1.680ms         1.57%      46.046ms     156.089us      22.285ms         0.76%      22.285ms      75.544us           295  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%       0.000us         0.00%       0.000us       0.000us      22.285ms         0.76%      22.285ms      75.544us           295  
+      triton_per_fused_rms_norm_split_with_sizes_view_5         0.04%       1.190ms         0.10%       2.961ms      10.039us      21.378ms         0.73%      21.378ms      72.469us           295  
+      triton_per_fused_rms_norm_split_with_sizes_view_5         0.00%       0.000us         0.00%       0.000us       0.000us      21.378ms         0.73%      21.378ms      72.469us           295  
+                                               aten::mm         0.01%     367.238us         0.01%     398.135us      79.627us       9.587ms         0.33%       9.587ms       1.917ms             5  
+                                  cudaStreamIsCapturing         0.00%     108.268us         0.00%     108.268us       0.239us       6.072ms         0.21%       6.072ms      13.403us           453  
+void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_...         0.00%       0.000us         0.00%       0.000us       0.000us       5.795ms         0.20%       5.795ms       1.932ms             3  
+void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_...         0.00%       0.000us         0.00%       0.000us       0.000us       3.791ms         0.13%       3.791ms       1.896ms             2  
+                               cudaEventRecordWithFlags         0.01%     201.846us         0.01%     201.846us       0.905us       3.168ms         0.11%       3.168ms      14.207us           223  
+                                       cuLaunchKernelEx         0.02%     528.904us         0.88%      25.903ms     297.740us       2.633ms         0.09%       2.633ms      30.260us            87  
+                    triton_red_fused_add_mul_rms_norm_2         0.00%      69.787us         0.00%      96.057us      19.211us       1.413ms         0.05%       1.413ms     282.675us             5  
+                    triton_red_fused_add_mul_rms_norm_2         0.00%       0.000us         0.00%       0.000us       0.000us       1.413ms         0.05%       1.413ms     282.675us             5  
+                                        Memset (Device)         0.00%       0.000us         0.00%       0.000us       0.000us       1.144ms         0.04%       1.144ms       0.867us          1320  
+                                 cudaDeviceGetAttribute         0.06%       1.822ms         0.06%       1.822ms       0.150us       1.020ms         0.03%       1.020ms       0.084us         12157  
+                                        cudaMemcpyAsync         0.04%       1.076ms         3.63%     106.501ms     438.274us     897.854us         0.03%     897.854us       3.695us           243  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%      68.637us         0.00%      96.939us      19.388us     780.415us         0.03%     780.415us     156.083us             5  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%       0.000us         0.00%       0.000us       0.000us     780.415us         0.03%     780.415us     156.083us             5  
+triton_red_fused__to_copy_embedding_mul_rms_norm_sca...         0.00%     102.036us         0.01%     160.815us      32.163us     455.519us         0.02%     455.519us      91.104us             5  
+triton_red_fused__to_copy_embedding_mul_rms_norm_sca...         0.00%       0.000us         0.00%       0.000us       0.000us     455.519us         0.02%     455.519us      91.104us             5  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%      40.341us         0.09%       2.741ms     548.180us     410.624us         0.01%     410.624us      82.125us             5  
+triton_per_fused_add_cat_index_select_mul_rms_norm_s...         0.00%       0.000us         0.00%       0.000us       0.000us     410.624us         0.01%     410.624us      82.125us             5  
+      triton_per_fused_rms_norm_split_with_sizes_view_3         0.00%      30.808us         0.00%      53.514us      10.703us     390.527us         0.01%     390.527us      78.105us             5  
+      triton_per_fused_rms_norm_split_with_sizes_view_3         0.00%       0.000us         0.00%       0.000us       0.000us     390.527us         0.01%     390.527us      78.105us             5  
+                         Memcpy HtoD (Pinned -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us     155.649us         0.01%     155.649us       0.668us           233  
+                                            aten::copy_         0.03%     739.809us         3.65%     107.144ms     231.412us     106.047us         0.00%     106.047us       0.229us           463  
+                                  _gumbel_sample_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      75.614us         0.00%      75.614us      15.123us             5  
+                         _prepare_prefill_inputs_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      60.160us         0.00%      60.160us      12.032us             5  
+                                    _apply_write_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      54.111us         0.00%      54.111us       3.183us            17  
+                                            aten::index         0.01%     272.999us         0.05%       1.493ms      99.533us      49.439us         0.00%      49.439us       3.296us            15  
+                          _compute_slot_mappings_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      46.111us         0.00%      46.111us       9.222us             5  
+                              _copy_page_indices_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      44.416us         0.00%      44.416us       1.481us            30  
+void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      19.232us         0.00%      19.232us       6.411us             3  
+                            _gather_block_tables_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      16.352us         0.00%      16.352us       3.270us             5  
+                                           aten::argmax         0.00%      91.171us         0.03%     966.543us     193.309us      15.583us         0.00%      15.583us       3.117us             5  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us      15.583us         0.00%      15.583us       3.117us             5  
+                                    _post_update_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      14.240us         0.00%      14.240us       2.848us             5  
+void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      12.927us         0.00%      12.927us       2.585us             5  
+                                            aten::fill_         0.00%     130.157us         0.03%       1.016ms      11.949us      12.802us         0.00%      12.802us       0.151us            85  
+void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      11.776us         0.00%      11.776us       2.355us             5  
+                   _get_num_sampled_and_rejected_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      11.424us         0.00%      11.424us       2.285us             5  
+               _combine_sampled_and_draft_tokens_kernel         0.00%       0.000us         0.00%       0.000us       0.000us       9.568us         0.00%       9.568us       1.914us             5  
+                           _prepare_pos_seq_lens_kernel         0.00%       0.000us         0.00%       0.000us       0.000us       9.056us         0.00%       9.056us       1.811us             5  
+                                              aten::div         0.00%      91.609us         0.01%     384.155us      76.831us       8.865us         0.00%       8.865us       1.773us             5  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       8.865us         0.00%       8.865us       1.773us             5  
+                                           aten::gather         0.00%      83.459us         0.40%      11.667ms       2.333ms       8.510us         0.00%       8.510us       1.702us             5  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us       8.510us         0.00%       8.510us       1.702us             5  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       8.482us         0.00%       8.482us       0.848us            10  
+                                             aten::tanh         0.00%      43.206us         0.00%      72.039us      14.408us       7.391us         0.00%       7.391us       1.478us             5  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       7.391us         0.00%       7.391us       1.478us             5  
+                                              aten::mul         0.00%     126.076us         0.01%     206.657us       5.904us       7.391us         0.00%       7.391us       0.211us            35  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       7.391us         0.00%       7.391us       1.478us             5  
+                         Memcpy DtoH (Device -> Pinned)         0.00%       0.000us         0.00%       0.000us       0.000us       7.040us         0.00%       7.040us       0.704us            10  
+void at::native::vectorized_gather_kernel<16, long>(...         0.00%       0.000us         0.00%       0.000us       0.000us       5.504us         0.00%       5.504us       2.752us             2  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       4.320us         0.00%       4.320us       0.864us             5  
+                                           aten::arange         0.00%      82.735us         0.01%     272.576us      27.258us       4.127us         0.00%       8.254us       0.825us            10  
+void (anonymous namespace)::elementwise_kernel_with_...         0.00%       0.000us         0.00%       0.000us       0.000us       4.127us         0.00%       4.127us       0.825us             5  
+                execute_context_1(8138)_generation_0(0)         0.24%       6.985ms         3.31%      97.029ms      97.029ms       0.000us         0.00%     662.884ms     662.884ms             1  
+                                            aten::slice         0.07%       2.183ms         0.11%       3.186ms       1.022us       0.000us         0.00%       0.000us       0.000us          3117  
+                                       aten::as_strided         0.08%       2.265ms         0.08%       2.265ms       0.360us       0.000us         0.00%       0.000us       0.000us          6297  
+                                            aten::empty         0.16%       4.744ms         0.19%       5.432ms       3.353us       0.000us         0.00%       0.000us       0.000us          1620  
+                                Activity Buffer Request         0.03%     808.469us         0.04%       1.219ms     406.261us       0.000us         0.00%       5.259ms       1.753ms             3  
+                                         cudaEventQuery         0.02%     481.792us         0.02%     481.792us       1.292us       0.000us         0.00%       0.000us       0.000us           373  
+                                               aten::to         0.01%     151.627us         1.40%      41.165ms      91.887us       0.000us         0.00%      55.998us       0.125us           448  
+                                       aten::lift_fresh         0.00%       4.887us         0.00%       4.887us       0.129us       0.000us         0.00%       0.000us       0.000us            38  
+                                          aten::detach_         0.00%       4.096us         0.00%       4.096us       0.315us       0.000us         0.00%       0.000us       0.000us            13  
+                                         aten::_to_copy         0.01%     241.490us         1.40%      41.014ms     230.413us       0.000us         0.00%      55.998us       0.315us           178  
+                                    aten::empty_strided         0.02%     486.368us         0.03%     784.386us       4.286us       0.000us         0.00%       0.000us       0.000us           183  
+                                            aten::zeros         0.00%      28.229us         0.03%     970.279us     138.611us       0.000us         0.00%       4.224us       0.603us             7  
+                                          cudaHostAlloc         0.02%     475.092us         0.02%     475.092us       7.788us       0.000us         0.00%       0.000us       0.000us            61  
+                                            aten::zero_         0.00%      13.977us         0.03%     850.572us     121.510us       0.000us         0.00%       4.224us       0.603us             7  
+                                           aten::detach         0.00%      24.650us         0.00%      24.650us       0.524us       0.000us         0.00%       0.000us       0.000us            47  
+                                     aten::resolve_conj         0.00%       8.372us         0.00%       8.372us       0.178us       0.000us         0.00%       0.000us       0.000us            47  
+                                      aten::resolve_neg         0.00%       4.273us         0.00%       4.273us       0.091us       0.000us         0.00%       0.000us       0.000us            47  
+                      _C::get_cuda_view_from_cpu_tensor         0.00%      39.443us         0.00%      55.866us      27.933us       0.000us         0.00%       0.000us       0.000us             2  
+                                        aten::is_pinned         0.01%     228.380us         0.01%     401.273us       2.090us       0.000us         0.00%       0.000us       0.000us           192  
+                               cudaPointerGetAttributes         0.01%     173.663us         0.01%     173.663us       0.895us       0.000us         0.00%       0.000us       0.000us           194  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 2.932s
+Self CUDA time total: 2.936s
+
+(EngineCore pid=897) INFO 11-22 04:57:25 [wrapper.py:98] Profiler stopped successfully.
+(APIServer pid=678) INFO 11-22 04:57:25 [api_router.py:55] Profiler stopped.
+INFO:     127.0.0.1:60182 - "POST /stop_profile HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:57:35 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 1.1%
+INFO:     127.0.0.1:33548 - "POST /tokenize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33566 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33588 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33596 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33606 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33616 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33628 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33638 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33642 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33654 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33668 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33684 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33694 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33566 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33572 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:57:55 [loggers.py:335] Engine 000: Avg prompt throughput: 3000.2 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 2 reqs, Waiting: 12 reqs, GPU KV cache usage: 7.2%, Prefix cache hit rate: 0.5%
+INFO:     127.0.0.1:33588 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33596 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33606 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33616 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33628 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33638 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33642 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33654 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33668 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33684 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:58:05 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.4 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 12 reqs, GPU KV cache usage: 9.1%, Prefix cache hit rate: 0.2%
+INFO:     127.0.0.1:33694 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33566 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33588 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33596 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33606 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33616 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33628 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33638 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:58:15 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.9 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 1 reqs, Waiting: 13 reqs, GPU KV cache usage: 5.6%, Prefix cache hit rate: 0.1%
+INFO:     127.0.0.1:33642 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33654 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33668 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33684 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33694 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33560 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33566 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33588 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33596 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33604 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:58:25 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.4 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 12 reqs, GPU KV cache usage: 7.5%, Prefix cache hit rate: 0.1%
+INFO:     127.0.0.1:33606 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33616 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33628 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33638 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33642 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33654 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33668 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33684 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33694 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:58:35 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.6 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 11 reqs, GPU KV cache usage: 9.4%, Prefix cache hit rate: 0.1%
+INFO:     127.0.0.1:33628 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33638 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:58:45 [loggers.py:335] Engine 000: Avg prompt throughput: 12999.7 tokens/s, Avg generation throughput: 1.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.1%
+(APIServer pid=678) INFO 11-22 04:58:55 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.1%
+INFO:     127.0.0.1:45530 - "POST /tokenize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45544 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45556 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45582 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45546 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45568 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45574 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45618 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45636 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45650 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45666 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45544 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45556 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45582 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45546 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45568 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45574 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45604 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:59:05 [loggers.py:335] Engine 000: Avg prompt throughput: 10000.2 tokens/s, Avg generation throughput: 1.0 tokens/s, Running: 2 reqs, Waiting: 13 reqs, GPU KV cache usage: 9.6%, Prefix cache hit rate: 0.1%
+INFO:     127.0.0.1:45618 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45636 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45650 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45666 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45544 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45556 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45582 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45598 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:59:15 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.0 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 1 reqs, Waiting: 13 reqs, GPU KV cache usage: 6.1%, Prefix cache hit rate: 0.0%
+INFO:     127.0.0.1:45546 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45568 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45574 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45618 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45636 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45650 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45666 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45540 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45544 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:59:25 [loggers.py:335] Engine 000: Avg prompt throughput: 11998.8 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 12 reqs, GPU KV cache usage: 8.0%, Prefix cache hit rate: 0.0%
+INFO:     127.0.0.1:45556 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45572 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45582 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45598 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45546 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45568 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45574 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45604 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45618 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45636 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:59:35 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.0 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 13 reqs, GPU KV cache usage: 9.9%, Prefix cache hit rate: 0.0%
+INFO:     127.0.0.1:45650 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45666 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=678) INFO 11-22 04:59:45 [loggers.py:335] Engine 000: Avg prompt throughput: 11999.2 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 2 reqs, Waiting: 4 reqs, GPU KV cache usage: 11.5%, Prefix cache hit rate: 0.0%
+INFO:     127.0.0.1:45604 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45618 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47266 - "GET /metrics HTTP/1.1" 200 OK

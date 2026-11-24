@@ -1,0 +1,2 @@
+[r1x_s7] R=1.3549 win=96s done=34 err=0 drop=0 req/s=0.31 out=268 in=10988 tok/s cache=0.00 TTFT p50=4.188s p95=14.427s TPOT p50=287.8ms srv=267.5738172744847
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.3549); prefill=None tok/s -> /root/or/out/protocol_fp8dyn_textclient/protocol_summary.json

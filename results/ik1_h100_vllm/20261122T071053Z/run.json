@@ -1,0 +1,22 @@
+{
+ "label": "ik1_h100_vllm",
+ "run_id": "ik1_h100_vllm/20261122T071053Z",
+ "config_file": "recipes/inkling/configs/ik1_h100_vllm.json",
+ "t_start": "2026-11-22T07:10:53Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 3.4073
+ },
+ "phases": {},
+ "servers": {},
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T07:50:26Z",
+ "project_spend": {
+  "est_usd": 117.29,
+  "metered_usd": 96.6809
+ }
+}

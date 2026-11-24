@@ -1,0 +1,500 @@
+{
+ "model": "google/gemma-4-31b-it",
+ "snapshot": "research/raw/or_endpoints_google_gemma-4-31b-it_20261122T030326Z.json",
+ "endpoints": [
+  {
+   "provider": "KT",
+   "tag": "kt",
+   "quant": "unknown",
+   "cls": "unknown",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.09999999999999999,
+   "out_usd_per_m": 0.33999999999999997,
+   "cache_read_usd_per_m": 0.09999999999999999
+  },
+  {
+   "provider": "CoreWeave",
+   "tag": "coreweave/fp4",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.09999999999999999,
+   "out_usd_per_m": 0.33999999999999997,
+   "cache_read_usd_per_m": 0.09999999999999999
+  },
+  {
+   "provider": "Venice",
+   "tag": "venice/fp4",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 256000,
+   "max_out": 16384,
+   "in_usd_per_m": 0.12,
+   "out_usd_per_m": 0.36,
+   "cache_read_usd_per_m": 0.09
+  },
+  {
+   "provider": "Chutes",
+   "tag": "chutes/fp4",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 131072,
+   "max_out": 65536,
+   "in_usd_per_m": 0.12,
+   "out_usd_per_m": 0.37,
+   "cache_read_usd_per_m": 0.012
+  },
+  {
+   "provider": "NextBit",
+   "tag": "nextbit/fp4",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.125,
+   "out_usd_per_m": 0.33999999999999997,
+   "cache_read_usd_per_m": 0.075
+  },
+  {
+   "provider": "DeepInfra",
+   "tag": "deepinfra/turbo",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": -2,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 16384,
+   "in_usd_per_m": 0.135,
+   "out_usd_per_m": 0.51,
+   "cache_read_usd_per_m": 0.075
+  },
+  {
+   "provider": "Crusoe",
+   "tag": "crusoe/bf16",
+   "quant": "bf16",
+   "cls": "bf16",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 262141,
+   "in_usd_per_m": 0.14,
+   "out_usd_per_m": 0.39999999999999997,
+   "cache_read_usd_per_m": 0.14
+  },
+  {
+   "provider": "Friendli",
+   "tag": "friendli",
+   "quant": "unknown",
+   "cls": "unknown",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 8192,
+   "in_usd_per_m": 0.14,
+   "out_usd_per_m": 0.39999999999999997,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "Novita",
+   "tag": "novita/bf16",
+   "quant": "bf16",
+   "cls": "bf16",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 131072,
+   "in_usd_per_m": 0.14,
+   "out_usd_per_m": 0.39999999999999997,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "Parasail",
+   "tag": "parasail/fp8",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.15,
+   "out_usd_per_m": 0.39999999999999997,
+   "cache_read_usd_per_m": 0.06
+  },
+  {
+   "provider": "DeepInfra",
+   "tag": "deepinfra/fp8/flex",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": null,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.16,
+   "out_usd_per_m": 0.32,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "PrimeIntellect",
+   "tag": "primeintellect/fp8",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 16384,
+   "in_usd_per_m": 0.19999999999999998,
+   "out_usd_per_m": 0.335,
+   "cache_read_usd_per_m": 0.09999999999999999
+  },
+  {
+   "provider": "DeepInfra",
+   "tag": "deepinfra/fp8",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 16384,
+   "in_usd_per_m": 0.19999999999999998,
+   "out_usd_per_m": 0.39999999999999997,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "DeepInfra",
+   "tag": "deepinfra/fp8/priority",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.3,
+   "out_usd_per_m": 0.6,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "Modal",
+   "tag": "modal",
+   "quant": "unknown",
+   "cls": "unknown",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 131072,
+   "max_out": 117964,
+   "in_usd_per_m": 0.33999999999999997,
+   "out_usd_per_m": 0.09999999999999999,
+   "cache_read_usd_per_m": 0.09999999999999999
+  },
+  {
+   "provider": "SambaNova",
+   "tag": "sambanova",
+   "quant": "unknown",
+   "cls": "unknown",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 131072,
+   "max_out": 117964,
+   "in_usd_per_m": 0.38,
+   "out_usd_per_m": 1.15,
+   "cache_read_usd_per_m": null
+  },
+  {
+   "provider": "ModelRun",
+   "tag": "modelrun/fp4",
+   "quant": "fp4",
+   "cls": "4bit",
+   "status": 0,
+   "uptime_30m": 100,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.75,
+   "out_usd_per_m": 1.0,
+   "cache_read_usd_per_m": 0.19999999999999998
+  },
+  {
+   "provider": "SiliconFlow",
+   "tag": "siliconflow/fp8",
+   "quant": "fp8",
+   "cls": "fp8",
+   "status": 0,
+   "uptime_30m": null,
+   "ctx": 262144,
+   "max_out": 235929,
+   "in_usd_per_m": 0.75,
+   "out_usd_per_m": 1.0,
+   "cache_read_usd_per_m": 0.25
+  }
+ ],
+ "bars": {
+  "1k_in_1k_out": {
+   "shape": "1k_in_1k_out",
+   "in_tokens": 1024,
+   "out_tokens": 1024,
+   "cheapest": {
+    "usd_per_request": 0.00045055999999999997,
+    "provider": "KT",
+    "quant": "unknown",
+    "in_usd_per_m": 0.09999999999999999,
+    "out_usd_per_m": 0.33999999999999997
+   },
+   "median_usd_per_request": 0.00055296,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.00055296,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.00049152,
+     "provider": "DeepInfra",
+     "quant": "fp8",
+     "in_usd_per_m": 0.16,
+     "out_usd_per_m": 0.32
+    },
+    "4bit": {
+     "usd_per_request": 0.00045055999999999997,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.00045055999999999997,
+     "provider": "KT",
+     "quant": "unknown",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    }
+   }
+  },
+  "1k_in_256_out": {
+   "shape": "1k_in_256_out",
+   "in_tokens": 1024,
+   "out_tokens": 256,
+   "cheapest": {
+    "usd_per_request": 0.00018944,
+    "provider": "KT",
+    "quant": "unknown",
+    "in_usd_per_m": 0.09999999999999999,
+    "out_usd_per_m": 0.33999999999999997
+   },
+   "median_usd_per_request": 0.00024576,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.00024576,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.00024576,
+     "provider": "DeepInfra",
+     "quant": "fp8",
+     "in_usd_per_m": 0.16,
+     "out_usd_per_m": 0.32
+    },
+    "4bit": {
+     "usd_per_request": 0.00018944,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.00018944,
+     "provider": "KT",
+     "quant": "unknown",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    }
+   }
+  },
+  "8k_in_1k_out": {
+   "shape": "8k_in_1k_out",
+   "in_tokens": 8192,
+   "out_tokens": 1024,
+   "cheapest": {
+    "usd_per_request": 0.0011673599999999999,
+    "provider": "KT",
+    "quant": "unknown",
+    "in_usd_per_m": 0.09999999999999999,
+    "out_usd_per_m": 0.33999999999999997
+   },
+   "median_usd_per_request": 0.0016384,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.00155648,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.0016384,
+     "provider": "Parasail",
+     "quant": "fp8",
+     "in_usd_per_m": 0.15,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "4bit": {
+     "usd_per_request": 0.0011673599999999999,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.0011673599999999999,
+     "provider": "KT",
+     "quant": "unknown",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    }
+   }
+  },
+  "1k_in_8k_out": {
+   "shape": "1k_in_8k_out",
+   "in_tokens": 1024,
+   "out_tokens": 8192,
+   "cheapest": {
+    "usd_per_request": 0.0011673599999999999,
+    "provider": "Modal",
+    "quant": "unknown",
+    "in_usd_per_m": 0.33999999999999997,
+    "out_usd_per_m": 0.09999999999999999
+   },
+   "median_usd_per_request": 0.0034201599999999998,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.0034201599999999998,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.0027852800000000002,
+     "provider": "DeepInfra",
+     "quant": "fp8",
+     "in_usd_per_m": 0.16,
+     "out_usd_per_m": 0.32
+    },
+    "4bit": {
+     "usd_per_request": 0.0028876799999999997,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.0011673599999999999,
+     "provider": "Modal",
+     "quant": "unknown",
+     "in_usd_per_m": 0.33999999999999997,
+     "out_usd_per_m": 0.09999999999999999
+    }
+   }
+  },
+  "input_only_1M": {
+   "shape": "input_only_1M",
+   "in_tokens": 1000000,
+   "out_tokens": 0,
+   "cheapest": {
+    "usd_per_request": 0.09999999999999999,
+    "provider": "KT",
+    "quant": "unknown",
+    "in_usd_per_m": 0.09999999999999999,
+    "out_usd_per_m": 0.33999999999999997
+   },
+   "median_usd_per_request": 0.15,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.14,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.15,
+     "provider": "Parasail",
+     "quant": "fp8",
+     "in_usd_per_m": 0.15,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "4bit": {
+     "usd_per_request": 0.09999999999999999,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.09999999999999999,
+     "provider": "KT",
+     "quant": "unknown",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    }
+   }
+  },
+  "output_only_1M": {
+   "shape": "output_only_1M",
+   "in_tokens": 0,
+   "out_tokens": 1000000,
+   "cheapest": {
+    "usd_per_request": 0.09999999999999999,
+    "provider": "Modal",
+    "quant": "unknown",
+    "in_usd_per_m": 0.33999999999999997,
+    "out_usd_per_m": 0.09999999999999999
+   },
+   "median_usd_per_request": 0.39999999999999997,
+   "by_class": {
+    "bf16": {
+     "usd_per_request": 0.39999999999999997,
+     "provider": "Crusoe",
+     "quant": "bf16",
+     "in_usd_per_m": 0.14,
+     "out_usd_per_m": 0.39999999999999997
+    },
+    "fp8": {
+     "usd_per_request": 0.32,
+     "provider": "DeepInfra",
+     "quant": "fp8",
+     "in_usd_per_m": 0.16,
+     "out_usd_per_m": 0.32
+    },
+    "4bit": {
+     "usd_per_request": 0.33999999999999997,
+     "provider": "CoreWeave",
+     "quant": "fp4",
+     "in_usd_per_m": 0.09999999999999999,
+     "out_usd_per_m": 0.33999999999999997
+    },
+    "unknown": {
+     "usd_per_request": 0.09999999999999999,
+     "provider": "Modal",
+     "quant": "unknown",
+     "in_usd_per_m": 0.33999999999999997,
+     "out_usd_per_m": 0.09999999999999999
+    }
+   }
+  }
+ }
+}

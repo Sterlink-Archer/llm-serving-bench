@@ -1,0 +1,160 @@
+{
+ "run": "results/up1_h100_draft_compact/20261122T153455Z",
+ "sandbox": "cf1234e9-5732-4970-bb4b-c3dbfbb9bba2",
+ "cells": [
+  {
+   "rate": 0.6,
+   "seed": 7,
+   "unpatched": {
+    "client": "vllm bench serve (OpenRelay's bench.sh)",
+    "achieved_rps": 0.5810728900562194,
+    "arrived_rps": 0.6,
+    "goodput_rps": 0.5810728900562194,
+    "ttft_p50_s": 1.2340698707848787,
+    "ttft_p95_s": 3.4676027292385676,
+    "ttft_p99_s": 5.001047136243434,
+    "tpot_p50_s": 0.015497122419780497,
+    "tpot_p95_s": 0.03852697975018801,
+    "e2e_p50_s": 8.091223321855068,
+    "errors": 0,
+    "requests_sent": 180,
+    "dropped": 0,
+    "slo_pass": true,
+    "out_tok_s": 231.8254858533738,
+    "in_tok_s": 5663.346218364879,
+    "cached_in_tok_s": null,
+    "server_gen_tok_s": 217.30315846604665,
+    "spec_accept_len": 2.680704898446834,
+    "spec_acceptance_rate": 0.840352449223417,
+    "preemptions": 0.0,
+    "peak_inflight": 16,
+    "duration_s": 309.7718084603548,
+    "rc": 0,
+    "server_prompt_tokens": 1754345.0,
+    "client_input_tokens": 1754345,
+    "prompt_tokens_mean": 9746.361111111111,
+    "completion_tokens_mean": 398.9611111111111,
+    "prompt_tok_xcheck_ratio": 1.0,
+    "prompt_tok_xcheck_pass": true,
+    "prompt_tok_xcheck_basis": "whole bench run: server prompt-token counter delta (scraped before/after) vs vllm bench total_input_tokens",
+    "source": "results/up1_h100_draft_compact/20261122T153455Z/pr_unpatched_s7/protocol_summary.json"
+   },
+   "patched": {}
+  },
+  {
+   "rate": 0.75,
+   "seed": 7,
+   "unpatched": {
+    "client": "vllm bench serve (OpenRelay's bench.sh)",
+    "achieved_rps": 0.7331406758636508,
+    "arrived_rps": 0.75,
+    "goodput_rps": 0.7331406758636508,
+    "ttft_p50_s": 1.410302633419633,
+    "ttft_p95_s": 3.8993070811033235,
+    "ttft_p99_s": 5.879954475611447,
+    "tpot_p50_s": 0.023336063700938416,
+    "tpot_p95_s": 0.0722817680188857,
+    "e2e_p50_s": 11.986764276400208,
+    "errors": 0,
+    "requests_sent": 225,
+    "dropped": 0,
+    "slo_pass": true,
+    "out_tok_s": 283.9176873364594,
+    "in_tok_s": 7206.528463514401,
+    "cached_in_tok_s": null,
+    "server_gen_tok_s": 263.780232712946,
+    "spec_accept_len": 2.719167394832106,
+    "spec_acceptance_rate": 0.8595836974160529,
+    "preemptions": 0.0,
+    "peak_inflight": 27,
+    "duration_s": 306.89880865626037,
+    "rc": 0,
+    "server_prompt_tokens": 2211675.0,
+    "client_input_tokens": 2211675,
+    "prompt_tokens_mean": 9829.666666666666,
+    "completion_tokens_mean": 387.26222222222225,
+    "prompt_tok_xcheck_ratio": 1.0,
+    "prompt_tok_xcheck_pass": true,
+    "prompt_tok_xcheck_basis": "whole bench run: server prompt-token counter delta (scraped before/after) vs vllm bench total_input_tokens",
+    "source": "results/up1_h100_draft_compact/20261122T153455Z/pr_unpatched_s7/protocol_summary.json"
+   },
+   "patched": {}
+  },
+  {
+   "rate": 0.9,
+   "seed": 7,
+   "unpatched": {
+    "client": "vllm bench serve (OpenRelay's bench.sh)",
+    "achieved_rps": 0.8797884830728593,
+    "arrived_rps": 0.9,
+    "goodput_rps": 0.0,
+    "ttft_p50_s": 1.9971807533875108,
+    "ttft_p95_s": 4.909629160258918,
+    "ttft_p99_s": 6.633502163998783,
+    "tpot_p50_s": 0.04174933083884215,
+    "tpot_p95_s": 0.11571099320915951,
+    "e2e_p50_s": 17.460757786408067,
+    "errors": 0,
+    "requests_sent": 270,
+    "dropped": 0,
+    "slo_pass": false,
+    "out_tok_s": 338.44485401053925,
+    "in_tok_s": 8627.407890515979,
+    "cached_in_tok_s": null,
+    "server_gen_tok_s": 313.37564137374534,
+    "spec_accept_len": 2.6997608899053955,
+    "spec_acceptance_rate": 0.8498804449526978,
+    "preemptions": 0.0,
+    "peak_inflight": 37,
+    "duration_s": 306.8919464107603,
+    "rc": 0,
+    "server_prompt_tokens": 2647682.0,
+    "client_input_tokens": 2647682,
+    "prompt_tokens_mean": 9806.22962962963,
+    "completion_tokens_mean": 384.68888888888887,
+    "prompt_tok_xcheck_ratio": 1.0,
+    "prompt_tok_xcheck_pass": true,
+    "prompt_tok_xcheck_basis": "whole bench run: server prompt-token counter delta (scraped before/after) vs vllm bench total_input_tokens",
+    "source": "results/up1_h100_draft_compact/20261122T153455Z/pr_unpatched_s7/protocol_summary.json"
+   },
+   "patched": {}
+  }
+ ],
+ "prefill": {
+  "unpatched": {
+   "client": "vllm bench serve (OpenRelay's probe.sh)",
+   "concurrency": 16,
+   "prompt_tokens_target": 10000,
+   "runs": [
+    {
+     "run": 1,
+     "file": "prefill_c16_10000_run1.json",
+     "input_tok_s": 12326.709576365341,
+     "completed": 64,
+     "p95_ttft_s": 13.308991709630936,
+     "rc": 0
+    },
+    {
+     "run": 2,
+     "file": "prefill_c16_10000_run2.json",
+     "input_tok_s": 12369.14150088992,
+     "completed": 64,
+     "p95_ttft_s": 13.261340174172073,
+     "rc": 0
+    }
+   ],
+   "prefill_tok_s": 12369.14150088992,
+   "counted": "second run"
+  }
+ },
+ "identity": {
+  "idcompare_unpatched_vs_patched": {
+   "a": "out/idprobe_unpatched_c1.json",
+   "b": "out/idprobe_patched_c1.json",
+   "pairs": 60,
+   "identical": 60,
+   "differing": 0,
+   "first_divergence": []
+  }
+ }
+}

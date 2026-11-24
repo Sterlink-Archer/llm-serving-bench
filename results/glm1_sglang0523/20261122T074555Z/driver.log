@@ -1,0 +1,16 @@
+2026-11-22T07:45:55Z [glm1_sglang0523] building or-sglang0523rocm10-mi355x-c8m48d300 from lmsysorg/sglang:v0.5.23-rocm10-mi35x
+2026-11-22T07:46:11Z [glm1_sglang0523] creating spot sandbox (MI355X x1, $4.7727/h, ttl 110 min, budget $9.5; project so far ~$113.26)
+2026-11-22T07:46:36Z [glm1_sglang0523] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:48:20Z [glm1_sglang0523] download glm_sgl: rc=0 103s 185.1 GB via ['huggingface_hub']
+2026-11-22T07:55:15Z [glm1_sglang0523] server glm_sgl ready=True after 413.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 252728 MB
+        FREE_VRAM: 41864 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 252728 MB
+        FREE_VISIBLE_VRAM: 41864 MB; attn {'sliding': 'dsa', 'global_512': 'dsa'} kv_tokens 6273536 graphs 12
+2026-11-22T07:55:18Z [glm1_sglang0523] inspect_glm_sgl rc=0 2s ::         TARGET_GRAPHICS_VERSION: gfx950
+2026-11-22T07:55:51Z [glm1_sglang0523] gate_glm_sgl_gsm8kor100 rc=0 33s :: [gate_glm_sgl_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=30s
+2026-11-22T08:16:15Z [glm1_sglang0523] protocol_glm_sgl rc=0 1224s :: [protocol] max_rate_at_slo=1.0 req/s (break-even 1.7019); prefill=21272.898088586477 tok/s -> /root/or/out/protocol_glm_sgl/protocol_summary.json
+2026-11-22T08:16:50Z [glm1_sglang0523] done: elapsed 30.7 min, est $2.44; project est $138.22

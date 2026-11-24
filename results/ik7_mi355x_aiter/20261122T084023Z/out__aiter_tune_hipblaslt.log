@@ -1,0 +1,395 @@
+/opt/venv/bin/python3 /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py --input_file /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --tuned_file /root/or/out/aiter_tuned_hipblaslt.csv --libtype hipblaslt --with-hipblaslt
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+Not exist tuned file: /root/or/out/aiter_tuned_hipblaslt.csv
+untunedf is          gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+        gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns][aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+
+M N K bias dtype outdtype 1024 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+[aiter] error in batch 1 of 2 after 0 completed batches: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 532.00 MiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/base_tuner.py", line 1752, in _run_selected
+    all_results = self.tune(batch, self.tunedf, args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 994, in tune
+    hipblaslt_rets.extend(self._run_hipblaslt(ds, args))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 907, in _run_hipblaslt
+    rets = gemmobj.run_solutions()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/gradlib/gradlib/GemmTuner.py", line 367, in run_solutions
+    self.run_fast_solutions()
+  File "/sgl-workspace/aiter/gradlib/gradlib/GemmTuner.py", line 358, in run_fast_solutions
+    self.warmup()
+  File "/sgl-workspace/aiter/gradlib/gradlib/GemmTuner.py", line 350, in warmup
+    self.blob = self.blob + 0.00001
+                ~~~~~~~~~~^~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 532.00 MiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[aiter] ============= Tuning results Summary: ==============
+[aiter] Tuning Error. tune 0 shapes, total tuning time is 1.0103 seconds
+[aiter] Successfully tuned shapes:
+[aiter] Failed shapes:
+Empty DataFrame
+Columns: [gfx, cu_num, M, N, K, bias, dtype, outdtype, scaleAB, bpreshuffle, libtype, solidx, splitK, us, kernelName, err_ratio, tflops, bw]
+Index: []
+[aiter] untuned shapes:
+        gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns][aiter] [91m[Tuning not Finished][0m some shapes are not tuned or all failed, please check the result file or tune with --profile_file to get more details
+
+!Process exited with code 1 (tuning finished with warnings)
+retried num is 0

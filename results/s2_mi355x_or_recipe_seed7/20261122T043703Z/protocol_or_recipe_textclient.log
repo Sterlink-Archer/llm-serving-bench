@@ -1,0 +1,2 @@
+[r1.769x_s7] R=3.0 win=240s done=831 err=0 drop=0 req/s=2.76 out=1060 in=24465 tok/s cache=0.00 TTFT p50=0.460s p95=1.775s TPOT p50=15.8ms srv=1059.8854488999607
+[protocol] max_rate_at_slo=3.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_textclient/protocol_summary.json

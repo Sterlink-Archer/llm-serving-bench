@@ -1,0 +1,56 @@
+{
+ "label": "e4d_mi355x_vllm",
+ "note": "GPU type: AMD MI355X (288 GB HBM3E), vLLM ROCm v0.33.0: FP8-dynamic and AMD Quark MXFP4, FP8 KV.",
+ "snapshot": {
+  "name": "or-vllmrocm0330-mi355x-c8m48d150",
+  "image": "vllm/vllm-openai-rocm:v0.33.0",
+  "image_digest_amd64": "sha256:4fcd39b758b660c4e9c345c021e2ea8f0ccdb31e3c32507d676cc3005ae83fba",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 70,
+ "budget_usd": 6.0,
+ "servers": [
+  {
+   "name": "fp8dyn",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    }
+   ]
+  },
+  {
+   "name": "mxfp4",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    }
+   ]
+  }
+ ]
+}

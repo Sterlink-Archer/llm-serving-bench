@@ -1,0 +1,213 @@
+{
+ "label": "d1_h100_prefill_diag",
+ "run_id": "d1_h100_prefill_diag/20261122T050803Z",
+ "config_file": "configs/d1_h100_prefill_diag.json",
+ "t_start": "2026-11-22T05:08:03Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "create_s": 7.5
+ },
+ "servers": {
+  "fp8dyn_mbt8192": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 23.7,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:   6%|\u258b         | 1/16 [00:00<00:02,  5.63it/s]\rFetching 16 files:  81%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f | 13/16 [00:00<00:00, 50.82it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:10<00:00,  1.46it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469171 secs=11.4 GBps=2.911 method=huggingface_hub\n",
+    "bytes": 33300469171,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 148.3,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+    "env": {},
+    "gpu_mem_after_load": "71377 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-0180c0ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 144878,
+    "kv_cache_gib": 35.0,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "profile_prefill_4x10k": {
+     "rc": 0,
+     "secs": 23.9,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "[profile] prefill 6375 tok/s over 4x10000; gemm=61.3% attention=24.1% fused_elementwise=13.3% other=1.3% memcpy/memset=0.0%\n"
+    },
+    "prefill_probe_mbt8192": {
+     "rc": 0,
+     "secs": 140.5,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt8192.json",
+     "tail": "[prefill_probe] 12649 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "fp8dyn_mbt16384": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 3.1,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:00<00:00, 689.99it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469171 secs=0.2 GBps=219.290 method=huggingface_hub\n",
+    "bytes": 33300469171,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 133.5,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "71291 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-fefaf915\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 83052,
+    "kv_cache_gib": 34.92,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt16384": {
+     "rc": 0,
+     "secs": 141.0,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt16384.json",
+     "tail": "[prefill_probe] 12275 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  },
+  "fp8dyn_mbt32768": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 2.8,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:00<00:00, 806.51it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469171 secs=0.1 GBps=248.881 method=huggingface_hub\n",
+    "bytes": 33300469171,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 132.4,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "69661 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-fc11eddd\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 79265,
+    "kv_cache_gib": 33.33,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_probe_mbt32768": {
+     "rc": 0,
+     "secs": 141.7,
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt32768.json",
+     "tail": "[prefill_probe] 12235 tok/s (16 x 10000, 2nd run)\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "rerun_of_evicted": 1,
+ "spend_guard": {
+  "project_est_usd_before": 17.84,
+  "this_run_ceiling_usd": 3.36,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 218,
+ "sandbox_id": "7bbe1b8b-f705-46d3-a87e-9fdca8b9770b",
+ "elapsed_s": 990.0,
+ "est_cost_usd": 1.008,
+ "t_saved": "2026-11-22T05:24:34Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W\n128\nMem:            2015          84         415           0        1530        1930\noverlay         150G  5.2M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T05:24:24Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 31.88,
+  "metered_usd": 21.8156
+ }
+}

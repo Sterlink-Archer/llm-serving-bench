@@ -1,0 +1,15 @@
+2026-11-22T05:01:54Z [mx1_or_profile] creating spot sandbox (MI355X x1, $4.7565/h, ttl 40 min, budget $3.5; project so far ~$13.04)
+2026-11-22T05:02:12Z [mx1_or_profile] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:02:45Z [mx1_or_profile] download or_prof: rc=0 32s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:05:42Z [mx1_or_profile] server or_prof ready=True after 176.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T05:05:45Z [mx1_or_profile] inspect_or_prof rc=0 2s :: mx file: steps.py
+2026-11-22T05:05:58Z [mx1_or_profile] gate_or_prof_gsm8kor100 rc=0 13s :: [gate_or_prof_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=5s
+2026-11-22T05:11:42Z [mx1_or_profile] profile_knee rc=0 344s ::       20.4 ms   0.2% x40    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x112x64_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+2026-11-22T05:12:03Z [mx1_or_profile] done: elapsed 10.1 min, est $0.80; project est $21.31

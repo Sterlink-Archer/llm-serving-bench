@@ -1,0 +1,134 @@
+{
+ "label": "glm2_vllm_mtp3",
+ "run_id": "glm2_vllm_mtp3/20261122T074424Z",
+ "config_file": "recipes/glm/configs/glm2_vllm_mtp3.json",
+ "t_start": "2026-11-22T07:44:24Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0319,
+  "total": 4.7727
+ },
+ "phases": {
+  "create_s": 1.6
+ },
+ "servers": {
+  "glm_mtp3": {
+   "weights": [
+    {
+     "repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+     "rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "resolved_sha": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "files": 70,
+     "bytes": 185107691184
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 103.2,
+    "tail": "/it]\rFetching 70 files:  87%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b | 61/70 [01:23<00:14,  1.61s/it]\rFetching 70 files:  89%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 62/70 [01:25<00:13,  1.65s/it]\rFetching 70 files:  90%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 | 63/70 [01:26<00:09,  1.41s/it]\rFetching 70 files:  91%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 64/70 [01:28<00:08,  1.49s/it]\rFetching 70 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 65/70 [01:28<00:06,  1.24s/it]\rFetching 70 files:  96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 67/70 [01:31<00:03,  1.24s/it]\rFetching 70 files:  97%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b| 68/70 [01:32<00:02,  1.33s/it]\rFetching 70 files:  99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a| 69/70 [01:34<00:01,  1.39s/it]\rFetching 70 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [01:37<00:00,  1.88s/it]\rFetching 70 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [01:37<00:00,  1.39s/it]\nDL repo=amd/GLM-5.3-Flash-Quark-MXFP4 rev=b5688f2549 files=70 bytes=185107721054 secs=98.1 GBps=1.887 method=huggingface_hub\n",
+    "bytes": 185107721054,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 391.0,
+    "launch": "vllm serve /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 32768 --max-num-seqs 64 --max-num-batched-tokens 8192 --attention-backend ROCM_AITER_MLA_SPARSE --enable-prompt-tokens-details --language-model-only --reasoning-parser glm47 --speculative-config '{\"method\":\"mtp\",\"num_speculative_tokens\":3}'",
+    "env": {
+     "VLLM_ROCM_USE_AITER": "1",
+     "VLLM_ROCM_USE_AITER_FUSION_SHARED_EXPERTS": "1",
+     "VLLM_ROCM_USE_AITER_TRITON_SPARSE_MLA": "1",
+     "VLLM_ENGINE_READY_TIMEOUT_S": "3600"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285666 MB\n        FREE_VRAM: 8926 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285666 MB\n        FREE_VISIBLE_VRAM: 8926 MB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.34.0-0e711cf6\",\"usage\":{\"prompt_tokens\":15,\"total_tokens\":23,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "ROCM_AITER_MLA_SPARSE",
+     "global_512": "ROCM_AITER_MLA_SPARSE"
+    },
+    "kv_cache_tokens": 2554538,
+    "kv_cache_gib": 106.83,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 32768 --max-num-seqs 64 --max-num-batched-tokens 8192 --attention-backend ROCM_AITER_MLA_SPARSE --enable-prompt-tokens-details --language-model-only --reasoning-parser glm47 --speculative-config '{\"method\":\"mtp\",\"num_speculative_tokens\":3}'",
+     "env": {
+      "VLLM_ROCM_USE_AITER": "1",
+      "VLLM_ROCM_USE_AITER_FUSION_SHARED_EXPERTS": "1",
+      "VLLM_ROCM_USE_AITER_TRITON_SPARSE_MLA": "1",
+      "VLLM_ENGINE_READY_TIMEOUT_S": "3600"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_glm_mtp3": {
+     "rc": 0,
+     "secs": 1.4,
+     "cmd": "tail -n 12 out/inspect.txt",
+     "tail": "vllm:models/glm5next.py exists=False\n        MARKET_NAME: AMD Instinct MI355X VF\n        TARGET_GRAPHICS_VERSION: gfx950\n"
+    },
+    "gate_glm_mtp3_gsm8kor100": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 bench/evalrun.py --model glm --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"low\"}' --max-tokens 8192 --label gate_glm_mtp3_gsm8kor100 --out /root/or/out/gate_glm_mtp3_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_glm_mtp3_gsm8kor100] gsm8kor: 1.000 (100/100, noans 0, err 0, trunc 0) wall=8s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 1.0,
+      "n": 100,
+      "passed": 100,
+      "pass": true
+     }
+    },
+    "protocol_glm_mtp3": {
+     "rc": 0,
+     "secs": 1148.8,
+     "cmd": "python3 bench/protocol.py --model glm --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_glm_mtp3 --breakeven-rps 1.7019 --client vllmbench --tokenizer /root/models/glm --rates 1.0,1.5,2.0,2.7 --seeds 8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id glm2_vllm_mtp3/20261122T074424Z --config-id glm2_vllm_mtp3:glm_mtp3 --prefill-shot --max-minutes 108.6",
+     "tail": "[vllmbench r=1.5 s=8] done=450 failed=0 req/s=1.4217369564839175 p95 TTFT=3.640953013626856 median TPOT=69.78635892791594 ms in tok/s=13689\n[vllmbench r=2.0 s=8] done=600 failed=0 req/s=1.5804467772802764 p95 TTFT=61.475859455531456 median TPOT=93.29893641982196 ms in tok/s=15109\n[protocol] max_rate_at_slo=1.5 req/s (break-even 1.7019); prefill=21224.134250412942 tok/s -> /root/or/out/protocol_glm_mtp3/protocol_summary.json\n",
+     "breakeven_rps": 1.7018613607188704
+    },
+    "protocol_glm_mtp3_text": {
+     "rc": 0,
+     "secs": 312.1,
+     "cmd": "python3 bench/protocol.py --model glm --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_glm_mtp3_text --breakeven-rps 1.7019 --client traffic --stratify --tokenizer /root/models/glm --rates 1.5 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id glm2_vllm_mtp3/20261122T074424Z --config-id glm2_vllm_mtp3:glm_mtp3 --max-minutes 89.4",
+     "tail": "[r0.881x_s7] R=1.5 win=240s done=418 err=0 drop=0 req/s=1.50 out=562 in=14021 tok/s cache=0.00 TTFT p50=1.332s p95=3.393s TPOT p50=28.9ms srv=561.6887874502507\n[protocol] max_rate_at_slo=1.5 req/s (break-even 1.7019); prefill=None tok/s -> /root/or/out/protocol_glm_mtp3_text/protocol_summary.json\n",
+     "breakeven_rps": 1.7018613607188704
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 111.55,
+  "this_run_ceiling_usd": 9.94,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 234,
+ "sandbox_id": "c0caece1-1342-412a-8de6-7125541be8b0",
+ "elapsed_s": 2027.0,
+ "est_cost_usd": 2.687,
+ "t_saved": "2026-11-22T08:18:11Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x92134A9126DC5FBD\n        OAM_ID: 4\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015          83        1517           2         414        1914\noverlay         300G  9.9M  300G   1% /\nPython 3.12.16\n/usr/bin/curl\nvllm 0.34.0\ntorch 2.13.0+rocm10.0.0 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "== date 2026-11-22T07:44:46Z\nversion vllm: 0.34.0+rocm100\nversion sglang: - (PackageNotFoundError)\nversion torch: 2.13.0+rocm10.0.0\nversion triton: 3.8.0+git669b31ac\nversion amd-aiter: 0.1.28.post1\nversion transformers: 5.22.0\nversion tilelang: 0.1.10\nvllm:model_executor/models/glm5next.py exists=False\nvllm:models/glm5next.py exists=False\n        MARKET_NAME: AMD Instinct MI355X VF\n        TARGET_GRAPHICS_VERSION: gfx950\n"
+ },
+ "deleted": "2026-11-22T08:17:53Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 138.97,
+  "metered_usd": 112.0097
+ }
+}

@@ -1,0 +1,7 @@
+2026-11-22T07:43:52Z [q1_h200_bf16_fp8] creating spot sandbox (H200 x1, $3.7997/h, ttl 40 min, budget $3.0; project so far ~$111.14)
+2026-11-22T07:44:16Z [q1_h200_bf16_fp8] system: ok | NVIDIA H200, 143771 MiB, 595.91.07, 700.00 W | 24 | Mem:             235          15          80           0         147         220 | overlay          80G  8.4M   80G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T07:44:49Z [q1_h200_bf16_fp8] download bf16_ref: rc=0 32s 62.6 GB via ['huggingface_hub']
+2026-11-22T07:47:19Z [q1_h200_bf16_fp8] server bf16_ref ready=True after 150.1s; gpu mem 131707 MiB, 143771 MiB; attn {'sliding': 'FLASH_ATTN', 'global_512': 'FLASH_ATTN/FA4'} kv_tokens 141157 graphs 51
+2026-11-22T07:49:49Z [q1_h200_bf16_fp8] q_agree400_bf16_ref rc=0 146s :: [q_agree400_bf16_ref] agree: 0.000 (0/400, noans 400, err 0, trunc 253) wall=142s
+2026-11-22T07:52:15Z [q1_h200_bf16_fp8] q_agree400_bf16_ref_rep2 rc=0 146s :: [q_agree400_bf16_ref_rep2] agree: 0.000 (0/400, noans 400, err 0, trunc 252) wall=139s
+2026-11-22T07:52:44Z [q1_h200_bf16_fp8] done: elapsed 8.9 min, est $0.56; project est $119.53

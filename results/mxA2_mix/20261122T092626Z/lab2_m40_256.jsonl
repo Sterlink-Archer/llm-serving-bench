@@ -1,0 +1,24 @@
+{"start": 0}
+{"done": 0, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 0.37768734619021416, "cfg_ms": 0.6951084593310952, "speedup": 0.5433502371035216, "err": 0.0013427734375}
+{"start": 1}
+{"done": 1, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 0.37297490052878857, "cfg_ms": 0.4230717895552516, "speedup": 0.8815877346037969, "err": 0.0013427734375}
+{"start": 2}
+{"done": 2, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 0.37067545345053077, "cfg_ms": 0.5474322475492954, "speedup": 0.6771165840338115, "err": 0.0013427734375}
+{"start": 3}
+{"done": 3, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 32, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 0.374222407117486, "cfg_ms": 0.4279367043636739, "speedup": 0.8744807428330806, "err": 0.0013427734375}
+{"start": 4}
+{"done": 4, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 0.3725109505467117, "cfg_ms": 0.4604362999089062, "speedup": 0.8090390584330778, "err": 0.0}
+{"start": 5}
+{"done": 5, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 0.36060905549675226, "cfg_ms": 0.36184554919600487, "speedup": 0.9965828135733602, "err": 0.0}
+{"start": 6}
+{"done": 6, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 0.37109445547685027, "cfg_ms": 0.4811915452592075, "speedup": 0.7711990352551804, "err": 0.0}
+{"start": 7}
+{"done": 7, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 64, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 0.3709199489094317, "cfg_ms": 0.45090244384482503, "speedup": 0.8226168519882346, "err": 0.0}
+{"start": 8}
+{"done": 8, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 0.37996339378878474, "cfg_ms": 0.6482555530965328, "speedup": 0.5861321078914132, "err": 0.00164031982421875}
+{"start": 9}
+{"done": 9, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 0.3817283548414707, "cfg_ms": 1.2286798912100494, "speedup": 0.310681697952695, "err": 0.00164031982421875}
+{"start": 10}
+{"done": 10, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 1}}, "default_ms": 0.3799273516051471, "cfg_ms": 0.6120910053141415, "speedup": 0.6207040265363125, "err": 0.00164031982421875}
+{"start": 11}
+{"done": 11, "cfg": {"attn_2d": {"BLOCK_M": 128, "TILE_SIZE": 128, "num_warps": 4, "num_stages": 2, "waves_per_eu": 2}}, "default_ms": 0.38243080489337444, "cfg_ms": 2.0277880947105587, "speedup": 0.18859505383769484, "err": 0.00164031982421875}

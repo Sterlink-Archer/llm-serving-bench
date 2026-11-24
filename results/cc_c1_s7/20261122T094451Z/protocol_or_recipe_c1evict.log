@@ -1,0 +1,3 @@
+[r2.064x_s7] R=3.5 win=300s done=1218 err=0 drop=0 req/s=3.50 out=1338 in=33296 tok/s cache=0.13 TTFT p50=0.612s p95=2.266s TPOT p50=26.1ms srv=1338.1763383825435
+[r2.653x_s7] R=4.5 win=300s done=1321 err=0 drop=0 req/s=3.87 out=1465 in=36925 tok/s cache=0.13 TTFT p50=22.660s p95=52.570s TPOT p50=42.3ms srv=1464.986631814565
+[protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c1evict/protocol_summary.json

@@ -1,0 +1,257 @@
+{
+ "label": "mxC2_s7_r1",
+ "stage": "mx-confirm",
+ "note": "THREE-WAY CONFIRM (paired), seed 7, replicate 1, 4 vCPU / 24 GiB host: the same MI355X serves theirs, ours-today, ours-stacked back to back. Theirs = their recipe exactly. Ours-today = C1 (their image by digest + MTP k=3 + --max-num-seqs 96 + graphs to 384 + MX_DRAFT_COMPACT=1). Ours-stacked = ours-today + MX_PS_FP4=1 MX_PS_MIN_M=1536 (box/patch_ps_fp4.py: aiter v0.1.30's persistent 256x256 MXFP4 kernel for M >= 1536, sha256-pinned .co). Their client, 300 s per rate, prefill probe on each; real text on all three; GSM8K test[:250] on the stacked server.",
+ "snapshot": {
+  "name": "or-openrelayrecipe-mi355x-c4m24d150",
+  "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+  "image_digest_amd64": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 24,
+  "disk": 150
+ },
+ "max_minutes": 125,
+ "budget_usd": 9.0,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/cgmon.py <<'MXEOF_CGMON_PY'\n\"\"\"cgmon.py OUT.csv [interval_s=1]: per-second CPU of the SANDBOX (its cgroup), plus per-role process CPU.\n\nWhy not /proc/stat: a Daytona sandbox sees the host's 192 CPUs in /proc/stat and os.cpu_count(); its real limit is the cgroup\nquota (/sys/fs/cgroup/cpu.max, e.g. \"400000 100000\" = 4 cores). So host-wide busy % says nothing about the box. This reads\n/sys/fs/cgroup/cpu.stat instead: usage_usec (cores used), nr_throttled (100 ms periods in which the quota ran out) and\nthrottled_usec. Throttling is the direct evidence of CPU starvation the small-host claim needs.\n\nColumns: t_utc, quota_cores, cg_used_cores, cg_used_pct_of_quota, throttled_periods, periods, throttled_ms,\nengine_pct, api_pct, client_pct, other_pct (process CPU in % of ONE core, summed over the role's processes; roles as cpumon.py).\"\"\"\nimport os\nimport sys\nimport time\n\nOUT = sys.argv[1]\nDT = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0\nHZ = os.sysconf(\"SC_CLK_TCK\")\nCG = \"/sys/fs/cgroup\"\n\n\ndef quota():\n    try:\n        q, p = open(f\"{CG}/cpu.max\").read().split()\n        return float(\"nan\") if q == \"max\" else int(q) / int(p)\n    except (OSError, ValueError):\n        return float(\"nan\")\n\n\ndef cgstat():\n    d = {}\n    try:\n        for line in open(f\"{CG}/cpu.stat\"):\n            k, v = line.split()\n            d[k] = int(v)\n    except (OSError, ValueError):\n        pass\n    return d\n\n\ndef role(cmd):\n    if \"EngineCore\" in cmd or cmd.startswith(\"VLLM::\"):\n        return \"engine\"\n    if \"bench serve\" in cmd or \"bench/protocol.py\" in cmd or \"bench/traffic.py\" in cmd:\n        return \"client\"\n    if \"vllm serve\" in cmd or \"vllm.entrypoints\" in cmd or \"sglang.launch_server\" in cmd:\n        return \"api\"\n    return \"other\"\n\n\ndef procs():\n    out = {}\n    for d in os.listdir(\"/proc\"):\n        if not d.isdigit():\n            continue\n        try:\n            with open(f\"/proc/{d}/stat\") as f:\n                s = f.read()\n            fields = s[s.rindex(\")\") + 2:].split()\n            ticks = int(fields[11]) + int(fields[12])\n            with open(f\"/proc/{d}/cmdline\", \"rb\") as f:\n                cmd = f.read().replace(b\"\\0\", b\" \").decode(errors=\"replace\").strip()\n            if not cmd:\n                with open(f\"/proc/{d}/comm\") as f:\n                    cmd = f.read().strip()\n            out[d] = (ticks, role(cmd))\n        except (OSError, ValueError, IndexError):\n            continue\n    return out\n\n\nwith open(OUT, \"a\", buffering=1) as fo:\n    if fo.tell() == 0:\n        fo.write(\"t_utc,quota_cores,cg_used_cores,cg_used_pct_of_quota,throttled_periods,periods,throttled_ms,\"\n                 \"engine_pct,api_pct,client_pct,other_pct\\n\")\n    Q = quota()\n    c0, w0, p0 = cgstat(), time.monotonic(), procs()\n    while True:\n        time.sleep(DT)\n        c1, w1, p1 = cgstat(), time.monotonic(), procs()\n        wall = w1 - w0\n        used = (c1.get(\"usage_usec\", 0) - c0.get(\"usage_usec\", 0)) / 1e6 / wall\n        thr = c1.get(\"nr_throttled\", 0) - c0.get(\"nr_throttled\", 0)\n        per = c1.get(\"nr_periods\", 0) - c0.get(\"nr_periods\", 0)\n        tms = (c1.get(\"throttled_usec\", 0) - c0.get(\"throttled_usec\", 0)) / 1e3\n        acc = {\"engine\": 0, \"api\": 0, \"client\": 0, \"other\": 0}\n        for pid, (tk, r) in p1.items():\n            if pid in p0:\n                acc[r] += max(0, tk - p0[pid][0])\n        pct = {k: 100.0 * v / HZ / wall for k, v in acc.items()}\n        fo.write(f\"{time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime())},{Q:.2f},{used:.2f},{100 * used / Q:.1f},{thr},{per},{tms:.0f},\"\n                 f\"{pct['engine']:.1f},{pct['api']:.1f},{pct['client']:.1f},{pct['other']:.1f}\\n\")\n        c0, w0, p0 = c1, w1, p1\nMXEOF_CGMON_PY\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh: what the engine image actually contains, written before any engine starts (runs from setup_cmd).\n# Versions, the AITER pieces OpenRelay upstreamed (ROCm/aiter#5926-#5929) and the anchors our patches need.\n# Output: /root/or/out/inspect.txt (pulled by the `inspect` sh step).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, json, re, glob\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"vllm\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\nv = os.path.dirname(importlib.util.find_spec(\"vllm\").origin)\nprint(\"aiter dir\", a); print(\"vllm dir\", v)\nua = os.path.join(a, \"ops/triton/attention/unified_attention.py\")\ns = open(ua).read() if os.path.exists(ua) else \"\"\nm = re.search(r\"\\n(\\s*if params\\.head_size >= 512[^\\n]*)\", s)\nprint(\"ua3d anchor (use_2d D>=512 clause):\", repr(m.group(1)) if m else \"NOT FOUND\")\nprint(\"ua3d already applied:\", \"max_seqlen_q > 16\" in s)\ntbl = os.path.join(a, \"ops/triton/configs/gfx950/triton/attention/unified_attention/DEFAULT.json\")\nif os.path.exists(tbl):\n    d = json.load(open(tbl))\n    for sec, ent in d.items():\n        if isinstance(ent, dict):\n            for k, val in ent.items():\n                if \"512\" in k or \"GEQ_256\" in k:\n                    print(f\"table {sec} {k} {val}\")\nelse:\n    print(\"table missing:\", tbl)\nfor f in sorted(glob.glob(os.path.join(a, \"configs/model_configs/*gemma*\"))):\n    print(\"model_config\", os.path.basename(f), sum(1 for _ in open(f)) - 1, \"rows\")\nact = os.path.join(a, \"ops/triton/_triton_kernels/fusions/activation.py\")\nif not os.path.exists(act): act = os.path.join(a, \"ops/triton/_triton_kernels/activation.py\")\nt = open(act).read() if os.path.exists(act) else \"\"\ni = t.find(\"def _act_mul_and_dynamic_mxfp4_quant_kernel(\")\nprint(\"scaleM_pad constexpr in act_mul kernel:\", \"scaleM_pad: tl.constexpr\" in t[i:t.find(\"):\", i)] if i >= 0 else \"kernel not found\")\ng = os.path.join(v, \"model_executor/models/gemma4.py\")\ngs = open(g).read() if os.path.exists(g) else \"\"\nprint(\"gemma4.py Gemma4MLP anchor:\", \"class Gemma4MLP(nn.Module):\" in gs, \"| g4 fuse applied:\", \"g4_gelu_mxfp4_gemm\" in gs)\nao = os.path.join(v, \"_aiter_ops.py\")\nts = open(ao).read() if os.path.exists(ao) else \"\"\nka = os.path.join(v, \"model_executor/kernels/linear/mxfp4/aiter.py\")\nks = open(ka).read() if os.path.exists(ka) else \"\"\nprint(\"vllm is_asm_fp4_gemm_tuned present:\", \"def is_asm_fp4_gemm_tuned\" in ts,\n      \"| presh_ws gate in kernel:\", \"is_triton_gemm_afp4wfp4_presh_ws_tuned\" in ks, \"| MX force patch:\", \"MX_FORCE_ASM_FP4\" in ks)\ntj = glob.glob(os.path.join(a, \"ops/triton/configs/gfx950/triton/gemm/gemm_afp4wfp4_preshuffled/*K=5376*\"))\nprint(\"gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376:\", [os.path.basename(x) for x in tj])\nenvs = open(os.path.join(v, \"envs.py\")).read()\nprint(\"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs:\", \"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM\" in envs)\nPY\nls /root/or/mx 2>/dev/null | sed 's/^/mx file: /'\ngrep -h \"^PATCH\" /root/or/mx/*.status 2>/dev/null\n} > \"$OUT\" 2>&1\ntail -n 40 \"$OUT\"\nMXEOF_INSPECT_SH\ncat > /root/or/mx/patch_draft_compact.py <<'MXEOF_PATCH_DRAFT_COMPACT_PY'\n\"\"\"vLLM 0.30 (OpenRelay's image): with MX_DRAFT_COMPACT=1, run the Gemma 4 MTP drafter's first (\"prefill\") pass on one\ntoken per request instead of on every token the target scheduled in the step.\n\nWhy: `AutoRegressiveSpeculator.propose` runs draft position 0 over the target's whole batch (it reuses the target's\nattention metadata), then keeps only `last_token_indices`. Gemma 4's MTP head is Q-only: it reads the target's KV cache\nand writes none (`Gemma4Speculator.advance_draft_positions` is False). So in a mixed step, the 4 draft layers run attention\n(including one full-attention, head_dim 512 layer) and BF16 MLPs over the whole 6-8K-token prefill chunk for nothing.\nThe knee profile (mx7_prof_mtp3_seqs96) shows a head_dim-512 2D attention call of ~2.9 ms per mixed step outside the target\nforward, plus the drafter's BF16 GEMMs: ~4-5 ms of a ~165 ms mixed step.\n\nThe compact pass gathers, per request, the shifted input id, the position and the target hidden state at\n`last_token_indices`, sets query_start_loc = arange and seq_len = position + 1 (the same rule the Gemma 4 decode passes\nuse), builds uniform 1-token attention metadata, and runs the draft model eagerly on num_reqs tokens. Only steps with a\nprefill take this path. All-decode steps keep the FULL-graph replay. The output distribution is unchanged: the drafter\nonly proposes, and the target still verifies every token. A mistake here can only lower acceptance (measured), never\nchange outputs (GSM8K gate).\n\nIdempotent; asserts its anchors; writes a PATCH status line.\"\"\"\nimport importlib.util\nimport os\nimport sys\n\np = os.path.join(os.path.dirname(importlib.util.find_spec(\"vllm\").origin), \"v1/worker/gpu/spec_decode/autoregressive/speculator.py\")\ns = open(p).read()\nstatus = \"/root/or/mx/patch_draft_compact.status\"\nif \"_mx_compact_prefill\" in s:\n    msg = \"PATCH draft_compact: already applied\"\nelse:\n    a1 = (\"        self.on_prefill_begin(num_reqs)\\n\"\n          \"        if prefill_batch_desc.cg_mode == CUDAGraphMode.FULL:\\n\")\n    b1 = (\"        self.on_prefill_begin(num_reqs)\\n\"\n          \"        if (\\n\"\n          \"            os.environ.get(\\\"MX_DRAFT_COMPACT\\\") == \\\"1\\\"\\n\"\n          \"            and not self.advance_draft_positions\\n\"\n          \"            and input_batch.has_prefill\\n\"\n          \"            and not dummy_run\\n\"\n          \"            and not is_profile\\n\"\n          \"            and self.pcp_manager is None\\n\"\n          \"            and self.dp_size == 1\\n\"\n          \"        ):\\n\"\n          \"            self._mx_compact_prefill(num_reqs, input_batch, hidden_states)\\n\"\n          \"        elif prefill_batch_desc.cg_mode == CUDAGraphMode.FULL:\\n\")\n    a2 = \"    def _prefill(\\n\"\n    b2 = '''    def _mx_compact_prefill(self, num_reqs, input_batch, target_hidden_states) -> None:\n        # MX (recipes/mi355x/box/patch_draft_compact.py): first draft pass on one token per request.\n        ib = self.input_buffers\n        ltok = self.last_token_indices[:num_reqs]\n        ids = ib.input_ids[ltok].clone()\n        pos = ib.positions[ltok].clone()\n        hs = target_hidden_states[ltok].clone()\n        ib.input_ids[:num_reqs] = ids\n        ib.positions[:num_reqs] = pos\n        self.hidden_states[:num_reqs] = hs\n        qsl = ib.query_start_loc\n        qsl[: num_reqs + 1] = torch.arange(num_reqs + 1, device=qsl.device, dtype=qsl.dtype)\n        qsl[num_reqs + 1 :] = num_reqs\n        ib.seq_lens[:num_reqs] = (pos + 1).to(ib.seq_lens.dtype)\n        ib.seq_lens[num_reqs:] = 0\n        idx_mapping = self.idx_mapping[:num_reqs]\n        desc, _ = dispatch_cg_and_sync_dp(\n            self.decode_cudagraph_manager, num_reqs, num_reqs, uniform_token_count=1,\n            dp_size=self.dp_size, dp_rank=self.dp_rank, need_eager=True,\n        )\n        slot_mappings = self.block_tables.compute_slot_mappings(\n            idx_mapping, qsl[: num_reqs + 1], ib.positions[:num_reqs], desc.num_tokens\n        )\n        slot_by_layer = build_slot_mappings_by_layer(slot_mappings, self.kv_cache_config)\n        md = self._build_uniform_attn_metadata(\n            batch_desc=desc, num_reqs=num_reqs, num_query_per_req=1,\n            seq_lens_cpu_upper_bound=input_batch.seq_lens_cpu_upper_bound, step=0,\n        )\n        last_hidden_states, hidden_states = self._run_model(\n            desc.num_tokens, md, slot_by_layer, None, CUDAGraphMode.NONE\n        )\n        sample_src_positions = pos + 1\n        self.draft_tokens[:num_reqs, 0] = self.sample_draft(\n            last_hidden_states[:num_reqs], sample_src_positions, idx_mapping,\n            self.temperature, self.seeds, self.current_draft_step, self.draft_logits,\n        )\n        if last_hidden_states is hidden_states:\n            self.hidden_states[:num_reqs] = last_hidden_states[:num_reqs]\n        else:\n            self.hidden_states[:num_reqs] = hidden_states[:num_reqs]\n        ib.positions[:num_reqs] = pos\n        self.sample_src_positions[:num_reqs] = sample_src_positions\n\n    def _prefill(\n'''\n    ok = s.count(a1) == 1 and s.count(a2) == 1 and \"def propose(\" in s and \"dispatch_cg_and_sync_dp\" in s \\\n        and \"build_slot_mappings_by_layer\" in s and \"def _build_uniform_attn_metadata\" not in s\n    if not ok:\n        msg = f\"PATCH draft_compact: ANCHOR NOT FOUND (a1={s.count(a1)} a2={s.count(a2)}) (not applied)\"\n    else:\n        s = s.replace(a1, b1, 1).replace(a2, b2, 1)\n        if \"\\nimport os\\n\" not in s:\n            s = s.replace(\"\\nimport torch\\n\", \"\\nimport os\\nimport torch\\n\", 1)\n        compile(s, p, \"exec\")\n        open(p, \"w\").write(s)\n        msg = \"PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)\"\nos.makedirs(os.path.dirname(status), exist_ok=True)\nopen(status, \"w\").write(msg + \"\\n\")\nprint(msg, file=sys.stderr)\nMXEOF_PATCH_DRAFT_COMPACT_PY\ncat > /root/or/mx/patch_ps_fp4.py <<'MXEOF_PATCH_PS_FP4_PY'\n#!/usr/bin/env python3\n\"\"\"patch_ps_fp4.py: route large-M MXFP4 GEMMs to aiter v0.1.30's persistent 256x256 f4gemm kernel (MX_PS_FP4=1).\n\nWhy: on one MI355X the image's aiter 0.1.21.post2 runs every prefill-chunk GEMM of Gemma 4 31B through the non-persistent\nasm kernels; v0.1.30 added f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_ps (grid = min(tiles, CUs), each workgroup loops\nover its tiles). Microbenchmarked on the same box (notes/gemm_headroom.md, run mxG1_asm), it matches the engine path's\noutput and runs 1.08-1.13x faster at M=8192 on all six (N, K), at the same power cap and clock.\n\nWhat it changes (runtime-gated, so one patched image serves both arms of a paired test):\n  * writes aiter/ops/mx_ps_fp4.py: a ctypes launcher (hipModuleLoad + hipModuleLaunchKernel with v0.1.30's 376-byte\n    PsKernelArgs: KernelArgs + num_cu at offset 372), and the routing test copied from v0.1.30's C++ ps_supported();\n  * inserts a 5-line route at the top of aiter.gemm_a4w4's gfx950 path: with MX_PS_FP4=1 and M >= MX_PS_MIN_M\n    (default 2048), the call launches the ps kernel; anything the kernel does not take falls back to the unchanged path.\n    Decode steps (M <= 384, inside CUDA graphs) never route.\nThe .co is fetched by setup_cmd from the v0.1.30 tag and checked by sha256 before this script runs.\nStatus: /root/or/mx/patch_ps_fp4.status (\"applied\" or \"FAILED: ...\"); the ps server's launch refuses to start without it.\n\"\"\"\nfrom __future__ import annotations\n\nimport hashlib\nimport importlib.util\nimport os\nimport sys\n\nCO = \"/root/or/mx/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_ps.co\"\nCO_SHA256 = \"8b541b78bff2de71f3cb48db89572f1eb4adc403e09a675be9a8a546a60ff938\"\nSTATUS = \"/root/or/mx/patch_ps_fp4.status\"\n\nMODULE = r'''\"\"\"mx_ps_fp4 (written by /root/or/mx/patch_ps_fp4.py): aiter v0.1.30's persistent 256x256 f4gemm via ctypes.\"\"\"\nimport ctypes\nimport os\nimport struct\nimport sys\n\nimport torch\n\nENABLED = os.environ.get(\"MX_PS_FP4\", \"0\") == \"1\"\nMIN_M = int(os.environ.get(\"MX_PS_MIN_M\", \"2048\"))\nCO = os.environ.get(\"MX_PS_CO\", \"__CO__\")\nKNAME = b\"_ZN5aiter45f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_psE\"\n_st = dict(lib=None, fn=None, num_cu=None, n=0, seen=set(), fb=set(), dead=None)\n\n\ndef _log(msg):\n    print(f\"[mx_ps_fp4 pid={os.getpid()}] {msg}\", file=sys.stderr, flush=True)\n\n\ndef _init():\n    path = next((l.split()[-1] for l in open(\"/proc/self/maps\") if \"libamdhip64.so\" in l), \"libamdhip64.so\")\n    lib = ctypes.CDLL(path)\n    lib.hipModuleLoad.argtypes = [ctypes.POINTER(ctypes.c_void_p), ctypes.c_char_p]\n    lib.hipModuleGetFunction.argtypes = [ctypes.POINTER(ctypes.c_void_p), ctypes.c_void_p, ctypes.c_char_p]\n    lib.hipModuleLaunchKernel.argtypes = [ctypes.c_void_p] + [ctypes.c_uint] * 7 + [ctypes.c_void_p] * 3\n    mod, fn = ctypes.c_void_p(), ctypes.c_void_p()\n    r = lib.hipModuleLoad(ctypes.byref(mod), CO.encode())\n    if r:\n        raise RuntimeError(f\"hipModuleLoad({CO}) = {r}\")\n    r = lib.hipModuleGetFunction(ctypes.byref(fn), mod, KNAME)\n    if r:\n        raise RuntimeError(f\"hipModuleGetFunction = {r}\")\n    _st.update(lib=lib, fn=fn, num_cu=torch.cuda.get_device_properties(torch.cuda.current_device()).multi_processor_count)\n    _log(f\"enabled: min_m={MIN_M} co={CO} hip={path} num_cu={_st['num_cu']}\")\n\n\ndef route(m, n, k, A, B, A_scale, B_scale, bias, beta, bpreshuffle, dtype):\n    \"\"\"v0.1.30 ps_supported(): B preshuffled and contiguous, K % 64 == 0, N % 16 == 0, scales padded to whole 256-row\n    tiles, A and B under 4 GiB, no bias term (bias with beta 0 adds nothing); plus bf16 output and M >= MIN_M.\"\"\"\n    if not ENABLED or m < MIN_M or _st[\"dead\"]:\n        return False\n    a_row, b_row = A.stride(0), B.stride(0)        # bytes: fp4x2 elements\n    why = (\"b not preshuffled\" if not bpreshuffle else\n           \"bias\" if (bias is not None and beta not in (None, 0.0)) else\n           \"dtype\" if dtype != torch.bfloat16 else\n           \"K%64 or N%16\" if (k % 64 or n % 16) else\n           \"A row stride\" if (a_row % 16 or A.stride(-1) != 1) else\n           \"B layout\" if (b_row * 2 != k or not B.is_contiguous()) else\n           \"A_scale rows\" if A_scale.shape[0] < (m + 255) // 256 * 256 else\n           \"B_scale rows\" if B_scale.shape[0] < (n + 255) // 256 * 256 else\n           \"4 GiB\" if (m * a_row >= 1 << 32 or n * b_row >= 1 << 32) else None)\n    if why:\n        if (n, k, why) not in _st[\"fb\"]:\n            _st[\"fb\"].add((n, k, why))\n            _log(f\"fallback m={m} n={n} k={k}: {why} (A_scale {tuple(A_scale.shape)}, B_scale {tuple(B_scale.shape)})\")\n        return False\n    if _st[\"fn\"] is None:\n        try:\n            _init()\n        except Exception as e:  # noqa: BLE001\n            _st[\"dead\"] = repr(e)\n            _log(f\"DISABLED: {e!r}\")\n            return False\n    return True\n\n\ndef launch(A, B, A_scale, B_scale, out, m, n, k):\n    b = bytearray(376)\n    struct.pack_into(\"<Q\", b, 0, out.data_ptr())            # ptr_D\n    struct.pack_into(\"<Q\", b, 32, A.data_ptr())             # ptr_A\n    struct.pack_into(\"<Q\", b, 48, B.data_ptr())             # ptr_B\n    struct.pack_into(\"<f\", b, 64, 1.0)                      # alpha\n    struct.pack_into(\"<f\", b, 80, 0.0)                      # beta\n    struct.pack_into(\"<I\", b, 128, out.stride(0))           # stride_C0\n    struct.pack_into(\"<I\", b, 160, A.stride(0) * 2)         # stride_A0 (fp4 elements)\n    struct.pack_into(\"<I\", b, 192, B.stride(0) * 2)         # stride_B0\n    struct.pack_into(\"<I\", b, 224, m)\n    struct.pack_into(\"<I\", b, 240, n)\n    struct.pack_into(\"<I\", b, 256, k)\n    struct.pack_into(\"<Q\", b, 272, A_scale.data_ptr())\n    struct.pack_into(\"<Q\", b, 288, B_scale.data_ptr())\n    struct.pack_into(\"<I\", b, 304, A_scale.stride(0))\n    struct.pack_into(\"<I\", b, 336, B_scale.stride(0))\n    struct.pack_into(\"<i\", b, 368, 0)                       # log2_k_split\n    struct.pack_into(\"<I\", b, 372, _st[\"num_cu\"])\n    tiles = ((m + 255) // 256) * ((n + 255) // 256)\n    buf = ctypes.create_string_buffer(bytes(b), 376)\n    size = ctypes.c_size_t(376)\n    extra = (ctypes.c_void_p * 5)(1, ctypes.addressof(buf), 2, ctypes.addressof(size), 3)\n    r = _st[\"lib\"].hipModuleLaunchKernel(_st[\"fn\"], min(tiles, _st[\"num_cu\"]), 1, 1, 256, 1, 1, 0,\n                                         ctypes.c_void_p(torch.cuda.current_stream().cuda_stream), None, extra)\n    if r:\n        raise RuntimeError(f\"hipModuleLaunchKernel(ps) = {r}\")\n    _st[\"n\"] += 1\n    if (n, k) not in _st[\"seen\"]:\n        _st[\"seen\"].add((n, k))\n        _log(f\"routed first m={m} n={n} k={k} (A_scale {tuple(A_scale.shape)})\")\n    if _st[\"n\"] % 24000 == 0:\n        _log(f\"routed {_st['n']} GEMMs so far\")\n'''\n\nHOOK = '''    # MX_PS_FP4 (patch_ps_fp4.py): large-M calls -> aiter v0.1.30's persistent 256x256 kernel; others unchanged.\n    if gfx_arch == \"gfx950\" and _mx_ps.route(m, n, k, A, B, A_scale, B_scale, bias, beta, bpreshuffle, dtype):\n        out = torch.empty(((m + 255) // 256 * 256, n), dtype=dtype, device=A.device)\n        _mx_ps.launch(A.view(m, k // 2), B, A_scale, B_scale, out, m, n, k)\n        return out[:m].view(*A.shape[:-1], n)\n'''\nANCHOR = \"    out = torch.empty(((m + 31) // 32 * 32, n), dtype=dtype, device=A.device)\\n\"\nIMPORT_ANCHOR = \"from ..utility import dtypes\\n\"\n\n\ndef status(msg, rc):\n    os.makedirs(os.path.dirname(STATUS), exist_ok=True)\n    open(STATUS, \"w\").write(msg + \"\\n\")\n    print(f\"PATCH ps_fp4: {msg}\")\n    sys.exit(rc)\n\n\ndef main():\n    if not os.path.exists(CO):\n        status(f\"FAILED: {CO} missing\", 1)\n    sha = hashlib.sha256(open(CO, \"rb\").read()).hexdigest()\n    if sha != CO_SHA256:\n        status(f\"FAILED: {CO} sha256 {sha} != {CO_SHA256}\", 1)\n    ops = os.path.join(os.path.dirname(importlib.util.find_spec(\"aiter\").origin), \"ops\")\n    p = os.path.join(ops, \"gemm_op_a4w4.py\")\n    s = open(p).read()\n    open(os.path.join(ops, \"mx_ps_fp4.py\"), \"w\").write(MODULE.replace(\"__CO__\", CO))\n    if \"_mx_ps.route(\" in s:\n        status(\"applied (already)\", 0)\n    body = s[s.index(\"def gemm_a4w4(\"):]\n    if s.count(ANCHOR) != 1 or body.count(ANCHOR) != 1 or IMPORT_ANCHOR not in s:\n        status(f\"FAILED: anchor count {s.count(ANCHOR)} in {p}\", 1)\n    s = s.replace(IMPORT_ANCHOR, IMPORT_ANCHOR + \"from . import mx_ps_fp4 as _mx_ps\\n\", 1)\n    s = s.replace(ANCHOR, HOOK + ANCHOR, 1)\n    open(p, \"w\").write(s)\n    compile(s, p, \"exec\")\n    status(f\"applied (aiter {p}; co sha256 {sha[:12]}; active only with MX_PS_FP4=1)\", 0)\n\n\nif __name__ == \"__main__\":\n    main()\nMXEOF_PATCH_PS_FP4_PY\ncat > /root/or/mx/serve_ps.sh <<'MXEOF_SERVE_PS_SH'\n#!/bin/bash\n# serve_ps.sh <engine command...>: start the engine only if patch_ps_fp4.py reported \"applied\" (the MX_PS_FP4 arm of a\n# paired test must never silently run the unpatched GEMM path). Used as the launch prefix of the mx_ps server.\nif ! grep -q '^applied' /root/or/mx/patch_ps_fp4.status 2>/dev/null; then\n  echo \"serve_ps.sh: patch_ps_fp4 not applied: $(cat /root/or/mx/patch_ps_fp4.status 2>/dev/null)\" >&2\n  exit 1\nfi\necho \"serve_ps.sh: $(cat /root/or/mx/patch_ps_fp4.status); MX_PS_FP4=${MX_PS_FP4:-unset} MX_PS_MIN_M=${MX_PS_MIN_M:-2048}\" >&2\nexec \"$@\"\nMXEOF_SERVE_PS_SH\npython3 /root/or/mx/patch_draft_compact.py\ncurl -sfL --retry 3 -o /root/or/mx/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_ps.co https://raw.githubusercontent.com/ROCm/aiter/77ba72b7061a3c76c4f726a50e8edfd2fe2a80e7/hsa/gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_ps.co\necho '8b541b78bff2de71f3cb48db89572f1eb4adc403e09a675be9a8a546a60ff938  /root/or/mx/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256_ps.co' | sha256sum -c -\npython3 /root/or/mx/patch_ps_fp4.py\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "or_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":2}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_or_recipe",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_or_recipe_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe",
+     "client": "vllmbench",
+     "rates": [
+      3.25,
+      3.5
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe_text",
+     "client": "traffic",
+     "rates": [
+      3.25
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "claim_group": "or_recipe_paired_C2",
+   "origin": "openrelay_recipe"
+  },
+  {
+   "name": "mx_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton",
+    "MX_DRAFT_COMPACT": "1"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 96 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":3}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256,288,320,352,384]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_mx_recipe",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_mx_recipe_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mx_recipe",
+     "client": "vllmbench",
+     "rates": [
+      3.25,
+      3.5,
+      3.75
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mx_recipe_text",
+     "client": "traffic",
+     "rates": [
+      3.25,
+      3.5
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "claim_group": "mx_recipe_C2",
+   "origin": "ours"
+  },
+  {
+   "name": "mx_stack",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton",
+    "MX_DRAFT_COMPACT": "1",
+    "MX_PS_FP4": "1",
+    "MX_PS_MIN_M": "1536"
+   },
+   "launch": "bash /root/or/mx/serve_ps.sh vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 96 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":3}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256,288,320,352,384]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_mx_stack",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_mx_stack_gsm8kor250",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 420
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mx_stack",
+     "client": "vllmbench",
+     "rates": [
+      3.25,
+      3.5,
+      3.75,
+      4.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mx_stack_text",
+     "client": "traffic",
+     "rates": [
+      3.5,
+      3.75
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "claim_group": "mx_stack_C2",
+   "origin": "ours"
+  }
+ ]
+}

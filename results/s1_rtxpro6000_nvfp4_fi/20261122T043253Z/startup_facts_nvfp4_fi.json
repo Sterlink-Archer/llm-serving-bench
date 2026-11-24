@@ -1,0 +1,121 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASHINFER",
+  "global_512": "FLASHINFER"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=703) INFO 11-22 04:34:38 [startup.py:96] non-default args: {'model_tag': '/root/models/nvfp4', 'enable_prompt_tokens_details': True, 'model': '/root/models/nvfp4', 'max_model_len': 32768, 'served_model_name': ['gemma'], 'attention_backend': 'FLASHINFER', 'reasoning_parser': 'gemma4', ",
+  "(EngineCore pid=921) INFO 11-22 04:35:02 [cuda.py:448] Using AttentionBackendEnum.FLASHINFER backend.",
+  "(EngineCore pid=921) INFO 11-22 04:35:02 [cuda.py:448] Using AttentionBackendEnum.FLASHINFER backend."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 265537,
+ "kv_cache_gib": 63.99,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 8.1,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.33.0",
+ "missing": [],
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "s1_rtxpro6000_nvfp4_fi/20261122T043253Z",
+ "config_id": "s1_rtxpro6000_nvfp4_fi:nvfp4_fi",
+ "image": "vllm/vllm-openai:v0.33.0",
+ "image_digest": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+ "model_repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+ "model_rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+ "gpu_mem_after_load": "89735 MiB, 97887 MiB",
+ "source_log": "results/s1_rtxpro6000_nvfp4_fi/20261122T043253Z/server_nvfp4_fi.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T04:35:02Z",
+   "t_end": "2026-11-22T04:35:05Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T04:35:10Z",
+   "t_end": "2026-11-22T04:35:42Z",
+   "detail": {
+    "compile_s": 31.57
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:35:46Z",
+   "t_end": "2026-11-22T04:36:20Z",
+   "detail": {
+    "s": 34.0,
+    "gib": 1.53
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:36:56Z",
+   "t_end": "2026-11-22T04:37:08Z",
+   "detail": {
+    "s": 12.0,
+    "gib": 0.86
+   }
+  }
+ ]
+}

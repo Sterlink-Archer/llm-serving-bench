@@ -1,0 +1,42 @@
+2026-11-22T11:47:53Z [mxC2b_s8] creating spot sandbox (MI355X x1, $4.1661/h, ttl 170 min, budget $12.0; project so far ~$291.58)
+2026-11-22T11:48:29Z [mxC2b_s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T11:48:52Z [mxC2b_s8] download mx_stack: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T11:51:41Z [mxC2b_s8] server mx_stack ready=True after 168.2s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T11:51:44Z [mxC2b_s8] inspect_mx_stack rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T11:51:57Z [mxC2b_s8] gate_mx_stack_gsm8kor250 rc=0 13s :: [gate_mx_stack_gsm8kor250] gsm8kor: 0.988 (247/250, noans 0, err 0, trunc 0) wall=7s
+2026-11-22T12:14:55Z [mxC2b_s8] protocol_mx_stack rc=0 1378s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_stack/protocol_summary.json
+2026-11-22T12:33:24Z [mxC2b_s8] protocol_mx_stack_text rc=0 1109s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_stack_text/protocol_summary.json
+2026-11-22T12:33:48Z [mxC2b_s8] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T12:34:57Z [mxC2b_s8] server mx_recipe ready=True after 68.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270048 MB
+        FREE_VRAM: 24544 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270048 MB
+        FREE_VISIBLE_VRAM: 24544 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T12:35:00Z [mxC2b_s8] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T12:35:13Z [mxC2b_s8] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=2s
+2026-11-22T12:52:30Z [mxC2b_s8] protocol_mx_recipe rc=0 1037s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T13:10:59Z [mxC2b_s8] protocol_mx_recipe_text rc=0 1109s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json
+2026-11-22T13:11:23Z [mxC2b_s8] download or_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T13:12:57Z [mxC2b_s8] server or_recipe ready=True after 94.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T13:13:00Z [mxC2b_s8] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T13:13:13Z [mxC2b_s8] gate_or_recipe_gsm8kor100 rc=0 13s :: [gate_or_recipe_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T13:30:30Z [mxC2b_s8] protocol_or_recipe rc=0 1037s :: [protocol] max_rate_at_slo=3.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_or_recipe/protocol_summary.json
+2026-11-22T13:48:59Z [mxC2b_s8] protocol_or_recipe_text rc=0 1109s :: [protocol] max_rate_at_slo=2.75 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_or_recipe_text/protocol_summary.json
+2026-11-22T13:49:39Z [mxC2b_s8] done: elapsed 121.8 min, est $8.45; project est $314.49

@@ -1,0 +1,8 @@
+2026-11-22T05:45:45Z [e4a_rtxpro6000_sglang_colA] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 60 min, budget $3.5; project so far ~$45.81)
+2026-11-22T05:46:31Z [e4a_rtxpro6000_sglang_colA] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 60 | Mem:             176          21          77           0          82         154 | overlay         150G  5.2M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.5.23
+2026-11-22T05:48:23Z [e4a_rtxpro6000_sglang_colA] download sgl_nvfp4_nv: rc=0 109s 32.7 GB via ['huggingface_hub']
+2026-11-22T05:50:08Z [e4a_rtxpro6000_sglang_colA] server sgl_nvfp4_nv ready=True after 103.1s; gpu mem 88289 MiB, 97887 MiB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 148789 graphs 36 REJECTED: Triton attention on global 512-dim layers
+2026-11-22T05:50:37Z [e4a_rtxpro6000_sglang_colA] gate_gsm8kor100 rc=0 28s :: [gate_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=22s
+2026-11-22T06:09:16Z [e4a_rtxpro6000_sglang_colA] protocol_sgl_nvfp4_nv_A_random rc=0 1119s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=6193.023547739348 tok/s -> /root/or/out/protocol_sgl_nvfp4_nv_A_random/protocol_summary.json
+2026-11-22T06:09:48Z [e4a_rtxpro6000_sglang_colA] MILESTONE project spend crossed $50 (est $69.50, metered 50.0182)
+2026-11-22T06:09:48Z [e4a_rtxpro6000_sglang_colA] done: elapsed 24.1 min, est $1.16; project est $69.5

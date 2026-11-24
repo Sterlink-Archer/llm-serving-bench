@@ -1,0 +1,124 @@
+{
+ "schema": "protocol/1",
+ "run_id": "e4_rtxpro6000_sglang/20261122T052658Z",
+ "config_id": "e4_rtxpro6000_sglang:sgl_nvfp4_nv",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 1.0296,
+ "duration_s": 300.0,
+ "warmup_s": 60.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "synthetic",
+ "params": {
+  "input_dist": {
+   "uniform": [
+    1900,
+    17100
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  }
+ },
+ "calibration": {
+  "tokenizer": "/root/models/nvfp4_modelopt",
+  "exact_prose_tokens": true
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 1.0,
+   "rate": 1.03,
+   "seeds": {
+    "7": "cells/r1x_1.03rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "achieved_rps": 0.4375,
+     "arrived_rps": 1.0166666666666666,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 137.2036335041048,
+     "ttft_p95_s": 175.36381508701015,
+     "ttft_p99_s": 181.0217583899852,
+     "tpot_p50_s": 0.08492625066111592,
+     "tpot_p95_s": 0.10597403061468201,
+     "e2e_p50_s": 159.0339149319334,
+     "errors": 0,
+     "requests_sent": 309,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 164.37916666666666,
+     "in_tok_s": 3775.0958333333333,
+     "cached_in_tok_s": 5.870833333333334,
+     "server_gen_tok_s": 176.95311424471137,
+     "spec_accept_len": null,
+     "preemptions": 0.0,
+     "peak_inflight": 190,
+     "spec_acceptance_rate": null,
+     "server_prompt_tok_s": 3763.199562878863,
+     "prompt_tok_xcheck_ratio": 0.9968487500769044,
+     "prompt_tok_xcheck_pass": true,
+     "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+     "client": "traffic.py (steady window)",
+     "prompt_tokens_mean": 8775.42748091603,
+     "completion_tokens_mean": 372.7022900763359,
+     "exact_arrivals": true,
+     "stratified_lengths": false
+    }
+   },
+   "kept_seed": 7,
+   "achieved_rps": 0.4375,
+   "arrived_rps": 1.0166666666666666,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 137.2036335041048,
+   "ttft_p95_s": 175.36381508701015,
+   "ttft_p99_s": 181.0217583899852,
+   "tpot_p50_s": 0.08492625066111592,
+   "tpot_p95_s": 0.10597403061468201,
+   "e2e_p50_s": 159.0339149319334,
+   "errors": 0,
+   "requests_sent": 309,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 164.37916666666666,
+   "in_tok_s": 3775.0958333333333,
+   "cached_in_tok_s": 5.870833333333334,
+   "server_gen_tok_s": 176.95311424471137,
+   "spec_accept_len": null,
+   "preemptions": 0.0,
+   "peak_inflight": 190,
+   "spec_acceptance_rate": null,
+   "server_prompt_tok_s": 3763.199562878863,
+   "prompt_tok_xcheck_ratio": 0.9968487500769044,
+   "prompt_tok_xcheck_pass": true,
+   "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+   "client": "traffic.py (steady window)",
+   "prompt_tokens_mean": 8775.42748091603,
+   "completion_tokens_mean": 372.7022900763359,
+   "exact_arrivals": true,
+   "stratified_lengths": false
+  },
+  {
+   "multiple": 1.501,
+   "rate": 1.545,
+   "seeds": {},
+   "results": {},
+   "skipped": "past SLO (an earlier rate failed with p95 TTFT > 2x SLO)"
+  }
+ ],
+ "prefill": null,
+ "t_start": "2026-11-22T05:44:04Z",
+ "client": "traffic",
+ "max_rate_at_slo_rps": 0.0,
+ "max_goodput_rps": 0.0,
+ "t_end": "2026-11-22T05:49:09Z",
+ "wall_minutes": 5.081996444861094
+}

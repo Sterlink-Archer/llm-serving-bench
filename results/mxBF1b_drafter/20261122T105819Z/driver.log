@@ -1,0 +1,14 @@
+2026-11-22T10:58:20Z [mxBF1b_drafter] creating spot sandbox (MI355X x1, $4.7565/h, ttl 25 min, budget $2.0; project so far ~$262.68)
+2026-11-22T10:59:03Z [mxBF1b_drafter] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T10:59:05Z [mxBF1b_drafter] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T10:59:07Z [mxBF1b_drafter] server nogpu ready=True after 1.2s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T10:59:20Z [mxBF1b_drafter] gemm_inventory rc=0 13s :: [2026-11-22T10:59:13Z] inventory done in 4s
+2026-11-22T11:00:56Z [mxBF1b_drafter] bf16_drafter rc=0 95s :: shape d_centroids rc=139
+2026-11-22T11:01:31Z [mxBF1b_drafter] done: elapsed 3.2 min, est $0.25; project est $265.72

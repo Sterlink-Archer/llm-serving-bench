@@ -1,0 +1,114 @@
+{
+ "schema": "prefill_sweep/1",
+ "t": "2026-11-22T05:20:02Z",
+ "model": "gemma",
+ "reps": 3,
+ "rows": [
+  {
+   "length_target": 2000,
+   "prompt_tokens_median": 1884,
+   "tok_s_median": 27195.131630678254,
+   "latency_s_median": 0.0693,
+   "reps": [
+    {
+     "target": 2000,
+     "prompt_tokens": 1787,
+     "latency_s": 0.0711,
+     "tok_s": 25145.668581780064
+    },
+    {
+     "target": 2000,
+     "prompt_tokens": 1884,
+     "latency_s": 0.0693,
+     "tok_s": 27195.131630678254
+    },
+    {
+     "target": 2000,
+     "prompt_tokens": 1887,
+     "latency_s": 0.0671,
+     "tok_s": 28112.77929627671
+    }
+   ]
+  },
+  {
+   "length_target": 4000,
+   "prompt_tokens_median": 3676,
+   "tok_s_median": 28994.217728557218,
+   "latency_s_median": 0.1268,
+   "reps": [
+    {
+     "target": 4000,
+     "prompt_tokens": 4835,
+     "latency_s": 0.1726,
+     "tok_s": 28006.351276075013
+    },
+    {
+     "target": 4000,
+     "prompt_tokens": 3444,
+     "latency_s": 0.1173,
+     "tok_s": 29362.769907948914
+    },
+    {
+     "target": 4000,
+     "prompt_tokens": 3676,
+     "latency_s": 0.1268,
+     "tok_s": 28994.217728557218
+    }
+   ]
+  },
+  {
+   "length_target": 10000,
+   "prompt_tokens_median": 9434,
+   "tok_s_median": 22373.501735070113,
+   "latency_s_median": 0.4217,
+   "reps": [
+    {
+     "target": 10000,
+     "prompt_tokens": 9434,
+     "latency_s": 0.4217,
+     "tok_s": 22373.501735070113
+    },
+    {
+     "target": 10000,
+     "prompt_tokens": 12546,
+     "latency_s": 0.6069,
+     "tok_s": 20673.83192697634
+    },
+    {
+     "target": 10000,
+     "prompt_tokens": 8749,
+     "latency_s": 0.3808,
+     "tok_s": 22975.030218941953
+    }
+   ]
+  },
+  {
+   "length_target": 16000,
+   "prompt_tokens_median": 15066,
+   "tok_s_median": 18720.699701081227,
+   "latency_s_median": 0.8048,
+   "reps": [
+    {
+     "target": 16000,
+     "prompt_tokens": 14286,
+     "latency_s": 0.7419,
+     "tok_s": 19255.73088219184
+    },
+    {
+     "target": 16000,
+     "prompt_tokens": 15066,
+     "latency_s": 0.8048,
+     "tok_s": 18720.699701081227
+    },
+    {
+     "target": 16000,
+     "prompt_tokens": 17405,
+     "latency_s": 1.0039,
+     "tok_s": 17337.852147004272
+    }
+   ]
+  }
+ ],
+ "ratio_longest_to_shortest": 0.6883842282992593,
+ "reading": "ratio ~1.0 = GEMM-bound (flat); ratio well below 1 = attention cost grows with prompt length"
+}

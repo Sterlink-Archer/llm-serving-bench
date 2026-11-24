@@ -1,0 +1,8 @@
+2026-11-22T04:59:43Z [s1_b300_nvfp4_mtp2_r4] creating spot sandbox (B300 x1, $8.0927/h, ttl 60 min, budget $9.0; project so far ~$12.15)
+2026-11-22T05:00:04Z [s1_b300_nvfp4_mtp2_r4] system: ok | NVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W | 224 | Mem:            3527         101        2331           0        1117        3426 | overlay         400G  5.2M  400G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.34.0
+2026-11-22T05:00:59Z [s1_b300_nvfp4_mtp2_r4] download nvfp4_mtp2_r4: rc=0 53s 24.3 GB via ['huggingface_hub']
+2026-11-22T05:04:41Z [s1_b300_nvfp4_mtp2_r4] server nvfp4_mtp2_r4 ready=True after 220.9s; gpu mem 249850 MiB, 275040 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 909418 graphs 46
+2026-11-22T05:05:05Z [s1_b300_nvfp4_mtp2_r4] gate_gsm8kor100 rc=0 24s :: [gate_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=17s
+2026-11-22T05:10:42Z [s1_b300_nvfp4_mtp2_r4] protocol_nvfp4_mtp2_r4 rc=0 337s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 2.8857); prefill=22530.98201325661 tok/s -> /root/or/out/protocol_nvfp4_mtp2_r4/protocol_summary.json
+2026-11-22T05:12:50Z [s1_b300_nvfp4_mtp2_r4] protocol_nvfp4_mtp2_r4_textclient rc=0 128s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 2.8857); prefill=None tok/s -> /root/or/out/protocol_nvfp4_mtp2_r4_textclient/protocol_summary.json
+2026-11-22T05:13:12Z [s1_b300_nvfp4_mtp2_r4] done: elapsed 13.5 min, est $1.82; project est $22.31

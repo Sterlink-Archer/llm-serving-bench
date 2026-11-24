@@ -1,0 +1,3 @@
+[r1.916x_s7] R=3.25 win=240s done=875 err=0 drop=0 req/s=2.92 out=1149 in=30598 tok/s cache=0.00 TTFT p50=0.703s p95=3.298s TPOT p50=29.4ms srv=1149.4496444641366
+[r2.064x_s7] R=3.5 win=240s done=934 err=0 drop=0 req/s=3.13 out=1232 in=32724 tok/s cache=0.00 TTFT p50=1.210s p95=7.013s TPOT p50=49.6ms srv=1231.9835000040086
+[protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json

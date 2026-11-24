@@ -1,0 +1,25 @@
+2026-11-22T07:32:59Z [mxS1_sglang] building or-sglang0523rocm10-mi355x-c8m48d150 from lmsysorg/sglang:v0.5.23-rocm10-mi35x
+2026-11-22T07:45:34Z [mxS1_sglang] creating spot sandbox (MI355X x1, $4.7565/h, ttl 90 min, budget $7.5; project so far ~$112.66)
+2026-11-22T07:46:02Z [mxS1_sglang] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:46:15Z [mxS1_sglang] download sgl_mxfp4: rc=0 12s 19.6 GB via ['huggingface_hub']
+2026-11-22T07:46:42Z [mxS1_sglang] server sgl_mxfp4 ready=False after 26.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': 'aiter', 'global_512': 'aiter'} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T07:47:15Z [mxS1_sglang] download sgl_fp8: rc=0 22s 33.3 GB via ['huggingface_hub']
+2026-11-22T07:49:14Z [mxS1_sglang] server sgl_fp8 ready=True after 118.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 225194 MB
+        FREE_VRAM: 69398 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 225194 MB
+        FREE_VISIBLE_VRAM: 69398 MB; attn {'sliding': 'aiter', 'global_512': 'aiter'} kv_tokens 530791 graphs 12
+2026-11-22T07:49:18Z [mxS1_sglang] inspect_sgl_fp8 rc=0 2s :: mx file: inspect.sh
+2026-11-22T07:49:41Z [mxS1_sglang] gate_sgl_fp8_gsm8kor100 rc=0 23s :: [gate_sgl_fp8_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=18s
+2026-11-22T08:02:18Z [mxS1_sglang] protocol_sgl_fp8 rc=0 757s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=17217.341358580703 tok/s -> /root/or/out/protocol_sgl_fp8/protocol_summary.json
+2026-11-22T08:02:53Z [mxS1_sglang] done: elapsed 17.3 min, est $1.37; project est $128.26

@@ -1,0 +1,11 @@
+2026-11-22T07:57:36Z [ik2_pro6000_spec] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 100 min, budget $7.0; project so far ~$123.90)
+2026-11-22T07:58:25Z [ik2_pro6000_spec] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 120 | Mem:             354          28         116           0         214         325 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T07:59:58Z [ik2_pro6000_spec] download swa15: rc=0 90s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:03:27Z [ik2_pro6000_spec] server swa15 ready=True after 207.5s; gpu mem 91775 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1071872 graphs 36
+2026-11-22T08:04:17Z [ik2_pro6000_spec] gate_swa15_gsm8kor100 rc=0 49s :: [gate_swa15_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=43s
+2026-11-22T08:11:58Z [ik2_pro6000_spec] protocol_swa15_B_text rc=0 461s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_swa15_B_text/protocol_summary.json
+2026-11-22T08:12:16Z [ik2_pro6000_spec] download swa15_dspark: rc=0 4s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:14:26Z [ik2_pro6000_spec] server swa15_dspark ready=True after 128.2s; gpu mem 87097 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 885120 graphs 0 REJECTED: missing cuda_graph_sizes
+2026-11-22T08:14:28Z [ik2_pro6000_spec] engine swa15_dspark rejected; same-box fallback: +--max-running-requests 32 env {}
+2026-11-22T08:15:48Z [ik2_pro6000_spec] server swa15_dspark ready=True after 66.0s; gpu mem 86159 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 915584 graphs 0 REJECTED: missing cuda_graph_sizes
+2026-11-22T08:16:21Z [ik2_pro6000_spec] done: elapsed 18.7 min, est $0.90; project est $137.92

@@ -1,0 +1,71 @@
+{
+ "label": "d3_sglang_counter_probe",
+ "stage": "diagnose (lead: explain the 1.0757 cross-check on e4_b300_sglang column B)",
+ "claim_group": "d3_sglang_counter_probe",
+ "note": "Why did SGLang's sglang:prompt_tokens_total grow 7.6% more than the prompt tokens its responses reported (e4_b300_sglang column B at 2.368 req/s; ~1.10 against arrival-time counting at both rates; no retractions)? Same SGLang v0.5.23 image and ModelOpt checkpoint as e4, on a cheap RTX PRO 6000 (counter semantics are the engine's, not the GPU's). bench/counter_probe.py sends one request at a time and scrapes the counter before, mid-request and after (streaming and not, 500/2K/9.5K tokens); then one real-text cell at 0.35 req/s (under this card's ~0.44 req/s capacity) records the cross-check under load; then the probe again.",
+ "snapshot": {
+  "name": "or-sglang0523-rtx-pro-6000-c8m32d150",
+  "image": "lmsysorg/sglang:v0.5.23",
+  "image_digest_amd64": "sha256:f7876bef696ccf9cf75a2bf7ccb82970f5fac577f082fb8ca95c9a59d2160eb5",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 45,
+ "budget_usd": 2.5,
+ "servers": [
+  {
+   "name": "sgl_nvfp4_nv",
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "dir": "/root/models/nvfp4_modelopt"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend triton --quantization modelopt_fp4",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "counter_probe",
+     "cmd": "python3 bench/counter_probe.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/counter_probe.json",
+     "outputs": [
+      "out/counter_probe.json"
+     ],
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_counter_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "rates": [
+      0.35
+     ]
+    },
+    {
+     "type": "sh",
+     "name": "counter_probe_after",
+     "cmd": "python3 bench/counter_probe.py --model gemma --metrics http://127.0.0.1:8000/metrics --lengths 9500 --reps 3 --out /root/or/out/counter_probe_after.json",
+     "outputs": [
+      "out/counter_probe_after.json"
+     ],
+     "est_s": 120
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true
+  }
+ ]
+}

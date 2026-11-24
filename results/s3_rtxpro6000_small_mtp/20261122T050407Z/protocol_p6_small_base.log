@@ -1,0 +1,4 @@
+[vllmbench r=0.7 s=7] done=84 failed=0 req/s=0.6162111845809934 p95 TTFT=3.104888900590593 median TPOT=50.53735509839594 ms in tok/s=6167
+[vllmbench r=0.86 s=7] done=103 failed=0 req/s=0.7363582197954339 p95 TTFT=4.248802339797839 median TPOT=116.67552717571584 ms in tok/s=7395
+[vllmbench r=1.03 s=7] done=123 failed=0 req/s=0.7938071281719198 p95 TTFT=10.37488903042394 median TPOT=171.48417930942603 ms in tok/s=7815
+[protocol] max_rate_at_slo=0.7 req/s (break-even 0.8625); prefill=12091.791701674525 tok/s -> /root/or/out/protocol_p6_small_base/protocol_summary.json

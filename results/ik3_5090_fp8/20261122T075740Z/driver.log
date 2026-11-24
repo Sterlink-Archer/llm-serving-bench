@@ -1,0 +1,8 @@
+2026-11-22T07:57:41Z [ik3_5090_fp8] creating spot sandbox (RTX-5090 x1, $1.6773/h, ttl 110 min, budget $4.0; project so far ~$123.95)
+2026-11-22T07:58:36Z [ik3_5090_fp8] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          22          82           0         155         231 | overlay         1.8T  539G  1.2T  31% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:00:41Z [ik3_5090_fp8] download tri_nopg: rc=0 122s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:01:40Z [ik3_5090_fp8] server tri_nopg ready=False after 57.5s; gpu mem 2 MiB, 32607 MiB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T08:01:58Z [ik3_5090_fp8] download tri_nopg_fp8kv: rc=0 4s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:02:09Z [ik3_5090_fp8] signal 15: tearing down
+2026-11-22T08:02:32Z [ik3_5090_fp8] done: elapsed 4.9 min, est $0.14; project est $128.02
+2026-11-22T08:02:44Z [ik3_5090_fp8] done: elapsed 5.1 min, est $0.14; project est $128.16

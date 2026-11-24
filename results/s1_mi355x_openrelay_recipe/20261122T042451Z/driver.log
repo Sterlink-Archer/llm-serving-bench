@@ -1,0 +1,13 @@
+2026-11-22T04:24:51Z [s1_mi355x_openrelay_recipe] building snapshot or-openrelayrecipe-mi355x-c8m48d150 from public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355
+2026-11-22T04:32:24Z [s1_mi355x_openrelay_recipe] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $5.5; project so far ~$2.78)
+2026-11-22T04:32:42Z [s1_mi355x_openrelay_recipe] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T04:33:25Z [s1_mi355x_openrelay_recipe] download or_recipe: rc=0 42s 20.5 GB via ['huggingface_hub']
+2026-11-22T04:36:06Z [s1_mi355x_openrelay_recipe] server or_recipe ready=True after 159.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268500 MB
+        FREE_VRAM: 26092 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268500 MB
+        FREE_VISIBLE_VRAM: 26092 MB; attn {'sliding': None, 'global_512': None} kv_tokens 977076 graphs 19 REJECTED: missing attention_backend.global_512
+2026-11-22T04:36:24Z [s1_mi355x_openrelay_recipe] done: elapsed 4.0 min, est $0.32; project est $4.07

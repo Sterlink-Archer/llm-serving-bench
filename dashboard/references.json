@@ -1,0 +1,20 @@
+{
+ "_note": "Published reference numbers, transcribed from docs/PLAN.md section 1, which quotes OpenRelay's post. These are THEIR numbers, shown as reference marks only.",
+ "openrelay_mi355x": {
+  "label": "OpenRelay, 1x MI355X (vLLM 0.30 ROCm, MXFP4 + MTP 2 draft tokens)",
+  "req_s_per_gpu_at_slo": 3.0,
+  "req_s_per_gpu_at_slo_before": 2.0,
+  "tpot_ms": 22,
+  "tpot_ms_before": [40, 43],
+  "prefill_tok_s": 41900,
+  "prefill_tok_s_before": 27800,
+  "gsm8k": 0.988,
+  "mtp_draft_tokens": 2,
+  "slo": "p95 TTFT < 4 s",
+  "workload": "open loop, 9.5K in / 380 out, 300 s per rate, seeds 7 and 8, worse kept",
+  "source_url": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering",
+  "source_date": "2026-09-29",
+  "recipe_url": "https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+  "transcribed_from": "docs/PLAN.md section 1"
+ }
+}

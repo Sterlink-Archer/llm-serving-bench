@@ -1,0 +1,151 @@
+{
+ "label": "ik8_5090_c4",
+ "stage": "ik-promote",
+ "claim_group": "ik8_5090_c4",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.4524,
+ "note": "Wave 8 (RTX 5090 on a 4 vCPU / 24 GiB host, $1.346/h, break-even 0.452 req/s): prefill CUDA graphs off + --mem-fraction-static 0.81 (0.84 OOMed under real-text prefill; 0.88/0.85 at start), then + mixed-chunk. Column B only, 180 s rungs at 1.0/1.25/1.5/2.0x the new break-even (1.25x = 0.565 req/s, the old 1.0x), seed 7, GSM8K test[:100] gate.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-5090-c4m24d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "RTX-5090",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 24,
+  "disk": 150
+ },
+ "max_minutes": 80,
+ "budget_usd": 3.0,
+ "servers": [
+  {
+   "name": "mem81",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --disable-prefill-cuda-graph --mem-fraction-static 0.81",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_mem81_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mem81_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.4524,
+     "rates": [
+      0.452,
+      0.566,
+      0.679,
+      0.905
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "fallbacks": [
+    {
+     "flags": "--mem-fraction-static 0.79",
+     "why": "0.81 did not start"
+    }
+   ]
+  },
+  {
+   "name": "mem81_mixed",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --disable-prefill-cuda-graph --mem-fraction-static 0.81 --enable-mixed-chunk",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_mem81_mixed_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mem81_mixed_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.4524,
+     "rates": [
+      0.452,
+      0.566,
+      0.679,
+      0.905
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "fallbacks": [
+    {
+     "flags": "--mem-fraction-static 0.79",
+     "why": "0.81 did not start"
+    }
+   ]
+  }
+ ]
+}

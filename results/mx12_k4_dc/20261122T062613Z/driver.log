@@ -1,0 +1,16 @@
+2026-11-22T06:26:13Z [mx12_k4_dc] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $5.5; project so far ~$80.95)
+2026-11-22T06:26:31Z [mx12_k4_dc] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T06:26:54Z [mx12_k4_dc] download k4_dc: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T06:29:42Z [mx12_k4_dc] server k4_dc ready=True after 168.1s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268141 MB
+        FREE_VRAM: 26451 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268141 MB
+        FREE_VISIBLE_VRAM: 26451 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 972265 graphs 26
+2026-11-22T06:29:45Z [mx12_k4_dc] inspect_k4_dc rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T06:29:58Z [mx12_k4_dc] gate_k4_dc_gsm8kor100 rc=0 13s :: [gate_k4_dc_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T06:48:28Z [mx12_k4_dc] protocol_k4_dc rc=0 1110s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=43256.346657676586 tok/s -> /root/or/out/protocol_k4_dc/protocol_summary.json
+2026-11-22T06:58:41Z [mx12_k4_dc] protocol_k4_dc_text rc=0 613s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_k4_dc_text/protocol_summary.json
+2026-11-22T06:59:06Z [mx12_k4_dc] done: elapsed 32.9 min, est $2.61; project est $97.58

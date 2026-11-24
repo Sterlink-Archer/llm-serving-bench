@@ -1,0 +1,13 @@
+/root/or/jobs/010_attn_lab_96x4.sh: line 3:   893 Aborted                 (core dumped) python3 /root/or/mx/attn_mix_lab.py 96 4 > out/attn_lab_96x4.txt 2>&1
+  BUFFER_STORE_DWORDX4_OFFEN_exact %7345:vreg_128_align2, %7348:vgpr_32, renamable $sgpr80_sgpr81_sgpr82_sgpr83, 0, 0, 0, 0, implicit $exec, debug-location !15 :: (dereferenceable store (s128) into %ir.4814, align 1, addrspace 8); unified_attention.py:459:8
+  %7353:vgpr_32 = V_ADD_U32_e32 992, %7165:vgpr_32, implicit $exec, debug-location !15; unified_attention.py:459:8
+  %7354:vgpr_32 = V_CNDMASK_B32_e64 0, %7169:vgpr_32, 0, %7353:vgpr_32, killed $sgpr0_sgpr1, implicit $exec, debug-location !15; unified_attention.py:459:8
+  BUFFER_STORE_DWORDX4_OFFEN_exact %7351:vreg_128_align2, %7354:vgpr_32, killed renamable $sgpr80_sgpr81_sgpr82_sgpr83, 0, 0, 0, 0, implicit $exec, debug-location !15 :: (dereferenceable store (s128) into %ir.4814, align 1, addrspace 8); unified_attention.py:459:8
+  S_BRANCH %bb.7, debug-location !117; unified_attention.py:457:4
+
+# End machine code for function kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_HEAD_SIZE_PADDED_512_USE_ALIBI_SLOPES_0_USE_QQ_BIAS_0_USE_SOFTCAP_0_USE_SINKS_0_SLIDING_WINDOW_0_BLOCK_Q_16_BLOCK_M_128_ALL_DECODE_0_SHUFFLED_KV_CACHE_0_K_WIDTH_16.
+
+*** Bad machine code: Virtual register defs don't dominate all uses. ***
+- function:    kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_HEAD_SIZE_PADDED_512_USE_ALIBI_SLOPES_0_USE_QQ_BIAS_0_USE_SOFTCAP_0_USE_SINKS_0_SLIDING_WINDOW_0_BLOCK_Q_16_BLOCK_M_128_ALL_DECODE_0_SHUFFLED_KV_CACHE_0_K_WIDTH_16
+- v. register: %9057
+LLVM ERROR: Found 1 machine code errors.

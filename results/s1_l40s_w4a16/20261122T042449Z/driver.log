@@ -1,0 +1,6 @@
+2026-11-22T04:24:49Z [s1_l40s_w4a16] building snapshot or-vllm0330-l40s-c8m32d80 from vllm/vllm-openai:v0.33.0
+2026-11-22T04:28:36Z [s1_l40s_w4a16] creating spot sandbox (L40S x1, $2.0697/h, ttl 50 min, budget $2.5; project so far ~$2.19)
+2026-11-22T04:29:07Z [s1_l40s_w4a16] system: ok | NVIDIA L40S, 46068 MiB, 580.126.16, 350.00 W | 24 | Mem:             141          15          74           0          58         126 | overlay         1.3T  371G  809G  32% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:32:04Z [s1_l40s_w4a16] download w4a16qat: rc=0 176s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:34:29Z [s1_l40s_w4a16] server w4a16qat ready=True after 144.2s; gpu mem 40685 MiB, 46068 MiB; attn {'sliding': 'TRITON_ATTN', 'global_512': 'TRITON_ATTN'} kv_tokens 78979 graphs 51 REJECTED: TRITON_ATTN on global 512-dim layers
+2026-11-22T04:34:49Z [s1_l40s_w4a16] done: elapsed 6.2 min, est $0.21; project est $3.62

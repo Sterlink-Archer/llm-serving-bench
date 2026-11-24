@@ -1,0 +1,100 @@
+{
+ "label": "ik1_pro6000_vllm",
+ "stage": "ik-screen",
+ "claim_group": "ik1_pro6000_vllm",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.9704,
+ "note": "Phase-2 screen, Inkling-2-Mini @b85c3cf (NVFP4 experts L0-19, MXFP8 L20-23, rest BF16). Vendor Balanced recipe at TP1, no speculation, text-only (no --enable-multimodal / image limit 0), context 32768. Gate: GSM8K test[:100], OpenRelay prompt and '####' scoring, reasoning effort = chat-template default 0.9, temperature 0, max_tokens 16384. Then OpenRelay's prefill probe and column A (vllm bench serve, random tokens) and column B (traffic.py real text, tokenizer-exact, stratified) at multiples of break-even vs the PrimeIntellect bar ($0.0008265/req), seed 7, 120 s rungs (screen only). Engine: vLLM vllm/vllm-openai:inkling-2-mini (0.35.0 nightly), NOT in vLLM's verified list (sm_120): a probe.",
+ "snapshot": {
+  "name": "or-vllm-ik2m-pro6000-c8m32d150",
+  "image": "vllm/vllm-openai:inkling-2-mini",
+  "image_digest_amd64": "sha256:a485440c62099c39659a7b723636073ed726dcb41f94cf6326e16af3a1d6f6bc",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 100,
+ "budget_usd": 9.0,
+ "servers": [
+  {
+   "name": "vllm",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "vllm serve /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --max-model-len 32768 --reasoning-parser inkling --enable-prompt-tokens-details --limit-mm-per-prompt '{\"image\":0}'",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_vllm_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_vllm_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "breakeven_rps": 0.9704,
+     "rates": [
+      0.97,
+      1.456,
+      1.941,
+      2.911,
+      3.882
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_vllm_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.9704,
+     "rates": [
+      0.97,
+      1.456,
+      1.941,
+      2.911,
+      3.882
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "allow_rejected_why": "Gemma rule (global 512-dim layers, Triton stop) does not apply to Inkling: no 512-dim heads; asked the build session for model-aware startup rules"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+2026-11-22T07:44:28Z [glm2_vllm_b16k] creating spot sandbox (MI355X x1, $4.7727/h, ttl 110 min, budget $9.5; project so far ~$111.61)
+2026-11-22T07:44:57Z [glm2_vllm_b16k] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:46:52Z [glm2_vllm_b16k] download glm_b16k: rc=0 113s 185.1 GB via ['huggingface_hub']
+2026-11-22T07:52:29Z [glm2_vllm_b16k] server glm_b16k ready=True after 336.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 279676 MB
+        FREE_VRAM: 14916 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 279676 MB
+        FREE_VISIBLE_VRAM: 14916 MB; attn {'sliding': 'ROCM_AITER_MLA_SPARSE', 'global_512': 'ROCM_AITER_MLA_SPARSE'} kv_tokens 4096000 graphs 19
+2026-11-22T07:52:33Z [glm2_vllm_b16k] inspect_glm_b16k rc=0 2s ::         TARGET_GRAPHICS_VERSION: gfx950
+2026-11-22T07:52:55Z [glm2_vllm_b16k] gate_glm_b16k_gsm8kor100 rc=0 23s :: [gate_glm_b16k_gsm8kor100] gsm8kor: 0.960 (96/100, noans 0, err 0, trunc 0) wall=13s
+2026-11-22T07:52:55Z [glm2_vllm_b16k] GATE FAILED gate_glm_b16k_gsm8kor100: {'task': 'gsm8kor', 'threshold': 0.965, 'acc': 0.96, 'n': 100, 'passed': 96, 'pass': False} -> no further measurement on glm_b16k
+2026-11-22T07:53:24Z [glm2_vllm_b16k] done: elapsed 8.9 min, est $0.71; project est $120.16

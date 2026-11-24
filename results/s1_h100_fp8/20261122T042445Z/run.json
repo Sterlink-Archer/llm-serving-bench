@@ -1,0 +1,105 @@
+{
+ "label": "s1_h100_fp8",
+ "run_id": "s1_h100_fp8/20261122T042445Z",
+ "config_file": "configs/s1_h100_fp8.json",
+ "t_start": "2026-11-22T04:24:45Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "create_s": 0.8
+ },
+ "servers": {
+  "fp8dyn": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 23.7,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:   6%|\u258b         | 1/16 [00:00<00:02,  5.22it/s]\rFetching 16 files:  81%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f | 13/16 [00:00<00:00, 46.49it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:11<00:00,  1.40it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469172 secs=11.9 GBps=2.800 method=huggingface_hub\n",
+    "bytes": 33300469172,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 141.7,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "71377 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-0180c0ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 144878,
+    "kv_cache_gib": 35.0,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "steps": {
+    "gate_gsm8kor100": {
+     "rc": 0,
+     "secs": 35.2,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_gsm8kor100 --out /root/or/out/gate_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=26s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.98,
+      "n": 100,
+      "passed": 98,
+      "pass": true
+     }
+    },
+    "protocol_fp8dyn": {
+     "rc": 0,
+     "secs": 344.8,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_fp8dyn --breakeven-rps 1.3074 --client vllmbench --tokenizer /root/models/fp8dyn --multiples 1.0,1.5,2.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_h100_fp8/20261122T042445Z --config-id s1_h100_fp8:fp8dyn --prefill-shot --max-minutes 53.6",
+     "tail": "[vllmbench r=1.3074 s=7] done=156 failed=0 req/s=0.8058749380259828 p95 TTFT=47.43441480095498 median TPOT=104.30551149984134 ms in tok/s=7906\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.3074); prefill=12766.915266961687 tok/s -> /root/or/out/protocol_fp8dyn/protocol_summary.json\n",
+     "breakeven_rps": 1.307409784624162
+    },
+    "protocol_fp8dyn_textclient": {
+     "rc": 0,
+     "secs": 130.8,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_fp8dyn_textclient --breakeven-rps 1.3074 --client traffic --multiples 1.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_h100_fp8/20261122T042445Z --config-id s1_h100_fp8:fp8dyn --max-minutes 47.8",
+     "tail": "[r1x_s7] R=1.3074 win=96s done=84 err=0 drop=0 req/s=0.83 out=393 in=8234 tok/s cache=0.00 TTFT p50=17.388s p95=27.453s TPOT p50=94.9ms srv=392.70191595304266\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.3074); prefill=None tok/s -> /root/or/out/protocol_fp8dyn_textclient/protocol_summary.json\n",
+     "breakeven_rps": 1.307409784624162
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 1.85,
+  "this_run_ceiling_usd": 3.97,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 241,
+ "sandbox_id": "830fb81b-4616-4b70-9cf1-1ee1e9d6e3c3",
+ "elapsed_s": 734.3,
+ "est_cost_usd": 0.748,
+ "t_saved": "2026-11-22T04:36:59Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W\n128\nMem:            2015          86         721           1        1225        1929\noverlay         150G  5.2M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:36:54Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 4.19,
+  "metered_usd": null
+ }
+}

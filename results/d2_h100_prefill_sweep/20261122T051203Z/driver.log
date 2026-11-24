@@ -1,0 +1,6 @@
+2026-11-22T05:12:03Z [d2_h100_prefill_sweep] creating spot sandbox (H100 x1, $3.6665/h, ttl 35 min, budget $2.5; project so far ~$21.36)
+2026-11-22T05:12:18Z [d2_h100_prefill_sweep] system: ok | NVIDIA H100 80GB HBM3, 81559 MiB, 595.71.05, 700.00 W | 192 | Mem:            2015          92         726           0        1221        1922 | overlay         150G  5.2M  150G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T05:13:21Z [d2_h100_prefill_sweep] download fp8dyn: rc=0 62s 33.3 GB via ['huggingface_hub']
+2026-11-22T05:16:07Z [d2_h100_prefill_sweep] server fp8dyn ready=True after 165.8s; gpu mem 71377 MiB, 81559 MiB; attn {'sliding': 'FLASH_ATTN/FA3', 'global_512': 'FLASH_ATTN/FA4'} kv_tokens 144878 graphs 51
+2026-11-22T05:16:32Z [d2_h100_prefill_sweep] prefill_sweep rc=0 24s :: [sweep] tok/s longest/shortest = 0.99
+2026-11-22T05:16:54Z [d2_h100_prefill_sweep] done: elapsed 4.8 min, est $0.30; project est $25.9

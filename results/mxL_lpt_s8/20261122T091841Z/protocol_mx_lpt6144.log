@@ -1,0 +1,4 @@
+[vllmbench r=3.25 s=8] done=975 failed=0 req/s=3.232064638059592 p95 TTFT=1.980745332711376 median TPOT=23.58369061837907 ms in tok/s=30787
+[vllmbench r=3.5 s=8] done=1050 failed=0 req/s=3.4531477570493916 p95 TTFT=3.6437686267890967 median TPOT=40.93740176959053 ms in tok/s=32941
+[vllmbench r=3.75 s=8] done=1125 failed=0 req/s=3.6545922380178295 p95 TTFT=9.028158306377009 median TPOT=56.874139547442454 ms in tok/s=34719
+[protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_lpt6144/protocol_summary.json

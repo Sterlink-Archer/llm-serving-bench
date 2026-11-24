@@ -1,0 +1,23 @@
+{
+ "label": "glm1_sglang0523",
+ "run_id": "glm1_sglang0523/20261122T073208Z",
+ "config_file": "recipes/glm/configs/glm1_sglang0523.json",
+ "t_start": "2026-11-22T07:32:08Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0319,
+  "total": 4.7727
+ },
+ "phases": {},
+ "servers": {},
+ "error": "RuntimeError('snapshot or-sglang0523rocm720-mi355x-c8m48d300 failed: Snapshot size (22.20GB) exceeds maximum allowed size of 20GB')",
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T07:32:32Z",
+ "project_spend": {
+  "est_usd": 103.25,
+  "metered_usd": 89.4249
+ }
+}

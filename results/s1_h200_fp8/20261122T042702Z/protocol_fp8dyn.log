@@ -1,0 +1,2 @@
+[vllmbench r=1.3549 s=7] done=162 failed=0 req/s=0.9373462735894585 p95 TTFT=30.15190377602703 median TPOT=201.10221719850398 ms in tok/s=9160
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.3549); prefill=13165.829080994034 tok/s -> /root/or/out/protocol_fp8dyn/protocol_summary.json

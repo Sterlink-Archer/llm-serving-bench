@@ -1,0 +1,54 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "aiter",
+  "global_512": "aiter"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 07:47:23] server_args={'model_path': '/root/models/fp8dyn', 'tokenizer_path': '/root/models/fp8dyn', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_ex"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  12,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64
+ ],
+ "kv_cache_tokens": 530791,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "fp8_e4m3",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "kv_pool_tokens": {
+  "full_layers": 530791,
+  "sliding_layers": 424632
+ },
+ "prefill_cuda_graph": false,
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "mxS1_sglang/20261122T073259Z",
+ "config_id": "mxS1_sglang:sgl_fp8",
+ "image": "lmsysorg/sglang:v0.5.23-rocm10-mi35x",
+ "image_digest": "sha256:cff45eca86da10fbe140f85df196ef241e932bbae8036afa45942e633c3ed6c5",
+ "model_repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+ "model_rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 225194 MB\n        FREE_VRAM: 69398 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 225194 MB\n        FREE_VISIBLE_VRAM: 69398 MB",
+ "source_log": "results/mxS1_sglang/20261122T073259Z/server_sgl_fp8.log",
+ "sub_phases": []
+}

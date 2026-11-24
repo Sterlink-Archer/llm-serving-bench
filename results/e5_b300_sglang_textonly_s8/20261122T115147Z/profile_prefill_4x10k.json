@@ -1,0 +1,195 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  8555,
+  10221,
+  9140,
+  8709
+ ],
+ "latencies_s": [
+  2.171,
+  2.717,
+  2.64,
+  2.48
+ ],
+ "wall_s": 2.7186527252197266,
+ "prefill_tok_s": 13471.746376521813,
+ "trace": "/root/or/out/prof/1795348837.7390618-TP-0.trace.json.gz",
+ "categories": {
+  "gemm": {
+   "us": 414162.17599999893,
+   "share": 0.5892872933607246
+  },
+  "attention": {
+   "us": 105308.84799999997,
+   "share": 0.14983784034603898
+  },
+  "fused_elementwise": {
+   "us": 98658.49800000002,
+   "share": 0.14037544378136219
+  },
+  "other": {
+   "us": 84356.07099999982,
+   "share": 0.12002535151383582
+  },
+  "memcpy/memset": {
+   "us": 333.1860000000001,
+   "share": 0.0004740709980374619
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "kernel_cutlass_kernel_flashinfergemmkernelsdense_blockscaled_gemm_sm100Sm100BlockScaledPersistentDenseGemmKernel_object_at__TiledMMA_ThrLayoutVMNK21111000_Permu",
+   "cat": "gemm",
+   "us": 366972.24999999895,
+   "share": 0.5221434898511715
+  },
+  {
+   "name": "fmhaSm103aKernel_QkvE4m3OBfloat16H512HVPerCta256PagedKvCausalP64VarSeqQ128Kv128PersistentContext",
+   "cat": "attention",
+   "us": 58613.811,
+   "share": 0.08339818563669889
+  },
+  {
+   "name": "_gemma_qkv_rmsnorm_kernel",
+   "cat": "fused_elementwise",
+   "us": 52790.31000000001,
+   "share": 0.07511226446611503
+  },
+  {
+   "name": "fmhaSm103aKernel_QkvE4m3OBfloat16H256PagedKvSlidingOrChunkedCausalP64VarSeqQ128Kv128PersistentContext",
+   "cat": "attention",
+   "us": 46695.03700000002,
+   "share": 0.06643965470934017
+  },
+  {
+   "name": "void sglang::act_and_mul_kernel<__nv_bfloat16, (sglang::ActivationKind)2, true, true, false, false, false, false, false>(sglang::ActivationParams)",
+   "cat": "other",
+   "us": 41721.29399999996,
+   "share": 0.059362804817712465
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o21504215041_tensorptri8gmemalig",
+   "cat": "gemm",
+   "us": 20663.636999999984,
+   "share": 0.029401088328062448
+  },
+  {
+   "name": "void sglang::fused_fp8_qkv_kv_cache_kernel<__nv_bfloat16, long, 16, true, true>(sglang::FusedQkvParams)",
+   "cat": "other",
+   "us": 18576.572999999997,
+   "share": 0.026431526241275937
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 256l, true, __nv_bfloat16, __nv_bfloat16, long, 32u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 16206.63500000001,
+   "share": 0.023059479177633107
+  },
+  {
+   "name": "void sglang::rmsnorm_kernel<sglang::RMSNormTile<__nv_bfloat16, 5376l, 32u, 192u, 1u>, (sglang::RMSNormMode)0, false, true>(sglang::RMSNormParams)",
+   "cat": "fused_elementwise",
+   "us": 15995.703000000001,
+   "share": 0.02275935629204355
+  },
+  {
+   "name": "_gemma_rmsnorm_residual_kernel",
+   "cat": "fused_elementwise",
+   "us": 15798.808999999994,
+   "share": 0.022479207260909014
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o537653761_tensorptri8gmemalign1",
+   "cat": "gemm",
+   "us": 14318.091000000002,
+   "share": 0.0203723796628946
+  },
+  {
+   "name": "void sglang::rmsnorm_kernel<sglang::RMSNormTile<__nv_bfloat16, 5376l, 32u, 192u, 1u>, (sglang::RMSNormMode)1, false, true>(sglang::RMSNormParams)",
+   "cat": "fused_elementwise",
+   "us": 14073.676,
+   "share": 0.020024615762294553
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o819281921_tensorptri8gmemalign1",
+   "cat": "gemm",
+   "us": 7343.4800000000005,
+   "share": 0.010448610964050531
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 512l, true, __nv_bfloat16, __nv_bfloat16, long, 64u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 4703.728000000001,
+   "share": 0.0066926612386377414
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o16384163841_tensorptri8gmemalig",
+   "cat": "gemm",
+   "us": 2650.1839999999993,
+   "share": 0.003770792812011646
+  },
+  {
+   "name": "nvjet_sm103_tst_256x8_64x6_2x1_v_bz_TNT",
+   "cat": "gemm",
+   "us": 2214.534,
+   "share": 0.0031509317425338773
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<8, at::native::FillFunctor<unsigned char>, std::array<char*, 1ul>, false>(int, at::native::FillFunctor<unsigned c",
+   "cat": "other",
+   "us": 681.1570000000005,
+   "share": 0.0009691787134219433
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<8, at::native::FillFunctor<c10::BFloat16>, std::array<char*, 1ul>, false>(int, at::native::FillFunctor<c10::BFloa",
+   "cat": "other",
+   "us": 478.9720000000001,
+   "share": 0.0006815014258462216
+  },
+  {
+   "name": "void at::native::vectorized_gather_kernel<16, long>(char*, char*, long*, int, long, long, long, long, bool)",
+   "cat": "other",
+   "us": 269.08799999999997,
+   "share": 0.00038286967855763595
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<8, at::native::AUnaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor",
+   "cat": "other",
+   "us": 262.464,
+   "share": 0.00037344477387676666
+  },
+  {
+   "name": "void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&",
+   "cat": "other",
+   "us": 236.35399999999998,
+   "share": 0.000336294372122917
+  },
+  {
+   "name": "Memcpy DtoD (Device -> Device)",
+   "cat": "memcpy/memset",
+   "us": 191.20199999999997,
+   "share": 0.0002720502150953484
+  },
+  {
+   "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#4}::opera",
+   "cat": "other",
+   "us": 135.324,
+   "share": 0.00019254465595319576
+  },
+  {
+   "name": "memcpy128",
+   "cat": "other",
+   "us": 135.20000000000002,
+   "share": 0.0001923682235588075
+  },
+  {
+   "name": "Memcpy HtoD (Pinned -> Device)",
+   "cat": "memcpy/memset",
+   "us": 122.657,
+   "share": 0.00017452151772967935
+  }
+ ],
+ "gpu_kernel_us_total": 702818.7789999994,
+ "kernel_events": 6173
+}

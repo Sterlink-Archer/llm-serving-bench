@@ -1,0 +1,29 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] import [module_quant] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_quant.so
+[2026-11-22T10:21:16Z] norm post_attn->pre_ff M=256 engine: 13.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:17Z] norm post_attn->pre_ff M=256 rms_quant: 11.5 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83326, 'scale_bytes_equal': 0.8377}
+[2026-11-22T10:21:17Z] norm post_attn->pre_ff M=256 sandwich_v130: 9.3 us {'err_resid': 2e-06, 'fp4_bytes_equal': 0.99299, 'scale_bytes_equal': 0.99844}
+[2026-11-22T10:21:17Z] norm post_attn->pre_ff M=1024 engine: 30.3 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:17Z] norm post_attn->pre_ff M=1024 rms_quant: 23.8 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83174, 'scale_bytes_equal': 0.83599}
+[2026-11-22T10:21:18Z] norm post_attn->pre_ff M=1024 sandwich_v130: 14.8 us {'err_resid': 6e-06, 'fp4_bytes_equal': 0.99274, 'scale_bytes_equal': 0.99823}
+[2026-11-22T10:21:18Z] norm post_attn->pre_ff M=2048 engine: 47.4 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:18Z] norm post_attn->pre_ff M=2048 rms_quant: 39.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83249, 'scale_bytes_equal': 0.83685}
+[2026-11-22T10:21:18Z] norm post_attn->pre_ff M=2048 sandwich_v130: 23.1 us {'err_resid': 5e-06, 'fp4_bytes_equal': 0.99277, 'scale_bytes_equal': 0.99829}
+[2026-11-22T10:21:18Z] norm post_attn->pre_ff M=4096 engine: 97.7 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:19Z] norm post_attn->pre_ff M=4096 rms_quant: 70.3 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83219, 'scale_bytes_equal': 0.83657}
+[2026-11-22T10:21:19Z] norm post_attn->pre_ff M=4096 sandwich_v130: 49.0 us {'err_resid': 7e-06, 'fp4_bytes_equal': 0.99259, 'scale_bytes_equal': 0.99808}
+[2026-11-22T10:21:19Z] norm post_attn->pre_ff M=8192 engine: 212.7 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:19Z] norm post_attn->pre_ff M=8192 rms_quant: 162.8 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.8327, 'scale_bytes_equal': 0.83704}
+[2026-11-22T10:21:19Z] norm post_attn->pre_ff M=8192 sandwich_v130: 95.2 us {'err_resid': 7e-06, 'fp4_bytes_equal': 0.9926, 'scale_bytes_equal': 0.99812}
+[2026-11-22T10:21:20Z] norm post_ff*s->next_input M=256 engine: 13.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:20Z] norm post_ff*s->next_input M=256 rms_quant: 11.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83273, 'scale_bytes_equal': 0.83743}
+[2026-11-22T10:21:20Z] norm post_ff*s->next_input M=1024 engine: 28.2 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=1024 rms_quant: 23.8 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83142, 'scale_bytes_equal': 0.83572}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=2048 engine: 47.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=2048 rms_quant: 39.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83239, 'scale_bytes_equal': 0.83677}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=4096 engine: 98.2 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=4096 rms_quant: 71.9 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83225, 'scale_bytes_equal': 0.83663}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=8192 engine: 213.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 1.0, 'scale_bytes_equal': 1.0}
+[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=8192 rms_quant: 162.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83273, 'scale_bytes_equal': 0.83709}
+[2026-11-22T10:21:21Z] glue norm done in 10s
+/root/or/jobs/016_glue_norm.sh: line 3:  2074 Segmentation fault      (core dumped) python3 /root/or/mx/glue_headroom.py norm --out /root/or/out/glue

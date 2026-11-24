@@ -1,0 +1,103 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "ROCM_AITER_UNIFIED_ATTN",
+  "global_512": "ROCM_AITER_UNIFIED_ATTN"
+ },
+ "attention_backend_lines": [
+  "(EngineCore pid=2120) INFO 11-22 05:03:43 [rocm.py:828] Using ROCM_AITER_UNIFIED_ATTN backend (selected via --attention-backend)."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  8,
+  9,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  24,
+  28,
+  32,
+  33,
+  36,
+  40,
+  44,
+  48,
+  56,
+  64,
+  66,
+  80,
+  81,
+  96,
+  112,
+  114,
+  128,
+  129,
+  144,
+  160,
+  162,
+  176,
+  177,
+  192,
+  224,
+  256
+ ],
+ "kv_cache_tokens": 1061998,
+ "kv_cache_gib": 264.82,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 32.41,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "quark",
+  "detail": null
+ },
+ "spec_decode": {
+  "method": "mtp",
+  "draft_model": "/root/models/mxfp4/assistant",
+  "num_speculative_tokens": 2
+ },
+ "engine_version": "0.34.0",
+ "missing": [],
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "mx1_v034/20261122T050152Z",
+ "config_id": "mx1_v034:v034_stock",
+ "image": "vllm/vllm-openai-rocm:v0.34.0",
+ "image_digest": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+ "model_repo": "amd/gemma-4-31B-it-MXFP4",
+ "model_rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 286853 MB\n        FREE_VRAM: 7739 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 286853 MB\n        FREE_VISIBLE_VRAM: 7739 MB",
+ "source_log": "results/mx1_v034/20261122T050152Z/server_v034_stock.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T05:03:46Z",
+   "t_end": "2026-11-22T05:03:47Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T05:04:43Z",
+   "t_end": "2026-11-22T05:04:47Z",
+   "detail": {
+    "compile_s": 4.54
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T05:05:25Z",
+   "t_end": "2026-11-22T05:05:45Z",
+   "detail": {
+    "s": 20.0,
+    "gib": 3.46
+   }
+  }
+ ]
+}

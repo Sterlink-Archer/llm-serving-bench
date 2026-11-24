@@ -1,0 +1,45 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] shape is M:8192, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 engine: 302.3 us 4.773 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi16: 558.1 us 2.586 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm256_bn128_bk256_g4_w4_s2_wpe1_mi16_cg: 648.3 us 2.226 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm256_bn128_bk256_g8_w8_s2_wpe1_mi16: 717.8 us 2.010 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm128_bn256_bk256_g4_w8_s2_wpe1_mi16: 576.4 us 2.503 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm256_bn256_bk256_g4_w8_s2_wpe1_mi16: 510.9 us 2.825 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi32: 538.7 us 2.679 PF err 0.0
+[2026-11-22T08:51:52Z] triton qkv_s M=8192 triton_bm256_bn256_bk256_g8_w8_s2_wpe0_mi32: 529.6 us 2.725 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 engine: 161.7 us 4.461 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi16: 241.9 us 2.983 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm256_bn128_bk256_g4_w4_s2_wpe1_mi16_cg: 312.1 us 2.312 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm256_bn128_bk256_g8_w8_s2_wpe1_mi16: 258.6 us 2.790 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm128_bn256_bk256_g4_w8_s2_wpe1_mi16: 251.3 us 2.872 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm256_bn256_bk256_g4_w8_s2_wpe1_mi16: 215.7 us 3.345 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm128_bn128_bk512_g4_w4_s2_wpe2_mi16: 243.7 us 2.960 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm256_bn128_bk512_g4_w8_s2_wpe1_mi16: 266.4 us 2.709 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm128_bn256_bk512_g4_w8_s2_wpe1_mi16: 256.4 us 2.814 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi32: 249.7 us 2.890 PF err 0.0
+[2026-11-22T08:51:57Z] triton o_s M=8192 triton_bm256_bn256_bk256_g8_w8_s2_wpe0_mi32: 212.1 us 3.402 PF err 0.0
+[aiter] shape is M:8192, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:51:58Z] triton gate_up M=8192 engine: 776.2 us 4.880 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi16: 1530.9 us 2.474 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm256_bn128_bk256_g4_w4_s2_wpe1_mi16_cg: 1653.2 us 2.291 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm256_bn128_bk256_g8_w8_s2_wpe1_mi16: 1477.7 us 2.564 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm128_bn256_bk256_g4_w8_s2_wpe1_mi16: 1624.9 us 2.331 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm256_bn256_bk256_g4_w8_s2_wpe1_mi16: 1352.1 us 2.802 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi32: 1413.3 us 2.680 PF err 0.0
+[2026-11-22T08:51:58Z] triton gate_up M=8192 triton_bm256_bn256_bk256_g8_w8_s2_wpe0_mi32: 1263.7 us 2.998 PF err 0.0
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T08:52:02Z] triton down M=8192 engine: 383.2 us 4.942 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi16: 591.3 us 3.204 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn128_bk256_g4_w4_s2_wpe1_mi16_cg: 761.4 us 2.488 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn128_bk256_g8_w8_s2_wpe1_mi16: 642.7 us 2.947 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn256_bk256_g4_w8_s2_wpe1_mi16: 650.2 us 2.913 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn256_bk256_g4_w8_s2_wpe1_mi16: 527.7 us 3.590 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn128_bk512_g4_w4_s2_wpe2_mi16: 598.5 us 3.164 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn128_bk512_g4_w8_s2_wpe1_mi16: 646.5 us 2.930 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn256_bk512_g4_w8_s2_wpe1_mi16: 639.7 us 2.961 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi32: 635.9 us 2.979 PF err 0.0
+[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn256_bk256_g8_w8_s2_wpe0_mi32: 519.9 us 3.643 PF err 0.0
+[2026-11-22T08:52:02Z] triton done in 16s

@@ -1,0 +1,266 @@
+{
+ "schema": "counter_probe/1",
+ "t": "2026-11-22T07:35:06Z",
+ "summary": {
+  "ratio_server_over_usage": 1.0,
+  "per_request_offsets": [
+   0.0
+  ],
+  "counted_before_finish": 0,
+  "n": 18
+ },
+ "rows": [
+  {
+   "stream": true,
+   "target": 500,
+   "usage_prompt_tokens": 608,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 4,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 608.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 500,
+   "usage_prompt_tokens": 545,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 14,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 545.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 500,
+   "usage_prompt_tokens": 468,
+   "usage_completion_tokens": 143,
+   "cached_tokens": 16,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 468.0,
+   "server_gen_delta": 143.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 2000,
+   "usage_prompt_tokens": 1805,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 1805.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 2000,
+   "usage_prompt_tokens": 1726,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 1726.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 2000,
+   "usage_prompt_tokens": 1886,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 1886.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 9500,
+   "usage_prompt_tokens": 8716,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 8716.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 9500,
+   "usage_prompt_tokens": 9780,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 9780.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": true,
+   "target": 9500,
+   "usage_prompt_tokens": 8388,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 8388.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 500,
+   "usage_prompt_tokens": 467,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 467.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 500,
+   "usage_prompt_tokens": 576,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 16,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 576.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 500,
+   "usage_prompt_tokens": 476,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 476.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 2000,
+   "usage_prompt_tokens": 2474,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 16,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 2474.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 2000,
+   "usage_prompt_tokens": 1886,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 1886.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 2000,
+   "usage_prompt_tokens": 1965,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 1965.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 9500,
+   "usage_prompt_tokens": 11122,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 11122.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 9500,
+   "usage_prompt_tokens": 9144,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 9144.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  },
+  {
+   "stream": false,
+   "target": 9500,
+   "usage_prompt_tokens": 10025,
+   "usage_completion_tokens": 200,
+   "cached_tokens": 15,
+   "server_prompt_delta_mid": 0.0,
+   "server_prompt_delta": 10025.0,
+   "server_gen_delta": 200.0,
+   "counters": [
+    "sglang:generation_tokens_total",
+    "sglang:prompt_tokens_total"
+   ]
+  }
+ ]
+}

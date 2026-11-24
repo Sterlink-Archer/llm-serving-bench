@@ -1,0 +1,95 @@
+{
+ "run_id": "d1_h100_prefill_diag/20261122T050803Z",
+ "configs": [
+  {
+   "run_id": "d1_h100_prefill_diag/20261122T050803Z",
+   "config_id": "d1_h100_prefill_diag:fp8dyn_mbt8192",
+   "gpu": "H100",
+   "usd_per_h": {
+    "gpu": 2.47,
+    "cpu": 0.4032,
+    "mem": 0.7776,
+    "disk": 0.0157,
+    "total": 3.6665
+   },
+   "steady_usd": 0.1706,
+   "steady_gpu_usd": 0.1149,
+   "steady_host_usd": 0.0557,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0241,
+    "engine_start": 0.151,
+    "warmup": 0.0013,
+    "create_share": 0.0025
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.0039,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "d1_h100_prefill_diag/20261122T050803Z",
+   "config_id": "d1_h100_prefill_diag:fp8dyn_mbt16384",
+   "gpu": "H100",
+   "usd_per_h": {
+    "gpu": 2.47,
+    "cpu": 0.4032,
+    "mem": 0.7776,
+    "disk": 0.0157,
+    "total": 3.6665
+   },
+   "steady_usd": 0.1456,
+   "steady_gpu_usd": 0.0981,
+   "steady_host_usd": 0.0475,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0031,
+    "engine_start": 0.136,
+    "warmup": 0.0014,
+    "create_share": 0.0025
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.0039,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "d1_h100_prefill_diag/20261122T050803Z",
+   "config_id": "d1_h100_prefill_diag:fp8dyn_mbt32768",
+   "gpu": "H100",
+   "usd_per_h": {
+    "gpu": 2.47,
+    "cpu": 0.4032,
+    "mem": 0.7776,
+    "disk": 0.0157,
+    "total": 3.6665
+   },
+   "steady_usd": 0.1463,
+   "steady_gpu_usd": 0.0986,
+   "steady_host_usd": 0.0478,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0029,
+    "engine_start": 0.1348,
+    "warmup": 0.0013,
+    "create_share": 0.0025
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.0039,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

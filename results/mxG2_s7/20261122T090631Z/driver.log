@@ -1,0 +1,27 @@
+2026-11-22T09:06:31Z [mxG2_s7] creating spot sandbox (MI355X x1, $4.7565/h, ttl 80 min, budget $7.0; project so far ~$156.68)
+2026-11-22T09:07:31Z [mxG2_s7] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:07:51Z [mxG2_s7] download mx_ps: rc=0 15s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:10:32Z [mxG2_s7] server mx_ps ready=True after 158.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T09:10:44Z [mxG2_s7] inspect_mx_ps rc=0 8s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:11:04Z [mxG2_s7] gate_mx_ps_gsm8kor250 rc=0 21s :: [gate_mx_ps_gsm8kor250] gsm8kor: 0.988 (247/250, noans 0, err 0, trunc 0) wall=7s
+2026-11-22T09:23:39Z [mxG2_s7] protocol_mx_ps rc=0 755s :: [protocol] max_rate_at_slo=3.75 req/s (break-even 1.6961); prefill=46068.51032358239 tok/s -> /root/or/out/protocol_mx_ps/protocol_summary.json
+2026-11-22T09:24:03Z [mxG2_s7] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T09:24:55Z [mxG2_s7] server mx_recipe ready=True after 51.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270048 MB
+        FREE_VRAM: 24544 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270048 MB
+        FREE_VISIBLE_VRAM: 24544 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T09:24:58Z [mxG2_s7] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:25:10Z [mxG2_s7] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T09:37:48Z [mxG2_s7] protocol_mx_recipe rc=0 757s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=44217.58152976292 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T09:38:21Z [mxG2_s7] done: elapsed 31.8 min, est $2.52; project est $187.31

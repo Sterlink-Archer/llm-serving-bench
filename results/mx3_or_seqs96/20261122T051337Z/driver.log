@@ -1,0 +1,15 @@
+2026-11-22T05:13:37Z [mx3_or_seqs96] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$22.70)
+2026-11-22T05:14:00Z [mx3_or_seqs96] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:14:34Z [mx3_or_seqs96] download or_seqs96: rc=0 32s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:17:24Z [mx3_or_seqs96] server or_seqs96 ready=True after 169.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268337 MB
+        FREE_VRAM: 26255 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268337 MB
+        FREE_VISIBLE_VRAM: 26255 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 975904 graphs 20
+2026-11-22T05:17:28Z [mx3_or_seqs96] inspect_or_seqs96 rc=0 2s :: mx file: inspect.sh
+2026-11-22T05:17:40Z [mx3_or_seqs96] gate_or_seqs96_gsm8kor100 rc=0 13s :: [gate_or_seqs96_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:36:09Z [mx3_or_seqs96] protocol_or_seqs96 rc=0 1109s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=43319.54252697559 tok/s -> /root/or/out/protocol_or_seqs96/protocol_summary.json
+2026-11-22T05:36:31Z [mx3_or_seqs96] done: elapsed 22.9 min, est $1.82; project est $39.65

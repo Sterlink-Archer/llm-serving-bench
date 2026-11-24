@@ -1,0 +1,287 @@
+{
+ "label": "e5_b300_sglang_textonly",
+ "stage": "engine comparison, B300 v2 (round 3)",
+ "claim_group": "e5_b300_sglang_textonly",
+ "note": "SGLang on the B300, fixing the two problems e4_b300_sglang found: (1) Gemma 4 ran as a multimodal model, which disables prefill CUDA graphs (GPU ~75% idle under the profiler) -> --language-model-only (vision tower never built), which reached SGLang main for Gemma 4 on 2026-11-16 (41ceffe67, after the v0.5.23 release), so this uses the pinned nightly nightly-dev-cu13-20261121-a8ac8659; (2) NVIDIA's ModelOpt NVFP4 leaves q/k/v/o of all 60 layers in BF16 (its ignore list), ~40% of kernel time in BF16 cuBLAS GEMMs -> RedHat's NVFP4 (every language-model linear in FP4; it crashed in SGLang only in the vision warm-up, which text-only mode skips). Backups on the same box, each only if no earlier server ran ok: RedHat FP8-dynamic (every linear FP8), then NVIDIA ModelOpt NVFP4. Attention trtllm_mha (its h512 fmhaSm103a kernel worked in e4), fallbacks fa4, triton (labelled). Gate, profile, OpenRelay's probe, A at 1.0/1.25/1.5x break-even, B at 1.0/1.25x, 300 s, seed 7. Quality reference steps (GSM8K 250, MMLU-Pro 200, agreement 400) run on server 1 right after its gate.",
+ "snapshot": {
+  "name": "or-sglang-nightly1121-b300-c8m64d300",
+  "image": "lmsysorg/sglang:nightly-dev-cu13-20261121-a8ac8659",
+  "image_digest_amd64": "sha256:34054a3d89782d861ab749dba19eb767db55a0f1b3477af0dc7625622c32eb32",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 64,
+  "disk": 300
+ },
+ "max_minutes": 120,
+ "budget_usd": 15.0,
+ "servers": [
+  {
+   "name": "sgl_rh_nvfp4_textonly",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend fa4"
+    },
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true
+    }
+   ],
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "eval",
+     "name": "q_gsm8kor250_sgl_rh_nvfp4",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_mmlupro200_sgl_rh_nvfp4",
+     "sets": "data/eval/mmlupro_200.jsonl",
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_agree400_sgl_rh_nvfp4",
+     "sets": "data/eval/agree_400.jsonl",
+     "conc": 16,
+     "max_tokens": 192,
+     "est_s": 420
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_nvfp4_textonly_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.25,
+      1.5
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_nvfp4_textonly_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "multiples": [
+      1.0,
+      1.25
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "sgl_rh_fp8_textonly",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend fa4"
+    },
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true
+    }
+   ],
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_fp8_textonly_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.25,
+      1.5
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_fp8_textonly_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "multiples": [
+      1.0,
+      1.25
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "skip_if_ok": [
+    "sgl_rh_nvfp4_textonly"
+   ]
+  },
+  {
+   "name": "sgl_nv_nvfp4_textonly",
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "dir": "/root/models/nvfp4_modelopt"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha --quantization modelopt_fp4",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend fa4"
+    },
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true
+    }
+   ],
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nv_nvfp4_textonly_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.25,
+      1.5
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nv_nvfp4_textonly_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "multiples": [
+      1.0,
+      1.25
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "skip_if_ok": [
+    "sgl_rh_nvfp4_textonly",
+    "sgl_rh_fp8_textonly"
+   ]
+  }
+ ]
+}

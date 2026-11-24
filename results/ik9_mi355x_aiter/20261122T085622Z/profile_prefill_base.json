@@ -1,0 +1,195 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  9079,
+  10697,
+  9568,
+  9449
+ ],
+ "latencies_s": [
+  0.404,
+  1.001,
+  1.507,
+  1.507
+ ],
+ "wall_s": 1.509852647781372,
+ "prefill_tok_s": 25693.235731979363,
+ "trace": "/root/or/out/prof_base/1795339666.1534944-TP-0.trace.json.gz",
+ "categories": {
+  "other": {
+   "us": 888328.6009999961,
+   "share": 0.6193611903238153
+  },
+  "gemm": {
+   "us": 389519.6549999998,
+   "share": 0.27158121094349724
+  },
+  "attention": {
+   "us": 141217.46099999995,
+   "share": 0.09845975311501573
+  },
+  "fused_elementwise": {
+   "us": 12588.025000000007,
+   "share": 0.008776633037649976
+  },
+  "memcpy/memset": {
+   "us": 2612.1029999999996,
+   "share": 0.0018212125800151017
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "_grouped_dequant_gemm",
+   "cat": "gemm",
+   "us": 382503.00299999985,
+   "share": 0.2666890551242252
+  },
+  {
+   "name": "_rel_extend_fwd",
+   "cat": "other",
+   "us": 275177.84900000005,
+   "share": 0.19185972388542727
+  },
+  {
+   "name": "_controller_mix",
+   "cat": "other",
+   "us": 172322.23299999995,
+   "share": 0.12014664756936975
+  },
+  {
+   "name": "_swiglu_fake_quantize",
+   "cat": "other",
+   "us": 134051.056,
+   "share": 0.0934631863871788
+  },
+  {
+   "name": "_sconv_prefill_kernel",
+   "cat": "attention",
+   "us": 90639.58199999992,
+   "share": 0.0631958031462428
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT224x384x64_MI16x16x1_SN_LDSB0_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DTLB",
+   "cat": "other",
+   "us": 72282.938,
+   "share": 0.05039716887352897
+  },
+  {
+   "name": "_attn_res_kernel",
+   "cat": "attention",
+   "us": 50577.879000000015,
+   "share": 0.035263949968772926
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x320x64_MI16x16x1_SN_LDSB0_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DTLB",
+   "cat": "other",
+   "us": 38934.967,
+   "share": 0.02714626938634229
+  },
+  {
+   "name": "_source_partial",
+   "cat": "other",
+   "us": 31823.888999999992,
+   "share": 0.022188277794483683
+  },
+  {
+   "name": "Cijk_Ailk_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x256x32_MI32x32x1_SN_LDSB1_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DTLB",
+   "cat": "other",
+   "us": 20661.204,
+   "share": 0.014405421471916821
+  },
+  {
+   "name": "_fake_quantize_rows",
+   "cat": "other",
+   "us": 18115.265,
+   "share": 0.01263033980984183
+  },
+  {
+   "name": "_controller_norm",
+   "cat": "other",
+   "us": 17805.498999999993,
+   "share": 0.012414364507160056
+  },
+  {
+   "name": "_gate_sink_kernel",
+   "cat": "other",
+   "us": 14494.491,
+   "share": 0.01010586081410866
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT288x288x64_MI16x16x1_SN_LDSB0_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DTLB",
+   "cat": "other",
+   "us": 13381.571000000004,
+   "share": 0.009329909825747789
+  },
+  {
+   "name": "_rms_norm_kernel",
+   "cat": "fused_elementwise",
+   "us": 12588.025000000007,
+   "share": 0.008776633037649976
+  },
+  {
+   "name": "_l2_clip_kernel",
+   "cat": "other",
+   "us": 10923.005999999998,
+   "share": 0.0076157471350786834
+  },
+  {
+   "name": "_controller_down",
+   "cat": "other",
+   "us": 9659.154,
+   "share": 0.006734563214813196
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x256x64_MI16x16x1_CMS_SN_LDSB0_AFC0_AG1_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR0_CLS0_CADS0_DTLA1_",
+   "cat": "other",
+   "us": 6648.665000000001,
+   "share": 0.004635587623576141
+  },
+  {
+   "name": "_swiglu_fake_quantize_mxfp8",
+   "cat": "gemm",
+   "us": 6102.054999999999,
+   "share": 0.004254479754413992
+  },
+  {
+   "name": "_route_topk",
+   "cat": "other",
+   "us": 5971.730000000001,
+   "share": 0.004163614451824292
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT240x320x64_MI16x16x1_SN_LDSB0_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DTLB",
+   "cat": "other",
+   "us": 5376.44,
+   "share": 0.0037485658734346975
+  },
+  {
+   "name": "_residual_add_kernel",
+   "cat": "other",
+   "us": 4496.7660000000005,
+   "share": 0.0031352388510652875
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(in",
+   "cat": "other",
+   "us": 3926.0930000000017,
+   "share": 0.002737353757454907
+  },
+  {
+   "name": "Cijk_Alik_Bljk_BSS_BH_Bias_S_HA_S_SAV_UserArgs_MT128x64x128_MI16x16x1_SN_LDSB1_AFC0_AG0_AGGSUA0_AGNTAB0_AFEM1_AFEM1_ASEM1_BL1_BS1_CD1_1_CLR1_CLS0_CADS0_DTLA0_DT",
+   "cat": "other",
+   "us": 2978.281999999999,
+   "share": 0.0020765202004792826
+  },
+  {
+   "name": "_fused_gather_scatter_to_sconv_cache_kernel",
+   "cat": "other",
+   "us": 2583.4489999999932,
+   "share": 0.0018012344148096084
+  }
+ ],
+ "gpu_kernel_us_total": 1434265.8450000053,
+ "kernel_events": 9247
+}

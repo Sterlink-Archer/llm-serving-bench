@@ -1,0 +1,4 @@
+[vllmbench r=1.511 s=7] done=181 failed=0 req/s=1.343036066957257 p95 TTFT=1.7276800647377968 median TPOT=76.22425074305605 ms in tok/s=13112
+[vllmbench r=2.267 s=7] done=272 failed=0 req/s=1.6629596012850572 p95 TTFT=2.821305558690801 median TPOT=219.01484604619404 ms in tok/s=16272
+[vllmbench r=3.023 s=7] done=362 failed=0 req/s=1.767598819787933 p95 TTFT=10.432126969099045 median TPOT=310.9102866703197 ms in tok/s=17496
+[protocol] max_rate_at_slo=2.267 req/s (break-even 1.5115); prefill=27599.009912053494 tok/s -> /root/or/out/protocol_sgl_A_random/protocol_summary.json

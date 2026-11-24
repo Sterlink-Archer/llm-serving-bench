@@ -1,0 +1,390 @@
+/opt/venv/bin/python3 /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py --input_file /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --tuned_file /root/or/out/aiter_tuned_torch.csv --libtype torch
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+Not exist tuned file: /root/or/out/aiter_tuned_torch.csv
+untunedf is          gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+        gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+[Task Grouping] Grouped 100 tasks into 100 groups by info_keys
+Distributing 100 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /sgl-workspace/aiter/aiter/configs/bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsr1_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv41_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/flux2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm47_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_flash_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm5_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/gptoss_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/inkling_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimi_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama405B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama70B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_eagle_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_mxfp4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/mistral_large4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/muse_glimmer_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/q3vl_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen32B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_tp4_prefill_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_5_397b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_27b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_2p4t_a95b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/wan22_bf16_tuned_gemm.csv
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:57:11.386913199 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+[aiter] processed 1 batches of 2, Processing Status ====> 50.0% tuned in GemmA16W16Tuner
+Waiting for 100 tasks to complete (timeout=1800s each)...
+Not exist tuned file: /root/or/out/aiter_tuned_torch.csv
+[Task Grouping] Grouped 17 tasks into 17 groups by info_keys
+Distributing 17 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /sgl-workspace/aiter/aiter/configs/bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsr1_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv41_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/flux2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm47_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_flash_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm5_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/gptoss_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/inkling_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimi_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama405B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama70B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_eagle_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_mxfp4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/mistral_large4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/muse_glimmer_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/q3vl_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen32B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_tp4_prefill_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_5_397b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_27b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_2p4t_a95b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/wan22_bf16_tuned_gemm.csv
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:57:27.744197115 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+[aiter] processed 2 batches of 2, Processing Status ====> 100.0% tuned in GemmA16W16Tuner
+[aiter] ============= Tuning results Summary: ==============
+[aiter] Tuning Finished. tune 117 shapes, total tuning time is 27.0277 seconds
+[aiter] Successfully tuned shapes:
+Waiting for 17 tasks to complete (timeout=1800s each)...
+        gfx cu_num      M     N  ... kernelName err_ratio   tflops       bw
+0    gfx950    256   1024  2304  ...     native       0.0   571.29   991.83
+1    gfx950    256   1280  2304  ...     native       0.0   606.37   934.29
+2    gfx950    256   1536  2304  ...     native       0.0   677.66   955.91
+3    gfx950    256   1792  2304  ...     native       0.0   771.26   1016.2
+4    gfx950    256   2048  2304  ...     native       0.0   784.54   978.97
+5    gfx950    256   2304  2304  ...     native       0.0   719.23   858.46
+6    gfx950    256   2560  2304  ...     native       0.0   784.89   902.76
+7    gfx950    256   2816  2304  ...     native       0.0   735.71   820.06
+8    gfx950    256   3072  2304  ...     native       0.0   793.42   860.91
+9    gfx950    256   3328  2304  ...     native       0.0   947.92  1004.82
+10   gfx950    256   3584  2304  ...     native       0.0   977.22  1014.91
+11   gfx950    256   3840  2304  ...     native       0.0   993.67  1013.51
+12   gfx950    256   4096  2304  ...     native       0.0   998.23  1001.91
+13   gfx950    256   4608  2304  ...     native       0.0  1070.56  1045.47
+14   gfx950    256   5120  2304  ...     native       0.0  1132.83  1081.69
+15   gfx950    256   5632  2304  ...     native       0.0  1045.97   980.19
+16   gfx950    256   6144  2304  ...     native       0.0  1188.54   1096.2
+17   gfx950    256   6656  2304  ...     native       0.0  1194.01  1086.29
+18   gfx950    256   7168  2304  ...     native       0.0  1228.79  1104.75
+19   gfx950    256   7680  2304  ...     native       0.0  1140.74  1014.98
+20   gfx950    256   8192  2304  ...     native       0.0  1167.22  1029.04
+21   gfx950    256   8704  2304  ...     native       0.0  1226.14  1072.19
+22   gfx950    256   9216  2304  ...     native       0.0  1252.18  1086.96
+23   gfx950    256   9728  2304  ...     native       0.0  1191.79  1027.74
+24   gfx950    256  10240  2304  ...     native       0.0  1226.31   1051.2
+25   gfx950    256  10752  2304  ...     native       0.0  1235.04  1052.94
+26   gfx950    256  11264  2304  ...     native       0.0  1210.57  1026.96
+27   gfx950    256  11776  2304  ...     native       0.0  1224.78  1034.28
+28   gfx950    256  12288  2304  ...     native       0.0  1252.82  1053.53
+29   gfx950    256  12800  2304  ...     native       0.0   1228.9  1029.41
+30   gfx950    256  13312  2304  ...     native       0.0   1288.3   1075.3
+31   gfx950    256  13824  2304  ...     native       0.0  1302.48  1083.51
+32   gfx950    256  14336  2304  ...     native       0.0  1345.78  1116.06
+33   gfx950    256  14848  2304  ...     native       0.0  1195.87   988.86
+34   gfx950    256  15360  2304  ...     native       0.0  1205.04   993.74
+35   gfx950    256  15872  2304  ...     native       0.0  1232.13  1013.49
+36   gfx950    256  16384  2304  ...     native       0.0  1245.64  1022.15
+37   gfx950    256   1024  8600  ...     native       0.0   900.04  1374.24
+38   gfx950    256   1056  8600  ...     native       0.0   761.45  1140.11
+39   gfx950    256   1104  8600  ...     native       0.0   831.92  1211.36
+40   gfx950    256   1152  8600  ...     native       0.0   891.04  1263.82
+41   gfx950    256   1200  8600  ...     native       0.0   859.74  1189.57
+42   gfx950    256   1248  8600  ...     native       0.0  1008.42  1362.97
+43   gfx950    256   1280  8600  ...     native       0.0   1015.2  1351.79
+44   gfx950    256   1296  8600  ...     native       0.0  1033.48  1366.17
+45   gfx950    256   1344  8600  ...     native       0.0  1091.56  1412.87
+46   gfx950    256   1392  8600  ...     native       0.0   856.31   1086.4
+47   gfx950    256   1440  8600  ...     native       0.0   879.69   1095.0
+48   gfx950    256   1488  8600  ...     native       0.0   867.65  1060.57
+49   gfx950    256   1536  8600  ...     native       0.0   950.95  1142.43
+50   gfx950    256   1728  8600  ...     native       0.0  1074.99  1213.67
+51   gfx950    256   1792  8600  ...     native       0.0  1135.45  1258.46
+52   gfx950    256   1920  8600  ...     native       0.0  1112.86  1192.03
+53   gfx950    256   2048  8600  ...     native       0.0  1122.06  1165.36
+54   gfx950    256   2112  8600  ...     native       0.0  1115.04  1141.56
+55   gfx950    256   2304  8600  ...     native       0.0   1146.2  1128.25
+56   gfx950    256   2496  8600  ...     native       0.0   997.53    948.6
+57   gfx950    256   2560  8600  ...     native       0.0  1080.05  1016.26
+58   gfx950    256   2688  8600  ...     native       0.0  1110.83  1024.55
+59   gfx950    256   2816  8600  ...     native       0.0  1142.02  1034.01
+60   gfx950    256   2880  8600  ...     native       0.0  1160.84  1041.89
+61   gfx950    256   3072  8600  ...     native       0.0  1015.78   889.65
+62   gfx950    256   3328  8600  ...     native       0.0   924.74   786.76
+63   gfx950    256   3584  8600  ...     native       0.0  1210.94  1004.26
+64   gfx950    256   3840  8600  ...     native       0.0  1248.27   1012.0
+65   gfx950    256   4096  8600  ...     native       0.0  1214.03   964.48
+66   gfx950    256   4608  8600  ...     native       0.0  1201.05   921.59
+67   gfx950    256   5120  8600  ...     native       0.0   1117.9   833.53
+68   gfx950    256   5376  8600  ...     native       0.0  1262.85   929.86
+69   gfx950    256   5632  8600  ...     native       0.0  1303.45   948.73
+70   gfx950    256   6144  8600  ...     native       0.0  1243.73   886.86
+71   gfx950    256   6656  8600  ...     native       0.0  1257.15   880.69
+72   gfx950    256   6912  8600  ...     native       0.0  1256.79   873.45
+73   gfx950    256   7168  8600  ...     native       0.0  1285.93   887.05
+74   gfx950    256   7680  8600  ...     native       0.0  1353.46   921.05
+75   gfx950    256   8192  8600  ...     native       0.0  1271.57   854.98
+76   gfx950    256   8448  8600  ...     native       0.0  1258.67   841.64
+77   gfx950    256   8704  8600  ...     native       0.0  1277.44   849.75
+78   gfx950    256   9216  8600  ...     native       0.0  1296.09   853.88
+79   gfx950    256   9728  8600  ...     native       0.0  1293.97   845.09
+80   gfx950    256   9984  8600  ...     native       0.0  1324.55   861.58
+81   gfx950    256  10240  8600  ...     native       0.0  1288.05   834.61
+82   gfx950    256  10752  8600  ...     native       0.0  1291.34   830.74
+83   gfx950    256  11264  8600  ...     native       0.0  1300.93   831.41
+84   gfx950    256  11520  8600  ...     native       0.0  1314.96   837.78
+85   gfx950    256  11776  8600  ...     native       0.0  1330.99   845.48
+86   gfx950    256  12288  8600  ...     native       0.0  1337.43   844.84
+87   gfx950    256  12800  8600  ...     native       0.0   1317.6   828.02
+88   gfx950    256  13312  8600  ...     native       0.0  1295.62   810.32
+89   gfx950    256  13824  8600  ...     native       0.0  1321.38   822.75
+90   gfx950    256  14336  8600  ...     native       0.0  1352.02   838.33
+91   gfx950    256  14848  8600  ...     native       0.0  1359.28   839.57
+92   gfx950    256  15360  8600  ...     native       0.0  1395.14   858.58
+93   gfx950    256  15872  8600  ...     native       0.0  1332.49   817.23
+94   gfx950    256  16384  8600  ...     native       0.0  1340.05   819.23
+95   gfx950    256  16896  8600  ...     native       0.0  1359.36   828.52
+96   gfx950    256  18432  8600  ...     native       0.0  1340.59   810.47
+97   gfx950    256  19968  8600  ...     native       0.0  1373.02   824.34
+98   gfx950    256  21504  8600  ...     native       0.0  1346.99    803.9
+99   gfx950    256  23040  8600  ...     native       0.0  1343.11   797.41
+100  gfx950    256  24576  8600  ...     native       0.0   1361.5   804.64
+101  gfx950    256  26112  8600  ...     native       0.0  1367.09   804.67
+102  gfx950    256  27648  8600  ...     native       0.0  1379.95   809.31
+103  gfx950    256  29184  8600  ...     native       0.0  1360.79   795.48
+104  gfx950    256  30720  8600  ...     native       0.0  1357.36   791.15
+105  gfx950    256  32256  8600  ...     native       0.0  1373.97    798.7
+106  gfx950    256  33792  8600  ...     native       0.0  1358.87   788.01
+107  gfx950    256  35328  8600  ...     native       0.0  1360.45   787.17
+108  gfx950    256  36864  8600  ...     native       0.0  1361.13   785.96
+109  gfx950    256  38400  8600  ...     native       0.0  1359.59    783.6
+110  gfx950    256  39936  8600  ...     native       0.0  1377.09    792.3
+111  gfx950    256  41472  8600  ...     native       0.0  1367.18   785.33
+112  gfx950    256  43008  8600  ...     native       0.0  1373.56   787.82
+113  gfx950    256  44544  8600  ...     native       0.0   1383.0   792.12
+114  gfx950    256  46080  8600  ...     native       0.0  1370.37   783.86
+115  gfx950    256  47616  8600  ...     native       0.0  1386.18   791.94
+116  gfx950    256  49152  8600  ...     native       0.0  1369.47   781.49
+
+[117 rows x 18 columns]
+[aiter] Failed shapes:
+Empty DataFrame
+Columns: [gfx, cu_num, M, N, K, bias, dtype, outdtype, scaleAB, bpreshuffle, libtype, solidx, splitK, us, kernelName, err_ratio, tflops, bw]
+Index: []
+retried num is 0

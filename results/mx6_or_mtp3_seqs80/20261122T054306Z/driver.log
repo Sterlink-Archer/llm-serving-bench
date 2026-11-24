@@ -1,0 +1,17 @@
+2026-11-22T05:43:07Z [mx6_or_mtp3_seqs80] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$43.39)
+2026-11-22T05:43:27Z [mx6_or_mtp3_seqs80] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:44:11Z [mx6_or_mtp3_seqs80] download or_mtp3_seqs80: rc=0 42s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:46:59Z [mx6_or_mtp3_seqs80] server or_mtp3_seqs80 ready=True after 168.1s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268244 MB
+        FREE_VRAM: 26348 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268244 MB
+        FREE_VISIBLE_VRAM: 26348 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 975317 graphs 21
+2026-11-22T05:47:03Z [mx6_or_mtp3_seqs80] inspect_or_mtp3_seqs80 rc=0 2s :: mx file: inspect.sh
+2026-11-22T05:47:15Z [mx6_or_mtp3_seqs80] gate_or_mtp3_seqs80_gsm8kor100 rc=0 13s :: [gate_or_mtp3_seqs80_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:49:21Z [mx6_or_mtp3_seqs80] ERROR ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/06925433-68f5-45f1-bebb-d2a3acb36e66/process/execute: {"statusCode":404,"message":"not found: sandbox 06925433-68f5-45f1-bebb-d2a3acb36e66 not found (it has been deleted)","code":"NOT_FOUND","timestamp":"2026-11-22T05:49:21.183139816Z","path":"/toolbox/06925433-68f5-45f1-bebb-d2a3acb36e66/process/execute","method":"POST"}')
+2026-11-22T05:49:21Z [mx6_or_mtp3_seqs80] EVICTED (spot preemption, outside our control): {'server': 'or_mtp3_seqs80', 'step': 'protocol_or_mtp3_seqs80'} lost 1.9 min / $0.15
+2026-11-22T05:49:26Z [mx6_or_mtp3_seqs80] done: elapsed 6.3 min, est $0.50; project est $49.19
+2026-11-22T05:49:26Z [mx6_or_mtp3_seqs80] re-running mx6_or_mtp3_seqs80 on a fresh box after spot eviction (retry 1/2); evicted run kept as mx6_or_mtp3_seqs80/20261122T054306Z with the interrupted step excluded

@@ -1,0 +1,13 @@
+2026-11-22T09:11:33Z [ikC_pro6000_mixed_s7] creating spot sandbox (RTX-PRO-6000 x1, $2.5561/h, ttl 150 min, budget $8.0; project so far ~$159.01)
+2026-11-22T09:12:38Z [ikC_pro6000_mixed_s7] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 30 | Mem:             283          16          67           0         207         267 | overlay         1.4T  734G  635G  54% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T09:13:31Z [ikC_pro6000_mixed_s7] download ref: rc=0 48s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:17:00Z [ikC_pro6000_mixed_s7] server ref ready=True after 208.8s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T09:27:56Z [ikC_pro6000_mixed_s7] eval_ref_r1 rc=0 656s :: [eval_ref_r1] gsm8kor: 0.952 (238/250, noans 3, err 0, trunc 3) mmlupro: 0.765 (153/200, noans 29, err 0, trunc 29) wall=650s
+2026-11-22T09:38:11Z [ikC_pro6000_mixed_s7] eval_ref_r2 rc=0 615s :: [eval_ref_r2] gsm8kor: 0.960 (240/250, noans 2, err 0, trunc 2) mmlupro: 0.795 (159/200, noans 21, err 0, trunc 21) wall=607s
+2026-11-22T09:38:33Z [ikC_pro6000_mixed_s7] download mixed: rc=0 11s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:39:41Z [ikC_pro6000_mixed_s7] server mixed ready=True after 67.6s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T09:41:25Z [ikC_pro6000_mixed_s7] setup_vllm_client rc=0 103s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 82 s: 0.33.0
+2026-11-22T09:52:11Z [ikC_pro6000_mixed_s7] eval_claim rc=0 646s :: [eval_claim] gsm8kor: 0.964 (241/250, noans 1, err 0, trunc 1) mmlupro: 0.745 (149/200, noans 30, err 0, trunc 30) wall=640s
+2026-11-22T10:10:49Z [ikC_pro6000_mixed_s7] protocol_mixed_B_text rc=0 1118s :: [protocol] max_rate_at_slo=1.074 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_mixed_B_text/protocol_summary.json
+2026-11-22T10:28:39Z [ikC_pro6000_mixed_s7] protocol_mixed_A_random rc=0 1070s :: [protocol] max_rate_at_slo=1.074 req/s (break-even 0.8591); prefill=20639.619266897247 tok/s -> /root/or/out/protocol_mixed_A_random/protocol_summary.json
+2026-11-22T10:29:14Z [ikC_pro6000_mixed_s7] done: elapsed 77.7 min, est $3.31; project est $236.86

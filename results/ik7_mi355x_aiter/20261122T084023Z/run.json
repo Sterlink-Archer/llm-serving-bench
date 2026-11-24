@@ -1,0 +1,157 @@
+{
+ "label": "ik7_mi355x_aiter",
+ "run_id": "ik7_mi355x_aiter/20261122T084023Z",
+ "config_file": "recipes/inkling/configs/ik7_mi355x_aiter.json",
+ "t_start": "2026-11-22T08:40:23Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 4.4973
+ },
+ "phases": {
+  "create_s": 8.7
+ },
+ "servers": {
+  "base": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.7,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:01,  7.00it/s]\rFetching 12 files:  50%|\u2588\u2588\u2588\u2588\u2588     | 6/12 [00:00<00:00, 27.74it/s]\rFetching 12 files:  83%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e | 10/12 [00:00<00:00, 13.72it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:08<00:00,  1.46it/s]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590716 secs=8.6 GBps=2.354 method=huggingface_hub\n",
+    "bytes": 20191590716,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 235.8,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton --admin-api-key \"$IK_ADMIN_KEY\"",
+    "env": {
+     "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+     "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_base",
+     "IK_ADMIN_KEY": "local-profiler-token"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 277520 MB\n        FREE_VRAM: 17072 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 277520 MB\n        FREE_VISIBLE_VRAM: 17072 MB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "triton",
+     "global_512": "triton"
+    },
+    "kv_cache_tokens": 4828288,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton --admin-api-key \"$IK_ADMIN_KEY\"",
+     "env": {
+      "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+      "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_base",
+      "IK_ADMIN_KEY": "local-profiler-token"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_base": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "bash /root/or/ik/aiter_inspect.sh base",
+     "tail": "calls in srt/arg_groups/pd_disaggregation_hook.py: []\ncalls in srt/arg_groups/fields/model.py: ['nvfp4', 'nvfp4_awq']\nlog /root/or/server_base.log: untuned-shape lines 263, distinct 263\n"
+    },
+    "gate_base_gsm8kor100": {
+     "rc": 0,
+     "secs": 42.9,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label gate_base_gsm8kor100 --out /root/or/out/gate_base_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_base_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=33s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.98,
+      "n": 100,
+      "passed": 98,
+      "pass": true
+     }
+    },
+    "profile_prefill_base": {
+     "rc": 1,
+     "secs": 1.7,
+     "cmd": "python3 /root/or/ik/sgl_profile.py --model inkling --dir /root/or/out/prof_base --n 4 --tokens 10000 --out /root/or/out/profile_prefill_base.json",
+     "tail": "  File \"/usr/lib/python3.12/urllib/request.py\", line 639, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 401: Unauthorized\n"
+    },
+    "protocol_base_B_text": {
+     "rc": 0,
+     "secs": 456.4,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_base_B_text --breakeven-rps 1.5115 --client traffic --stratify --tokenizer /root/models/inkling --rates 1.511,1.889,2.267 --seeds 7 --duration 180 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik7_mi355x_aiter/20261122T084023Z --config-id ik7_mi355x_aiter:base --max-minutes 141.9",
+     "tail": "ype ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r1.25x_s7] R=1.889 win=180s done=227 err=0 drop=0 req/s=1.19 out=552 in=18437 tok/s cache=0.00 TTFT p50=2.003s p95=9.932s TPOT p50=244.5ms srv=410.56390777694486\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.5115); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json\n",
+     "breakeven_rps": 1.5115
+    },
+    "aiter_tune": {
+     "rc": 0,
+     "secs": 42.9,
+     "cmd": "python3 /root/or/ik/aiter_tune.py --untuned /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --out /root/or/out",
+     "tail": "[aiter_tune] asm: rc=0 5s rows=0\n[aiter_tune] hipblaslt: rc=0 7s rows=0\n[aiter_tune] merged 34 rows; speedup vs torch {'n': 34, 'median': 1.0, 'min': 1.0, 'max': 1.0}; installed /sgl-workspace/aiter/aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv\n"
+    }
+   },
+   "end": "ok"
+  },
+  "tuned": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.7,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:00<00:00, 831.76it/s]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590716 secs=0.1 GBps=179.689 method=huggingface_hub\n",
+    "bytes": 20191590716,
+    "methods": [
+     "huggingface_hub"
+    ]
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 147.18,
+  "this_run_ceiling_usd": 11.62,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 251,
+ "sandbox_id": "f401d27d-d601-42d0-bdfb-9d568e8f04b7",
+ "elapsed_s": 928.8,
+ "est_cost_usd": 1.16,
+ "t_saved": "2026-11-22T08:55:52Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0xCF2CDC4A0223F5AA\n        OAM_ID: 4\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015         484         935          13         625        1531\noverlay         150G  9.9M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.11.0+rocm10.0.0 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": ""
+ },
+ "deleted": "2026-11-22T08:55:20Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 152.78,
+  "metered_usd": 130.8549
+ }
+}

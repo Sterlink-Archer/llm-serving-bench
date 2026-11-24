@@ -1,0 +1,5 @@
+      27.1 ms   0.2% x2429  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x16x1024_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      23.3 ms   0.2% x49    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x144x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      18.7 ms   0.2% x820   _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E.kd
+      18.1 ms   0.1% x720   _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E.kd
+      15.3 ms   0.1% x1617  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x256_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0_

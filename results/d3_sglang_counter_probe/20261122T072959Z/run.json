@@ -1,0 +1,109 @@
+{
+ "label": "d3_sglang_counter_probe",
+ "run_id": "d3_sglang_counter_probe/20261122T072959Z",
+ "config_file": "configs/d3_sglang_counter_probe.json",
+ "t_start": "2026-11-22T07:29:59Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 2.8873
+ },
+ "phases": {
+  "create_s": 18.2
+ },
+ "servers": {
+  "sgl_nvfp4_nv": {
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "resolved_sha": "4135a98a9b728a548947683219633b25682223ac",
+     "files": 12,
+     "bytes": 32665856087
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 53.0,
+    "tail": " ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:  25%|\u2588\u2588\u258c       | 3/12 [00:00<00:00, 29.67it/s]\rFetching 12 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 8/12 [00:01<00:00,  7.06it/s]\rFetching 12 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 8/12 [00:20<00:00,  7.06it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:22<00:11,  3.71s/it]\rFetching 12 files:  83%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e | 10/12 [00:42<00:13,  6.85s/it]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:45<00:06,  6.08s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:48<00:00,  5.40s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:48<00:00,  4.08s/it]\nDL repo=nvidia/Gemma-4-31B-IT-NVFP4 rev=4135a98a9b files=12 bytes=32665860282 secs=49.2 GBps=0.664 method=huggingface_hub\n",
+    "bytes": 32665860282,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 97.1,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend triton --quantization modelopt_fp4",
+    "env": {
+     "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+    },
+    "gpu_mem_after_load": "88289 MiB, 97887 MiB",
+    "smoke": ",\"message\":{\"role\":\"assistant\",\"content\":\"Hi!\",\"reasoning_content\":null},\"logprobs\":null,\"finish_reason\":\"stop\",\"matched_stop\":106}],\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":4},\"reasoning_tokens\":0,\"completion_tokens_details\":null},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":3}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "triton",
+     "global_512": "triton"
+    },
+    "kv_cache_tokens": 148789,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "Triton attention on global 512-dim layers",
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend triton --quantization modelopt_fp4",
+     "env": {
+      "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+     },
+     "ok": true,
+     "rejected": true,
+     "reason": "Triton attention on global 512-dim layers"
+    }
+   ],
+   "steps": {
+    "counter_probe": {
+     "rc": 0,
+     "secs": 116.2,
+     "cmd": "python3 bench/counter_probe.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/counter_probe.json",
+     "tail": "[counter_probe] stream=False L=9500: usage.prompt=9144 server delta=9144.0 (mid-request 0.0) gen usage=200 server=200.0\n[counter_probe] stream=False L=9500: usage.prompt=10025 server delta=10025.0 (mid-request 0.0) gen usage=200 server=200.0\n[counter_probe] server/usage = 1.0000; per-request offsets [0.0]; counted before finish in 0/18\n"
+    },
+    "protocol_sgl_counter_B_text": {
+     "rc": 0,
+     "secs": 314.0,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_counter_B_text --breakeven-rps 1.0296 --client traffic --stratify --tokenizer /root/models/nvfp4_modelopt --rates 0.35 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id d3_sglang_counter_probe/20261122T072959Z --config-id d3_sglang_counter_probe:sgl_nvfp4_nv --max-minutes 37.3",
+     "tail": "[r0.34x_s7] R=0.35 win=240s done=88 err=0 drop=0 req/s=0.34 out=128 in=3295 tok/s cache=0.00 TTFT p50=3.040s p95=17.943s TPOT p50=73.2ms srv=123.22406146637672\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=None tok/s -> /root/or/out/protocol_sgl_counter_B_text/protocol_summary.json\n",
+     "breakeven_rps": 1.0295606903437455
+    },
+    "counter_probe_after": {
+     "rc": 0,
+     "secs": 53.8,
+     "cmd": "python3 bench/counter_probe.py --model gemma --metrics http://127.0.0.1:8000/metrics --lengths 9500 --reps 3 --out /root/or/out/counter_probe_after.json",
+     "tail": "[counter_probe] stream=False L=9500: usage.prompt=9144 server delta=9144.0 (mid-request 0.0) gen usage=200 server=200.0\n[counter_probe] stream=False L=9500: usage.prompt=10025 server delta=10025.0 (mid-request 0.0) gen usage=200 server=200.0\n[counter_probe] server/usage = 1.0000; per-request offsets [0.0]; counted before finish in 0/6\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 102.07,
+  "this_run_ceiling_usd": 2.41,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 102,
+ "sandbox_id": "7e1d411d-99a3-45c0-8e73-cf91cc5e1b23",
+ "elapsed_s": 709.2,
+ "est_cost_usd": 0.569,
+ "t_saved": "2026-11-22T07:41:48Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          13           4           0         127         127\noverlay         713G  413G  272G  61% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.5.23\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:41:34Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 109.62,
+  "metered_usd": 90.1151
+ }
+}

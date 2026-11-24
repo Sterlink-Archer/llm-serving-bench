@@ -1,0 +1,59 @@
+{
+ "label": "mxA_attn_lab",
+ "stage": "mx-lever",
+ "note": "Attention lab (no engine): split-vs-one-launch cost of our mixed steps and an attn_2d sweep for the mixed launch, d512 and d256, at 96x4 (our recipe at the knee), 48x4, and 64x3 (their recipe).",
+ "snapshot": {
+  "name": "or-openrelayrecipe-mi355x-c8m48d150",
+  "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+  "image_digest_amd64": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 50,
+ "budget_usd": 4.0,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/attn_mix_lab.py <<'MXEOF_ATTN_MIX_LAB_PY'\n# attn_mix_lab.py: attention cost of OUR mixed steps (k=3 MTP, up to 96 decoding requests, 8192-token chunks), derived from\n# OpenRelay's bench/kernels/attn_tune.py (inference-recipes @6767b4d, Apache-2.0): same call into\n# aiter.ops.triton.attention.unified_attention with vLLM's paged fp8 KV layout and fp8 q.\n#\n# Question 1 (split): in a mixed step all sequences share ONE unified_attention launch; with max_seqlen_q > 16 the decode\n#   requests (4 query tokens each) ride the prefill-shaped 2D tile (BLOCK_M 128 = 16 tokens x 8 q-heads per KV head for d512).\n#   Time: (a) one launch for prefill + decode, (b) prefill alone + decode alone (decode alone takes split-KV 3D via\n#   OpenRelay's ua3d dispatch patch, which their image carries). (a) - (b) is what splitting would save per layer.\n# Question 2 (retune): sweep attn_2d for the mixed launch (as their attn_tune.py does for the 10K-prefill scenario).\n# usage: python3 attn_mix_lab.py [ndec=96] [qdec=4] [quick]\nimport itertools, sys, time, torch, triton\nimport aiter.ops.triton.attention.unified_attention as UA\n\ntorch.manual_seed(0)\nNDEC = int(sys.argv[1]) if len(sys.argv) > 1 else 96\nQDEC = int(sys.argv[2]) if len(sys.argv) > 2 else 4\nQUICK = len(sys.argv) > 3 and sys.argv[3] == \"quick\"\nfp8 = torch.float8_e4m3fn\nPREFILL = (8192 - NDEC * QDEC, 9000)            # one chunk of a long prompt: q_len tokens appended at context k_len\nDECODE = [(QDEC, 9500)] * NDEC                  # verify steps at ~9.5K context\n\n\ndef setup(D, seqs):\n    HQ = 32; HKV = 4 if D == 512 else 16; BS = 128 if D == 512 else 64\n    window = (-1, -1) if D == 512 else (1023, 0)\n    qlens = [s[0] for s in seqs]; klens = [s[1] for s in seqs]\n    T = sum(qlens); nblk = [triton.cdiv(k, BS) for k in klens]; NB = sum(nblk) + 8\n    kv = (torch.randn(NB, HKV, BS, 2 * D, device=\"cuda\") * 0.5).to(fp8)\n    kc, vc = kv.transpose(1, 2).split(D, dim=-1)\n    bt = torch.zeros(len(seqs), max(nblk), dtype=torch.int32, device=\"cuda\")\n    perm = torch.randperm(NB - 8, device=\"cuda\").int(); o = 0\n    for i, n in enumerate(nblk):\n        bt[i, :n] = perm[o:o + n]; o += n\n    q = torch.randn(T, HQ, D, device=\"cuda\").to(fp8)\n    cu = torch.tensor([0] + list(itertools.accumulate(qlens)), dtype=torch.int32, device=\"cuda\")\n    sk = torch.tensor(klens, dtype=torch.int32, device=\"cuda\")\n    one = torch.ones((), device=\"cuda\")\n    out = torch.empty(T, HQ, D, device=\"cuda\", dtype=torch.bfloat16)\n\n    def run():\n        UA.unified_attention(q=q, k=kc, v=vc, out=out, cu_seqlens_q=cu, max_seqlen_q=max(qlens), seqused_k=sk,\n                             max_seqlen_k=max(klens), softmax_scale=D ** -0.5, causal=True, window_size=window, block_table=bt,\n                             softcap=0, q_descale=one, k_descale=one, v_descale=one)\n        return out\n    return run\n\n\ndef bench(run, n=10):\n    run(); torch.cuda.synchronize(); t = time.time()\n    for _ in range(n):\n        run()\n    torch.cuda.synchronize()\n    return (time.time() - t) / n * 1000\n\n\norig = UA.get_unified_attention_config\noverride = {}\n\n\ndef patched(op, params, backend=\"triton\", arch=None):\n    c = orig(op, params, backend, arch)\n    if op == \"attn_2d\" and override:\n        c = dict(override)\n    return c\n\n\nUA.get_unified_attention_config = patched\n\nfor D in (512, 256):\n    t_all = bench(setup(D, [PREFILL] + DECODE))\n    t_pre = bench(setup(D, [PREFILL]))\n    t_dec = bench(setup(D, DECODE))\n    layers = 10 if D == 512 else 50\n    print(f\"D={D} mixed step ({PREFILL[0]} prefill tokens + {NDEC} x {QDEC} decode): one launch {t_all:.3f} ms | prefill alone \"\n          f\"{t_pre:.3f} + decode alone {t_dec:.3f} = {t_pre + t_dec:.3f} ms | split saves {t_all - t_pre - t_dec:+.3f} ms/layer \"\n          f\"= {layers * (t_all - t_pre - t_dec):+.2f} ms per mixed step ({layers} layers)\", flush=True)\n\n# Question 2: attn_2d sweep for the mixed launch, d512 (their grid; quick = the cells around their pick)\nrun = setup(512, [PREFILL] + DECODE)\nref = run().clone(); base = bench(run)\ngrid = dict(BLOCK_M=[64, 128], TILE_SIZE=[32, 64, 128], num_warps=[4, 8], num_stages=[1, 2], waves_per_eu=[1, 2])\nif QUICK:\n    grid = dict(BLOCK_M=[64, 128], TILE_SIZE=[64, 128], num_warps=[4], num_stages=[1, 2], waves_per_eu=[1, 2])\nres = []\nfor vals in itertools.product(*grid.values()):\n    cfg = dict(zip(grid, vals))   # same keys as OpenRelay's attn_tune.py sweep (it ran on this image's aiter)\n    override.clear(); override.update(cfg)\n    try:\n        o = run(); torch.cuda.synchronize()\n        err = (o.float() - ref.float()).abs().max().item()\n        ms = bench(run); res.append((ms, cfg, err))\n    except Exception as e:  # noqa: BLE001\n        print(f\"   fail {cfg}: {str(e)[:100]}\", flush=True)\n    torch.cuda.empty_cache()\noverride.clear()\nres.sort(key=lambda r: r[0])\nprint(f\"d512 mixed launch, table default {base:.3f} ms; best attn_2d configs:\")\nfor ms, c, e in res[:6]:\n    print(f\"  {ms:7.3f} ms {base / ms:5.2f}x err={e:.4f} {c}\")\nMXEOF_ATTN_MIX_LAB_PY\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh: what the engine image actually contains, written before any engine starts (runs from setup_cmd).\n# Versions, the AITER pieces OpenRelay upstreamed (ROCm/aiter#5926-#5929) and the anchors our patches need.\n# Output: /root/or/out/inspect.txt (pulled by the `inspect` sh step).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, json, re, glob\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"vllm\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\nv = os.path.dirname(importlib.util.find_spec(\"vllm\").origin)\nprint(\"aiter dir\", a); print(\"vllm dir\", v)\nua = os.path.join(a, \"ops/triton/attention/unified_attention.py\")\ns = open(ua).read() if os.path.exists(ua) else \"\"\nm = re.search(r\"\\n(\\s*if params\\.head_size >= 512[^\\n]*)\", s)\nprint(\"ua3d anchor (use_2d D>=512 clause):\", repr(m.group(1)) if m else \"NOT FOUND\")\nprint(\"ua3d already applied:\", \"max_seqlen_q > 16\" in s)\ntbl = os.path.join(a, \"ops/triton/configs/gfx950/triton/attention/unified_attention/DEFAULT.json\")\nif os.path.exists(tbl):\n    d = json.load(open(tbl))\n    for sec, ent in d.items():\n        if isinstance(ent, dict):\n            for k, val in ent.items():\n                if \"512\" in k or \"GEQ_256\" in k:\n                    print(f\"table {sec} {k} {val}\")\nelse:\n    print(\"table missing:\", tbl)\nfor f in sorted(glob.glob(os.path.join(a, \"configs/model_configs/*gemma*\"))):\n    print(\"model_config\", os.path.basename(f), sum(1 for _ in open(f)) - 1, \"rows\")\nact = os.path.join(a, \"ops/triton/_triton_kernels/fusions/activation.py\")\nif not os.path.exists(act): act = os.path.join(a, \"ops/triton/_triton_kernels/activation.py\")\nt = open(act).read() if os.path.exists(act) else \"\"\ni = t.find(\"def _act_mul_and_dynamic_mxfp4_quant_kernel(\")\nprint(\"scaleM_pad constexpr in act_mul kernel:\", \"scaleM_pad: tl.constexpr\" in t[i:t.find(\"):\", i)] if i >= 0 else \"kernel not found\")\ng = os.path.join(v, \"model_executor/models/gemma4.py\")\ngs = open(g).read() if os.path.exists(g) else \"\"\nprint(\"gemma4.py Gemma4MLP anchor:\", \"class Gemma4MLP(nn.Module):\" in gs, \"| g4 fuse applied:\", \"g4_gelu_mxfp4_gemm\" in gs)\nao = os.path.join(v, \"_aiter_ops.py\")\nts = open(ao).read() if os.path.exists(ao) else \"\"\nka = os.path.join(v, \"model_executor/kernels/linear/mxfp4/aiter.py\")\nks = open(ka).read() if os.path.exists(ka) else \"\"\nprint(\"vllm is_asm_fp4_gemm_tuned present:\", \"def is_asm_fp4_gemm_tuned\" in ts,\n      \"| presh_ws gate in kernel:\", \"is_triton_gemm_afp4wfp4_presh_ws_tuned\" in ks, \"| MX force patch:\", \"MX_FORCE_ASM_FP4\" in ks)\ntj = glob.glob(os.path.join(a, \"ops/triton/configs/gfx950/triton/gemm/gemm_afp4wfp4_preshuffled/*K=5376*\"))\nprint(\"gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376:\", [os.path.basename(x) for x in tj])\nenvs = open(os.path.join(v, \"envs.py\")).read()\nprint(\"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs:\", \"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM\" in envs)\nPY\nls /root/or/mx 2>/dev/null | sed 's/^/mx file: /'\ngrep -h \"^PATCH\" /root/or/mx/*.status 2>/dev/null\n} > \"$OUT\" 2>&1\ntail -n 40 \"$OUT\"\nMXEOF_INSPECT_SH\nmkdir -p /root/or/hc && echo ok > /root/or/hc/health\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "nogpu",
+   "weights": [],
+   "served_name": "none",
+   "env": {},
+   "allow_rejected": true,
+   "ready_timeout_s": 120,
+   "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+   "delete_weights_after": false,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "attn_lab_96x4",
+     "est_s": 900,
+     "outputs": [
+      "out/attn_lab_96x4.txt"
+     ],
+     "cmd": "python3 /root/or/mx/attn_mix_lab.py 96 4 > out/attn_lab_96x4.txt 2>&1; tail -n 12 out/attn_lab_96x4.txt"
+    },
+    {
+     "type": "sh",
+     "name": "attn_lab_48x4",
+     "est_s": 900,
+     "outputs": [
+      "out/attn_lab_48x4.txt"
+     ],
+     "cmd": "python3 /root/or/mx/attn_mix_lab.py 48 4 > out/attn_lab_48x4.txt 2>&1; tail -n 12 out/attn_lab_48x4.txt"
+    },
+    {
+     "type": "sh",
+     "name": "attn_lab_64x3",
+     "est_s": 900,
+     "outputs": [
+      "out/attn_lab_64x3.txt"
+     ],
+     "cmd": "python3 /root/or/mx/attn_mix_lab.py 64 3 > out/attn_lab_64x3.txt 2>&1; tail -n 12 out/attn_lab_64x3.txt"
+    }
+   ]
+  }
+ ]
+}

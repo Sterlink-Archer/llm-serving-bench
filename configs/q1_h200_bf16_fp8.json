@@ -1,0 +1,104 @@
+{
+ "label": "q1_h200_bf16_fp8",
+ "stage": "quality reference",
+ "claim_group": "q1_h200_bf16_fp8",
+ "note": "QUALITY REFERENCE (Maks: 'if we run the quantized version then lets compare it to the original regular one'). Same eval harness, greedy, on every config: GSM8K test[:250] with OpenRelay's prompt and scoring, our 200-item MMLU-Pro set, and data/eval/agree_400.jsonl (400 public-text prompts: 150 short chat, 100 long-document, 150 agentic JSON/tool-plan; max_tokens 192, concurrency 16) whose greedy outputs are compared with the BF16 reference by analysis/quality.py. H200: server 1 is the BF16 original (google/gemma-4-31B-it, BF16 weights AND BF16 KV cache) = the reference; it runs the agreement set twice (rep2 = the run-to-run noise floor of greedy decoding at concurrency 16). Server 2: RedHat FP8-dynamic with FP8 KV, exactly as served in the screen.",
+ "snapshot": {
+  "name": "or-vllm0330-h200-c8m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H200",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 90,
+ "budget_usd": 7.0,
+ "servers": [
+  {
+   "name": "bf16_ref",
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it",
+     "rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "dir": "/root/models/bf16"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype auto --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1800,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "q_gsm8kor250_bf16_ref",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_mmlupro200_bf16_ref",
+     "sets": "data/eval/mmlupro_200.jsonl",
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_agree400_bf16_ref",
+     "sets": "data/eval/agree_400.jsonl",
+     "conc": 16,
+     "max_tokens": 192,
+     "est_s": 420
+    },
+    {
+     "type": "eval",
+     "name": "q_agree400_bf16_ref_rep2",
+     "sets": "data/eval/agree_400.jsonl",
+     "conc": 16,
+     "max_tokens": 192,
+     "est_s": 420
+    }
+   ]
+  },
+  {
+   "name": "fp8dyn",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "q_gsm8kor250_fp8dyn",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_mmlupro200_fp8dyn",
+     "sets": "data/eval/mmlupro_200.jsonl",
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_agree400_fp8dyn",
+     "sets": "data/eval/agree_400.jsonl",
+     "conc": 16,
+     "max_tokens": 192,
+     "est_s": 420
+    }
+   ]
+  }
+ ]
+}

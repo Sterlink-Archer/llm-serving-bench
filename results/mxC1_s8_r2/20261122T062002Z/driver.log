@@ -1,0 +1,27 @@
+2026-11-22T06:20:03Z [mxC1_s8_r2] creating spot sandbox (MI355X x1, $4.7565/h, ttl 70 min, budget $6.0; project so far ~$76.69)
+2026-11-22T06:20:31Z [mxC1_s8_r2] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T06:20:54Z [mxC1_s8_r2] download mx_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T06:23:43Z [mxC1_s8_r2] server mx_recipe ready=True after 168.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T06:23:46Z [mxC1_s8_r2] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T06:23:59Z [mxC1_s8_r2] gate_mx_recipe_gsm8kor250 rc=0 13s :: [gate_mx_recipe_gsm8kor250] gsm8kor: 0.988 (247/250, noans 0, err 0, trunc 0) wall=7s
+2026-11-22T06:42:17Z [mxC1_s8_r2] protocol_mx_recipe rc=0 1098s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=44160.36371988385 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T06:42:40Z [mxC1_s8_r2] download or_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T06:44:06Z [mxC1_s8_r2] server or_recipe ready=True after 84.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T06:44:09Z [mxC1_s8_r2] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T06:44:21Z [mxC1_s8_r2] gate_or_recipe_gsm8kor100 rc=0 13s :: [gate_or_recipe_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T06:56:59Z [mxC1_s8_r2] protocol_or_recipe rc=0 757s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=42661.51702576135 tok/s -> /root/or/out/protocol_or_recipe/protocol_summary.json
+2026-11-22T06:57:24Z [mxC1_s8_r2] done: elapsed 37.4 min, est $2.96; project est $97.18

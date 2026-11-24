@@ -1,0 +1,68 @@
+{
+ "label": "e1b_h100_vllm_quant_4bit",
+ "note": "4-bit weight quantization on 1x H100 (no FP4 tensor cores on Hopper, so W4A16 kernels): Google's QAT W4A16 and community AWQ, FP8 KV.",
+ "snapshot": {
+  "name": "or-vllm0330-h100-c8m48d150",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 80,
+ "budget_usd": 6.0,
+ "servers": [
+  {
+   "name": "w4a16qat",
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it-qat-w4a16-ct",
+     "rev": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "dir": "/root/models/w4a16qat"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/w4a16qat --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_w4a16qat",
+     "conc": 64,
+     "est_s": 420
+    }
+   ]
+  },
+  {
+   "name": "awq",
+   "weights": [
+    {
+     "repo": "cyankiwi/gemma-4-31B-it-AWQ-4bit",
+     "rev": "a6b1af08a2dec2a803fd31641540d6a6d6cb09a9",
+     "dir": "/root/models/awq"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/awq --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_awq",
+     "conc": 64,
+     "est_s": 420
+    }
+   ]
+  }
+ ]
+}

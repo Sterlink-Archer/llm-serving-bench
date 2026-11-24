@@ -1,0 +1,125 @@
+{
+ "label": "mxS3_vllm_fp8",
+ "run_id": "mxS3_vllm_fp8/20261122T080325Z",
+ "config_file": "recipes/mi355x/configs/mxS3_vllm_fp8.json",
+ "t_start": "2026-11-22T08:03:25Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 13.1
+ },
+ "servers": {
+  "vllm_fp8": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 21.9,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:   6%|\u258b         | 1/16 [00:00<00:02,  5.12it/s]\rFetching 16 files:  81%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f | 13/16 [00:00<00:00, 52.24it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:12<00:00,  1.31it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469170 secs=12.7 GBps=2.624 method=huggingface_hub\n",
+    "bytes": 33300469170,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 142.9,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+    "env": {
+     "VLLM_ROCM_USE_AITER": "1",
+     "G4_FUSE_GELU": "0",
+     "TRITON_CACHE_DIR": "/root/.cache/triton"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 268589 MB\n        FREE_VRAM: 26003 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 268589 MB\n        FREE_VISIBLE_VRAM: 26003 MB",
+    "smoke": "null}],\"service_tier\":null,\"system_fingerprint\":\"vllm-0.30.0-b0fe1db7\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "ROCM_AITER_UNIFIED_ATTN",
+     "global_512": "ROCM_AITER_UNIFIED_ATTN"
+    },
+    "kv_cache_tokens": 941357,
+    "kv_cache_gib": 227.39,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+     "env": {
+      "VLLM_ROCM_USE_AITER": "1",
+      "G4_FUSE_GELU": "0",
+      "TRITON_CACHE_DIR": "/root/.cache/triton"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_vllm_fp8": {
+     "rc": 0,
+     "secs": 1.5,
+     "cmd": "tail -n 3 out/inspect.txt",
+     "tail": "gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: inspect.sh\n"
+    },
+    "gate_vllm_fp8_gsm8kor100": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_vllm_fp8_gsm8kor100 --out /root/or/out/gate_vllm_fp8_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_vllm_fp8_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=8s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "protocol_vllm_fp8": {
+     "rc": 0,
+     "secs": 467.3,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_vllm_fp8 --breakeven-rps 1.6961 --client vllmbench --tokenizer /root/models/fp8dyn --rates 2.5,3.0,3.25 --seeds 8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id mxS3_vllm_fp8/20261122T080325Z --config-id mxS3_vllm_fp8:vllm_fp8 --prefill-shot --max-minutes 38.8",
+     "tail": "[vllmbench r=2.5 s=8] done=750 failed=0 req/s=2.1105316215821643 p95 TTFT=47.235095924569755 median TPOT=77.92674670199798 ms in tok/s=20217\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=29253.588513372313 tok/s -> /root/or/out/protocol_vllm_fp8/protocol_summary.json\n",
+     "breakeven_rps": 1.6960847240051347
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 128.75,
+  "this_run_ceiling_usd": 3.96,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 241,
+ "sandbox_id": "10c1d4e5-b4a5-49f1-a51f-8b1bc006b515",
+ "elapsed_s": 729.6,
+ "est_cost_usd": 0.964,
+ "t_saved": "2026-11-22T08:15:35Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x004C9DE21EE09B59\n        OAM_ID: 0\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015         249         995           7         770        1742\noverlay         150G  9.0M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "_SPLIT_MAX': 16, 'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64}\ntable kv_split D_GEQ_512.DT_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T08:15:17Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 137.39,
+  "metered_usd": 109.093
+ }
+}

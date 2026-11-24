@@ -1,0 +1,55 @@
+{
+ "label": "ik3_5090_bf16",
+ "run_id": "ik3_5090_bf16/20261122T075120Z",
+ "config_file": "recipes/inkling/configs/ik3_5090_bf16.json",
+ "t_start": "2026-11-22T07:51:20Z",
+ "usd_per_h": {
+  "gpu": 0.74,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 1.6773
+ },
+ "phases": {
+  "create_s": 12.1
+ },
+ "servers": {
+  "swa25": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 66.4,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:01,  6.16it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:01<00:00,  5.64it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:02<00:00,  3.32it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:02<00:00,  9.18s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:02<00:00,  5.20s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590709 secs=62.9 GBps=0.321 method=huggingface_hub\n",
+    "bytes": 20191590709,
+    "methods": [
+     "huggingface_hub"
+    ]
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 118.32,
+  "this_run_ceiling_usd": 3.21,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 25,
+ "sandbox_id": "97b0a5d8-7142-411b-9799-967c3f0e9ee2",
+ "elapsed_s": 308.6,
+ "est_cost_usd": 0.144,
+ "t_saved": "2026-11-22T07:56:29Z",
+ "system": "ok\nNVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W\n60\nMem:             472          24         299           0         154         447\noverlay         150G  8.4M  150G   1% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:56:02Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 123.06,
+  "metered_usd": 102.4859
+ }
+}

@@ -1,0 +1,16 @@
+2026-11-22T05:26:58Z [e4_rtxpro6000_sglang] building snapshot or-sglang0523-rtx-pro-6000-c8m32d150 from lmsysorg/sglang:v0.5.23
+2026-11-22T05:36:47Z [e4_rtxpro6000_sglang] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 110 min, budget $7.0; project so far ~$39.83)
+2026-11-22T05:37:18Z [e4_rtxpro6000_sglang] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.71.05, 600.00 W | 192 | Mem:            1505          87         686           0         744        1417 | overlay         150G  5.2M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.5.23
+2026-11-22T05:38:01Z [e4_rtxpro6000_sglang] download sgl_nvfp4_rh: rc=0 42s 23.3 GB via ['huggingface_hub']
+2026-11-22T05:38:20Z [e4_rtxpro6000_sglang] server sgl_nvfp4_rh ready=False after 18.0s; gpu mem 0 MiB, 97887 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T05:38:20Z [e4_rtxpro6000_sglang] engine sgl_nvfp4_rh failed; same-box fallback: +--attention-backend triton env {}
+2026-11-22T05:39:48Z [e4_rtxpro6000_sglang] server sgl_nvfp4_rh ready=False after 76.6s; gpu mem 0 MiB, 97887 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 183725 graphs 0 REJECTED: missing cuda_graph_sizes, attention_backend.global_512
+2026-11-22T05:41:01Z [e4_rtxpro6000_sglang] download sgl_nvfp4_nv: rc=0 62s 32.7 GB via ['huggingface_hub']
+2026-11-22T05:41:12Z [e4_rtxpro6000_sglang] server sgl_nvfp4_nv ready=False after 9.8s; gpu mem 0 MiB, 97887 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T05:41:12Z [e4_rtxpro6000_sglang] engine sgl_nvfp4_nv failed; same-box fallback: +--attention-backend triton env {}
+2026-11-22T05:42:34Z [e4_rtxpro6000_sglang] server sgl_nvfp4_nv ready=True after 70.8s; gpu mem 88289 MiB, 97887 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 148789 graphs 0 REJECTED: missing cuda_graph_sizes, attention_backend.global_512
+2026-11-22T05:43:08Z [e4_rtxpro6000_sglang] gate_gsm8kor100 rc=0 33s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=21s
+2026-11-22T05:44:01Z [e4_rtxpro6000_sglang] profile_prefill_4x10k rc=0 53s :: [profile] prefill 5802 tok/s over 4x10000; other=51.5% gemm=48.4% memcpy/memset=0.0%
+2026-11-22T05:44:03Z [e4_rtxpro6000_sglang] protocol_sgl_nvfp4_nv_A_random rc=1 2s :: FileNotFoundError: [Errno 2] No such file or directory: '/root/vb/bin/vllm'
+2026-11-22T05:49:15Z [e4_rtxpro6000_sglang] protocol_sgl_nvfp4_nv_B_text rc=0 312s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=None tok/s -> /root/or/out/protocol_sgl_nvfp4_nv_B_text/protocol_summary.json
+2026-11-22T05:49:43Z [e4_rtxpro6000_sglang] done: elapsed 12.9 min, est $0.62; project est $49.39

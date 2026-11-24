@@ -1,0 +1,15 @@
+2026-11-22T06:00:46Z [mx9_best_r2s8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 35 min, budget $3.0; project so far ~$60.15)
+2026-11-22T06:01:04Z [mx9_best_r2s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T06:03:40Z [mx9_best_r2s8] download best: rc=0 154s 20.5 GB via ['huggingface_hub']
+2026-11-22T06:06:20Z [mx9_best_r2s8] server best ready=True after 160.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T06:06:23Z [mx9_best_r2s8] inspect_best rc=0 2s :: mx file: inspect.sh
+2026-11-22T06:06:36Z [mx9_best_r2s8] gate_best_gsm8kor100 rc=0 13s :: [gate_best_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T06:18:22Z [mx9_best_r2s8] protocol_best rc=0 706s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_best/protocol_summary.json
+2026-11-22T06:18:46Z [mx9_best_r2s8] done: elapsed 18.0 min, est $1.43; project est $76.09

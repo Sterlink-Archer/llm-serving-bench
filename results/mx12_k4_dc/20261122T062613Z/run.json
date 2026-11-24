@@ -1,0 +1,141 @@
+{
+ "label": "mx12_k4_dc",
+ "run_id": "mx12_k4_dc/20261122T062613Z",
+ "config_file": "recipes/mi355x/configs/mx12_k4_dc.json",
+ "t_start": "2026-11-22T06:26:13Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 1.2
+ },
+ "servers": {
+  "k4_dc": {
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "resolved_sha": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "files": 7,
+     "bytes": 19554630356
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "resolved_sha": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "files": 5,
+     "bytes": 971215445
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 21.9,
+    "tail": "00%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [00:12<00:00,  1.83s/it]\nDL repo=amd/gemma-4-31B-it-MXFP4 rev=0606edf12b files=7 bytes=19554632669 secs=13.3 GBps=1.472 method=huggingface_hub\n\rFetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]\rFetching 5 files:  20%|\u2588\u2588        | 1/5 [00:00<00:00,  7.21it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 5 files:  40%|\u2588\u2588\u2588\u2588      | 2/5 [00:00<00:00,  6.56it/s]\rFetching 5 files:  80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588  | 4/5 [00:00<00:00,  4.29it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:02<00:00,  1.91it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:02<00:00,  2.46it/s]\nDL repo=google/gemma-4-31B-it-assistant rev=627c5ec145 files=5 bytes=971217340 secs=2.3 GBps=0.422 method=huggingface_hub\n",
+    "bytes": 20525850009,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 168.1,
+    "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 96 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":4}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256,288,320,352,384,416,448,480]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+    "env": {
+     "VLLM_ROCM_USE_AITER": "1",
+     "G4_FUSE_GELU": "1",
+     "TRITON_CACHE_DIR": "/root/.cache/triton",
+     "MX_DRAFT_COMPACT": "1"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 268141 MB\n        FREE_VRAM: 26451 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 268141 MB\n        FREE_VISIBLE_VRAM: 26451 MB",
+    "smoke": "null}],\"service_tier\":null,\"system_fingerprint\":\"vllm-0.30.0-b273b934\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "ROCM_AITER_UNIFIED_ATTN",
+     "global_512": "ROCM_AITER_UNIFIED_ATTN"
+    },
+    "kv_cache_tokens": 972265,
+    "kv_cache_gib": 234.85,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 96 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":4}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256,288,320,352,384,416,448,480]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+     "env": {
+      "VLLM_ROCM_USE_AITER": "1",
+      "G4_FUSE_GELU": "1",
+      "TRITON_CACHE_DIR": "/root/.cache/triton",
+      "MX_DRAFT_COMPACT": "1"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_k4_dc": {
+     "rc": 0,
+     "secs": 1.4,
+     "cmd": "tail -n 3 out/inspect.txt",
+     "tail": "mx file: patch_draft_compact.py\nmx file: patch_draft_compact.status\nPATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)\n"
+    },
+    "gate_k4_dc_gsm8kor100": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_k4_dc_gsm8kor100 --out /root/or/out/gate_k4_dc_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_k4_dc_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "protocol_k4_dc": {
+     "rc": 0,
+     "secs": 1109.1,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_k4_dc --breakeven-rps 1.6961 --client vllmbench --tokenizer /root/models/mxfp4 --rates 3.25,3.5,3.75 --seeds 8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id mx12_k4_dc/20261122T062613Z --config-id mx12_k4_dc:k4_dc --prefill-shot --max-minutes 53.7",
+     "tail": "[vllmbench r=3.5 s=8] done=1050 failed=0 req/s=3.457699378138988 p95 TTFT=3.3565817221999166 median TPOT=33.88790588681431 ms in tok/s=32985\n[vllmbench r=3.75 s=8] done=1125 failed=0 req/s=3.5975952576764474 p95 TTFT=8.446121384669095 median TPOT=46.01309974811807 ms in tok/s=34178\n[protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=43256.346657676586 tok/s -> /root/or/out/protocol_k4_dc/protocol_summary.json\n",
+     "breakeven_rps": 1.6960847240051347
+    },
+    "protocol_k4_dc_text": {
+     "rc": 0,
+     "secs": 612.0,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_k4_dc_text --breakeven-rps 1.6961 --client traffic --stratify --tokenizer /root/models/mxfp4 --rates 3.25,3.5 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id mx12_k4_dc/20261122T062613Z --config-id mx12_k4_dc:k4_dc --max-minutes 35.2",
+     "tail": "[r1.916x_s7] R=3.25 win=240s done=880 err=0 drop=0 req/s=2.94 out=1153 in=30539 tok/s cache=0.00 TTFT p50=0.743s p95=3.560s TPOT p50=29.2ms srv=1152.7380994373834\n[r2.064x_s7] R=3.5 win=240s done=933 err=0 drop=0 req/s=3.12 out=1232 in=32687 tok/s cache=0.00 TTFT p50=1.315s p95=7.144s TPOT p50=50.2ms srv=1232.3330943144654\n[protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_k4_dc_text/protocol_summary.json\n",
+     "breakeven_rps": 1.6960847240051347
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 80.95,
+  "this_run_ceiling_usd": 5.15,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 233,
+ "sandbox_id": "b3e3f700-0dfc-408c-aa9f-0e88745fc5a2",
+ "elapsed_s": 1973.5,
+ "est_cost_usd": 2.607,
+ "t_saved": "2026-11-22T06:59:06Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0xA796A71A512702EF\n        OAM_ID: 3\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015         287         933           5         793        1705\noverlay         150G  5.9M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "T_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: inspect.sh\nmx file: patch_draft_compact.py\nmx file: patch_draft_compact.status\nPATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)\n"
+ },
+ "deleted": "2026-11-22T06:58:53Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 97.58,
+  "metered_usd": 81.2692
+ }
+}

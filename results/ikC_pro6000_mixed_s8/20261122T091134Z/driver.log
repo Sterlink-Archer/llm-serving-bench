@@ -1,0 +1,9 @@
+2026-11-22T09:11:35Z [ikC_pro6000_mixed_s8] creating spot sandbox (RTX-PRO-6000 x1, $2.5561/h, ttl 110 min, budget $8.0; project so far ~$159.02)
+2026-11-22T09:13:11Z [ikC_pro6000_mixed_s8] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 60 | Mem:             176          23          78           0          80         153 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T09:14:33Z [ikC_pro6000_mixed_s8] download mixed: rc=0 74s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:17:55Z [ikC_pro6000_mixed_s8] server mixed ready=True after 200.6s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T09:18:44Z [ikC_pro6000_mixed_s8] setup_vllm_client rc=0 48s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 21 s: 0.33.0
+2026-11-22T09:28:23Z [ikC_pro6000_mixed_s8] eval_claim rc=0 579s :: [eval_claim] gsm8kor: 0.968 (242/250, noans 1, err 0, trunc 1) mmlupro: 0.795 (159/200, noans 20, err 0, trunc 20) wall=570s
+2026-11-22T09:47:03Z [ikC_pro6000_mixed_s8] protocol_mixed_B_text rc=0 1120s :: [protocol] max_rate_at_slo=1.074 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_mixed_B_text/protocol_summary.json
+2026-11-22T10:04:49Z [ikC_pro6000_mixed_s8] protocol_mixed_A_random rc=0 1065s :: [protocol] max_rate_at_slo=1.074 req/s (break-even 0.8591); prefill=20598.95626063914 tok/s -> /root/or/out/protocol_mixed_A_random/protocol_summary.json
+2026-11-22T10:05:31Z [ikC_pro6000_mixed_s8] done: elapsed 53.9 min, est $2.30; project est $215.57

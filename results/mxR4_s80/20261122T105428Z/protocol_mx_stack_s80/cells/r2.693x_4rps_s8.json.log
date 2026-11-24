@@ -1,0 +1,154 @@
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0x7614fa564ea0>, trust_remote_code=False, seed=8, num_prompts=1200, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, custom_ensure_client_side_data=False, spec_bench_output_len=256, spec_bench_category=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, timed_trace_chunk_hash_size=16, timed_trace_sec_multiplier=1, timed_trace_label_timestamp='timestamp', timed_trace_label_input_length='input_length', timed_trace_label_output_length='output_length', timed_trace_label_hash_ids='hash_ids', blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=9500, random_output_len=380, random_range_ratio='0.8', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai', base_url='http://127.0.0.1:8000', host='127.0.0.1', port=8000, endpoint='/v1/completions', header=None, max_concurrency=None, model='gemma', input_len=None, output_len=None, tokenizer='/root/models/mxfp4', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=4.0, burstiness=1.0, probe_request_rate=0.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/root/or/out/protocol_mx_stack_s80/cells', result_filename='r2.693x_4rps_s8.json', ignore_eos=False, self_timed=None, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,95,99', goodput=None, request_id_prefix='bench-5a66354d-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name=None, lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False)
+INFO 11-22 11:18:35 [utils.py:90] Sampling input_len from [1899, 17100] and output_len from [75, 684]
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 4.0
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     1200      
+Failed requests:                         0         
+Request rate configured (RPS):           4.00      
+Benchmark duration (s):                  312.54    
+Total input tokens:                      11372711  
+Total generated tokens:                  448234    
+Request throughput (req/s):              3.84      
+Output token throughput (tok/s):         1434.18   
+Peak output token throughput (tok/s):    1890.00   
+Peak concurrent requests:                127.00    
+Total token throughput (tok/s):          37822.65  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          6374.66   
+Median TTFT (ms):                        6591.25   
+P50 TTFT (ms):                           6591.25   
+P95 TTFT (ms):                           11089.84  
+P99 TTFT (ms):                           11795.00  
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          49.49     
+Median TPOT (ms):                        49.76     
+P50 TPOT (ms):                           49.76     
+P95 TPOT (ms):                           68.10     
+P99 TPOT (ms):                           125.43    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           167.98    
+Median ITL (ms):                         196.59    
+P50 ITL (ms):                            196.59    
+P95 ITL (ms):                            234.51    
+P99 ITL (ms):                            246.24    
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          23968.56  
+Median E2EL (ms):                        23682.96  
+P50 E2EL (ms):                           23682.96  
+P95 E2EL (ms):                           39487.50  
+P99 E2EL (ms):                           48858.52  
+---------------Speculative Decoding---------------
+Acceptance rate (%):                     85.68     
+Acceptance length:                       3.57      
+Drafts:                                  125686    
+Draft tokens:                            377058    
+Accepted tokens:                         323074    
+Per-position acceptance (%):
+  Position 0:                            88.67     
+  Position 1:                            84.82     
+  Position 2:                            83.56     
+==================================================
+10it/s]
+ 86%|████████▌ | 1026/1200 [04:43<00:34,  5.08it/s]
+ 86%|████████▌ | 1028/1200 [04:43<00:26,  6.41it/s]
+ 86%|████████▌ | 1029/1200 [04:43<00:28,  6.06it/s]
+ 86%|████████▌ | 1031/1200 [04:44<00:58,  2.90it/s]
+ 86%|████████▌ | 1033/1200 [04:45<01:02,  2.68it/s]
+ 86%|████████▋ | 1036/1200 [04:45<00:40,  4.09it/s]
+ 86%|████████▋ | 1037/1200 [04:45<00:38,  4.19it/s]
+ 86%|████████▋ | 1038/1200 [04:46<00:43,  3.71it/s]
+ 87%|████████▋ | 1041/1200 [04:46<00:33,  4.74it/s]
+ 87%|████████▋ | 1042/1200 [04:48<01:08,  2.30it/s]
+ 87%|████████▋ | 1043/1200 [04:48<01:01,  2.57it/s]
+ 87%|████████▋ | 1045/1200 [04:48<00:43,  3.57it/s]
+ 87%|████████▋ | 1046/1200 [04:48<00:40,  3.83it/s]
+ 87%|████████▋ | 1047/1200 [04:49<00:39,  3.90it/s]
+ 87%|████████▋ | 1048/1200 [04:49<00:36,  4.21it/s]
+ 87%|████████▋ | 1049/1200 [04:49<00:43,  3.49it/s]
+ 88%|████████▊ | 1050/1200 [04:50<00:47,  3.16it/s]
+ 88%|████████▊ | 1051/1200 [04:50<00:42,  3.50it/s]
+ 88%|████████▊ | 1052/1200 [04:50<00:52,  2.84it/s]
+ 88%|████████▊ | 1055/1200 [04:51<00:29,  4.98it/s]
+ 88%|████████▊ | 1057/1200 [04:51<00:39,  3.65it/s]
+ 88%|████████▊ | 1058/1200 [04:52<00:37,  3.76it/s]
+ 88%|████████▊ | 1059/1200 [04:52<00:35,  3.94it/s]
+ 88%|████████▊ | 1060/1200 [04:52<00:34,  4.06it/s]
+ 88%|████████▊ | 1061/1200 [04:52<00:32,  4.30it/s]
+ 88%|████████▊ | 1062/1200 [04:53<00:39,  3.53it/s]
+ 89%|████████▊ | 1063/1200 [04:53<00:35,  3.82it/s]
+ 89%|████████▊ | 1064/1200 [04:53<00:34,  3.97it/s]
+ 89%|████████▉ | 1066/1200 [04:54<00:36,  3.66it/s]
+ 89%|████████▉ | 1067/1200 [04:54<00:40,  3.26it/s]
+ 89%|████████▉ | 1068/1200 [04:55<00:44,  2.97it/s]
+ 89%|████████▉ | 1070/1200 [04:55<00:30,  4.24it/s]
+ 89%|████████▉ | 1071/1200 [04:55<00:29,  4.41it/s]
+ 89%|████████▉ | 1072/1200 [04:55<00:28,  4.49it/s]
+ 89%|████████▉ | 1073/1200 [04:56<00:41,  3.04it/s]
+ 90%|████████▉ | 1075/1200 [04:56<00:29,  4.25it/s]
+ 90%|████████▉ | 1076/1200 [04:56<00:28,  4.36it/s]
+ 90%|████████▉ | 1077/1200 [04:56<00:26,  4.58it/s]
+ 90%|████████▉ | 1078/1200 [04:57<00:38,  3.16it/s]
+ 90%|████████▉ | 1079/1200 [04:57<00:37,  3.25it/s]
+ 90%|█████████ | 1080/1200 [04:57<00:35,  3.40it/s]
+ 90%|█████████ | 1083/1200 [04:58<00:20,  5.63it/s]
+ 90%|█████████ | 1085/1200 [04:58<00:21,  5.42it/s]
+ 90%|█████████ | 1086/1200 [04:58<00:20,  5.53it/s]
+ 91%|█████████ | 1087/1200 [04:58<00:20,  5.46it/s]
+ 91%|█████████ | 1089/1200 [04:59<00:17,  6.32it/s]
+ 91%|█████████ | 1090/1200 [04:59<00:17,  6.14it/s]
+ 91%|█████████ | 1092/1200 [04:59<00:19,  5.51it/s]
+ 91%|█████████ | 1094/1200 [05:00<00:16,  6.51it/s]
+ 91%|█████████▏| 1095/1200 [05:00<00:18,  5.81it/s]
+ 91%|█████████▏| 1096/1200 [05:00<00:18,  5.70it/s]
+ 91%|█████████▏| 1097/1200 [05:01<00:34,  2.98it/s]
+ 92%|█████████▏| 1098/1200 [05:01<00:40,  2.50it/s]
+ 92%|█████████▏| 1099/1200 [05:02<00:41,  2.46it/s]
+ 92%|█████████▏| 1100/1200 [05:02<00:34,  2.87it/s]
+ 92%|█████████▏| 1101/1200 [05:02<00:36,  2.69it/s]
+ 92%|█████████▏| 1103/1200 [05:03<00:31,  3.13it/s]
+ 92%|█████████▏| 1104/1200 [05:03<00:27,  3.53it/s]
+ 92%|█████████▏| 1105/1200 [05:03<00:24,  3.84it/s]
+ 92%|█████████▏| 1106/1200 [05:04<00:26,  3.59it/s]
+ 92%|█████████▏| 1107/1200 [05:04<00:24,  3.83it/s]
+ 92%|█████████▏| 1109/1200 [05:04<00:17,  5.08it/s]
+ 92%|█████████▎| 1110/1200 [05:04<00:22,  4.07it/s]
+ 93%|█████████▎| 1112/1200 [05:05<00:16,  5.46it/s]
+ 93%|█████████▎| 1113/1200 [05:05<00:22,  3.90it/s]
+ 93%|█████████▎| 1117/1200 [05:05<00:12,  6.89it/s]
+ 93%|█████████▎| 1118/1200 [05:06<00:13,  6.20it/s]
+ 93%|█████████▎| 1119/1200 [05:06<00:13,  5.84it/s]
+ 93%|█████████▎| 1120/1200 [05:06<00:17,  4.47it/s]
+ 93%|█████████▎| 1121/1200 [05:06<00:16,  4.68it/s]
+ 94%|█████████▎| 1122/1200 [05:07<00:16,  4.79it/s]
+ 94%|█████████▎| 1123/1200 [05:07<00:28,  2.74it/s]
+ 94%|█████████▍| 1127/1200 [05:08<00:11,  6.23it/s]
+ 94%|█████████▍| 1129/1200 [05:08<00:09,  7.40it/s]
+ 94%|█████████▍| 1131/1200 [05:08<00:08,  8.15it/s]
+ 94%|█████████▍| 1134/1200 [05:08<00:05, 11.29it/s]
+ 95%|█████████▍| 1137/1200 [05:08<00:05, 11.20it/s]
+ 95%|█████████▌| 1143/1200 [05:08<00:03, 18.24it/s]
+ 96%|█████████▌| 1146/1200 [05:09<00:03, 14.67it/s]
+ 96%|█████████▌| 1149/1200 [05:09<00:03, 15.38it/s]
+ 96%|█████████▌| 1151/1200 [05:09<00:03, 15.87it/s]
+ 96%|█████████▋| 1155/1200 [05:09<00:02, 17.45it/s]
+ 96%|█████████▋| 1157/1200 [05:09<00:02, 16.97it/s]
+ 97%|█████████▋| 1159/1200 [05:09<00:02, 15.33it/s]
+ 97%|█████████▋| 1162/1200 [05:10<00:02, 17.55it/s]
+ 97%|█████████▋| 1167/1200 [05:10<00:01, 22.56it/s]
+ 98%|█████████▊| 1171/1200 [05:10<00:01, 20.74it/s]
+ 98%|█████████▊| 1174/1200 [05:10<00:01, 20.67it/s]
+ 98%|█████████▊| 1177/1200 [05:10<00:01, 19.26it/s]
+ 98%|█████████▊| 1182/1200 [05:10<00:00, 21.77it/s]
+ 99%|█████████▉| 1185/1200 [05:11<00:00, 21.55it/s]
+ 99%|█████████▉| 1188/1200 [05:11<00:00, 22.21it/s]
+ 99%|█████████▉| 1191/1200 [05:11<00:00, 16.74it/s]
+100%|█████████▉| 1194/1200 [05:11<00:00, 15.33it/s]
+100%|█████████▉| 1198/1200 [05:11<00:00, 19.27it/s]
+100%|██████████| 1200/1200 [05:12<00:00,  3.84it/s]

@@ -1,0 +1,12 @@
+2026-11-22T07:54:18Z [mxS2_sglang_mxfp4] creating spot sandbox (MI355X x1, $4.7565/h, ttl 55 min, budget $7.5; project so far ~$121.12)
+2026-11-22T07:54:48Z [mxS2_sglang_mxfp4] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:55:12Z [mxS2_sglang_mxfp4] download sgl_mxfp4: rc=0 22s 39.1 GB via ['huggingface_hub']
+2026-11-22T07:55:47Z [mxS2_sglang_mxfp4] server sgl_mxfp4 ready=False after 34.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': 'aiter', 'global_512': 'aiter'} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T07:56:15Z [mxS2_sglang_mxfp4] done: elapsed 2.0 min, est $0.15; project est $122.89

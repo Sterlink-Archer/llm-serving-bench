@@ -1,0 +1,54 @@
+# ---- secrets: keys, tokens, env files, local machine settings (never commit)
+*key*
+!**/keys.md
+*token*
+*.env
+.env*
+*.pem
+*.p12
+infra/local_settings.json
+# keep the example settings and code files that only mention keys in their names out of the *key* rule
+!infra/local_settings.example.json
+# the playbook name contains "token" (cost per token); it is a document, not a secret
+!docs/PLAYBOOK_cost_per_token_gemma4_glm53flash.md
+
+# ---- model weights and large artifacts
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+**/checkpoints/
+**/models/
+*.tgz
+*.tar
+*.tar.gz
+*.zst
+
+# ---- raw traces and machine-local logs (results summaries ARE committed; see bin/check_commit.sh for the size gate)
+logs/
+infra/reap.log
+infra/spend_*.json
+research/raw/daytona_capacity_*.json
+results/**/*.part
+results/**/failed_*.log
+
+# ---- python / tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.DS_Store
+
+# other sessions' watch files written into this folder
+infra/capacity_watch.jsonl
+results/experiments.jsonl.lock
+
+# a 63 MB server log (98% one repeated hipBLASLt latency warning) is committed as its lossless .gz copy
+results/mxS3_vllm_fp8/20261122T080325Z/server_vllm_fp8.log

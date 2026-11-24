@@ -1,0 +1,1381 @@
+/opt/venv/bin/python3 /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py --input_file /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --tuned_file /root/or/out/aiter_tuned_torch.csv --libtype torch
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+Not exist tuned file: /root/or/out/aiter_tuned_torch.csv
+untunedf is          gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+        gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+[Task Grouping] Grouped 100 tasks into 100 groups by info_keys
+Distributing 100 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /sgl-workspace/aiter/aiter/configs/bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsr1_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv41_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/dsv4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/flux2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm47_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm53_flash_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/glm5_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/gptoss_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/inkling_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimi_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik2_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/kimik3_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama405B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/llama70B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_eagle_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/minimax_m3_mxfp4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/mistral_large4_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/muse_glimmer_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/q3vl_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen32B_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen38_flash_next_tp4_prefill_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_5_397b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_27b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8_2p4t_a95b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/qwen3_8b_bf16_tuned_gemm.csv:/sgl-workspace/aiter/aiter/configs/model_configs/wan22_bf16_tuned_gemm.csv
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:53:49.244743908 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 319.00 MiB is allocated by PyTorch, and 29.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 86.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 331.25 MiB is allocated by PyTorch, and 32.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 341.50 MiB is allocated by PyTorch, and 36.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 353.75 MiB is allocated by PyTorch, and 40.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 364.00 MiB is allocated by PyTorch, and 44.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 138.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 211.25 MiB is allocated by PyTorch, and 74.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 144.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 215.50 MiB is allocated by PyTorch, and 78.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 150.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 221.75 MiB is allocated by PyTorch, and 82.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 156.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 226.00 MiB is allocated by PyTorch, and 86.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 162.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 232.25 MiB is allocated by PyTorch, and 89.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 168.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 236.50 MiB is allocated by PyTorch, and 93.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 174.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 242.75 MiB is allocated by PyTorch, and 97.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 180.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 247.00 MiB is allocated by PyTorch, and 101.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 186.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 253.25 MiB is allocated by PyTorch, and 104.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 319.00 MiB is allocated by PyTorch, and 29.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 86.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 331.25 MiB is allocated by PyTorch, and 32.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 341.50 MiB is allocated by PyTorch, and 36.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 353.75 MiB is allocated by PyTorch, and 40.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 364.00 MiB is allocated by PyTorch, and 44.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 138.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 211.25 MiB is allocated by PyTorch, and 74.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 144.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 215.50 MiB is allocated by PyTorch, and 78.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 150.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 221.75 MiB is allocated by PyTorch, and 82.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 156.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 226.00 MiB is allocated by PyTorch, and 86.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 162.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 232.25 MiB is allocated by PyTorch, and 89.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 168.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 236.50 MiB is allocated by PyTorch, and 93.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 174.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 242.75 MiB is allocated by PyTorch, and 97.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 180.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 247.00 MiB is allocated by PyTorch, and 101.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 186.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 253.25 MiB is allocated by PyTorch, and 104.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 257.50 MiB is allocated by PyTorch, and 108.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 257.50 MiB is allocated by PyTorch, and 108.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 263.23 MiB is allocated by PyTorch, and 118.77 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 84.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 265.12 MiB is allocated by PyTorch, and 116.88 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 268.91 MiB is allocated by PyTorch, and 113.09 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 94.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 272.70 MiB is allocated by PyTorch, and 109.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 274.59 MiB is allocated by PyTorch, and 107.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 102.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 280.27 MiB is allocated by PyTorch, and 101.73 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 110.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 287.84 MiB is allocated by PyTorch, and 94.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 118.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 295.67 MiB is allocated by PyTorch, and 86.33 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 126.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 302.99 MiB is allocated by PyTorch, and 63.01 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 136.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 310.57 MiB is allocated by PyTorch, and 55.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 152.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 326.04 MiB is allocated by PyTorch, and 39.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 265.28 MiB is allocated by PyTorch, and 100.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 272.85 MiB is allocated by PyTorch, and 93.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 280.43 MiB is allocated by PyTorch, and 85.57 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 263.23 MiB is allocated by PyTorch, and 118.77 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 84.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 265.12 MiB is allocated by PyTorch, and 116.88 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 268.91 MiB is allocated by PyTorch, and 113.09 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 94.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 272.70 MiB is allocated by PyTorch, and 109.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 274.59 MiB is allocated by PyTorch, and 107.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 102.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 280.27 MiB is allocated by PyTorch, and 101.73 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 110.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 287.84 MiB is allocated by PyTorch, and 94.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 118.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 295.67 MiB is allocated by PyTorch, and 86.33 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 126.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 302.99 MiB is allocated by PyTorch, and 63.01 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 136.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 310.57 MiB is allocated by PyTorch, and 55.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 152.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 326.04 MiB is allocated by PyTorch, and 39.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 265.28 MiB is allocated by PyTorch, and 100.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 272.85 MiB is allocated by PyTorch, and 93.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 280.43 MiB is allocated by PyTorch, and 85.57 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 295.57 MiB is allocated by PyTorch, and 70.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 295.57 MiB is allocated by PyTorch, and 70.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 310.72 MiB is allocated by PyTorch, and 55.28 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 318.30 MiB is allocated by PyTorch, and 47.70 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 325.87 MiB is allocated by PyTorch, and 40.13 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 341.04 MiB is allocated by PyTorch, and 54.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 72.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 284.17 MiB is allocated by PyTorch, and 111.83 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 289.49 MiB is allocated by PyTorch, and 106.51 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 371.32 MiB is allocated by PyTorch, and 24.68 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 386.47 MiB is allocated by PyTorch, and 9.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 160.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 156.54 MiB is allocated by PyTorch, and 239.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 164.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 157.67 MiB is allocated by PyTorch, and 238.33 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 168.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 158.79 MiB is allocated by PyTorch, and 237.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 178.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 161.04 MiB is allocated by PyTorch, and 234.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 186.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 163.29 MiB is allocated by PyTorch, and 232.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 190.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 164.42 MiB is allocated by PyTorch, and 231.58 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 310.72 MiB is allocated by PyTorch, and 55.28 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 318.30 MiB is allocated by PyTorch, and 47.70 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 325.87 MiB is allocated by PyTorch, and 40.13 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 341.04 MiB is allocated by PyTorch, and 54.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 72.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 284.17 MiB is allocated by PyTorch, and 111.83 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 289.49 MiB is allocated by PyTorch, and 106.51 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 371.32 MiB is allocated by PyTorch, and 24.68 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 386.47 MiB is allocated by PyTorch, and 9.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 160.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 156.54 MiB is allocated by PyTorch, and 239.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 164.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 157.67 MiB is allocated by PyTorch, and 238.33 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 168.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 158.79 MiB is allocated by PyTorch, and 237.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 178.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 161.04 MiB is allocated by PyTorch, and 234.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 186.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 163.29 MiB is allocated by PyTorch, and 232.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 190.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 164.42 MiB is allocated by PyTorch, and 231.58 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 194.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 165.54 MiB is allocated by PyTorch, and 230.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 194.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 165.54 MiB is allocated by PyTorch, and 230.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 202.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 167.79 MiB is allocated by PyTorch, and 228.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 210.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 170.04 MiB is allocated by PyTorch, and 225.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 220.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 172.29 MiB is allocated by PyTorch, and 223.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 228.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 174.54 MiB is allocated by PyTorch, and 221.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 236.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 176.79 MiB is allocated by PyTorch, and 219.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 244.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 179.04 MiB is allocated by PyTorch, and 24.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 252.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 181.29 MiB is allocated by PyTorch, and 22.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 262.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 183.54 MiB is allocated by PyTorch, and 20.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 270.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 185.79 MiB is allocated by PyTorch, and 18.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 278.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 188.04 MiB is allocated by PyTorch, and 15.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 304.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 194.79 MiB is allocated by PyTorch, and 9.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 328.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 202.00 MiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 354.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 208.29 MiB is allocated by PyTorch, and 185.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 378.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 215.79 MiB is allocated by PyTorch, and 168.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 202.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 167.79 MiB is allocated by PyTorch, and 228.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 210.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 170.04 MiB is allocated by PyTorch, and 225.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 220.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 172.29 MiB is allocated by PyTorch, and 223.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 228.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 174.54 MiB is allocated by PyTorch, and 221.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 236.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 176.79 MiB is allocated by PyTorch, and 219.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 244.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 179.04 MiB is allocated by PyTorch, and 24.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 252.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 181.29 MiB is allocated by PyTorch, and 22.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 262.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 183.54 MiB is allocated by PyTorch, and 20.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 270.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 185.79 MiB is allocated by PyTorch, and 18.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 278.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 188.04 MiB is allocated by PyTorch, and 15.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 304.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 194.79 MiB is allocated by PyTorch, and 9.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 328.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 202.00 MiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 354.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 208.29 MiB is allocated by PyTorch, and 185.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 378.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 215.79 MiB is allocated by PyTorch, and 168.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(7168), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(7168), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(7680), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(7680), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(8192), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(8192), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(8704), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(8704), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(9216), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(9216), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(9728), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(9728), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(10240), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(10240), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(10752), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(10752), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(11264), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(11264), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(11776), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(11776), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(12288), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(12288), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(12800), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(12800), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(13312), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(13312), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(13824), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(13824), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(14336), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(14336), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(14848), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(14848), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(15360), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(15360), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(15872), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(15872), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(16384), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(16384), np.int64(2304), np.int64(3072), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2048), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2048), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2112), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2112), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2304), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2304), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2496), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2496), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2560), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2560), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2688), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2688), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2816), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2816), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(2880), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(2880), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(3072), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(3072), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(3328), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(3328), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(3584), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(3584), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(3840), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(3840), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(4096), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(4096), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(4608), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(4608), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(5120), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(5120), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(5376), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(5376), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(5632), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(5632), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(6144), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(6144), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(6656), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(6656), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(6912), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(6912), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(7168), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(7168), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(7680), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(7680), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(8192), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(8192), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(8448), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(8448), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(8704), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(8704), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(9216), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(9216), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(9728), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(9728), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(9984), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(9984), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(10240), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(10240), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(10752), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(10752), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(11264), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(11264), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(11520), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(11520), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(11776), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(11776), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(12288), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(12288), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(12800), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(12800), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(13312), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(13312), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(13824), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(13824), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(14336), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(14336), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(14848), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(14848), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(15360), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(15360), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(15872), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(15872), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(16384), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(16384), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(16896), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(16896), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(18432), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(18432), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(19968), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(19968), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(21504), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(21504), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(23040), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(23040), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] processed 1 batches of 2, Processing Status ====> 50.0% tuned in GemmA16W16Tuner
+Waiting for 100 tasks to complete (timeout=1800s each)...
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+Not exist tuned file: /root/or/out/aiter_tuned_torch.csv
+[Task Grouping] Grouped 17 tasks into 17 groups by info_keys
+Distributing 17 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 808.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 841.38 MiB is allocated by PyTorch, and 104.62 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 858.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 886.36 MiB is allocated by PyTorch, and 25.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 908.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 932.29 MiB is allocated by PyTorch, and 3.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 258.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 644.75 MiB is allocated by PyTorch, and 241.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 270.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 676.79 MiB is allocated by PyTorch, and 309.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 993.04 MiB is allocated by PyTorch, and 18.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 298.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 740.59 MiB is allocated by PyTorch, and 297.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 366, in work_group
+    ref = ref_func(*updated, **ref_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 172, in get_gemm_ref
+    else F.linear(inp.to(dtypes.fp32), weights.to(dtypes.fp32)).to(outdtype)
+                  ^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 312.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 773.04 MiB is allocated by PyTorch, and 288.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 606.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 199.79 MiB is allocated by PyTorch, and 382.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 630.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 206.54 MiB is allocated by PyTorch, and 375.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 656.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 213.29 MiB is allocated by PyTorch, and 368.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 682.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 220.04 MiB is allocated by PyTorch, and 361.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 706.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 226.79 MiB is allocated by PyTorch, and 355.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 732.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 233.79 MiB is allocated by PyTorch, and 544.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 808.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 841.38 MiB is allocated by PyTorch, and 104.62 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 858.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 886.36 MiB is allocated by PyTorch, and 25.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 908.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 932.29 MiB is allocated by PyTorch, and 3.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 258.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 644.75 MiB is allocated by PyTorch, and 241.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 270.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 676.79 MiB is allocated by PyTorch, and 309.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 76.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 993.04 MiB is allocated by PyTorch, and 18.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 298.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 740.59 MiB is allocated by PyTorch, and 297.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 312.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 773.04 MiB is allocated by PyTorch, and 288.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 606.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 199.79 MiB is allocated by PyTorch, and 382.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 630.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 206.54 MiB is allocated by PyTorch, and 375.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 656.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 213.29 MiB is allocated by PyTorch, and 368.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 682.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 220.04 MiB is allocated by PyTorch, and 361.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 706.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 226.79 MiB is allocated by PyTorch, and 355.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 732.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 233.79 MiB is allocated by PyTorch, and 544.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 756.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 240.29 MiB is allocated by PyTorch, and 161.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 756.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 240.29 MiB is allocated by PyTorch, and 161.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 782.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 247.79 MiB is allocated by PyTorch, and 160.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 346, in work_group
+    data = ensure_data(gen_data, gen_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/aiter/aiter/utility/mp_tuner.py", line 301, in ensure_data
+    cur_gen_data(*cur_gen_args, device=device)
+  File "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_a16w16_tune.py", line 144, in generate_data
+    out_asm = torch.empty(m, n, dtype=outdtype, device=device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 808.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 253.79 MiB is allocated by PyTorch, and 396.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 782.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 247.79 MiB is allocated by PyTorch, and 160.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+Critical error in work_group: OutOfMemoryError('CUDA out of memory. Tried to allocate 808.00 MiB. GPU 0 has a total capacity of 287.69 GiB of which 0 bytes is free. Of the allocated memory 253.79 MiB is allocated by PyTorch, and 396.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(24576), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(24576), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(26112), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(26112), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(27648), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(27648), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(29184), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(29184), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(30720), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(30720), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(32256), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(32256), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(33792), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(33792), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(35328), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(35328), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(36864), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(36864), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(38400), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(38400), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(39936), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(39936), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(41472), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(41472), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(43008), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(43008), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(44544), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(44544), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(46080), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(46080), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(47616), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(47616), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] error: no valid candidate found for ('gfx950', 256, np.int64(49152), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_), please check the result or errRatio in all result file running with --profile_file
+[aiter] No kernel can be used for ('gfx950', 256, np.int64(49152), np.int64(8600), np.int64(2304), np.False_, 'torch.bfloat16', 'torch.bfloat16', np.False_, np.False_)
+[aiter] processed 2 batches of 2, Processing Status ====> 100.0% tuned in GemmA16W16Tuner
+[aiter] ============= Tuning results Summary: ==============
+[aiter] Tuning Finished. tune 117 shapes, total tuning time is 14.3169 seconds
+[aiter] Successfully tuned shapes:
+Waiting for 17 tasks to complete (timeout=1800s each)...
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+choose 0 kernels
+       gfx cu_num     M     N  ... kernelName err_ratio   tflops       bw
+0   gfx950    256  1024  2304  ...     native       0.0   644.94   1119.7
+1   gfx950    256  1280  2304  ...     native       0.0   704.05  1084.79
+2   gfx950    256  1536  2304  ...     native       0.0   817.86  1153.66
+3   gfx950    256  1792  2304  ...     native       0.0   856.98  1129.15
+4   gfx950    256  2048  2304  ...     native       0.0   858.52  1071.29
+5   gfx950    256  2304  2304  ...     native       0.0    791.8   945.07
+6   gfx950    256  2560  2304  ...     native       0.0    837.4   963.15
+7   gfx950    256  2816  2304  ...     native       0.0   798.21   889.73
+8   gfx950    256  3072  2304  ...     native       0.0   836.62   907.79
+9   gfx950    256  3328  2304  ...     native       0.0  1071.68  1136.01
+10  gfx950    256  3584  2304  ...     native       0.0  1118.36  1161.49
+11  gfx950    256  3840  2304  ...     native       0.0  1109.73  1131.89
+12  gfx950    256  4096  2304  ...     native       0.0  1078.83  1082.81
+13  gfx950    256  4608  2304  ...     native       0.0  1154.48  1127.42
+14  gfx950    256  5120  2304  ...     native       0.0  1204.41  1150.04
+15  gfx950    256  5632  2304  ...     native       0.0  1122.78  1052.16
+16  gfx950    256  6144  2304  ...     native       0.0  1240.12  1143.77
+17  gfx950    256  6656  2304  ...     native       0.0  1276.65  1161.48
+18  gfx950    256  1024  8600  ...     native       0.0   991.54  1513.95
+19  gfx950    256  1056  8600  ...     native       0.0    816.6  1222.67
+20  gfx950    256  1104  8600  ...     native       0.0   856.54  1247.21
+21  gfx950    256  1152  8600  ...     native       0.0   913.88  1296.21
+22  gfx950    256  1200  8600  ...     native       0.0   885.66  1225.43
+23  gfx950    256  1248  8600  ...     native       0.0  1094.42  1479.21
+24  gfx950    256  1280  8600  ...     native       0.0  1096.41  1459.94
+25  gfx950    256  1296  8600  ...     native       0.0  1103.68  1458.97
+26  gfx950    256  1344  8600  ...     native       0.0  1130.95  1463.84
+27  gfx950    256  1392  8600  ...     native       0.0   910.57  1155.24
+28  gfx950    256  1440  8600  ...     native       0.0    918.2  1142.92
+29  gfx950    256  1488  8600  ...     native       0.0   942.38  1151.92
+30  gfx950    256  1536  8600  ...     native       0.0   994.38  1194.59
+31  gfx950    256  1728  8600  ...     native       0.0  1124.53  1269.61
+32  gfx950    256  1792  8600  ...     native       0.0  1155.04  1280.17
+33  gfx950    256  1920  8600  ...     native       0.0  1137.37  1218.28
+
+[34 rows x 18 columns]
+[aiter] Failed shapes:
+       gfx cu_num      M     N     K  ...   us kernelName err_ratio tflops   bw
+0   gfx950    256   7168  2304  3072  ... -1.0     native       1.0    0.0  0.0
+1   gfx950    256   7680  2304  3072  ... -1.0     native       1.0    0.0  0.0
+2   gfx950    256   8192  2304  3072  ... -1.0     native       1.0    0.0  0.0
+3   gfx950    256   8704  2304  3072  ... -1.0     native       1.0    0.0  0.0
+4   gfx950    256   9216  2304  3072  ... -1.0     native       1.0    0.0  0.0
+5   gfx950    256   9728  2304  3072  ... -1.0     native       1.0    0.0  0.0
+6   gfx950    256  10240  2304  3072  ... -1.0     native       1.0    0.0  0.0
+7   gfx950    256  10752  2304  3072  ... -1.0     native       1.0    0.0  0.0
+8   gfx950    256  11264  2304  3072  ... -1.0     native       1.0    0.0  0.0
+9   gfx950    256  11776  2304  3072  ... -1.0     native       1.0    0.0  0.0
+10  gfx950    256  12288  2304  3072  ... -1.0     native       1.0    0.0  0.0
+11  gfx950    256  12800  2304  3072  ... -1.0     native       1.0    0.0  0.0
+12  gfx950    256  13312  2304  3072  ... -1.0     native       1.0    0.0  0.0
+13  gfx950    256  13824  2304  3072  ... -1.0     native       1.0    0.0  0.0
+14  gfx950    256  14336  2304  3072  ... -1.0     native       1.0    0.0  0.0
+15  gfx950    256  14848  2304  3072  ... -1.0     native       1.0    0.0  0.0
+16  gfx950    256  15360  2304  3072  ... -1.0     native       1.0    0.0  0.0
+17  gfx950    256  15872  2304  3072  ... -1.0     native       1.0    0.0  0.0
+18  gfx950    256  16384  2304  3072  ... -1.0     native       1.0    0.0  0.0
+19  gfx950    256   2048  8600  2304  ... -1.0     native       1.0    0.0  0.0
+20  gfx950    256   2112  8600  2304  ... -1.0     native       1.0    0.0  0.0
+21  gfx950    256   2304  8600  2304  ... -1.0     native       1.0    0.0  0.0
+22  gfx950    256   2496  8600  2304  ... -1.0     native       1.0    0.0  0.0
+23  gfx950    256   2560  8600  2304  ... -1.0     native       1.0    0.0  0.0
+24  gfx950    256   2688  8600  2304  ... -1.0     native       1.0    0.0  0.0
+25  gfx950    256   2816  8600  2304  ... -1.0     native       1.0    0.0  0.0
+26  gfx950    256   2880  8600  2304  ... -1.0     native       1.0    0.0  0.0
+27  gfx950    256   3072  8600  2304  ... -1.0     native       1.0    0.0  0.0
+28  gfx950    256   3328  8600  2304  ... -1.0     native       1.0    0.0  0.0
+29  gfx950    256   3584  8600  2304  ... -1.0     native       1.0    0.0  0.0
+30  gfx950    256   3840  8600  2304  ... -1.0     native       1.0    0.0  0.0
+31  gfx950    256   4096  8600  2304  ... -1.0     native       1.0    0.0  0.0
+32  gfx950    256   4608  8600  2304  ... -1.0     native       1.0    0.0  0.0
+33  gfx950    256   5120  8600  2304  ... -1.0     native       1.0    0.0  0.0
+34  gfx950    256   5376  8600  2304  ... -1.0     native       1.0    0.0  0.0
+35  gfx950    256   5632  8600  2304  ... -1.0     native       1.0    0.0  0.0
+36  gfx950    256   6144  8600  2304  ... -1.0     native       1.0    0.0  0.0
+37  gfx950    256   6656  8600  2304  ... -1.0     native       1.0    0.0  0.0
+38  gfx950    256   6912  8600  2304  ... -1.0     native       1.0    0.0  0.0
+39  gfx950    256   7168  8600  2304  ... -1.0     native       1.0    0.0  0.0
+40  gfx950    256   7680  8600  2304  ... -1.0     native       1.0    0.0  0.0
+41  gfx950    256   8192  8600  2304  ... -1.0     native       1.0    0.0  0.0
+42  gfx950    256   8448  8600  2304  ... -1.0     native       1.0    0.0  0.0
+43  gfx950    256   8704  8600  2304  ... -1.0     native       1.0    0.0  0.0
+44  gfx950    256   9216  8600  2304  ... -1.0     native       1.0    0.0  0.0
+45  gfx950    256   9728  8600  2304  ... -1.0     native       1.0    0.0  0.0
+46  gfx950    256   9984  8600  2304  ... -1.0     native       1.0    0.0  0.0
+47  gfx950    256  10240  8600  2304  ... -1.0     native       1.0    0.0  0.0
+48  gfx950    256  10752  8600  2304  ... -1.0     native       1.0    0.0  0.0
+49  gfx950    256  11264  8600  2304  ... -1.0     native       1.0    0.0  0.0
+50  gfx950    256  11520  8600  2304  ... -1.0     native       1.0    0.0  0.0
+51  gfx950    256  11776  8600  2304  ... -1.0     native       1.0    0.0  0.0
+52  gfx950    256  12288  8600  2304  ... -1.0     native       1.0    0.0  0.0
+53  gfx950    256  12800  8600  2304  ... -1.0     native       1.0    0.0  0.0
+54  gfx950    256  13312  8600  2304  ... -1.0     native       1.0    0.0  0.0
+55  gfx950    256  13824  8600  2304  ... -1.0     native       1.0    0.0  0.0
+56  gfx950    256  14336  8600  2304  ... -1.0     native       1.0    0.0  0.0
+57  gfx950    256  14848  8600  2304  ... -1.0     native       1.0    0.0  0.0
+58  gfx950    256  15360  8600  2304  ... -1.0     native       1.0    0.0  0.0
+59  gfx950    256  15872  8600  2304  ... -1.0     native       1.0    0.0  0.0
+60  gfx950    256  16384  8600  2304  ... -1.0     native       1.0    0.0  0.0
+61  gfx950    256  16896  8600  2304  ... -1.0     native       1.0    0.0  0.0
+62  gfx950    256  18432  8600  2304  ... -1.0     native       1.0    0.0  0.0
+63  gfx950    256  19968  8600  2304  ... -1.0     native       1.0    0.0  0.0
+64  gfx950    256  21504  8600  2304  ... -1.0     native       1.0    0.0  0.0
+65  gfx950    256  23040  8600  2304  ... -1.0     native       1.0    0.0  0.0
+66  gfx950    256  24576  8600  2304  ...   -1     native       1.0      0    0
+67  gfx950    256  26112  8600  2304  ...   -1     native       1.0      0    0
+68  gfx950    256  27648  8600  2304  ...   -1     native       1.0      0    0
+69  gfx950    256  29184  8600  2304  ...   -1     native       1.0      0    0
+70  gfx950    256  30720  8600  2304  ...   -1     native       1.0      0    0
+71  gfx950    256  32256  8600  2304  ...   -1     native       1.0      0    0
+72  gfx950    256  33792  8600  2304  ...   -1     native       1.0      0    0
+73  gfx950    256  35328  8600  2304  ...   -1     native       1.0      0    0
+74  gfx950    256  36864  8600  2304  ...   -1     native       1.0      0    0
+75  gfx950    256  38400  8600  2304  ...   -1     native       1.0      0    0
+76  gfx950    256  39936  8600  2304  ...   -1     native       1.0      0    0
+77  gfx950    256  41472  8600  2304  ...   -1     native       1.0      0    0
+78  gfx950    256  43008  8600  2304  ...   -1     native       1.0      0    0
+79  gfx950    256  44544  8600  2304  ...   -1     native       1.0      0    0
+80  gfx950    256  46080  8600  2304  ...   -1     native       1.0      0    0
+81  gfx950    256  47616  8600  2304  ...   -1     native       1.0      0    0
+82  gfx950    256  49152  8600  2304  ...   -1     native       1.0      0    0
+
+[83 rows x 18 columns]
+[aiter] [91m[Tuning not Finished][0m some shapes are not tuned or all failed, please check the result file or tune with --profile_file to get more details
+!Process exited with code 1 (tuning finished with warnings)
+retried num is 0

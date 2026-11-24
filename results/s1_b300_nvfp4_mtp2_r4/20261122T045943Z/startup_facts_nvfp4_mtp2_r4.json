@@ -1,0 +1,113 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASHINFER",
+  "global_512": "FLASHINFER"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=876) INFO 11-22 05:01:08 [startup.py:96] non-default args: {'model_tag': '/root/models/nvfp4', 'enable_prompt_tokens_details': True, 'model': '/root/models/nvfp4', 'max_model_len': 32768, 'served_model_name': ['gemma'], 'attention_backend': 'FLASHINFER', 'reasoning_parser': 'gemma4', ",
+  "(EngineCore pid=1661) INFO 11-22 05:02:08 [cuda.py:489] Using AttentionBackendEnum.FLASHINFER backend.",
+  "(EngineCore pid=1661) INFO 11-22 05:02:08 [cuda.py:489] Using AttentionBackendEnum.FLASHINFER backend.",
+  "(EngineCore pid=1661) WARNING 11-22 05:03:26 [compilation.py:1629] CUDAGraphMode.FULL_AND_PIECEWISE is not supported with spec-decode for attention backend FlashInferBackend (support: AttentionCGSupport.UNIFORM_SINGLE_TOKEN_DECODE); setting cudagraph_mode=PIECEWISE",
+  "(EngineCore pid=1661) INFO 11-22 05:03:26 [speculator.py:461] Attention backend(s) FLASHINFER cannot update draft decode metadata in place; falling back to rebuilding attention metadata eagerly."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  8,
+  9,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  24,
+  28,
+  32,
+  33,
+  36,
+  40,
+  44,
+  48,
+  56,
+  64,
+  66,
+  72,
+  80,
+  81,
+  88,
+  96,
+  104,
+  112,
+  114,
+  120,
+  128,
+  129,
+  160,
+  162,
+  192,
+  224,
+  225,
+  256,
+  258,
+  320,
+  321,
+  384
+ ],
+ "kv_cache_tokens": 909418,
+ "kv_cache_gib": 223.21,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 27.75,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": {
+  "method": "draft_model",
+  "draft_model": "/root/models/nvfp4/assistant",
+  "num_speculative_tokens": 2
+ },
+ "engine_version": "0.34.0",
+ "missing": [],
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "s1_b300_nvfp4_mtp2_r4/20261122T045943Z",
+ "config_id": "s1_b300_nvfp4_mtp2_r4:nvfp4_mtp2_r4",
+ "image": "vllm/vllm-openai:v0.34.0",
+ "image_digest": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+ "model_repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+ "model_rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+ "gpu_mem_after_load": "249850 MiB, 275040 MiB",
+ "source_log": "results/s1_b300_nvfp4_mtp2_r4/20261122T045943Z/server_nvfp4_mtp2_r4.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T05:02:21Z",
+   "t_end": "2026-11-22T05:02:22Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T05:03:11Z",
+   "t_end": "2026-11-22T05:03:16Z",
+   "detail": {
+    "compile_s": 5.58
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T05:04:21Z",
+   "t_end": "2026-11-22T05:04:31Z",
+   "detail": {
+    "s": 10.0,
+    "gib": 1.05
+   }
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "t_start": "2026-11-22T10:58:20Z",
+ "label": "ikC_b300_mixed_dspark",
+ "run_dir": "results/ikC_b300_mixed_dspark/20261122T100257Z",
+ "sandbox_id": "651353be-bf72-4069-8bfa-0eafb8d2ee72",
+ "runpy_pid": 3147433,
+ "why": "Lead 11-22: measure the B300's real knee on the same box (scarce card). Column B passed 1.5x (3.079 req/s) and failed 2.0x (4.105) on both seeds; 1.75x and 1.9x resolve where the knee sits. Identical harness command, only rates/out/seeds/max-minutes changed.",
+ "wait_job": "protocol_b300_A_random",
+ "from_step": "protocol_b300_B_text",
+ "name": "protocol_mixed_dspark_b300ext_B_text",
+ "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_mixed_dspark_b300ext_B_text --breakeven-rps 2.0526 --client traffic --stratify --ttft-basis token --tokenizer /root/models/inkling --rates 3.592,3.900 --seeds 7,8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ikC_b300_mixed_dspark/20261122T100257Z --config-id ikC_b300_mixed_dspark:mixed_dspark --max-minutes 40.0",
+ "events": [
+  "2026-11-22T10:58:20Z run.py 3147433 paused (SIGSTOP)",
+  "2026-11-22T11:37:29Z protocol_b300_A_random finished rc=0; starting protocol_mixed_dspark_b300ext_B_text",
+  "2026-11-22T11:50:33Z protocol_mixed_dspark_b300ext_B_text rc=0 after 783s; pulling",
+  "2026-11-22T11:50:34Z pulled",
+  "2026-11-22T11:50:34Z run.py 3147433 resumed (SIGCONT)"
+ ],
+ "rc": 0,
+ "secs": 783.1,
+ "t_end": "2026-11-22T11:50:34Z"
+}

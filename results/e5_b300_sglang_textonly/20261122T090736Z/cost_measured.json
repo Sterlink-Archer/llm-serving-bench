@@ -1,0 +1,95 @@
+{
+ "run_id": "e5_b300_sglang_textonly/20261122T090736Z",
+ "configs": [
+  {
+   "run_id": "e5_b300_sglang_textonly/20261122T090736Z",
+   "config_id": "e5_b300_sglang_textonly:sgl_rh_nvfp4_textonly",
+   "gpu": "B300",
+   "usd_per_h": {
+    "gpu": 5.17,
+    "cpu": 0.4032,
+    "mem": 1.0368,
+    "disk": 0.0319,
+    "total": 6.6419
+   },
+   "steady_usd": 3.6416,
+   "steady_gpu_usd": 2.8346,
+   "steady_host_usd": 0.807,
+   "eval_usd": 0.1939,
+   "cold_start_usd": {
+    "weight_download": 0.06,
+    "engine_start": 0.8284,
+    "warmup": 0.0014,
+    "create_share": 0.0361
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 4.9293,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "e5_b300_sglang_textonly/20261122T090736Z",
+   "config_id": "e5_b300_sglang_textonly:sgl_rh_fp8_textonly",
+   "gpu": "B300",
+   "usd_per_h": {
+    "gpu": 5.17,
+    "cpu": 0.4032,
+    "mem": 1.0368,
+    "disk": 0.0319,
+    "total": 6.6419
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0,
+    "engine_start": 0,
+    "warmup": 0,
+    "create_share": 0.0361
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 4.9293,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "e5_b300_sglang_textonly/20261122T090736Z",
+   "config_id": "e5_b300_sglang_textonly:sgl_nv_nvfp4_textonly",
+   "gpu": "B300",
+   "usd_per_h": {
+    "gpu": 5.17,
+    "cpu": 0.4032,
+    "mem": 1.0368,
+    "disk": 0.0319,
+    "total": 6.6419
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0,
+    "engine_start": 0,
+    "warmup": 0,
+    "create_share": 0.0361
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 4.9293,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

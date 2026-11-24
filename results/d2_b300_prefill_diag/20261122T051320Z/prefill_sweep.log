@@ -1,0 +1,5 @@
+[sweep]   2000 tokens: 27195 tok/s single-prompt prefill (0.069 s)
+[sweep]   4000 tokens: 28994 tok/s single-prompt prefill (0.127 s)
+[sweep]  10000 tokens: 22374 tok/s single-prompt prefill (0.422 s)
+[sweep]  16000 tokens: 18721 tok/s single-prompt prefill (0.805 s)
+[sweep] tok/s longest/shortest = 0.69

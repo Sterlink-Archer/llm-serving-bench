@@ -1,0 +1,38 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": null,
+  "global_512": null
+ },
+ "attention_backend_lines": [],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": null,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": null,
+ "max_concurrency_at_max_len": null,
+ "max_model_len": null,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "missing": [
+  "kv_cache_tokens",
+  "cuda_graph_sizes",
+  "attention_backend.global_512"
+ ],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512",
+ "schema": "startup_facts/1",
+ "run_id": "mxA_attn_lab/20261122T091936Z",
+ "config_id": "mxA_attn_lab:nogpu",
+ "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+ "image_digest": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+ "model_repo": null,
+ "model_rev": null,
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+ "source_log": "results/mxA_attn_lab/20261122T091936Z/server_nogpu.log",
+ "sub_phases": []
+}

@@ -1,0 +1,179 @@
+{
+ "label": "e4_rtxpro6000_sglang",
+ "stage": "engine comparison (Maks: 'perhaps try sglang instead of vllm?')",
+ "claim_group": "e4_rtxpro6000_sglang",
+ "note": "SGLang v0.5.23 (CUDA 13.0 image, pinned by digest) on the RTX PRO 6000, speculation off, against vLLM's s1_rtxpro6000_nvfp4_fi (same card, same 8 vCPU / 32 GiB host, same RedHat NVFP4 weights, FP8 KV, 8192-token prefill chunks). vLLM there: prefill 12.1K tok/s, attention 35% + quant 18% of prefill time (FlashInfer FA2-class), SLO miss at 1.03 req/s. Attention backend asked explicitly (flashinfer); the profile step records the kernel that serves the 512-dim layers; fallback triton is measured and labelled. Gate, OpenRelay's prefill probe, then 1.03 and 1.545 req/s (1.0x/1.5x of the vLLM break-even) in both columns, 300 s, seed 7. OpenRelay's client runs from a client-only vllm==0.33.0 venv. Server 2 (NVIDIA ModelOpt NVFP4) runs only if SGLang cannot serve the RedHat checkpoint.",
+ "snapshot": {
+  "name": "or-sglang0523-rtx-pro-6000-c8m32d150",
+  "image": "lmsysorg/sglang:v0.5.23",
+  "image_digest_amd64": "sha256:f7876bef696ccf9cf75a2bf7ccb82970f5fac577f082fb8ca95c9a59d2160eb5",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 110,
+ "budget_usd": 7.0,
+ "servers": [
+  {
+   "name": "sgl_nvfp4_rh",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend flashinfer",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true,
+     "why": "labelled last resort: SGLang's Triton attention on the 512-dim global layers"
+    }
+   ],
+   "steps": [
+    {
+     "type": "sh",
+     "name": "setup_vllm_client",
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nvfp4_rh_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "rates": [
+      1.03,
+      1.545
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nvfp4_rh_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "rates": [
+      1.03,
+      1.545
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "sgl_nvfp4_nv",
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "dir": "/root/models/nvfp4_modelopt"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend flashinfer --quantization modelopt_fp4",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true,
+     "why": "labelled last resort: SGLang's Triton attention on the 512-dim global layers"
+    }
+   ],
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nvfp4_nv_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "rates": [
+      1.03,
+      1.545
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nvfp4_nv_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "rates": [
+      1.03,
+      1.545
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "skip_if_ok": "sgl_nvfp4_rh"
+  }
+ ]
+}

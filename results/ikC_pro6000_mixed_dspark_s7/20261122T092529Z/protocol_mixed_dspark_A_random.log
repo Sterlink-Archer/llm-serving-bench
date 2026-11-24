@@ -1,0 +1,5 @@
+[vllmbench r=0.971 s=7] done=291 failed=0 req/s=0.9327547279972009 p95 TTFT=2.0602231400553137 median TPOT=39.070033856357135 ms in tok/s=9250
+[vllmbench r=1.074 s=7] done=322 failed=0 req/s=1.0468103014443362 p95 TTFT=2.47376298966119 median TPOT=51.946033183114096 ms in tok/s=10317
+[vllmbench r=1.16 s=7] done=348 failed=0 req/s=1.1184184185249038 p95 TTFT=2.5926317096571427 median TPOT=65.45365210032281 ms in tok/s=11011
+[vllmbench r=1.289 s=7] done=386 failed=0 req/s=1.2143544791365524 p95 TTFT=3.6329204432549886 median TPOT=104.59244670180829 ms in tok/s=11975
+[protocol] max_rate_at_slo=1.289 req/s (break-even 0.8591); prefill=20366.677014368837 tok/s -> /root/or/out/protocol_mixed_dspark_A_random/protocol_summary.json

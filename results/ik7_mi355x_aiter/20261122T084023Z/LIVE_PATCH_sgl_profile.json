@@ -1,0 +1,8 @@
+{
+ "t": "2026-11-22T08:48:08Z",
+ "what": "sgl_profile.py replaced on the live box (tuned server's profile step not yet run)",
+ "why": "run.py exports server env to the server job only; the step had no IK_ADMIN_KEY -> HTTP 401 on /start_profile (base). The replacement defaults to the same throwaway token the config passes to --admin-api-key",
+ "before": "9865c16d8c695991076f683fd459112d331c1a0a8412ff4200798c9fd149d514  /root/or/ik/sgl_profile.py",
+ "after": "3a87b909ad12722664965f35d0d275af3ce4e6c58cc16216555756ea0ad15b7e  /root/or/ik/sgl_profile.py",
+ "local_sha256": "3a87b909ad12722664965f35d0d275af3ce4e6c58cc16216555756ea0ad15b7e"
+}

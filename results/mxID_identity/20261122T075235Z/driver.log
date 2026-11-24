@@ -1,0 +1,29 @@
+2026-11-22T07:52:36Z [mxID_identity] creating spot sandbox (MI355X x1, $4.7565/h, ttl 75 min, budget $6.0; project so far ~$119.56)
+2026-11-22T07:53:00Z [mxID_identity] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:53:24Z [mxID_identity] download unpatched: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T07:56:12Z [mxID_identity] server unpatched ready=True after 167.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T07:56:15Z [mxID_identity] inspect_unpatched rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T07:57:20Z [mxID_identity] idprobe_off_c1_a rc=0 64s :: identity_probe: 60 requests, conc 1, 53s -> out/idprobe_off_c1_a.json; lengths [256]
+2026-11-22T07:58:13Z [mxID_identity] idprobe_off_c1_b rc=0 54s :: identity_probe: 60 requests, conc 1, 50s -> out/idprobe_off_c1_b.json; lengths [256]
+2026-11-22T07:58:26Z [mxID_identity] idprobe_off_c16 rc=0 13s :: identity_probe: 60 requests, conc 16, 5s -> out/idprobe_off_c16.json; lengths [256]
+2026-11-22T07:58:49Z [mxID_identity] download patched: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T07:59:50Z [mxID_identity] server patched ready=True after 59.6s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270048 MB
+        FREE_VRAM: 24544 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270048 MB
+        FREE_VISIBLE_VRAM: 24544 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T07:59:52Z [mxID_identity] inspect_patched rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T08:00:57Z [mxID_identity] idprobe_on_c1_a rc=0 64s :: identity_probe: 60 requests, conc 1, 52s -> out/idprobe_on_c1_a.json; lengths [256]
+2026-11-22T08:01:51Z [mxID_identity] idprobe_on_c1_b rc=0 54s :: identity_probe: 60 requests, conc 1, 50s -> out/idprobe_on_c1_b.json; lengths [256]
+2026-11-22T08:02:03Z [mxID_identity] idprobe_on_c16 rc=0 13s :: identity_probe: 60 requests, conc 16, 5s -> out/idprobe_on_c16.json; lengths [256]
+2026-11-22T08:02:33Z [mxID_identity] done: elapsed 9.9 min, est $0.79; project est $128.03

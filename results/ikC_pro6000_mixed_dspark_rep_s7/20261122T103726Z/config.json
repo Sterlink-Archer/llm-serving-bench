@@ -1,0 +1,90 @@
+{
+ "label": "ikC_pro6000_mixed_dspark_rep_s7",
+ "stage": "ik-confirm",
+ "claim_group": "ikC_pro6000_mixed_dspark_rep",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.8591,
+ "note": "REPLICATE of the claim's knee, seed 7: PRO 6000 (4 vCPU / 24 GiB) + mixed-chunk + DSpark, column B at 1.35x and 1.5x break-even ([1.16, 1.289] req/s), 300 s, fresh box. Original: ikC_pro6000_mixed_dspark_s7/s8.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-pro6000-c4m24d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 24,
+  "disk": 150
+ },
+ "max_minutes": 60,
+ "budget_usd": 4.0,
+ "servers": [
+  {
+   "name": "mixed_dspark",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --enable-mixed-chunk --speculative-algorithm DSPARK --speculative-num-draft-tokens 8 --max-running-requests 128",
+   "env": {
+    "SGLANG_OPT_INKLING2_VERIFY_REL_BIAS_KERNEL": "1",
+    "SGLANG_OPT_DSV41_DSPARK_MID_FOLD": "1",
+    "SGLANG_OPT_DSV41_DSPARK_PREPARE_INPUTS_ONCE": "1",
+    "SGLANG_OPT_DSV41_DSPARK_SKIP_PREFILLED_INPUTS": "1"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_rep_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_rep_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.8591,
+     "rates": [
+      1.16,
+      1.289
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "ttft_basis": "token"
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "claim_group": "ikC_pro6000_mixed_dspark_rep"
+  }
+ ]
+}

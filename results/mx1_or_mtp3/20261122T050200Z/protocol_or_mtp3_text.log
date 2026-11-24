@@ -1,0 +1,3 @@
+[r1.769x_s7] R=3.0 win=240s done=834 err=0 drop=0 req/s=2.77 out=1062 in=24459 tok/s cache=0.00 TTFT p50=0.435s p95=1.663s TPOT p50=14.1ms srv=1061.9883196902147
+[r1.916x_s7] R=3.25 win=240s done=885 err=0 drop=0 req/s=2.95 out=1135 in=27383 tok/s cache=0.00 TTFT p50=0.587s p95=1.979s TPOT p50=19.3ms srv=1135.3908818654363
+[protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_mtp3_text/protocol_summary.json

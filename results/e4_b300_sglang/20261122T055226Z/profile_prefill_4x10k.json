@@ -1,0 +1,195 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  8555,
+  10221,
+  9141,
+  8709
+ ],
+ "latencies_s": [
+  4.057,
+  3.562,
+  3.834,
+  4.05
+ ],
+ "wall_s": 4.058183431625366,
+ "prefill_tok_s": 9025.220426108415,
+ "trace": "/root/or/out/prof/1795327344.5051513-TP-0.trace.json.gz",
+ "categories": {
+  "gemm": {
+   "us": 712169.9540000001,
+   "share": 0.69909051848609
+  },
+  "attention": {
+   "us": 111474.677,
+   "share": 0.10942737657533837
+  },
+  "fused_elementwise": {
+   "us": 108774.64200000005,
+   "share": 0.10677692936469887
+  },
+  "other": {
+   "us": 85985.59700000008,
+   "share": 0.08440641907376233
+  },
+  "memcpy/memset": {
+   "us": 304.3459999999999,
+   "share": 0.0002987565001080732
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "kernel_cutlass_kernel_flashinfergemmkernelsdense_blockscaled_gemm_sm100Sm100BlockScaledPersistentDenseGemmKernel_object_at__TiledMMA_ThrLayoutVMNK21111000_Permu",
+   "cat": "gemm",
+   "us": 272818.0310000003,
+   "share": 0.2678075614857298
+  },
+  {
+   "name": "nvjet_sm103_tst_128x256_64x6_2x1_2cta_v_bz_TNT",
+   "cat": "gemm",
+   "us": 235941.99100000007,
+   "share": 0.23160877244876077
+  },
+  {
+   "name": "nvjet_sm103_tst_256x256_64x4_2x1_2cta_v_bz_TNT",
+   "cat": "gemm",
+   "us": 93542.04599999996,
+   "share": 0.09182408927966322
+  },
+  {
+   "name": "fmhaSm103aKernel_QkvE4m3OBfloat16H512HVPerCta256PagedKvCausalP64VarSeqQ128Kv128PersistentContext",
+   "cat": "attention",
+   "us": 62192.937999999995,
+   "share": 0.06105072676597817
+  },
+  {
+   "name": "_gemma_qkv_rmsnorm_kernel",
+   "cat": "fused_elementwise",
+   "us": 54671.09900000002,
+   "share": 0.053667030926320664
+  },
+  {
+   "name": "fmhaSm103aKernel_QkvE4m3OBfloat16H256PagedKvSlidingOrChunkedCausalP64VarSeqQ128Kv128PersistentContext",
+   "cat": "attention",
+   "us": 49281.739000000016,
+   "share": 0.04837664980936021
+  },
+  {
+   "name": "void sglang::act_and_mul_kernel<__nv_bfloat16, (sglang::ActivationKind)2, true, false, false, false, false, false>(sglang::ActivationParams)",
+   "cat": "other",
+   "us": 43075.91200000001,
+   "share": 0.042284796606767816
+  },
+  {
+   "name": "nvjet_sm103_tst_256x128_64x5_2x2_2cta_h_bz_TNT",
+   "cat": "gemm",
+   "us": 25808.956,
+   "share": 0.025334958783763406
+  },
+  {
+   "name": "nvjet_sm103_tst_256x240_64x3_1x2_h_bz_TNT",
+   "cat": "gemm",
+   "us": 24998.711000000007,
+   "share": 0.02453959442730706
+  },
+  {
+   "name": "nvjet_sm103_tst_128x192_64x7_2x2_2cta_h_bz_TNT",
+   "cat": "gemm",
+   "us": 24310.806999999993,
+   "share": 0.02386432420377743
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o21504215041_tensorptri8gmemalig",
+   "cat": "gemm",
+   "us": 21265.265,
+   "share": 0.02087471543989639
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinfernormkernelsrmsnormRMSNormKernel_object_at__tensorptrbf16gmemalign128oi64537653761_tensorptrbf16gmemalign16o53761_tensorptrbf16gm",
+   "cat": "fused_elementwise",
+   "us": 20004.770999999982,
+   "share": 0.01963737118090422
+  },
+  {
+   "name": "void sglang::fused_fp8_qkv_kv_cache_kernel<__nv_bfloat16, long, 16, true, true>(sglang::FusedQkvParams)",
+   "cat": "other",
+   "us": 19134.595999999987,
+   "share": 0.018783177475445494
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinfernormkernelsfused_add_rmsnormFusedAddRMSNormKernel_object_at__tensorptrbf16gmemalign128oi64537653761_tensorptrbf16gmemalign128oi6",
+   "cat": "fused_elementwise",
+   "us": 17748.325000000015,
+   "share": 0.017422366187762033
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 256l, true, __nv_bfloat16, __nv_bfloat16, long, 32u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 16708.411999999993,
+   "share": 0.01640155182418606
+  },
+  {
+   "name": "_gemma_rmsnorm_residual_kernel",
+   "cat": "fused_elementwise",
+   "us": 16350.447000000002,
+   "share": 0.016050161069711927
+  },
+  {
+   "name": "kernel_cutlass_kernel_flashinferquantizationkernelsnvfp4_quantizeNVFP4QuantizeSwizzledKernel_object_at__tensorptrbf16gmemalign16o537653761_tensorptri8gmemalign1",
+   "cat": "gemm",
+   "us": 7616.241000000003,
+   "share": 0.00747636408935755
+  },
+  {
+   "name": "void sglang::fused_rope_kernel<true, 512l, true, __nv_bfloat16, __nv_bfloat16, long, 64u>(sglang::FusedRopeParams)",
+   "cat": "other",
+   "us": 4825.175000000002,
+   "share": 0.004736557718547222
+  },
+  {
+   "name": "nvjet_sm103_tst_256x256_64x3_1x2_h_bz_TNT",
+   "cat": "gemm",
+   "us": 3685.8779999999997,
+   "share": 0.0036181846027394634
+  },
+  {
+   "name": "nvjet_sm103_tst_256x8_64x6_2x1_v_bz_TNT",
+   "cat": "gemm",
+   "us": 2182.028,
+   "share": 0.002141953725095184
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<8, at::native::FillFunctor<unsigned char>, std::array<char*, 1ul>, false>(int, at::native::FillFunctor<unsigned c",
+   "cat": "other",
+   "us": 696.9880000000003,
+   "share": 0.0006841873903298412
+  },
+  {
+   "name": "void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&",
+   "cat": "other",
+   "us": 238.11200000000002,
+   "share": 0.00023373892791012056
+  },
+  {
+   "name": "Memcpy DtoD (Device -> Device)",
+   "cat": "memcpy/memset",
+   "us": 151.036,
+   "share": 0.00014826213175242307
+  },
+  {
+   "name": "void at::native::vectorized_gather_kernel<16, long>(char*, char*, long*, int, long, long, long, long, bool)",
+   "cat": "other",
+   "us": 142.785,
+   "share": 0.00014016266639920103
+  },
+  {
+   "name": "void at::native::vectorized_elementwise_kernel<8, at::native::AUnaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor",
+   "cat": "other",
+   "us": 130.242,
+   "share": 0.00012785002624340612
+  }
+ ],
+ "gpu_kernel_us_total": 1018709.2160000026,
+ "kernel_events": 5322
+}

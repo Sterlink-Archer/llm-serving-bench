@@ -1,0 +1,92 @@
+{
+ "label": "d2_h100_prefill_sweep",
+ "run_id": "d2_h100_prefill_sweep/20261122T051203Z",
+ "config_file": "configs/d2_h100_prefill_sweep.json",
+ "t_start": "2026-11-22T05:12:03Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "create_s": 0.9
+ },
+ "servers": {
+  "fp8dyn": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 61.7,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:  25%|\u2588\u2588\u258c       | 4/16 [00:00<00:00, 38.44it/s]\rFetching 16 files:  88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 14/16 [00:00<00:00, 13.27it/s]\rFetching 16 files:  88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 14/16 [00:20<00:00, 13.27it/s]\rFetching 16 files:  94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 15/16 [00:22<00:02,  2.25s/it]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:51<00:00,  5.56s/it]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:51<00:00,  3.21s/it]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469171 secs=51.6 GBps=0.645 method=huggingface_hub\n",
+    "bytes": 33300469171,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 165.8,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "71377 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-0180c0ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 144878,
+    "kv_cache_gib": 35.0,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "prefill_sweep": {
+     "rc": 0,
+     "secs": 22.7,
+     "cmd": "python3 bench/prefill_sweep.py --model gemma --lengths 2000,4000,10000,16000 --reps 3 --out /root/or/out/prefill_sweep.json",
+     "tail": "[sweep]  10000 tokens: 12207 tok/s single-prompt prefill (0.756 s)\n[sweep]  16000 tokens: 11505 tok/s single-prompt prefill (1.310 s)\n[sweep] tok/s longest/shortest = 0.99\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 21.36,
+  "this_run_ceiling_usd": 2.44,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 196,
+ "sandbox_id": "af7348c2-b6d1-490a-bc6c-3caea6a7989e",
+ "elapsed_s": 290.9,
+ "est_cost_usd": 0.296,
+ "t_saved": "2026-11-22T05:16:54Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.71.05, 700.00 W\n192\nMem:            2015          92         726           0        1221        1922\noverlay         150G  5.2M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T05:16:45Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 25.9,
+  "metered_usd": 16.0608
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "label": "mxF_s8_r2",
+ "stage": "mx-fineknee",
+ "note": "Paired FINER knee (supplementary to their 0.25 req/s ladder), seed 8, replicate 2: the same MI355X serves theirs then ours. Ours (C1 recipe) at 3.25 (warm-up) / 3.6 / 3.7; theirs (exact) at 3.0 (warm-up) / 3.3 / 3.4. Their client, 300 s per rate.",
+ "snapshot": {
+  "name": "or-openrelayrecipe-mi355x-c8m48d150",
+  "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+  "image_digest_amd64": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 85,
+ "budget_usd": 7.0,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/cpumon.py <<'MXEOF_CPUMON_PY'\n\"\"\"cpumon.py OUT.csv [interval_s=1]: per-second host CPU and per-role process CPU, for attributing a benchmark cell's result to\nCPU starvation (lead's ask for the small-host claim). Started detached (setsid nohup) from an `sh` step, so it outlives the step.\n\nColumns: t_utc, ncpu, host_busy_pct (all cores, 100 = every core busy), host_busy_cores, engine_pct, api_pct, client_pct,\nother_pct (process CPU in % of ONE core, summed over the role's processes), runq (procs_running from /proc/stat).\nRoles by command line: engine = vLLM's EngineCore process (\"EngineCore\" / \"VLLM::\"), api = the `vllm serve` front end,\nclient = the load generator (`vllm bench serve`, bench/protocol.py, bench/traffic.py), other = everything else.\"\"\"\nimport os\nimport sys\nimport time\n\nOUT = sys.argv[1]\nDT = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0\nHZ = os.sysconf(\"SC_CLK_TCK\")\nNCPU = os.cpu_count() or 1\n\n\ndef stat_cpu():\n    with open(\"/proc/stat\") as f:\n        parts = f.readline().split()[1:]\n        rest = f.read()\n    v = list(map(int, parts))\n    idle = v[3] + (v[4] if len(v) > 4 else 0)\n    rq = next((int(l.split()[1]) for l in rest.splitlines() if l.startswith(\"procs_running\")), -1)\n    return sum(v), idle, rq\n\n\ndef role(cmd):\n    if \"EngineCore\" in cmd or cmd.startswith(\"VLLM::\"):\n        return \"engine\"\n    if \"bench serve\" in cmd or \"bench/protocol.py\" in cmd or \"bench/traffic.py\" in cmd:\n        return \"client\"\n    if \"vllm serve\" in cmd or \"vllm.entrypoints\" in cmd or \"sglang.launch_server\" in cmd:\n        return \"api\"\n    return \"other\"\n\n\ndef procs():\n    out = {}\n    for d in os.listdir(\"/proc\"):\n        if not d.isdigit():\n            continue\n        try:\n            with open(f\"/proc/{d}/stat\") as f:\n                s = f.read()\n            fields = s[s.rindex(\")\") + 2:].split()\n            ticks = int(fields[11]) + int(fields[12])\n            with open(f\"/proc/{d}/cmdline\", \"rb\") as f:\n                cmd = f.read().replace(b\"\\0\", b\" \").decode(errors=\"replace\").strip()\n            if not cmd:\n                with open(f\"/proc/{d}/comm\") as f:\n                    cmd = f.read().strip()\n            out[d] = (ticks, role(cmd))\n        except (OSError, ValueError, IndexError):\n            continue\n    return out\n\n\nwith open(OUT, \"a\", buffering=1) as fo:\n    if fo.tell() == 0:\n        fo.write(\"t_utc,ncpu,host_busy_pct,host_busy_cores,engine_pct,api_pct,client_pct,other_pct,runq\\n\")\n    t0, i0, _ = stat_cpu()\n    p0 = procs()\n    while True:\n        time.sleep(DT)\n        t1, i1, rq = stat_cpu()\n        p1 = procs()\n        tot, idl = t1 - t0, i1 - i0\n        busy = 100.0 * (tot - idl) / tot if tot > 0 else 0.0\n        acc = {\"engine\": 0, \"api\": 0, \"client\": 0, \"other\": 0}\n        for pid, (tk, r) in p1.items():\n            if pid in p0:\n                acc[r] += max(0, tk - p0[pid][0])\n        pct = {k: 100.0 * v / HZ / DT for k, v in acc.items()}\n        fo.write(f\"{time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime())},{NCPU},{busy:.1f},{busy * NCPU / 100:.2f},\"\n                 f\"{pct['engine']:.1f},{pct['api']:.1f},{pct['client']:.1f},{pct['other']:.1f},{rq}\\n\")\n        t0, i0, p0 = t1, i1, p1\nMXEOF_CPUMON_PY\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh: what the engine image actually contains, written before any engine starts (runs from setup_cmd).\n# Versions, the AITER pieces OpenRelay upstreamed (ROCm/aiter#5926-#5929) and the anchors our patches need.\n# Output: /root/or/out/inspect.txt (pulled by the `inspect` sh step).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, json, re, glob\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"vllm\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\nv = os.path.dirname(importlib.util.find_spec(\"vllm\").origin)\nprint(\"aiter dir\", a); print(\"vllm dir\", v)\nua = os.path.join(a, \"ops/triton/attention/unified_attention.py\")\ns = open(ua).read() if os.path.exists(ua) else \"\"\nm = re.search(r\"\\n(\\s*if params\\.head_size >= 512[^\\n]*)\", s)\nprint(\"ua3d anchor (use_2d D>=512 clause):\", repr(m.group(1)) if m else \"NOT FOUND\")\nprint(\"ua3d already applied:\", \"max_seqlen_q > 16\" in s)\ntbl = os.path.join(a, \"ops/triton/configs/gfx950/triton/attention/unified_attention/DEFAULT.json\")\nif os.path.exists(tbl):\n    d = json.load(open(tbl))\n    for sec, ent in d.items():\n        if isinstance(ent, dict):\n            for k, val in ent.items():\n                if \"512\" in k or \"GEQ_256\" in k:\n                    print(f\"table {sec} {k} {val}\")\nelse:\n    print(\"table missing:\", tbl)\nfor f in sorted(glob.glob(os.path.join(a, \"configs/model_configs/*gemma*\"))):\n    print(\"model_config\", os.path.basename(f), sum(1 for _ in open(f)) - 1, \"rows\")\nact = os.path.join(a, \"ops/triton/_triton_kernels/fusions/activation.py\")\nif not os.path.exists(act): act = os.path.join(a, \"ops/triton/_triton_kernels/activation.py\")\nt = open(act).read() if os.path.exists(act) else \"\"\ni = t.find(\"def _act_mul_and_dynamic_mxfp4_quant_kernel(\")\nprint(\"scaleM_pad constexpr in act_mul kernel:\", \"scaleM_pad: tl.constexpr\" in t[i:t.find(\"):\", i)] if i >= 0 else \"kernel not found\")\ng = os.path.join(v, \"model_executor/models/gemma4.py\")\ngs = open(g).read() if os.path.exists(g) else \"\"\nprint(\"gemma4.py Gemma4MLP anchor:\", \"class Gemma4MLP(nn.Module):\" in gs, \"| g4 fuse applied:\", \"g4_gelu_mxfp4_gemm\" in gs)\nao = os.path.join(v, \"_aiter_ops.py\")\nts = open(ao).read() if os.path.exists(ao) else \"\"\nka = os.path.join(v, \"model_executor/kernels/linear/mxfp4/aiter.py\")\nks = open(ka).read() if os.path.exists(ka) else \"\"\nprint(\"vllm is_asm_fp4_gemm_tuned present:\", \"def is_asm_fp4_gemm_tuned\" in ts,\n      \"| presh_ws gate in kernel:\", \"is_triton_gemm_afp4wfp4_presh_ws_tuned\" in ks, \"| MX force patch:\", \"MX_FORCE_ASM_FP4\" in ks)\ntj = glob.glob(os.path.join(a, \"ops/triton/configs/gfx950/triton/gemm/gemm_afp4wfp4_preshuffled/*K=5376*\"))\nprint(\"gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376:\", [os.path.basename(x) for x in tj])\nenvs = open(os.path.join(v, \"envs.py\")).read()\nprint(\"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs:\", \"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM\" in envs)\nPY\nls /root/or/mx 2>/dev/null | sed 's/^/mx file: /'\ngrep -h \"^PATCH\" /root/or/mx/*.status 2>/dev/null\n} > \"$OUT\" 2>&1\ntail -n 40 \"$OUT\"\nMXEOF_INSPECT_SH\ncat > /root/or/mx/patch_draft_compact.py <<'MXEOF_PATCH_DRAFT_COMPACT_PY'\n\"\"\"vLLM 0.30 (OpenRelay's image): with MX_DRAFT_COMPACT=1, run the Gemma 4 MTP drafter's first (\"prefill\") pass on one\ntoken per request instead of on every token the target scheduled in the step.\n\nWhy: `AutoRegressiveSpeculator.propose` runs draft position 0 over the target's whole batch (it reuses the target's\nattention metadata), then keeps only `last_token_indices`. Gemma 4's MTP head is Q-only: it reads the target's KV cache\nand writes none (`Gemma4Speculator.advance_draft_positions` is False). So in a mixed step, the 4 draft layers run attention\n(including one full-attention, head_dim 512 layer) and BF16 MLPs over the whole 6-8K-token prefill chunk for nothing.\nThe knee profile (mx7_prof_mtp3_seqs96) shows a head_dim-512 2D attention call of ~2.9 ms per mixed step outside the target\nforward, plus the drafter's BF16 GEMMs: ~4-5 ms of a ~165 ms mixed step.\n\nThe compact pass gathers, per request, the shifted input id, the position and the target hidden state at\n`last_token_indices`, sets query_start_loc = arange and seq_len = position + 1 (the same rule the Gemma 4 decode passes\nuse), builds uniform 1-token attention metadata, and runs the draft model eagerly on num_reqs tokens. Only steps with a\nprefill take this path. All-decode steps keep the FULL-graph replay. The output distribution is unchanged: the drafter\nonly proposes, and the target still verifies every token. A mistake here can only lower acceptance (measured), never\nchange outputs (GSM8K gate).\n\nIdempotent; asserts its anchors; writes a PATCH status line.\"\"\"\nimport importlib.util\nimport os\nimport sys\n\np = os.path.join(os.path.dirname(importlib.util.find_spec(\"vllm\").origin), \"v1/worker/gpu/spec_decode/autoregressive/speculator.py\")\ns = open(p).read()\nstatus = \"/root/or/mx/patch_draft_compact.status\"\nif \"_mx_compact_prefill\" in s:\n    msg = \"PATCH draft_compact: already applied\"\nelse:\n    a1 = (\"        self.on_prefill_begin(num_reqs)\\n\"\n          \"        if prefill_batch_desc.cg_mode == CUDAGraphMode.FULL:\\n\")\n    b1 = (\"        self.on_prefill_begin(num_reqs)\\n\"\n          \"        if (\\n\"\n          \"            os.environ.get(\\\"MX_DRAFT_COMPACT\\\") == \\\"1\\\"\\n\"\n          \"            and not self.advance_draft_positions\\n\"\n          \"            and input_batch.has_prefill\\n\"\n          \"            and not dummy_run\\n\"\n          \"            and not is_profile\\n\"\n          \"            and self.pcp_manager is None\\n\"\n          \"            and self.dp_size == 1\\n\"\n          \"        ):\\n\"\n          \"            self._mx_compact_prefill(num_reqs, input_batch, hidden_states)\\n\"\n          \"        elif prefill_batch_desc.cg_mode == CUDAGraphMode.FULL:\\n\")\n    a2 = \"    def _prefill(\\n\"\n    b2 = '''    def _mx_compact_prefill(self, num_reqs, input_batch, target_hidden_states) -> None:\n        # MX (recipes/mi355x/box/patch_draft_compact.py): first draft pass on one token per request.\n        ib = self.input_buffers\n        ltok = self.last_token_indices[:num_reqs]\n        ids = ib.input_ids[ltok].clone()\n        pos = ib.positions[ltok].clone()\n        hs = target_hidden_states[ltok].clone()\n        ib.input_ids[:num_reqs] = ids\n        ib.positions[:num_reqs] = pos\n        self.hidden_states[:num_reqs] = hs\n        qsl = ib.query_start_loc\n        qsl[: num_reqs + 1] = torch.arange(num_reqs + 1, device=qsl.device, dtype=qsl.dtype)\n        qsl[num_reqs + 1 :] = num_reqs\n        ib.seq_lens[:num_reqs] = (pos + 1).to(ib.seq_lens.dtype)\n        ib.seq_lens[num_reqs:] = 0\n        idx_mapping = self.idx_mapping[:num_reqs]\n        desc, _ = dispatch_cg_and_sync_dp(\n            self.decode_cudagraph_manager, num_reqs, num_reqs, uniform_token_count=1,\n            dp_size=self.dp_size, dp_rank=self.dp_rank, need_eager=True,\n        )\n        slot_mappings = self.block_tables.compute_slot_mappings(\n            idx_mapping, qsl[: num_reqs + 1], ib.positions[:num_reqs], desc.num_tokens\n        )\n        slot_by_layer = build_slot_mappings_by_layer(slot_mappings, self.kv_cache_config)\n        md = self._build_uniform_attn_metadata(\n            batch_desc=desc, num_reqs=num_reqs, num_query_per_req=1,\n            seq_lens_cpu_upper_bound=input_batch.seq_lens_cpu_upper_bound, step=0,\n        )\n        last_hidden_states, hidden_states = self._run_model(\n            desc.num_tokens, md, slot_by_layer, None, CUDAGraphMode.NONE\n        )\n        sample_src_positions = pos + 1\n        self.draft_tokens[:num_reqs, 0] = self.sample_draft(\n            last_hidden_states[:num_reqs], sample_src_positions, idx_mapping,\n            self.temperature, self.seeds, self.current_draft_step, self.draft_logits,\n        )\n        if last_hidden_states is hidden_states:\n            self.hidden_states[:num_reqs] = last_hidden_states[:num_reqs]\n        else:\n            self.hidden_states[:num_reqs] = hidden_states[:num_reqs]\n        ib.positions[:num_reqs] = pos\n        self.sample_src_positions[:num_reqs] = sample_src_positions\n\n    def _prefill(\n'''\n    ok = s.count(a1) == 1 and s.count(a2) == 1 and \"def propose(\" in s and \"dispatch_cg_and_sync_dp\" in s \\\n        and \"build_slot_mappings_by_layer\" in s and \"def _build_uniform_attn_metadata\" not in s\n    if not ok:\n        msg = f\"PATCH draft_compact: ANCHOR NOT FOUND (a1={s.count(a1)} a2={s.count(a2)}) (not applied)\"\n    else:\n        s = s.replace(a1, b1, 1).replace(a2, b2, 1)\n        if \"\\nimport os\\n\" not in s:\n            s = s.replace(\"\\nimport torch\\n\", \"\\nimport os\\nimport torch\\n\", 1)\n        compile(s, p, \"exec\")\n        open(p, \"w\").write(s)\n        msg = \"PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)\"\nos.makedirs(os.path.dirname(status), exist_ok=True)\nopen(status, \"w\").write(msg + \"\\n\")\nprint(msg, file=sys.stderr)\nMXEOF_PATCH_DRAFT_COMPACT_PY\npython3 /root/or/mx/patch_draft_compact.py\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "or_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":2}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_or_recipe",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "sh",
+     "name": "cpumon_start",
+     "est_s": 10,
+     "outputs": [],
+     "cmd": "setsid nohup python3 /root/or/mx/cpumon.py /root/or/out/cpumon.csv 1 > /dev/null 2>&1 < /dev/null & sleep 3; tail -n 2 out/cpumon.csv"
+    },
+    {
+     "type": "eval",
+     "name": "gate_or_recipe_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe",
+     "client": "vllmbench",
+     "rates": [
+      3.0,
+      3.3,
+      3.4
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "claim_group": "or_recipe_fine",
+   "origin": "openrelay_recipe"
+  },
+  {
+   "name": "mx_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton",
+    "MX_DRAFT_COMPACT": "1"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 96 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":3}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256,288,320,352,384]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_mx_recipe",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_mx_recipe_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mx_recipe",
+     "client": "vllmbench",
+     "rates": [
+      3.25,
+      3.6,
+      3.7
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    },
+    {
+     "type": "sh",
+     "name": "cpumon_pull",
+     "cmd": "wc -l out/cpumon.csv; tail -n 1 out/cpumon.csv",
+     "outputs": [
+      "out/cpumon.csv"
+     ],
+     "est_s": 10
+    }
+   ],
+   "delete_weights_after": false,
+   "claim_group": "mx_recipe_fine",
+   "origin": "ours"
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+[r1x_s7] R=1.03 win=240s done=119 err=0 drop=0 req/s=0.44 out=164 in=3775 tok/s cache=0.00 TTFT p50=137.204s p95=175.364s TPOT p50=84.9ms srv=176.95311424471137
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=None tok/s -> /root/or/out/protocol_sgl_nvfp4_nv_B_text/protocol_summary.json

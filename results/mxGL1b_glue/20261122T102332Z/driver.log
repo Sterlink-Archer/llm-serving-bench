@@ -1,0 +1,16 @@
+2026-11-22T10:23:32Z [mxGL1b_glue] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$232.31)
+2026-11-22T10:24:03Z [mxGL1b_glue] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T10:24:06Z [mxGL1b_glue] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T10:24:08Z [mxGL1b_glue] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T10:24:21Z [mxGL1b_glue] gemm_inventory rc=0 13s :: [2026-11-22T10:24:14Z] inventory done in 4s
+2026-11-22T10:24:34Z [mxGL1b_glue] glue_inventory rc=0 13s :: [2026-11-22T10:24:26Z] glue inventory done in 4s
+2026-11-22T10:25:28Z [mxGL1b_glue] glue_prep rc=0 54s :: [2026-11-22T10:25:21Z] glue prep done in 46s
+2026-11-22T10:25:51Z [mxGL1b_glue] glue_norm rc=0 23s :: [2026-11-22T10:25:44Z] glue norm done in 15s
+2026-11-22T10:26:25Z [mxGL1b_glue] done: elapsed 2.9 min, est $0.23; project est $234.59

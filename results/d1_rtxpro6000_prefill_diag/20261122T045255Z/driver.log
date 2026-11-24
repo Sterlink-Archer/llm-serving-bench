@@ -1,0 +1,13 @@
+2026-11-22T04:52:55Z [d1_rtxpro6000_prefill_diag] creating spot sandbox (RTX-PRO-6000 x1, $2.8797/h, ttl 50 min, budget $3.5; project so far ~$9.41)
+2026-11-22T04:53:18Z [d1_rtxpro6000_prefill_diag] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          14          33           0         102         127 | overlay         713G  312G  372G  46% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:54:30Z [d1_rtxpro6000_prefill_diag] download nvfp4_fi_mbt8192: rc=0 72s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:57:16Z [d1_rtxpro6000_prefill_diag] server nvfp4_fi_mbt8192 ready=True after 165.2s; gpu mem 89735 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 265537 graphs 51
+2026-11-22T04:57:38Z [d1_rtxpro6000_prefill_diag] profile_prefill_4x10k rc=0 22s :: [profile] prefill 12312 tok/s over 4x10000; gemm=60.6% attention=34.8% other=4.5% memcpy/memset=0.0%
+2026-11-22T04:59:53Z [d1_rtxpro6000_prefill_diag] prefill_probe_mbt8192 rc=0 134s :: [prefill_probe] 12105 tok/s (16 x 10000, 2nd run)
+2026-11-22T05:00:15Z [d1_rtxpro6000_prefill_diag] download nvfp4_fi_mbt16384: rc=0 11s 23.3 GB via ['huggingface_hub']
+2026-11-22T05:02:03Z [d1_rtxpro6000_prefill_diag] server nvfp4_fi_mbt16384 ready=True after 107.6s; gpu mem 90673 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 152237 graphs 51
+2026-11-22T05:04:18Z [d1_rtxpro6000_prefill_diag] prefill_probe_mbt16384 rc=0 134s :: [prefill_probe] 12091 tok/s (16 x 10000, 2nd run)
+2026-11-22T05:04:40Z [d1_rtxpro6000_prefill_diag] download nvfp4_fi_mbt32768: rc=0 11s 23.3 GB via ['huggingface_hub']
+2026-11-22T05:06:36Z [d1_rtxpro6000_prefill_diag] server nvfp4_fi_mbt32768 ready=True after 115.8s; gpu mem 91703 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 146800 graphs 51
+2026-11-22T05:06:58Z [d1_rtxpro6000_prefill_diag] prefill_probe_mbt32768 rc=server died 22s :: 
+2026-11-22T05:07:19Z [d1_rtxpro6000_prefill_diag] done: elapsed 14.4 min, est $0.69; project est $17.2

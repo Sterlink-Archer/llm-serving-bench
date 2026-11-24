@@ -1,0 +1,90 @@
+{
+ "label": "glm2_vllm_b16k",
+ "stage": "glm-screen",
+ "note": "GLM-5.3-Flash on ONE MI355X, vLLM 0.34.0 ROCm by digest, amd/GLM-5.3-Flash-Quark-MXFP4 @ b5688f25, the recipe's gfx950 env. Parent: glm1_vllm034 (spec off; prefill probe peaked ~22K tok/s with one 10K prompt in flight per step). Same steps: GSM8K test[:100] (reasoning_effort low), their client prefill probe + seed 8 at 1.0/1.5/2.0/2.7. ONE CHANGE: --max-num-batched-tokens 16384 (theirs-style 8192 lets one 10K prompt prefill per step).",
+ "price_model": "openrelay/glm-5.3-flash",
+ "snapshot": {
+  "name": "or-vllmrocm0340-mi355x-c8m48d300",
+  "image": "vllm/vllm-openai-rocm:v0.34.0",
+  "image_digest_amd64": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 300
+ },
+ "max_minutes": 110,
+ "budget_usd": 9.5,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh (GLM): engine/library versions and GLM-5.3-Flash support markers, before any engine starts (setup_cmd).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.metadata as md, importlib.util, os\nfor p in (\"vllm\", \"sglang\", \"torch\", \"triton\", \"amd-aiter\", \"transformers\", \"tilelang\"):\n    try: print(f\"version {p}: {md.version(p)}\")\n    except Exception as e: print(f\"version {p}: - ({e.__class__.__name__})\")\nfor mod, rel in ((\"vllm\", \"model_executor/models/glm5next.py\"), (\"vllm\", \"models/glm5next.py\"), (\"sglang\", \"srt/models/glm5_next.py\")):\n    s = importlib.util.find_spec(mod)\n    if s:\n        f = os.path.join(os.path.dirname(s.origin), rel)\n        print(f\"{mod}:{rel} exists={os.path.exists(f)}\")\nPY\namd-smi static --asic 2>/dev/null | grep -E \"MARKET_NAME|TARGET_GRAPHICS\" | head -3\n} > \"$OUT\" 2>&1\ntail -n 20 \"$OUT\"\nMXEOF_INSPECT_SH\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "glm_b16k",
+   "weights": [
+    {
+     "repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+     "rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "dir": "/root/models/glm"
+    }
+   ],
+   "served_name": "glm",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "VLLM_ROCM_USE_AITER_FUSION_SHARED_EXPERTS": "1",
+    "VLLM_ROCM_USE_AITER_TRITON_SPARSE_MLA": "1",
+    "VLLM_ENGINE_READY_TIMEOUT_S": "3600"
+   },
+   "launch": "vllm serve /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 32768 --max-num-seqs 64 --max-num-batched-tokens 16384 --attention-backend ROCM_AITER_MLA_SPARSE --enable-prompt-tokens-details --language-model-only --reasoning-parser glm47",
+   "ready_timeout_s": 3600,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_glm_b16k",
+     "cmd": "tail -n 12 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_glm_b16k_gsm8kor250",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 8192,
+     "chat_template_kwargs": {
+      "reasoning_effort": "low"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.95
+     },
+     "est_s": 1200
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_glm_b16k",
+     "client": "vllmbench",
+     "rates": [
+      1.0,
+      1.5,
+      2.0,
+      2.7
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "claim_group": "glm_vllm_b16k",
+   "origin": "ours",
+   "fallbacks": [
+    "--enforce-eager"
+   ]
+  }
+ ]
+}

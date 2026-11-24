@@ -1,0 +1,11 @@
+[matrix quick] 10 cells, ~11.3 min; calibration {'template_overhead_tokens': 14, 'cpt_prose': 4.067796610169491, 'cpt_table': 1.7482517482517483}
+[s1k_1k__concurrency=1] C=1 win=50s done=4 err=0 drop=0 req/s=0.06 out=61 in=44 tok/s cache=0.00 TTFT p50=0.103s p95=0.120s TPOT p50=16.2ms srv=61.28367178600307
+[s1k_1k__concurrency=32] C=32 win=50s done=58 err=0 drop=0 req/s=0.98 out=981 in=998 tok/s cache=0.00 TTFT p50=0.252s p95=0.482s TPOT p50=32.3ms srv=981.5209595374455
+[s1k_1k__concurrency=64] C=64 win=50s done=75 err=0 drop=0 req/s=1.30 out=1322 in=1254 tok/s cache=0.00 TTFT p50=0.579s p95=0.811s TPOT p50=47.9ms srv=1322.7584175312754
+[s1k_1k__concurrency=128] C=128 win=50s done=106 err=0 drop=0 req/s=1.98 out=1208 in=1880 tok/s cache=0.00 TTFT p50=28.331s p95=30.865s TPOT p50=60.6ms srv=1207.9578344846161
+[s8k_1k__concurrency=16] C=16 win=50s done=23 err=0 drop=0 req/s=0.46 out=462 in=3564 tok/s cache=0.00 TTFT p50=0.712s p95=1.689s TPOT p50=32.7ms srv=462.14769607984147
+[s8k_1k__concurrency=64] C=64 win=50s done=27 err=0 drop=0 req/s=0.54 out=380 in=8186 tok/s cache=0.00 TTFT p50=28.678s p95=30.207s TPOT p50=99.8ms srv=379.77419354238924
+[prefix_8k__prefix_ratio=0.0] C=32 win=50s done=48 err=0 drop=0 req/s=0.96 out=245 in=9935 tok/s cache=0.00 TTFT p50=0.695s p95=1.387s TPOT p50=102.8ms srv=244.94663734555655
+[prefix_8k__prefix_ratio=0.9] C=32 win=50s done=156 err=0 drop=0 req/s=2.92 out=731 in=22198 tok/s cache=0.69 TTFT p50=0.191s p95=0.294s TPOT p50=43.1ms srv=730.6822595298995
+[ciu_open__rate=16] R=16.0 win=50s done=417 err=0 drop=17 req/s=7.94 out=228 in=13165 tok/s cache=0.06 TTFT p50=18.332s p95=27.409s TPOT p50=279.6ms srv=227.35536306619014
+[matrix quick] done in 9.0 min -> /root/or/out/m_fp8dyn_quick/matrix_summary.md

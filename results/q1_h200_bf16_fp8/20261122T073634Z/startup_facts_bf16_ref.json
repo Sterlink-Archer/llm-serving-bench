@@ -1,0 +1,125 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASH_ATTN",
+  "global_512": "FLASH_ATTN/FA4"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=775) INFO 11-22 07:37:44 [config.py:351] Gemma4 model has heterogeneous head dimensions {'sliding_attention': 256, 'full_attention': 512}. Using FA4 for all layers to avoid mixed FA3/FA4 penalty.",
+  "(EngineCore pid=973) INFO 11-22 07:37:58 [cuda.py:508] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].",
+  "(EngineCore pid=973) INFO 11-22 07:37:58 [flash_attn.py:1122] Using FlashAttention version 4"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 141157,
+ "kv_cache_gib": 68.04,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": 4.31,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "None",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.33.0",
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "q1_h200_bf16_fp8/20261122T073634Z",
+ "config_id": "q1_h200_bf16_fp8:bf16_ref",
+ "image": "vllm/vllm-openai:v0.33.0",
+ "image_digest": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+ "model_repo": "google/gemma-4-31B-it",
+ "model_rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+ "gpu_mem_after_load": "131707 MiB, 143771 MiB",
+ "source_log": "results/q1_h200_bf16_fp8/20261122T073634Z/server_bf16_ref.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T07:37:58Z",
+   "t_end": "2026-11-22T07:38:28Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T07:38:29Z",
+   "t_end": "2026-11-22T07:38:55Z",
+   "detail": {
+    "compile_s": 26.04
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T07:38:58Z",
+   "t_end": "2026-11-22T07:39:20Z",
+   "detail": {
+    "s": 22.0,
+    "gib": 0.56
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T07:39:27Z",
+   "t_end": "2026-11-22T07:39:42Z",
+   "detail": {
+    "s": 15.0,
+    "gib": 0.3
+   }
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:51:11Z] hipblaslt qkv_s M=8192: 751.3 us 2 TF/s
+[2026-11-22T08:51:12Z] hipblaslt qkv_s M=16384: 1508.5 us 2 TF/s
+[2026-11-22T08:51:12Z] hipblaslt qkv_g M=8192: 784.4 us 2 TF/s
+[2026-11-22T08:51:12Z] hipblaslt qkv_g M=16384: 1793.5 us 2 TF/s
+[2026-11-22T08:51:35Z] hipblaslt o_s M=8192: 309.1 us 2 TF/s
+[2026-11-22T08:51:35Z] hipblaslt o_s M=16384: 603.3 us 2 TF/s
+[2026-11-22T08:51:35Z] hipblaslt o_g M=8192: 452.6 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt o_g M=16384: 1073.2 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt gate_up M=8192: 1647.4 us 2 TF/s
+[2026-11-22T08:51:36Z] hipblaslt gate_up M=16384: 3653.3 us 2 TF/s
+[2026-11-22T08:51:36Z] hipblaslt down M=8192: 652.9 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt down M=16384: 1367.8 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt sq8k M=8192: 345.3 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt sq16k M=16384: 3387.0 us 3 TF/s
+[2026-11-22T08:51:36Z] hipblaslt done in 44s

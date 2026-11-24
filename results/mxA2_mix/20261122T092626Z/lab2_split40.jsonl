@@ -1,0 +1,2 @@
+{"case": "split40", "D": 512, "one_launch_ms": 2.8728869976475835, "prefill_ms": 2.2930377977900207, "decode_ms": 0.4771964973770082, "saves_ms_per_layer": 0.10265270248055458}
+{"case": "split40", "D": 256, "one_launch_ms": 0.3620595089159906, "prefill_ms": 0.2635266981087625, "decode_ms": 0.06691369926556945, "saves_ms_per_layer": 0.03161911154165864}

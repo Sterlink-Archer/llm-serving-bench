@@ -1,0 +1,194 @@
+{
+ "label": "ik7_mi355x_aiter",
+ "stage": "ik-kernel",
+ "claim_group": "ik7_mi355x_aiter",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 1.5115,
+ "note": "Wave 7 (MI355X, SGLang inkling-2-mini-mi35x image): paired same-box AITER BF16 GEMM tuning of the 117 prefill shapes (N=8600 K=2304, N=2304 K=3072; ik1/ik4: AITER default 'torch solution:0') with precompiled backends only (torch baseline, asm, hipBLASLt; merged lowest-us). Base -> tune -> tuned. Each server: aiter_inspect, GSM8K test[:100] gate at effort 'high', torch-profiler prefill summary (4x10K, via the admin key: a throwaway local token), column B 180 s rungs at 1.0/1.25/1.5x break-even, seed 7. --admin-api-key only unlocks SGLang's admin endpoints (profiler); inference endpoints stay keyless.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-mi35x-mi355x-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini-mi35x",
+  "image_digest_amd64": "sha256:f53f969460964a88a203b41c8ac52efcd1cb99954f7d49c57489a3b4d761228a",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 150,
+ "budget_usd": 13.0,
+ "servers": [
+  {
+   "name": "base",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton --admin-api-key \"$IK_ADMIN_KEY\"",
+   "env": {
+    "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_base",
+    "IK_ADMIN_KEY": "local-profiler-token"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_base",
+     "cmd": "bash /root/or/ik/aiter_inspect.sh base",
+     "outputs": [
+      "out/aiter_inspect_base.txt"
+     ],
+     "est_s": 60
+    },
+    {
+     "type": "eval",
+     "name": "gate_base_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_base",
+     "est_s": 300,
+     "outputs": [
+      "out/profile_prefill_base.json"
+     ],
+     "cmd": "python3 /root/or/ik/sgl_profile.py --model inkling --dir /root/or/out/prof_base --n 4 --tokens 10000 --out /root/or/out/profile_prefill_base.json"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_base_B_text",
+     "client": "traffic",
+     "breakeven_rps": 1.5115,
+     "rates": [
+      1.511,
+      1.889,
+      2.267
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    },
+    {
+     "type": "sh",
+     "name": "aiter_tune",
+     "est_s": 3400,
+     "cmd": "python3 /root/or/ik/aiter_tune.py --untuned /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --out /root/or/out",
+     "outputs": [
+      "out/aiter_tuned_inkling.csv",
+      "out/aiter_tune_summary.json",
+      "out/aiter_tuned_*.csv",
+      "out/aiter_tune_*.log"
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "tuned",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton --admin-api-key \"$IK_ADMIN_KEY\"",
+   "env": {
+    "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_tuned",
+    "IK_ADMIN_KEY": "local-profiler-token"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_tuned",
+     "cmd": "bash /root/or/ik/aiter_inspect.sh tuned",
+     "outputs": [
+      "out/aiter_inspect_tuned.txt"
+     ],
+     "est_s": 60
+    },
+    {
+     "type": "eval",
+     "name": "gate_tuned_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_tuned",
+     "est_s": 300,
+     "outputs": [
+      "out/profile_prefill_tuned.json"
+     ],
+     "cmd": "python3 /root/or/ik/sgl_profile.py --model inkling --dir /root/or/out/prof_tuned --n 4 --tokens 10000 --out /root/or/out/profile_prefill_tuned.json"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_tuned_B_text",
+     "client": "traffic",
+     "breakeven_rps": 1.5115,
+     "rates": [
+      1.511,
+      1.889,
+      2.267
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  }
+ ],
+ "setup_cmd": "mkdir -p /root/or/ik /root/or/out\ncat > /root/or/ik/aiter_inspect.sh <<'IKEOF_AITER_INSPECT_SH'\n#!/bin/bash\n# aiter_inspect.sh: what the SGLang MI35x image actually runs for Inkling-2-Mini, before and after our AITER tuning.\n# Versions, the AITER BF16 GEMM tuner and its CSV formats, the Inkling2 quantization code paths on ROCm (which MoE and\n# GEMM functions an NVFP4 / MXFP8 expert reaches on gfx950), and how many \"not found tuned config\" shapes the running\n# server logged. Output: /root/or/out/aiter_inspect_<tag>.txt (pulled by the step).\nTAG=${1:-base}\nOUT=/root/or/out/aiter_inspect_${TAG}.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ) tag=$TAG\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, glob, re\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"sglang\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\", \"flashinfer-python\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\ns = os.path.dirname(importlib.util.find_spec(\"sglang\").origin)\nroot = os.path.dirname(a)\nprint(\"aiter dir\", a, \"| sglang dir\", s)\nfor pat in (\"**/gemm_tuner.py\", \"**/gradlib/**/*.py\", \"**/*bf16*untuned*.csv\", \"**/bf16_tuned_gemm.csv\"):\n    hits = sorted(glob.glob(os.path.join(root, pat), recursive=True))[:8]\n    print(f\"find {pat}: {hits}\")\nfor f in sorted(glob.glob(os.path.join(a, \"configs\", \"*bf16*untuned*.csv\")))[:2] + sorted(glob.glob(os.path.join(a, \"configs\", \"bf16_tuned_gemm.csv\")))[:1]:\n    with open(f) as fh:\n        print(f\"head {f}:\", fh.readline().strip(), \"|\", fh.readline().strip())\nprint(\"model_configs bf16:\", sorted(os.path.basename(x) for x in glob.glob(os.path.join(a, \"configs\", \"model_configs\", \"*bf16*\"))))\nenvs = set()\nfor f in glob.glob(os.path.join(a, \"**\", \"*.py\"), recursive=True):\n    try:\n        t = open(f, errors=\"ignore\").read()\n    except Exception:\n        continue\n    envs.update(re.findall(r\"AITER_(?:CONFIG|TUNE)[A-Z0-9_]*\", t))\nprint(\"aiter env names:\", sorted(envs)[:40])\n# Inkling2 quantization on ROCm: which files mention it, and which MoE / GEMM entry points they call\nhits = []\nfor f in glob.glob(os.path.join(s, \"srt\", \"**\", \"*.py\"), recursive=True):\n    t = open(f, errors=\"ignore\").read()\n    if re.search(r\"inkling2\", t, re.I) and re.search(r\"quant|moe|fp4|mxfp8\", t, re.I):\n        hits.append(f)\nprint(\"sglang inkling2 quant/moe files:\", [os.path.relpath(h, s) for h in hits][:20])\nfor h in hits[:6]:\n    t = open(h, errors=\"ignore\").read()\n    calls = sorted(set(re.findall(r\"\\b(fused_moe\\w*|ck_moe\\w*|asm_moe\\w*|triton_kernel_moe\\w*|fused_experts\\w*|dequant\\w*|\"\n                                  r\"mxfp4\\w*|nvfp4\\w*|gemm_a\\w*|cutlass\\w*|flashinfer\\w*|_is_hip|is_hip|is_gfx95\\w*|aiter\\.\\w+)\", t)))\n    print(f\"calls in {os.path.relpath(h, s)}:\", calls[:40])\nPY\nfor L in /root/or/server_*.log; do\n  [ -f \"$L\" ] || continue\n  echo \"log $L: untuned-shape lines $(grep -c 'not found tuned config' \"$L\"), distinct $(grep -o 'shape is M:[0-9]*, N:[0-9]*, K:[0-9]*' \"$L\" | sort -u | wc -l)\"\ndone\n} > \"$OUT\" 2>&1\ntail -n 30 \"$OUT\"\nIKEOF_AITER_INSPECT_SH\ncat > /root/or/ik/aiter_tune.py <<'IKEOF_AITER_TUNE_PY'\n\"\"\"aiter_tune.py: tune AITER's BF16 GEMMs for the exact prefill shapes Inkling-2-Mini runs on an MI355X, then drop the\nmerged table where AITER merges model tables (aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv), so the NEXT\nserver start picks it up.\n\nShapes: box/inkling2mini_bf16_untuned_gemm.csv, the 117 distinct M>=1024 shapes SGLang logged as \"not found tuned config\n... will use default config! using torch solution:0\" in ik4_mi355x_aiter's base server (N=8600 K=2304 = fused q/k/v/rel\nprojection, N=2304 K=3072 = output projection; M = SGLang's prefill-graph token buckets, up to 3 x 16384).\n\nTuner: AITER's csrc/gemm_a16w16/gemm_tuner.py, one backend at a time, PRECOMPILED backends only:\n  torch     (the default AITER falls back to: the baseline us per shape),\n  asm       (AITER's prebuilt gfx950 assembly kernels),\n  hipblaslt (--with-hipblaslt; hipBLASLt's solution list).\nik4's first attempt ran the default backend set (flydsl/triton/opus JIT-compile thousands of variants on 8 vCPUs: one\nworker at 100% CPU, GPU at 1%, nothing written after 26 min), so JIT backends are excluded here. Each backend has its own\ntimeout and streams its log; the merge keeps the lowest-us row per shape across backends, so a backend that times out\ncosts only its own time.\n\n  python3 aiter_tune.py --untuned /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --out /root/or/out\nWrites <out>/aiter_tuned_<lib>.csv, <out>/aiter_tune_<lib>.log, <out>/aiter_tuned_inkling.csv (merged, installed),\n<out>/aiter_tune_summary.json (per-backend rc/time/rows, per-shape speedup of the winner vs torch).\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport csv\nimport glob\nimport importlib.util\nimport json\nimport os\nimport shutil\nimport statistics\nimport subprocess\nimport sys\nimport time\n\nKEY = (\"M\", \"N\", \"K\", \"bias\", \"dtype\", \"outdtype\", \"scaleAB\", \"bpreshuffle\")\nPLAN = ((\"torch\", [], 600), (\"asm\", [], 1200), (\"hipblaslt\", [\"--with-hipblaslt\"], 1500))\n\n\ndef rows_of(path):\n    if not os.path.exists(path):\n        return []\n    with open(path) as f:\n        return list(csv.DictReader(f))\n\n\ndef main():\n    ap = argparse.ArgumentParser()\n    ap.add_argument(\"--untuned\", required=True)\n    ap.add_argument(\"--out\", required=True)\n    ap.add_argument(\"--only\", default=\"\", help=\"comma list of backends to run (default: torch,asm,hipblaslt)\")\n    a = ap.parse_args()\n    os.makedirs(a.out, exist_ok=True)\n    adir = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\n    root = os.path.dirname(adir)\n    tuner = os.path.join(root, \"csrc\", \"gemm_a16w16\", \"gemm_tuner.py\")\n    summ = dict(t_start=time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime()), tuner=tuner, untuned=a.untuned,\n                shapes=len(rows_of(a.untuned)), backends={})\n    print(f\"[aiter_tune] {summ['shapes']} shapes, tuner {tuner}\", flush=True)\n    want = set(a.only.split(\",\")) if a.only else None\n    per_lib = {}\n    for lib, extra, tmo in PLAN:\n        if want and lib not in want:\n            continue\n        tf = os.path.join(a.out, f\"aiter_tuned_{lib}.csv\")\n        lf = os.path.join(a.out, f\"aiter_tune_{lib}.log\")\n        cmd = [sys.executable, tuner, \"--input_file\", a.untuned, \"--tuned_file\", tf, \"--libtype\", lib] + extra\n        t0 = time.time()\n        with open(lf, \"w\") as log:\n            log.write(\" \".join(cmd) + \"\\n\")\n            log.flush()\n            try:\n                rc = subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT, timeout=tmo, cwd=os.path.dirname(tuner)).returncode\n            except subprocess.TimeoutExpired:\n                rc = \"timeout\"\n        rows = rows_of(tf)\n        per_lib[lib] = rows\n        summ[\"backends\"][lib] = dict(rc=rc, secs=round(time.time() - t0, 1), rows=len(rows), timeout_s=tmo)\n        print(f\"[aiter_tune] {lib}: rc={rc} {time.time() - t0:.0f}s rows={len(rows)}\", flush=True)\n    best, base = {}, {}\n    for lib, rows in per_lib.items():\n        for r in rows:\n            try:\n                us = float(r.get(\"us\") or \"inf\")\n            except ValueError:\n                continue\n            if us <= 0 or us != us:\n                continue\n            k = tuple(str(r.get(x)) for x in KEY)\n            if lib == \"torch\":\n                base[k] = us\n            if k not in best or us < float(best[k][\"us\"]):\n                best[k] = r\n    merged = os.path.join(a.out, \"aiter_tuned_inkling.csv\")\n    if best:\n        header = list(next(iter(best.values())).keys())\n        with open(merged, \"w\", newline=\"\") as f:\n            w = csv.DictWriter(f, fieldnames=header)\n            w.writeheader()\n            for k in sorted(best, key=lambda k: (int(k[1]), int(k[2]), int(k[0]))):\n                w.writerow(best[k])\n        dst = os.path.join(adir, \"configs\", \"model_configs\", \"inkling2mini_bf16_tuned_gemm.csv\")\n        shutil.copy(merged, dst)\n        summ[\"installed_as\"] = dst\n        sp = [base[k] / float(best[k][\"us\"]) for k in best if k in base]\n        summ[\"winner_libtype\"] = {lt: sum(1 for r in best.values() if r.get(\"libtype\") == lt) for lt in {r.get(\"libtype\") for r in best.values()}}\n        summ[\"speedup_vs_torch\"] = dict(n=len(sp), median=round(statistics.median(sp), 3) if sp else None,\n                                        min=round(min(sp), 3) if sp else None, max=round(max(sp), 3) if sp else None)\n        summ[\"us_total_torch\"] = round(sum(base.values()), 1)\n        summ[\"us_total_best\"] = round(sum(float(best[k][\"us\"]) for k in best if k in base), 1)\n    summ[\"merged_rows\"] = len(best)\n    summ[\"t_end\"] = time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime())\n    json.dump(summ, open(os.path.join(a.out, \"aiter_tune_summary.json\"), \"w\"), indent=1)\n    print(f\"[aiter_tune] merged {len(best)} rows; speedup vs torch {summ.get('speedup_vs_torch')}; installed {summ.get('installed_as')}\",\n          flush=True)\n    return 0 if best else 4\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\nIKEOF_AITER_TUNE_PY\ncat > /root/or/ik/sgl_profile.py <<'IKEOF_SGL_PROFILE_PY'\n\"\"\"sgl_profile.py: run bench/profile_prefill.py (the build session's prefill profiler, unchanged) against an SGLang server\nwhose /start_profile and /stop_profile are admin endpoints. This SGLang build (0.0.0.dev1+inkling2) rejects them with\nHTTP 403 unless the server was started with --admin-api-key and the request carries that key as a Bearer token\n(srt/utils/auth.py, AuthLevel.ADMIN_FORCE). The key is a throwaway local token from the server's env (IK_ADMIN_KEY),\nnever a credential. This wrapper adds the header to those two calls only, then hands over to profile_prefill.main().\n\n  IK_ADMIN_KEY=... python3 sgl_profile.py --model inkling --dir /root/or/out/prof_x --n 4 --tokens 10000 --out ...json\n\"\"\"\nimport os\nimport sys\nimport urllib.request\n\nsys.path.insert(0, \"/root/or/bench\")\n# run.py exports a server's env to the server job only, not to its steps, so the step falls back to the same throwaway\n# local token the configs pass to --admin-api-key (ik7 base: HTTP 401 without it).\nKEY = os.environ.get(\"IK_ADMIN_KEY\") or \"local-profiler-token\"\n_orig = urllib.request.urlopen\n\n\ndef _patched(req, *a, **k):\n    url = req.full_url if isinstance(req, urllib.request.Request) else str(req)\n    if KEY and (\"/start_profile\" in url or \"/stop_profile\" in url):\n        if not isinstance(req, urllib.request.Request):\n            req = urllib.request.Request(url, data=k.pop(\"data\", None))\n        req.add_header(\"Authorization\", \"Bearer \" + KEY)\n    return _orig(req, *a, **k)\n\n\nurllib.request.urlopen = _patched\nimport profile_prefill  # noqa: E402\n\nsys.argv = [\"profile_prefill.py\"] + sys.argv[1:]\nsys.exit(profile_prefill.main())\nIKEOF_SGL_PROFILE_PY\ncat > /root/or/ik/inkling2mini_bf16_untuned_gemm.csv <<'IKEOF_INKLING2MINI_BF16_UNTUNED_GEMM_CSV'\nM,N,K,bias,dtype,outdtype,scaleAB,bpreshuffle\n1024,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n1280,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n1536,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n1792,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n2048,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n2304,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n2560,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n2816,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n3072,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n3328,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n3584,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n3840,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n4096,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n4608,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n5120,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n5632,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n6144,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n6656,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n7168,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n7680,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n8192,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n8704,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n9216,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n9728,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n10240,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n10752,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n11264,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n11776,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n12288,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n12800,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n13312,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n13824,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n14336,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n14848,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n15360,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n15872,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n16384,2304,3072,False,torch.bfloat16,torch.bfloat16,False,False\n1024,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1056,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1104,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1152,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1200,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1248,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1280,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1296,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1344,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1392,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1440,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1488,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1536,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1728,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1792,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n1920,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2048,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2112,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2304,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2496,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2560,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2688,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2816,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n2880,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n3072,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n3328,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n3584,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n3840,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n4096,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n4608,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n5120,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n5376,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n5632,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n6144,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n6656,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n6912,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n7168,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n7680,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n8192,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n8448,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n8704,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n9216,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n9728,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n9984,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n10240,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n10752,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n11264,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n11520,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n11776,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n12288,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n12800,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n13312,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n13824,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n14336,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n14848,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n15360,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n15872,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n16384,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n16896,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n18432,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n19968,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n21504,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n23040,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n24576,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n26112,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n27648,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n29184,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n30720,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n32256,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n33792,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n35328,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n36864,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n38400,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n39936,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n41472,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n43008,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n44544,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n46080,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n47616,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\n49152,8600,2304,False,torch.bfloat16,torch.bfloat16,False,False\nIKEOF_INKLING2MINI_BF16_UNTUNED_GEMM_CSV"
+}

@@ -1,0 +1,8 @@
+2026-11-22T07:29:59Z [d3_sglang_counter_probe] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 45 min, budget $2.5; project so far ~$102.07)
+2026-11-22T07:30:42Z [d3_sglang_counter_probe] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          13           4           0         127         127 | overlay         713G  413G  272G  61% / | Python 3.12.16 | /usr/bin/curl | sglang 0.5.23
+2026-11-22T07:31:36Z [d3_sglang_counter_probe] download sgl_nvfp4_nv: rc=0 53s 32.7 GB via ['huggingface_hub']
+2026-11-22T07:33:14Z [d3_sglang_counter_probe] server sgl_nvfp4_nv ready=True after 97.1s; gpu mem 88289 MiB, 97887 MiB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 148789 graphs 36 REJECTED: Triton attention on global 512-dim layers
+2026-11-22T07:35:12Z [d3_sglang_counter_probe] counter_probe rc=0 117s :: [counter_probe] server/usage = 1.0000; per-request offsets [0.0]; counted before finish in 0/18
+2026-11-22T07:40:27Z [d3_sglang_counter_probe] protocol_sgl_counter_B_text rc=0 315s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.0296); prefill=None tok/s -> /root/or/out/protocol_sgl_counter_B_text/protocol_summary.json
+2026-11-22T07:41:22Z [d3_sglang_counter_probe] counter_probe_after rc=0 55s :: [counter_probe] server/usage = 1.0000; per-request offsets [0.0]; counted before finish in 0/6
+2026-11-22T07:41:48Z [d3_sglang_counter_probe] done: elapsed 11.8 min, est $0.57; project est $109.62

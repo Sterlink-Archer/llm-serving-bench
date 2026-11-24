@@ -1,0 +1,29 @@
+2026-11-22T09:15:35Z [mxK_s7] creating spot sandbox (MI355X x1, $4.7565/h, ttl 95 min, budget $8.0; project so far ~$160.64)
+2026-11-22T09:16:29Z [mxK_s7] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:16:52Z [mxK_s7] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:19:49Z [mxK_s7] server or_recipe ready=True after 176.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268529 MB
+        FREE_VRAM: 26063 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268529 MB
+        FREE_VISIBLE_VRAM: 26063 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 3712490 graphs 19
+2026-11-22T09:19:53Z [mxK_s7] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:20:05Z [mxK_s7] gate_or_recipe_gsm8kor100 rc=0 13s :: [gate_or_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T09:32:54Z [mxK_s7] protocol_or_recipe rc=0 768s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=41500.67516247869 tok/s -> /root/or/out/protocol_or_recipe/protocol_summary.json
+2026-11-22T09:39:08Z [mxK_s7] protocol_or_recipe_text rc=0 375s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_text/protocol_summary.json
+2026-11-22T09:39:32Z [mxK_s7] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T09:40:57Z [mxK_s7] server mx_recipe ready=True after 84.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268290 MB
+        FREE_VRAM: 26302 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268290 MB
+        FREE_VISIBLE_VRAM: 26302 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 3701967 graphs 23
+2026-11-22T09:41:00Z [mxK_s7] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:41:13Z [mxK_s7] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=2s
+2026-11-22T09:53:50Z [mxK_s7] protocol_mx_recipe rc=0 757s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=42930.81800969379 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T10:00:05Z [mxK_s7] protocol_mx_recipe_text rc=0 375s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json
+2026-11-22T10:00:39Z [mxK_s7] done: elapsed 45.1 min, est $3.57; project est $211.9

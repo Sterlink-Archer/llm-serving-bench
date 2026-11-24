@@ -1,0 +1,5 @@
+[aiter_tune] 117 shapes, tuner /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py
+[aiter_tune] torch: rc=0 20s rows=34
+[aiter_tune] asm: rc=0 5s rows=0
+[aiter_tune] hipblaslt: rc=0 7s rows=0
+[aiter_tune] merged 34 rows; speedup vs torch {'n': 34, 'median': 1.0, 'min': 1.0, 'max': 1.0}; installed /sgl-workspace/aiter/aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv

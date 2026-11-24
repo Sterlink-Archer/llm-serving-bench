@@ -1,0 +1,35 @@
+{
+ "run_id": "d3_sglang_counter_probe/20261122T072959Z",
+ "configs": [
+  {
+   "run_id": "d3_sglang_counter_probe/20261122T072959Z",
+   "config_id": "d3_sglang_counter_probe:sgl_nvfp4_nv",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0.3902,
+   "steady_gpu_usd": 0.2636,
+   "steady_host_usd": 0.1267,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0425,
+    "engine_start": 0.0779,
+    "warmup": 0.0008,
+    "create_share": 0.0146
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.5613,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

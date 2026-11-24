@@ -1,0 +1,58 @@
+{
+ "label": "q3_pro6000_nvfp4",
+ "stage": "quality reference",
+ "claim_group": "q3_pro6000_nvfp4",
+ "note": "QUALITY REFERENCE (Maks: 'if we run the quantized version then lets compare it to the original regular one'). Same eval harness, greedy, on every config: GSM8K test[:250] with OpenRelay's prompt and scoring, our 200-item MMLU-Pro set, and data/eval/agree_400.jsonl (400 public-text prompts: 150 short chat, 100 long-document, 150 agentic JSON/tool-plan; max_tokens 192, concurrency 16) whose greedy outputs are compared with the BF16 reference by analysis/quality.py. RTX PRO 6000: RedHat NVFP4 (W4A4) + FlashInfer + FP8 KV, exactly as screened (s1_rtxpro6000_nvfp4_fi).",
+ "snapshot": {
+  "name": "or-vllm0330-rtx-pro-6000-c4m16d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 16,
+  "disk": 80
+ },
+ "max_minutes": 60,
+ "budget_usd": 3.0,
+ "servers": [
+  {
+   "name": "nvfp4_fi",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "q_gsm8kor250_nvfp4_fi",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_mmlupro200_nvfp4_fi",
+     "sets": "data/eval/mmlupro_200.jsonl",
+     "conc": 64,
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "q_agree400_nvfp4_fi",
+     "sets": "data/eval/agree_400.jsonl",
+     "conc": 16,
+     "max_tokens": 192,
+     "est_s": 420
+    }
+   ]
+  }
+ ]
+}

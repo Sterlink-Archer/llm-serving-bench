@@ -1,0 +1,14 @@
+2026-11-22T07:36:34Z [q1_h200_bf16_fp8] creating spot sandbox (H200 x1, $3.7997/h, ttl 90 min, budget $7.0; project so far ~$105.74)
+2026-11-22T07:36:54Z [q1_h200_bf16_fp8] system: ok | NVIDIA H200, 143771 MiB, 595.91.07, 700.00 W | 24 | Mem:             235          14         154           0          74         221 | overlay          80G  8.4M   80G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T07:37:26Z [q1_h200_bf16_fp8] download bf16_ref: rc=0 31s 62.6 GB via ['huggingface_hub']
+2026-11-22T07:39:48Z [q1_h200_bf16_fp8] server bf16_ref ready=True after 140.8s; gpu mem 131707 MiB, 143771 MiB; attn {'sliding': 'FLASH_ATTN', 'global_512': 'FLASH_ATTN/FA4'} kv_tokens 141157 graphs 51
+2026-11-22T07:40:34Z [q1_h200_bf16_fp8] q_gsm8kor250_bf16_ref rc=0 43s :: [q_gsm8kor250_bf16_ref] gsm8kor: 0.980 (245/250, noans 0, err 0, trunc 0) wall=33s
+2026-11-22T07:41:47Z [q1_h200_bf16_fp8] q_mmlupro200_bf16_ref rc=0 73s :: [q_mmlupro200_bf16_ref] mmlupro: 0.865 (173/200, noans 2, err 0, trunc 2) wall=67s
+2026-11-22T07:44:12Z [q1_h200_bf16_fp8] q_agree400_bf16_ref rc=1 145s :: KeyError: 'answer'
+2026-11-22T07:46:37Z [q1_h200_bf16_fp8] q_agree400_bf16_ref_rep2 rc=0 145s :: [q_agree400_bf16_ref_rep2] agree: 0.000 (0/400, noans 400, err 0, trunc 252) wall=139s
+2026-11-22T07:47:20Z [q1_h200_bf16_fp8] download fp8dyn: rc=0 31s 33.3 GB via ['huggingface_hub']
+2026-11-22T07:49:33Z [q1_h200_bf16_fp8] server fp8dyn ready=True after 132.5s; gpu mem 129727 MiB, 143771 MiB; attn {'sliding': 'FLASH_ATTN/FA3', 'global_512': 'FLASH_ATTN/FA4'} kv_tokens 380783 graphs 51
+2026-11-22T07:50:16Z [q1_h200_bf16_fp8] q_gsm8kor250_fp8dyn rc=0 43s :: [q_gsm8kor250_fp8dyn] gsm8kor: 0.976 (244/250, noans 0, err 0, trunc 0) wall=33s
+2026-11-22T07:51:30Z [q1_h200_bf16_fp8] q_mmlupro200_fp8dyn rc=0 73s :: [q_mmlupro200_fp8dyn] mmlupro: 0.855 (171/200, noans 2, err 0, trunc 2) wall=64s
+2026-11-22T07:53:24Z [q1_h200_bf16_fp8] q_agree400_fp8dyn rc=0 114s :: [q_agree400_fp8dyn] agree: 0.000 (0/400, noans 400, err 0, trunc 257) wall=108s
+2026-11-22T07:53:52Z [q1_h200_bf16_fp8] done: elapsed 17.3 min, est $1.09; project est $120.58

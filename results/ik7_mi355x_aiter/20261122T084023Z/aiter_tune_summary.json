@@ -1,0 +1,40 @@
+{
+ "t_start": "2026-11-22T08:53:38Z",
+ "tuner": "/sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py",
+ "untuned": "/root/or/ik/inkling2mini_bf16_untuned_gemm.csv",
+ "shapes": 117,
+ "backends": {
+  "torch": {
+   "rc": 0,
+   "secs": 20.0,
+   "rows": 34,
+   "timeout_s": 600
+  },
+  "asm": {
+   "rc": 0,
+   "secs": 5.4,
+   "rows": 0,
+   "timeout_s": 1200
+  },
+  "hipblaslt": {
+   "rc": 0,
+   "secs": 6.8,
+   "rows": 0,
+   "timeout_s": 1500
+  }
+ },
+ "installed_as": "/sgl-workspace/aiter/aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv",
+ "winner_libtype": {
+  "torch": 34
+ },
+ "speedup_vs_torch": {
+  "n": 34,
+  "median": 1.0,
+  "min": 1.0,
+  "max": 1.0
+ },
+ "us_total_torch": 1716.0,
+ "us_total_best": 1716.0,
+ "merged_rows": 34,
+ "t_end": "2026-11-22T08:54:10Z"
+}

@@ -1,0 +1,8 @@
+source: https://huggingface.co/blog/inkling2mini (fetched 2026-11-22T07:06:15Z; HTTP 200; 227490 bytes; sha256 17717bceec15ca0344b1fe1e902747ebb1e480b2809461076136cf6a65918b2c)
+The full page is not committed (it contains an SSH clone address that the repo's secret scanner flags); the hash above
+identifies it. The one passage this recipe cites:
+
+  "MLX inference works with the original checkpoint too. In this case, the native nvfp4 + mxfp8 quantization scheme is used without reconversion: you get the original quality the authors intended."
+
+Used for: the official NVFP4 + MXFP8 checkpoint is the model's native format; no full-precision original is published
+(see reference_check_20261122T071452Z.json).

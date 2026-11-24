@@ -1,0 +1,3 @@
+2026-11-22T07:33:08Z [glm1_sglang0523] building or-sglang0523rocm10-mi355x-c8m48d300 from lmsysorg/sglang:v0.5.23-rocm10-mi35x
+2026-11-22T07:33:23Z [glm1_sglang0523] ERROR RuntimeError('snapshot or-sglang0523rocm10-mi355x-c8m48d300 failed: An operation is already in progress for this resource')
+2026-11-22T07:33:32Z [glm1_sglang0523] done: elapsed 0.0 min, est $0.00; project est $103.82

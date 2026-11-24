@@ -1,0 +1,95 @@
+{
+ "run_id": "d1_rtxpro6000_prefill_diag/20261122T045255Z",
+ "configs": [
+  {
+   "run_id": "d1_rtxpro6000_prefill_diag/20261122T045255Z",
+   "config_id": "d1_rtxpro6000_prefill_diag:nvfp4_fi_mbt8192",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0081,
+    "total": 2.8797
+   },
+   "steady_usd": 0.1249,
+   "steady_gpu_usd": 0.0846,
+   "steady_host_usd": 0.0403,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0574,
+    "engine_start": 0.1322,
+    "warmup": 0.0004,
+    "create_share": 0.0028
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6887,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "d1_rtxpro6000_prefill_diag/20261122T045255Z",
+   "config_id": "d1_rtxpro6000_prefill_diag:nvfp4_fi_mbt16384",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0081,
+    "total": 2.8797
+   },
+   "steady_usd": 0.1074,
+   "steady_gpu_usd": 0.0727,
+   "steady_host_usd": 0.0347,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0089,
+    "engine_start": 0.0861,
+    "warmup": 0.0004,
+    "create_share": 0.0028
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6887,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "d1_rtxpro6000_prefill_diag/20261122T045255Z",
+   "config_id": "d1_rtxpro6000_prefill_diag:nvfp4_fi_mbt32768",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0081,
+    "total": 2.8797
+   },
+   "steady_usd": 0.0175,
+   "steady_gpu_usd": 0.0119,
+   "steady_host_usd": 0.0057,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0089,
+    "engine_start": 0.0926,
+    "warmup": 0.0005,
+    "create_share": 0.0028
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.6887,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

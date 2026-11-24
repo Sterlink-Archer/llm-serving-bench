@@ -1,0 +1,105 @@
+{
+ "label": "s1_rtxpro6000_nvfp4_fi",
+ "run_id": "s1_rtxpro6000_nvfp4_fi/20261122T043253Z",
+ "config_file": "configs/s1_rtxpro6000_nvfp4_fi.json",
+ "t_start": "2026-11-22T04:32:53Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 2.8797
+ },
+ "phases": {
+  "create_s": 3.6
+ },
+ "servers": {
+  "nvfp4_fi": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 81.9,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:  87%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b | 13/15 [00:00<00:00, 121.78it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:20<00:00, 121.78it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:18<00:00,  7.09s/it] \rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:18<00:00,  5.25s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640259 secs=78.9 GBps=0.295 method=huggingface_hub\n",
+    "bytes": 23297640259,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 165.0,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+    "env": {},
+    "gpu_mem_after_load": "89735 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-760d1551\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 265537,
+    "kv_cache_gib": 63.99,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "steps": {
+    "gate_gsm8kor100": {
+     "rc": 0,
+     "secs": 21.4,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_gsm8kor100 --out /root/or/out/gate_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=15s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "protocol_nvfp4_fi": {
+     "rc": 0,
+     "secs": 307.6,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_nvfp4_fi --breakeven-rps 1.0269 --client vllmbench --tokenizer /root/models/nvfp4 --multiples 1.0,1.5,2.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_rtxpro6000_nvfp4_fi/20261122T043253Z --config-id s1_rtxpro6000_nvfp4_fi:nvfp4_fi --prefill-shot --max-minutes 52.7",
+     "tail": "[vllmbench r=1.0269 s=7] done=123 failed=0 req/s=0.7944032157370166 p95 TTFT=10.002197730517937 median TPOT=171.18762741868312 ms in tok/s=7821\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.0269); prefill=12082.243672552611 tok/s -> /root/or/out/protocol_nvfp4_fi/protocol_summary.json\n",
+     "breakeven_rps": 1.0268506632434744
+    },
+    "protocol_nvfp4_fi_textclient": {
+     "rc": 0,
+     "secs": 123.6,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_nvfp4_fi_textclient --breakeven-rps 1.0269 --client traffic --multiples 1.0 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id s1_rtxpro6000_nvfp4_fi/20261122T043253Z --config-id s1_rtxpro6000_nvfp4_fi:nvfp4_fi --max-minutes 47.6",
+     "tail": "[r1x_s7] R=1.0269 win=96s done=55 err=0 drop=0 req/s=0.53 out=329 in=8565 tok/s cache=0.00 TTFT p50=1.994s p95=4.837s TPOT p50=153.4ms srv=328.35932995179405\n[protocol] max_rate_at_slo=0.0 req/s (break-even 1.0269); prefill=None tok/s -> /root/or/out/protocol_nvfp4_fi_textclient/protocol_summary.json\n",
+     "breakeven_rps": 1.0268506632434744
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 2.92,
+  "this_run_ceiling_usd": 3.12,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 116,
+ "sandbox_id": "7aadf5d6-023d-4409-b2db-ce1b76b831a7",
+ "elapsed_s": 735.9,
+ "est_cost_usd": 0.589,
+ "t_saved": "2026-11-22T04:45:09Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          15          26           0         107         125\noverlay         713G  312G  372G  46% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:45:04Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 7.12,
+  "metered_usd": null
+ }
+}

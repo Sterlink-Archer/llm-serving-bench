@@ -1,0 +1,7 @@
+[vllmbench r=2.053 s=7] done=615 failed=0 req/s=2.0211614155638786 p95 TTFT=1.0656512055546046 median TPOT=15.905276268714914 ms in tok/s=19651
+[vllmbench r=2.053 s=8] done=615 failed=0 req/s=2.0272266305333004 p95 TTFT=0.8520594679284837 median TPOT=15.324287917701605 ms in tok/s=19361
+[vllmbench r=3.079 s=7] done=923 failed=0 req/s=2.94920647834151 p95 TTFT=3.5862362304702393 median TPOT=91.4181925715846 ms in tok/s=28627
+[vllmbench r=3.079 s=8] done=923 failed=0 req/s=2.9822236166833145 p95 TTFT=7.699507902842014 median TPOT=101.19277565423056 ms in tok/s=28536
+[vllmbench r=4.105 s=7] done=1231 failed=0 req/s=3.0418876525459537 p95 TTFT=92.06960015301593 median TPOT=106.11294603805585 ms in tok/s=29234
+[vllmbench r=4.105 s=8] done=1231 failed=0 req/s=3.0891704000528084 p95 TTFT=83.73526950809173 median TPOT=107.83182712773291 ms in tok/s=29299
+[protocol] max_rate_at_slo=2.053 req/s (break-even 2.0526); prefill=44849.81943074751 tok/s -> /root/or/out/protocol_b300_A_random/protocol_summary.json

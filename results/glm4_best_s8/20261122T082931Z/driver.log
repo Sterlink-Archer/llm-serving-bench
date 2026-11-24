@@ -1,0 +1,16 @@
+2026-11-22T08:29:31Z [glm4_best_s8] creating spot sandbox (MI355X x1, $4.7727/h, ttl 120 min, budget $10.0; project so far ~$143.11)
+2026-11-22T08:30:01Z [glm4_best_s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:31:56Z [glm4_best_s8] download glm_best: rc=0 113s 185.1 GB via ['huggingface_hub']
+2026-11-22T08:37:48Z [glm4_best_s8] server glm_best ready=True after 351.2s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 278357 MB
+        FREE_VRAM: 16235 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 278357 MB
+        FREE_VISIBLE_VRAM: 16235 MB; attn {'sliding': 'ROCM_AITER_MLA_SPARSE', 'global_512': 'ROCM_AITER_MLA_SPARSE'} kv_tokens 2330624 graphs 61
+2026-11-22T08:37:50Z [glm4_best_s8] inspect_glm_best rc=0 2s ::         TARGET_GRAPHICS_VERSION: gfx950
+2026-11-22T08:38:13Z [glm4_best_s8] gate_glm_best_gsm8kor250 rc=0 23s :: [gate_glm_best_gsm8kor250] gsm8kor: 0.984 (246/250, noans 0, err 0, trunc 0) wall=15s
+2026-11-22T08:56:42Z [glm4_best_s8] protocol_glm_best rc=0 1108s :: [protocol] max_rate_at_slo=1.5 req/s (break-even 2.6734); prefill=23664.778411691183 tok/s -> /root/or/out/protocol_glm_best/protocol_summary.json
+2026-11-22T09:09:12Z [glm4_best_s8] protocol_glm_best_text rc=0 750s :: [protocol] max_rate_at_slo=1.75 req/s (break-even 2.6734); prefill=None tok/s -> /root/or/out/protocol_glm_best_text/protocol_summary.json
+2026-11-22T09:10:44Z [glm4_best_s8] done: elapsed 41.2 min, est $3.28; project est $158.29

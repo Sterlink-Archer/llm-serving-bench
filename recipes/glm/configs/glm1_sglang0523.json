@@ -1,0 +1,88 @@
+{
+ "label": "glm1_sglang0523",
+ "stage": "glm-screen",
+ "note": "GLM-5.3-Flash feasibility + first ladder on ONE MI355X (TP1), spec decoding OFF. amd/GLM-5.3-Flash-Quark-MXFP4 @ b5688f25 (MoE MXFP4, 185 GB). Bar: OpenRelay glm-5.3-flash sync $0.000496/request -> break-even ~2.7 req/s at this box's $4.79/h. GSM8K test[:100] (their prompt, greedy, reasoning_effort low, 8K tokens), their client (random tokens) prefill probe + seed 8 at 1.0/1.5/2.0/2.7 (early stop). allow_rejected: the startup-facts gate is Gemma-specific (512-dim layers); backends are read from the log by hand. Engine: SGLang 0.5.23 ROCm 10 gfx950 image by digest (rocm720 exceeds Daytona's 20 GB snapshot limit) (glm5_next.py, gfx950 KDA kernels, DSA kpool indexer present), AMD's validated flags at TP1.",
+ "price_model": "openrelay/glm-5.3-flash",
+ "snapshot": {
+  "name": "or-sglang0523rocm10-mi355x-c8m48d300",
+  "image": "lmsysorg/sglang:v0.5.23-rocm10-mi35x",
+  "image_digest_amd64": "sha256:cff45eca86da10fbe140f85df196ef241e932bbae8036afa45942e633c3ed6c5",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 300
+ },
+ "max_minutes": 110,
+ "budget_usd": 9.5,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh (GLM): engine/library versions and GLM-5.3-Flash support markers, before any engine starts (setup_cmd).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.metadata as md, importlib.util, os\nfor p in (\"vllm\", \"sglang\", \"torch\", \"triton\", \"amd-aiter\", \"transformers\", \"tilelang\"):\n    try: print(f\"version {p}: {md.version(p)}\")\n    except Exception as e: print(f\"version {p}: - ({e.__class__.__name__})\")\nfor mod, rel in ((\"vllm\", \"model_executor/models/glm5next.py\"), (\"vllm\", \"models/glm5next.py\"), (\"sglang\", \"srt/models/glm5_next.py\")):\n    s = importlib.util.find_spec(mod)\n    if s:\n        f = os.path.join(os.path.dirname(s.origin), rel)\n        print(f\"{mod}:{rel} exists={os.path.exists(f)}\")\nPY\namd-smi static --asic 2>/dev/null | grep -E \"MARKET_NAME|TARGET_GRAPHICS\" | head -3\n} > \"$OUT\" 2>&1\ntail -n 20 \"$OUT\"\nMXEOF_INSPECT_SH\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "glm_sgl",
+   "weights": [
+    {
+     "repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+     "rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "dir": "/root/models/glm"
+    }
+   ],
+   "served_name": "glm",
+   "env": {
+    "SGLANG_USE_AITER": "1"
+   },
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --tp-size 1 --attention-backend dsa --dsa-prefill-backend tilelang --dsa-decode-backend tilelang --linear-attn-backend triton --kv-cache-dtype bfloat16 --moe-runner-backend aiter --disable-shared-experts-fusion --disable-radix-cache --context-length 32768 --max-running-requests 64 --chunked-prefill-size 8192 --cuda-graph-backend-decode full --cuda-graph-max-bs-decode 64 --mem-fraction-static 0.85 --model-loader-extra-config '{\"enable_multithread_load\":true,\"num_threads\":8}' --watchdog-timeout 1200 --trust-remote-code --reasoning-parser glm45 --enable-metrics",
+   "ready_timeout_s": 3600,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_glm_sgl",
+     "cmd": "tail -n 12 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_glm_sgl_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 8192,
+     "chat_template_kwargs": {
+      "reasoning_effort": "low"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 1200
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_glm_sgl",
+     "client": "vllmbench",
+     "rates": [
+      1.0,
+      1.5,
+      2.0,
+      2.7
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "vllm_bin": "/root/vb/bin/vllm"
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "claim_group": "glm_sgl_specoff",
+   "origin": "ours",
+   "fallbacks": [
+    "--disable-cuda-graph"
+   ]
+  }
+ ]
+}

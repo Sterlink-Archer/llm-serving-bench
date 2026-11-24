@@ -1,0 +1,10 @@
+{
+ "name": "spec",
+ "note": "Speculative decoding: natural-length chat (EOS honoured, so draft acceptance is realistic) across concurrency, plus the fixed 1k/1k curve for throughput comparison (acceptance there is less representative once a reply passes its natural end).",
+ "defaults": {"duration": 60, "warmup": 10},
+ "slo": {"ttft_p95_s": 2.0, "ttft_p95_s_long": 6.0, "long_input_tokens": 4000, "tpot_p50_ms": 50},
+ "series": [
+  {"id": "chat_natural", "workload": "chat_natural", "params": {"max_tokens": 1024}, "sweep": {"concurrency": [1, 8, 32, 64]}},
+  {"id": "s1k_1k", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 1024}, "sweep": {"concurrency": [1, 32, 128]}}
+ ]
+}

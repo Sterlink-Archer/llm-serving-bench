@@ -1,0 +1,96 @@
+{"start": 0}
+{"done": 0, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3998539536260068, "cfg_ms": 1.400136505253613, "speedup": 0.9997981970853942, "err": 0.0}
+{"start": 1}
+{"done": 1, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4190034475177526, "cfg_ms": 1.4178814482875168, "speedup": 1.0007913209045727, "err": 0.0}
+{"start": 2}
+{"done": 2, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4167019515298307, "cfg_ms": 1.415876392275095, "speedup": 1.000583072971087, "err": 0.0}
+{"start": 3}
+{"done": 3, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.414347905665636, "cfg_ms": 1.4156503952108324, "speedup": 0.9990799355903105, "err": 0.0}
+{"start": 4}
+{"done": 4, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.402324449736625, "cfg_ms": 1.402402005624026, "speedup": 0.9999446978205322, "err": 0.0}
+{"start": 5}
+{"done": 5, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.398294500540942, "cfg_ms": 1.3986840494908392, "speedup": 0.9997214889595408, "err": 0.0}
+{"start": 6}
+{"done": 6, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3974566012620926, "cfg_ms": 1.3983700424432755, "speedup": 0.9993467815002767, "err": 0.0}
+{"start": 7}
+{"done": 7, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3995224959217012, "cfg_ms": 1.3996570487506688, "speedup": 0.9999038672872846, "err": 0.0}
+{"start": 8}
+{"done": 8, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3981001102365553, "cfg_ms": 1.397974044084549, "speedup": 1.0000901777486784, "err": 0.0}
+{"start": 9}
+{"done": 9, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3985205558128655, "cfg_ms": 1.3983500422909856, "speedup": 1.0001219390830072, "err": 0.0}
+{"start": 10}
+{"done": 10, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3997604954056442, "cfg_ms": 1.4002915006130934, "speedup": 0.9996207895233123, "err": 0.0}
+{"start": 11}
+{"done": 11, "cfg": {"kv_split": {"NUM_SEGMENTS": 4, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3983255485072732, "cfg_ms": 1.3972330489195883, "speedup": 1.0007819021948627, "err": 0.0}
+{"start": 12}
+{"done": 12, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3984900549985468, "cfg_ms": 1.3998889946378767, "speedup": 0.9990006781647056, "err": 0.0}
+{"start": 13}
+{"done": 13, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3997244997881353, "cfg_ms": 1.3994010048918426, "speedup": 1.0002311666885773, "err": 0.0}
+{"start": 14}
+{"done": 14, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3982274918816984, "cfg_ms": 1.3983300421386957, "speedup": 0.999926662337283, "err": 0.0}
+{"start": 15}
+{"done": 15, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4022990013472736, "cfg_ms": 1.4022595481947064, "speedup": 1.0000281354137457, "err": 0.0}
+{"start": 16}
+{"done": 16, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.401440054178238, "cfg_ms": 1.4017914538271725, "speedup": 0.999749321022057, "err": 0.0}
+{"start": 17}
+{"done": 17, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3992449501529336, "cfg_ms": 1.3987039914354682, "speedup": 1.0003867571128544, "err": 0.0}
+{"start": 18}
+{"done": 18, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3985430472530425, "cfg_ms": 1.3984725112095475, "speedup": 1.0000504379191792, "err": 0.0}
+{"start": 19}
+{"done": 19, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4019740046933293, "cfg_ms": 1.4023960568010807, "speedup": 0.9996990492766258, "err": 0.0}
+{"start": 20}
+{"done": 20, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3975165435113013, "cfg_ms": 1.3968540471978486, "speedup": 1.0004742774055613, "err": 0.0}
+{"start": 21}
+{"done": 21, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4020075555890799, "cfg_ms": 1.4020489528775215, "speedup": 0.9999704737210804, "err": 0.0}
+{"start": 22}
+{"done": 22, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3988605001941323, "cfg_ms": 1.3987815473228693, "speedup": 1.000056444032604, "err": 0.0}
+{"start": 23}
+{"done": 23, "cfg": {"kv_split": {"NUM_SEGMENTS": 8, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4000335591845214, "cfg_ms": 1.4003055519424379, "speedup": 0.9998057618513766, "err": 0.0}
+{"start": 24}
+{"done": 24, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4003310003317893, "cfg_ms": 1.4000665047205985, "speedup": 1.0001889164623958, "err": 0.0}
+{"start": 25}
+{"done": 25, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4000250026583672, "cfg_ms": 1.3994144508615136, "speedup": 1.0004362909047264, "err": 0.0}
+{"start": 26}
+{"done": 26, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3998540001921356, "cfg_ms": 1.399268046952784, "speedup": 1.0004187569641338, "err": 0.0}
+{"start": 27}
+{"done": 27, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.398296549450606, "cfg_ms": 1.397739048115909, "speedup": 1.0003988593832651, "err": 0.0}
+{"start": 28}
+{"done": 28, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4009844977408648, "cfg_ms": 1.4008344965986907, "speedup": 1.0001070798460048, "err": 0.0}
+{"start": 29}
+{"done": 29, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3980480609461665, "cfg_ms": 1.398245559539646, "speedup": 0.9998587525687945, "err": 0.0}
+{"start": 30}
+{"done": 30, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4015390072017908, "cfg_ms": 1.4020654489286244, "speedup": 0.9996245241424101, "err": 0.0}
+{"start": 31}
+{"done": 31, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4019445050507784, "cfg_ms": 1.4021949958987534, "speedup": 0.9998213580502657, "err": 0.0}
+{"start": 32}
+{"done": 32, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3991395593620837, "cfg_ms": 1.3994144974276423, "speedup": 0.999803533502001, "err": 0.0}
+{"start": 33}
+{"done": 33, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3992830528877676, "cfg_ms": 1.3992125052027404, "speedup": 1.0000504195644084, "err": 0.0}
+{"start": 34}
+{"done": 34, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3990660547278821, "cfg_ms": 1.3980630552396178, "speedup": 1.00071742078049, "err": 0.0}
+{"start": 35}
+{"done": 35, "cfg": {"kv_split": {"NUM_SEGMENTS": 16, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3987394981086254, "cfg_ms": 1.398749544750899, "speedup": 0.9999928174115864, "err": 0.0}
+{"start": 36}
+{"done": 36, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3979980605654418, "cfg_ms": 1.3984105084091425, "speedup": 0.9997050595363661, "err": 0.0}
+{"start": 37}
+{"done": 37, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3996039517223835, "cfg_ms": 1.4006965444423258, "speedup": 0.9992199647209258, "err": 0.0}
+{"start": 38}
+{"done": 38, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4033425017260015, "cfg_ms": 1.4031174941919744, "speedup": 1.000160362574737, "err": 0.0}
+{"start": 39}
+{"done": 39, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 32}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3995770015753806, "cfg_ms": 1.3996124966070056, "speedup": 0.9999746393864651, "err": 0.0}
+{"start": 40}
+{"done": 40, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3977335533127189, "cfg_ms": 1.397717499639839, "speedup": 1.0000114856348898, "err": 0.0}
+{"start": 41}
+{"done": 41, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4030689490027726, "cfg_ms": 1.4025370590388775, "speedup": 1.0003792341603148, "err": 0.0}
+{"start": 42}
+{"done": 42, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.4015624998137355, "cfg_ms": 1.4013545005582273, "speedup": 1.000148427293326, "err": 0.0}
+{"start": 43}
+{"done": 43, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 64}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4027449418790638, "cfg_ms": 1.4016785542480648, "speedup": 1.0007607932844282, "err": 0.0}
+{"start": 44}
+{"done": 44, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3996369438245893, "cfg_ms": 1.3990389998070896, "speedup": 1.0004273962466965, "err": 0.0}
+{"start": 45}
+{"done": 45, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 2, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.4033269602805376, "cfg_ms": 1.4025560463778675, "speedup": 1.0005496492668946, "err": 0.0}
+{"start": 46}
+{"done": 46, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 1}}, "default_ms": 1.3996725552715361, "cfg_ms": 1.39992400072515, "speedup": 0.9998203863541995, "err": 0.0}
+{"start": 47}
+{"done": 47, "cfg": {"kv_split": {"NUM_SEGMENTS": 32, "TILE_SIZE": 128}, "attn_3d": {"num_warps": 4, "num_stages": 1, "waves_per_eu": 2}}, "default_ms": 1.3994450448080897, "cfg_ms": 1.400504948105663, "speedup": 0.9992431991768348, "err": 0.0}

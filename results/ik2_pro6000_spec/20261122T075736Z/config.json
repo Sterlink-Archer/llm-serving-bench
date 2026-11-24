@@ -1,0 +1,150 @@
+{
+ "label": "ik2_pro6000_spec",
+ "stage": "ik-promote",
+ "claim_group": "ik2_pro6000_spec",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.9704,
+ "note": "Wave 2 (PRO 6000, SGLang inkling-2-mini image): paired same-box servers, control first; column B (real text, the claim) only, 180 s rungs at 1.0/1.5/2.0/2.5x break-even vs the PrimeIntellect bar, seed 7, real-text 16x10K prefill shot; GSM8K test[:100] gate at reasoning effort 'high' (0.9) on every server. Control swa15; variants: DSpark speculation (the bundled 3-layer draft head, 8 draft tokens, SGLang's RTX DSpark envs) with --max-running-requests 128 (the RTX recipe caps it at 4).",
+ "snapshot": {
+  "name": "or-sglang-ik2m-pro6000-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 100,
+ "budget_usd": 7.0,
+ "servers": [
+  {
+   "name": "swa15",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_swa15_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_swa15_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.9704,
+     "rates": [
+      0.97,
+      1.456,
+      1.941,
+      2.426
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "swa15_dspark",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15 --speculative-algorithm DSPARK --speculative-num-draft-tokens 8 --max-running-requests 128",
+   "env": {
+    "SGLANG_OPT_INKLING2_VERIFY_REL_BIAS_KERNEL": "1",
+    "SGLANG_OPT_DSV41_DSPARK_MID_FOLD": "1",
+    "SGLANG_OPT_DSV41_DSPARK_PREPARE_INPUTS_ONCE": "1",
+    "SGLANG_OPT_DSV41_DSPARK_SKIP_PREFILLED_INPUTS": "1"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_swa15_dspark_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_swa15_dspark_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.9704,
+     "rates": [
+      0.97,
+      1.456,
+      1.941,
+      2.426
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "fallbacks": [
+    {
+     "flags": "--max-running-requests 32",
+     "why": "DSpark refused 128 running requests"
+    }
+   ]
+  }
+ ]
+}

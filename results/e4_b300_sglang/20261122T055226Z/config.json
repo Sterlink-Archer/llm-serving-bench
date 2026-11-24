@@ -1,0 +1,106 @@
+{
+ "label": "e4_b300_sglang",
+ "stage": "engine comparison (Maks: 'perhaps try sglang instead of vllm?')",
+ "claim_group": "e4_b300_sglang",
+ "note": "SGLang v0.5.23 on the B300 (SM103), speculation off, against vLLM 0.34 (s1_b300_nvfp4_mtp2_r4 / d2_b300_prefill_diag: FlashInfer native FA2-class prefill = 63% of prefill time, 24.3K tok/s, SLO miss at break-even). Which attention kernel does SGLang give the 512-dim layers on SM103? SGLang v0.5.23 accepts only trtllm_mha / triton / fa4 / aiter for Gemma 4 and defaults to trtllm_mha on SM100 (model_overrides/gemma4.py), so: trtllm_mha first (does SGLang's FlashInfer build have the head_dim-512 TRTLLM-GEN context kernel vLLM 0.34 lacked?), then fa4, then triton (labelled). New snapshot with a smaller host (8 vCPU / 64 GiB) than the t3990 vLLM one (16 / 128), so $/h and break-even differ from r4. Gate, profile, prefill probe, 1.0x/1.5x break-even in both columns, 300 s, seed 7. CHECKPOINT: NVIDIA's ModelOpt NVFP4 (nvidia/Gemma-4-31B-IT-NVFP4), not RedHat's compressed-tensors NVFP4: on the PRO 6000, SGLang's compressed-tensors W4A4 NVFP4 scheme crashed in FlashInfer mm_fp4 ('accepts 2d tensors, got [1, 2520, 576]', the vision tower path at warm-up). Same FP4 format, different producer; noted wherever B300 vLLM vs SGLang is compared.",
+ "snapshot": {
+  "name": "or-sglang0523-b300-c8m64d300",
+  "image": "lmsysorg/sglang:v0.5.23",
+  "image_digest_amd64": "sha256:f7876bef696ccf9cf75a2bf7ccb82970f5fac577f082fb8ca95c9a59d2160eb5",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 64,
+  "disk": 300
+ },
+ "max_minutes": 90,
+ "budget_usd": 12.0,
+ "servers": [
+  {
+   "name": "sgl_nvfp4_nv",
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "dir": "/root/models/nvfp4_modelopt"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --quantization modelopt_fp4 --attention-backend trtllm_mha",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend fa4",
+     "why": "SGLang accepts fa4 for Gemma 4; FA4 on SM100 may not cover head_dim 512 (vLLM's copy refuses it)"
+    },
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true,
+     "why": "labelled last resort: SGLang's Triton attention"
+    }
+   ],
+   "steps": [
+    {
+     "type": "sh",
+     "name": "setup_vllm_client",
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_b300_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_b300_B_text",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "multiples": [
+      1.0,
+      1.5
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  }
+ ]
+}

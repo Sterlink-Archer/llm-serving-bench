@@ -1,0 +1,3 @@
+2026-11-22T05:41:36Z [e4_b300_sglang] waiting for pulling snapshot or-sglang0523-b300-c8m64d300 from lmsysorg/sglang:v0.5.23
+2026-11-22T05:47:39Z [e4_b300_sglang] ERROR RuntimeError('no spot B300 x1 free right now')
+2026-11-22T05:47:44Z [e4_b300_sglang] done: elapsed 0.0 min, est $0.00; project est $47.63

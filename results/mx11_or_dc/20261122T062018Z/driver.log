@@ -1,0 +1,15 @@
+2026-11-22T06:20:18Z [mx11_or_dc] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$76.86)
+2026-11-22T06:20:36Z [mx11_or_dc] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T06:21:00Z [mx11_or_dc] download or_dc: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T06:23:48Z [mx11_or_dc] server or_dc ready=True after 168.1s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268500 MB
+        FREE_VRAM: 26092 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268500 MB
+        FREE_VISIBLE_VRAM: 26092 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T06:23:51Z [mx11_or_dc] inspect_or_dc rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T06:24:04Z [mx11_or_dc] gate_or_dc_gsm8kor100 rc=0 13s :: [gate_or_dc_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T06:42:33Z [mx11_or_dc] protocol_or_dc rc=0 1109s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=44462.84459576622 tok/s -> /root/or/out/protocol_or_dc/protocol_summary.json
+2026-11-22T06:42:58Z [mx11_or_dc] done: elapsed 22.7 min, est $1.80; project est $90.63

@@ -1,0 +1,172 @@
+{
+ "schema": "box_counts/1",
+ "note": "counts, not claims",
+ "counts": {
+  "final recipe (ours + MX_PS_FP4)|A": {
+   "family": "final recipe (ours + MX_PS_FP4)",
+   "column": "A",
+   "groups": [
+    "mx_stack_C2",
+    "mx_stack_C2b"
+   ],
+   "boxes": 6,
+   "rates": {
+    "3.0": {
+     "held": 2,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 6,
+     "ran": 6
+    },
+    "3.5": {
+     "held": 6,
+     "ran": 6
+    },
+    "3.75": {
+     "held": 2,
+     "ran": 6
+    }
+   }
+  },
+  "final recipe (ours + MX_PS_FP4)|B": {
+   "family": "final recipe (ours + MX_PS_FP4)",
+   "column": "B",
+   "groups": [
+    "mx_stack_C2",
+    "mx_stack_C2b"
+   ],
+   "boxes": 4,
+   "rates": {
+    "3.0": {
+     "held": 2,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 1,
+     "ran": 2
+    },
+    "3.5": {
+     "held": 1,
+     "ran": 4
+    },
+    "3.75": {
+     "held": 0,
+     "ran": 1
+    }
+   }
+  },
+  "ours-today|A": {
+   "family": "ours-today",
+   "column": "A",
+   "groups": [
+    "mx_recipe_C1",
+    "mx_recipe_C2",
+    "mx_recipe_C2b"
+   ],
+   "boxes": 10,
+   "rates": {
+    "3.0": {
+     "held": 2,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 10,
+     "ran": 10
+    },
+    "3.5": {
+     "held": 8,
+     "ran": 10
+    },
+    "3.75": {
+     "held": 1,
+     "ran": 8
+    }
+   }
+  },
+  "ours-today|B": {
+   "family": "ours-today",
+   "column": "B",
+   "groups": [
+    "mx_recipe_C1",
+    "mx_recipe_C2",
+    "mx_recipe_C2b"
+   ],
+   "boxes": 7,
+   "rates": {
+    "3.0": {
+     "held": 2,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 5,
+     "ran": 7
+    },
+    "3.5": {
+     "held": 1,
+     "ran": 7
+    },
+    "3.75": {
+     "held": 0,
+     "ran": 0
+    }
+   }
+  },
+  "theirs (OpenRelay's recipe)|A": {
+   "family": "theirs (OpenRelay's recipe)",
+   "column": "A",
+   "groups": [
+    "or_recipe_paired_C1",
+    "or_recipe_paired_C2",
+    "or_recipe_paired_C2b"
+   ],
+   "boxes": 10,
+   "rates": {
+    "3.0": {
+     "held": 2,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 7,
+     "ran": 10
+    },
+    "3.5": {
+     "held": 0,
+     "ran": 10
+    },
+    "3.75": {
+     "held": 0,
+     "ran": 0
+    }
+   }
+  },
+  "theirs (OpenRelay's recipe)|B": {
+   "family": "theirs (OpenRelay's recipe)",
+   "column": "B",
+   "groups": [
+    "or_recipe_paired_C1",
+    "or_recipe_paired_C2",
+    "or_recipe_paired_C2b"
+   ],
+   "boxes": 7,
+   "rates": {
+    "3.0": {
+     "held": 1,
+     "ran": 2
+    },
+    "3.25": {
+     "held": 1,
+     "ran": 7
+    },
+    "3.5": {
+     "held": 0,
+     "ran": 3
+    },
+    "3.75": {
+     "held": 0,
+     "ran": 0
+    }
+   }
+  }
+ }
+}

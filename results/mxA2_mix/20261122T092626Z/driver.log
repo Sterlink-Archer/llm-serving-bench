@@ -1,0 +1,13 @@
+2026-11-22T09:26:26Z [mxA2_mix] creating spot sandbox (MI355X x1, $4.7565/h, ttl 55 min, budget $4.5; project so far ~$173.04)
+2026-11-22T09:26:51Z [mxA2_mix] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:26:54Z [mxA2_mix] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T09:26:55Z [mxA2_mix] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T09:29:24Z [mxA2_mix] attn_lab2_mix rc=0 148s ::    aborted: {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}} (LLVM ERROR: Found 1 machine code errors.)
+2026-11-22T09:29:57Z [mxA2_mix] done: elapsed 3.5 min, est $0.28; project est $177.15

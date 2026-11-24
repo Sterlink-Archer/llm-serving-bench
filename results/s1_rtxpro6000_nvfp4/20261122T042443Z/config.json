@@ -1,0 +1,74 @@
+{
+ "label": "s1_rtxpro6000_nvfp4",
+ "stage": "1-screen",
+ "note": "Stage-1 screen (PLAN.md \u00a74): RTX PRO 6000 Blackwell, RedHat NVFP4 (FP4 tensor cores), FP8 KV, text-only, max-len 32768 (OpenRelay's; inputs reach 17.1K), MTP off. Gate: OpenRelay GSM8K prompt/scoring, first 100 problems >= 96.5%. OpenRelay's client (vllm bench serve, random tokens, 9.5K/380 uniform +-80%) at 1.0/1.5/2.0x break-even, seed 7, 120 s; prefill 16x10K; our text client at 1.0x as cross-check.",
+ "snapshot": {
+  "name": "or-vllm0330-rtx-pro-6000-c8m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 60,
+ "budget_usd": 4.0,
+ "servers": [
+  {
+   "name": "nvfp4",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ]
+}

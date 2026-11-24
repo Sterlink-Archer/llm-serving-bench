@@ -1,0 +1,122 @@
+{
+ "label": "glm1_sglang0523",
+ "run_id": "glm1_sglang0523/20261122T074555Z",
+ "config_file": "recipes/glm/configs/glm1_sglang0523.json",
+ "t_start": "2026-11-22T07:45:55Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0319,
+  "total": 4.7727
+ },
+ "phases": {
+  "snapshot_build_s": 15.5,
+  "create_s": 1.4
+ },
+ "servers": {
+  "glm_sgl": {
+   "weights": [
+    {
+     "repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+     "rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "resolved_sha": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "files": 70,
+     "bytes": 185107691184
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 103.2,
+    "tail": "/it]\rFetching 70 files:  89%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 62/70 [01:22<00:08,  1.07s/it]\rFetching 70 files:  90%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 | 63/70 [01:22<00:05,  1.27it/s]\rFetching 70 files:  91%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 64/70 [01:22<00:03,  1.52it/s]\rFetching 70 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 65/70 [01:24<00:04,  1.19it/s]\rFetching 70 files:  94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 66/70 [01:31<00:10,  2.64s/it]\rFetching 70 files:  96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 67/70 [01:31<00:05,  1.99s/it]\rFetching 70 files:  97%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b| 68/70 [01:33<00:03,  1.97s/it]\rFetching 70 files:  99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a| 69/70 [01:36<00:02,  2.28s/it]\rFetching 70 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [01:36<00:00,  1.64s/it]\rFetching 70 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [01:36<00:00,  1.38s/it]\nDL repo=amd/GLM-5.3-Flash-Quark-MXFP4 rev=b5688f2549 files=70 bytes=185107721048 secs=97.0 GBps=1.909 method=huggingface_hub\n",
+    "bytes": 185107721048,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 413.8,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --tp-size 1 --attention-backend dsa --dsa-prefill-backend tilelang --dsa-decode-backend tilelang --linear-attn-backend triton --kv-cache-dtype bfloat16 --moe-runner-backend aiter --disable-shared-experts-fusion --disable-radix-cache --context-length 32768 --max-running-requests 64 --chunked-prefill-size 8192 --cuda-graph-backend-decode full --cuda-graph-max-bs-decode 64 --mem-fraction-static 0.85 --model-loader-extra-config '{\"enable_multithread_load\":true,\"num_threads\":8}' --watchdog-timeout 1200 --trust-remote-code --reasoning-parser glm45 --enable-metrics",
+    "env": {
+     "SGLANG_USE_AITER": "1"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 252728 MB\n        FREE_VRAM: 41864 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 252728 MB\n        FREE_VISIBLE_VRAM: 41864 MB",
+    "smoke": "\"content\":\"\",\"reasoning_content\":\"The user said \\\"Say hi.\\\" This\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":15,\"total_tokens\":23,\"completion_tokens\":8,\"prompt_tokens_details\":null,\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "dsa",
+     "global_512": "dsa"
+    },
+    "kv_cache_tokens": 6273536,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --tp-size 1 --attention-backend dsa --dsa-prefill-backend tilelang --dsa-decode-backend tilelang --linear-attn-backend triton --kv-cache-dtype bfloat16 --moe-runner-backend aiter --disable-shared-experts-fusion --disable-radix-cache --context-length 32768 --max-running-requests 64 --chunked-prefill-size 8192 --cuda-graph-backend-decode full --cuda-graph-max-bs-decode 64 --mem-fraction-static 0.85 --model-loader-extra-config '{\"enable_multithread_load\":true,\"num_threads\":8}' --watchdog-timeout 1200 --trust-remote-code --reasoning-parser glm45 --enable-metrics",
+     "env": {
+      "SGLANG_USE_AITER": "1"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "inspect_glm_sgl": {
+     "rc": 0,
+     "secs": 1.5,
+     "cmd": "tail -n 12 out/inspect.txt",
+     "tail": "TypeError: expected str, bytes or os.PathLike object, not NoneType\n        MARKET_NAME: AMD Instinct MI355X VF\n        TARGET_GRAPHICS_VERSION: gfx950\n"
+    },
+    "gate_glm_sgl_gsm8kor100": {
+     "rc": 0,
+     "secs": 32.6,
+     "cmd": "python3 bench/evalrun.py --model glm --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"low\"}' --max-tokens 8192 --label gate_glm_sgl_gsm8kor100 --out /root/or/out/gate_glm_sgl_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_glm_sgl_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=30s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.98,
+      "n": 100,
+      "passed": 98,
+      "pass": true
+     }
+    },
+    "protocol_glm_sgl": {
+     "rc": 0,
+     "secs": 1223.0,
+     "cmd": "python3 bench/protocol.py --model glm --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_glm_sgl --breakeven-rps 1.7019 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/glm --rates 1.0,1.5,2.0,2.7 --seeds 8 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id glm1_sglang0523/20261122T074555Z --config-id glm1_sglang0523:glm_sgl --prefill-shot --max-minutes 97.8",
+     "tail": "[vllmbench r=1.5 s=8] done=450 failed=0 req/s=1.4004807835848545 p95 TTFT=7.3323117555351915 median TPOT=104.23369890558921 ms in tok/s=13485\n[vllmbench r=2.0 s=8] done=600 failed=0 req/s=1.4814053116515673 p95 TTFT=89.50056918225017 median TPOT=110.42206289216902 ms in tok/s=14162\n[protocol] max_rate_at_slo=1.0 req/s (break-even 1.7019); prefill=21272.898088586477 tok/s -> /root/or/out/protocol_glm_sgl/protocol_summary.json\n",
+     "breakeven_rps": 1.7018613607188704
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 113.26,
+  "this_run_ceiling_usd": 9.15,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 233,
+ "sandbox_id": "f6dc5c96-942d-4c5d-82a4-b7ee7dc2983f",
+ "elapsed_s": 1839.3,
+ "est_cost_usd": 2.438,
+ "t_saved": "2026-11-22T08:16:50Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x95395AE06F9EA3EC\n        OAM_ID: 7\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015         474        1019           9         547        1541\noverlay         300G  9.9M  300G   1% /\nPython 3.12.3\n/usr/bin/curl\nsglang 0.5.23\ntorch 2.11.0+rocm10.0.0 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "== date 2026-11-22T07:46:35Z\nversion vllm: - (PackageNotFoundError)\nversion sglang: 0.5.23\nversion torch: 2.11.0+rocm10.0.0\nversion triton: 3.8.0+git4cff872c.rocm10.0.0\nversion amd-aiter: 0.1.26.dev144+g285579b62.d20261030\nversion transformers: 5.19.0\nversion tilelang: 0.1.7.post3+cuda.gita55a8230\nTraceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"<frozen posixpath>\", line 181, in dirname\nTypeError: expected str, bytes or os.PathLike object, not NoneType\n        MARKET_NAME: AMD Instinct MI355X VF\n        TARGET_GRAPHICS_VERSION: gfx950\n"
+ },
+ "deleted": "2026-11-22T08:16:28Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 138.22,
+  "metered_usd": 112.0097
+ }
+}

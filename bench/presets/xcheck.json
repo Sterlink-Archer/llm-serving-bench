@@ -1,0 +1,7 @@
+{
+ "name": "xcheck",
+ "note": "One cell with the same shape as the vllm bench serve cross-check (random 1024 in / 256 out, 32 in flight), to validate traffic.py against vLLM's own client.",
+ "defaults": {"duration": 60, "warmup": 10},
+ "slo": {"ttft_p95_s": 2.0, "tpot_p50_ms": 50},
+ "series": [{"id": "s1k_256_c32", "workload": "synthetic", "params": {"input_tokens": 1024, "output_tokens": 256}, "concurrency": 32}]
+}

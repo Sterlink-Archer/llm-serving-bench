@@ -1,0 +1,6 @@
+2026-11-22T04:24:43Z [s1_rtxpro6000_nvfp4] building snapshot or-vllm0330-rtx-pro-6000-c8m32d80 from vllm/vllm-openai:v0.33.0
+2026-11-22T04:29:31Z [s1_rtxpro6000_nvfp4] creating spot sandbox (RTX-PRO-6000 x1, $2.8797/h, ttl 60 min, budget $4.0; project so far ~$2.29)
+2026-11-22T04:30:02Z [s1_rtxpro6000_nvfp4] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          16          70           0          62         125 | overlay         713G  297G  387G  44% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:31:57Z [s1_rtxpro6000_nvfp4] download nvfp4: rc=0 114s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:34:31Z [s1_rtxpro6000_nvfp4] server nvfp4 ready=True after 153.0s; gpu mem 88709 MiB, 97887 MiB; attn {'sliding': 'TRITON_ATTN', 'global_512': 'TRITON_ATTN'} kv_tokens 269346 graphs 51 REJECTED: TRITON_ATTN on global 512-dim layers
+2026-11-22T04:34:52Z [s1_rtxpro6000_nvfp4] done: elapsed 5.4 min, est $0.26; project est $3.64

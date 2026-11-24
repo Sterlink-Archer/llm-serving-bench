@@ -1,0 +1,19 @@
+2026-11-22T07:27:20Z [mxH4_s8] building or-openrelayrecipe-mi355x-c4m24d150 from public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355
+2026-11-22T07:27:36Z [mxH4_s8] creating spot sandbox (MI355X x1, $4.1661/h, ttl 60 min, budget $4.5; project so far ~$101.17)
+2026-11-22T07:27:56Z [mxH4_s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:28:19Z [mxH4_s8] download mx_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T07:31:16Z [mxH4_s8] server mx_recipe ready=True after 176.4s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T07:31:20Z [mxH4_s8] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T07:31:32Z [mxH4_s8] gate_mx_recipe_gsm8kor100 rc=0 13s :: [gate_mx_recipe_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T07:50:01Z [mxH4_s8] protocol_mx_recipe rc=0 1109s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=43329.788294769605 tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T07:55:14Z [mxH4_s8] protocol_mx_recipe_text rc=0 313s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_text/protocol_summary.json
+2026-11-22T07:55:16Z [mxH4_s8] cpumon rc=0 2s :: 25  0      0 1020221440  96860 807898368    0    0     0  2616 67484 46381 12  1 87  0  0
+2026-11-22T07:55:45Z [mxH4_s8] MILESTONE project spend crossed $100 (est $122.39, metered 101.317)
+2026-11-22T07:55:45Z [mxH4_s8] done: elapsed 28.1 min, est $1.95; project est $122.39

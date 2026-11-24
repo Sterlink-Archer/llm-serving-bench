@@ -1,0 +1,9 @@
+2026-11-22T09:25:32Z [ikC_pro6000_mixed_dspark_s8] creating spot sandbox (RTX-PRO-6000 x1, $2.5561/h, ttl 140 min, budget $8.0; project so far ~$172.01)
+2026-11-22T09:26:27Z [ikC_pro6000_mixed_dspark_s8] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 240 | Mem:             708          46         271           0         383         662 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T09:27:49Z [ikC_pro6000_mixed_dspark_s8] download mixed_dspark: rc=0 78s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:31:51Z [ikC_pro6000_mixed_dspark_s8] server mixed_dspark ready=True after 240.4s; gpu mem 85903 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1003136 graphs 35
+2026-11-22T09:33:15Z [ikC_pro6000_mixed_dspark_s8] setup_vllm_client rc=0 82s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 46 s: 0.33.0
+2026-11-22T09:37:58Z [ikC_pro6000_mixed_dspark_s8] eval_claim rc=0 283s :: [eval_claim] gsm8kor: 0.972 (243/250, noans 1, err 0, trunc 1) mmlupro: 0.775 (155/200, noans 26, err 0, trunc 26) wall=273s
+2026-11-22T10:02:48Z [ikC_pro6000_mixed_dspark_s8] protocol_mixed_dspark_B_text rc=0 1490s :: [protocol] max_rate_at_slo=1.289 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_mixed_dspark_B_text/protocol_summary.json
+2026-11-22T10:26:37Z [ikC_pro6000_mixed_dspark_s8] protocol_mixed_dspark_A_random rc=0 1429s :: [protocol] max_rate_at_slo=1.16 req/s (break-even 0.8591); prefill=20380.829226563317 tok/s -> /root/or/out/protocol_mixed_dspark_A_random/protocol_summary.json
+2026-11-22T10:27:21Z [ikC_pro6000_mixed_dspark_s8] done: elapsed 61.8 min, est $2.63; project est $235.32

@@ -1,0 +1,3 @@
+mx file: patch_draft_compact.py
+mx file: patch_draft_compact.status
+PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)

@@ -1,0 +1,10 @@
+2026-11-22T07:10:45Z [ik1_5090_sgl] building or-sglang-ik2m-5090-c8m32d150 from lmsysorg/sglang:inkling-2-mini
+2026-11-22T07:31:54Z [ik1_5090_sgl] creating spot sandbox (RTX-5090 x1, $1.6773/h, ttl 100 min, budget $9.0; project so far ~$103.00)
+2026-11-22T07:33:33Z [ik1_5090_sgl] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          23          32           0         204         229 | overlay         1.8T  599G  1.2T  35% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T07:34:44Z [ik1_5090_sgl] download sgl: rc=0 67s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:39:27Z [ik1_5090_sgl] server sgl ready=True after 281.9s; gpu mem 30894 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 118272 graphs 10
+2026-11-22T07:41:02Z [ik1_5090_sgl] setup_vllm_client rc=0 93s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 67 s: 0.33.0
+2026-11-22T07:42:14Z [ik1_5090_sgl] gate_sgl_gsm8kor100 rc=0 72s :: [gate_sgl_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=58s
+2026-11-22T07:49:05Z [ik1_5090_sgl] protocol_sgl_A_random rc=0 411s :: [protocol] max_rate_at_slo=0.564 req/s (break-even 0.5637); prefill=17264.29921402261 tok/s -> /root/or/out/protocol_sgl_A_random/protocol_summary.json
+2026-11-22T07:53:26Z [ik1_5090_sgl] protocol_sgl_B_text rc=0 261s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.5637); prefill=None tok/s -> /root/or/out/protocol_sgl_B_text/protocol_summary.json
+2026-11-22T07:54:13Z [ik1_5090_sgl] done: elapsed 22.3 min, est $0.62; project est $120.88

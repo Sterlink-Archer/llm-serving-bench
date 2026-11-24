@@ -1,0 +1,4 @@
+2026-11-22T15:33:43Z [up1_h100_draft_compact] building or-vllmnightly647a-h100-c8m48d150 from vllm/vllm-openai:nightly-647a76866b4559a74e27d1c6b55fbffe85c07ce4
+2026-11-22T15:34:08Z [up1_h100_draft_compact] signal 15: tearing down
+2026-11-22T15:34:27Z [up1_h100_draft_compact] done: elapsed 0.0 min, est $0.00; project est $314.49
+2026-11-22T15:34:46Z [up1_h100_draft_compact] done: elapsed 0.0 min, est $0.00; project est $314.49

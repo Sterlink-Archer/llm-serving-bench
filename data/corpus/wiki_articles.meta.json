@@ -1,0 +1,11 @@
+{
+ "source": "https://huggingface.co/datasets/wikimedia/wikipedia",
+ "config": "20231101.en",
+ "split": "train",
+ "total_rows": 6407814,
+ "rule": ">=12000 chars, random 100-row windows, seed 20261122",
+ "license": "CC BY-SA 4.0",
+ "fetched_at": "2026-11-22T03:18:03Z",
+ "n": 112,
+ "sha256": "d00fe66e2bcb392b9c75f086c6f839f59104d147fcf82b1d2b488c7ad12baf97"
+}

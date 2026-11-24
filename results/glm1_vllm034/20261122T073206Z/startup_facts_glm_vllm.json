@@ -1,0 +1,75 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "ROCM_AITER_MLA_SPARSE",
+  "global_512": "ROCM_AITER_MLA_SPARSE"
+ },
+ "attention_backend_lines": [
+  "(EngineCore pid=3714) INFO 11-22 07:35:31 [mm_encoder_attention.py:372] Using AttentionBackendEnum.ROCM_AITER_FA for MMEncoderAttention.",
+  "(EngineCore pid=3714) INFO 11-22 07:35:31 [rocm.py:828] Using ROCM_AITER_MLA_SPARSE backend (selected via --attention-backend)."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128
+ ],
+ "kv_cache_tokens": 4383201,
+ "kv_cache_gib": 114.03,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": 133.76,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "quark",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.34.0",
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "glm1_vllm034/20261122T073206Z",
+ "config_id": "glm1_vllm034:glm_vllm",
+ "image": "vllm/vllm-openai-rocm:v0.34.0",
+ "image_digest": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+ "model_repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+ "model_rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285472 MB\n        FREE_VRAM: 9120 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285472 MB\n        FREE_VISIBLE_VRAM: 9120 MB",
+ "source_log": "results/glm1_vllm034/20261122T073206Z/server_glm_vllm.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T07:35:31Z",
+   "t_end": "2026-11-22T07:38:29Z"
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T07:40:19Z",
+   "t_end": "2026-11-22T07:40:26Z",
+   "detail": {
+    "s": 7.0,
+    "gib": 0.27
+   }
+  }
+ ]
+}

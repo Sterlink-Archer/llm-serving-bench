@@ -1,0 +1,84 @@
+{
+ "label": "s1_mi355x_openrelay_recipe",
+ "stage": "1-calibration",
+ "note": "Calibration, not search: OpenRelay's own published MI355X recipe (inference-recipes @6767b4d gemma-4-31b-mi355x README 'docker run' block): their tuned image pinned by digest, AMD MXFP4 + Google MTP drafter (2 tokens), their flags verbatim (host 127.0.0.1). Their client at 2.0 and 3.0 req/s, seed 7, 120 s; their prefill probe. Their published result: 3.0 req/s at p95 TTFT < 4 s (300 s, seeds 7 and 8), prefill 41.9K tok/s.",
+ "snapshot": {
+  "name": "or-openrelayrecipe-mi355x-c8m48d150",
+  "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+  "image_digest_amd64": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 60,
+ "budget_usd": 5.5,
+ "servers": [
+  {
+   "name": "or_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":2}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "rates": [
+      2.0,
+      3.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ],
+ "origin": "openrelay_recipe"
+}

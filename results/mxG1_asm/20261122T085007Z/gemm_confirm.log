@@ -1,0 +1,6 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+free(): invalid pointer
+/root/or/jobs/018_gemm_confirm.sh: line 3:  4213 Aborted                 (core dumped) python3 /root/or/mx/gemm_headroom.py confirm --rounds 2 --min-s 0.25 --out /root/or/out/gemm

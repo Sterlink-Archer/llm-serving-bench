@@ -1,0 +1,29 @@
+{
+ "label": "s1_b300_nvfp4_mtp2_v034snap",
+ "run_id": "s1_b300_nvfp4_mtp2_v034snap/20261122T044101Z",
+ "config_file": "configs/s1_b300_nvfp4_mtp2_v034snap.json",
+ "t_start": "2026-11-22T04:41:01Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.8064,
+  "mem": 2.0736,
+  "disk": 0.0427,
+  "total": 8.0927
+ },
+ "phases": {},
+ "servers": {},
+ "spend_guard": {
+  "project_est_usd_before": 5.39,
+  "this_run_ceiling_usd": 8.77,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "error": "ApiError('HTTP 503 on /sandbox: {\"path\":\"/api/sandbox\",\"timestamp\":\"2026-11-22T04:41:07.143Z\",\"statusCode\":503,\"error\":\"Service Unavailable\",\"message\":\"No spot GPU capacity is available for this request. Please try again later.\"}')",
+ "elapsed_s": 5.9,
+ "est_cost_usd": 0.013,
+ "t_saved": "2026-11-22T04:41:07Z",
+ "project_spend": {
+  "est_usd": 5.43,
+  "metered_usd": null
+ }
+}

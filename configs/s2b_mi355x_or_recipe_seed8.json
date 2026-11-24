@@ -1,0 +1,74 @@
+{
+ "label": "s2b_mi355x_or_recipe_seed8",
+ "stage": "2-claim (column B, stratified lengths)",
+ "note": "Column B claim cells for OpenRelay's MI355X recipe (same image digest, flags, env, host as s2_mi355x_or_recipe_seed7/8). Real-text client with tokenizer-exact prompts, exactly rate x 300 s Poisson arrivals, and STRATIFIED uniform lengths: each cell's N requests take N evenly spaced points of U(1900..17100) / U(76..684) in a seeded order, so realized means are 9,500 / 380. The s2c twins' column-B cells used per-seed draws (seed 7 averaged 9,145 tokens, 4% light) and are not claim-grade. Rates 2.5-3.5, 300 s, seed 8.",
+ "snapshot": {
+  "name": "or-openrelayrecipe-mi355x-c8m48d150",
+  "image": "public.ecr.aws/o7n5w9k8/vllm-rocm-gemma4:v0.30.0-g4mi355",
+  "image_digest_amd64": "sha256:f22210e5fbd75824e6deb8c88aaae2c449c7180f6f4c6aaa49df7775716d4cfa",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 60,
+ "budget_usd": 6.0,
+ "servers": [
+  {
+   "name": "or_recipe",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "G4_FUSE_GELU": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":2}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_or_recipe_B_text_strat",
+     "client": "traffic",
+     "rates": [
+      2.5,
+      3.0,
+      3.25,
+      3.5
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ],
+ "claim_group": "s2_mi355x_or_recipe",
+ "origin": "openrelay_recipe"
+}

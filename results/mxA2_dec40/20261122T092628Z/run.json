@@ -1,0 +1,86 @@
+{
+ "label": "mxA2_dec40",
+ "run_id": "mxA2_dec40/20261122T092628Z",
+ "config_file": "recipes/mi355x/configs/mxA2_dec40.json",
+ "t_start": "2026-11-22T09:26:28Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 1.5
+ },
+ "servers": {
+  "nogpu": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.4,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 1.3,
+    "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+    "env": {},
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+    "smoke": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error response</h1>\n        <p>Error code: 501</p>\n        <p>Message: Unsupported method ('POST').</p>\n        <p>Error code explanation: 501 - Server does not support this operation.</p>\n    </body>\n</html>\n"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512"
+    }
+   ],
+   "steps": {
+    "attn_lab2_dec40": {
+     "rc": 0,
+     "secs": 32.4,
+     "cmd": "LAB_OUT=/root/or/out python3 /root/or/mx/attn_mix_lab2.py d40_512 > out/attn_lab2_dec40.txt 2>&1; tail -n 30 out/attn_lab2_dec40.txt",
+     "tail": "   1.000x  0.478 ms vs 0.478  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 4, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}\n   0.946x  0.506 ms vs 0.478  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 1}}\n   0.943x  0.506 ms vs 0.477  err=0.0009  {'kv_split': {'NUM_SEGMENTS': 16, 'TILE_SIZE': 64}, 'attn_3d': {'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 173.08,
+  "this_run_ceiling_usd": 4.5,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 241,
+ "sandbox_id": "3d28ed54-44c1-41a2-88ff-c0816dad28a6",
+ "elapsed_s": 95.6,
+ "est_cost_usd": 0.126,
+ "t_saved": "2026-11-22T09:28:03Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x1423D266354D2EF8\n        OAM_ID: 5\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015         144        1262           1         608        1853\noverlay         150G  9.0M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "ENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64}\ntable kv_split D_GEQ_512.DT_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: attn_mix_lab2.py\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T09:27:42Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 174.82,
+  "metered_usd": 141.6172
+ }
+}

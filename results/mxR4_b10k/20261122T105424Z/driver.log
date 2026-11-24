@@ -1,0 +1,27 @@
+2026-11-22T10:54:24Z [mxR4_b10k] creating spot sandbox (MI355X x1, $4.1661/h, ttl 60 min, budget $4.5; project so far ~$258.03)
+2026-11-22T10:54:56Z [mxR4_b10k] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T10:55:19Z [mxR4_b10k] download mx_stack: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T10:58:08Z [mxR4_b10k] server mx_stack ready=True after 167.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T10:58:11Z [mxR4_b10k] inspect_mx_stack rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:58:23Z [mxR4_b10k] gate_mx_stack_gsm8kor100 rc=0 12s :: [gate_mx_stack_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T11:10:19Z [mxR4_b10k] protocol_mx_stack rc=0 716s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_stack/protocol_summary.json
+2026-11-22T11:10:43Z [mxR4_b10k] download mx_stack_b10k: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T11:12:17Z [mxR4_b10k] server mx_stack_b10k ready=True after 93.4s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268214 MB
+        FREE_VRAM: 26378 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268214 MB
+        FREE_VISIBLE_VRAM: 26378 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 813325 graphs 23
+2026-11-22T11:12:19Z [mxR4_b10k] inspect_mx_stack_b10k rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T11:12:32Z [mxR4_b10k] gate_mx_stack_b10k_gsm8kor100 rc=0 13s :: [gate_mx_stack_b10k_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T11:24:27Z [mxR4_b10k] protocol_mx_stack_b10k rc=0 716s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.4856); prefill=None tok/s -> /root/or/out/protocol_mx_stack_b10k/protocol_summary.json
+2026-11-22T11:25:04Z [mxR4_b10k] done: elapsed 30.7 min, est $2.13; project est $283.53

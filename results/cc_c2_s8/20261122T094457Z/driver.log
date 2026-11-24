@@ -1,0 +1,25 @@
+2026-11-22T09:44:57Z [cc_c2_s8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 97 min, budget $8.7; project so far ~$194.06)
+2026-11-22T09:45:28Z [cc_c2_s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:45:51Z [cc_c2_s8] download or_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:48:31Z [cc_c2_s8] server or_recipe ready=True after 159.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T09:48:34Z [cc_c2_s8] inspect_or_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:13:19Z [cc_c2_s8] protocol_or_recipe_c2agent rc=0 1485s :: [protocol] max_rate_at_slo=6.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c2agent/protocol_summary.json
+2026-11-22T10:13:45Z [cc_c2_s8] download mx_recipe: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T10:15:03Z [cc_c2_s8] server mx_recipe ready=True after 76.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T10:15:05Z [cc_c2_s8] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:39:46Z [cc_c2_s8] protocol_mx_recipe_c2agent rc=0 1481s :: [protocol] max_rate_at_slo=7.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_c2agent/protocol_summary.json
+2026-11-22T10:40:23Z [cc_c2_s8] done: elapsed 55.4 min, est $4.39; project est $246.58

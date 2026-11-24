@@ -1,0 +1,62 @@
+{
+ "label": "d2_b300_prefill_diag",
+ "stage": "diagnose (brainstorm round 2, item 4)",
+ "note": "B300 with r4's working attention config (FlashInfer native, --block-size 64, use_trtllm_attention=false, FP8 KV) and speculation OFF, before any MTP comparison: torch-profile 4 x 10K prefills (GEMM vs attention split and kernel names), OpenRelay's prefill probe (16 concurrent, 64 x 10K, twice, second counts), single-prompt prefill sweep 2K/4K/10K/16K. CUDA-graph sizes land in startup_facts. r4 with MTP 2 measured 22.5K tok/s prefill and failed at break-even 2.89 req/s.",
+ "snapshot": {
+  "name": "t3990-vllm-cuda-v0340-b300",
+  "image": "vllm/vllm-openai:v0.34.0",
+  "image_digest_amd64": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 16,
+  "mem": 128,
+  "disk": 400
+ },
+ "max_minutes": 45,
+ "budget_usd": 6.0,
+ "servers": [
+  {
+   "name": "nvfp4_nospec",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}' --attention-backend FLASHINFER --block-size 64 --kv-cache-dtype fp8 --attention-config '{\"use_trtllm_attention\":false,\"disable_flashinfer_q_quantization\":true}' --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "sh",
+     "name": "prefill_probe_nospec",
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/nvfp4 --out /root/or/out/prefill_probe_nospec.json",
+     "outputs": [
+      "out/prefill_probe_nospec.json",
+      "out/prefill_probe_nospec_cell_run2.json"
+     ],
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "prefill_sweep",
+     "cmd": "python3 bench/prefill_sweep.py --model gemma --lengths 2000,4000,10000,16000 --reps 3 --out /root/or/out/prefill_sweep.json",
+     "outputs": [
+      "out/prefill_sweep.json"
+     ],
+     "est_s": 120
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "label": "e5_b300_sglang_textonly_s8",
+ "stage": "engine comparison, B300 v2 (round 3)",
+ "claim_group": "e5_b300_sglang_textonly",
+ "note": "Seed 8 of e5_b300_sglang_textonly (same claim group, same snapshot, image digest, weights and launch), so the B300 SGLang row can be claim-grade (>= 2 seeds). Only the server that ran ok in e5 (RedHat NVFP4 text-only); quality steps already done in e5. Adds --admin-api-key (throwaway local token) so the prefill profiler's /start_profile is allowed (e5: HTTP 403). Queued by the lead after Inkling's ikC B300 run, low priority.",
+ "snapshot": {
+  "name": "or-sglang-nightly1121-b300-c8m64d300",
+  "image": "lmsysorg/sglang:nightly-dev-cu13-20261121-a8ac8659",
+  "image_digest_amd64": "sha256:34054a3d89782d861ab749dba19eb767db55a0f1b3477af0dc7625622c32eb32",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 64,
+  "disk": 300
+ },
+ "max_minutes": 90,
+ "budget_usd": 12.0,
+ "servers": [
+  {
+   "name": "sgl_rh_nvfp4_textonly",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --language-model-only --attention-backend trtllm_mha --admin-api-key local-profiler-token",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "fallbacks": [
+    {
+     "flags": "--attention-backend fa4"
+    },
+    {
+     "flags": "--attention-backend triton",
+     "allow_rejected": true
+    }
+   ],
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json --admin-key local-profiler-token",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_nvfp4_textonly_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.25,
+      1.5
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_rh_nvfp4_textonly_B_text",
+     "client": "traffic",
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "multiples": [
+      1.0,
+      1.25
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  }
+ ]
+}

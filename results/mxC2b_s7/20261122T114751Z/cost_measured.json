@@ -1,0 +1,95 @@
+{
+ "run_id": "mxC2b_s7/20261122T114751Z",
+ "configs": [
+  {
+   "run_id": "mxC2b_s7/20261122T114751Z",
+   "config_id": "mxC2b_s7:or_recipe",
+   "gpu": "MI355X",
+   "usd_per_h": {
+    "gpu": 3.56,
+    "cpu": 0.2016,
+    "mem": 0.3888,
+    "disk": 0.0157,
+    "total": 4.1661
+   },
+   "steady_usd": 2.4992,
+   "steady_gpu_usd": 2.1356,
+   "steady_host_usd": 0.3636,
+   "eval_usd": 0.0146,
+   "cold_start_usd": {
+    "weight_download": 0.0252,
+    "engine_start": 0.185,
+    "warmup": 0.0012,
+    "create_share": 0.0018
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 8.4162,
+   "max_rate_at_slo_rps": 3.25,
+   "steady_usd_per_req": 0.0003560769230769231,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": 2.585384584293278,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "mxC2b_s7/20261122T114751Z",
+   "config_id": "mxC2b_s7:mx_recipe",
+   "gpu": "MI355X",
+   "usd_per_h": {
+    "gpu": 3.56,
+    "cpu": 0.2016,
+    "mem": 0.3888,
+    "disk": 0.0157,
+    "total": 4.1661
+   },
+   "steady_usd": 2.4861,
+   "steady_gpu_usd": 2.1244,
+   "steady_host_usd": 0.3617,
+   "eval_usd": 0.0147,
+   "cold_start_usd": {
+    "weight_download": 0.0135,
+    "engine_start": 0.1085,
+    "warmup": 0.0007,
+    "create_share": 0.0018
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 8.4162,
+   "max_rate_at_slo_rps": 3.5,
+   "steady_usd_per_req": 0.00033064285714285715,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": 1.3227833536898375,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "mxC2b_s7/20261122T114751Z",
+   "config_id": "mxC2b_s7:mx_stack",
+   "gpu": "MI355X",
+   "usd_per_h": {
+    "gpu": 3.56,
+    "cpu": 0.2016,
+    "mem": 0.3888,
+    "disk": 0.0157,
+    "total": 4.1661
+   },
+   "steady_usd": 2.8826,
+   "steady_gpu_usd": 2.4632,
+   "steady_host_usd": 0.4194,
+   "eval_usd": 0.0146,
+   "cold_start_usd": {
+    "weight_download": 0.0135,
+    "engine_start": 0.0701,
+    "warmup": 0.0008,
+    "create_share": 0.0018
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 8.4162,
+   "max_rate_at_slo_rps": 3.75,
+   "steady_usd_per_req": 0.0003086,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": 0.8148778029730409,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

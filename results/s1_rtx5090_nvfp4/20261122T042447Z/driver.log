@@ -1,0 +1,6 @@
+2026-11-22T04:24:47Z [s1_rtx5090_nvfp4] building snapshot or-vllm0330-rtx-5090-c8m32d80 from vllm/vllm-openai:v0.33.0
+2026-11-22T04:25:02Z [s1_rtx5090_nvfp4] creating spot sandbox (RTX-5090 x1, $1.6697/h, ttl 50 min, budget $2.0; project so far ~$1.87)
+2026-11-22T04:25:48Z [s1_rtx5090_nvfp4] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          23          41           0         194         229 | overlay         1.8T  642G  1.1T  37% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:27:10Z [s1_rtx5090_nvfp4] download nvfp4: rc=0 78s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:30:32Z [s1_rtx5090_nvfp4] server nvfp4 ready=True after 200.6s; gpu mem 28814 MiB, 32607 MiB; attn {'sliding': 'TRITON_ATTN', 'global_512': 'TRITON_ATTN'} kv_tokens 20611 graphs 51 REJECTED: TRITON_ATTN on global 512-dim layers
+2026-11-22T04:30:59Z [s1_rtx5090_nvfp4] done: elapsed 5.9 min, est $0.17; project est $2.53

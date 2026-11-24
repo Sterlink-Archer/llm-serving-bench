@@ -1,0 +1,4 @@
+[vllmbench r=1.25 s=7] done=375 failed=0 req/s=1.2056529856368439 p95 TTFT=2.5488386649405586 median TPOT=50.134152574107134 ms in tok/s=11953
+[vllmbench r=1.5 s=7] done=450 failed=0 req/s=1.437066512384749 p95 TTFT=3.153675495972856 median TPOT=72.59658417988099 ms in tok/s=14028
+[vllmbench r=1.75 s=7] done=525 failed=0 req/s=1.5877255492663342 p95 TTFT=24.63889191159978 median TPOT=94.6337992383208 ms in tok/s=15422
+[protocol] max_rate_at_slo=1.5 req/s (break-even 2.6734); prefill=23675.76870190904 tok/s -> /root/or/out/protocol_glm_best/protocol_summary.json

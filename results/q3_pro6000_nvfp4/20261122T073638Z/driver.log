@@ -1,0 +1,8 @@
+2026-11-22T07:36:38Z [q3_pro6000_nvfp4] creating spot sandbox (RTX-PRO-6000 x1, $2.4189/h, ttl 60 min, budget $3.0; project so far ~$105.78)
+2026-11-22T07:37:13Z [q3_pro6000_nvfp4] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          14          30           0         104         127 | overlay         713G  388G  296G  57% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T07:37:55Z [q3_pro6000_nvfp4] download nvfp4_fi: rc=0 41s 23.3 GB via ['huggingface_hub']
+2026-11-22T07:41:22Z [q3_pro6000_nvfp4] server nvfp4_fi ready=True after 206.2s; gpu mem 89735 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 265537 graphs 51
+2026-11-22T07:41:54Z [q3_pro6000_nvfp4] q_gsm8kor250_nvfp4_fi rc=0 32s :: [q_gsm8kor250_nvfp4_fi] gsm8kor: 0.980 (245/250, noans 0, err 0, trunc 0) wall=30s
+2026-11-22T07:43:18Z [q3_pro6000_nvfp4] q_mmlupro200_nvfp4_fi rc=0 83s :: [q_mmlupro200_nvfp4_fi] mmlupro: 0.845 (169/200, noans 4, err 0, trunc 4) wall=73s
+2026-11-22T07:45:22Z [q3_pro6000_nvfp4] q_agree400_nvfp4_fi rc=1 124s :: KeyError: 'answer'
+2026-11-22T07:45:48Z [q3_pro6000_nvfp4] done: elapsed 9.2 min, est $0.37; project est $112.72

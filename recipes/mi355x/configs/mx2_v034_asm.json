@@ -1,0 +1,82 @@
+{
+ "label": "mx2_v034_asm",
+ "stage": "mx2-screen",
+ "note": "vLLM 0.34.0 ROCm (by digest) with OpenRelay's flags. mx1_v034 (stock) showed 0.34 probes AITER for tuned a4w4 rows at M=1024 and 8192 plus a gfx950 Triton preshuffle JSON before using the assembly MXFP4 GEMM; Gemma 4's six shapes fail both, so every linear ran AITER's Triton FP4 GEMM. ONE CHANGE vs mx1_v034 stock: MX_FORCE_ASM_FP4=1 (box/patch_force_asm_fp4.py: use_asm_gemm=True, i.e. v0.30's behaviour). Same steps as wave 1: gate, prefill probe, seed 8 at 3.25/3.5/3.75.",
+ "snapshot": {
+  "name": "or-vllmrocm0340-mi355x-c8m48d150",
+  "image": "vllm/vllm-openai-rocm:v0.34.0",
+  "image_digest_amd64": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 45,
+ "budget_usd": 4.0,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh: what the engine image actually contains, written before any engine starts (runs from setup_cmd).\n# Versions, the AITER pieces OpenRelay upstreamed (ROCm/aiter#5926-#5929) and the anchors our patches need.\n# Output: /root/or/out/inspect.txt (pulled by the `inspect` sh step).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, json, re, glob\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"vllm\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\nv = os.path.dirname(importlib.util.find_spec(\"vllm\").origin)\nprint(\"aiter dir\", a); print(\"vllm dir\", v)\nua = os.path.join(a, \"ops/triton/attention/unified_attention.py\")\ns = open(ua).read() if os.path.exists(ua) else \"\"\nm = re.search(r\"\\n(\\s*if params\\.head_size >= 512[^\\n]*)\", s)\nprint(\"ua3d anchor (use_2d D>=512 clause):\", repr(m.group(1)) if m else \"NOT FOUND\")\nprint(\"ua3d already applied:\", \"max_seqlen_q > 16\" in s)\ntbl = os.path.join(a, \"ops/triton/configs/gfx950/triton/attention/unified_attention/DEFAULT.json\")\nif os.path.exists(tbl):\n    d = json.load(open(tbl))\n    for sec, ent in d.items():\n        if isinstance(ent, dict):\n            for k, val in ent.items():\n                if \"512\" in k or \"GEQ_256\" in k:\n                    print(f\"table {sec} {k} {val}\")\nelse:\n    print(\"table missing:\", tbl)\nfor f in sorted(glob.glob(os.path.join(a, \"configs/model_configs/*gemma*\"))):\n    print(\"model_config\", os.path.basename(f), sum(1 for _ in open(f)) - 1, \"rows\")\nact = os.path.join(a, \"ops/triton/_triton_kernels/fusions/activation.py\")\nif not os.path.exists(act): act = os.path.join(a, \"ops/triton/_triton_kernels/activation.py\")\nt = open(act).read() if os.path.exists(act) else \"\"\ni = t.find(\"def _act_mul_and_dynamic_mxfp4_quant_kernel(\")\nprint(\"scaleM_pad constexpr in act_mul kernel:\", \"scaleM_pad: tl.constexpr\" in t[i:t.find(\"):\", i)] if i >= 0 else \"kernel not found\")\ng = os.path.join(v, \"model_executor/models/gemma4.py\")\ngs = open(g).read() if os.path.exists(g) else \"\"\nprint(\"gemma4.py Gemma4MLP anchor:\", \"class Gemma4MLP(nn.Module):\" in gs, \"| g4 fuse applied:\", \"g4_gelu_mxfp4_gemm\" in gs)\nao = os.path.join(v, \"_aiter_ops.py\")\nts = open(ao).read() if os.path.exists(ao) else \"\"\nka = os.path.join(v, \"model_executor/kernels/linear/mxfp4/aiter.py\")\nks = open(ka).read() if os.path.exists(ka) else \"\"\nprint(\"vllm is_asm_fp4_gemm_tuned present:\", \"def is_asm_fp4_gemm_tuned\" in ts,\n      \"| presh_ws gate in kernel:\", \"is_triton_gemm_afp4wfp4_presh_ws_tuned\" in ks, \"| MX force patch:\", \"MX_FORCE_ASM_FP4\" in ks)\ntj = glob.glob(os.path.join(a, \"ops/triton/configs/gfx950/triton/gemm/gemm_afp4wfp4_preshuffled/*K=5376*\"))\nprint(\"gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376:\", [os.path.basename(x) for x in tj])\nenvs = open(os.path.join(v, \"envs.py\")).read()\nprint(\"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs:\", \"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM\" in envs)\nPY\nls /root/or/mx 2>/dev/null | sed 's/^/mx file: /'\ngrep -h \"^PATCH\" /root/or/mx/*.status 2>/dev/null\n} > \"$OUT\" 2>&1\ntail -n 40 \"$OUT\"\nMXEOF_INSPECT_SH\ncat > /root/or/mx/patch_force_asm_fp4.py <<'MXEOF_PATCH_FORCE_ASM_FP4_PY'\n\"\"\"vLLM >= 0.31 (ROCm): let MX_FORCE_ASM_FP4=1 restore v0.30's behaviour of running every MXFP4 linear on AITER's\nassembly GEMM (gemm_a4w4).\n\nWhy: v0.30 always used the assembly kernel on gfx950 (later builds: VLLM_ROCM_USE_AITER_FP4_ASM_GEMM=1). v0.34 drops\nthe variable; `AiterMxfp4LinearKernel.process_weights_after_loading` sets\n  use_asm_gemm = is_asm_fp4_gemm_tuned(n, k)            # AITER a4w4 CSV has rows for this (N, K) at M=1024 AND M=8192\n                 and is_triton_gemm_afp4wfp4_presh_ws_tuned(n, k)   # a gfx950 Triton preshuffle JSON exists for (N, K)\nAITER v0.1.28.post1's Gemma 4 31B rows (ROCm/aiter#5928) keep only rows >= 3% better than the default, so several\nshapes have no M=1024/8192 row, and there is no gfx950 preshuffle JSON for any K=5376 shape: every Gemma 4 linear would\nfall back to AITER's Triton FP4 GEMM (OpenRelay, vllm#59153: 1.89 vs 2.77 prefill req/s).\nWith the override, M <= 64 still takes the Triton preshuffle kernel only where it is tuned; everything else runs\ngemm_a4w4 on (16,16)-shuffled weights, exactly as v0.30 did.\n\nEnv-gated (read at weight load), so a stock server on the same box is untouched. Idempotent; writes a PATCH line.\"\"\"\nimport importlib.util\nimport os\nimport sys\n\np = os.path.join(os.path.dirname(importlib.util.find_spec(\"vllm\").origin), \"model_executor/kernels/linear/mxfp4/aiter.py\")\ns = open(p).read()\nstatus = \"/root/or/mx/patch_force_asm_fp4.status\"\nif \"MX_FORCE_ASM_FP4\" in s:\n    msg = \"PATCH force_asm_fp4: already applied\"\nelse:\n    anchor = \"        if self.use_asm_gemm and not _asm_fp4_scale_swizzle_supported(\\n\"\n    if s.count(anchor) != 1 or \"self.use_asm_gemm = rocm_aiter_ops.is_asm_fp4_gemm_tuned(\" not in s:\n        msg = \"PATCH force_asm_fp4: ANCHOR NOT FOUND (not applied)\"\n    else:\n        s = s.replace(anchor, \"        import os as _mx_os\\n\"\n                      \"        if _mx_os.environ.get(\\\"MX_FORCE_ASM_FP4\\\") == \\\"1\\\" and self.asm_gemm_supported:\\n\"\n                      \"            self.use_asm_gemm = True\\n\" + anchor, 1)\n        open(p, \"w\").write(s)\n        msg = \"PATCH force_asm_fp4: applied (kernels/linear/mxfp4/aiter.py)\"\nos.makedirs(os.path.dirname(status), exist_ok=True)\nopen(status, \"w\").write(msg + \"\\n\")\nprint(msg, file=sys.stderr)\nMXEOF_PATCH_FORCE_ASM_FP4_PY\npython3 /root/or/mx/patch_force_asm_fp4.py\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "v034_asm",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/mxfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "TRITON_CACHE_DIR": "/root/.cache/triton",
+    "MX_FORCE_ASM_FP4": "1"
+   },
+   "launch": "vllm serve /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 32768 --max-num-seqs 64 --enable-prompt-tokens-details --enable-prefix-caching --hf-overrides '{\"text_config\":{\"use_bidirectional_attention\":null}}' --limit-mm-per-prompt '{\"image\":0,\"audio\":0,\"video\":0}' --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/mxfp4/assistant\",\"num_speculative_tokens\":2}' --attention-backend ROCM_AITER_UNIFIED_ATTN --kv-cache-dtype fp8 --max-num-batched-tokens 8192 --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,144,160,176,192,224,256]}' --kernel-config '{\"ir_op_priority\":{\"rms_norm\":[\"native\"]}}'",
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_v034_asm",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_v034_asm_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_v034_asm",
+     "client": "vllmbench",
+     "rates": [
+      3.25,
+      3.5,
+      3.75
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    }
+   ],
+   "delete_weights_after": false
+  }
+ ]
+}

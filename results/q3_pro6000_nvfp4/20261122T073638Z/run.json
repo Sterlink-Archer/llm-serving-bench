@@ -1,0 +1,104 @@
+{
+ "label": "q3_pro6000_nvfp4",
+ "run_id": "q3_pro6000_nvfp4/20261122T073638Z",
+ "config_file": "configs/q3_pro6000_nvfp4.json",
+ "t_start": "2026-11-22T07:36:38Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.2016,
+  "mem": 0.2592,
+  "disk": 0.0081,
+  "total": 2.4189
+ },
+ "phases": {
+  "create_s": 17.2
+ },
+ "servers": {
+  "nvfp4_fi": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 41.5,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 10/15 [00:00<00:00, 74.14it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:20<00:00, 74.14it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:36<00:00,  3.05s/it]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:36<00:00,  2.44s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640261 secs=36.8 GBps=0.632 method=huggingface_hub\n",
+    "bytes": 23297640261,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 206.2,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+    "env": {},
+    "gpu_mem_after_load": "89735 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-760d1551\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASHINFER",
+     "global_512": "FLASHINFER"
+    },
+    "kv_cache_tokens": 265537,
+    "kv_cache_gib": 63.99,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "q_gsm8kor250_nvfp4_fi": {
+     "rc": 0,
+     "secs": 31.5,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label q_gsm8kor250_nvfp4_fi --out /root/or/out/q_gsm8kor250_nvfp4_fi.json --limit 250",
+     "tail": "[q_gsm8kor250_nvfp4_fi] gsm8kor: 0.980 (245/250, noans 0, err 0, trunc 0) wall=30s\n"
+    },
+    "q_mmlupro200_nvfp4_fi": {
+     "rc": 0,
+     "secs": 82.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/mmlupro_200.jsonl --concurrency 64 --max-tokens 2048 --label q_mmlupro200_nvfp4_fi --out /root/or/out/q_mmlupro200_nvfp4_fi.json",
+     "tail": "[q_mmlupro200_nvfp4_fi] mmlupro: 0.845 (169/200, noans 4, err 0, trunc 4) wall=73s\n"
+    },
+    "q_agree400_nvfp4_fi": {
+     "rc": 1,
+     "secs": 123.5,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_nvfp4_fi --out /root/or/out/q_agree400_nvfp4_fi.json",
+     "tail": "    rows.append(dict(task=t, id=it[\"id\"], gold=it.get(\"answer\"), pred=pred, correct=scoring.is_correct(t, pred, it.get(\"answer\")) if t != \"agree\" else None,\n                                               ^^^^^^^^^^^^\nKeyError: 'answer'\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 105.78,
+  "this_run_ceiling_usd": 2.62,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 103,
+ "sandbox_id": "5d579ead-0255-411e-986b-acdbbc350e5f",
+ "elapsed_s": 549.7,
+ "est_cost_usd": 0.369,
+ "t_saved": "2026-11-22T07:45:48Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          14          30           0         104         127\noverlay         713G  388G  296G  57% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:45:33Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 112.72,
+  "metered_usd": 93.4476
+ }
+}

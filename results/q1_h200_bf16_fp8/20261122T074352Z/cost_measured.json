@@ -1,0 +1,35 @@
+{
+ "run_id": "q1_h200_bf16_fp8/20261122T074352Z",
+ "configs": [
+  {
+   "run_id": "q1_h200_bf16_fp8/20261122T074352Z",
+   "config_id": "q1_h200_bf16_fp8:bf16_ref",
+   "gpu": "H200",
+   "usd_per_h": {
+    "gpu": 2.87,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0081,
+    "total": 3.7997
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0.3082,
+   "cold_start_usd": {
+    "weight_download": 0.0335,
+    "engine_start": 0.1584,
+    "warmup": 0.0044,
+    "create_share": 0.0044
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.5504,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

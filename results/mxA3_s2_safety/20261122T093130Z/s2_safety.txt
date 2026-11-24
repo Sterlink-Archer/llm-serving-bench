@@ -1,0 +1,85 @@
+OK      0 {'part': 'bisect', 'ndec': 40, 'width': 86, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK      1 {'part': 'bisect', 'ndec': 40, 'width': 86, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK      2 {'part': 'bisect', 'ndec': 40, 'width': 102, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK      3 {'part': 'bisect', 'ndec': 40, 'width': 102, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} err 0.0000
+ABORT   4 {'part': 'bisect', 'ndec': 96, 'width': 86, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT   5 {'part': 'bisect', 'ndec': 96, 'width': 86, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT   6 {'part': 'bisect', 'ndec': 96, 'width': 102, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT   7 {'part': 'bisect', 'ndec': 96, 'width': 102, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+OK      8 {'part': 'engine', 'ndec': 0, 'width': 256, 'pre': 8192, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK      9 {'part': 'engine', 'ndec': 0, 'width': 256, 'pre': 8192, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     10 {'part': 'engine', 'ndec': 0, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     11 {'part': 'engine', 'ndec': 0, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     12 {'part': 'engine', 'ndec': 1, 'width': 256, 'pre': 8188, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     13 {'part': 'engine', 'ndec': 1, 'width': 256, 'pre': 8188, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     14 {'part': 'engine', 'ndec': 1, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     15 {'part': 'engine', 'ndec': 1, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     16 {'part': 'engine', 'ndec': 15, 'width': 256, 'pre': 8132, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     17 {'part': 'engine', 'ndec': 15, 'width': 256, 'pre': 8132, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     18 {'part': 'engine', 'ndec': 15, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     19 {'part': 'engine', 'ndec': 15, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     20 {'part': 'engine', 'ndec': 16, 'width': 256, 'pre': 8128, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     21 {'part': 'engine', 'ndec': 16, 'width': 256, 'pre': 8128, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     22 {'part': 'engine', 'ndec': 16, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     23 {'part': 'engine', 'ndec': 16, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     24 {'part': 'engine', 'ndec': 35, 'width': 256, 'pre': 8052, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     25 {'part': 'engine', 'ndec': 35, 'width': 256, 'pre': 8052, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     26 {'part': 'engine', 'ndec': 35, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     27 {'part': 'engine', 'ndec': 35, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+ABORT  28 {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7940, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  29 {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7940, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  30 {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  31 {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  32 {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  33 {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7808, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  34 {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  35 {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+OK     36 {'part': 'engine', 'ndec': 0, 'width': 2048, 'pre': 8192, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     37 {'part': 'engine', 'ndec': 0, 'width': 2048, 'pre': 8192, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     38 {'part': 'engine', 'ndec': 0, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     39 {'part': 'engine', 'ndec': 0, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     40 {'part': 'engine', 'ndec': 1, 'width': 2048, 'pre': 8188, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     41 {'part': 'engine', 'ndec': 1, 'width': 2048, 'pre': 8188, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     42 {'part': 'engine', 'ndec': 1, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     43 {'part': 'engine', 'ndec': 1, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     44 {'part': 'engine', 'ndec': 15, 'width': 2048, 'pre': 8132, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     45 {'part': 'engine', 'ndec': 15, 'width': 2048, 'pre': 8132, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     46 {'part': 'engine', 'ndec': 15, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     47 {'part': 'engine', 'ndec': 15, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     48 {'part': 'engine', 'ndec': 16, 'width': 2048, 'pre': 8128, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     49 {'part': 'engine', 'ndec': 16, 'width': 2048, 'pre': 8128, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     50 {'part': 'engine', 'ndec': 16, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     51 {'part': 'engine', 'ndec': 16, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     52 {'part': 'engine', 'ndec': 35, 'width': 2048, 'pre': 8052, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     53 {'part': 'engine', 'ndec': 35, 'width': 2048, 'pre': 8052, 'pctx': 9001, 'dctx': 9500} err 0.0000
+OK     54 {'part': 'engine', 'ndec': 35, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} err 0.0000
+OK     55 {'part': 'engine', 'ndec': 35, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} err 0.0000
+ABORT  56 {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7940, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  57 {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7940, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  58 {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  59 {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  60 {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  61 {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7808, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  62 {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+ABORT  63 {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} (s2: LLVM ERROR: Found 1 machine code errors.)
+=== 44 shapes compiled and ran with num_stages=2, 20 aborted
+   abort: {'part': 'bisect', 'ndec': 96, 'width': 86, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'bisect', 'ndec': 96, 'width': 86, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'bisect', 'ndec': 96, 'width': 102, 'pre': 8032, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'bisect', 'ndec': 96, 'width': 102, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7940, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7940, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7808, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 256, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7940, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7940, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 63, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7808, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7808, 'pctx': 9001, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7001, 'pctx': 9000, 'dctx': 9500} s2
+   abort: {'part': 'engine', 'ndec': 96, 'width': 2048, 'pre': 7001, 'pctx': 9001, 'dctx': 9500} s2

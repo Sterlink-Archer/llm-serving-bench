@@ -1,0 +1,10 @@
+#!/bin/sh
+# Maks's rule (2026-11-13) for repos under his GitHub account: "remove my email and the claude things".
+# Strips Co-Authored-By trailers naming Claude/Anthropic and Claude-Session trailers from every commit message made in
+# this checkout (all sessions commit here), then drops trailing blank lines. Installed 2026-11-22 by the build session.
+msg="$1"
+tmp="$msg.strip.$$"
+grep -v -i -E '^[[:space:]]*(Co-Authored-By:.*(claude|anthropic)|Claude-Session:)' "$msg" > "$tmp" || true
+# drop trailing blank lines
+awk '{ lines[NR]=$0 } END { n=NR; while (n>0 && lines[n] ~ /^[[:space:]]*$/) n--; for (i=1;i<=n;i++) print lines[i] }' "$tmp" > "$msg"
+rm -f "$tmp"

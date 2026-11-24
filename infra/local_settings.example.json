@@ -1,0 +1,4 @@
+{
+ "daytona_key_file": "/path/to/file/holding/the/daytona/api/key",
+ "daytona_org_id": "<your Daytona organization id>"
+}

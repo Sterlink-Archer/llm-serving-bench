@@ -1,0 +1,15 @@
+2026-11-22T05:43:36Z [mx7_prof_mtp3_seqs96] creating spot sandbox (MI355X x1, $4.7565/h, ttl 40 min, budget $3.5; project so far ~$43.78)
+2026-11-22T05:43:52Z [mx7_prof_mtp3_seqs96] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:44:46Z [mx7_prof_mtp3_seqs96] download prof_mtp3_seqs96: rc=0 52s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:47:18Z [mx7_prof_mtp3_seqs96] server prof_mtp3_seqs96 ready=True after 151.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T05:47:21Z [mx7_prof_mtp3_seqs96] inspect_prof_mtp3_seqs96 rc=0 2s :: mx file: steps.py
+2026-11-22T05:47:34Z [mx7_prof_mtp3_seqs96] gate_prof_mtp3_seqs96_gsm8kor100 rc=0 13s :: [gate_prof_mtp3_seqs96_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:53:28Z [mx7_prof_mtp3_seqs96] profile_knee rc=0 354s ::       20.7 ms   0.2% x1876  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x16x1024_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+2026-11-22T05:53:51Z [mx7_prof_mtp3_seqs96] done: elapsed 10.3 min, est $0.81; project est $53.62

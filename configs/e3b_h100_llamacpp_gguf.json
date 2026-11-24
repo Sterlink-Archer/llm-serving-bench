@@ -1,0 +1,75 @@
+{
+ "label": "e3b_h100_llamacpp_gguf",
+ "note": "Engine comparison: llama.cpp server (build b12124, CUDA 12) with GGUF Q4_K_M and Q8_0 (unsloth), 32 parallel slots x 10k ctx, q8_0 KV, 1x H100.",
+ "snapshot": {
+  "name": "or-llamacpp12124-h100-c8m48d150",
+  "image": "ghcr.io/ggml-org/llama.cpp:server-cuda12-b12124",
+  "image_digest_index": "sha256:821d0ae4e5d4e82a2ad8d08973b5f9cd5d0b84524b1d2439ed1f3e41ebc6b4c7",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "setup_cmd": "command -v python3 >/dev/null || (apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 ca-certificates >/dev/null); python3 --version; ls /app | head",
+ "max_minutes": 70,
+ "budget_usd": 5.0,
+ "servers": [
+  {
+   "name": "llamacpp_q4km",
+   "weights": [
+    {
+     "repo": "unsloth/gemma-4-31B-it-GGUF",
+     "rev": "c1ac76e99d5513b141e8adde7288b85c3f9c32ec",
+     "dir": "/root/models/gguf",
+     "patterns": [
+      "gemma-4-31B-it-Q4_K_M.gguf"
+     ]
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "/app/llama-server --host 127.0.0.1 --port 8000 --alias gemma -ngl 999 -fa on --jinja --metrics -np 32 -c 327680 -ctk q8_0 -ctv q8_0 -b 2048 -ub 512 -m /root/models/gguf/gemma-4-31B-it-Q4_K_M.gguf",
+   "ready_timeout_s": 900,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_llamacpp_q4km",
+     "conc": 64,
+     "est_s": 480
+    }
+   ]
+  },
+  {
+   "name": "llamacpp_q8",
+   "weights": [
+    {
+     "repo": "unsloth/gemma-4-31B-it-GGUF",
+     "rev": "c1ac76e99d5513b141e8adde7288b85c3f9c32ec",
+     "dir": "/root/models/gguf8",
+     "patterns": [
+      "gemma-4-31B-it-Q8_0.gguf"
+     ]
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "/app/llama-server --host 127.0.0.1 --port 8000 --alias gemma -ngl 999 -fa on --jinja --metrics -np 32 -c 327680 -ctk q8_0 -ctv q8_0 -b 2048 -ub 512 -m /root/models/gguf8/gemma-4-31B-it-Q8_0.gguf",
+   "ready_timeout_s": 900,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_llamacpp_q8",
+     "conc": 64,
+     "est_s": 480
+    }
+   ]
+  }
+ ]
+}

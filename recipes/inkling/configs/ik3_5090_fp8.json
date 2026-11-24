@@ -1,0 +1,196 @@
+{
+ "label": "ik3_5090_fp8",
+ "stage": "ik-promote",
+ "claim_group": "ik3_5090_fp8",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.5637,
+ "note": "Wave 3 (RTX 5090, SGLang inkling-2-mini image): chained single changes on one box, column B (real text) only, 180 s rungs at 1.0-3.0x break-even vs the PrimeIntellect bar, seed 7, real-text 16x10K prefill shot, GSM8K test[:100] gate at reasoning effort 'high' on every server. FP8 KV path. FA4 on sm120 refuses an FP8 KV cache (q bf16 != k fp8) and Triton attention cannot replay prefill CUDA graphs (ik3 attempt 1, 07:55Z), so the chain is: Triton attention + no prefill graphs (BF16 KV) -> + FP8 E4M3 KV -> + swa 0.25. Parent of the first server: ik1_5090_sgl.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-5090-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "RTX-5090",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 110,
+ "budget_usd": 4.0,
+ "servers": [
+  {
+   "name": "tri_nopg",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --attention-backend triton --disable-prefill-cuda-graph",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_tri_nopg_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_tri_nopg_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.5637,
+     "rates": [
+      0.564,
+      0.846,
+      1.127,
+      1.409,
+      1.691
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "tri_nopg_fp8kv",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --attention-backend triton --disable-prefill-cuda-graph --kv-cache-dtype fp8_e4m3",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_tri_nopg_fp8kv_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_tri_nopg_fp8kv_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.5637,
+     "rates": [
+      0.564,
+      0.846,
+      1.127,
+      1.409,
+      1.691
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "tri_nopg_fp8kv_swa25",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --attention-backend triton --disable-prefill-cuda-graph --kv-cache-dtype fp8_e4m3 --swa-full-tokens-ratio 0.25",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_tri_nopg_fp8kv_swa25_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_tri_nopg_fp8kv_swa25_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.5637,
+     "rates": [
+      0.564,
+      0.846,
+      1.127,
+      1.409,
+      1.691
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  }
+ ]
+}

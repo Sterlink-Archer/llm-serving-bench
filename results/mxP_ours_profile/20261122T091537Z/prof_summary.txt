@@ -1,0 +1,175 @@
+== prefill profile: 3 x 10K prompts (OpenRelay profreq.py)
+done
+trace /root/or/out/prof/rank0.1795339186187237679.pt.trace.json.gz (1.4M)
+total GPU kernel time 707.3 ms
+  gemm_fp4                   436.8 ms  61.8%
+  attn_global(d512)          105.8 ms  15.0%
+  attn_sliding(d256)          69.7 ms   9.9%
+  norm                        42.6 ms   6.0%
+  other                       38.1 ms   5.4%
+  quant                       10.1 ms   1.4%
+  gemm_bf16/other              4.0 ms   0.6%
+  gelu                         0.2 ms   0.0%
+top kernels:
+     248.0 ms  35.1% x660   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E.kd
+     105.5 ms  14.9% x40    kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_
+      79.6 ms  11.3% x240   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E.kd
+      54.9 ms   7.8% x236   kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_64_HEAD_SIZE_256_H
+      53.1 ms   7.5% x240   _act_mul_and_dynamic_mxfp4_quant_kernel.kd
+      40.8 ms   5.8% x60    _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E.kd
+      35.5 ms   5.0% x236   triton_red_fused_2.kd
+      20.3 ms   2.9% x240   triton_red_fused_add_mul_rms_norm_1.kd
+      16.2 ms   2.3% x240   triton_red_fused_add_rms_norm_0.kd
+      15.3 ms   2.2% x720   void aiter::dynamic_per_group_scaled_quant_kernel<std::bfloat16_t, opus::fp4_t, 32, 32, true, 64, true>(opus::
+      14.8 ms   2.1% x240   void vllm::reshape_and_cache_flash_kernel<__hip_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1>(__hip_bf
+      10.1 ms   1.4% x288   _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT_PKfi.kd
+       5.1 ms   0.7% x236   triton_poi_fused_add_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3.kd
+       1.6 ms   0.2% x62    void wvSplitK_hf_sml_<__hip_bfloat16, 64, 2, 16, 8, 2, 1>(int, int, int, int, int, int, __hip_bfloat16 const*,
+       1.5 ms   0.2% x38    void wvSplitK_hf_sml_<__hip_bfloat16, 64, 4, 16, 8, 2, 2>(int, int, int, int, int, int, __hip_bfloat16 const*,
+       0.5 ms   0.1% x4     triton_red_fused_1.kd
+       0.5 ms   0.1% x84    __amd_rocclr_copyBuffer.kd
+       0.4 ms   0.1% x12    reduce_segments_num_query_heads_32_TILE_SIZE_64_HEAD_SIZE_512_NUM_SEGMENTS_PER_SEQ_128.kd
+       0.3 ms   0.0% x54    void wvSplitK_hf_sml_<__hip_bfloat16, 64, 1, 16, 8, 4, 2>(int, int, int, int, int, int, __hip_bfloat16 const*,
+       0.3 ms   0.0% x54    void wvSplitK_hf_sml_<__hip_bfloat16, 64, 1, 16, 8, 4, 1>(int, int, int, int, int, int, __hip_bfloat16 const*,
+       0.3 ms   0.0% x12    kernel_unified_attention_3d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_
+       0.2 ms   0.0% x4     triton_red_fused__to_copy_embedding_mul_rms_norm_0.kd
+       0.2 ms   0.0% x48    triton_poi_fused_gelu_mul_slice_1.kd
+       0.2 ms   0.0% x48    triton_per_fused_add_mul_rms_norm_2.kd
+       0.2 ms   0.0% x48    triton_per_fused_add_rms_norm_0.kd
+prefill-only  steps     4 total   2718.6 ms  avg  679.66 ms  avg ctx tok    7500  avg gen reqs   0.0  avg gen tok    0.0  cats {'gpu_user_annotation'}
+
+== load profile: 3.5 req/s open loop, warm 90s, window 12s
+Successful requests:                     497       
+Request throughput (req/s):              2.18      
+Median TPOT (ms):                        53.38     
+trace /root/or/out/prof/rank0.1795339317188551872.pt.trace.json.gz (23M)
+mixed         steps    57 total   9698.0 ms  avg  170.14 ms  avg ctx tok    6855  avg gen reqs  35.5  avg gen tok  141.8  cats {'gpu_user_annotation'}
+decode-only   steps    88 total   1717.7 ms  avg   19.52 ms  avg ctx tok       0  avg gen reqs  36.7  avg gen tok  146.8  cats {'gpu_user_annotation'}
+  decode-only reqs  24- 31: n=   5 median  18.57 ms
+  decode-only reqs  32- 39: n=  64 median  19.83 ms
+  decode-only reqs  40- 47: n=  19 median  20.11 ms
+-- decode-only steps
+decode: 88 steps, window 1717.7 ms, kernels 1753.9 ms (102% busy), per step 19.93 ms kernels
+    5.977 ms/step x 10.0  kernel_unified_attention_3d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD
+    3.353 ms/step x 50.0  kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_32_HEAD_
+    3.025 ms/step x115.2  _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E.kd
+    1.890 ms/step x 55.9  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E.kd
+    0.768 ms/step x180.0  void aiter::dynamic_per_group_scaled_quant_kernel<std::bfloat16_t, opus::fp4_t, 32, 32, true, 64, tr
+    0.758 ms/step x 46.6  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E.kd
+    0.710 ms/step x 59.0  triton_red_fused_2.kd
+    0.536 ms/step x 60.0  _act_mul_and_dynamic_mxfp4_quant_kernel.kd
+    0.485 ms/step x 60.0  triton_red_fused_add_mul_rms_norm_1.kd
+    0.363 ms/step x 60.0  triton_red_fused_add_rms_norm_0.kd
+    0.324 ms/step x 60.0  void vllm::reshape_and_cache_flash_kernel<__hip_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1
+    0.271 ms/step x 59.0  triton_poi_fused_add_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3.kd
+    0.259 ms/step x 60.0  _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT_PKfi.kd
+    0.254 ms/step x  0.6  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x160x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_
+    0.212 ms/step x  9.3  _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E.kd
+    0.206 ms/step x  8.2  _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E.kd
+    0.139 ms/step x  0.3  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x144x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_
+    0.120 ms/step x  4.1  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E.kd
+    0.112 ms/step x 10.0  reduce_segments_num_query_heads_32_TILE_SIZE_64_HEAD_SIZE_512_NUM_SEGMENTS_PER_SEQ_4.kd
+    0.041 ms/step x  0.1  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT128x128x256_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1
+-- mixed steps
+mixed: 57 steps, window 9698.0 ms, kernels 9697.9 ms (100% busy), per step 170.14 ms kernels
+   60.059 ms/step x155.1  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E.kd
+   29.770 ms/step x 10.0  kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD
+   17.188 ms/step x 49.7  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E.kd
+   17.059 ms/step x 50.0  kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_64_HEAD_
+   12.207 ms/step x 59.0  _act_mul_and_dynamic_mxfp4_quant_kernel.kd
+    8.294 ms/step x 59.0  triton_red_fused_2.kd
+    4.657 ms/step x 59.0  triton_red_fused_add_mul_rms_norm_1.kd
+    3.620 ms/step x 59.0  triton_red_fused_add_rms_norm_0.kd
+    3.510 ms/step x178.5  void aiter::dynamic_per_group_scaled_quant_kernel<std::bfloat16_t, opus::fp4_t, 32, 32, true, 64, tr
+    3.458 ms/step x 60.0  void vllm::reshape_and_cache_flash_kernel<__hip_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1
+    2.525 ms/step x  3.3  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E.kd
+    2.288 ms/step x 60.0  _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT_PKfi.kd
+    1.194 ms/step x 59.0  triton_poi_fused_add_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3.kd
+    1.087 ms/step x  8.7  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E.kd
+    1.066 ms/step x  9.1  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E.kd
+    0.803 ms/step x  4.7  _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E.kd
+    0.773 ms/step x  3.1  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E.kd
+    0.278 ms/step x  2.5  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E.kd
+    0.122 ms/step x  1.0  triton_red_fused_1.kd
+    0.049 ms/step x  1.0  triton_red_fused__to_copy_embedding_mul_rms_norm_0.kd
+    0.024 ms/step x  0.9  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E.kd
+    0.021 ms/step x  1.0  triton_poi_fused_add_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_2.kd
+    0.021 ms/step x  3.2  _apply_write_kernel.kd
+    0.018 ms/step x  5.4  __amd_rocclr_copyBuffer.kd
+    0.010 ms/step x  1.0  _prepare_prefill_inputs_kernel.kd
+-- gaps in mixed steps
+mixed: 57 steps, gaps>50us total 0.2 ms of 9698.0 ms (0.0%)
+      0.1 ms x    2  triton_red_fused_2.kd  ->  triton_poi_fused_add_index_select_mul_rms_norm_spl
+      0.1 ms x    1  __amd_rocclr_copyBuffer.kd  ->  _apply_write_kernel.kd
+      0.1 ms x    1  triton_red_fused_2.kd  ->  _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT
+-- outside the target forward (drafter, samplers)
+kernels 12130.5 ms over a 12139.8 ms span; inside step windows 11451.8 ms; OUTSIDE 678.7 ms (5.6%) across 145 steps = 4.68 ms/step
+     180.4 ms  26.6% x435    kernel_unified_attention_3d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD
+      60.5 ms   8.9% x1041   kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_64_HEAD_
+      48.6 ms   7.2% x145    _topk_topp_kernel.kd
+      48.2 ms   7.1% x99     _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E.kd
+      38.3 ms   5.6% x406    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x48x128_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_
+      27.1 ms   4.0% x2429   Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x16x1024_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_
+      18.1 ms   2.7% x264    kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_32_HEAD_
+      16.4 ms   2.4% x48     _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E.kd
+      15.3 ms   2.2% x1617   Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x256_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_C
+      12.8 ms   1.9% x435    void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<flo
+      11.5 ms   1.7% x57     _act_mul_and_dynamic_mxfp4_quant_kernel.kd
+      11.1 ms   1.6% x23     Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x144x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_
+       9.4 ms   1.4% x1395   Cijk_SB_BiasS_HAS_ScaleAlphaVec_PostGSU16_VW4.kd
+       9.3 ms   1.4% x20     Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x160x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_
+       8.6 ms   1.3% x1616   __amd_rocclr_copyBuffer.kd
+       8.3 ms   1.2% x1740   _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT_PKfi.kd
+       8.2 ms   1.2% x1740   triton_poi_fused_gelu_mul_slice_1.kd
+       8.2 ms   1.2% x1740   triton_per_fused_add_mul_rms_norm_2.kd
+       8.0 ms   1.2% x1740   triton_per_fused_add_rms_norm_0.kd
+       7.9 ms   1.2% x951    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT32x48x512_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_C
+       7.2 ms   1.1% x145    _resample_kernel.kd
+       7.2 ms   1.1% x1305   triton_per_fused_add_cat_index_select_mul_rms_norm_split_sub_unsqueeze_view_3.kd
+       6.6 ms   1.0% x574    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x160x64_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_C
+       5.8 ms   0.9% x375    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT128x80x128_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_
+       5.7 ms   0.8% x57     triton_red_fused_add_mul_rms_norm_1.kd
+gpu_user_annotation totals:
+    11415.7 ms  execute_context_#(#)_generation_#(#)
+     6939.6 ms  ## Call CompiledFxGraph None ##
+-- whole window
+total GPU kernel time 12130.5 ms
+  gemm_fp4                  6419.2 ms  52.9%
+  attn_global(d512)         2403.3 ms  19.8%
+  attn_sliding(d256)        1571.6 ms  13.0%
+  other                      684.3 ms   5.6%
+  norm                       679.7 ms   5.6%
+  gemm_bf16/other            202.6 ms   1.7%
+  quant                      161.5 ms   1.3%
+  gelu                         8.2 ms   0.1%
+top kernels:
+    3471.6 ms  28.6% x8940  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E.kd
+    1696.9 ms  14.0% x570   kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_
+    1032.9 ms   8.5% x3891  kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_64_HEAD_SIZE_256_H
+     996.1 ms   8.2% x2880  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E.kd
+     754.5 ms   6.2% x8700  _act_mul_and_dynamic_mxfp4_quant_kernel.kd
+     706.4 ms   5.8% x1315  kernel_unified_attention_3d_num_query_heads_32_num_queries_per_kv_8_BLOCK_SIZE_128_TILE_SIZE_64_HEAD_SIZE_512_
+     535.2 ms   4.4% x8555  triton_red_fused_2.kd
+     313.8 ms   2.6% x8700  triton_red_fused_add_mul_rms_norm_1.kd
+     313.1 ms   2.6% x4664  kernel_unified_attention_2d_num_query_heads_32_num_queries_per_kv_2_BLOCK_SIZE_64_TILE_SIZE_32_HEAD_SIZE_256_H
+     269.9 ms   2.2% x26100 void aiter::dynamic_per_group_scaled_quant_kernel<std::bfloat16_t, opus::fp4_t, 32, 32, true, 64, true>(opus::
+     266.2 ms   2.2% x10140 _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E.kd
+     241.6 ms   2.0% x8700  triton_red_fused_add_rms_norm_0.kd
+     225.7 ms   1.9% x8700  void vllm::reshape_and_cache_flash_kernel<__hip_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1>(__hip_bf
+     183.4 ms   1.5% x5070  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E.kd
+     161.5 ms   1.3% x10440 _ZN5aiter19scaled_quant_kernelIDF16bDB8_EEvPT0_PKT_PKfi.kd
+     146.3 ms   1.2% x190   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E.kd
+      92.0 ms   0.8% x8555  triton_poi_fused_add_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3.kd
+      66.7 ms   0.5% x4100  _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E.kd
+      62.6 ms   0.5% x500   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E.kd
+      61.0 ms   0.5% x520   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E.kd
+      48.6 ms   0.4% x145   _topk_topp_kernel.kd
+      46.3 ms   0.4% x270   _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E.kd
+      44.8 ms   0.4% x180   _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E.kd
+      38.3 ms   0.3% x406   Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x48x128_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      31.7 ms   0.3% x69    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x160x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      27.1 ms   0.2% x2429  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x16x1024_MI16x16x1_SN_LDSB1_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      23.3 ms   0.2% x49    Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT256x144x64_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0
+      18.7 ms   0.2% x820   _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E.kd
+      18.1 ms   0.1% x720   _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E.kd
+      15.3 ms   0.1% x1617  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x256_MI16x16x1_SN_LDSB0_AFC0_AFEM1_AFEM1_ASEM1_CLR1_CADS0_

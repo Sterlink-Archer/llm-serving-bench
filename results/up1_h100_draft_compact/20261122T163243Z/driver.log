@@ -1,0 +1,33 @@
+2026-11-22T16:32:44Z [up1_h100_draft_compact] creating spot sandbox (H100 x1, $3.6665/h, ttl 170 min, budget $9.5; project so far ~$317.59)
+2026-11-22T16:33:27Z [up1_h100_draft_compact] system: ok | NVIDIA H100 80GB HBM3, 81559 MiB, 580.178.04, 700.00 W | 160 | Mem:            1889          64         798           0        1044        1825 | overlay         150G  8.4M  150G   1% / | Python 3.14.10 | /usr/bin/curl | vllm 0.34.0rc1.dev1133+g647a76866
+2026-11-22T16:33:29Z [up1_h100_draft_compact] download tests: rc=0 1s 0.0 GB via []
+2026-11-22T16:33:30Z [up1_h100_draft_compact] server tests ready=True after 0.9s; gpu mem 0 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T16:33:52Z [up1_h100_draft_compact] t_unit_base rc=1 22s :: ======================= 1 failed, 35 deselected in 2.77s =======================
+2026-11-22T16:34:24Z [up1_h100_draft_compact] t_unit_patched rc=0 32s :: ============================= 36 passed in 13.66s ==============================
+2026-11-22T16:36:59Z [up1_h100_draft_compact] t_e2e_base rc=1 155s :: ============ 1 failed, 1 deselected, 1 warning in 136.57s (0:02:16) ============
+2026-11-22T16:38:53Z [up1_h100_draft_compact] t_e2e_patched rc=1 114s :: ============ 1 failed, 1 deselected, 1 warning in 95.40s (0:01:35) =============
+2026-11-22T16:39:25Z [up1_h100_draft_compact] download unpatched_s7: rc=0 21s 34.3 GB via ['huggingface_hub']
+2026-11-22T16:42:20Z [up1_h100_draft_compact] server unpatched_s7 ready=True after 174.0s; gpu mem 71631 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162673 graphs 115
+2026-11-22T16:42:32Z [up1_h100_draft_compact] verify_unpatched_s7 rc=0 12s :: (EngineCore pid=4588) INFO 11-22 16:40:03 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T16:44:16Z [up1_h100_draft_compact] idprobe_unpatched_c1 rc=0 104s :: identity_probe: 60 requests, conc 1, 102s -> out/idprobe_unpatched_c1.json; lengths [256]
+2026-11-22T17:03:04Z [up1_h100_draft_compact] pr_unpatched_s7 rc=0 1128s :: [protocol] max_rate_at_slo=0.75 req/s (break-even 1.3074); prefill=12367.814710565526 tok/s -> /root/or/out/pr_unpatched_s7/protocol_summary.json
+2026-11-22T17:03:27Z [up1_h100_draft_compact] download patched_s7: rc=0 11s 34.3 GB via ['huggingface_hub']
+2026-11-22T17:05:07Z [up1_h100_draft_compact] server patched_s7 ready=True after 99.8s; gpu mem 71631 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162673 graphs 115
+2026-11-22T17:05:19Z [up1_h100_draft_compact] verify_patched_s7 rc=0 12s :: (EngineCore pid=8752) INFO 11-22 17:04:02 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T17:07:03Z [up1_h100_draft_compact] idprobe_patched_c1 rc=0 104s :: identity_probe: 60 requests, conc 1, 102s -> out/idprobe_patched_c1.json; lengths [256]
+2026-11-22T17:07:04Z [up1_h100_draft_compact] idcompare_unpatched_vs_patched rc=0 1s :: }
+2026-11-22T17:25:43Z [up1_h100_draft_compact] pr_patched_s7 rc=0 1118s :: [protocol] max_rate_at_slo=0.75 req/s (break-even 1.3074); prefill=12681.427842477127 tok/s -> /root/or/out/pr_patched_s7/protocol_summary.json
+2026-11-22T17:26:05Z [up1_h100_draft_compact] download patched_s8: rc=0 11s 34.3 GB via ['huggingface_hub']
+2026-11-22T17:27:37Z [up1_h100_draft_compact] server patched_s8 ready=True after 91.5s; gpu mem 71631 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162673 graphs 115
+2026-11-22T17:27:49Z [up1_h100_draft_compact] verify_patched_s8 rc=0 12s :: (EngineCore pid=12758) INFO 11-22 17:26:36 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T17:44:14Z [up1_h100_draft_compact] pr_patched_s8 rc=0 985s :: [protocol] max_rate_at_slo=0.6 req/s (break-even 1.3074); prefill=None tok/s -> /root/or/out/pr_patched_s8/protocol_summary.json
+2026-11-22T17:44:37Z [up1_h100_draft_compact] download unpatched_s8: rc=0 11s 34.3 GB via ['huggingface_hub']
+2026-11-22T17:46:09Z [up1_h100_draft_compact] server unpatched_s8 ready=True after 91.5s; gpu mem 71631 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens 162673 graphs 115
+2026-11-22T17:46:21Z [up1_h100_draft_compact] verify_unpatched_s8 rc=0 12s :: (EngineCore pid=15883) INFO 11-22 17:45:07 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn
+2026-11-22T17:48:15Z [up1_h100_draft_compact] idprobe_unpatched2_c1 rc=0 114s :: identity_probe: 60 requests, conc 1, 104s -> out/idprobe_unpatched2_c1.json; lengths [256]
+2026-11-22T17:48:16Z [up1_h100_draft_compact] idcompare_control_unpatched_twice rc=0 1s :: }
+2026-11-22T18:04:42Z [up1_h100_draft_compact] pr_unpatched_s8 rc=0 985s :: [protocol] max_rate_at_slo=0.6 req/s (break-even 1.3074); prefill=None tok/s -> /root/or/out/pr_unpatched_s8/protocol_summary.json
+2026-11-22T18:04:54Z [up1_h100_draft_compact] download tests_existing: rc=0 1s 0.0 GB via []
+2026-11-22T18:04:55Z [up1_h100_draft_compact] server tests_existing ready=True after 0.9s; gpu mem 0 MiB, 81559 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T18:11:16Z [up1_h100_draft_compact] t_e2e_gemma4_all_patched rc=0 381s :: ================== 2 passed, 3 warnings in 360.82s (0:06:00) ===================
+2026-11-22T18:11:54Z [up1_h100_draft_compact] done: elapsed 99.2 min, est $6.06; project est $323.62

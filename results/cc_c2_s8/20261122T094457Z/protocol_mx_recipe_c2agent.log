@@ -1,0 +1,5 @@
+[r2.358x_s8] R=4.0 win=300s done=1426 err=0 drop=0 req/s=3.94 out=1499 in=38676 tok/s cache=0.65 TTFT p50=0.152s p95=0.343s TPOT p50=7.6ms srv=1498.6936280946215
+[r2.948x_s8] R=5.0 win=300s done=1717 err=0 drop=0 req/s=4.80 out=1851 in=47722 tok/s cache=0.64 TTFT p50=0.181s p95=0.426s TPOT p50=9.4ms srv=1850.6448311475733
+[r3.538x_s8] R=6.0 win=300s done=2073 err=0 drop=0 req/s=5.90 out=2261 in=58470 tok/s cache=0.65 TTFT p50=0.220s p95=0.530s TPOT p50=12.8ms srv=2261.478597477061
+[r4.422x_s8] R=7.5 win=300s done=2446 err=0 drop=0 req/s=7.10 out=2735 in=70783 tok/s cache=0.63 TTFT p50=0.378s p95=0.899s TPOT p50=28.8ms srv=2734.2892575886135
+[protocol] max_rate_at_slo=7.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe_c2agent/protocol_summary.json

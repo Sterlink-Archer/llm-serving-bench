@@ -1,0 +1,40 @@
+2026-11-22T09:18:41Z [mxL_lpt_s8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 85 min, budget $7.0; project so far ~$163.94)
+2026-11-22T09:19:07Z [mxL_lpt_s8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:19:30Z [mxL_lpt_s8] download mx_recipe: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T09:22:19Z [mxL_lpt_s8] server mx_recipe ready=True after 168.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T09:22:22Z [mxL_lpt_s8] inspect_mx_recipe rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:22:34Z [mxL_lpt_s8] cpumon_start rc=0 12s :: 2026-11-22T09:22:25,192,20.4,39.19,201.0,0.0,0.0,1.0,51
+2026-11-22T09:40:11Z [mxL_lpt_s8] protocol_mx_recipe rc=0 1057s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_recipe/protocol_summary.json
+2026-11-22T09:40:35Z [mxL_lpt_s8] download mx_lpt6144: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T09:41:35Z [mxL_lpt_s8] server mx_lpt6144 ready=True after 59.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270048 MB
+        FREE_VRAM: 24544 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270048 MB
+        FREE_VISIBLE_VRAM: 24544 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T09:41:38Z [mxL_lpt_s8] inspect_mx_lpt6144 rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T09:41:51Z [mxL_lpt_s8] gate_mx_lpt6144_gsm8kor100 rc=0 13s :: [gate_mx_lpt6144_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T09:59:28Z [mxL_lpt_s8] protocol_mx_lpt6144 rc=0 1057s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_lpt6144/protocol_summary.json
+2026-11-22T09:59:51Z [mxL_lpt_s8] download mx_lpt4096: rc=0 12s 21.5 GB via ['huggingface_hub']
+2026-11-22T10:00:52Z [mxL_lpt_s8] server mx_lpt4096 ready=True after 59.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 270049 MB
+        FREE_VRAM: 24543 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 270049 MB
+        FREE_VISIBLE_VRAM: 24543 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 978673 graphs 23
+2026-11-22T10:00:54Z [mxL_lpt_s8] inspect_mx_lpt4096 rc=0 2s :: PATCH draft_compact: applied (active with MX_DRAFT_COMPACT=1)
+2026-11-22T10:01:07Z [mxL_lpt_s8] gate_mx_lpt4096_gsm8kor100 rc=0 13s :: [gate_mx_lpt4096_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T10:18:39Z [mxL_lpt_s8] protocol_mx_lpt4096 rc=0 1051s :: [protocol] max_rate_at_slo=3.5 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_mx_lpt4096/protocol_summary.json
+2026-11-22T10:18:41Z [mxL_lpt_s8] cpumon_pull rc=0 2s :: 2026-11-22T10:18:39,192,20.7,39.84,201.0,1.0,0.0,1.0,43
+2026-11-22T10:19:16Z [mxL_lpt_s8] done: elapsed 60.6 min, est $4.80; project est $228.36

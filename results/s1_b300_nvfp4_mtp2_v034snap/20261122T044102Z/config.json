@@ -1,0 +1,79 @@
+{
+ "label": "s1_b300_nvfp4_mtp2_v034snap",
+ "stage": "1-screen (B300, launch when spot frees)",
+ "note": "FALLBACK for s1_b300_nvfp4_mtp2 when a spot B300 frees but our snapshot cannot be built in time: reuses the existing t3990-vllm-cuda-v0340-b300 snapshot (vllm/vllm-openai:v0.34.0, built 2026-11-19 by the earlier t3990 work; host fixed at 16 vCPU / 128 GiB / 400 GB, so the host charge is higher: that is in $/h and the break-even). Same flags as the primary.",
+ "snapshot": {
+  "name": "t3990-vllm-cuda-v0340-b300",
+  "image": "vllm/vllm-openai:v0.34.0",
+  "image_digest_amd64": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 16,
+  "mem": 128,
+  "disk": 400
+ },
+ "max_minutes": 60,
+ "budget_usd": 9.0,
+ "servers": [
+  {
+   "name": "nvfp4_mtp2",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/nvfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --speculative-config '{\"model\":\"/root/models/nvfp4/assistant\",\"num_speculative_tokens\":2}' --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_mtp2",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_mtp2_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6336 @@
+{
+ "schema": "claims/1",
+ "openrelay_sync_usd_per_req": 0.0007790000000000001,
+ "rules": "CLAIMS.md / claims.json (brainstorm round 2): per (claim group, column) the highest offered rate at which EVERY seed\nmeets the SLO, priced on the WORST seed's ACHIEVED req/s, at published and metered $/h. Column A = OpenRelay's\nrandom-token client (vllm bench serve); column B = our real-text client. A cell is claim-eligible with a 300 s window,\nthe server-vs-client prompt-token check within 1%, and (column B) tokenizer-exact, stratified prompts whose realized mean\nis within 9.5K +-2%. When a group has eligible cells, the claim is judged on them alone; older ineligible cells are listed\nas excluded, and any excluded cell that FAILS at the claimed rate blocks the claim (no silent cherry-picking). A claim\nneeds >= 2 distinct seeds at its rate; anything less is labelled with the reasons. The claim rate is the top of the\nMONOTONIC prefix: every cell of every tested rung up to it passes; a failing rung below a higher all-pass rung ends the\nprefix, and the higher pass is reported beside the claim (non_monotonic_pass_rps, fails_below_at_rps).",
+ "claims": [
+  {
+   "group": "cache_ours_mi355x_c1evict",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    4.5
+   ],
+   "runs": [
+    "cc_c1_s7/20261122T094451Z",
+    "cc_c1_s8/20261122T094453Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 4.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "cc_c1_s7/20261122T094451Z:s7",
+    "cc_c1_s8/20261122T094453Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.513333333333333,
+   "worst_seed_ttft_p95_s": 1.4051,
+   "prompt_tokens_mean_range": [
+    9520.400635930047,
+    9525.396976929196
+   ],
+   "spec_accept_len": [
+    2.776082619410867,
+    2.7719415588487344
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00037606736242884253,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.0007073740610027533,
+   "ratio_vs_bar": 0.5316386098406551,
+   "ratio_vs_bar_metered": 0.47568606320211154,
+   "ratio_vs_openrelay_sync": 0.48275656280981066,
+   "usd_per_h_metered": 4.2559,
+   "usd_per_req_metered": 0.00033648798228969,
+   "ratio_vs_openrelay_sync_metered": 0.4319486293834275,
+   "cached_share_scored": [
+    0.1380236344766552,
+    0.1634499198921154
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.13948307459347184,
+    0.16242971874390325
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "cache_ours_mi355x_c1fit",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0
+   ],
+   "runs": [
+    "cc_c1_s7/20261122T094451Z",
+    "cc_c1_s8/20261122T094453Z",
+    "cc_x2_s7/20261122T105237Z",
+    "cc_x2_s8/20261122T105239Z",
+    "cc_x_s7/20261122T102748Z",
+    "cc_x_s8/20261122T102750Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 8.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 7.5,
+   "seeds": [
+    "cc_c1_s7/20261122T094451Z:s7",
+    "cc_c1_s8/20261122T094453Z:s8"
+   ],
+   "worst_seed_achieved_rps": 7.5,
+   "worst_seed_ttft_p95_s": 0.6375,
+   "prompt_tokens_mean_range": [
+    9524.715504451038,
+    9527.921394141638
+   ],
+   "spec_accept_len": [
+    2.7670619868440003,
+    2.7644071239926866
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.000354574949531
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00017616666666666665,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.0003355436095132158,
+   "ratio_vs_bar": 0.5250186910793427,
+   "ratio_vs_bar_metered": 0.4697628607935614,
+   "ratio_vs_openrelay_sync": 0.22614462986735126,
+   "usd_per_h_metered": 4.2559,
+   "usd_per_req_metered": 0.0001576259259259259,
+   "ratio_vs_openrelay_sync_metered": 0.2023439357200589,
+   "cached_share_scored": [
+    0.7591773643150103,
+    0.7577088963806812
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.7584762742880369,
+    0.7576675180205722
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "cache_ours_mi355x_c2agent",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    7.5,
+    8.0,
+    8.5
+   ],
+   "runs": [
+    "cc_c2_s7/20261122T094455Z",
+    "cc_c2_s8/20261122T094457Z",
+    "cc_x2_s7/20261122T105237Z",
+    "cc_x2_s8/20261122T105239Z",
+    "cc_x_s7/20261122T102748Z",
+    "cc_x_s8/20261122T102750Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 8.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 7.5,
+   "seeds": [
+    "cc_c2_s7/20261122T094455Z:s7",
+    "cc_c2_s8/20261122T094457Z:s8"
+   ],
+   "worst_seed_achieved_rps": 7.036666666666667,
+   "worst_seed_ttft_p95_s": 2.824,
+   "prompt_tokens_mean_range": [
+    9726.998399359743,
+    9754.685375494071
+   ],
+   "spec_accept_len": [
+    3.0348229019330506,
+    3.047668366854504
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00018776646139270485,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.0004023058408308415,
+   "ratio_vs_bar": 0.46672566573960195,
+   "ratio_vs_bar_metered": 0.41760491134682476,
+   "ratio_vs_openrelay_sync": 0.24103525210873533,
+   "usd_per_h_metered": 4.2559,
+   "usd_per_req_metered": 0.00016800489499447336,
+   "ratio_vs_openrelay_sync_metered": 0.2156673876694138,
+   "cached_share_scored": [
+    0.6476791448622295,
+    0.6531430426079116
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.6497838732575324,
+    0.6523825136103008
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "cache_theirs_mi355x_c1evict",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    4.5
+   ],
+   "runs": [
+    "cc_c1_s7/20261122T094451Z",
+    "cc_c1_s8/20261122T094453Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 4.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "cc_c1_s7/20261122T094451Z:s7",
+    "cc_c1_s8/20261122T094453Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.5,
+   "worst_seed_ttft_p95_s": 2.284709999999999,
+   "prompt_tokens_mean_range": [
+    9519.396976929196,
+    9522.259347653142
+   ],
+   "spec_accept_len": [
+    2.369183266226636,
+    2.364256488226972
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00037749999999999996,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.0007063009992044552,
+   "ratio_vs_bar": 0.5344746792446825,
+   "ratio_vs_bar_metered": 0.47822364919529997,
+   "ratio_vs_openrelay_sync": 0.4845956354300384,
+   "usd_per_h_metered": 4.2559,
+   "usd_per_req_metered": 0.0003377698412698412,
+   "ratio_vs_openrelay_sync_metered": 0.43359414797155477,
+   "cached_share_scored": [
+    0.13960216607428333,
+    0.16671028431775214
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.14093727444001172,
+    0.16463526989709085
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "cache_theirs_mi355x_c1fit",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    4.0,
+    5.0,
+    6.0,
+    6.75,
+    7.0,
+    7.5,
+    8.0
+   ],
+   "runs": [
+    "cc_c1_s7/20261122T094451Z",
+    "cc_c1_s8/20261122T094453Z",
+    "cc_x2_s7/20261122T105237Z",
+    "cc_x2_s8/20261122T105239Z",
+    "cc_x_s7/20261122T102748Z",
+    "cc_x_s8/20261122T102750Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 7.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 6.75,
+   "seeds": [
+    "cc_x_s7/20261122T102748Z:s7",
+    "cc_x_s8/20261122T102750Z:s8"
+   ],
+   "worst_seed_achieved_rps": 6.843333333333334,
+   "worst_seed_ttft_p95_s": 3.6959899999999988,
+   "prompt_tokens_mean_range": [
+    9522.146562371347,
+    9524.983525535421
+   ],
+   "spec_accept_len": [
+    2.365730916146244,
+    2.3612327616930537
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0001930711154408183,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.0003349332943241092,
+   "ratio_vs_bar": 0.5764464707231725,
+   "ratio_vs_bar_metered": 0.5157781004416586,
+   "ratio_vs_openrelay_sync": 0.24784482084829046,
+   "usd_per_h_metered": 4.2559,
+   "usd_per_req_metered": 0.00017275125832115598,
+   "ratio_vs_openrelay_sync_metered": 0.22176028025822334,
+   "cached_share_scored": [
+    0.7628169342191199,
+    0.7597288134077131
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.7626898685954197,
+    0.7600213451947718
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "cache_theirs_mi355x_c2agent",
+   "column": "C",
+   "column_name": "cached traffic, supplementary: NOT OpenRelay's method",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    4.0,
+    5.0,
+    6.0,
+    6.75,
+    7.0,
+    7.5,
+    8.0
+   ],
+   "runs": [
+    "cc_c2_s7/20261122T094455Z",
+    "cc_c2_s8/20261122T094457Z",
+    "cc_x2_s7/20261122T105237Z",
+    "cc_x2_s8/20261122T105239Z",
+    "cc_x_s7/20261122T102748Z",
+    "cc_x_s8/20261122T102750Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 7.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 7.0,
+   "seeds": [
+    "cc_x2_s7/20261122T105237Z:s7",
+    "cc_x2_s8/20261122T105239Z:s8"
+   ],
+   "worst_seed_achieved_rps": 6.666666666666667,
+   "worst_seed_ttft_p95_s": 3.78653,
+   "prompt_tokens_mean_range": [
+    9739.383169585648,
+    9779.390367553866
+   ],
+   "spec_accept_len": [
+    2.528688111651732,
+    2.517399695011445
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00019818749999999999,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b, cached input at its cached rate on the realized cached tokens",
+   "price_bar_usd_per_req": 0.000400922119263247,
+   "ratio_vs_bar": 0.49432917386598296,
+   "ratio_vs_bar_metered": 0.4423656319900255,
+   "ratio_vs_openrelay_sync": 0.2544127086007702,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00017735416666666664,
+   "ratio_vs_openrelay_sync_metered": 0.2276690201112537,
+   "cached_share_scored": [
+    0.6521968847563626,
+    0.653736841872772
+   ],
+   "server_prefix_cache_hit_ratio": [
+    0.6519934076171559,
+    0.6530836159911887
+   ],
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "d3_sglang_counter_probe",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.35
+   ],
+   "runs": [
+    "d3_sglang_counter_probe/20261122T072959Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.35,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.35 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "e4_b300_sglang",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.3684,
+    3.5526
+   ],
+   "runs": [
+    "e4_b300_sglang/20261122T055226Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5526,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.3684,
+   "seeds": [
+    "e4_b300_sglang/20261122T055226Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.3094015319183607,
+   "worst_seed_ttft_p95_s": 2.1385643658461038,
+   "prompt_tokens_mean_range": [
+    9643.378873239437,
+    9643.378873239437
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 6.6419,
+   "usd_per_req": 0.0007988962494060749,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 1.025540756618838,
+   "ratio_vs_bar_metered": 0.9298870282089899,
+   "ratio_vs_openrelay_sync": 1.025540756618838,
+   "usd_per_h_metered": 6.0224,
+   "usd_per_req_metered": 0.0007243819949748032,
+   "ratio_vs_openrelay_sync_metered": 0.9298870282089899,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "e4_b300_sglang",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.3684,
+    3.5526
+   ],
+   "runs": [
+    "e4_b300_sglang/20261122T055226Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5526,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [
+    {
+     "cell": "e4_b300_sglang/20261122T055226Z:s7@2.3684",
+     "slo_pass": false,
+     "why": [
+      "server-vs-client prompt tokens differ by > 1%"
+     ]
+    }
+   ],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.5526 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "e4_rtxpro6000_sglang",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    1.03
+   ],
+   "runs": [
+    "e4a_rtxpro6000_sglang_colA/20261122T054545Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.03,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.03 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "e4_rtxpro6000_sglang",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    1.03
+   ],
+   "runs": [
+    "e4_rtxpro6000_sglang/20261122T052658Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.03,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.03 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "e5_b300_sglang_textonly",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.3684,
+    2.9605,
+    3.5526
+   ],
+   "runs": [
+    "e5_b300_sglang_textonly/20261122T090736Z",
+    "e5_b300_sglang_textonly_s8/20261122T115147Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5526,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.9605,
+   "seeds": [
+    "e5_b300_sglang_textonly/20261122T090736Z:s7",
+    "e5_b300_sglang_textonly_s8/20261122T115147Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.913726457730764,
+   "worst_seed_ttft_p95_s": 1.0477907107211646,
+   "prompt_tokens_mean_range": [
+    9544.337837837838,
+    9713.529279279279
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 6.6419,
+   "usd_per_req": 0.0006332002159389743,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.8128372476751915,
+   "ratio_vs_bar_metered": 0.7374387881541681,
+   "ratio_vs_openrelay_sync": 0.8128372476751915,
+   "usd_per_h_metered": 6.0258,
+   "usd_per_req_metered": 0.000574464815972097,
+   "ratio_vs_openrelay_sync_metered": 0.7374387881541681,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "e5_b300_sglang_textonly",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.3684,
+    2.9605
+   ],
+   "runs": [
+    "e5_b300_sglang_textonly/20261122T090736Z",
+    "e5_b300_sglang_textonly_s8/20261122T115147Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.9605,
+   "seeds": [
+    "e5_b300_sglang_textonly/20261122T090736Z:s7",
+    "e5_b300_sglang_textonly_s8/20261122T115147Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.933333333333333,
+   "worst_seed_ttft_p95_s": 2.454725,
+   "prompt_tokens_mean_range": [
+    9520.30018761726,
+    9526.046948356807
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0004684955703365
+   ],
+   "usd_per_h": 6.6419,
+   "usd_per_req": 0.0006289678030303031,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.807404111720543,
+   "ratio_vs_bar_metered": 0.7325096277278562,
+   "ratio_vs_openrelay_sync": 0.807404111720543,
+   "usd_per_h_metered": 6.0258,
+   "usd_per_req_metered": 0.0005706250000000001,
+   "ratio_vs_openrelay_sync_metered": 0.7325096277278562,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "glm_best_C",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.25,
+    1.5,
+    1.75
+   ],
+   "runs": [
+    "glm4_best_s7/20261122T082933Z",
+    "glm4_best_s8/20261122T082931Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm4_best_s7/20261122T082933Z:s7",
+    "glm4_best_s8/20261122T082931Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.4140252609681505,
+   "worst_seed_ttft_p95_s": 3.410670951765496,
+   "prompt_tokens_mean_range": [
+    9628.68,
+    9761.228888888889
+   ],
+   "spec_accept_len": [
+    1.6826894294184105,
+    1.652423593537084
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0009375716520738036,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.8906466063194267,
+   "ratio_vs_bar_metered": 1.6896859292632853,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2654,
+   "usd_per_req_metered": 0.0008379152523216631,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "glm_best_C",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.5,
+    1.75
+   ],
+   "runs": [
+    "glm4_best_s7/20261122T082933Z",
+    "glm4_best_s8/20261122T082931Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm4_best_s7/20261122T082933Z:s7",
+    "glm4_best_s8/20261122T082931Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.4733333333333334,
+   "worst_seed_ttft_p95_s": 3.036,
+   "prompt_tokens_mean_range": [
+    9513.453703703704,
+    9514.566666666668
+   ],
+   "spec_accept_len": [
+    3.14735248531161,
+    3.1624956328264346
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0008998303167420815,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.8145398603389424,
+   "ratio_vs_bar_metered": 1.621668724262938,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2654,
+   "usd_per_req_metered": 0.0008041855203619909,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "glm_sgl_specoff",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    1.0,
+    1.5,
+    2.0
+   ],
+   "runs": [
+    "glm1_sglang0523/20261122T074555Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.0,
+   "seeds": [
+    "glm1_sglang0523/20261122T074555Z:s8"
+   ],
+   "worst_seed_achieved_rps": 0.9676494261919606,
+   "worst_seed_ttft_p95_s": 1.89019504536409,
+   "prompt_tokens_mean_range": [
+    9528.036666666667,
+    9528.036666666667
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.001370072635931063,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 2.762800233779115,
+   "ratio_vs_bar_metered": 2.467920932945817,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2633,
+   "usd_per_req_metered": 0.0012238419906478305,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_b16k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0,
+    1.5,
+    2.0
+   ],
+   "runs": [
+    "glm2_vllm_b16k/20261122T075350Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 2.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm2_vllm_b16k/20261122T075350Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.4350274993041785,
+   "worst_seed_ttft_p95_s": 2.9901713285595166,
+   "prompt_tokens_mean_range": [
+    9628.68,
+    9628.68
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.000923849891826348,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.8629761883975562,
+   "ratio_vs_bar_metered": 1.6645663162994822,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2644,
+   "usd_per_req_metered": 0.0008254584362529132,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_mtp3",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0,
+    1.5,
+    2.0
+   ],
+   "runs": [
+    "glm2_vllm_mtp3/20261122T074424Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 2.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm2_vllm_mtp3/20261122T074424Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.4217369564839175,
+   "worst_seed_ttft_p95_s": 3.640953013626856,
+   "prompt_tokens_mean_range": [
+    9628.68,
+    9628.68
+   ],
+   "spec_accept_len": [
+    1.631643185269187
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0009324861353247076,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.8803914807919089,
+   "ratio_vs_bar_metered": 1.6801268528692388,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2644,
+   "usd_per_req_metered": 0.0008331749063378555,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_mtp3",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.5
+   ],
+   "runs": [
+    "glm2_vllm_mtp3/20261122T074424Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm2_vllm_mtp3/20261122T074424Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.3933333333333333,
+   "worst_seed_ttft_p95_s": 3.42339,
+   "prompt_tokens_mean_range": [
+    9519.340757238308,
+    9519.340757238308
+   ],
+   "spec_accept_len": [
+    3.1556303778526003
+   ],
+   "xcheck_ratio_range": [
+    0.999994874026825,
+    0.999994874026825
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0009514952153110048,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.9187239671526617,
+   "ratio_vs_bar_metered": 1.7143768695970438,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2644,
+   "usd_per_req_metered": 0.0008501594896331739,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_mtp5",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0,
+    1.5,
+    2.0
+   ],
+   "runs": [
+    "glm2_vllm_mtp5/20261122T074426Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.0,
+   "seeds": [
+    "glm2_vllm_mtp5/20261122T074426Z:s8"
+   ],
+   "worst_seed_achieved_rps": 0.9559263691991612,
+   "worst_seed_ttft_p95_s": 2.1313031760044394,
+   "prompt_tokens_mean_range": [
+    9528.036666666667,
+    9528.036666666667
+   ],
+   "spec_accept_len": [
+    1.618278209022387
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.001386874599045388,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 2.796681990412156,
+   "ratio_vs_bar_metered": 2.4981864206265096,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2633,
+   "usd_per_req_metered": 0.001238850645988686,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_mtp5",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.5
+   ],
+   "runs": [
+    "glm2_vllm_mtp5/20261122T074426Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm2_vllm_mtp5/20261122T074426Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.3933333333333333,
+   "worst_seed_ttft_p95_s": 3.7935099999999986,
+   "prompt_tokens_mean_range": [
+    9517.340757238308,
+    9517.340757238308
+   ],
+   "spec_accept_len": [
+    3.7646285890016493
+   ],
+   "xcheck_ratio_range": [
+    0.9999800527101176,
+    0.9999800527101176
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0009514952153110048,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.9187239671526617,
+   "ratio_vs_bar_metered": 1.7139346468795318,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2633,
+   "usd_per_req_metered": 0.0008499401913875598,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "glm_vllm_specoff",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0,
+    1.5,
+    2.0
+   ],
+   "runs": [
+    "glm1_vllm034/20261122T073206Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": "openrelay/glm-5.3-flash",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 2.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.5,
+   "seeds": [
+    "glm1_vllm034/20261122T073206Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.4294918067185458,
+   "worst_seed_ttft_p95_s": 3.326022195257244,
+   "prompt_tokens_mean_range": [
+    9628.68,
+    9628.68
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7727,
+   "usd_per_req": 0.0009274274912028429,
+   "price_bar_name": "OpenRelay sync openrelay/glm-5.3-flash",
+   "price_bar_usd_per_req": 0.0004959,
+   "ratio_vs_bar": 1.87019054487365,
+   "ratio_vs_bar_metered": 1.6706596660315554,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.2635,
+   "usd_per_req_metered": 0.0008284801283850483,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "ik1_5090_sgl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-5090",
+   "engine": "sglang",
+   "rates_tested": [
+    0.564,
+    0.846
+   ],
+   "runs": [
+    "ik1_5090_sgl/20261122T071045Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.846,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.564,
+   "seeds": [
+    "ik1_5090_sgl/20261122T071045Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.5537242743977356,
+   "worst_seed_ttft_p95_s": 3.119005323946472,
+   "prompt_tokens_mean_range": [
+    9924.686567164179,
+    9924.686567164179
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 1.6773,
+   "usd_per_req": 0.0008414235896980065,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0180563698705463,
+   "ratio_vs_bar_metered": 0.7811593322741268,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 1.287,
+   "usd_per_req_metered": 0.0006456281881245658,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 121 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik1_5090_sgl",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-5090",
+   "engine": "sglang",
+   "rates_tested": [
+    0.564,
+    0.846
+   ],
+   "runs": [
+    "ik1_5090_sgl/20261122T071045Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.564,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.564 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik1_h100_sgl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "H100",
+   "engine": "sglang",
+   "rates_tested": [
+    1.145,
+    1.718
+   ],
+   "runs": [
+    "ik1_h100_sgl/20261122T071049Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.718,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.145,
+   "seeds": [
+    "ik1_h100_sgl/20261122T071049Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.0808928453310949,
+   "worst_seed_ttft_p95_s": 1.98634680439718,
+   "prompt_tokens_mean_range": [
+    9737.824817518249,
+    9737.824817518249
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 3.4073,
+   "usd_per_req": 0.0008756392701741888,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0594546523583652,
+   "ratio_vs_bar_metered": 0.9384380847834889,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 3.0181,
+   "usd_per_req_metered": 0.0007756190770735536,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 127 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik1_h100_sgl",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "H100",
+   "engine": "sglang",
+   "rates_tested": [
+    1.145
+   ],
+   "runs": [
+    "ik1_h100_sgl/20261122T071049Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.145,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.145 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik1_mi355x_sgl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    1.511,
+    2.267,
+    3.023
+   ],
+   "runs": [
+    "ik1_mi355x_sgl/20261122T071051Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.023,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.267,
+   "seeds": [
+    "ik1_mi355x_sgl/20261122T071051Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.6629596012850572,
+   "worst_seed_ttft_p95_s": 2.821305558690801,
+   "prompt_tokens_mean_range": [
+    9785.161764705883,
+    9785.161764705883
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.4973,
+   "usd_per_req": 0.0007512208949842427,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.9089182032477225,
+   "ratio_vs_bar_metered": 0.8301990517201421,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.1078,
+   "usd_per_req_metered": 0.0006861595162466974,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 164 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik1_mi355x_sgl",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    1.511,
+    2.267
+   ],
+   "runs": [
+    "ik1_mi355x_sgl/20261122T071051Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 2.267,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.511,
+   "seeds": [
+    "ik1_mi355x_sgl/20261122T071051Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.1166666666666667,
+   "worst_seed_ttft_p95_s": 3.0314,
+   "prompt_tokens_mean_range": [
+    9518.99447513812,
+    9518.99447513812
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    0.8332073416530535,
+    0.8332073416530535
+   ],
+   "usd_per_h": 4.4973,
+   "usd_per_req": 0.001118731343283582,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.3535769428718476,
+   "ratio_vs_bar_metered": 1.2363470006290387,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 4.1078,
+   "usd_per_req_metered": 0.0010218407960199004,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 120 s < 300 s",
+    "server-vs-client prompt tokens differ by > 1%"
+   ]
+  },
+  {
+   "group": "ik1_pro6000_sgl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.456,
+    1.941
+   ],
+   "runs": [
+    "ik1_pro6000_sgl/20261122T071047Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.941,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.456,
+   "seeds": [
+    "ik1_pro6000_sgl/20261122T071047Z:s7"
+   ],
+   "worst_seed_achieved_rps": 1.2736245564114002,
+   "worst_seed_ttft_p95_s": 2.4858988836873306,
+   "prompt_tokens_mean_range": [
+    9817.431034482759,
+    9817.431034482759
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0006297207240080181,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.7619125517338392,
+   "ratio_vs_bar_metered": 0.6588394236531973,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4967,
+   "usd_per_req_metered": 0.0005445307836493675,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 137 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik1_pro6000_sgl",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.456
+   ],
+   "runs": [
+    "ik1_pro6000_sgl/20261122T071047Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.97,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.97 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik1_pro6000_vllm",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    0.97
+   ],
+   "runs": [
+    "ik1_pro6000_vllm/20261122T071055Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.97,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.97 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik1_pro6000_vllm",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    0.97,
+    1.456
+   ],
+   "runs": [
+    "ik1_pro6000_vllm/20261122T071055Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.97,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.97 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik2_pro6000_sched",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.456,
+    1.941
+   ],
+   "runs": [
+    "ik2_pro6000_sched/20261122T075734Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.456,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.97,
+   "seeds": [
+    "ik2_pro6000_sched/20261122T075734Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.9305555555555556,
+   "worst_seed_ttft_p95_s": 3.0431399999999997,
+   "prompt_tokens_mean_range": [
+    9516.247619047619,
+    9518.247619047619
+   ],
+   "spec_accept_len": [
+    null,
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0008618805970149254,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0428077398849673,
+   "ratio_vs_bar_metered": 0.9014455851414434,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4959,
+   "usd_per_req_metered": 0.000745044776119403,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik2_pro6000_spec",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.456
+   ],
+   "runs": [
+    "ik2_pro6000_spec/20261122T075736Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.456,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.97,
+   "seeds": [
+    "ik2_pro6000_spec/20261122T075736Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.9305555555555556,
+   "worst_seed_ttft_p95_s": 3.0305849999999994,
+   "prompt_tokens_mean_range": [
+    9516.247619047619,
+    9516.247619047619
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0008618805970149254,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0428077398849673,
+   "ratio_vs_bar_metered": 0.9021318091935965,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4978,
+   "usd_per_req_metered": 0.0007456119402985074,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik2_pro6000_swa",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97
+   ],
+   "runs": [
+    "ik2_pro6000_swa/20261122T075732Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.97,
+   "seeds": [
+    "ik2_pro6000_swa/20261122T075732Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.937508656372868,
+   "worst_seed_ttft_p95_s": 1.9219535021111367,
+   "prompt_tokens_mean_range": [
+    9817.431034482759,
+    9817.431034482759
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0008554883971746428,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0350736807920664,
+   "ratio_vs_bar_metered": 0.8950467422275318,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4967,
+   "usd_per_req_metered": 0.000739756132451055,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 186 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik2_pro6000_swa",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.456
+   ],
+   "runs": [
+    "ik2_pro6000_swa/20261122T075732Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.456,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.97,
+   "seeds": [
+    "ik2_pro6000_swa/20261122T075732Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.9305555555555556,
+   "worst_seed_ttft_p95_s": 3.1919799999999965,
+   "prompt_tokens_mean_range": [
+    9517.247619047619,
+    9518.247619047619
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0008618805970149254,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0428077398849673,
+   "ratio_vs_bar_metered": 0.9017345215844552,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4967,
+   "usd_per_req_metered": 0.0007452835820895522,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik3_5090_bf16",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-5090",
+   "engine": "sglang",
+   "rates_tested": [
+    0.564,
+    0.846
+   ],
+   "runs": [
+    "ik3_5090_bf16/20261122T075738Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.564,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.564 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik4_mi355x_aiter",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    1.511,
+    1.889
+   ],
+   "runs": [
+    "ik4_mi355x_aiter/20261122T075742Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.511,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.511 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik5_pro6000_dspark",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.97,
+    1.213
+   ],
+   "runs": [
+    "ik5_pro6000_dspark/20261122T081506Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.213,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.97,
+   "seeds": [
+    "ik5_pro6000_dspark/20261122T081506Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.9305555555555556,
+   "worst_seed_ttft_p95_s": 3.029654999999999,
+   "prompt_tokens_mean_range": [
+    9518.247619047619,
+    9519.247619047619
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.8873,
+   "usd_per_req": 0.0008618805970149254,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0428077398849673,
+   "ratio_vs_bar_metered": 0.9018789898059612,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.4971,
+   "usd_per_req_metered": 0.0007454029850746268,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik7_mi355x_aiter",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    1.511,
+    1.889
+   ],
+   "runs": [
+    "ik7_mi355x_aiter/20261122T084023Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.511,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.511 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "ik8_5090_c4",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-5090",
+   "engine": "sglang",
+   "rates_tested": [
+    0.452,
+    0.566,
+    0.679
+   ],
+   "runs": [
+    "ik8_5090_c4/20261122T085129Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.566,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.452,
+   "seeds": [
+    "ik8_5090_c4/20261122T085129Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.4537037037037037,
+   "worst_seed_ttft_p95_s": 2.6269199999999957,
+   "prompt_tokens_mean_range": [
+    9517.42857142857,
+    9519.42857142857
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 1.3461,
+   "usd_per_req": 0.0008241428571428572,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.9971480425200934,
+   "ratio_vs_bar_metered": 0.809437386569873,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 1.0927,
+   "usd_per_req_metered": 0.000669,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ik8_pro6000_c4",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.859,
+    0.971,
+    1.074,
+    1.289
+   ],
+   "runs": [
+    "ik8_pro6000_c4/20261122T084149Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.289,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.074,
+   "seeds": [
+    "ik8_pro6000_c4/20261122T084149Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.9861111111111112,
+   "worst_seed_ttft_p95_s": 3.9911599999999976,
+   "prompt_tokens_mean_range": [
+    9516.961206896553,
+    9518.961206896553
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.5561,
+   "usd_per_req": 0.0007200281690140845,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.8711774579722741,
+   "ratio_vs_bar_metered": 0.7845061901962288,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.3018,
+   "usd_per_req_metered": 0.0006483943661971831,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 216 s < 300 s"
+   ]
+  },
+  {
+   "group": "ikC_b300_mixed_dspark",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.053,
+    3.079,
+    4.105
+   ],
+   "runs": [
+    "ikC_b300_mixed_dspark/20261122T100257Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.079,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.053,
+   "seeds": [
+    "ikC_b300_mixed_dspark/20261122T100257Z:s7",
+    "ikC_b300_mixed_dspark/20261122T100257Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.0211614155638786,
+   "worst_seed_ttft_p95_s": 1.0656512055546046,
+   "prompt_tokens_mean_range": [
+    9550.60162601626,
+    9722.539837398373
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 6.1073,
+   "usd_per_req": 0.000839355139653172,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 1.0155537079893189,
+   "ratio_vs_bar_metered": 0.9506193306098174,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 5.7168,
+   "usd_per_req_metered": 0.0007856868767490141,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_b300_mixed_dspark",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "sglang",
+   "rates_tested": [
+    2.053,
+    3.079,
+    3.592,
+    4.105
+   ],
+   "runs": [
+    "ikC_b300_mixed_dspark/20261122T100257Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.592,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [
+    {
+     "cell": "ikC_b300_mixed_dspark/20261122T100257Z:s7@4.105",
+     "slo_pass": false,
+     "why": [
+      "server-vs-client prompt tokens differ by > 1%"
+     ]
+    },
+    {
+     "cell": "ikC_b300_mixed_dspark/20261122T100257Z:s8@4.105",
+     "slo_pass": false,
+     "why": [
+      "server-vs-client prompt tokens differ by > 1%"
+     ]
+    },
+    {
+     "cell": "ikC_b300_mixed_dspark/20261122T100257Z:s7@3.592",
+     "slo_pass": false,
+     "why": [
+      "server-vs-client prompt tokens differ by > 1%"
+     ]
+    }
+   ],
+   "max_rate_all_seeds_pass": 3.079,
+   "seeds": [
+    "ikC_b300_mixed_dspark/20261122T100257Z:s7",
+    "ikC_b300_mixed_dspark/20261122T100257Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.13,
+   "worst_seed_ttft_p95_s": 3.422025,
+   "prompt_tokens_mean_range": [
+    9519.130866425992,
+    9522.541102077688
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0004156922200385
+   ],
+   "usd_per_h": 6.1073,
+   "usd_per_req": 0.0005420039048633298,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.655782099048191,
+   "ratio_vs_bar_metered": 0.6138514734561423,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 5.7168,
+   "usd_per_req_metered": 0.0005073482428115016,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_pro6000_mixed",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.971,
+    1.031,
+    1.074
+   ],
+   "runs": [
+    "ikC_pro6000_mixed_s7/20261122T091132Z",
+    "ikC_pro6000_mixed_s8/20261122T091134Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.074,
+   "seeds": [
+    "ikC_pro6000_mixed_s7/20261122T091132Z:s7",
+    "ikC_pro6000_mixed_s8/20261122T091134Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.0488471175730387,
+   "worst_seed_ttft_p95_s": 2.3845278008375317,
+   "prompt_tokens_mean_range": [
+    9531.58695652174,
+    9855.437888198758
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.5561,
+   "usd_per_req": 0.0006769602222111589,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.8190686294145904,
+   "ratio_vs_bar_metered": 0.737709713484711,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.3022,
+   "usd_per_req_metered": 0.0006097170781951137,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_pro6000_mixed",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.971,
+    1.031,
+    1.074
+   ],
+   "runs": [
+    "ikC_pro6000_mixed_s7/20261122T091132Z",
+    "ikC_pro6000_mixed_s8/20261122T091134Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.074,
+   "seeds": [
+    "ikC_pro6000_mixed_s7/20261122T091132Z:s7",
+    "ikC_pro6000_mixed_s8/20261122T091134Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.0533333333333332,
+   "worst_seed_ttft_p95_s": 3.4527499999999987,
+   "prompt_tokens_mean_range": [
+    9517.229974160207,
+    9518.331606217616
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0026765913388835
+   ],
+   "usd_per_h": 2.5561,
+   "usd_per_req": 0.0006740770042194094,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.8155801623949297,
+   "ratio_vs_bar_metered": 0.7345677594247514,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.3022,
+   "usd_per_req_metered": 0.000607120253164557,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_pro6000_mixed_dspark",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.971,
+    1.074,
+    1.16,
+    1.289
+   ],
+   "runs": [
+    "ikC_pro6000_mixed_dspark_s7/20261122T092529Z",
+    "ikC_pro6000_mixed_dspark_s8/20261122T092531Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.289,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.16,
+   "seeds": [
+    "ikC_pro6000_mixed_dspark_s7/20261122T092529Z:s7",
+    "ikC_pro6000_mixed_dspark_s8/20261122T092531Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.1093926174837594,
+   "worst_seed_ttft_p95_s": 2.6058716872241323,
+   "prompt_tokens_mean_range": [
+    9450.083333333334,
+    9845.025862068966
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 2.5561,
+   "usd_per_req": 0.000640014875336208,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.7743676652585698,
+   "ratio_vs_bar_metered": 0.6975398260075338,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.3025,
+   "usd_per_req_metered": 0.0005765166661952267,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_pro6000_mixed_dspark",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    0.971,
+    1.074,
+    1.16,
+    1.289
+   ],
+   "runs": [
+    "ikC_pro6000_mixed_dspark_s7/20261122T092529Z",
+    "ikC_pro6000_mixed_dspark_s8/20261122T092531Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.16,
+   "non_monotonic_pass_rps": 1.289,
+   "non_monotonic_note": "passes 1.289 req/s on every seed, but fails the 1.16 req/s rung below it",
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 1.074,
+   "seeds": [
+    "ikC_pro6000_mixed_dspark_s7/20261122T092529Z:s7",
+    "ikC_pro6000_mixed_dspark_s8/20261122T092531Z:s8"
+   ],
+   "worst_seed_achieved_rps": 1.0333333333333334,
+   "worst_seed_ttft_p95_s": 3.6283349999999985,
+   "prompt_tokens_mean_range": [
+    9516.331606217616,
+    9517.229974160207
+   ],
+   "spec_accept_len": [
+    null,
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.002676609395792
+   ],
+   "usd_per_h": 2.5561,
+   "usd_per_req": 0.0006871236559139784,
+   "price_bar_name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+   "price_bar_usd_per_req": 0.0008265,
+   "ratio_vs_bar": 0.8313655848928958,
+   "ratio_vs_bar_metered": 0.7488827742325781,
+   "ratio_vs_openrelay_sync": null,
+   "usd_per_h_metered": 2.3025,
+   "usd_per_req_metered": 0.0006189516129032257,
+   "ratio_vs_openrelay_sync_metered": null,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "ikC_pro6000_mixed_dspark_rep",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "sglang",
+   "rates_tested": [
+    1.16,
+    1.289
+   ],
+   "runs": [
+    "ikC_pro6000_mixed_dspark_rep_s7/20261122T103726Z",
+    "ikC_pro6000_mixed_dspark_rep_s8/20261122T103728Z"
+   ],
+   "price_bar_is_openrelay_gemma": false,
+   "price_model": null,
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 1.16,
+   "non_monotonic_pass_rps": 1.289,
+   "non_monotonic_note": "passes 1.289 req/s on every seed, but fails the 1.16 req/s rung below it",
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.16 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx10_best_dc_s7",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx10_best_dc_s7/20261122T060316Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mx10_best_dc_s7/20261122T060316Z:s7"
+   ],
+   "worst_seed_achieved_rps": 3.4559938327131956,
+   "worst_seed_ttft_p95_s": 2.29793549812166,
+   "prompt_tokens_mean_range": [
+    9689.87619047619,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.5690476826737214
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0003823068164918358,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49076613156846693,
+   "ratio_vs_bar_metered": 0.43925967663753485,
+   "ratio_vs_openrelay_sync": 0.49076613156846693,
+   "usd_per_h_metered": 4.2573,
+   "usd_per_req_metered": 0.00034218328810063967,
+   "ratio_vs_openrelay_sync_metered": 0.43925967663753485,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx10_best_dc_s8",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx10_best_dc_s8/20261122T060314Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mx10_best_dc_s8/20261122T060314Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.45079883056986,
+   "worst_seed_ttft_p95_s": 3.064807044016196,
+   "prompt_tokens_mean_range": [
+    9538.139180171593,
+    9538.139180171593
+   ],
+   "spec_accept_len": [
+    3.6044452290909765
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0003828823599612182,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4915049550208192,
+   "ratio_vs_bar_metered": 0.43990029307665923,
+   "ratio_vs_openrelay_sync": 0.4915049550208192,
+   "usd_per_h_metered": 4.2571,
+   "usd_per_req_metered": 0.00034268232830671756,
+   "ratio_vs_openrelay_sync_metered": 0.43990029307665923,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx11_or_dc",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx11_or_dc/20261122T062018Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx11_or_dc/20261122T062018Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.227714422048771,
+   "worst_seed_ttft_p95_s": 1.9898153640795486,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9525.44205128205
+   ],
+   "spec_accept_len": [
+    2.8307786491429283
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040934538414378837,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5254754610318207,
+   "ratio_vs_bar_metered": 0.4702378429269305,
+   "ratio_vs_openrelay_sync": 0.5254754610318207,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00036631527964007887,
+   "ratio_vs_openrelay_sync_metered": 0.4702378429269305,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx12_k4_dc",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx12_k4_dc/20261122T062613Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mx12_k4_dc/20261122T062613Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.457699378138988,
+   "worst_seed_ttft_p95_s": 3.3565817221999166,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9539.500952380953
+   ],
+   "spec_accept_len": [
+    4.281390998129195
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00038211823976181715,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4905240561769154,
+   "ratio_vs_bar_metered": 0.4389295675181725,
+   "ratio_vs_openrelay_sync": 0.4905240561769154,
+   "usd_per_h_metered": 4.2562,
+   "usd_per_req_metered": 0.0003419261330966564,
+   "ratio_vs_openrelay_sync_metered": 0.4389295675181725,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx12_k4_dc",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx12_k4_dc/20261122T062613Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx12_k4_dc/20261122T062613Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.933333333333333,
+   "worst_seed_ttft_p95_s": 3.6085699999999994,
+   "prompt_tokens_mean_range": [
+    9514.068678459938,
+    9514.068678459938
+   ],
+   "spec_accept_len": [
+    3.0876934742852047
+   ],
+   "xcheck_ratio_range": [
+    0.999971604160165,
+    0.999971604160165
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004504261363636364,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5782107013653869,
+   "ratio_vs_bar_metered": 0.5173931224958183,
+   "ratio_vs_openrelay_sync": 0.5782107013653869,
+   "usd_per_h_metered": 4.2562,
+   "usd_per_req_metered": 0.00040304924242424246,
+   "ratio_vs_openrelay_sync_metered": 0.5173931224958183,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx1_or_b4k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx1_or_b4k/20261122T050156Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx1_or_b6k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx1_or_b6k/20261122T050158Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx1_or_b6k/20261122T050158Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2282586433191547,
+   "worst_seed_ttft_p95_s": 3.790734271588735,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": null,
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040927637651782086,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5253868761461115,
+   "ratio_vs_bar_metered": 0.469992885104952,
+   "ratio_vs_openrelay_sync": 0.5253868761461115,
+   "usd_per_h_metered": 4.255,
+   "usd_per_req_metered": 0.00036612445749675766,
+   "ratio_vs_openrelay_sync_metered": 0.469992885104952,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "no server-vs-client prompt-token check recorded"
+   ]
+  },
+  {
+   "group": "mx1_or_mtp3",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx1_or_mtp3/20261122T050200Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx1_or_mtp3/20261122T050200Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2320265005989817,
+   "worst_seed_ttft_p95_s": 2.2644230677979067,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": null,
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004087992470838765,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5247743865004832,
+   "ratio_vs_bar_metered": 0.4694891042392845,
+   "ratio_vs_openrelay_sync": 0.5247743865004832,
+   "usd_per_h_metered": 4.2554,
+   "usd_per_req_metered": 0.0003657320122024027,
+   "ratio_vs_openrelay_sync_metered": 0.4694891042392845,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "no server-vs-client prompt-token check recorded"
+   ]
+  },
+  {
+   "group": "mx1_or_mtp3",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25
+   ],
+   "runs": [
+    "mx1_or_mtp3/20261122T050200Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx1_or_mtp3/20261122T050200Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.95,
+   "worst_seed_ttft_p95_s": 2.0281,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    2.789813089851987
+   ],
+   "xcheck_ratio_range": null,
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004478813559322033,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5749439742390287,
+   "ratio_vs_bar_metered": 0.5143732971674051,
+   "ratio_vs_openrelay_sync": 0.5749439742390287,
+   "usd_per_h_metered": 4.2554,
+   "usd_per_req_metered": 0.00040069679849340863,
+   "ratio_vs_openrelay_sync_metered": 0.5143732971674051,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "no server-vs-client prompt-token check recorded",
+    "prompts sized by chars/token, not the tokenizer (ran ~5-9% short of 9.5K)",
+    "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)"
+   ]
+  },
+  {
+   "group": "mx1_v034",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25
+   ],
+   "runs": [
+    "mx1_v034/20261122T050152Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx2_v034_asm",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx2_v034_asm/20261122T050728Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx2_v034_orport",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx2_v034_orport/20261122T050730Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx2_v034_orport/20261122T050730Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2265136557050207,
+   "worst_seed_ttft_p95_s": 3.004657728539314,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": null,
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004094977244753968,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5256710198657212,
+   "ratio_vs_bar_metered": 0.4700481407953086,
+   "ratio_vs_openrelay_sync": 0.5256710198657212,
+   "usd_per_h_metered": 4.2532,
+   "usd_per_req_metered": 0.00036616750167954543,
+   "ratio_vs_openrelay_sync_metered": 0.4700481407953086,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "no server-vs-client prompt-token check recorded"
+   ]
+  },
+  {
+   "group": "mx3_or_seqs128",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx3_or_seqs128/20261122T051339Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx3_or_seqs128/20261122T051339Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2213035988795573,
+   "worst_seed_ttft_p95_s": 3.18493195627816,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    2.808790108239282
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00041016003597411953,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5265212271811547,
+   "ratio_vs_bar_metered": 0.470941219156839,
+   "ratio_vs_openrelay_sync": 0.5265212271811547,
+   "usd_per_h_metered": 4.2544,
+   "usd_per_req_metered": 0.0003668632097231776,
+   "ratio_vs_openrelay_sync_metered": 0.470941219156839,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx3_or_seqs96",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx3_or_seqs96/20261122T051337Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx3_or_seqs96/20261122T051337Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2285773699313287,
+   "worst_seed_ttft_p95_s": 2.4645684982649976,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    2.8191957394257487
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040923597256958496,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5253350097170538,
+   "ratio_vs_bar_metered": 0.470012754620392,
+   "ratio_vs_openrelay_sync": 0.5253350097170538,
+   "usd_per_h_metered": 4.2556,
+   "usd_per_req_metered": 0.0003661399358492854,
+   "ratio_vs_openrelay_sync_metered": 0.470012754620392,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx4_or_b12k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mx4_or_b12k/20261122T051936Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx4_or_b12k/20261122T051936Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.228393254050962,
+   "worst_seed_ttft_p95_s": 2.661067325109615,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    2.811098883339362
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040925931137481653,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5253649696724217,
+   "ratio_vs_bar_metered": 0.47018314714570203,
+   "ratio_vs_openrelay_sync": 0.5253649696724217,
+   "usd_per_h_metered": 4.2569,
+   "usd_per_req_metered": 0.0003662726716265019,
+   "ratio_vs_openrelay_sync_metered": 0.47018314714570203,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx5_or_mtp3_seqs96",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx5_or_mtp3_seqs96/20261122T052526Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx5_or_mtp3_seqs96/20261122T052526Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2282951452578077,
+   "worst_seed_ttft_p95_s": 2.2678223114344287,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    3.636545564969783
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040927174887985234,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5253809356609144,
+   "ratio_vs_bar_metered": 0.4701753450704961,
+   "ratio_vs_openrelay_sync": 0.5253809356609144,
+   "usd_per_h_metered": 4.2567,
+   "usd_per_req_metered": 0.00036626659380991646,
+   "ratio_vs_openrelay_sync_metered": 0.4701753450704961,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx5_or_mtp4",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx5_or_mtp4/20261122T052524Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx5_or_mtp4/20261122T052524Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.234008018888356,
+   "worst_seed_ttft_p95_s": 2.2035281121265142,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    4.346610803176148
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004085487705296911,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5244528504874083,
+   "ratio_vs_bar_metered": 0.4692786244001805,
+   "ratio_vs_openrelay_sync": 0.5244528504874083,
+   "usd_per_h_metered": 4.2561,
+   "usd_per_req_metered": 0.00036556804840774063,
+   "ratio_vs_openrelay_sync_metered": 0.4692786244001805,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx5_or_mtp4",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25
+   ],
+   "runs": [
+    "mx5_or_mtp4/20261122T052524Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx5_or_mtp4/20261122T052524Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.9833333333333334,
+   "worst_seed_ttft_p95_s": 3.2579399999999983,
+   "prompt_tokens_mean_range": [
+    9092.484342379958,
+    9092.484342379958
+   ],
+   "spec_accept_len": [
+    3.095690252239773
+   ],
+   "xcheck_ratio_range": [
+    0.9999660543203271,
+    0.9999660543203271
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.000442877094972067,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5685200192195982,
+   "ratio_vs_bar_metered": 0.5087097768948874,
+   "ratio_vs_openrelay_sync": 0.5685200192195982,
+   "usd_per_h_metered": 4.2561,
+   "usd_per_req_metered": 0.0003962849162011173,
+   "ratio_vs_openrelay_sync_metered": 0.5087097768948874,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)",
+    "realized prompt mean 9092 tokens, outside 9.5K +-2%"
+   ]
+  },
+  {
+   "group": "mx6_or_mtp3_seqs112",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx6_or_mtp3_seqs112/20261122T054308Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx6_or_mtp3_seqs112/20261122T054308Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2320409743055656,
+   "worst_seed_ttft_p95_s": 2.9441424335120243,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9525.44205128205
+   ],
+   "spec_accept_len": [
+    3.623631626395617
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004087974164015303,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5247720364589605,
+   "ratio_vs_bar_metered": 0.46949803451090216,
+   "ratio_vs_openrelay_sync": 0.5247720364589605,
+   "usd_per_h_metered": 4.2555,
+   "usd_per_req_metered": 0.00036573896888399284,
+   "ratio_vs_openrelay_sync_metered": 0.46949803451090216,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx6_or_mtp3_seqs80",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx6_or_mtp3_seqs80/20261122T054926Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx6_or_mtp3_seqs80/20261122T054926Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.22545690739527,
+   "worst_seed_ttft_p95_s": 2.2209614625200627,
+   "prompt_tokens_mean_range": [
+    9528.058581706064,
+    9528.058581706064
+   ],
+   "spec_accept_len": [
+    3.605369286730982
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.000409631887181832,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5258432441358561,
+   "ratio_vs_bar_metered": 0.4707217385064779,
+   "ratio_vs_openrelay_sync": 0.5258432441358561,
+   "usd_per_h_metered": 4.2579,
+   "usd_per_req_metered": 0.0003666922342965463,
+   "ratio_vs_openrelay_sync_metered": 0.4707217385064779,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx6_or_mtp3_seqs96_s7",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx6_or_mtp3_seqs96_s7/20261122T054311Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mx6_or_mtp3_seqs96_s7/20261122T054311Z:s7"
+   ],
+   "worst_seed_achieved_rps": 3.4481144655336307,
+   "worst_seed_ttft_p95_s": 2.684973353729583,
+   "prompt_tokens_mean_range": [
+    9689.87619047619,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.574044507871382
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0003831804347584276,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49188759275793015,
+   "ratio_vs_bar_metered": 0.4399428565354329,
+   "ratio_vs_openrelay_sync": 0.49188759275793015,
+   "usd_per_h_metered": 4.2542,
+   "usd_per_req_metered": 0.0003427154852411023,
+   "ratio_vs_openrelay_sync_metered": 0.4399428565354329,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx6_or_mtp4_seqs96",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx6_or_mtp4_seqs96/20261122T054304Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx6_or_mtp4_seqs96/20261122T054304Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.232997908157304,
+   "worst_seed_ttft_p95_s": 2.813623211812228,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9525.44205128205
+   ],
+   "spec_accept_len": [
+    4.341487129018105
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040867641660586977,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5246167093785234,
+   "ratio_vs_bar_metered": 0.4694693626552475,
+   "ratio_vs_openrelay_sync": 0.5246167093785234,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00036571663350843785,
+   "ratio_vs_openrelay_sync_metered": 0.4694693626552475,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx8_or_mtp3_seqs96_block",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx8_or_mtp3_seqs96_block/20261122T054943Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx8_or_mtp3_seqs96_block/20261122T054943Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.225664781629685,
+   "worst_seed_ttft_p95_s": 2.3906630772165953,
+   "prompt_tokens_mean_range": [
+    9528.523124357656,
+    9528.523124357656
+   ],
+   "spec_accept_len": [
+    3.6220250501200897
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004096054889288502,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5258093567764444,
+   "ratio_vs_bar_metered": 0.47032660345654587,
+   "ratio_vs_openrelay_sync": 0.5258093567764444,
+   "usd_per_h_metered": 4.2546,
+   "usd_per_req_metered": 0.00036638442409264927,
+   "ratio_vs_openrelay_sync_metered": 0.47032660345654587,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx8_or_mtp3_seqs96_block",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25
+   ],
+   "runs": [
+    "mx8_or_mtp3_seqs96_block/20261122T054943Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": null,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx8_or_mtp3_seqs96_block/20261122T054943Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.9066666666666667,
+   "worst_seed_ttft_p95_s": 3.9042099999999995,
+   "prompt_tokens_mean_range": [
+    9525.751565762004,
+    9525.751565762004
+   ],
+   "spec_accept_len": [
+    2.796268694550063
+   ],
+   "xcheck_ratio_range": [
+    0.9999468493897483,
+    0.9999468493897483
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00045455848623853206,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5835153866990141,
+   "ratio_vs_bar_metered": 0.5219435644380587,
+   "ratio_vs_openrelay_sync": 0.5835153866990141,
+   "usd_per_h_metered": 4.2546,
+   "usd_per_req_metered": 0.0004065940366972477,
+   "ratio_vs_openrelay_sync_metered": 0.5219435644380587,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx8_or_mtp3_seqs96_prob",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx8_or_mtp3_seqs96_prob/20261122T054945Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mx8_or_mtp3_seqs96_prob/20261122T054945Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.229973672779314,
+   "worst_seed_ttft_p95_s": 2.731306694704108,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9525.44205128205
+   ],
+   "spec_accept_len": [
+    3.5249918075447693
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040905906173009036,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5251079097947244,
+   "ratio_vs_bar_metered": 0.46985372944104853,
+   "ratio_vs_openrelay_sync": 0.5251079097947244,
+   "usd_per_h_metered": 4.256,
+   "usd_per_req_metered": 0.00036601605523457683,
+   "ratio_vs_openrelay_sync_metered": 0.46985372944104853,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx8_or_mtp3_seqs96_prob",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25
+   ],
+   "runs": [
+    "mx8_or_mtp3_seqs96_prob/20261122T054945Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "mx8_or_mtp3_seqs96_prob/20261122T054945Z:s7"
+   ],
+   "worst_seed_achieved_rps": 2.8066666666666666,
+   "worst_seed_ttft_p95_s": 2.4115099999999994,
+   "prompt_tokens_mean_range": [
+    9496.453318335209,
+    9496.453318335209
+   ],
+   "spec_accept_len": [
+    2.7919319458562946
+   ],
+   "xcheck_ratio_range": [
+    0.9999791189421414,
+    0.9999791189421414
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0004707541567695962,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.604305721141972,
+   "ratio_vs_bar_metered": 0.5407179962535967,
+   "ratio_vs_openrelay_sync": 0.604305721141972,
+   "usd_per_h_metered": 4.256,
+   "usd_per_req_metered": 0.0004212193190815519,
+   "ratio_vs_openrelay_sync_metered": 0.5407179962535967,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx9_best_r2s7",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx9_best_r2s7/20261122T060050Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.5 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx9_best_r2s8",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx9_best_r2s8/20261122T060046Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.5 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx9_best_r3s8",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mx9_best_r3s8/20261122T060048Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.5 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_recipe_C1",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxC1_s7_r1/20261122T061956Z",
+    "mxC1_s7_r2/20261122T061958Z",
+    "mxC1_s8_r1/20261122T062000Z",
+    "mxC1_s8_r2/20261122T062002Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxC1_s7_r1/20261122T061956Z:s7",
+    "mxC1_s7_r2/20261122T061958Z:s7",
+    "mxC1_s8_r1/20261122T062000Z:s8",
+    "mxC1_s8_r2/20261122T062002Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4053844119081327,
+   "worst_seed_ttft_p95_s": 2.6857523938058865,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.594302474727995,
+    3.552289088265541,
+    3.569369236851057,
+    3.575351542369138
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0003879885029660033,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49805969572015824,
+   "ratio_vs_bar_metered": 0.4457144750977453,
+   "ratio_vs_openrelay_sync": 0.49805969572015824,
+   "usd_per_h_metered": 4.2566,
+   "usd_per_req_metered": 0.0003472115761011436,
+   "ratio_vs_openrelay_sync_metered": 0.4457144750977453,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_C1",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC1_s7_r1/20261122T061956Z",
+    "mxC1_s7_r2/20261122T061958Z",
+    "mxC1_text_s8/20261122T062710Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxC1_s7_r1/20261122T061956Z:s7",
+    "mxC1_s7_r2/20261122T061958Z:s7",
+    "mxC1_text_s8/20261122T062710Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.9166666666666665,
+   "worst_seed_ttft_p95_s": 3.343019999999999,
+   "prompt_tokens_mean_range": [
+    9507.64542651593,
+    9524.814315352696
+   ],
+   "spec_accept_len": [
+    2.787867483969835,
+    2.7857359206833188,
+    2.7978552176687397
+   ],
+   "xcheck_ratio_range": [
+    0.9999598181499598,
+    0.999989822610485
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.000453,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5815147625160462,
+   "ratio_vs_bar_metered": 0.5202518491350326,
+   "ratio_vs_openrelay_sync": 0.5815147625160462,
+   "usd_per_h_metered": 4.2554,
+   "usd_per_req_metered": 0.00040527619047619047,
+   "ratio_vs_openrelay_sync_metered": 0.5202518491350326,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_C2",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s7_r2/20261122T100638Z",
+    "mxC2_s8_r1/20261122T100640Z",
+    "mxC2_s8_r2/20261122T100642Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxC2_s7_r1/20261122T100636Z:s7",
+    "mxC2_s7_r2/20261122T100638Z:s7",
+    "mxC2_s8_r1/20261122T100640Z:s8",
+    "mxC2_s8_r2/20261122T100642Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.189175276789734,
+   "worst_seed_ttft_p95_s": 2.2424526536487965,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9714.20205128205
+   ],
+   "spec_accept_len": [
+    3.5954839397729366,
+    3.6027414560220716,
+    3.6224546445920494,
+    3.6059569349686478
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.0003628681083859722,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4658127193658179,
+   "ratio_vs_bar_metered": 0.4375359049044234,
+   "ratio_vs_openrelay_sync": 0.4658127193658179,
+   "usd_per_h_metered": 3.9132,
+   "usd_per_req_metered": 0.00034084046992054586,
+   "ratio_vs_openrelay_sync_metered": 0.4375359049044234,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_C2",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s8_r1/20261122T100640Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_recipe_C2b",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.1839667554336635,
+   "worst_seed_ttft_p95_s": 2.044054061453789,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9714.20205128205
+   ],
+   "spec_accept_len": [
+    3.5923927782728295,
+    3.6146107168975945
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.0003634617095247843,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.46657472339510175,
+   "ratio_vs_bar_metered": 0.438206854780335,
+   "ratio_vs_openrelay_sync": 0.46657472339510175,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.000341363139873881,
+   "ratio_vs_openrelay_sync_metered": 0.438206854780335,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_C2b",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.9,
+   "worst_seed_ttft_p95_s": 2.414715,
+   "prompt_tokens_mean_range": [
+    9520.603703703704,
+    9528.355079217148
+   ],
+   "spec_accept_len": [
+    2.7865533306899284,
+    2.7903479798754733
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.0003990517241379311,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5122615200743659,
+   "ratio_vs_bar_metered": 0.48111588193921856,
+   "ratio_vs_openrelay_sync": 0.5122615200743659,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.0003747892720306513,
+   "ratio_vs_openrelay_sync_metered": 0.48111588193921856,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_G2",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxG2_s7/20261122T090631Z",
+    "mxG2_s8/20261122T090633Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxG2_s7/20261122T090631Z:s7",
+    "mxG2_s8/20261122T090633Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.453421875805626,
+   "worst_seed_ttft_p95_s": 3.0555177301634098,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.547318472352556,
+    3.563155674565329
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00038259154181438497,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49113163262437093,
+   "ratio_vs_bar_metered": 0.4393906337579624,
+   "ratio_vs_openrelay_sync": 0.49113163262437093,
+   "usd_per_h_metered": 4.2554,
+   "usd_per_req_metered": 0.0003422853036974527,
+   "ratio_vs_openrelay_sync_metered": 0.4393906337579624,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_c4m24",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxH4_s7/20261122T072841Z",
+    "mxH4_s8/20261122T072720Z",
+    "mxH4b_s7/20261122T091523Z",
+    "mxH4b_s8/20261122T091521Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxH4_s7/20261122T072841Z:s7",
+    "mxH4_s8/20261122T072720Z:s8",
+    "mxH4b_s7/20261122T091523Z:s7",
+    "mxH4b_s8/20261122T091521Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4417315497404526,
+   "worst_seed_ttft_p95_s": 3.671766203851439,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.5911767605696925,
+    3.549992232264432,
+    3.609137833187702,
+    3.6127295550699707
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.0003362406344815796,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.43163110973245133,
+   "ratio_vs_bar_metered": 0.40546034611217885,
+   "ratio_vs_openrelay_sync": 0.43163110973245133,
+   "usd_per_h_metered": 3.9135,
+   "usd_per_req_metered": 0.00031585360962138733,
+   "ratio_vs_openrelay_sync_metered": 0.40546034611217885,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_c4m24",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxH4_s7/20261122T072841Z",
+    "mxH4_s8/20261122T072720Z",
+    "mxH4b_s7/20261122T091523Z",
+    "mxH4b_s8/20261122T091521Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_recipe_ctx256k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxK_s7/20261122T091535Z",
+    "mxK_s8/20261122T091533Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxK_s7/20261122T091535Z:s7",
+    "mxK_s8/20261122T091533Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.1944213950707416,
+   "worst_seed_ttft_p95_s": 2.269350132578984,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9714.20205128205
+   ],
+   "spec_accept_len": [
+    3.5929686213343923,
+    3.6159931178372604
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00041361168004910024,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5309520924892172,
+   "ratio_vs_bar_metered": 0.47508296134428857,
+   "ratio_vs_openrelay_sync": 0.5309520924892172,
+   "usd_per_h_metered": 4.256,
+   "usd_per_req_metered": 0.00037008962688720083,
+   "ratio_vs_openrelay_sync_metered": 0.47508296134428857,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_ctx256k",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25
+   ],
+   "runs": [
+    "mxK_s7/20261122T091535Z",
+    "mxK_s8/20261122T091533Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_recipe_fine",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.6,
+    3.7
+   ],
+   "runs": [
+    "mxF_s7_r1/20261122T091529Z",
+    "mxF_s7_r2/20261122T091531Z",
+    "mxF_s8_r1/20261122T091525Z",
+    "mxF_s8_r2/20261122T091527Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.6,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxF_s7_r1/20261122T091529Z:s7",
+    "mxF_s7_r2/20261122T091531Z:s7",
+    "mxF_s8_r1/20261122T091525Z:s8",
+    "mxF_s8_r2/20261122T091527Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.190768423351751,
+   "worst_seed_ttft_p95_s": 3.2073091731406747,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9714.20205128205
+   ],
+   "spec_accept_len": [
+    3.5959760581279165,
+    3.609528907922912,
+    3.632486613750832,
+    3.6443580929606934
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00041408520603701147,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5315599564018119,
+   "ratio_vs_bar_metered": 0.47568274033939073,
+   "ratio_vs_openrelay_sync": 0.5315599564018119,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.0003705568547243854,
+   "ratio_vs_openrelay_sync_metered": 0.47568274033939073,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_recipe_fine",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxF_s8_r1/20261122T091525Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxF_s8_r1/20261122T091525Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.2866666666666666,
+   "worst_seed_ttft_p95_s": 2.259,
+   "prompt_tokens_mean_range": [
+    9518.583760683761,
+    9518.583760683761
+   ],
+   "spec_accept_len": [
+    2.7878188149162226
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00040200304259634887,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5160501188656597,
+   "ratio_vs_bar_metered": 0.46180328622972355,
+   "ratio_vs_openrelay_sync": 0.5160501188656597,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.0003597447599729547,
+   "ratio_vs_openrelay_sync_metered": 0.46180328622972355,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_recipe_lpt4096",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxL_lpt_s8/20261122T091841Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxL_lpt_s8/20261122T091841Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4485515210771154,
+   "worst_seed_ttft_p95_s": 3.5182989136315883,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9539.500952380953
+   ],
+   "spec_accept_len": [
+    3.5796427156558353
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00038313187201196946,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49182525290368345,
+   "ratio_vs_bar_metered": 0.44012492147262244,
+   "ratio_vs_openrelay_sync": 0.49182525290368345,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.0003428573138271729,
+   "ratio_vs_openrelay_sync_metered": 0.44012492147262244,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_recipe_lpt6144",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxL_lpt_s8/20261122T091841Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxL_lpt_s8/20261122T091841Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4531477570493916,
+   "worst_seed_ttft_p95_s": 3.6437686267890967,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9539.500952380953
+   ],
+   "spec_accept_len": [
+    3.6196899686987627
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00038262191280484547,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4911706197751546,
+   "ratio_vs_bar_metered": 0.4395391029271408,
+   "ratio_vs_openrelay_sync": 0.4911706197751546,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00034240096118024274,
+   "ratio_vs_openrelay_sync_metered": 0.4395391029271408,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_recipe_lpt_ctrl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxL_lpt_s8/20261122T091841Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxL_lpt_s8/20261122T091841Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4524277508305903,
+   "worst_seed_ttft_p95_s": 3.5214083692291744,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9539.500952380953
+   ],
+   "spec_accept_len": [
+    3.624847223906776
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0003827017088720051,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49127305375096925,
+   "ratio_vs_bar_metered": 0.4396307691140546,
+   "ratio_vs_openrelay_sync": 0.49127305375096925,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00034247236913984854,
+   "ratio_vs_openrelay_sync_metered": 0.4396307691140546,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_recipe_ps_G2",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxG2_s7/20261122T090631Z",
+    "mxG2_s8/20261122T090633Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxG2_s7/20261122T090631Z:s7",
+    "mxG2_s8/20261122T090633Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4510521904746057,
+   "worst_seed_ttft_p95_s": 3.224291547958273,
+   "prompt_tokens_mean_range": [
+    9534.936129647283,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.593924336735609,
+    3.584217910613081
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00038285425055200196,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.49146887105520143,
+   "ratio_vs_bar_metered": 0.439692343926901,
+   "ratio_vs_openrelay_sync": 0.49146887105520143,
+   "usd_per_h_metered": 4.2554,
+   "usd_per_req_metered": 0.0003425203359190559,
+   "ratio_vs_openrelay_sync_metered": 0.439692343926901,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_stack_C2",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5,
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s7_r2/20261122T100638Z",
+    "mxC2_s8_r1/20261122T100640Z",
+    "mxC2_s8_r2/20261122T100642Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxC2_s7_r1/20261122T100636Z:s7",
+    "mxC2_s7_r2/20261122T100638Z:s7",
+    "mxC2_s8_r1/20261122T100640Z:s8",
+    "mxC2_s8_r2/20261122T100642Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.4187923258408666,
+   "worst_seed_ttft_p95_s": 2.409767760848626,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9694.167778836987
+   ],
+   "spec_accept_len": [
+    3.6129122465180052,
+    3.5893591293833134,
+    3.5662722490981027,
+    3.5710907668951557
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.0003384967233174567,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4345272443099572,
+   "ratio_vs_bar_metered": 0.40814959132851447,
+   "ratio_vs_openrelay_sync": 0.4345272443099572,
+   "usd_per_h_metered": 3.9132,
+   "usd_per_req_metered": 0.0003179485316449128,
+   "ratio_vs_openrelay_sync_metered": 0.40814959132851447,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_stack_C2",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s8_r1/20261122T100640Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.5 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_C2b",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25,
+    3.5,
+    3.75
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.5,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.456321879436898,
+   "worst_seed_ttft_p95_s": 2.4204761483240866,
+   "prompt_tokens_mean_range": [
+    9539.500952380953,
+    9689.87619047619
+   ],
+   "spec_accept_len": [
+    3.591108283222956,
+    3.6133165945971077
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.00033482124650628274,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.42980904557931027,
+   "ratio_vs_bar_metered": 0.4036765400597021,
+   "ratio_vs_openrelay_sync": 0.42980904557931027,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.000314464024706508,
+   "ratio_vs_openrelay_sync_metered": 0.4036765400597021,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_stack_C2b",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.9433333333333334,
+   "worst_seed_ttft_p95_s": 2.025845,
+   "prompt_tokens_mean_range": [
+    9519.603703703704,
+    9532.129422718808
+   ],
+   "spec_accept_len": [
+    2.7794716944076203,
+    2.794847266359686
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.00039317667044167615,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5047197309905983,
+   "ratio_vs_bar_metered": 0.47403263565925274,
+   "ratio_vs_openrelay_sync": 0.5047197309905983,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.0003692714231785579,
+   "ratio_vs_openrelay_sync_metered": 0.47403263565925274,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "mx_stack_R4b10k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_b10k/20261122T105424Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_R4b10k_ctrl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_b10k/20261122T105424Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_R4b12k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_b12k/20261122T105426Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 4.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.75,
+   "seeds": [
+    "mxR4_b12k/20261122T105426Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.680800960111068,
+   "worst_seed_ttft_p95_s": 3.3564390875399104,
+   "prompt_tokens_mean_range": [
+    9500.126222222223,
+    9500.126222222223
+   ],
+   "spec_accept_len": [
+    3.564912010539914
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.00031440167847736057,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.403596506389423,
+   "ratio_vs_bar_metered": 0.3790092921310913,
+   "ratio_vs_openrelay_sync": 0.403596506389423,
+   "usd_per_h_metered": 3.9123,
+   "usd_per_req_metered": 0.00029524823857012016,
+   "ratio_vs_openrelay_sync_metered": 0.3790092921310913,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_stack_R4b12k_ctrl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_b12k/20261122T105426Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 4.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.75,
+   "seeds": [
+    "mxR4_b12k/20261122T105426Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.684521343514419,
+   "worst_seed_ttft_p95_s": 3.478716014139354,
+   "prompt_tokens_mean_range": [
+    9500.126222222223,
+    9500.126222222223
+   ],
+   "spec_accept_len": [
+    3.6087627034941647
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.00031408421667498786,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.4031889816110242,
+   "ratio_vs_bar_metered": 0.3786265938784018,
+   "ratio_vs_openrelay_sync": 0.4031889816110242,
+   "usd_per_h_metered": 3.9123,
+   "usd_per_req_metered": 0.00029495011663127505,
+   "ratio_vs_openrelay_sync_metered": 0.3786265938784018,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "mx_stack_R4s112",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_s112/20261122T105430Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_R4s112_ctrl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_s112/20261122T105430Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_R4s80",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_s80/20261122T105428Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "mx_stack_R4s80_ctrl",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.75,
+    4.0
+   ],
+   "runs": [
+    "mxR4_s80/20261122T105428Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.75,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.75 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_ctx256k",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxK_s7/20261122T091535Z",
+    "mxK_s8/20261122T091533Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_ctx256k",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25
+   ],
+   "runs": [
+    "mxK_s7/20261122T091535Z",
+    "mxK_s8/20261122T091533Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_fine",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.3,
+    3.4
+   ],
+   "runs": [
+    "mxF_s7_r1/20261122T091529Z",
+    "mxF_s7_r2/20261122T091531Z",
+    "mxF_s8_r1/20261122T091525Z",
+    "mxF_s8_r2/20261122T091527Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.3,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "mxF_s7_r1/20261122T091529Z:s7",
+    "mxF_s7_r2/20261122T091531Z:s7",
+    "mxF_s8_r1/20261122T091525Z:s8",
+    "mxF_s8_r2/20261122T091527Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.9558115231423012,
+   "worst_seed_ttft_p95_s": 2.555889757629483,
+   "prompt_tokens_mean_range": [
+    9536.196666666667,
+    9732.100111234706
+   ],
+   "spec_accept_len": [
+    2.8064700711525385,
+    2.75779716377913,
+    2.828525533766147,
+    2.8011402243988135
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00044700076092652515,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5738135570301991,
+   "ratio_vs_bar_metered": 0.513494671607073,
+   "ratio_vs_openrelay_sync": 0.5738135570301991,
+   "usd_per_h_metered": 4.2565,
+   "usd_per_req_metered": 0.00040001234918190983,
+   "ratio_vs_openrelay_sync_metered": 0.513494671607073,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "or_recipe_paired_C1",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC1_s7_r1/20261122T061956Z",
+    "mxC1_s7_r2/20261122T061958Z",
+    "mxC1_s8_r1/20261122T062000Z",
+    "mxC1_s8_r2/20261122T062002Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "mxC1_s7_r1/20261122T061956Z:s7",
+    "mxC1_s7_r2/20261122T061958Z:s7",
+    "mxC1_s8_r1/20261122T062000Z:s8",
+    "mxC1_s8_r2/20261122T062002Z:s8"
+   ],
+   "worst_seed_achieved_rps": 3.1984590058760247,
+   "worst_seed_ttft_p95_s": 2.9739871973404655,
+   "prompt_tokens_mean_range": [
+    9519.612936344969,
+    9714.20205128205
+   ],
+   "spec_accept_len": [
+    2.8004597214450984,
+    2.8134869695335465,
+    2.819307885841295,
+    2.8123891485063
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00041308955267917315,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5302818391260246,
+   "ratio_vs_bar_metered": 0.47455012644251787,
+   "ratio_vs_openrelay_sync": 0.5302818391260246,
+   "usd_per_h_metered": 4.2566,
+   "usd_per_req_metered": 0.00036967454849872144,
+   "ratio_vs_openrelay_sync_metered": 0.47455012644251787,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "or_recipe_paired_C1",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC1_s7_r1/20261122T061956Z",
+    "mxC1_s7_r2/20261122T061958Z",
+    "mxC1_text_s8/20261122T062710Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_paired_C2",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s7_r2/20261122T100638Z",
+    "mxC2_s8_r1/20261122T100640Z",
+    "mxC2_s8_r2/20261122T100642Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_paired_C2",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.25
+   ],
+   "runs": [
+    "mxC2_s7_r1/20261122T100636Z",
+    "mxC2_s8_r1/20261122T100640Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (3.25 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "or_recipe_paired_C2b",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.9616162207688665,
+   "worst_seed_ttft_p95_s": 2.272085980302654,
+   "prompt_tokens_mean_range": [
+    9542.061179087876,
+    9724.902113459399
+   ],
+   "spec_accept_len": [
+    2.7900872951698874,
+    2.8181719532554257
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.000390749480599335,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5016039545562708,
+   "ratio_vs_bar_metered": 0.47110629926976694,
+   "ratio_vs_openrelay_sync": 0.5016039545562708,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.0003669918071311485,
+   "ratio_vs_openrelay_sync_metered": 0.47110629926976694,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "or_recipe_paired_C2b",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    2.75,
+    3.0,
+    3.25
+   ],
+   "runs": [
+    "mxC2b_s7/20261122T114751Z",
+    "mxC2b_s8/20261122T114753Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.75,
+   "seeds": [
+    "mxC2b_s7/20261122T114751Z:s7",
+    "mxC2b_s8/20261122T114753Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.53,
+   "worst_seed_ttft_p95_s": 1.9137349999999975,
+   "prompt_tokens_mean_range": [
+    9512.476578411406,
+    9515.092012133468
+   ],
+   "spec_accept_len": [
+    2.369047619047619,
+    2.375023451629607
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.1661,
+   "usd_per_req": 0.00045741106719367593,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5871772364488779,
+   "ratio_vs_bar_metered": 0.5514767026180767,
+   "ratio_vs_openrelay_sync": 0.5871772364488779,
+   "usd_per_h_metered": 3.9128,
+   "usd_per_req_metered": 0.00042960035133948174,
+   "ratio_vs_openrelay_sync_metered": 0.5514767026180767,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "or_recipe_specoff",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    2.5,
+    3.0
+   ],
+   "runs": [
+    "mxS0_vllm_specoff/20261122T072832Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.0,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 2.5,
+   "seeds": [
+    "mxS0_vllm_specoff/20261122T072832Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.4409478393991466,
+   "worst_seed_ttft_p95_s": 1.3096285747829826,
+   "prompt_tokens_mean_range": [
+    9588.978638184246,
+    9588.978638184246
+   ],
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.0005412856344874757,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.6948467708439995,
+   "ratio_vs_bar_metered": 0.6215273985562663,
+   "ratio_vs_openrelay_sync": 0.6948467708439995,
+   "usd_per_h_metered": 4.2546,
+   "usd_per_req_metered": 0.00048416984347533147,
+   "ratio_vs_openrelay_sync_metered": 0.6215273985562663,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)"
+   ]
+  },
+  {
+   "group": "s1_b300_nvfp4_mtp2_r4",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "vllm",
+   "rates_tested": [
+    2.8857
+   ],
+   "runs": [
+    "s1_b300_nvfp4_mtp2_r4/20261122T045943Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 2.8857,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (2.8857 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_b300_nvfp4_mtp2_r4",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "B300",
+   "engine": "vllm",
+   "rates_tested": [
+    2.8857
+   ],
+   "runs": [
+    "s1_b300_nvfp4_mtp2_r4/20261122T045943Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 2.8857,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (2.8857 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_h100_fp8",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "H100",
+   "engine": "vllm",
+   "rates_tested": [
+    1.3074
+   ],
+   "runs": [
+    "s1_h100_fp8/20261122T042445Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.3074,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.3074 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_h100_fp8",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "H100",
+   "engine": "vllm",
+   "rates_tested": [
+    1.3074
+   ],
+   "runs": [
+    "s1_h100_fp8/20261122T042445Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.3074,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.3074 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_h200_fp8",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "H200",
+   "engine": "vllm",
+   "rates_tested": [
+    1.3549
+   ],
+   "runs": [
+    "s1_h200_fp8/20261122T042702Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.3549,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.3549 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_h200_fp8",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "H200",
+   "engine": "vllm",
+   "rates_tested": [
+    1.3549
+   ],
+   "runs": [
+    "s1_h200_fp8/20261122T042702Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.3549,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.3549 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_l40s_w4a16_fi",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "L40S",
+   "engine": "vllm",
+   "rates_tested": [
+    0.738
+   ],
+   "runs": [
+    "s1_l40s_w4a16_fi/20261122T043255Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.738,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.738 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_l40s_w4a16_fi",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "L40S",
+   "engine": "vllm",
+   "rates_tested": [
+    0.738
+   ],
+   "runs": [
+    "s1_l40s_w4a16_fi/20261122T043255Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.738,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.738 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_rtxpro6000_nvfp4_fi",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0269
+   ],
+   "runs": [
+    "s1_rtxpro6000_nvfp4_fi/20261122T043253Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.0269,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.0269 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s1_rtxpro6000_nvfp4_fi",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    1.0269
+   ],
+   "runs": [
+    "s1_rtxpro6000_nvfp4_fi/20261122T043253Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 1.0269,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (1.0269 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "s2_mi355x_or_recipe",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    2.5,
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "s2_mi355x_or_recipe_seed7/20261122T043703Z",
+    "s2_mi355x_or_recipe_seed8/20261122T043705Z",
+    "s2a_mi355x_or_recipe_seed8/20261122T054934Z",
+    "s2c_mi355x_or_recipe_seed7/20261122T051851Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [
+    {
+     "cell": "s2_mi355x_or_recipe_seed7/20261122T043703Z:s7@2.5",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed7/20261122T043703Z:s7@3.0",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed7/20261122T043703Z:s7@3.25",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed7/20261122T043703Z:s7@3.5",
+     "slo_pass": false,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed8/20261122T043705Z:s8@2.5",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed8/20261122T043705Z:s8@3.0",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed8/20261122T043705Z:s8@3.25",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    },
+    {
+     "cell": "s2_mi355x_or_recipe_seed8/20261122T043705Z:s8@3.5",
+     "slo_pass": false,
+     "why": [
+      "no server-vs-client prompt-token check recorded"
+     ]
+    }
+   ],
+   "max_rate_all_seeds_pass": 3.25,
+   "seeds": [
+    "s2a_mi355x_or_recipe_seed8/20261122T054934Z:s8",
+    "s2c_mi355x_or_recipe_seed7/20261122T051851Z:s7"
+   ],
+   "worst_seed_achieved_rps": 3.1984199411937544,
+   "worst_seed_ttft_p95_s": 2.413169758650474,
+   "prompt_tokens_mean_range": [
+    9525.44205128205,
+    9525.44205128205
+   ],
+   "spec_accept_len": [
+    2.8077073838089603,
+    2.76151282682114
+   ],
+   "xcheck_ratio_range": [
+    1.0,
+    1.0
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00041309459804920627,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.5302883158526396,
+   "ratio_vs_bar_metered": 0.4743440970163409,
+   "ratio_vs_openrelay_sync": 0.5302883158526396,
+   "usd_per_h_metered": 4.2547,
+   "usd_per_req_metered": 0.00036951405157572957,
+   "ratio_vs_openrelay_sync_metered": 0.4743440970163409,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "s2_mi355x_or_recipe",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "openrelay_recipe",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    2.5,
+    3.0,
+    3.25,
+    3.5
+   ],
+   "runs": [
+    "s2_mi355x_or_recipe_seed7/20261122T043703Z",
+    "s2b_mi355x_or_recipe_seed7/20261122T053337Z",
+    "s2b_mi355x_or_recipe_seed8/20261122T054928Z",
+    "s2c_mi355x_or_recipe_seed7/20261122T051851Z",
+    "s2c_mi355x_or_recipe_seed8/20261122T051853Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 3.25,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [
+    {
+     "cell": "s2_mi355x_or_recipe_seed7/20261122T043703Z:s7@3.0",
+     "slo_pass": true,
+     "why": [
+      "no server-vs-client prompt-token check recorded",
+      "prompts sized by chars/token, not the tokenizer (ran ~5-9% short of 9.5K)",
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed7/20261122T051851Z:s7@2.5",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)",
+      "realized prompt mean 9145 tokens, outside 9.5K +-2%"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed7/20261122T051851Z:s7@3.0",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)",
+      "realized prompt mean 9077 tokens, outside 9.5K +-2%"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed7/20261122T051851Z:s7@3.25",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)",
+      "realized prompt mean 9089 tokens, outside 9.5K +-2%"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed8/20261122T051853Z:s8@2.5",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed8/20261122T051853Z:s8@3.0",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)"
+     ]
+    },
+    {
+     "cell": "s2c_mi355x_or_recipe_seed8/20261122T051853Z:s8@3.25",
+     "slo_pass": true,
+     "why": [
+      "lengths drawn per seed, not stratified (seed 7's draws averaged ~4% under 9.5K)"
+     ]
+    }
+   ],
+   "max_rate_all_seeds_pass": 3.0,
+   "seeds": [
+    "s2b_mi355x_or_recipe_seed7/20261122T053337Z:s7",
+    "s2b_mi355x_or_recipe_seed8/20261122T054928Z:s8"
+   ],
+   "worst_seed_achieved_rps": 2.8033333333333332,
+   "worst_seed_ttft_p95_s": 2.36176,
+   "prompt_tokens_mean_range": [
+    9498.453318335209,
+    9519.699666295885
+   ],
+   "spec_accept_len": [
+    2.373425629520187,
+    2.3793042447614923
+   ],
+   "xcheck_ratio_range": [
+    0.99786505317121,
+    0.9986540541396647
+   ],
+   "usd_per_h": 4.7565,
+   "usd_per_req": 0.00047131391200951246,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 0.6050242772907733,
+   "ratio_vs_bar_metered": 0.5415263020519309,
+   "ratio_vs_openrelay_sync": 0.6050242772907733,
+   "usd_per_h_metered": 4.2573,
+   "usd_per_req_metered": 0.0004218489892984542,
+   "ratio_vs_openrelay_sync_metered": 0.5415263020519309,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": true,
+   "not_claim_grade_because": []
+  },
+  {
+   "group": "s3_rtxpro6000_small_mtp",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    0.7,
+    0.86,
+    1.03
+   ],
+   "runs": [
+    "s3_rtxpro6000_small_mtp/20261122T050407Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.86,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": 0.7,
+   "seeds": [
+    "s3_rtxpro6000_small_mtp/20261122T050407Z:s7"
+   ],
+   "worst_seed_achieved_rps": 0.6162111845809934,
+   "worst_seed_ttft_p95_s": 3.104888900590593,
+   "prompt_tokens_mean_range": null,
+   "spec_accept_len": [
+    null
+   ],
+   "xcheck_ratio_range": null,
+   "usd_per_h": 2.4189,
+   "usd_per_req": 0.0010903999853938895,
+   "price_bar_name": "OpenRelay sync openrelay/gemma-4-31b",
+   "price_bar_usd_per_req": 0.0007790000000000001,
+   "ratio_vs_bar": 1.3997432418406794,
+   "ratio_vs_bar_metered": 1.2870184563966498,
+   "ratio_vs_openrelay_sync": 1.3997432418406794,
+   "usd_per_h_metered": 2.2241,
+   "usd_per_req_metered": 0.0010025873775329902,
+   "ratio_vs_openrelay_sync_metered": 1.2870184563966498,
+   "cached_share_scored": null,
+   "server_prefix_cache_hit_ratio": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "1 seed(s) at this rate (need 2)",
+    "scored window 136 s < 300 s",
+    "no server-vs-client prompt-token check recorded"
+   ]
+  },
+  {
+   "group": "s3_rtxpro6000_small_mtp",
+   "column": "B",
+   "column_name": "our client, real text",
+   "origin": "ours",
+   "gpu": "RTX-PRO-6000",
+   "engine": "vllm",
+   "rates_tested": [
+    0.86
+   ],
+   "runs": [
+    "s3_rtxpro6000_small_mtp/20261122T050407Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "all cells (none claim-eligible)",
+   "first_failing_rate_rps": 0.86,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (0.86 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "sgl_mi355x_fp8_specoff",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "sglang",
+   "rates_tested": [
+    2.5
+   ],
+   "runs": [
+    "mxS1_sglang/20261122T073259Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 2.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (2.5 req/s) fails on at least one cell"
+   ]
+  },
+  {
+   "group": "vllm_fp8dyn_specoff",
+   "column": "A",
+   "column_name": "OpenRelay client, random tokens",
+   "origin": "ours",
+   "gpu": "MI355X",
+   "engine": "vllm",
+   "rates_tested": [
+    2.5
+   ],
+   "runs": [
+    "mxS3_vllm_fp8/20261122T080325Z"
+   ],
+   "price_bar_is_openrelay_gemma": true,
+   "price_model": "openrelay/gemma-4-31b",
+   "judged_on": "claim-eligible cells only",
+   "first_failing_rate_rps": 2.5,
+   "non_monotonic_pass_rps": null,
+   "non_monotonic_note": null,
+   "excluded_cells": [],
+   "max_rate_all_seeds_pass": null,
+   "claim_grade": false,
+   "not_claim_grade_because": [
+    "the lowest tested rung (2.5 req/s) fails on at least one cell"
+   ]
+  }
+ ]
+}

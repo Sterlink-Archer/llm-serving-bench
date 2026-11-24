@@ -1,0 +1,3 @@
+[matrix xcheck] 1 cells, ~1.1 min; calibration {'template_overhead_tokens': 14, 'cpt_prose': 4.067796610169491, 'cpt_table': 1.7482517482517483}
+[s1k_256_c32] C=32 win=50s done=189 err=0 drop=0 req/s=3.22 out=827 in=3237 tok/s cache=0.00 TTFT p50=0.160s p95=0.279s TPOT p50=38.1ms srv=826.8299019457271
+[matrix xcheck] done in 1.0 min -> /root/or/out/m_fp8dyn_xcheck/matrix_summary.md

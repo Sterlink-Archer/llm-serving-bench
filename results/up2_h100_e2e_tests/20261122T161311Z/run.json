@@ -1,0 +1,92 @@
+{
+ "label": "up2_h100_e2e_tests",
+ "run_id": "up2_h100_e2e_tests/20261122T161311Z",
+ "config_file": "configs/up2_h100_e2e_tests.json",
+ "t_start": "2026-11-22T16:13:11Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "create_s": 1.6
+ },
+ "servers": {
+  "tests": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.3,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 1.3,
+    "launch": "python3 -m http.server 8099 --bind 127.0.0.1 --directory /root/or",
+    "env": {},
+    "gpu_mem_after_load": "0 MiB, 81559 MiB",
+    "smoke": ""
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8099 --bind 127.0.0.1 --directory /root/or",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes"
+    }
+   ],
+   "steps": {
+    "t_e2e_base": {
+     "rc": 1,
+     "secs": 145.9,
+     "cmd": "cd /root/vtest && PYTHONPATH=/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py -k last_tokens_only 2>&1",
+     "tail": "=========================== short test summary info ============================\nFAILED tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py::test_draft_prefill_runs_on_last_tokens_only\n============ 1 failed, 1 deselected, 1 warning in 130.44s (0:02:10) ============\n"
+    },
+    "t_e2e_patched_sync": {
+     "rc": 0,
+     "secs": 104.9,
+     "cmd": "cd /root/vtest && VLLM_GPU_SYNC_CHECK=error PYTHONPATH=/root/patched:/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py -k last_tokens_only 2>&1",
+     "tail": "\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============ 1 passed, 1 deselected, 1 warning in 83.55s (0:01:23) =============\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 316.09,
+  "this_run_ceiling_usd": 2.5,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 381,
+ "sandbox_id": "89aa8399-e9c2-4676-84b4-0d38d5a91b3b",
+ "elapsed_s": 338.6,
+ "est_cost_usd": 0.345,
+ "t_saved": "2026-11-22T16:18:50Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W\n128\nMem:            2014          86         456           0        1498        1928\noverlay         150G  8.4M  150G   1% /\nPython 3.14.10\n/usr/bin/curl\nvllm 0.34.0rc1.dev1133+g647a76866\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "rget_dependent_ar_speculator.py /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n2a115377e7cf59ff36debc9712fdeaafca0f69b4746579f7e26e9f32fb7f66f5  /root/vtest/tests/v1/worker/test_gpu_target_dependent_ar_speculator.py\n20b92b9ca2c5ad4e43f9cb53e42de05b79c30e8433f320cf337af50c3f55bc7a  /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n+ cp /root/or/up/test_unit.py /root/vtest/tests/v1/worker/test_gpu_target_dependent_ar_speculator.py\n+ cp /root/or/up/test_e2e.py /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n+ tail -3\nBytecode compiled 5 files in 45ms\n + pytest-asyncio==1.5.0\n + tblib==3.2.2\n+ python3 -m pytest --version\npytest 9.2.0\n+ nvidia-smi --query-gpu=name,clocks.max.sm,power.limit --format=csv,noheader\nNVIDIA H100 80GB HBM3, 1980 MHz, 700.00 W\n+ true\n"
+ },
+ "deleted": "2026-11-22T16:18:26Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 316.74,
+  "metered_usd": 283.8135
+ }
+}

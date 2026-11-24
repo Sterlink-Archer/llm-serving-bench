@@ -1,0 +1,23 @@
+{
+ "label": "glm1_sglang0523",
+ "run_id": "glm1_sglang0523/20261122T073308Z",
+ "config_file": "recipes/glm/configs/glm1_sglang0523.json",
+ "t_start": "2026-11-22T07:33:08Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0319,
+  "total": 4.7727
+ },
+ "phases": {},
+ "servers": {},
+ "error": "RuntimeError('snapshot or-sglang0523rocm10-mi355x-c8m48d300 failed: An operation is already in progress for this resource')",
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T07:33:32Z",
+ "project_spend": {
+  "est_usd": 103.82,
+  "metered_usd": 89.4249
+ }
+}

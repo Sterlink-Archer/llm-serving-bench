@@ -1,0 +1,4 @@
+[vllmbench r=0.6 s=8] done=180 failed=0 req/s=0.5952611733743043 p95 TTFT=3.244724738085641 median TPOT=14.714274123695924 ms in tok/s=5589
+[vllmbench r=0.75 s=8] done=225 failed=0 req/s=0.7420437017201233 p95 TTFT=4.615321125462651 median TPOT=23.173890316684265 ms in tok/s=6943
+[vllmbench r=0.9 s=8] done=270 failed=0 req/s=0.8687220028545597 p95 TTFT=7.005399074964223 median TPOT=45.8990041264578 ms in tok/s=8243
+[protocol] max_rate_at_slo=0.6 req/s (break-even 1.3074); prefill=None tok/s -> /root/or/out/pr_unpatched_s8/protocol_summary.json

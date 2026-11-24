@@ -1,0 +1,4 @@
+[vllmbench r=1.0 s=8] done=300 failed=0 req/s=0.9559263691991612 p95 TTFT=2.1313031760044394 median TPOT=44.34842142007897 ms in tok/s=9108
+[vllmbench r=1.5 s=8] done=450 failed=0 req/s=1.3874427273171752 p95 TTFT=4.48150032935664 median TPOT=82.89328211244143 ms in tok/s=13359
+[vllmbench r=2.0 s=8] done=600 failed=0 req/s=1.4960156051691977 p95 TTFT=79.37007732274942 median TPOT=102.94414505492722 ms in tok/s=14302
+[protocol] max_rate_at_slo=1.0 req/s (break-even 1.7019); prefill=21297.863020675344 tok/s -> /root/or/out/protocol_glm_mtp5/protocol_summary.json

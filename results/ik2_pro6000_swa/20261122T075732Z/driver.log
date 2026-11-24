@@ -1,0 +1,13 @@
+2026-11-22T07:57:33Z [ik2_pro6000_swa] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 100 min, budget $7.0; project so far ~$123.86)
+2026-11-22T07:58:27Z [ik2_pro6000_swa] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 60 | Mem:             176          23          71           0          87         153 | overlay         150G  8.4M  150G   1% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T07:59:47Z [ik2_pro6000_swa] download base: rc=0 77s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:02:58Z [ik2_pro6000_swa] server base ready=True after 190.0s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T08:03:48Z [ik2_pro6000_swa] setup_vllm_client rc=0 48s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 24 s: 0.33.0
+2026-11-22T08:04:58Z [ik2_pro6000_swa] gate_base_gsm8kor100 rc=0 70s :: [gate_base_gsm8kor100] gsm8kor: 0.960 (96/100, noans 0, err 0, trunc 0) wall=60s
+2026-11-22T08:12:38Z [ik2_pro6000_swa] protocol_base_B_text rc=0 460s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json
+2026-11-22T08:17:36Z [ik2_pro6000_swa] protocol_base_A_random rc=0 297s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=20836.706246691298 tok/s -> /root/or/out/protocol_base_A_random/protocol_summary.json
+2026-11-22T08:17:53Z [ik2_pro6000_swa] download swa15: rc=0 4s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:19:00Z [ik2_pro6000_swa] server swa15 ready=True after 65.9s; gpu mem 91775 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1071872 graphs 36
+2026-11-22T08:19:51Z [ik2_pro6000_swa] gate_swa15_gsm8kor100 rc=0 49s :: [gate_swa15_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=40s
+2026-11-22T08:27:31Z [ik2_pro6000_swa] protocol_swa15_B_text rc=0 460s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_swa15_B_text/protocol_summary.json
+2026-11-22T08:28:09Z [ik2_pro6000_swa] done: elapsed 30.6 min, est $1.47; project est $142.71

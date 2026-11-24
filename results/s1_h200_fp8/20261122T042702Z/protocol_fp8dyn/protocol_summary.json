@@ -1,0 +1,142 @@
+{
+ "schema": "protocol/1",
+ "run_id": "s1_h200_fp8/20261122T042702Z",
+ "config_id": "s1_h200_fp8:fp8dyn",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 1.3549,
+ "duration_s": 120.0,
+ "warmup_s": 24.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "synthetic",
+ "params": {
+  "input_dist": {
+   "uniform": [
+    1900,
+    17100
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  }
+ },
+ "calibration": {
+  "cpt_prose": 4.0,
+  "cpt_table": 3.0,
+  "given": true
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 1.0,
+   "rate": 1.3549,
+   "seeds": {
+    "7": "cells/r1x_1.3549rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "client": "vllm bench serve (OpenRelay's bench.sh)",
+     "achieved_rps": 0.9373462735894585,
+     "arrived_rps": 1.35,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 9.184356398531236,
+     "ttft_p95_s": 30.15190377602703,
+     "ttft_p99_s": 33.791202656744275,
+     "tpot_p50_s": 0.201102217198504,
+     "tpot_p95_s": 0.4850658106139173,
+     "e2e_p50_s": 81.60619053745177,
+     "errors": 0,
+     "requests_sent": 162,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 372.8323733642614,
+     "in_tok_s": 9160.100736890812,
+     "cached_in_tok_s": null,
+     "server_gen_tok_s": null,
+     "spec_accept_len": null,
+     "preemptions": null,
+     "peak_inflight": 140,
+     "duration_s": 172.82833949895576,
+     "rc": 0
+    }
+   },
+   "kept_seed": 7,
+   "client": "vllm bench serve (OpenRelay's bench.sh)",
+   "achieved_rps": 0.9373462735894585,
+   "arrived_rps": 1.35,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 9.184356398531236,
+   "ttft_p95_s": 30.15190377602703,
+   "ttft_p99_s": 33.791202656744275,
+   "tpot_p50_s": 0.201102217198504,
+   "tpot_p95_s": 0.4850658106139173,
+   "e2e_p50_s": 81.60619053745177,
+   "errors": 0,
+   "requests_sent": 162,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 372.8323733642614,
+   "in_tok_s": 9160.100736890812,
+   "cached_in_tok_s": null,
+   "server_gen_tok_s": null,
+   "spec_accept_len": null,
+   "preemptions": null,
+   "peak_inflight": 140,
+   "duration_s": 172.82833949895576,
+   "rc": 0
+  },
+  {
+   "multiple": 1.5,
+   "rate": 2.0324,
+   "seeds": {},
+   "results": {},
+   "skipped": "past SLO (an earlier rate failed with p95 TTFT > 2x SLO)"
+  },
+  {
+   "multiple": 2.0,
+   "rate": 2.7098,
+   "seeds": {},
+   "results": {},
+   "skipped": "past SLO (an earlier rate failed with p95 TTFT > 2x SLO)"
+  }
+ ],
+ "prefill": {
+  "client": "vllm bench serve (OpenRelay's probe.sh)",
+  "concurrency": 16,
+  "prompt_tokens_target": 10000,
+  "runs": [
+   {
+    "run": 1,
+    "file": "prefill_c16_10000_run1.json",
+    "input_tok_s": 13168.051133653333,
+    "completed": 64,
+    "p95_ttft_s": 12.435672044474632,
+    "rc": 0
+   },
+   {
+    "run": 2,
+    "file": "prefill_c16_10000_run2.json",
+    "input_tok_s": 13165.829080994034,
+    "completed": 64,
+    "p95_ttft_s": 12.443378869775916,
+    "rc": 0
+   }
+  ],
+  "prefill_tok_s": 13165.829080994034,
+  "counted": "second run"
+ },
+ "t_start": "2026-11-22T04:36:13Z",
+ "client": "vllmbench",
+ "max_rate_at_slo_rps": 0.0,
+ "max_goodput_rps": 0.0,
+ "t_end": "2026-11-22T04:41:29Z",
+ "wall_minutes": 5.256553041934967
+}

@@ -1,0 +1,121 @@
+{
+ "label": "ikC_b300_mixed_dspark",
+ "stage": "ik-confirm",
+ "claim_group": "ikC_b300_mixed_dspark",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 2.0526,
+ "note": "CONFIRM (claim-grade), B300, seeds 7 and 8 on one box: SGLang inkling-2-mini image, GB300 Balanced flags at TP1 + '--enable-mixed-chunk --speculative-algorithm DSPARK --max-running-requests 128'. Quality row (GSM8K test[:250] + MMLU-Pro 200, effort 'high'), column B real text at [1.0, 1.5, 2.0, 2.5, 3.0]x break-even ([2.053, 3.079, 4.105, 5.131, 6.158] req/s), 300 s, then column A at the same rates with OpenRelay's prefill probe.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-b300-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "B300",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 235,
+ "budget_usd": 30.0,
+ "servers": [
+  {
+   "name": "mixed_dspark",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --bf16-gemm-backend torch --enable-mixed-chunk --speculative-algorithm DSPARK --max-running-requests 128",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "setup_vllm_client",
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "eval_claim",
+     "sets": "data/eval/gsm8kor_test.jsonl,data/eval/mmlupro_200.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "est_s": 900,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.9
+     }
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_b300_B_text",
+     "client": "traffic",
+     "breakeven_rps": 2.0526,
+     "rates": [
+      2.053,
+      3.079,
+      4.105,
+      5.131,
+      6.158
+     ],
+     "seeds": [
+      7,
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "ttft_basis": "token"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_b300_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "breakeven_rps": 2.0526,
+     "rates": [
+      2.053,
+      3.079,
+      4.105,
+      5.131,
+      6.158
+     ],
+     "seeds": [
+      7,
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "fallbacks": [
+    {
+     "flags": "",
+     "why": "retry once as-is: B300 first start compiles FA4 / CuTe kernels"
+    }
+   ],
+   "claim_group": "ikC_b300_mixed_dspark"
+  }
+ ]
+}

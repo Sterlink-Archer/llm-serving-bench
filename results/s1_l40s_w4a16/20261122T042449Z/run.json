@@ -1,0 +1,76 @@
+{
+ "label": "s1_l40s_w4a16",
+ "run_id": "s1_l40s_w4a16/20261122T042449Z",
+ "config_file": "configs/s1_l40s_w4a16.json",
+ "t_start": "2026-11-22T04:24:49Z",
+ "usd_per_h": {
+  "gpu": 1.14,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 2.0697
+ },
+ "phases": {
+  "snapshot_build_s": 226.7,
+  "create_s": 10.0
+ },
+ "servers": {
+  "w4a16qat": {
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it-qat-w4a16-ct",
+     "rev": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "resolved_sha": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "files": 7,
+     "bytes": 23297565093
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 175.7,
+    "tail": "\rFetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 7 files:  71%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f  | 5/7 [00:00<00:00, 43.76it/s]\rFetching 7 files:  86%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c | 6/7 [00:20<00:00, 43.76it/s]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [02:48<00:00, 30.67s/it]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [02:48<00:00, 24.10s/it]\nDL repo=google/gemma-4-31B-it-qat-w4a16-ct rev=52f3f65bc7 files=7 bytes=23297567410 secs=169.0 GBps=0.138 method=huggingface_hub\n",
+    "bytes": 23297567410,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 144.2,
+    "launch": "vllm serve /root/models/w4a16qat --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "40685 MiB, 46068 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-4420cdb2\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "TRITON_ATTN",
+     "global_512": "TRITON_ATTN"
+    },
+    "kv_cache_tokens": 78979,
+    "kv_cache_gib": 19.03,
+    "rejected": true,
+    "reject_reason": "TRITON_ATTN on global 512-dim layers",
+    "max_model_len": 32768
+   },
+   "end": "rejected: TRITON_ATTN on global 512-dim layers"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 2.19,
+  "this_run_ceiling_usd": 1.9,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 10,
+ "sandbox_id": "558b3239-d6a5-47b3-a1c5-e3859e4e0a23",
+ "elapsed_s": 373.5,
+ "est_cost_usd": 0.215,
+ "t_saved": "2026-11-22T04:34:49Z",
+ "system": "ok\nNVIDIA L40S, 46068 MiB, 580.126.16, 350.00 W\n24\nMem:             141          15          74           0          58         126\noverlay         1.3T  371G  809G  32% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:34:44Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 3.62,
+  "metered_usd": null
+ }
+}

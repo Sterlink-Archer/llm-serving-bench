@@ -1,0 +1,3 @@
+2026-11-22T04:41:01Z [s1_b300_nvfp4_mtp2_v034snap] creating spot sandbox (B300 x1, $8.0927/h, ttl 60 min, budget $9.0; project so far ~$5.39)
+2026-11-22T04:41:07Z [s1_b300_nvfp4_mtp2_v034snap] ERROR ApiError('HTTP 503 on /sandbox: {"path":"/api/sandbox","timestamp":"2026-11-22T04:41:07.143Z","statusCode":503,"error":"Service Unavailable","message":"No spot GPU capacity is available for this request. Please try again later."}')
+2026-11-22T04:41:07Z [s1_b300_nvfp4_mtp2_v034snap] done: elapsed 0.1 min, est $0.01; project est $5.43

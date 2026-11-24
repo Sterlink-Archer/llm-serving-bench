@@ -1,0 +1,76 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "triton",
+  "global_512": "triton"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 05:38:42] server_args={'model_path': '/root/models/nvfp4', 'tokenizer_path': '/root/models/nvfp4', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_extr"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  12,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256
+ ],
+ "kv_cache_tokens": 183725,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "fp8_e4m3",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "prefill_cuda_graph": false,
+ "kv_pool_tokens": {
+  "full_layers": 183725,
+  "sliding_layers": 146980
+ },
+ "missing": [],
+ "rejected": true,
+ "reject_reason": "Triton attention on global 512-dim layers",
+ "reparsed_at": "2026-11-22T05:50:06Z",
+ "reparse_note": "re-derived from the pulled server log with the fixed SGLang parser (0.5.23 prints server_args as a dict)",
+ "original_parse": {
+  "attention_backend": {
+   "sliding": null,
+   "global_512": null
+  },
+  "kv_cache_tokens": 183725,
+  "cuda_graph_sizes": null,
+  "rejected": true,
+  "reject_reason": "missing cuda_graph_sizes, attention_backend.global_512"
+ }
+}

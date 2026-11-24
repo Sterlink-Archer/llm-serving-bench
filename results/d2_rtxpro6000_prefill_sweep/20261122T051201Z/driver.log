@@ -1,0 +1,6 @@
+2026-11-22T05:12:01Z [d2_rtxpro6000_prefill_sweep] creating spot sandbox (RTX-PRO-6000 x1, $2.4189/h, ttl 35 min, budget $2.0; project so far ~$21.33)
+2026-11-22T05:12:51Z [d2_rtxpro6000_prefill_sweep] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 240 | Mem:             708          55         290           0         368         652 | overlay          80G  5.2M   80G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T05:14:26Z [d2_rtxpro6000_prefill_sweep] download nvfp4_fi: rc=0 92s 23.3 GB via ['huggingface_hub']
+2026-11-22T05:18:18Z [d2_rtxpro6000_prefill_sweep] server nvfp4_fi ready=True after 230.3s; gpu mem 89735 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 265537 graphs 51
+2026-11-22T05:18:37Z [d2_rtxpro6000_prefill_sweep] prefill_sweep rc=0 17s :: [sweep] tok/s longest/shortest = 0.75
+2026-11-22T05:19:02Z [d2_rtxpro6000_prefill_sweep] done: elapsed 7.0 min, est $0.28; project est $27.68

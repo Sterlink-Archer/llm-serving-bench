@@ -1,0 +1,2 @@
+[vllmbench r=0.97 s=7] done=174 failed=0 req/s=0.937508656372868 p95 TTFT=1.9219535021111367 median TPOT=33.80028683873951 ms in tok/s=9204
+[protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=20836.706246691298 tok/s -> /root/or/out/protocol_base_A_random/protocol_summary.json

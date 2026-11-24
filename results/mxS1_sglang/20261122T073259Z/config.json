@@ -1,0 +1,138 @@
+{
+ "label": "mxS1_sglang",
+ "stage": "mx-sglang",
+ "note": "SGLang track, spec OFF. lmsysorg/sglang:v0.5.23-rocm10-mi35x by digest (newest gfx950 tag that fits Daytona's 20 GB snapshot limit; rocm720 is 22.2 GB). Server 1: amd/gemma-4-31B-it-MXFP4 (OpenRelay's checkpoint); server 2: RedHatAI/gemma-4-31B-it-FP8-dynamic. aiter attention, FP8 KV, chunked prefill 8192, 64 running requests (vLLM recipe's values). Their client (client-only vLLM venv), prefill probe, seed 8 at 2.5/3.0/3.25. allow_rejected: SGLang's log lacks vLLM's startup facts; backend read by hand.",
+ "snapshot": {
+  "name": "or-sglang0523rocm10-mi355x-c8m48d150",
+  "image": "lmsysorg/sglang:v0.5.23-rocm10-mi35x",
+  "image_digest_amd64": "sha256:cff45eca86da10fbe140f85df196ef241e932bbae8036afa45942e633c3ed6c5",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 90,
+ "budget_usd": 7.5,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh: what the engine image actually contains, written before any engine starts (runs from setup_cmd).\n# Versions, the AITER pieces OpenRelay upstreamed (ROCm/aiter#5926-#5929) and the anchors our patches need.\n# Output: /root/or/out/inspect.txt (pulled by the `inspect` sh step).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, json, re, glob\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"vllm\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\nv = os.path.dirname(importlib.util.find_spec(\"vllm\").origin)\nprint(\"aiter dir\", a); print(\"vllm dir\", v)\nua = os.path.join(a, \"ops/triton/attention/unified_attention.py\")\ns = open(ua).read() if os.path.exists(ua) else \"\"\nm = re.search(r\"\\n(\\s*if params\\.head_size >= 512[^\\n]*)\", s)\nprint(\"ua3d anchor (use_2d D>=512 clause):\", repr(m.group(1)) if m else \"NOT FOUND\")\nprint(\"ua3d already applied:\", \"max_seqlen_q > 16\" in s)\ntbl = os.path.join(a, \"ops/triton/configs/gfx950/triton/attention/unified_attention/DEFAULT.json\")\nif os.path.exists(tbl):\n    d = json.load(open(tbl))\n    for sec, ent in d.items():\n        if isinstance(ent, dict):\n            for k, val in ent.items():\n                if \"512\" in k or \"GEQ_256\" in k:\n                    print(f\"table {sec} {k} {val}\")\nelse:\n    print(\"table missing:\", tbl)\nfor f in sorted(glob.glob(os.path.join(a, \"configs/model_configs/*gemma*\"))):\n    print(\"model_config\", os.path.basename(f), sum(1 for _ in open(f)) - 1, \"rows\")\nact = os.path.join(a, \"ops/triton/_triton_kernels/fusions/activation.py\")\nif not os.path.exists(act): act = os.path.join(a, \"ops/triton/_triton_kernels/activation.py\")\nt = open(act).read() if os.path.exists(act) else \"\"\ni = t.find(\"def _act_mul_and_dynamic_mxfp4_quant_kernel(\")\nprint(\"scaleM_pad constexpr in act_mul kernel:\", \"scaleM_pad: tl.constexpr\" in t[i:t.find(\"):\", i)] if i >= 0 else \"kernel not found\")\ng = os.path.join(v, \"model_executor/models/gemma4.py\")\ngs = open(g).read() if os.path.exists(g) else \"\"\nprint(\"gemma4.py Gemma4MLP anchor:\", \"class Gemma4MLP(nn.Module):\" in gs, \"| g4 fuse applied:\", \"g4_gelu_mxfp4_gemm\" in gs)\nao = os.path.join(v, \"_aiter_ops.py\")\nts = open(ao).read() if os.path.exists(ao) else \"\"\nka = os.path.join(v, \"model_executor/kernels/linear/mxfp4/aiter.py\")\nks = open(ka).read() if os.path.exists(ka) else \"\"\nprint(\"vllm is_asm_fp4_gemm_tuned present:\", \"def is_asm_fp4_gemm_tuned\" in ts,\n      \"| presh_ws gate in kernel:\", \"is_triton_gemm_afp4wfp4_presh_ws_tuned\" in ks, \"| MX force patch:\", \"MX_FORCE_ASM_FP4\" in ks)\ntj = glob.glob(os.path.join(a, \"ops/triton/configs/gfx950/triton/gemm/gemm_afp4wfp4_preshuffled/*K=5376*\"))\nprint(\"gfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376:\", [os.path.basename(x) for x in tj])\nenvs = open(os.path.join(v, \"envs.py\")).read()\nprint(\"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs:\", \"VLLM_ROCM_USE_AITER_FP4_ASM_GEMM\" in envs)\nPY\nls /root/or/mx 2>/dev/null | sed 's/^/mx file: /'\ngrep -h \"^PATCH\" /root/or/mx/*.status 2>/dev/null\n} > \"$OUT\" 2>&1\ntail -n 40 \"$OUT\"\nMXEOF_INSPECT_SH\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "sgl_mxfp4",
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "dir": "/root/models/mxfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "SGLANG_USE_AITER": "1"
+   },
+   "ready_timeout_s": 2400,
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_sgl_mxfp4",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_sgl_mxfp4_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_mxfp4",
+     "client": "vllmbench",
+     "rates": [
+      2.5,
+      3.0,
+      3.25
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "vllm_bin": "/root/vb/bin/vllm"
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "claim_group": "sgl_mi355x_mxfp4_specoff",
+   "origin": "ours"
+  },
+  {
+   "name": "sgl_fp8",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "env": {
+    "SGLANG_USE_AITER": "1"
+   },
+   "ready_timeout_s": 2400,
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_sgl_fp8",
+     "cmd": "tail -n 3 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_sgl_fp8_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_fp8",
+     "client": "vllmbench",
+     "rates": [
+      2.5,
+      3.0,
+      3.25
+     ],
+     "seeds": [
+      8
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "vllm_bin": "/root/vb/bin/vllm"
+    }
+   ],
+   "delete_weights_after": true,
+   "allow_rejected": true,
+   "claim_group": "sgl_mi355x_fp8_specoff",
+   "origin": "ours"
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "label": "ik3_5090_fp8",
+ "run_id": "ik3_5090_fp8/20261122T075122Z",
+ "config_file": "recipes/inkling/configs/ik3_5090_fp8.json",
+ "t_start": "2026-11-22T07:51:22Z",
+ "usd_per_h": {
+  "gpu": 0.74,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 1.6773
+ },
+ "phases": {
+  "create_s": 4.0
+ },
+ "servers": {
+  "fp8kv": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 67.1,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:01,  6.12it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:01<00:00,  6.53it/s]\rFetching 12 files:  83%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e | 10/12 [00:01<00:00,  6.69it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:05<00:00,  1.22it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:58<00:00, 10.83s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:58<00:00,  4.85s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590717 secs=58.8 GBps=0.343 method=huggingface_hub\n",
+    "bytes": 20191590717,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": false,
+    "ready_s": 48.9,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --kv-cache-dtype fp8_e4m3 --attention-backend triton",
+    "env": {},
+    "gpu_mem_after_load": "2 MiB, 32607 MiB"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "triton",
+     "global_512": "triton"
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --kv-cache-dtype fp8_e4m3",
+     "env": {},
+     "ok": false,
+     "rejected": true,
+     "reason": "engine did not become healthy"
+    },
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --kv-cache-dtype fp8_e4m3 --attention-backend triton",
+     "env": {},
+     "ok": false,
+     "rejected": true,
+     "allow_rejected": false,
+     "reason": "engine did not become healthy"
+    }
+   ]
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 118.35,
+  "this_run_ceiling_usd": 3.21,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 25,
+ "sandbox_id": "f0337b0c-9e76-4b3a-9c54-ab9575073ab7",
+ "elapsed_s": 311.8,
+ "est_cost_usd": 0.145,
+ "t_saved": "2026-11-22T07:56:34Z",
+ "system": "ok\nNVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W\n144\nMem:             253          28          51           0         179         224\noverlay         1.8T  576G  1.2T  34% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:56:02Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 123.12,
+  "metered_usd": 102.4859
+ }
+}

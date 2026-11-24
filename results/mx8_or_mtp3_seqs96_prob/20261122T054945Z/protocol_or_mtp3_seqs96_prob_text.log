@@ -1,0 +1,3 @@
+[r1.769x_s7] R=3.0 win=240s done=842 err=0 drop=0 req/s=2.80 out=1087 in=28453 tok/s cache=0.00 TTFT p50=0.757s p95=2.399s TPOT p50=28.0ms srv=1086.7273075103722
+[r1.916x_s7] R=3.25 win=240s done=866 err=0 drop=0 req/s=2.93 out=1148 in=30393 tok/s cache=0.00 TTFT p50=0.814s p95=4.051s TPOT p50=36.2ms srv=1149.1362061361492
+[protocol] max_rate_at_slo=3.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_mtp3_seqs96_prob_text/protocol_summary.json

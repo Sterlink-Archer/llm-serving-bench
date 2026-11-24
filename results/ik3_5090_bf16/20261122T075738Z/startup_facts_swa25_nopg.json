@@ -1,0 +1,52 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "fa4",
+  "global_512": "fa4"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 08:15:07] server_args={'model_path': '/root/models/inkling', 'tokenizer_path': '/root/models/inkling', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  12,
+  16,
+  24,
+  32,
+  40,
+  48
+ ],
+ "kv_cache_tokens": 83712,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": 32768,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "kv_pool_tokens": {
+  "full_layers": 83712,
+  "sliding_layers": 20864
+ },
+ "prefill_cuda_graph": false,
+ "missing": [],
+ "startup_rules": {
+  "require_global_512": false,
+  "triton_ok": true
+ },
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "ik3_5090_bf16/20261122T075738Z",
+ "config_id": "ik3_5090_bf16:swa25_nopg",
+ "image": "lmsysorg/sglang:inkling-2-mini",
+ "image_digest": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+ "model_repo": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "gpu_mem_after_load": "29286 MiB, 32607 MiB",
+ "source_log": "results/ik3_5090_bf16/20261122T075738Z/server_swa25_nopg.log",
+ "sub_phases": []
+}

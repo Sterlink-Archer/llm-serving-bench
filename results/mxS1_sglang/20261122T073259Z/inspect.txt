@@ -1,0 +1,10 @@
+== date 2026-11-22T07:46:02Z
+version vllm: ? (PackageNotFoundError)
+version torch: 2.11.0+rocm10.0.0
+version triton: 3.8.0+git4cff872c.rocm10.0.0
+version amd-aiter: 0.1.26.dev144+g285579b62.d20261030
+version aiter: ? (PackageNotFoundError)
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+AttributeError: 'NoneType' object has no attribute 'origin'
+mx file: inspect.sh

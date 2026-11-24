@@ -1,0 +1,97 @@
+{
+ "label": "mxS2_sglang_mxfp4",
+ "run_id": "mxS2_sglang_mxfp4/20261122T075418Z",
+ "config_file": "recipes/mi355x/configs/mxS2_sglang_mxfp4.json",
+ "t_start": "2026-11-22T07:54:18Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 6.5
+ },
+ "servers": {
+  "sgl_mxfp4": {
+   "weights": [
+    {
+     "repo": "amd/gemma-4-31B-it-MXFP4",
+     "rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "resolved_sha": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+     "files": 7,
+     "bytes": 19554630356
+    },
+    {
+     "repo": "google/gemma-4-31B-it",
+     "rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "resolved_sha": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "files": 1,
+     "bytes": 1689
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 21.9,
+    "tail": "iles:  43%|\u2588\u2588\u2588\u2588\u258e     | 3/7 [00:00<00:00, 12.94it/s]\rFetching 7 files:  86%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c | 6/7 [00:00<00:00,  5.91it/s]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [00:09<00:00,  2.10s/it]\rFetching 7 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7/7 [00:09<00:00,  1.38s/it]\nDL repo=amd/gemma-4-31B-it-MXFP4 rev=0606edf12b files=7 bytes=19554632669 secs=10.0 GBps=1.962 method=huggingface_hub\n\rFetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 1 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  7.32it/s]\rFetching 1 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  7.30it/s]\nDL repo=google/gemma-4-31B-it rev=842da3794e files=1 bytes=19554636397 secs=0.7 GBps=27.316 method=huggingface_hub\n",
+    "bytes": 39109269066,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": false,
+    "ready_s": 34.9,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+    "env": {
+     "SGLANG_USE_AITER": "1"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "aiter",
+     "global_512": "aiter"
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/mxfp4 --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --max-running-requests 64 --enable-metrics --attention-backend aiter",
+     "env": {
+      "SGLANG_USE_AITER": "1"
+     },
+     "ok": false,
+     "rejected": true,
+     "reason": "engine did not become healthy"
+    }
+   ]
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 121.12,
+  "this_run_ceiling_usd": 4.76,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 236,
+ "sandbox_id": "2536c932-936c-4bba-a40d-9e6b221ad49c",
+ "elapsed_s": 117.0,
+ "est_cost_usd": 0.155,
+ "t_saved": "2026-11-22T07:56:15Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0xA0EF2A9746941D9C\n        OAM_ID: 2\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015         294         990           5         752        1721\noverlay         150G  9.9M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nsglang 0.5.23\ntorch 2.11.0+rocm10.0.0 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "== date 2026-11-22T07:54:48Z\nversion vllm: ? (PackageNotFoundError)\nversion torch: 2.11.0+rocm10.0.0\nversion triton: 3.8.0+git4cff872c.rocm10.0.0\nversion amd-aiter: 0.1.26.dev144+g285579b62.d20261030\nversion aiter: ? (PackageNotFoundError)\nTraceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\nAttributeError: 'NoneType' object has no attribute 'origin'\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T07:55:59Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 122.89,
+  "metered_usd": 101.4283
+ }
+}

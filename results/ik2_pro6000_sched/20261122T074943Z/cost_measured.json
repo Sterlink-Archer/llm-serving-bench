@@ -1,0 +1,95 @@
+{
+ "run_id": "ik2_pro6000_sched/20261122T074943Z",
+ "configs": [
+  {
+   "run_id": "ik2_pro6000_sched/20261122T074943Z",
+   "config_id": "ik2_pro6000_sched:swa15",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0.0175,
+   "steady_gpu_usd": 0.0118,
+   "steady_host_usd": 0.0057,
+   "eval_usd": 0.0503,
+   "cold_start_usd": {
+    "weight_download": 0.0332,
+    "engine_start": 0.1661,
+    "warmup": 0.0004,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.3168,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0008265,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "ik2_pro6000_sched/20261122T074943Z",
+   "config_id": "ik2_pro6000_sched:swa15_mixed",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0.0089,
+    "engine_start": 0,
+    "warmup": 0,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.3168,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0008265,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "ik2_pro6000_sched/20261122T074943Z",
+   "config_id": "ik2_pro6000_sched:swa15_chunk16k",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.4032,
+    "mem": 0.5184,
+    "disk": 0.0157,
+    "total": 2.8873
+   },
+   "steady_usd": 0,
+   "steady_gpu_usd": 0.0,
+   "steady_host_usd": 0.0,
+   "eval_usd": 0,
+   "cold_start_usd": {
+    "weight_download": 0,
+    "engine_start": 0,
+    "warmup": 0,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 0.3168,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0008265,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

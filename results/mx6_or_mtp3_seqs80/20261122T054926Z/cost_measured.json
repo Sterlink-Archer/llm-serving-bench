@@ -1,0 +1,35 @@
+{
+ "run_id": "mx6_or_mtp3_seqs80/20261122T054926Z",
+ "configs": [
+  {
+   "run_id": "mx6_or_mtp3_seqs80/20261122T054926Z",
+   "config_id": "mx6_or_mtp3_seqs80:or_mtp3_seqs80",
+   "gpu": "MI355X",
+   "usd_per_h": {
+    "gpu": 3.56,
+    "cpu": 0.4032,
+    "mem": 0.7776,
+    "disk": 0.0157,
+    "total": 4.7565
+   },
+   "steady_usd": 1.4554,
+   "steady_gpu_usd": 1.0893,
+   "steady_host_usd": 0.3661,
+   "eval_usd": 0.0167,
+   "cold_start_usd": {
+    "weight_download": 0.0423,
+    "engine_start": 0.2221,
+    "warmup": 0.0015,
+    "create_share": 0.0014
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.7876,
+   "max_rate_at_slo_rps": 3.25,
+   "steady_usd_per_req": 0.00040653846153846155,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": 3.6797466611593,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

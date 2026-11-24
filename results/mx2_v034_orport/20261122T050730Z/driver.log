@@ -1,0 +1,15 @@
+2026-11-22T05:07:30Z [mx2_v034_orport] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$17.37)
+2026-11-22T05:07:50Z [mx2_v034_orport] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:08:44Z [mx2_v034_orport] download v034_orport: rc=0 52s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:11:49Z [mx2_v034_orport] server v034_orport ready=True after 184.6s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 286925 MB
+        FREE_VRAM: 7667 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 286925 MB
+        FREE_VISIBLE_VRAM: 7667 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 1062160 graphs 40
+2026-11-22T05:11:52Z [mx2_v034_orport] inspect_v034_orport rc=0 2s :: PATCH ua3d: dispatch applied; table attn_3d/kv_split D_GEQ_512 set (was ({'BLOCK_M': 16, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}, {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_
+2026-11-22T05:12:05Z [mx2_v034_orport] gate_v034_orport_gsm8kor100 rc=0 13s :: [gate_v034_orport_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T05:24:44Z [mx2_v034_orport] protocol_v034_orport rc=0 759s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=42924.523479010866 tok/s -> /root/or/out/protocol_v034_orport/protocol_summary.json
+2026-11-22T05:25:05Z [mx2_v034_orport] done: elapsed 17.6 min, est $1.39; project est $32.18

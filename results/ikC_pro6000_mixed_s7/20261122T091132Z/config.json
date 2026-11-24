@@ -1,0 +1,154 @@
+{
+ "label": "ikC_pro6000_mixed_s7",
+ "stage": "ik-confirm",
+ "claim_group": "ikC_pro6000_mixed",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 0.8591,
+ "note": "CONFIRM (claim-grade), RTX-PRO-6000, seed 7: SGLang inkling-2-mini image + '--enable-mixed-chunk' (env {}). Vendor Balanced recipe first as the quality reference (GSM8K test[:250] + MMLU-Pro 200, twice). Claim config: quality row, column B real text at [1.13, 1.2, 1.25]x break-even (300 s, seed 7), then column A (OpenRelay's client, random tokens) at the same rates with their prefill probe.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-pro6000-c4m24d150",
+  "image": "lmsysorg/sglang:inkling-2-mini",
+  "image_digest_amd64": "sha256:421aed3ac11741381eac350bf7b1db28a0cafb6ae49b57ae78fba86a16a32306",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 24,
+  "disk": 150
+ },
+ "max_minutes": 150,
+ "budget_usd": 8.0,
+ "servers": [
+  {
+   "name": "ref",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "eval_ref_r1",
+     "sets": "data/eval/gsm8kor_test.jsonl,data/eval/mmlupro_200.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "est_s": 900
+    },
+    {
+     "type": "eval",
+     "name": "eval_ref_r2",
+     "sets": "data/eval/gsm8kor_test.jsonl,data/eval/mmlupro_200.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "est_s": 900
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "mixed",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --enable-mixed-chunk",
+   "env": {},
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "setup_vllm_client",
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "est_s": 300
+    },
+    {
+     "type": "eval",
+     "name": "eval_claim",
+     "sets": "data/eval/gsm8kor_test.jsonl,data/eval/mmlupro_200.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "est_s": 900,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.9
+     }
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mixed_B_text",
+     "client": "traffic",
+     "breakeven_rps": 0.8591,
+     "rates": [
+      0.971,
+      1.031,
+      1.074
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false,
+     "ttft_basis": "token"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_mixed_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "breakeven_rps": 0.8591,
+     "rates": [
+      0.971,
+      1.031,
+      1.074
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   },
+   "claim_group": "ikC_pro6000_mixed"
+  }
+ ]
+}

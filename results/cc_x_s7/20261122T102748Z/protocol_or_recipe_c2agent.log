@@ -1,0 +1,2 @@
+[r3.98x_s7] R=6.75 win=300s done=2212 err=0 drop=0 req/s=6.48 out=2527 in=63825 tok/s cache=0.63 TTFT p50=0.281s p95=0.950s TPOT p50=20.3ms srv=2526.121419120337
+[protocol] max_rate_at_slo=6.75 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c2agent/protocol_summary.json

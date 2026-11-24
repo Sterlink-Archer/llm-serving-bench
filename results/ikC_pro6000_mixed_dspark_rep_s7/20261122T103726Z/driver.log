@@ -1,0 +1,8 @@
+2026-11-22T10:37:26Z [ikC_pro6000_mixed_dspark_rep_s7] creating spot sandbox (RTX-PRO-6000 x1, $2.5561/h, ttl 60 min, budget $4.0; project so far ~$244.14)
+2026-11-22T10:37:50Z [ikC_pro6000_mixed_dspark_rep_s7] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 30 | Mem:             283          17          66           0         207         266 | overlay         1.4T  734G  635G  54% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T10:38:32Z [ikC_pro6000_mixed_dspark_rep_s7] download mixed_dspark: rc=0 42s 20.2 GB via ['huggingface_hub']
+2026-11-22T10:42:21Z [ikC_pro6000_mixed_dspark_rep_s7] server mixed_dspark ready=True after 228.5s; gpu mem 85903 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1003136 graphs 35
+2026-11-22T10:42:53Z [ikC_pro6000_mixed_dspark_rep_s7] gate_rep_gsm8kor100 rc=0 32s :: [gate_rep_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=26s
+2026-11-22T10:55:20Z [ikC_pro6000_mixed_dspark_rep_s7] protocol_rep_B_text rc=0 747s :: [protocol] max_rate_at_slo=1.289 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_rep_B_text/protocol_summary.json
+2026-11-22T10:55:55Z [ikC_pro6000_mixed_dspark_rep_s7] MILESTONE project spend crossed $200 (est $259.44, metered 208.4346)
+2026-11-22T10:55:55Z [ikC_pro6000_mixed_dspark_rep_s7] done: elapsed 18.5 min, est $0.79; project est $259.44

@@ -1,0 +1,37 @@
+{
+ "label": "e4e_rtx5090_vllm_awq",
+ "note": "GPU type: RTX 5090 (32 GB GDDR7, $0.74/h): AWQ 4-bit only fits; FP8 KV; max-model-len 12288; host right-sized to 6 vCPU / 32 GiB.",
+ "snapshot": {
+  "name": "or-vllm0330-rtx-5090-c6m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "RTX-5090",
+  "gpus": 1,
+  "cpu": 6,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 35,
+ "budget_usd": 1.5,
+ "servers": [
+  {
+   "name": "awq",
+   "weights": [
+    {
+     "repo": "cyankiwi/gemma-4-31B-it-AWQ-4bit",
+     "rev": "a6b1af08a2dec2a803fd31641540d6a6d6cb09a9",
+     "dir": "/root/models/awq"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/awq --served-model-name gemma --port 8000 --max-model-len 12288 --language-model-only --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details --kv-cache-dtype fp8 --gpu-memory-utilization 0.94",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    }
+   ]
+  }
+ ]
+}

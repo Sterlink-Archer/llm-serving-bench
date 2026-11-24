@@ -1,0 +1,12 @@
+version sglang: 0.5.23
+version torch: 2.11.0+rocm10.0.0
+version triton: 3.8.0+git4cff872c.rocm10.0.0
+version amd-aiter: 0.1.26.dev144+g285579b62.d20261030
+version transformers: 5.19.0
+version tilelang: 0.1.7.post3+cuda.gita55a8230
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "<frozen posixpath>", line 181, in dirname
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+        MARKET_NAME: AMD Instinct MI355X VF
+        TARGET_GRAPHICS_VERSION: gfx950

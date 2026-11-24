@@ -1,0 +1,110 @@
+{
+ "label": "mxG1_asm",
+ "run_id": "mxG1_asm/20261122T085007Z",
+ "config_file": "recipes/mi355x/configs/mxG1_asm.json",
+ "t_start": "2026-11-22T08:50:07Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 2.0
+ },
+ "servers": {
+  "nogpu": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.5,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 1.3,
+    "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+    "env": {},
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+    "smoke": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error response</h1>\n        <p>Error code: 501</p>\n        <p>Message: Unsupported method ('POST').</p>\n        <p>Error code explanation: 501 - Server does not support this operation.</p>\n    </body>\n</html>\n"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512"
+    }
+   ],
+   "steps": {
+    "gemm_inventory": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py inventory --out /root/or/out/gemm",
+     "tail": "\", \"module_gemm_common.so\", \"module_groupnorm.so\", \"module_hipbsolgemm.so\", \"module_inverse_rope_group_quant.so\", \"module_mhc.so\", \"module_mla_asm.so\", \"module_mla_metadata.so\", \"module_mla_reduce.so\", \"module_mla_sparse_prefill_asm.so\", \"module_mla_v4_asm.so\", \"module_moe_asm.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage2.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_silu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_\n[2026-11-22T08:50:42Z] inventory done in 4s\n"
+    },
+    "gemm_mfma": {
+     "rc": 0,
+     "secs": 22.3,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py mfma --out /root/or/out/gemm",
+     "tail": "[2026-11-22T08:51:05Z] mfma mfma16 zero hold 0.5s: 6.8313 PF at 2361.1 MHz (68.98% of clock-adjusted peak, 859.0 W)\n[2026-11-22T08:51:09Z] mfma mfma16 zero hold 3.0s: 6.8312 PF at 2380.9 MHz (68.41% of clock-adjusted peak, 826.5 W)\n[2026-11-22T08:51:09Z] mfma done in 18s\n"
+    },
+    "gemm_sweep": {
+     "rc": 0,
+     "secs": 538.9,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py sweep --min-s 0.1 --shape-timeout 900 --out /root/or/out/gemm",
+     "tail": "[2026-11-22T09:00:07Z] sweep done in 7s\n[2026-11-22T09:00:08Z] sweep sq16k: rc 0 in 9s\n[2026-11-22T09:00:08Z] sweep done in 535s\n"
+    },
+    "gemm_ps": {
+     "rc": 0,
+     "secs": 53.2,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py ps --min-s 0.12 --out /root/or/out/gemm",
+     "tail": "[2026-11-22T09:01:03Z] ps sq8k M=8192: asm256 212.1 us, ctypes256 212.131 (err 0.0), ps 199.1 us (err 0.0), engine 213.254\n[2026-11-22T09:01:03Z] ps sq16k M=16384: asm256 1567.3 us, ctypes256 1564.79 (err 0.0), ps 1510.7 us (err 0.0), engine 1564.647\n[2026-11-22T09:01:03Z] ps done in 49s\n"
+    },
+    "gemm_confirm": {
+     "rc": 134,
+     "secs": 11.9,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py confirm --rounds 2 --min-s 0.25 --out /root/or/out/gemm",
+     "tail": "[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co\nfree(): invalid pointer\n/root/or/jobs/018_gemm_confirm.sh: line 3:  4213 Aborted                 (core dumped) python3 /root/or/mx/gemm_headroom.py confirm --rounds 2 --min-s 0.25 --out /root/or/out/gemm\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 150.3,
+  "this_run_ceiling_usd": 5.95,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 251,
+ "sandbox_id": "d555cd1a-c879-4576-bdfa-822b4f0d9c13",
+ "elapsed_s": 702.8,
+ "est_cost_usd": 0.929,
+ "t_saved": "2026-11-22T09:01:50Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x7D71BE38D039AEDC\n        OAM_ID: 2\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015         463         905          14         647        1521\noverlay         150G  9.0M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "ENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64}\ntable kv_split D_GEQ_512.DT_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: gemm_headroom.py\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T09:01:31Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 155.21,
+  "metered_usd": 132.2588
+ }
+}

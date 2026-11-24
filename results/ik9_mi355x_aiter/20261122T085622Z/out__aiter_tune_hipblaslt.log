@@ -1,0 +1,961 @@
+/opt/venv/bin/python3 /sgl-workspace/aiter/csrc/gemm_a16w16/gemm_tuner.py --input_file /root/or/ik/inkling2mini_bf16_untuned_gemm.csv --tuned_file /root/or/out/aiter_tuned_hipblaslt.csv --libtype hipblaslt --with-hipblaslt
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+Not exist tuned file: /root/or/out/aiter_tuned_hipblaslt.csv
+untunedf is          gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns]
+        gfx  cu_num      M  ...        outdtype  scaleAB  bpreshuffle
+0    gfx950     256   1024  ...  torch.bfloat16    False        False
+1    gfx950     256   1280  ...  torch.bfloat16    False        False
+2    gfx950     256   1536  ...  torch.bfloat16    False        False
+3    gfx950     256   1792  ...  torch.bfloat16    False        False
+4    gfx950     256   2048  ...  torch.bfloat16    False        False
+5    gfx950     256   2304  ...  torch.bfloat16    False        False
+6    gfx950     256   2560  ...  torch.bfloat16    False        False
+7    gfx950     256   2816  ...  torch.bfloat16    False        False
+8    gfx950     256   3072  ...  torch.bfloat16    False        False
+9    gfx950     256   3328  ...  torch.bfloat16    False        False
+10   gfx950     256   3584  ...  torch.bfloat16    False        False
+11   gfx950     256   3840  ...  torch.bfloat16    False        False
+12   gfx950     256   4096  ...  torch.bfloat16    False        False
+13   gfx950     256   4608  ...  torch.bfloat16    False        False
+14   gfx950     256   5120  ...  torch.bfloat16    False        False
+15   gfx950     256   5632  ...  torch.bfloat16    False        False
+16   gfx950     256   6144  ...  torch.bfloat16    False        False
+17   gfx950     256   6656  ...  torch.bfloat16    False        False
+18   gfx950     256   7168  ...  torch.bfloat16    False        False
+19   gfx950     256   7680  ...  torch.bfloat16    False        False
+20   gfx950     256   8192  ...  torch.bfloat16    False        False
+21   gfx950     256   8704  ...  torch.bfloat16    False        False
+22   gfx950     256   9216  ...  torch.bfloat16    False        False
+23   gfx950     256   9728  ...  torch.bfloat16    False        False
+24   gfx950     256  10240  ...  torch.bfloat16    False        False
+25   gfx950     256  10752  ...  torch.bfloat16    False        False
+26   gfx950     256  11264  ...  torch.bfloat16    False        False
+27   gfx950     256  11776  ...  torch.bfloat16    False        False
+28   gfx950     256  12288  ...  torch.bfloat16    False        False
+29   gfx950     256  12800  ...  torch.bfloat16    False        False
+30   gfx950     256  13312  ...  torch.bfloat16    False        False
+31   gfx950     256  13824  ...  torch.bfloat16    False        False
+32   gfx950     256  14336  ...  torch.bfloat16    False        False
+33   gfx950     256  14848  ...  torch.bfloat16    False        False
+34   gfx950     256  15360  ...  torch.bfloat16    False        False
+35   gfx950     256  15872  ...  torch.bfloat16    False        False
+36   gfx950     256  16384  ...  torch.bfloat16    False        False
+37   gfx950     256   1024  ...  torch.bfloat16    False        False
+38   gfx950     256   1056  ...  torch.bfloat16    False        False
+39   gfx950     256   1104  ...  torch.bfloat16    False        False
+40   gfx950     256   1152  ...  torch.bfloat16    False        False
+41   gfx950     256   1200  ...  torch.bfloat16    False        False
+42   gfx950     256   1248  ...  torch.bfloat16    False        False
+43   gfx950     256   1280  ...  torch.bfloat16    False        False
+44   gfx950     256   1296  ...  torch.bfloat16    False        False
+45   gfx950     256   1344  ...  torch.bfloat16    False        False
+46   gfx950     256   1392  ...  torch.bfloat16    False        False
+47   gfx950     256   1440  ...  torch.bfloat16    False        False
+48   gfx950     256   1488  ...  torch.bfloat16    False        False
+49   gfx950     256   1536  ...  torch.bfloat16    False        False
+50   gfx950     256   1728  ...  torch.bfloat16    False        False
+51   gfx950     256   1792  ...  torch.bfloat16    False        False
+52   gfx950     256   1920  ...  torch.bfloat16    False        False
+53   gfx950     256   2048  ...  torch.bfloat16    False        False
+54   gfx950     256   2112  ...  torch.bfloat16    False        False
+55   gfx950     256   2304  ...  torch.bfloat16    False        False
+56   gfx950     256   2496  ...  torch.bfloat16    False        False
+57   gfx950     256   2560  ...  torch.bfloat16    False        False
+58   gfx950     256   2688  ...  torch.bfloat16    False        False
+59   gfx950     256   2816  ...  torch.bfloat16    False        False
+60   gfx950     256   2880  ...  torch.bfloat16    False        False
+61   gfx950     256   3072  ...  torch.bfloat16    False        False
+62   gfx950     256   3328  ...  torch.bfloat16    False        False
+63   gfx950     256   3584  ...  torch.bfloat16    False        False
+64   gfx950     256   3840  ...  torch.bfloat16    False        False
+65   gfx950     256   4096  ...  torch.bfloat16    False        False
+66   gfx950     256   4608  ...  torch.bfloat16    False        False
+67   gfx950     256   5120  ...  torch.bfloat16    False        False
+68   gfx950     256   5376  ...  torch.bfloat16    False        False
+69   gfx950     256   5632  ...  torch.bfloat16    False        False
+70   gfx950     256   6144  ...  torch.bfloat16    False        False
+71   gfx950     256   6656  ...  torch.bfloat16    False        False
+72   gfx950     256   6912  ...  torch.bfloat16    False        False
+73   gfx950     256   7168  ...  torch.bfloat16    False        False
+74   gfx950     256   7680  ...  torch.bfloat16    False        False
+75   gfx950     256   8192  ...  torch.bfloat16    False        False
+76   gfx950     256   8448  ...  torch.bfloat16    False        False
+77   gfx950     256   8704  ...  torch.bfloat16    False        False
+78   gfx950     256   9216  ...  torch.bfloat16    False        False
+79   gfx950     256   9728  ...  torch.bfloat16    False        False
+80   gfx950     256   9984  ...  torch.bfloat16    False        False
+81   gfx950     256  10240  ...  torch.bfloat16    False        False
+82   gfx950     256  10752  ...  torch.bfloat16    False        False
+83   gfx950     256  11264  ...  torch.bfloat16    False        False
+84   gfx950     256  11520  ...  torch.bfloat16    False        False
+85   gfx950     256  11776  ...  torch.bfloat16    False        False
+86   gfx950     256  12288  ...  torch.bfloat16    False        False
+87   gfx950     256  12800  ...  torch.bfloat16    False        False
+88   gfx950     256  13312  ...  torch.bfloat16    False        False
+89   gfx950     256  13824  ...  torch.bfloat16    False        False
+90   gfx950     256  14336  ...  torch.bfloat16    False        False
+91   gfx950     256  14848  ...  torch.bfloat16    False        False
+92   gfx950     256  15360  ...  torch.bfloat16    False        False
+93   gfx950     256  15872  ...  torch.bfloat16    False        False
+94   gfx950     256  16384  ...  torch.bfloat16    False        False
+95   gfx950     256  16896  ...  torch.bfloat16    False        False
+96   gfx950     256  18432  ...  torch.bfloat16    False        False
+97   gfx950     256  19968  ...  torch.bfloat16    False        False
+98   gfx950     256  21504  ...  torch.bfloat16    False        False
+99   gfx950     256  23040  ...  torch.bfloat16    False        False
+100  gfx950     256  24576  ...  torch.bfloat16    False        False
+101  gfx950     256  26112  ...  torch.bfloat16    False        False
+102  gfx950     256  27648  ...  torch.bfloat16    False        False
+103  gfx950     256  29184  ...  torch.bfloat16    False        False
+104  gfx950     256  30720  ...  torch.bfloat16    False        False
+105  gfx950     256  32256  ...  torch.bfloat16    False        False
+106  gfx950     256  33792  ...  torch.bfloat16    False        False
+107  gfx950     256  35328  ...  torch.bfloat16    False        False
+108  gfx950     256  36864  ...  torch.bfloat16    False        False
+109  gfx950     256  38400  ...  torch.bfloat16    False        False
+110  gfx950     256  39936  ...  torch.bfloat16    False        False
+111  gfx950     256  41472  ...  torch.bfloat16    False        False
+112  gfx950     256  43008  ...  torch.bfloat16    False        False
+113  gfx950     256  44544  ...  torch.bfloat16    False        False
+114  gfx950     256  46080  ...  torch.bfloat16    False        False
+115  gfx950     256  47616  ...  torch.bfloat16    False        False
+116  gfx950     256  49152  ...  torch.bfloat16    False        False
+
+[117 rows x 10 columns][aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+
+M N K bias dtype outdtype 1024 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:57:45.938332770 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+798    19152   0.0228       0        0.0             hipblaslt
+1431   16802   0.0230       0        0.0             hipblaslt
+1753   17124   0.0230       0        0.0             hipblaslt
+2984   18358   0.0232       0        0.0             hipblaslt
+2983   18357   0.0233       0        0.0             hipblaslt
+2782   18151   0.0234       0        0.0             hipblaslt
+1758   17129   0.0234       0        0.0             hipblaslt
+1757   17128   0.0235       0        0.0             hipblaslt
+1069   16442   0.0237       0        0.0             hipblaslt
+1277   16650   0.0237       0        0.0             hipblaslt
+1756   17127   0.0238       0        0.0             hipblaslt
+1021   16394   0.0238       0        0.0             hipblaslt
+968    16341   0.0238       0        0.0             hipblaslt
+913    16286   0.0238       0        0.0             hipblaslt
+1275   16648   0.0238       0        0.0             hipblaslt
+1765   17136   0.0238       0        0.0             hipblaslt
+1214   16587   0.0239       0        0.0             hipblaslt
+1170   16543   0.0239       0        0.0             hipblaslt
+1735   17106   0.0239       0        0.0             hipblaslt
+2030   17399   0.0239       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:58:51.131530692 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 1280 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 08:59:02.552094312 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+798    19152   0.0234       0        0.0             hipblaslt
+2984   18358   0.0240       0        0.0             hipblaslt
+2032   17401   0.0241       0        0.0             hipblaslt
+2948   18322   0.0242       0        0.0             hipblaslt
+2782   18151   0.0242       0        0.0             hipblaslt
+2890   18264   0.0242       0        0.0             hipblaslt
+1069   16442   0.0245       0        0.0             hipblaslt
+1067   16440   0.0246       0        0.0             hipblaslt
+2947   18321   0.0247       0        0.0             hipblaslt
+1061   16434   0.0248       0        0.0             hipblaslt
+1123   16496   0.0249       0        0.0             hipblaslt
+1765   17136   0.0249       0        0.0             hipblaslt
+1762   17133   0.0250       0        0.0             hipblaslt
+1124   16497   0.0250       0        0.0             hipblaslt
+1757   17128   0.0250       0        0.0             hipblaslt
+1015   16388   0.0250       0        0.0             hipblaslt
+1215   16588   0.0251       0        0.0             hipblaslt
+1171   16544   0.0251       0        0.0             hipblaslt
+915    16288   0.0251       0        0.0             hipblaslt
+2868   18242   0.0251       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:00:08.891490012 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 1536 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:00:20.550402546 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+data missed, the time may be inaccurate!
+data missed, the time may be inaccurate!
+data missed, the time may be inaccurate!
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2737   18106   0.0257       0        0.0             hipblaslt
+2868   18242   0.0261       0        0.0             hipblaslt
+1742   17113   0.0262       0        0.0             hipblaslt
+1346   16717   0.0262       0        0.0             hipblaslt
+1766   17137   0.0263       0        0.0             hipblaslt
+2746   18115   0.0266       0        0.0             hipblaslt
+1741   17112   0.0267       0        0.0             hipblaslt
+1744   17115   0.0268       0        0.0             hipblaslt
+1179   16552   0.0268       0        0.0             hipblaslt
+2765   18134   0.0271       0        0.0             hipblaslt
+1738   17109   0.0272       0        0.0             hipblaslt
+1063   16436   0.0272       0        0.0             hipblaslt
+1745   17116   0.0274       0        0.0             hipblaslt
+2777   18146   0.0276       0        0.0             hipblaslt
+1739   17110   0.0276       0        0.0             hipblaslt
+1070   16443   0.0276       0        0.0             hipblaslt
+1494   16865   0.0276       0        0.0             hipblaslt
+1767   17138   0.0277       0        0.0             hipblaslt
+2953   18327   0.0277       0        0.0             hipblaslt
+2954   18328   0.0277       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:01:27.746875497 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 1792 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:01:35.491189186 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2868   18242   0.0257       0        0.0             hipblaslt
+2738   18107   0.0261       0        0.0             hipblaslt
+2737   18106   0.0262       0        0.0             hipblaslt
+2746   18115   0.0271       0        0.0             hipblaslt
+2779   18148   0.0272       0        0.0             hipblaslt
+1741   17112   0.0278       0        0.0             hipblaslt
+1744   17115   0.0278       0        0.0             hipblaslt
+1925   17294   0.0279       0        0.0             hipblaslt
+1746   17117   0.0279       0        0.0             hipblaslt
+1743   17114   0.0281       0        0.0             hipblaslt
+2953   18327   0.0282       0        0.0             hipblaslt
+1767   17138   0.0283       0        0.0             hipblaslt
+1766   17137   0.0284       0        0.0             hipblaslt
+1745   17116   0.0285       0        0.0             hipblaslt
+1346   16717   0.0286       0        0.0             hipblaslt
+1740   17111   0.0286       0        0.0             hipblaslt
+1063   16436   0.0287       0        0.0             hipblaslt
+1879   17248   0.0288       0        0.0             hipblaslt
+1179   16552   0.0289       0        0.0             hipblaslt
+1742   17113   0.0289       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:02:43.212869755 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 2048 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:02:51.171155137 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2738   18107   0.0266       0        0.0             hipblaslt
+2737   18106   0.0268       0        0.0             hipblaslt
+789    19143   0.0295       0        0.0             hipblaslt
+1796   17167   0.0303       0        0.0             hipblaslt
+1779   17150   0.0304       0        0.0             hipblaslt
+788    19142   0.0304       0        0.0             hipblaslt
+1792   17163   0.0304       0        0.0             hipblaslt
+1786   17157   0.0304       0        0.0             hipblaslt
+1774   17145   0.0305       0        0.0             hipblaslt
+1764   17135   0.0306       0        0.0             hipblaslt
+1777   17148   0.0306       0        0.0             hipblaslt
+1773   17144   0.0306       0        0.0             hipblaslt
+1800   17171   0.0306       0        0.0             hipblaslt
+1784   17155   0.0306       0        0.0             hipblaslt
+2744   18113   0.0308       0        0.0             hipblaslt
+2742   18111   0.0308       0        0.0             hipblaslt
+1775   17146   0.0308       0        0.0             hipblaslt
+1772   17143   0.0308       0        0.0             hipblaslt
+1768   17139   0.0308       0        0.0             hipblaslt
+1770   17141   0.0308       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:03:59.981038745 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 2304 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:04:08.753873113 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2744   18113   0.0307       0        0.0             hipblaslt
+2743   18112   0.0307       0        0.0             hipblaslt
+2742   18111   0.0308       0        0.0             hipblaslt
+788    19142   0.0313       0        0.0             hipblaslt
+1223   16596   0.0319       0        0.0             hipblaslt
+2739   18108   0.0320       0        0.0             hipblaslt
+2665   18034   0.0324       0        0.0             hipblaslt
+2741   18110   0.0326       0        0.0             hipblaslt
+2740   18109   0.0326       0        0.0             hipblaslt
+2002   17371   0.0336       0        0.0             hipblaslt
+1812   17181   0.0337       0        0.0             hipblaslt
+1808   17177   0.0338       0        0.0             hipblaslt
+2730   18099   0.0338       0        0.0             hipblaslt
+1811   17180   0.0338       0        0.0             hipblaslt
+759    19113   0.0339       0        0.0             hipblaslt
+1280   16653   0.0341       0        0.0             hipblaslt
+3154   19299   0.0342       0        0.0             hipblaslt
+1813   17182   0.0343       0        0.0             hipblaslt
+1405   16776   0.0346       0        0.0             hipblaslt
+1810   17179   0.0347       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:05:22.989584978 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 2560 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:05:32.981519595 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2744   18113   0.0319       0        0.0             hipblaslt
+2742   18111   0.0320       0        0.0             hipblaslt
+2743   18112   0.0321       0        0.0             hipblaslt
+788    19142   0.0331       0        0.0             hipblaslt
+2741   18110   0.0335       0        0.0             hipblaslt
+2665   18034   0.0335       0        0.0             hipblaslt
+2740   18109   0.0336       0        0.0             hipblaslt
+2739   18108   0.0336       0        0.0             hipblaslt
+2002   17371   0.0342       0        0.0             hipblaslt
+1813   17182   0.0344       0        0.0             hipblaslt
+3154   19299   0.0346       0        0.0             hipblaslt
+1811   17180   0.0348       0        0.0             hipblaslt
+3147   19292   0.0348       0        0.0             hipblaslt
+1280   16653   0.0348       0        0.0             hipblaslt
+2730   18099   0.0350       0        0.0             hipblaslt
+1812   17181   0.0350       0        0.0             hipblaslt
+1808   17177   0.0353       0        0.0             hipblaslt
+1223   16596   0.0353       0        0.0             hipblaslt
+2965   18339   0.0356       0        0.0             hipblaslt
+1914   17283   0.0356       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:06:45.280520715 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 2816 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:06:55.291662039 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2730   18099   0.0361       0        0.0             hipblaslt
+787    19141   0.0368       0        0.0             hipblaslt
+758    19112   0.0370       0        0.0             hipblaslt
+773    19127   0.0377       0        0.0             hipblaslt
+1919   17288   0.0390       0        0.0             hipblaslt
+3031   19176   0.0391       0        0.0             hipblaslt
+1351   16722   0.0394       0        0.0             hipblaslt
+1350   16721   0.0398       0        0.0             hipblaslt
+2119   17488   0.0399       0        0.0             hipblaslt
+2071   17440   0.0400       0        0.0             hipblaslt
+1920   17289   0.0402       0        0.0             hipblaslt
+1427   16798   0.0403       0        0.0             hipblaslt
+766    19120   0.0403       0        0.0             hipblaslt
+2008   17377   0.0404       0        0.0             hipblaslt
+1358   16729   0.0406       0        0.0             hipblaslt
+1326   16697   0.0407       0        0.0             hipblaslt
+1407   16778   0.0409       0        0.0             hipblaslt
+2596   17965   0.0410       0        0.0             hipblaslt
+1470   16841   0.0411       0        0.0             hipblaslt
+1690   17061   0.0411       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:08:10.902936420 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 3072 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:08:19.791029610 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+758    19112   0.0376       0        0.0             hipblaslt
+2730   18099   0.0377       0        0.0             hipblaslt
+787    19141   0.0384       0        0.0             hipblaslt
+773    19127   0.0392       0        0.0             hipblaslt
+1919   17288   0.0400       0        0.0             hipblaslt
+2119   17488   0.0401       0        0.0             hipblaslt
+3031   19176   0.0401       0        0.0             hipblaslt
+1350   16721   0.0403       0        0.0             hipblaslt
+2071   17440   0.0403       0        0.0             hipblaslt
+2008   17377   0.0404       0        0.0             hipblaslt
+1920   17289   0.0411       0        0.0             hipblaslt
+1470   16841   0.0413       0        0.0             hipblaslt
+772    19126   0.0414       0        0.0             hipblaslt
+1427   16798   0.0414       0        0.0             hipblaslt
+1505   16876   0.0415       0        0.0             hipblaslt
+1358   16729   0.0416       0        0.0             hipblaslt
+1351   16722   0.0417       0        0.0             hipblaslt
+1519   16890   0.0418       0        0.0             hipblaslt
+1923   17292   0.0419       0        0.0             hipblaslt
+1326   16697   0.0419       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:09:33.604018759 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 3328 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:09:46.411964817 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+758    19112   0.0390       0        0.0             hipblaslt
+773    19127   0.0403       0        0.0             hipblaslt
+2119   17488   0.0413       0        0.0             hipblaslt
+1350   16721   0.0413       0        0.0             hipblaslt
+2596   17965   0.0416       0        0.0             hipblaslt
+2071   17440   0.0417       0        0.0             hipblaslt
+1505   16876   0.0417       0        0.0             hipblaslt
+2008   17377   0.0418       0        0.0             hipblaslt
+1470   16841   0.0419       0        0.0             hipblaslt
+772    19126   0.0424       0        0.0             hipblaslt
+1690   17061   0.0424       0        0.0             hipblaslt
+1358   16729   0.0424       0        0.0             hipblaslt
+1427   16798   0.0426       0        0.0             hipblaslt
+1326   16697   0.0429       0        0.0             hipblaslt
+1351   16722   0.0429       0        0.0             hipblaslt
+1923   17292   0.0429       0        0.0             hipblaslt
+786    19140   0.0430       0        0.0             hipblaslt
+1506   16877   0.0432       0        0.0             hipblaslt
+1817   17186   0.0434       0        0.0             hipblaslt
+1703   17074   0.0435       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:10:59.769227399 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 3584 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:11:12.294558607 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+758    19112   0.0410       0        0.0             hipblaslt
+2119   17488   0.0423       0        0.0             hipblaslt
+1470   16841   0.0425       0        0.0             hipblaslt
+1350   16721   0.0426       0        0.0             hipblaslt
+1505   16876   0.0426       0        0.0             hipblaslt
+2596   17965   0.0427       0        0.0             hipblaslt
+1358   16729   0.0429       0        0.0             hipblaslt
+2071   17440   0.0432       0        0.0             hipblaslt
+1923   17292   0.0432       0        0.0             hipblaslt
+2008   17377   0.0434       0        0.0             hipblaslt
+772    19126   0.0436       0        0.0             hipblaslt
+1690   17061   0.0436       0        0.0             hipblaslt
+786    19140   0.0437       0        0.0             hipblaslt
+1427   16798   0.0438       0        0.0             hipblaslt
+1506   16877   0.0440       0        0.0             hipblaslt
+1821   17190   0.0441       0        0.0             hipblaslt
+1465   16836   0.0442       0        0.0             hipblaslt
+1468   16839   0.0443       0        0.0             hipblaslt
+1817   17186   0.0443       0        0.0             hipblaslt
+1507   16878   0.0445       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:12:26.085833765 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 3840 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:12:38.723872737 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2071   17440   0.0427       0        0.0             hipblaslt
+1690   17061   0.0438       0        0.0             hipblaslt
+1358   16729   0.0438       0        0.0             hipblaslt
+772    19126   0.0442       0        0.0             hipblaslt
+1352   16723   0.0453       0        0.0             hipblaslt
+2780   18149   0.0454       0        0.0             hipblaslt
+1839   17208   0.0455       0        0.0             hipblaslt
+1838   17207   0.0457       0        0.0             hipblaslt
+1385   16756   0.0457       0        0.0             hipblaslt
+1615   16986   0.0459       0        0.0             hipblaslt
+1555   16926   0.0460       0        0.0             hipblaslt
+1427   16798   0.0462       0        0.0             hipblaslt
+1837   17206   0.0462       0        0.0             hipblaslt
+1565   16936   0.0464       0        0.0             hipblaslt
+1183   16556   0.0464       0        0.0             hipblaslt
+1929   17298   0.0470       0        0.0             hipblaslt
+3030   19175   0.0472       0        0.0             hipblaslt
+1173   16546   0.0473       0        0.0             hipblaslt
+1822   17191   0.0473       0        0.0             hipblaslt
+2704   18073   0.0474       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:13:54.114094954 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 4096 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:14:04.795900065 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2071   17440   0.0444       0        0.0             hipblaslt
+1690   17061   0.0450       0        0.0             hipblaslt
+1358   16729   0.0451       0        0.0             hipblaslt
+1839   17208   0.0466       0        0.0             hipblaslt
+1838   17207   0.0467       0        0.0             hipblaslt
+2780   18149   0.0467       0        0.0             hipblaslt
+1565   16936   0.0470       0        0.0             hipblaslt
+1183   16556   0.0471       0        0.0             hipblaslt
+1837   17206   0.0471       0        0.0             hipblaslt
+1615   16986   0.0472       0        0.0             hipblaslt
+1352   16723   0.0475       0        0.0             hipblaslt
+1555   16926   0.0475       0        0.0             hipblaslt
+1478   16849   0.0479       0        0.0             hipblaslt
+1562   16933   0.0482       0        0.0             hipblaslt
+1385   16756   0.0483       0        0.0             hipblaslt
+1477   16848   0.0483       0        0.0             hipblaslt
+2628   17997   0.0486       0        0.0             hipblaslt
+2567   17936   0.0486       0        0.0             hipblaslt
+1516   16887   0.0488       0        0.0             hipblaslt
+2704   18073   0.0489       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:15:20.803893088 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 4608 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:15:29.095808942 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2564   17933   0.0501       0        0.0             hipblaslt
+2700   18069   0.0501       0        0.0             hipblaslt
+756    19110   0.0502       0        0.0             hipblaslt
+2005   17374   0.0502       0        0.0             hipblaslt
+2567   17936   0.0504       0        0.0             hipblaslt
+2628   17997   0.0504       0        0.0             hipblaslt
+2704   18073   0.0505       0        0.0             hipblaslt
+770    19124   0.0511       0        0.0             hipblaslt
+2924   18298   0.0512       0        0.0             hipblaslt
+2802   18171   0.0514       0        0.0             hipblaslt
+2003   17372   0.0518       0        0.0             hipblaslt
+1932   17301   0.0518       0        0.0             hipblaslt
+1930   17299   0.0519       0        0.0             hipblaslt
+2717   18086   0.0519       0        0.0             hipblaslt
+1936   17305   0.0520       0        0.0             hipblaslt
+2639   18008   0.0521       0        0.0             hipblaslt
+1841   17210   0.0522       0        0.0             hipblaslt
+1560   16931   0.0523       0        0.0             hipblaslt
+2553   17922   0.0523       0        0.0             hipblaslt
+926    16299   0.0526       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:16:40.746331366 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 5120 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:16:51.977569580 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+data missed, the time may be inaccurate!
+data missed, the time may be inaccurate!
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2704   18073   0.0532       0        0.0             hipblaslt
+2628   17997   0.0534       0        0.0             hipblaslt
+2700   18069   0.0535       0        0.0             hipblaslt
+2564   17933   0.0536       0        0.0             hipblaslt
+756    19110   0.0536       0        0.0             hipblaslt
+2924   18298   0.0538       0        0.0             hipblaslt
+2802   18171   0.0539       0        0.0             hipblaslt
+2005   17374   0.0540       0        0.0             hipblaslt
+770    19124   0.0542       0        0.0             hipblaslt
+2567   17936   0.0546       0        0.0             hipblaslt
+2639   18008   0.0547       0        0.0             hipblaslt
+2619   17988   0.0547       0        0.0             hipblaslt
+2717   18086   0.0547       0        0.0             hipblaslt
+2003   17372   0.0548       0        0.0             hipblaslt
+2553   17922   0.0549       0        0.0             hipblaslt
+1932   17301   0.0550       0        0.0             hipblaslt
+1841   17210   0.0553       0        0.0             hipblaslt
+1840   17209   0.0554       0        0.0             hipblaslt
+926    16299   0.0554       0        0.0             hipblaslt
+1640   17011   0.0554       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:18:01.851421029 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 5632 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:18:11.874588044 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+data missed, the time may be inaccurate!
+data missed, the time may be inaccurate!
+data missed, the time may be inaccurate!
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2552   17921   0.0582       0        0.0             hipblaslt
+2711   18080   0.0583       0        0.0             hipblaslt
+2560   17929   0.0584       0        0.0             hipblaslt
+2934   18308   0.0584       0        0.0             hipblaslt
+2547   17916   0.0585       0        0.0             hipblaslt
+1688   17059   0.0585       0        0.0             hipblaslt
+2561   17930   0.0586       0        0.0             hipblaslt
+2548   17917   0.0586       0        0.0             hipblaslt
+2555   17924   0.0588       0        0.0             hipblaslt
+3021   18395   0.0589       0        0.0             hipblaslt
+2904   18278   0.0589       0        0.0             hipblaslt
+2702   18071   0.0589       0        0.0             hipblaslt
+2710   18079   0.0590       0        0.0             hipblaslt
+2559   17928   0.0590       0        0.0             hipblaslt
+2554   17923   0.0590       0        0.0             hipblaslt
+1342   16713   0.0591       0        0.0             hipblaslt
+2079   17448   0.0592       0        0.0             hipblaslt
+2551   17920   0.0592       0        0.0             hipblaslt
+2007   17376   0.0592       0        0.0             hipblaslt
+2566   17935   0.0593       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:19:23.315544844 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 6144 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:19:31.242443752 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+3021   18395   0.0610       0        0.0             hipblaslt
+2547   17916   0.0612       0        0.0             hipblaslt
+2904   18278   0.0612       0        0.0             hipblaslt
+2711   18080   0.0615       0        0.0             hipblaslt
+3015   18389   0.0615       0        0.0             hipblaslt
+2554   17923   0.0616       0        0.0             hipblaslt
+2702   18071   0.0616       0        0.0             hipblaslt
+2551   17920   0.0617       0        0.0             hipblaslt
+2934   18308   0.0618       0        0.0             hipblaslt
+2560   17929   0.0618       0        0.0             hipblaslt
+2552   17921   0.0618       0        0.0             hipblaslt
+1672   17043   0.0619       0        0.0             hipblaslt
+2007   17376   0.0619       0        0.0             hipblaslt
+2561   17930   0.0620       0        0.0             hipblaslt
+2559   17928   0.0621       0        0.0             hipblaslt
+1688   17059   0.0621       0        0.0             hipblaslt
+2896   18270   0.0622       0        0.0             hipblaslt
+2566   17935   0.0622       0        0.0             hipblaslt
+2766   18135   0.0622       0        0.0             hipblaslt
+2710   18079   0.0623       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:20:48.013210569 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 6656 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:20:55.859490264 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 3200 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 1
+      solidx  gtimems  splitK  err_ratio kernelName    libtype
+2640   18009   0.0655       0        0.0             hipblaslt
+35     16180   0.0656       0        0.0             hipblaslt
+2612   17981   0.0656       0        0.0             hipblaslt
+1609   16980   0.0656       0        0.0             hipblaslt
+1944   17313   0.0656       0        0.0             hipblaslt
+2646   18015   0.0656       0        0.0             hipblaslt
+2926   18300   0.0656       0        0.0             hipblaslt
+1542   16913   0.0656       0        0.0             hipblaslt
+1620   16991   0.0657       0        0.0             hipblaslt
+2051   17420   0.0657       0        0.0             hipblaslt
+1610   16981   0.0658       0        0.0             hipblaslt
+2569   17938   0.0658       0        0.0             hipblaslt
+1543   16914   0.0658       0        0.0             hipblaslt
+1646   17017   0.0658       0        0.0             hipblaslt
+1941   17310   0.0658       0        0.0             hipblaslt
+1621   16992   0.0658       0        0.0             hipblaslt
+10     22454   0.0658       0        0.0             hipblaslt
+2557   17926   0.0659       0        0.0             hipblaslt
+2050   17419   0.0659       0        0.0             hipblaslt
+2629   17998   0.0659       0        0.0             hipblaslt
+[Task Grouping] Grouped 20 tasks into 1 groups by info_keys
+Distributing 1 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:22:13.164325539 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())
+Waiting for 1 tasks to complete (timeout=1800s each)...
+>>> hipblaslt top solutions, Fast Mode 0
+M N K bias dtype outdtype 7168 2304 3072 False torch.bfloat16 torch.bfloat16 False >>> Total hipb solutions 3200
+Distributing 3200 task groups across 1 GPUs
+[aiter] import [module_aiter_core] under /sgl-workspace/aiter/aiter/jit/module_aiter_core.so
+[aiter] import [module_hipbsolgemm] under /sgl-workspace/aiter/aiter/jit/module_hipbsolgemm.so
+/opt/venv/lib/python3.12/site-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1122 09:22:21.268277595 collection.cpp:1148] Warning: ROCTracer produced duplicate flow start: 5 (function operator())

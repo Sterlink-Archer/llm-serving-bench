@@ -1,0 +1,17 @@
+2026-11-22T05:18:53Z [s2c_mi355x_or_recipe_seed8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 90 min, budget $9.0; project so far ~$27.60)
+2026-11-22T05:19:13Z [s2c_mi355x_or_recipe_seed8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:20:07Z [s2c_mi355x_or_recipe_seed8] download or_recipe: rc=0 52s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:22:47Z [s2c_mi355x_or_recipe_seed8] server or_recipe ready=True after 159.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T05:23:01Z [s2c_mi355x_or_recipe_seed8] gate_gsm8kor100 rc=0 13s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:38:13Z [s2c_mi355x_or_recipe_seed8] protocol_or_recipe_B_text rc=0 913s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_B_text/protocol_summary.json
+2026-11-22T05:49:17Z [s2c_mi355x_or_recipe_seed8] ERROR ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/1e73f7e8-bc0b-48b7-b63d-61aa9c98bb14/process/execute: {"statusCode":404,"message":"not found: sandbox 1e73f7e8-bc0b-48b7-b63d-61aa9c98bb14 not found","code":"NOT_FOUND","timestamp":"2026-11-22T05:49:17.027911532Z","path":"/toolbox/1e73f7e8-bc0b-48b7-b63d-61aa9c98bb14/process/execute","method":"POST"}')
+2026-11-22T05:49:17Z [s2c_mi355x_or_recipe_seed8] EVICTED (spot preemption, outside our control): {'server': 'or_recipe', 'step': 'protocol_or_recipe_A_random'} lost 11.0 min / $0.87
+2026-11-22T05:49:22Z [s2c_mi355x_or_recipe_seed8] done: elapsed 30.5 min, est $2.42; project est $49.13
+2026-11-22T05:49:22Z [s2c_mi355x_or_recipe_seed8] re-running s2c_mi355x_or_recipe_seed8 on a fresh box after spot eviction (retry 1/2); evicted run kept as s2c_mi355x_or_recipe_seed8/20261122T051853Z with the interrupted step excluded

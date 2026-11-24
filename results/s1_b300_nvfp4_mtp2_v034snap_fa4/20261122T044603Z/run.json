@@ -1,0 +1,80 @@
+{
+ "label": "s1_b300_nvfp4_mtp2_v034snap_fa4",
+ "run_id": "s1_b300_nvfp4_mtp2_v034snap_fa4/20261122T044603Z",
+ "config_file": "configs/s1_b300_nvfp4_mtp2_v034snap_fa4.json",
+ "t_start": "2026-11-22T04:46:03Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.8064,
+  "mem": 2.0736,
+  "disk": 0.0427,
+  "total": 8.0927
+ },
+ "phases": {
+  "create_s": 3.7
+ },
+ "servers": {
+  "nvfp4_mtp2_fa4": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "resolved_sha": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "files": 5,
+     "bytes": 971215445
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 63.0,
+    "tail": "\u2588\u2588\u2588| 15/15 [00:51<00:00,  4.43s/it]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [00:51<00:00,  3.40s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640259 secs=51.4 GBps=0.453 method=huggingface_hub\n\rFetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 5 files:  20%|\u2588\u2588        | 1/5 [00:00<00:00,  6.69it/s]\rFetching 5 files:  60%|\u2588\u2588\u2588\u2588\u2588\u2588    | 3/5 [00:00<00:00, 12.51it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:02<00:00,  1.37it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:02<00:00,  1.69it/s]\nDL repo=google/gemma-4-31B-it-assistant rev=627c5ec145 files=5 bytes=971217338 secs=3.3 GBps=0.295 method=huggingface_hub\n",
+    "bytes": 24268857597,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": false,
+    "ready_s": 77.7,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.92 --max-model-len 32768 --max-num-seqs 128 --speculative-config '{\"model\":\"/root/models/nvfp4/assistant\",\"num_speculative_tokens\":2}' --compilation-config '{\"cudagraph_capture_sizes\":[1,2,4,8,16,24,32,48,64,80,96,112,128,160,192,224,256,320,384]}' --attention-backend FLASH_ATTN",
+    "env": {},
+    "gpu_mem_after_load": "0 MiB, 275040 MiB"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, attention_backend.global_512",
+    "max_model_len": 32768
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 7.34,
+  "this_run_ceiling_usd": 8.77,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "sandbox_id": "9aac419f-1cd9-4104-a26d-9cf3d4378c45",
+ "elapsed_s": 181.3,
+ "est_cost_usd": 0.408,
+ "t_saved": "2026-11-22T04:49:04Z",
+ "system": "ok\nNVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W\n224\nMem:            3527         102        2321           0        1125        3425\noverlay         400G  5.2M  400G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.34.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:48:59Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 8.31,
+  "metered_usd": null
+ }
+}

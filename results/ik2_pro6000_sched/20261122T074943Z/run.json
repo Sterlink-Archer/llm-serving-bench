@@ -1,0 +1,127 @@
+{
+ "label": "ik2_pro6000_sched",
+ "run_id": "ik2_pro6000_sched/20261122T074943Z",
+ "config_file": "recipes/inkling/configs/ik2_pro6000_sched.json",
+ "t_start": "2026-11-22T07:49:43Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 2.8873
+ },
+ "phases": {
+  "create_s": 0.6
+ },
+ "servers": {
+  "swa15": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 41.4,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:00<00:00, 43.19it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:20<00:00, 43.19it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:35<00:00,  3.86s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:35<00:00,  3.00s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590714 secs=36.3 GBps=0.556 method=huggingface_hub\n",
+    "bytes": 20191590714,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 207.1,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15",
+    "env": {},
+    "gpu_mem_after_load": "91775 MiB, 97887 MiB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 1071872,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --swa-full-tokens-ratio 0.15",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "gate_swa15_gsm8kor100": {
+     "rc": 0,
+     "secs": 62.2,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label gate_swa15_gsm8kor100 --out /root/or/out/gate_swa15_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_swa15_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=57s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.97,
+      "n": 100,
+      "passed": 97,
+      "pass": true
+     }
+    },
+    "protocol_swa15_B_text": {
+     "rc": 1,
+     "secs": 21.3,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_swa15_B_text --breakeven-rps 0.9704 --client traffic --stratify --tokenizer /root/models/inkling --rates 0.97,1.456,1.941,2.426 --seeds 7 --duration 180 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik2_pro6000_sched/20261122T074943Z --config-id ik2_pro6000_sched:swa15 --prefill-shot --max-minutes 92.1",
+     "tail": "    done_win = [r for r in done if w_lo <= r.t_last <= w_hi]\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: '<=' not supported between instances of 'float' and 'NoneType'\n",
+     "breakeven_rps": 0.9704
+    }
+   },
+   "end": "ok"
+  },
+  "swa15_mixed": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.1,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:00<00:00, 551.65it/s]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590714 secs=0.1 GBps=160.603 method=huggingface_hub\n",
+    "bytes": 20191590714,
+    "methods": [
+     "huggingface_hub"
+    ]
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 116.77,
+  "this_run_ceiling_usd": 5.05,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 106,
+ "sandbox_id": "9c3d29c8-e79a-407c-ac0a-fad9b6db58b6",
+ "elapsed_s": 406.0,
+ "est_cost_usd": 0.326,
+ "t_saved": "2026-11-22T07:56:29Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          16          29           0         104         124\noverlay         713G  362G  322G  53% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:56:02Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 123.06,
+  "metered_usd": 102.4859
+ }
+}

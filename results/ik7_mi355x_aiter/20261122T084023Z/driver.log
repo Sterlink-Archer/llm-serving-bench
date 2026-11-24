@@ -1,0 +1,20 @@
+2026-11-22T08:40:23Z [ik7_mi355x_aiter] creating spot sandbox (MI355X x1, $4.4973/h, ttl 150 min, budget $13.0; project so far ~$147.18)
+2026-11-22T08:40:51Z [ik7_mi355x_aiter] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:41:04Z [ik7_mi355x_aiter] download base: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:45:01Z [ik7_mi355x_aiter] server base ready=True after 235.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 277520 MB
+        FREE_VRAM: 17072 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 277520 MB
+        FREE_VISIBLE_VRAM: 17072 MB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 4828288 graphs 52
+2026-11-22T08:45:14Z [ik7_mi355x_aiter] inspect_base rc=0 12s :: log /root/or/server_base.log: untuned-shape lines 263, distinct 263
+2026-11-22T08:45:58Z [ik7_mi355x_aiter] gate_base_gsm8kor100 rc=0 44s :: [gate_base_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=33s
+2026-11-22T08:46:00Z [ik7_mi355x_aiter] profile_prefill_base rc=1 2s :: urllib.error.HTTPError: HTTP Error 401: Unauthorized
+2026-11-22T08:53:37Z [ik7_mi355x_aiter] protocol_base_B_text rc=0 457s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.5115); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json
+2026-11-22T08:54:23Z [ik7_mi355x_aiter] aiter_tune rc=0 46s :: [aiter_tune] merged 34 rows; speedup vs torch {'n': 34, 'median': 1.0, 'min': 1.0, 'max': 1.0}; installed /sgl-workspace/aiter/aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv
+2026-11-22T08:54:46Z [ik7_mi355x_aiter] download tuned: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:55:19Z [ik7_mi355x_aiter] signal 15: tearing down
+2026-11-22T08:55:38Z [ik7_mi355x_aiter] done: elapsed 15.3 min, est $1.14; project est $152.7
+2026-11-22T08:55:52Z [ik7_mi355x_aiter] done: elapsed 15.5 min, est $1.16; project est $152.78

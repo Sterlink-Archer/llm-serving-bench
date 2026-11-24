@@ -1,0 +1,2 @@
+[vllmbench r=2.8857 s=7] done=346 failed=0 req/s=1.6967948890168851 p95 TTFT=69.49566307803616 median TPOT=153.95761180855914 ms in tok/s=16762
+[protocol] max_rate_at_slo=0.0 req/s (break-even 2.8857); prefill=22530.98201325661 tok/s -> /root/or/out/protocol_nvfp4_mtp2_r4/protocol_summary.json

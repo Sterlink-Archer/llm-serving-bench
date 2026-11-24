@@ -1,0 +1,16 @@
+2026-11-22T05:33:39Z [s2b_mi355x_or_recipe_seed8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $6.0; project so far ~$37.67)
+2026-11-22T05:33:59Z [s2b_mi355x_or_recipe_seed8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:34:33Z [s2b_mi355x_or_recipe_seed8] download or_recipe: rc=0 32s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:37:13Z [s2b_mi355x_or_recipe_seed8] server or_recipe ready=True after 159.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T05:37:27Z [s2b_mi355x_or_recipe_seed8] gate_gsm8kor100 rc=0 13s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:49:22Z [s2b_mi355x_or_recipe_seed8] ERROR ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/15ba3949-e8bd-4d62-9d8f-a35dc5339066/process/execute: {"statusCode":404,"message":"not found: sandbox 15ba3949-e8bd-4d62-9d8f-a35dc5339066 not found","code":"NOT_FOUND","timestamp":"2026-11-22T05:49:22.483837334Z","path":"/toolbox/15ba3949-e8bd-4d62-9d8f-a35dc5339066/process/execute","method":"POST"}')
+2026-11-22T05:49:22Z [s2b_mi355x_or_recipe_seed8] EVICTED (spot preemption, outside our control): {'server': 'or_recipe', 'step': 'protocol_or_recipe_B_text_strat'} lost 11.8 min / $0.93
+2026-11-22T05:49:28Z [s2b_mi355x_or_recipe_seed8] done: elapsed 15.8 min, est $1.25; project est $49.2
+2026-11-22T05:49:28Z [s2b_mi355x_or_recipe_seed8] re-running s2b_mi355x_or_recipe_seed8 on a fresh box after spot eviction (retry 1/2); evicted run kept as s2b_mi355x_or_recipe_seed8/20261122T053339Z with the interrupted step excluded

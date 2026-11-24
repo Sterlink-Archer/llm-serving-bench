@@ -1,0 +1,83 @@
+{
+ "label": "pilot_h100_vllm_fp8",
+ "config_file": "configs/pilot_h100_vllm.json",
+ "t_start": "2026-11-22T03:43:04Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "snapshot_build_s": 16.3,
+  "create_s": 3.2
+ },
+ "servers": {
+  "fp8dyn": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 696.9,
+    "expected_bytes": 33300464640,
+    "tail": "DL rc=0 bytes=33300464640 secs=694.6 GBps=0.048\n"
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 151.9,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --kv-cache-dtype fp8 --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details",
+    "env": {},
+    "gpu_mem_after_load": "69753 MiB, 81559 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-aa08fa86\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "steps": {
+    "m_fp8dyn_smoke": {
+     "rc": 0,
+     "secs": 168.6,
+     "cmd": "python3 bench/matrix.py --spec bench/presets/smoke.json --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/m_fp8dyn_smoke --usd-per-hour 3.6665 --scale-duration 1.0 --max-minutes 24.9",
+     "tail": "[natural] C=8 win=16s done=32 err=0 drop=0 req/s=2.00 out=426 in=399 tok/s cache=0.00 TTFT p50=0.057s p95=0.111s TPOT p50=18.4ms srv=426.46154727306146\n[longdoc] C=4 win=16s done=55 err=0 drop=0 req/s=3.19 out=199 in=27136 tok/s cache=0.93 TTFT p50=0.075s p95=0.088s TPOT p50=19.2ms srv=198.5047593438295\n[matrix smoke] done in 2.7 min -> /root/or/out/m_fp8dyn_smoke/matrix_summary.md\n"
+    },
+    "m_fp8dyn_xcheck": {
+     "rc": 0,
+     "secs": 64.3,
+     "cmd": "python3 bench/matrix.py --spec bench/presets/xcheck.json --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/m_fp8dyn_xcheck --usd-per-hour 3.6665 --scale-duration 1.0 --max-minutes 22.1",
+     "tail": "[matrix xcheck] 1 cells, ~1.1 min; calibration {'template_overhead_tokens': 14, 'cpt_prose': 4.067796610169491, 'cpt_table': 1.7482517482517483}\n[s1k_256_c32] C=32 win=50s done=189 err=0 drop=0 req/s=3.22 out=827 in=3237 tok/s cache=0.00 TTFT p50=0.160s p95=0.279s TPOT p50=38.1ms srv=826.8299019457271\n[matrix xcheck] done in 1.0 min -> /root/or/out/m_fp8dyn_xcheck/matrix_summary.md\n"
+    },
+    "vllm_bench_c32": {
+     "rc": 0,
+     "secs": 116.3,
+     "cmd": "vllm bench serve --backend openai-chat --endpoint /v1/chat/completions --base-url http://127.0.0.1:8000 --model gemma --tokenizer /root/models/fp8dyn --dataset-name random --random-input-len 1024 --random-output-len 256 --ignore-eos --max-concurrency 32 --num-prompts 320 --save-result --result-dir out --result-filename vllm_bench_c32.json",
+     "tail": "Median ITL (ms):                         30.75     \nP99 ITL (ms):                            101.66    \n==================================================\n"
+    },
+    "eval_smoke": {
+     "rc": 0,
+     "secs": 22.9,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8k_200.jsonl,data/eval/mmlupro_200.jsonl --concurrency 50 --max-tokens 2048 --label eval_smoke --out /root/or/out/eval_smoke.json --limit 25",
+     "tail": "[eval_smoke] gsm8k: 1.000 (25/25, noans 0, err 0, trunc 0) mmlupro: 1.000 (25/25, noans 0, err 0, trunc 0) wall=17s\n"
+    },
+    "m_fp8dyn_quick": {
+     "rc": 0,
+     "secs": 553.9,
+     "cmd": "python3 bench/matrix.py --spec bench/presets/quick.json --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/m_fp8dyn_quick --usd-per-hour 3.6665 --scale-duration 1.0 --max-minutes 18.6",
+     "tail": "[prefix_8k__prefix_ratio=0.9] C=32 win=50s done=156 err=0 drop=0 req/s=2.92 out=731 in=22198 tok/s cache=0.69 TTFT p50=0.191s p95=0.294s TPOT p50=43.1ms srv=730.6822595298995\n[ciu_open__rate=16] R=16.0 win=50s done=417 err=0 drop=17 req/s=7.94 out=228 in=13165 tok/s cache=0.06 TTFT p50=18.332s p95=27.409s TPOT p50=279.6ms srv=227.35536306619014\n[matrix quick] done in 9.0 min -> /root/or/out/m_fp8dyn_quick/matrix_summary.md\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spot_capacity_at_start": 227,
+ "sandbox_id": "d71b6546-0f11-4e36-be30-fd5877e23300",
+ "elapsed_s": 1823.7,
+ "est_cost_usd": 1.857,
+ "t_saved": "2026-11-22T04:13:44Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.91.07, 700.00 W\n26\nMem:             221          13          25           0         188         207\noverlay         2.7T  892G  1.8T  33% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:13:44Z"
+}

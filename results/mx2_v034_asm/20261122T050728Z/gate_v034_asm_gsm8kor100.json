@@ -1,0 +1,2241 @@
+{
+ "label": "gate_v034_asm_gsm8kor100",
+ "args": {
+  "base": "http://127.0.0.1:8000",
+  "model": "gemma",
+  "sets": "data/eval/gsm8kor_test.jsonl",
+  "concurrency": 64,
+  "max_tokens": 2048,
+  "think": false,
+  "limit": 100,
+  "timeout": 900,
+  "label": "gate_v034_asm_gsm8kor100",
+  "gate_task": "gsm8kor",
+  "gate_threshold": 0.965,
+  "out": "/root/or/out/gate_v034_asm_gsm8kor100.json"
+ },
+ "split": "gsm8kor_test[:100]",
+ "gate": {
+  "task": "gsm8kor",
+  "threshold": 0.965,
+  "acc": 0.98,
+  "n": 100,
+  "passed": 98,
+  "pass": true
+ },
+ "wall_s": 2.9911677837371826,
+ "t_end": "2026-11-22T05:11:08Z",
+ "summary": {
+  "gsm8kor": {
+   "n": 100,
+   "correct": 98,
+   "acc": 0.98,
+   "no_answer": 0,
+   "errors": 0,
+   "truncated": 0,
+   "mean_completion_tokens": 214.49
+  }
+ },
+ "rows": [
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-0",
+   "gold": "Janet sells 16 - 3 - 4 = <<16-3-4=9>>9 duck eggs a day.\nShe makes 9 * 2 = $<<9*2=18>>18 every day at the farmer\u2019s market.\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "1. **Determine the total number of eggs laid per day:** 16 eggs.\n2. **Subtract the eggs Janet eats for breakfast:** 16 - 3 = 13 eggs.\n3. **Subtract the eggs used for muffins:** 13 - 4 = 9 eggs.\n4. **Calculate the total revenue from selling the remaining eggs:** 9 eggs \u00d7 $2 per egg = $18.\n\n#### 18",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 104,
+    "total_tokens": 201,
+    "completion_tokens": 97,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.79705147491768
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-1",
+   "gold": "It takes 2/2=<<2/2=1>>1 bolt of white fiber\nSo the total amount of fabric is 2+1=<<2+1=3>>3 bolts of fabric\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "1. Identify the amount of blue fiber: 2 bolts.\n2. Calculate the amount of white fiber: half of the blue fiber (2 / 2 = 1 bolt).\n3. Add the blue fiber and the white fiber together: 2 + 1 = 3 bolts.\n\n#### 3",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 66,
+    "total_tokens": 132,
+    "completion_tokens": 66,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.567710051080212
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-10",
+   "gold": "The number of downloads of the program in the second month increased to 3*60 = <<3*60=180>>180\nIn the first two months, the total number of downloads of the program was 180+60 = <<180+60=240>>240\nIn the third month, the number of downloads of the program reduced by 30/100*180 = <<30/100*180=54>>54\nThere were 180-54 = <<180-54=126>>126 downloads in the third month.\nIn the three months, the total number of downloads of the program was 126+240 = <<126+240=366>>366\n#### 366",
+   "pred": 366.0,
+   "correct": true,
+   "text": "Step 1: Calculate the downloads for the first month.\nDownloads (Month 1) = 60\n\nStep 2: Calculate the downloads for the second month.\nThe problem states the second month was three times as many as the first month.\nDownloads (Month 2) = 60 * 3 = 180\n\nStep 3: Calculate the downloads for the third month.\nThe problem states the downloads reduced by 30% compared to the second month.\nReduction = 180 * 0.30 = 54\nDownloads (Month 3) = 180 - 54 = 126\n(Alternatively: 180 * 0.70 = 126)\n\nStep 4: Calculate the total downloads over the three months.\nTotal = Month 1 + Month 2 + Month 3\nTotal = 60 + 180 + 126\nTotal = 240 + 126 = 366\n\n#### 366",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 100,
+    "total_tokens": 329,
+    "completion_tokens": 229,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.6321229520253837
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-11",
+   "gold": "The total charge for the doughnuts was 3 x $68 = $<<3*68=204>>204.\nThe total charge for the mini cupcakes was 2 x $80 = $<<2*80=160>>160.\nThe total charge for the mini cheesecakes was 6 x $55 = $<<6*55=330>>330.\nTherefore the total amount Toula paid for the pastries was $204 + $160 + $330 = $<<204+160+330=694>>694.\n#### 694",
+   "pred": 694.0,
+   "correct": true,
+   "text": "To find the total cost of the pastries, we calculate the cost for each item and then sum them together.\n\n**Step 1: Calculate the cost of the donuts.**\nToula bought 3 dozen donuts at $68 per dozen.\n$3 \\times 68 = 204$\n\n**Step 2: Calculate the cost of the mini cupcakes.**\nToula bought 2 dozen mini cupcakes at $80 per dozen.\n$2 \\times 80 = 160$\n\n**Step 3: Calculate the cost of the mini cheesecakes.**\nToula bought 6 dozen mini cheesecakes at $55 per dozen.\n$6 \\times 55 = 330$\n\n**Step 4: Calculate the total cost.**\nAdd the costs from the three categories together:\n$204 + 160 + 330 = 694$\n\n#### 694",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 102,
+    "total_tokens": 307,
+    "completion_tokens": 205,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.427129253046587
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-12",
+   "gold": "He makes $10.5 selling lemons each year because 7 x 1.5 = <<7*1.5=10.5>>10.5\nHe earns $7.5 each year from the lemon tree because 10.5 - 3 = <<10.5-3=7.5>>7.5\nIt will take 12 years to earn enough to pay off the tree because 90 / 7.5 = <<90/7.5=12>>12\nHe will make money in year 13 because 12 + 1 = <<12+1=13>>13\n#### 13",
+   "pred": 12.0,
+   "correct": false,
+   "text": "To find out how many years it will take for Carlos to start earning money, we need to calculate the annual profit and the initial investment.\n\n**Step 1: Calculate the annual revenue from the lemons.**\nThe tree grows 7 lemons per year, and each lemon sells for $1.5.\nAnnual Revenue = $7 \\times 1.5 = \\$10.50$\n\n**Step 2: Calculate the annual net profit.**\nThe annual revenue is offset by the cost of watering and feeding the tree, which is $3 per year.\nAnnual Profit = $\\$10.50 - \\$3.00 = \\$7.50$\n\n**Step 3: Calculate the time needed to recover the initial cost.**\nThe initial cost to plant the tree is $90. To find the number of years it takes to break even, divide the initial cost by the annual profit.\nYears to break even = $\\frac{\\$90}{\\$7.50}$\n\n**Step 4: Perform the division.**\n$90 \\div 7.5 = 12$\n\nIt will take 12 years for Carlos to recover his initial investment. After 12 years, he will start earning a net profit.\n\n#### 12",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 106,
+    "total_tokens": 375,
+    "completion_tokens": 269,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9132307511754334
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-13",
+   "gold": "First multiply the five remaining vacuum cleaners by two to find out how many Melanie had before she visited the orange house: 5 * 2 = <<5*2=10>>10\nThen add two to figure out how many vacuum cleaners she had before visiting the red house: 10 + 2 = <<10+2=12>>12\nNow we know that 2/3 * x = 12, where x is the number of vacuum cleaners Melanie started with. We can find x by dividing each side of the equation by 2/3, which produces x = 18\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "To find the total number of vacuum cleaners Melanie started with, we can work backward from the final amount or set up an equation.\n\n**Step 1: Define the variable**\nLet $x$ be the total number of vacuum cleaners Melanie started with.\n\n**Step 2: Track the sales step-by-step**\n1. **Green House:** She sold a third of her vacuum cleaners.\n   Amount remaining: $x - \\frac{1}{3}x = \\frac{2}{3}x$\n2. **Red House:** She sold 2 more.\n   Amount remaining: $\\frac{2}{3}x - 2$\n3. **Orange House:** She sold half of what was left.\n   Amount remaining: $\\frac{1}{2}(\\frac{2}{3}x - 2)$\n\n**Step 3: Set up the equation**\nWe know that after the orange house, she has 5 vacuum cleaners left:\n$\\frac{1}{2}(\\frac{2}{3}x - 2) = 5$\n\n**Step 4: Solve for $x$**\nMultiply both sides by 2 to remove the fraction:\n$\\frac{2}{3}x - 2 = 10$\n\nAdd 2 to both sides:\n$\\frac{2}{3}x = 12$\n\nMultiply both sides by 3:\n$2x = 36$\n\nDivide by 2:\n$x = 18$\n\n**Verification:**\n- Start with 18.\n- Green house: sells $1/3$ of 18 (6). Remaining: 12.\n- Red house: sells 2. Remaining: 10.\n- Orange house: sells half of 10 (5). Remaining: 5.\nThe result matches.\n\n#### 18",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 100,
+    "total_tokens": 503,
+    "completion_tokens": 403,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.3944602799601853
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-14",
+   "gold": "There are 20 x 20/100 = <<20*20/100=4>>4 students who enrolled in contemporary dance.\nSo, 20 - 4 = <<20-4=16>>16 students are enrolled in either jazz or hip-hop dance.\nThere are 16 x 25/100 = <<16*25/100=4>>4 students who enrolled in jazz dance.\nHence, 16 - 4 = <<16-4=12>>12 students enrolled in hip-hop dance.\nThis is 12/20 x 100% = 60% of the entire students.\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "To find the percentage of students enrolled in hip-hop dance, we can follow these steps:\n\n1.  **Identify the total number of students:**\n    Total students = 20.\n\n2.  **Calculate the number of students in contemporary dance:**\n    20% of 20 = $0.20 \\times 20 = 4$ students.\n\n3.  **Calculate the remaining number of students:**\n    Remaining students = $20 - 4 = 16$ students.\n\n4.  **Calculate the number of students in jazz dance:**\n    25% of the remaining students = $0.25 \\times 16 = 4$ students.\n\n5.  **Calculate the number of students in hip-hop dance:**\n    Hip-hop students = Total students - (Contemporary students + Jazz students)\n    Hip-hop students = $20 - (4 + 4) = 20 - 8 = 12$ students.\n\n6.  **Calculate the percentage of the entire class enrolled in hip-hop dance:**\n    Percentage = $\\frac{\\text{Hip-hop students}}{\\text{Total students}} \\times 100$\n    Percentage = $\\frac{12}{20} \\times 100 = 0.6 \\times 100 = 60\\%$.\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 94,
+    "total_tokens": 395,
+    "completion_tokens": 301,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9513913351111114
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-15",
+   "gold": "If he purchases jewelry, he will make a profit of 2.5% which is $5000*(2.5/100) = $<<5000*(2.5/100)=125>>125\nIf he purchases electronic gadgets, he will make a profit of 1.2% which is $8000*(1.2/100) = $<<8000*(1.2/100)=96>>96\nIf he wants to maximize profit, since $125 > $96, he will choose to purchase jewelry, thereby making a profit of $<<125=125>>125\n#### 125",
+   "pred": 125.0,
+   "correct": true,
+   "text": "To determine which purchase plan maximizes profit, we calculate the potential profit for each option based on the provided growth rates.\n\n**Step 1: Calculate the profit for the jewelry purchase.**\n*   Initial value: $5,000\n*   Expected growth rate: 2.5% (or 0.025 in decimal form)\n*   Profit = Initial Value \u00d7 Growth Rate\n*   Profit = $5,000 \u00d7 0.025 = $125\n\n**Step 2: Calculate the profit for the electronic gadgets purchase.**\n*   Initial value: $8,000\n*   Expected growth rate: 1.2% (or 0.012 in decimal form)\n*   Profit = Initial Value \u00d7 Growth Rate\n*   Profit = $8,000 \u00d7 0.012 = $96\n\n**Step 3: Compare the profits to maximize the outcome.**\n*   Jewelry profit: $125\n*   Electronic gadgets profit: $96\n*   The maximum profit is achieved by choosing the jewelry.\n\nThe maximum profit the merchant would make is $125.\n\n#### 125",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 134,
+    "total_tokens": 392,
+    "completion_tokens": 258,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.7970796320587397
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-16",
+   "gold": "On the first day, the trains covered 2 trains * 80 miles/train = <<2*80=160>>160 miles together.\nThey also covered 150 miles/train * 2 trains = <<150*2=300>>300 miles together on the second day.\nThe combined distance the two trains covered in the two days is 300 miles + 160 miles = <<300+160=460>>460 miles\nThe average distance for the two days is 460 miles / 2 trains = <<460/2=230>>230 miles/train\n#### 230",
+   "pred": 230.0,
+   "correct": true,
+   "text": "To find the total distance covered by each train, we follow these steps:\n\n1.  **Identify the distance traveled on the first day:**\n    Both trains traveled westward for 80 miles.\n    Distance Day 1 = 80 miles.\n\n2.  **Identify the distance traveled on the second day:**\n    Both trains traveled northwards for 150 miles.\n    Distance Day 2 = 150 miles.\n\n3.  **Calculate the total distance covered by each train:**\n    Total Distance = Distance Day 1 + Distance Day 2\n    Total Distance = 80 miles + 150 miles\n    Total Distance = 230 miles.\n\n#### 230",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 93,
+    "total_tokens": 248,
+    "completion_tokens": 155,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0786614259704947
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-17",
+   "gold": "First find the total amount Jill makes per week teaching: $20/hour * 35 hours/week = $<<20*35=700>>700/week\nThen find the total amount Jill makes per week coaching: $30/hour * 15 hours/week = $<<30*15=450>>450/week\nThen add those two amounts to find the total amount Jill makes per week: $700/week + $450/week = $<<700+450=1150>>1150/week\nThen multiply that number by the number of weeks Jill works in a year to find her annual salary: $1150/week * 50 weeks/year = $<<1150*50=57500>>57,500\n#### 57500",
+   "pred": 57500.0,
+   "correct": true,
+   "text": "To find Jill's annual salary, we calculate the weekly earnings for each role and then multiply by the number of weeks worked per year.\n\n**Step 1: Calculate weekly earnings as a teacher**\nJill works 35 hours a week at $20 per hour.\n$35 \\text{ hours/week} \\times \\$20/\\text{hour} = \\$700/\\text{week}$\n\n**Step 2: Calculate weekly earnings as a coach**\nJill works 15 hours a week at $30 per hour.\n$15 \\text{ hours/week} \\times \\$30/\\text{hour} = \\$450/\\text{week}$\n\n**Step 3: Calculate total weekly earnings**\nAdd the earnings from both roles.\n$\\$700 + \\$450 = \\$1,150/\\text{week}$\n\n**Step 4: Calculate annual salary**\nMultiply the total weekly earnings by the number of weeks worked per year (50 weeks).\n$\\$1,150/\\text{week} \\times 50 \\text{ weeks/year} = \\$57,500$\n\n#### 57500",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 98,
+    "total_tokens": 358,
+    "completion_tokens": 260,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.766332141123712
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-18",
+   "gold": "She eats 3 eggs every day and there are 7 days in a week so she eats 3*7 = <<3*7=21>>21 eggs a week\nAfter 4 weeks she will have eaten 4*21 = <<4*21=84>>84 eggs\nThere are 12 eggs in 1 dozen and she'll eat 84 eggs so that's 84/12 = <<84/12=7>>7 dozen eggs\n#### 7",
+   "pred": 7.0,
+   "correct": true,
+   "text": "Step 1: Determine how many eggs Claire eats per day.\nClaire eats 3 eggs every morning.\n\nStep 2: Determine how many days are in 4 weeks.\n4 weeks * 7 days/week = 28 days.\n\nStep 3: Calculate the total number of eggs eaten in 4 weeks.\n3 eggs/day * 28 days = 84 eggs.\n\nStep 4: Convert the total number of eggs into dozens.\n84 eggs / 12 eggs per dozen = 7 dozens.\n\n#### 7",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 67,
+    "total_tokens": 187,
+    "completion_tokens": 120,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.934450140921399
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-19",
+   "gold": "First figure out how many hours it takes to hike a 12-mile trail at 4 mph by dividing the distance by the speed: 12 miles / 4 mph = <<12/4=3>>3 hours\nNext subtract the time Marissa already spent walking to find out how much time she has left: 3 hours - 1 hour - 1 hour = <<3-1-1=1>>1 hour\nNow figure out how much distance she has left by subtracting the distance she already traveled from the total distance: 12 miles - 4 miles - 2 miles = <<12-4-2=6>>6 miles\nNow divide the remaining distance by the remaining time to find out how fast in miles per hour Marissa has to travel: 6 miles / 1 hour = <<6/1=6>>6 mph\n#### 6",
+   "pred": 6.0,
+   "correct": true,
+   "text": "To find the speed Marissa needs to maintain for the remaining distance, we follow these steps:\n\n1.  **Determine the total time allowed for the hike:**\n    Marissa wants her average speed for the entire 12-mile trail to be 4 miles per hour.\n    $\\text{Total Time} = \\frac{\\text{Total Distance}}{\\text{Average Speed}} = \\frac{12 \\text{ miles}}{4 \\text{ mph}} = 3 \\text{ hours}$.\n\n2.  **Calculate the time already spent:**\n    - Time for the first 4 miles: 1 hour.\n    - Time for the next 2 miles: 1 hour.\n    $\\text{Total time spent} = 1 + 1 = 2 \\text{ hours}$.\n\n3.  **Calculate the remaining time available:**\n    $\\text{Remaining Time} = \\text{Total Time} - \\text{Time Spent} = 3 \\text{ hours} - 2 \\text{ hours} = 1 \\text{ hour}$.\n\n4.  **Calculate the remaining distance to be covered:**\n    $\\text{Total Distance} = 12 \\text{ miles}$.\n    $\\text{Distance covered} = 4 \\text{ miles} + 2 \\text{ miles} = 6 \\text{ miles}$.\n    $\\text{Remaining Distance} = 12 \\text{ miles} - 6 \\text{ miles} = 6 \\text{ miles}$.\n\n5.  **Calculate the required speed for the remaining distance:**\n    $\\text{Required Speed} = \\frac{\\text{Remaining Distance}}{\\text{Remaining Time}} = \\frac{6 \\text{ miles}}{1 \\text{ hour}} = 6 \\text{ mph}$.\n\n#### 6",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 106,
+    "total_tokens": 491,
+    "completion_tokens": 385,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.3349294499494135
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-2",
+   "gold": "The cost of the house and repairs came out to 80,000+50,000=$<<80000+50000=130000>>130,000\nHe increased the value of the house by 80,000*1.5=<<80000*1.5=120000>>120,000\nSo the new value of the house is 120,000+80,000=$<<120000+80000=200000>>200,000\nSo he made a profit of 200,000-130,000=$<<200000-130000=70000>>70,000\n#### 70000",
+   "pred": 70000.0,
+   "correct": true,
+   "text": "To find the profit Josh made, we need to calculate the total investment and the final value of the house.\n\n**Step 1: Calculate the total investment.**\nJosh spent money on the purchase and the repairs:\nPurchase Price = $80,000\nRepairs = $50,000\nTotal Investment = $80,000 + $50,000 = $130,000\n\n**Step 2: Calculate the final value of the house.**\nThe problem states that the repairs increased the value of the house by 150%. This means the value increased by 150% of the original purchase price.\nIncrease in value = 1.50 * $80,000 = $120,000\nFinal Value = Original Price + Increase in Value\nFinal Value = $80,000 + $120,000 = $200,000\n\n**Step 3: Calculate the profit.**\nProfit is the final value minus the total investment.\nProfit = Final Value - Total Investment\nProfit = $200,000 - $130,000 = $70,000\n\n#### 70000",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 97,
+    "total_tokens": 373,
+    "completion_tokens": 276,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.893148616887629
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-20",
+   "gold": "There are 15 x 3/5 = <<15*3/5=9>>9 liters of water from the 15 liters pineapple drink.\nAfter 1 liter of orange drink was spilled, there were 10 - 1 = <<10-1=9>>9 liters of orange drink left.\nOut of the 9 liters, 9 x 2/3 = <<9*2/3=6>>6 liters are water.\nThus, there are a total of 9 + 6 = <<9+6=15>>15 liters of water out of the 24 liters.\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "To find the total amount of water in the final mixture, we calculate the water content of each component separately.\n\n**Step 1: Calculate the water in the orange drink.**\nThe orange drink starts at 10 liters, but 1 liter is spilled.\nRemaining orange drink = $10 - 1 = 9$ liters.\nThe orange drink is two-thirds water.\nWater in orange drink = $9 \\times \\frac{2}{3} = 6$ liters.\n\n**Step 2: Calculate the water in the pineapple drink.**\nThe pineapple drink is 15 liters.\nThe pineapple drink is three-fifths water.\nWater in pineapple drink = $15 \\times \\frac{3}{5} = 9$ liters.\n\n**Step 3: Calculate the total amount of water.**\nTotal water = Water from orange drink + Water from pineapple drink\nTotal water = $6 + 9 = 15$ liters.\n\n**Verification of total volume:**\nRemaining orange drink (9L) + Pineapple drink (15L) = 24 liters. This matches the volume mentioned in the problem.\n\n#### 15",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 351,
+    "completion_tokens": 248,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.7338822020683438
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-21",
+   "gold": "When Raymond's son was born Samantha was 23 - 6 = <<23-6=17>>17 years old.\nThus it has been 31 - 17 = <<31-17=14>>14 years since Raymond's son was born.\n#### 14",
+   "pred": 14.0,
+   "correct": true,
+   "text": "Step 1: Determine Raymond's current age.\nSamantha is 31 years old.\nRaymond was born 6 years before Samantha, meaning he is 6 years older than her.\nRaymond's age = 31 + 6 = 37.\n\nStep 2: Determine when Raymond's son was born.\nRaymond had a son at the age of 23.\nTo find out how many years ago the son was born, we subtract the age at which Raymond became a father from his current age.\nYears ago = 37 - 23 = 14.\n\nAlternatively:\nIf Raymond is 37 and he had a son at 23, the son is currently 37 - 23 = 14 years old. Therefore, the son was born 14 years ago.\n\n#### 14",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 86,
+    "total_tokens": 270,
+    "completion_tokens": 184,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.354608153924346
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-22",
+   "gold": "His first 3 customers buy 3 * 1 = <<3*1=3>>3 DVDs.\nHis next 2 buy 2 * 2 = <<2*2=4>>4 DVDs.\nHe sells a total of 3 + 4 + 0 = <<3+4+0=7>>7 DVDs.\n#### 7",
+   "pred": 7.0,
+   "correct": true,
+   "text": "Step 1: Calculate the DVDs sold to the first 3 customers.\n3 customers \u00d7 1 DVD each = 3 DVDs.\n\nStep 2: Calculate the DVDs sold to the next 2 customers.\n2 customers \u00d7 2 DVDs each = 4 DVDs.\n\nStep 3: Calculate the DVDs sold to the last 3 customers.\n3 customers \u00d7 0 DVDs each = 0 DVDs.\n\nStep 4: Add the totals together.\n3 + 4 + 0 = 7 DVDs.\n\n#### 7",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 96,
+    "total_tokens": 210,
+    "completion_tokens": 114,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.8315094970166683
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-23",
+   "gold": "The candle burns for 5 - 1 = <<5-1=4>>4 hours.\nThus, the candle will be 2 * 4 = <<2*4=8>>8 centimeters shorter.\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "To find out how many centimeters shorter the candle will be, follow these steps:\n\n1.  **Determine the total time the candle burned:**\n    The candle burned from 1:00 PM to 5:00 PM.\n    5:00 PM - 1:00 PM = 4 hours.\n\n2.  **Calculate the total amount melted:**\n    The candle melts by 2 centimeters every hour.\n    4 hours \u00d7 2 centimeters per hour = 8 centimeters.\n\n#### 8",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 78,
+    "total_tokens": 189,
+    "completion_tokens": 111,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.8638061690144241
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-24",
+   "gold": "Let X be the original price of the book. The discounted price is X - X*25% = $19.50.\nCombining like terms, we get .75X = $19.50\nDividing both sides by .75, we get X = $26.\n#### 26",
+   "pred": 26.0,
+   "correct": true,
+   "text": "To find the original price of the book, we can follow these steps:\n\n1.  **Identify the given values:**\n    *   Sale price = $19.50\n    *   Discount rate = 25%\n    *   The sale price represents the original price minus the discount.\n\n2.  **Determine the percentage of the original price paid:**\n    *   If the discount is 25%, then Kyle paid 75% of the original price (100% - 25% = 75%).\n\n3.  **Set up the equation:**\n    Let $x$ be the original price.\n    $0.75 \\times x = 19.50$\n\n4.  **Solve for $x$:**\n    $x = \\frac{19.50}{0.75}$\n\n5.  **Perform the calculation:**\n    $x = \\frac{19.50}{3/4}$\n    $x = 19.50 \\times \\frac{4}{3}$\n    $x = 6.50 \\times 4$\n    $x = 26.00$\n\nThe original price of the book was $26.00.\n\n#### 26",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 81,
+    "total_tokens": 361,
+    "completion_tokens": 280,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9193478398956358
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-25",
+   "gold": "Five packs of milk cost $3 x 5 = $<<3*5=15>>15.\nFour apples cost $1.50 x 4 = $<<1.5*4=6>>6.\nThe total cost of the chicken meal, milk, and apples is $12 + $15 + $6 = $<<12+15+6=33>>33.\nThus, the boxes of pizza cost $50 - $33 = $<<50-33=17>>17.\nTherefore, Marie ordered $17/$8.50 = <<17/8.5=2>>2 boxes of pizza.\n#### 2",
+   "pred": 2.0,
+   "correct": true,
+   "text": "To find the number of boxes of pizza Marie ordered, we need to calculate the total cost of the other items first and then subtract that from the total amount paid.\n\n**Step 1: Calculate the cost of the chicken meal.**\n1 chicken meal = $12.00\n\n**Step 2: Calculate the cost of the milk.**\n5 packs \u00d7 $3.00 = $15.00\n\n**Step 3: Calculate the cost of the apples.**\n4 apples \u00d7 $1.50 = $6.00\n\n**Step 4: Calculate the total cost of these items.**\n$12.00 (chicken) + $15.00 (milk) + $6.00 (apples) = $33.00\n\n**Step 5: Calculate how much money was spent on pizza.**\nTotal paid - Total of other items = Cost of pizza\n$50.00 - $33.00 = $17.00\n\n**Step 6: Calculate the number of pizza boxes.**\nCost of pizza \u00f7 Price per box = Number of boxes\n$17.00 \u00f7 $8.50 = 2\n\n#### 2",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 107,
+    "total_tokens": 366,
+    "completion_tokens": 259,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.8212705319747329
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-26",
+   "gold": "3 * (16.50 + 22.50 + 42) = $<<3*(16.50+22.50+42)=243>>243\nMishka spent $243 on clothing.\n#### 243",
+   "pred": 243.0,
+   "correct": true,
+   "text": "To find the total amount Mishka spent, we calculate the cost for each type of item and then sum them together.\n\n**Step 1: Calculate the cost of the shorts.**\nMishka bought 3 pairs of shorts at $16.50 each.\n$3 \\times 16.50 = 49.50$\n\n**Step 2: Calculate the cost of the pants.**\nMishka bought 3 pairs of pants at $22.50 each.\n$3 \\times 22.50 = 67.50$\n\n**Step 3: Calculate the cost of the shoes.**\nMishka bought 3 pairs of shoes at $42.00 each.\n$3 \\times 42 = 126.00$\n\n**Step 4: Calculate the total expenditure.**\nAdd the totals from the three categories together:\n$49.50 + 67.50 + 126.00$\n\nFirst, add the shorts and pants:\n$49.50 + 67.50 = 117.00$\n\nThen, add the shoes:\n$117.00 + 126.00 = 243.00$\n\n#### 243",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 109,
+    "total_tokens": 399,
+    "completion_tokens": 290,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.957818599883467
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-27",
+   "gold": "Each container of ice cream has 15 servings and she eats 1 serving a night so after 60 days she will need 60/15 = 4 containers of ice cream\nIf each carton costs $4.00 and she needs 4 containers then it will cost her 4*4 = $<<4*4=16.00>>16.00\n#### 16",
+   "pred": 16.0,
+   "correct": true,
+   "text": "Step 1: Determine the total number of servings Cynthia eats in 60 days.\nSince she eats one serving per night, she eats 60 servings in 60 days.\n\nStep 2: Calculate how many cartons she needs to buy to cover those 60 servings.\nEach carton contains 15 servings.\n60 servings \u00f7 15 servings per carton = 4 cartons.\n\nStep 3: Calculate the total cost of the cartons.\nEach carton costs $4.00.\n4 cartons \u00d7 $4.00 per carton = $16.00.\n\n#### 16",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 96,
+    "total_tokens": 229,
+    "completion_tokens": 133,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9776216379832476
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-28",
+   "gold": "He traveled 20 miles + 15 miles = <<20+15=35>>35 miles not counting the distance between stops.\nHenry traveled 60 miles - 35 miles = <<60-35=25>>25 miles between his first and second stop.\n#### 25",
+   "pred": 25.0,
+   "correct": true,
+   "text": "To find the distance Henry traveled between his first and second stops, we can follow these steps:\n\n1.  **Identify the total distance of the trip:**\n    The total trip is 60 miles.\n\n2.  **Determine the location of the first stop:**\n    Henry stopped after 20 miles.\n    First stop = 20 miles.\n\n3.  **Determine the location of the second stop:**\n    The second stop was 15 miles before the end of the trip.\n    Second stop = Total distance - 15 miles\n    Second stop = 60 - 15 = 45 miles.\n\n4.  **Calculate the distance between the first and second stops:**\n    To find the distance between the two stops, subtract the location of the first stop from the location of the second stop.\n    Distance = 45 miles - 20 miles\n    Distance = 25 miles.\n\n#### 25",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 91,
+    "total_tokens": 296,
+    "completion_tokens": 205,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4614298669621348
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-29",
+   "gold": "The second pair of heels costs 33 * 2 = $<<33*2=66>>66.\nThe heels together cost 66 + 33 = $<<66+33=99>>99.\nThe boots cost $5 more than both pairs of heels together, so the boots cost 99 + 5 = $104.\n#### 104",
+   "pred": 104.0,
+   "correct": true,
+   "text": "To find the cost of the boots, we can follow these steps:\n\n1.  **Find the cost of the second pair of high heels:**\n    One pair of heels costs $33. The other pair costs twice as much.\n    $33 \\times 2 = \\$66$\n\n2.  **Find the total cost of both pairs of high heels:**\n    Add the cost of the first pair and the second pair.\n    $33 + 66 = \\$99$\n\n3.  **Determine the cost of the boots:**\n    The problem states that the two pairs of high heels together cost five dollars less than the boots. This means the boots cost five dollars more than the total cost of the heels.\n    $99 + 5 = \\$104$\n\n#### 104",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 107,
+    "total_tokens": 284,
+    "completion_tokens": 177,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3134757711086422
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-3",
+   "gold": "He sprints 3*3=<<3*3=9>>9 times\nSo he runs 9*60=<<9*60=540>>540 meters\n#### 540",
+   "pred": 540.0,
+   "correct": true,
+   "text": "1. First, calculate the total distance James runs in one day:\n   3 sprints \u00d7 60 meters per sprint = 180 meters per day.\n\n2. Next, calculate the total distance he runs in a week (3 days a week):\n   180 meters per day \u00d7 3 days per week = 540 meters per week.\n\n#### 540",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 74,
+    "total_tokens": 158,
+    "completion_tokens": 84,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.6723810809198767
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-30",
+   "gold": "The total ratio representing their ages is 7+11= <<7+11=18>>18\nSince the fraction of the ratio that represents Allen's age is 11/18, Allen's current age is 11/18*162 = <<11/18*162=99>>99\nIf Allen is currently 99 years old, in 10 years he will be 99+10 = <<99+10=109>>109 years old\n#### 109",
+   "pred": 109.0,
+   "correct": true,
+   "text": "To find Allen's age 10 years from now, we follow these steps:\n\n**Step 1: Identify the ratio and the total age.**\nThe ratio of Darrell's age to Allen's age is $7:11$.\nThe total age of both is $162$.\n\n**Step 2: Set up an equation based on the ratio.**\nLet the common multiplier for their ages be $x$.\nDarrell's current age = $7x$\nAllen's current age = $11x$\n\n**Step 3: Solve for $x$ using the total age.**\n$$7x + 11x = 162$$\n$$18x = 162$$\n$$x = \\frac{162}{18}$$\n$$x = 9$$\n\n**Step 4: Calculate Allen's current age.**\nAllen's current age = $11x$\nAllen's current age = $11 \\times 9 = 99$\n\n**Step 5: Calculate Allen's age 10 years from now.**\nFuture age = Current age + 10\nFuture age = $99 + 10 = 109$\n\n#### 109",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 81,
+    "total_tokens": 355,
+    "completion_tokens": 274,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.8771070218645036
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-31",
+   "gold": "The second person guessed 60 because 20 + (80/2)= <<20+(80/2)=60>>60\nThe second guessed 100 because 80 x 1.25 = <<80*1.25=100>>100\nThe total amount guessed is 240 because 80 + 60 + 100 = <<80+60+100=240>>240\nThe average amount guessed is 80 because 240 / 3 = <<240/3=80>>80\n#### 80",
+   "pred": 80.0,
+   "correct": true,
+   "text": "To find the average guess, we first need to determine the value of each person's guess.\n\n1.  **First person's guess:**\n    The first person says 80.\n    Guess 1 = 80\n\n2.  **Second person's guess:**\n    The second person says \"20 more than half the first one.\"\n    Half of the first guess is $80 / 2 = 40$.\n    20 more than 40 is $40 + 20 = 60$.\n    Guess 2 = 60\n\n3.  **Third person's guess:**\n    The third person says \"25% more than the first one.\"\n    25% of 80 is $0.25 \\times 80 = 20$.\n    20 more than 80 is $80 + 20 = 100$.\n    Guess 3 = 100\n\n4.  **Calculate the average:**\n    The average is the sum of the guesses divided by the number of guesses.\n    Sum = $80 + 60 + 100 = 240$.\n    Average = $240 / 3 = 80$.\n\n#### 80",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 385,
+    "completion_tokens": 282,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.862205709097907
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-32",
+   "gold": "He spends 10*.5=<<10*.5=5>>5 hours per day\nThat means he spends 5*7=<<5*7=35>>35 hours per week\n#### 35",
+   "pred": 35.0,
+   "correct": true,
+   "text": "To find the total number of hours John spends taking care of the dogs per week, follow these steps:\n\n1.  **Calculate the total time spent per day for all dogs:**\n    John has 10 dogs, and each dog takes 0.5 hours.\n    $10 \\text{ dogs} \\times 0.5 \\text{ hours/dog} = 5 \\text{ hours per day}$\n\n2.  **Calculate the total time spent per week:**\n    There are 7 days in a week.\n    $5 \\text{ hours/day} \\times 7 \\text{ days/week} = 35 \\text{ hours per week}$\n\n#### 35",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 81,
+    "total_tokens": 233,
+    "completion_tokens": 152,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1198982989881188
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-33",
+   "gold": "Let x be the number of silver coins Gretchen has\nGretchen has x+30 gold coins.\nx+x+30=110\n2*x=80\nx=<<40=40>>40\nGretchen has 40+30=<<40+30=70>>70 gold coins\n#### 70",
+   "pred": 70.0,
+   "correct": true,
+   "text": "To find the number of gold coins Gretchen has, we can follow these steps:\n\n1.  **Identify the variables:**\n    Let $S$ be the number of silver coins.\n    Let $G$ be the number of gold coins.\n\n2.  **Set up the equations based on the problem:**\n    *   The total number of coins is 110: $G + S = 110$\n    *   There are 30 more gold coins than silver coins: $G = S + 30$\n\n3.  **Substitute the second equation into the first:**\n    Substitute $(S + 30)$ for $G$ in the total coins equation:\n    $(S + 30) + S = 110$\n\n4.  **Solve for $S$ (silver coins):**\n    $2S + 30 = 110$\n    $2S = 110 - 30$\n    $2S = 80$\n    $S = 40$\n\n5.  **Solve for $G$ (gold coins):**\n    Since $G = S + 30$:\n    $G = 40 + 30$\n    $G = 70$\n\n**Verification:**\n70 gold coins + 40 silver coins = 110 total coins.\n70 is 30 more than 40.\n\n#### 70",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 70,
+    "total_tokens": 390,
+    "completion_tokens": 320,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.0569178459700197
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-34",
+   "gold": "Half of Raymond's jewels is 40/2 = <<40/2=20>>20\nSince Aaron has 5 more jewels than half of Raymond's jewels, he has 20+5 = <<5+20=25>>25 jewels.\nIf Siobhan has 2 fewer jewels than Aaron, he has 25-2 = 23 jewels.\n#### 23",
+   "pred": 23.0,
+   "correct": true,
+   "text": "To find out how many jewels Siobhan has, we can follow these steps:\n\n1.  **Find the number of jewels Raymond has:**\n    Raymond has 40 jewels.\n\n2.  **Find the number of jewels Aaron has:**\n    Aaron has 5 more jewels than half of Raymond's jewels.\n    Half of Raymond's jewels = $40 / 2 = 20$.\n    Aaron's jewels = $20 + 5 = 25$.\n\n3.  **Find the number of jewels Siobhan has:**\n    Siobhan has 2 fewer jewels than Aaron.\n    Siobhan's jewels = $25 - 2 = 23$.\n\n#### 23",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 242,
+    "completion_tokens": 160,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1142618940211833
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-35",
+   "gold": "He scored 4*.25=<<4*.25=1>>1 point more in the second 20 minutes\nSo he scored 4+1=<<4+1=5>>5 points in the second 20 minutes\nSo in total, he scored 4+5=<<4+5=9>>9 points in the 40 minutes\n#### 9",
+   "pred": 9.0,
+   "correct": true,
+   "text": "Step 1: Determine the points scored in the first 20 minutes.\nMike scored 4 points.\n\nStep 2: Calculate the points scored in the second 20 minutes.\nHe scored 25% more points than in the first 20 minutes.\n25% of 4 = 0.25 * 4 = 1 point.\nPoints in the second 20 minutes = 4 + 1 = 5 points.\n\nStep 3: Calculate the total points scored.\nTotal points = Points from first 20 minutes + Points from second 20 minutes\nTotal points = 4 + 5 = 9 points.\n\n#### 9",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 92,
+    "total_tokens": 240,
+    "completion_tokens": 148,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0695560681633651
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-36",
+   "gold": "He eats 2 yogurts a day so over 30 days he will need 2*30 = <<2*30=60>>60 yogurts\nThe yogurt is sold as 4 units for $5.00 and he needs 60 yogurts so that\u2019s 60/4 = <<60/4=15>>15 4-packs\nEach 4-pack is $5.00 and he needs 15 4-packs so he will spend $5*15 = $<<5*15=75.00>>75.00 on yogurt\n#### 75",
+   "pred": 75.0,
+   "correct": true,
+   "text": "1. **Determine the total number of yogurts needed for 30 days:**\n   Terry eats 2 yogurts a day.\n   $2 \\text{ yogurts/day} \\times 30 \\text{ days} = 60 \\text{ yogurts}$\n\n2. **Determine the cost per yogurt:**\n   The sale is 4 yogurts for $5.00.\n   $\\$5.00 \\div 4 = \\$1.25 \\text{ per yogurt}$\n\n3. **Calculate the total cost for 60 yogurts:**\n   $60 \\text{ yogurts} \\times \\$1.25 \\text{ per yogurt} = \\$75.00$\n\nAlternatively, by calculating the number of 4-packs:\n$60 \\text{ yogurts} \\div 4 \\text{ per pack} = 15 \\text{ packs}$\n$15 \\text{ packs} \\times \\$5.00 = \\$75.00$\n\n#### 75",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 81,
+    "total_tokens": 309,
+    "completion_tokens": 228,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.5400063239503652
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-37",
+   "gold": "He spent $160 on video games because 8 x 20 = <<8*20=160>>160\nHe earned $165 from his sale because 160 + 5 = <<160+5=165>>165\nHe sold 11 lego sets because 11 x 15 = <<11*15=165>>165\nHe has 2 sets left because 13 - 11 = <<13-11=2>>2\n#### 2",
+   "pred": 0.0,
+   "correct": false,
+   "text": "Step 1: Calculate the total amount of money John earned from selling the Lego sets.\n13 sets * $15/set = $195\n\nStep 2: Calculate the total amount of money John spent on video games.\n8 games * $20/game = $160\n\nStep 3: Calculate the total amount of money John had after buying the games.\n$195 - $160 = $35\n\nStep 4: Determine how much money he spent or lost to end up with only $5.\nThe problem states he has $5 left. However, based on the math above, he should have $35 left. \n\nWait, let's re-read the prompt: \"He has 13 lego sets and he sells them... How many lego sets does he still have?\"\nThe prompt asks how many lego sets he **still has**. \n\nThe first sentence says \"John plans to sell **all** his toys\". \nThe second sentence says \"He has 13 lego sets and he sells **them**\" (implying he sold all 13).\n\nIf he sold all 13 lego sets, he has 0 left.\n\n(Note: The financial details provided in the prompt\u2014$195 earned, $160 spent, and $5 remaining\u2014do not add up mathematically ($195 - $160 = $35, not $5), but the question asks for the number of lego sets remaining after he sells them).\n\nSince he sold all 13 sets:\n13 - 13 = 0\n\n#### 0",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 101,
+    "total_tokens": 451,
+    "completion_tokens": 350,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.315682305023074
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-38",
+   "gold": "He has 7-1=<<7-1=6>>6 possible running days.\nHe runs half of those so he runs 6/2=<<6/2=3>>3 days.\nSo for two days, he runs 3/2=<<3/2=1.5>>1.5 hours.\nSo in total, he runs 3+1.5+1.5=<<3+1.5+1.5=6>>6 hours.\nSo he runs 60/6=<<60/6=10>>10 mph.\n#### 10",
+   "pred": 10.0,
+   "correct": true,
+   "text": "To find out how fast John runs, we need to determine his total running time and then divide the total distance by that time.\n\n**Step 1: Calculate the total time spent running per week.**\n*   Day 1: 3 hours\n*   Day 2: Half of Day 1 = 1.5 hours\n*   Day 3: Half of Day 1 = 1.5 hours\n*   Total time = 3 + 1.5 + 1.5 = 6 hours\n\n**Step 2: Calculate the speed.**\n*   Total distance = 60 miles\n*   Total time = 6 hours\n*   Speed = Total distance / Total time\n*   Speed = 60 miles / 6 hours = 10 miles per hour\n\n#### 10",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 84,
+    "total_tokens": 258,
+    "completion_tokens": 174,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2620950429700315
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-39",
+   "gold": "If Dana can skip at half the speed she can run, then she can run at 3*2=<<3*2=6>>6 miles per hour.\nAnd since she can run at a speed that is 4 times faster than she can walk, this means she can walk at 6/4=1.5 miles per hour.\nIf two-thirds of the time is spent walking, then she walks for 6*(2/3)=<<6*(2/3)=4>>4 hours.\nIf one-third of the time is spent running, then she runs for 6-4=<<6-4=2>>2 hours.\nThus, she runs for 2 hours at 6 miles per hour, or 2*6=<<2*6=12>>12 miles.\nShe walks for 4 hours at 1.5 miles per hour, or 4*1.5=<<4*1.5=6>>6 miles.\nThus, altogether, she travels 12+6=<<12+6=18>>18 miles.\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "To find the total distance Dana can travel, we first need to determine her speeds for skipping, running, and walking.\n\n**Step 1: Determine the speeds.**\n*   **Skipping speed:** Given as $3\\text{ mph}$.\n*   **Running speed:** The problem states that skipping is half as fast as running.\n    $\\text{Running speed} = 2 \\times \\text{Skipping speed} = 2 \\times 3 = 6\\text{ mph}$.\n*   **Walking speed:** The problem states that running is four times faster than walking.\n    $\\text{Walking speed} = \\text{Running speed} \\div 4 = 6 \\div 4 = 1.5\\text{ mph}$.\n\n**Step 2: Determine the time spent on each activity.**\nThe total time is $6\\text{ hours}$.\n*   **Time running:** $\\frac{1}{3}$ of the total time $= \\frac{1}{3} \\times 6 = 2\\text{ hours}$.\n*   **Time walking:** $\\frac{2}{3}$ of the total time $= \\frac{2}{3} \\times 6 = 4\\text{ hours}$.\n\n**Step 3: Calculate the distance for each activity.**\n*   **Distance running:** $\\text{Speed} \\times \\text{Time} = 6\\text{ mph} \\times 2\\text{ hours} = 12\\text{ miles}$.\n*   **Distance walking:** $\\text{Speed} \\times \\text{Time} = 1.5\\text{ mph} \\times 4\\text{ hours} = 6\\text{ miles}$.\n\n**Step 4: Calculate the total distance.**\n$\\text{Total distance} = 12\\text{ miles} + 6\\text{ miles} = 18\\text{ miles}$.\n\n#### 18",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 114,
+    "total_tokens": 530,
+    "completion_tokens": 416,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.4149802380707115
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-4",
+   "gold": "If each chicken eats 3 cups of feed per day, then for 20 chickens they would need 3*20=<<3*20=60>>60 cups of feed per day.\nIf she feeds the flock 15 cups of feed in the morning, and 25 cups in the afternoon, then the final meal would require 60-15-25=<<60-15-25=20>>20 cups of chicken feed.\n#### 20",
+   "pred": 20.0,
+   "correct": true,
+   "text": "To find the number of cups of feed needed for the final meal, follow these steps:\n\n1.  **Calculate the total amount of feed needed for the day:**\n    Wendi has 20 chickens, and each chicken receives 3 cups of feed per day.\n    Total feed = 20 chickens \u00d7 3 cups/chicken = 60 cups.\n\n2.  **Calculate the total amount of feed already given:**\n    Morning feed = 15 cups\n    Afternoon feed = 25 cups\n    Total given = 15 + 25 = 40 cups.\n\n3.  **Calculate the remaining amount for the final meal:**\n    Subtract the amount already given from the total daily requirement.\n    Final meal = Total feed - Total given\n    Final meal = 60 cups - 40 cups = 20 cups.\n\n#### 20",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 151,
+    "total_tokens": 342,
+    "completion_tokens": 191,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4307593540288508
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-40",
+   "gold": "Ben\u2019s iPhone is 1*2 = <<1*2=2>>2 years old.\nBrandon\u2019s iPhone is 4*2 = <<4*2=8>>8 years old.\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "To find the age of Brandon's iPhone, we follow these steps:\n\n1.  **Identify Suzy's iPhone age:**\n    Suzy's iPhone is 1 year old.\n\n2.  **Calculate Ben's iPhone age:**\n    The problem states Ben's iPhone is \"two times older\" than Suzy's. In mathematical word problems of this type, \"two times older\" typically means 2 times the age.\n    $1 \\text{ year} \\times 2 = 2 \\text{ years old}$.\n\n3.  **Calculate Brandon's iPhone age:**\n    The problem states Brandon's iPhone is four times as old as Ben's.\n    $2 \\text{ years} \\times 4 = 8 \\text{ years old}$.\n\n#### 8",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 88,
+    "total_tokens": 261,
+    "completion_tokens": 173,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2460735850036144
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-41",
+   "gold": "With the gemstone, Polly could throw the javelin 3 times farther than 400 feet, for a distance of 3*400=<<3*400=1200>>1200 feet.\n1200 feet is beyond the 1000-foot reach of the dragon's flames by a distance of 1200-1000=<<1200-1000=200>>200 feet.\n#### 200",
+   "pred": 200.0,
+   "correct": true,
+   "text": "To solve this problem, we need to determine the distance Polly can throw the javelin while holding the sapphire gemstone and then calculate how far she can stand from the dragon's reach.\n\n1.  **Determine the distance Polly can throw without the gemstone:**\n    Polly can throw the javelin 400 feet.\n\n2.  **Determine the distance Polly can throw with the gemstone:**\n    The problem states that holding the gemstone allows her to throw the javelin three times farther.\n    $400 \\text{ feet} \\times 3 = 1,200 \\text{ feet}$.\n\n3.  **Identify the reach of the dragon's flames:**\n    The dragon breathes fire upon anything within a distance of 1,000 feet.\n\n4.  **Calculate the distance Polly can stand outside the reach of the flames:**\n    Polly can throw the javelin 1,200 feet. To hit the dragon, she must be within 1,200 feet of the dragon. The dragon's flames reach 1,000 feet.\n    The distance she can stand outside the reach of the flames is the difference between her maximum throw distance and the distance of the flames.\n    $1,200 \\text{ feet} - 1,000 \\text{ feet} = 200 \\text{ feet}$.\n\n#### 200",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 165,
+    "total_tokens": 468,
+    "completion_tokens": 303,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.041490300791338
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-42",
+   "gold": "To start the evening, there were 5 pies, each with 8 pieces, which is 5*8=<<5*8=40>>40 pieces of pie.\nIf only 14 remained, then 40-14=<<40-14=26>>26 pieces of pie had been taken by guests.\n#### 26",
+   "pred": 26.0,
+   "correct": true,
+   "text": "To find out how many pieces of pie were taken by the guests, follow these steps:\n\n1.  **Calculate the total number of pieces baked:**\n    Grandma Jones baked 5 pies, and each pie was cut into 8 pieces.\n    $5 \\text{ pies} \\times 8 \\text{ pieces/pie} = 40 \\text{ total pieces}$\n\n2.  **Identify the number of pieces remaining:**\n    At the end of the evening, there were 14 pieces left.\n\n3.  **Calculate the number of pieces taken:**\n    Subtract the remaining pieces from the total number of pieces.\n    $40 \\text{ total pieces} - 14 \\text{ remaining pieces} = 26 \\text{ pieces taken}$\n\n#### 26",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 121,
+    "total_tokens": 293,
+    "completion_tokens": 172,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2325852229259908
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-43",
+   "gold": "If the total calorie target is 2000 and I have consumed 1800 calories then I have 2000-1800 = <<2000-1800=200>>200 calories left to eat\nIf each serving of chips has 250 calories and I only have 200 calories left to eat, then I can only eat 200/250 of a serving = 4/5 of a serving\nWe also know that a 300g bag of chips has 5 servings, hence each serving has 300g/5 = <<300/5=60>>60 grams\nIf I can only eat 4/5 of a serving, then I can eat only 60g * 4/5 = 240g/5 = 48 grams\n#### 48",
+   "pred": 48.0,
+   "correct": true,
+   "text": "1. **Determine the remaining calorie budget:**\n   Daily target: 2000 calories\n   Already consumed: 1800 calories\n   Remaining budget: $2000 - 1800 = 200$ calories.\n\n2. **Calculate the total calories in the bag:**\n   Calories per serving: 250 calories\n   Servings per bag: 5\n   Total calories: $250 \\times 5 = 1250$ calories.\n\n3. **Calculate the calories per gram of chips:**\n   Total weight of the bag: 300g\n   Total calories in the bag: 1250 calories\n   Calories per gram: $1250 / 300 = 4.166...$ calories per gram.\n\n4. **Calculate how many grams correspond to the remaining budget:**\n   Remaining budget: 200 calories\n   Calories per gram: 4.166...\n   Grams allowed: $200 / 4.166...$\n   Alternatively: $200 / (1250 / 300) = (200 \\times 300) / 1250 = 60000 / 1250 = 48$ grams.\n\n#### 48",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 101,
+    "total_tokens": 398,
+    "completion_tokens": 297,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9642633139155805
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-44",
+   "gold": "1 pound of beeswax and the wick make 10 candles and he wants to make 20 candles so he needs 20/10 = <<20/10=2>>2 pounds of beeswax\n1 pound of beeswax costs $10.00 and he needs 2 pounds so his supplies will cost 10*2 = $<<10*2=20.00>>20.00\nHe wants to sell each candle for $2.00 each and he's selling 20 candles so that's 2*20 = $<<2*20=40.00>>40.00\nIf he makes $40.00 selling candles and his supplies cost $20.00 then his net profit is 40-20 = $<<40-20=20.00>>20.00\n#### 20",
+   "pred": 20.0,
+   "correct": true,
+   "text": "To find the net profit, we need to calculate the total revenue and subtract the total cost of supplies.\n\n**Step 1: Determine the amount of beeswax needed.**\nCharlie makes 10 candles per pound of beeswax.\nHe wants to make 20 candles.\n$20 \\text{ candles} \\div 10 \\text{ candles per pound} = 2 \\text{ pounds of beeswax}$.\n\n**Step 2: Calculate the total cost of supplies.**\nOne pound of beeswax and wicks cost $10.00.\nSince he needs 2 pounds:\n$2 \\text{ pounds} \\times \\$10.00 = \\$20.00$.\n\n**Step 3: Calculate the total revenue from sales.**\nHe sells 20 candles for $2.00 each.\n$20 \\text{ candles} \\times \\$2.00 = \\$40.00$.\n\n**Step 4: Calculate the net profit.**\nNet Profit = Total Revenue - Total Cost\n$\\$40.00 - \\$20.00 = \\$20.00$.\n\n#### 20",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 111,
+    "total_tokens": 359,
+    "completion_tokens": 248,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.7841845240909606
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-45",
+   "gold": "If she wrote five articles on Monday, then on Tuesday she wrote 2/5* 5 = 2 more articles.\nThe total number of articles she wrote on Tuesday is 5+2 = <<5+2=7>>7\nOn Wednesday, the number of articles was twice the number she wrote on Tuesday, so it was 2*7 = <<2*7=14>>14 articles.\nOver the three days, she wrote 5+7 +14 = <<5+7+14=26>>26 articles.\nIf each article takes her 4 hours to research and write about, she spent 4*26 = <<4*26=104>>104 hours on all the articles.\n#### 104",
+   "pred": 104.0,
+   "correct": true,
+   "text": "Step 1: Calculate the number of articles written on Monday.\nMonday = 5 articles.\n\nStep 2: Calculate the number of articles written on Tuesday.\nThe problem states she wrote \"2/5 times more\" articles on Tuesday than on Monday.\nIncrease = 5 articles * (2/5) = 2 articles.\nTuesday = 5 articles + 2 articles = 7 articles.\n\nStep 3: Calculate the number of articles written on Wednesday.\nWednesday = 2 * Tuesday = 2 * 7 = 14 articles.\n\nStep 4: Calculate the total number of articles written over the three days.\nTotal articles = Monday + Tuesday + Wednesday\nTotal articles = 5 + 7 + 14 = 26 articles.\n\nStep 5: Calculate the total number of hours spent writing.\nEach article takes an average of 4 hours.\nTotal hours = 26 articles * 4 hours/article = 104 hours.\n\n#### 104",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 132,
+    "total_tokens": 349,
+    "completion_tokens": 217,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.5362605249974877
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-46",
+   "gold": "Let's let x be the number of post-it notes in the package that Candice purchased.\nThen, the total number of post-it notes she had when she left the store was 80+x.\nAnd if she used 220 Post-it notes at work and had 23 left, then 80+x=220+23\nSubtracting 80 from each side of the equation, we see that x=220+23-80=<<220+23-80=163>>163 Post-it notes.\n#### 163",
+   "pred": 163.0,
+   "correct": true,
+   "text": "To find the number of Post-it notes in the package Candice purchased, we can follow these steps:\n\n1.  **Identify the starting amount:** Candice started with 80 Post-it notes in her purse.\n2.  **Identify the amount used:** She used 1 Post-it note for each of 220 cups of coffee, meaning she used 220 notes.\n3.  **Identify the remaining amount:** She had 23 Post-it notes left over.\n4.  **Set up the equation:**\n    Let $x$ be the number of Post-it notes in the purchased package.\n    $\\text{Starting amount} + \\text{Purchased amount} - \\text{Used amount} = \\text{Remaining amount}$\n    $80 + x - 220 = 23$\n5.  **Solve for $x$:**\n    First, combine the known numbers on the left side:\n    $x - 140 = 23$\n    Now, add 140 to both sides:\n    $x = 23 + 140$\n    $x = 163$\n\n#### 163",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 138,
+    "total_tokens": 403,
+    "completion_tokens": 265,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.8562722669448704
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-47",
+   "gold": "He bought 200 / 40 = <<200/40=5>>5 blue ties\nSo he bought 5 * 2 = <<5*2=10>>10 red ties\nEach red tie cost $40 * .5 = $<<40*.5=20>>20 more than blue ties\nSo they each cost $40 + $20 = $<<40+20=60>>60\nSo he spent $60 * 10 = $<<60*10=600>>600 on red ties\nSo he spent $200 + $600 = $<<200+600=800>>800 on ties\n#### 800",
+   "pred": 800.0,
+   "correct": true,
+   "text": "1. **Calculate the number of blue ties bought:**\n   John spent $200 on blue ties, and each blue tie costs $40.\n   Number of blue ties = $200 / $40 = 5 ties.\n\n2. **Calculate the number of red ties bought:**\n   John buys twice as many red ties as blue ties.\n   Number of red ties = 5 * 2 = 10 ties.\n\n3. **Calculate the cost of one red tie:**\n   Red ties cost 50% more than blue ties.\n   Cost of one red tie = $40 + (50% of $40) = $40 + $20 = $60.\n\n4. **Calculate the total amount spent on red ties:**\n   Total spent on red ties = 10 ties * $60/tie = $600.\n\n5. **Calculate the total amount spent on all ties:**\n   Total spent = (Amount spent on blue ties) + (Amount spent on red ties)\n   Total spent = $200 + $600 = $800.\n\n#### 800",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 90,
+    "total_tokens": 342,
+    "completion_tokens": 252,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.7082460918463767
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-48",
+   "gold": "If Tracy used a piece of wire 4 feet long, since 1 foot is equal to 12 inches, the total length of the wire in inches was 12*4=<<12*4=48>>48 inches.\nSince the wire was cut into pieces 6 inches long, Tracy obtained 48/6=<<48/6=8>>8 pieces\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "To find the number of pieces Tracy obtained, we need to ensure the units of measurement are the same.\n\n**Step 1: Convert the total length of the wire from feet to inches.**\nThere are 12 inches in 1 foot.\nTotal length = 4 feet \u00d7 12 inches/foot = 48 inches.\n\n**Step 2: Determine the length of each piece.**\nEach piece is 6 inches long.\n\n**Step 3: Divide the total length by the length of one piece.**\nNumber of pieces = Total length / Length of one piece\nNumber of pieces = 48 inches / 6 inches = 8.\n\n#### 8",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 76,
+    "total_tokens": 220,
+    "completion_tokens": 144,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.065104637062177
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-49",
+   "gold": "The total number of units in the building will be 8 units/floor * 15 floors = <<8*15=120>>120 units.\nIf 3/4 of the building is occupied, then the total number of occupied units is 3/4 * 120 units = <<3/4*120=90>>90 units.\nThe total number of unoccupied units is 120 units - 90 units = <<120-90=30>>30 units.\n#### 30",
+   "pred": 30.0,
+   "correct": true,
+   "text": "1. **Find the total number of units in the building:**\n   The building has 15 floors, and each floor has 8 units.\n   Total units = 15 floors \u00d7 8 units/floor = 120 units.\n\n2. **Determine the number of occupied units:**\n   3/4 of the building is occupied.\n   Occupied units = 120 \u00d7 (3/4) = 90 units.\n\n3. **Calculate the number of unoccupied units:**\n   Unoccupied units = Total units - Occupied units\n   Unoccupied units = 120 - 90 = 30 units.\n\n   (Alternatively: If 3/4 are occupied, 1/4 are unoccupied. 120 \u00d7 1/4 = 30).\n\n#### 30",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 83,
+    "total_tokens": 263,
+    "completion_tokens": 180,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2577751791104674
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-5",
+   "gold": "The discount price of one glass is 60/100 * 5 = $<<60/100*5=3>>3.\nIf every second glass is cheaper, that means Kylar is going to buy 16 / 2 = <<16/2=8>>8 cheaper glasses.\nSo for the cheaper glasses, Kylar is going to pay 8 * 3 = $<<8*3=24>>24.\nAnd for the regular-priced glasses, Kylar will pay 8 * 5 = $<<8*5=40>>40.\nSo in total Kylar needs to pay 24 + 40 = $<<24+40=64>>64 for the glasses he wants to buy.\n#### 64",
+   "pred": 64.0,
+   "correct": true,
+   "text": "To find the total cost for 16 glasses, we can break the purchase down into pairs.\n\n1.  **Identify the cost of one glass:**\n    The first glass costs $5.\n\n2.  **Identify the cost of the second glass:**\n    The second glass is 60% of the price of the first.\n    $5 \\times 0.60 = \\$3$.\n\n3.  **Calculate the cost of a pair of glasses:**\n    One pair (one full-price glass and one discounted glass) costs:\n    $\\$5 + \\$3 = \\$8$.\n\n4.  **Determine how many pairs are in 16 glasses:**\n    $16 \\div 2 = 8$ pairs.\n\n5.  **Calculate the total cost for all pairs:**\n    $8 \\text{ pairs} \\times \\$8 \\text{ per pair} = \\$64$.\n\n#### 64",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 94,
+    "total_tokens": 296,
+    "completion_tokens": 202,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4740784489549696
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-50",
+   "gold": "In a week, Lloyd's egg farm produces 252 x 7 = <<252*7=1764>>1764 eggs.\nThere are 1764/12 = <<1764/12=147>>147 dozens of eggs produced in a week.\nSo, Lloyd makes 147 x $2 = $<<147*2=294>>294 on eggs.\n#### 294",
+   "pred": 294.0,
+   "correct": true,
+   "text": "To find out how much Lloyd makes per week, follow these steps:\n\n1.  **Calculate the total number of eggs produced per week:**\n    Lloyd's chickens produce 252 eggs per day.\n    $252 \\text{ eggs/day} \\times 7 \\text{ days/week} = 1,764 \\text{ eggs/week}$\n\n2.  **Convert the total number of eggs into dozens:**\n    Since eggs are sold by the dozen (12 eggs), divide the weekly total by 12.\n    $1,764 \\div 12 = 147 \\text{ dozen}$\n\n3.  **Calculate the total weekly revenue:**\n    Lloyd sells each dozen for $2.\n    $147 \\text{ dozen} \\times \\$2/\\text{dozen} = \\$294$\n\n#### 294",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 76,
+    "total_tokens": 272,
+    "completion_tokens": 196,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4531497359275818
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-51",
+   "gold": "He was travelling at full speed for 4-1=<<4-1=3>>3 hours\nSo he went 3*10=<<3*10=30>>30 miles\nThat means it takes 30/6=<<30/6=5>>5 hours to get back\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "Step 1: Determine the time spent traveling away from the starting point.\nFrom 1 PM to 4 PM is 3 hours.\n\nStep 2: Calculate the distance traveled.\nDistance = Speed \u00d7 Time\nDistance = 10 miles/hour \u00d7 3 hours = 30 miles.\n\nStep 3: Calculate the time it takes to travel back.\nThe distance to return is the same (30 miles), but the speed is now 6 mph.\nTime = Distance / Speed\nTime = 30 miles / 6 miles/hour = 5 hours.\n\n#### 5",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 90,
+    "total_tokens": 219,
+    "completion_tokens": 129,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0123729859478772
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-52",
+   "gold": "30 comic books weigh 7.5 pounds because 30 x .25 = <<30*.25=7.5>>7.5\nHe needs to remove 7.5 more pounds because 15 - 7.5 = <<15-7.5=7.5>>7.5\nHe needs to remove 15 toys because 7.5 / .5 = <<15=15>>15\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "Step 1: Calculate the total weight removed by the comic books.\nEach comic book weighs 1/4 pound.\n30 comic books \u00d7 1/4 pound = 30/4 pounds = 7.5 pounds.\n\nStep 2: Determine how much more weight needs to be removed to reach the goal of 15 pounds.\nTotal weight to remove - Weight already removed = Remaining weight needed.\n15 pounds - 7.5 pounds = 7.5 pounds.\n\nStep 3: Calculate how many toys need to be removed to equal the remaining weight.\nEach toy weighs 1/2 pound.\nRemaining weight / Weight per toy = Number of toys.\n7.5 pounds / 0.5 pounds = 15 toys.\n\n#### 15",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 272,
+    "completion_tokens": 169,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3092586759012192
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-53",
+   "gold": "On Thursday the mechanic charged a total of 6*60 + 4*40 = $<<6*60+4*40=520>>520.\nOn Friday the mechanic charged a total of 12*40 = $<<12*40=480>>480.\nThus, on Thursday, the day with higher revenue, the mechanic had 520-480 = $<<520-480=40>>40 more revenue than on Friday.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "To find out how much more revenue the mechanic earned on the day with higher revenue, we calculate the earnings for each day separately.\n\n**Step 1: Calculate revenue for Thursday**\n*   Truck tires repaired: 6\n*   Cost per truck tire: $60\n*   Truck revenue: $6 \\times 60 = \\$360$\n*   Car tires repaired: 4\n*   Cost per car tire: $40\n*   Car revenue: $4 \\times 40 = \\$160$\n*   Total Thursday revenue: $\\$360 + \\$160 = \\$520$\n\n**Step 2: Calculate revenue for Friday**\n*   Truck tires repaired: 0\n*   Truck revenue: $0 \\times 60 = \\$0$\n*   Car tires repaired: 12\n*   Cost per car tire: $40\n*   Car revenue: $12 \\times 40 = \\$480$\n*   Total Friday revenue: $\\$0 + \\$480 = \\$480$\n\n**Step 3: Find the difference between the two days**\n*   Thursday revenue: $520\n*   Friday revenue: $480\n*   Difference: $\\$520 - \\$480 = \\$40$\n\nThe mechanic earned $40 more on Thursday than on Friday.\n\n#### 40",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 141,
+    "total_tokens": 449,
+    "completion_tokens": 308,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9737474780995399
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-54",
+   "gold": "Patchy has just had 3 * 7 = <<3*7=21>>21 kittens\nSince Trixie's kittens are 12, both cats have 21 +12 = <<21+12=33>>33 kittens.\nCombining the adopted kittens with those from the two cats, the Doubtfire family now has 7 + 33 = <<7+33=40>>40 kittens.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "Step 1: Identify the number of adopted kittens.\nThe sisters adopted 7 kittens.\n\nStep 2: Calculate the number of kittens Patchy had.\nPatchy had thrice the number of adopted kittens: 3 * 7 = 21 kittens.\n\nStep 3: Identify the number of kittens Trixie had.\nTrixie had 12 kittens.\n\nStep 4: Calculate the total number of kittens.\nTotal = (Adopted kittens) + (Patchy's kittens) + (Trixie's kittens)\nTotal = 7 + 21 + 12\n\nStep 5: Perform the addition.\n7 + 21 = 28\n28 + 12 = 40\n\n#### 40",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 119,
+    "total_tokens": 285,
+    "completion_tokens": 166,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.17879653791897
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-55",
+   "gold": "Jean has 30 - 2 = <<30-2=28>>28 lollipops\nJean can fill up 28 / 2 = <<28/2=14>>14 bags with lollipops\n#### 14",
+   "pred": 14.0,
+   "correct": true,
+   "text": "Step 1: Determine the total number of lollipops Jean starts with.\nJean has 30 lollipops.\n\nStep 2: Subtract the number of lollipops Jean eats.\n30 - 2 = 28 lollipops remaining.\n\nStep 3: Calculate how many bags can be filled by dividing the remaining lollipops by the number of lollipops per bag.\n28 \u00f7 2 = 14 bags.\n\n#### 14",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 86,
+    "total_tokens": 189,
+    "completion_tokens": 103,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.7853680399712175
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-56",
+   "gold": "It costs him $14 to go to the movies because 7 + 7 = <<7+7=14>>14\nHe can go to the movies 3 times because 42 / 14 = <<42/14=3>>3\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "1. **Calculate the cost of one visit:**\n   Peter spends $7 on a ticket and $7 on popcorn.\n   $7 + $7 = $14 per visit.\n\n2. **Determine the total amount of money available:**\n   Peter has $42 for the week.\n\n3. **Calculate how many times he can go:**\n   Divide the total money by the cost per visit.\n   $42 \u00f7 $14 = 3.\n\n#### 3",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 85,
+    "total_tokens": 189,
+    "completion_tokens": 104,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.7847979769576341
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-57",
+   "gold": "The boxes can weigh up to 5000 pounds - 3755 pounds = <<5000-3755=1245>>1245 pounds in total.\nThere can be 1245 / 15 = <<1245/15=83>>83 boxes loaded onto the truck without exceeding the bridge's weight limit.\n#### 83",
+   "pred": 83.0,
+   "correct": true,
+   "text": "To find the maximum number of boxes that can be loaded onto the truck, we follow these steps:\n\n1.  **Identify the total weight limit of the bridge:**\n    The bridge can carry a maximum of 5,000 pounds.\n\n2.  **Identify the weight of the truck and driver:**\n    The empty truck and driver weigh 3,755 pounds.\n\n3.  **Calculate the remaining weight capacity available for the boxes:**\n    Subtract the weight of the truck and driver from the total weight limit:\n    $5,000 - 3,755 = 1,245$ pounds.\n\n4.  **Determine the weight of one box:**\n    Each box weighs 15 pounds.\n\n5.  **Calculate the maximum number of boxes:**\n    Divide the remaining weight capacity by the weight of one box:\n    $1,245 \\div 15 = ?$\n\n    Calculation:\n    $1,245 / 15$\n    $15 \\times 80 = 1,200$\n    $1,245 - 1,200 = 45$\n    $15 \\times 3 = 45$\n    $80 + 3 = 83$\n\nThe maximum number of boxes that can be loaded is 83.\n\n#### 83",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 118,
+    "total_tokens": 421,
+    "completion_tokens": 303,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.9965979859698564
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-58",
+   "gold": "He spent $40.00 on groceries but they charged him a 25% fee so that's 40*.25 = $10.00\nThere is also a $3.00 delivery fee and a $4.00 tip for an extra $3 + $4 = $<<3+4=7.00>>7.00 in fees\nHis groceries were $40.00, there's a $10.00 fee plus another $7.00 in delivery/tip fees for a final total of $40 + $10 + $7 = $<<40+10+7=57.00>>57.00\n#### 57",
+   "pred": 57.0,
+   "correct": true,
+   "text": "To find the final price of Stephen's groceries, follow these steps:\n\n1.  **Calculate the 25% fee:**\n    The fee is based on the final bill of $40.00.\n    $40.00 \\times 0.25 = \\$10.00$\n\n2.  **Add the delivery fee:**\n    The delivery fee is a flat charge of $3.00.\n\n3.  **Add the tip:**\n    Stephen added a tip of $4.00.\n\n4.  **Calculate the total final price:**\n    Start with the original bill and add all the additional costs:\n    $\\text{Original Bill} + \\text{25\\% Fee} + \\text{Delivery Fee} + \\text{Tip} = \\text{Total}$\n    $\\$40.00 + \\$10.00 + \\$3.00 + \\$4.00 = \\$57.00$\n\n#### 57.00",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 124,
+    "total_tokens": 346,
+    "completion_tokens": 222,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.515154574997723
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-59",
+   "gold": "First find the number of fruit in clusters: 20 fruit/cluster * 6 clusters = <<20*6=120>>120 fruit\nThen add the number of individual fruit to find the total number of fruit: 120 fruit + 67 fruit = <<120+67=187>>187 fruit\n#### 187",
+   "pred": 187.0,
+   "correct": true,
+   "text": "To find the total number of raspberries, follow these steps:\n\n1.  **Calculate the number of fruit in the clusters:**\n    Multiply the number of clusters by the number of fruit per cluster.\n    6 clusters \u00d7 20 fruit per cluster = 120 fruit.\n\n2.  **Add the individual fruit scattered across the bush:**\n    Take the total from the clusters and add the individual fruit.\n    120 + 67 = 187.\n\n#### 187",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 71,
+    "total_tokens": 180,
+    "completion_tokens": 109,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.8168895209673792
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-6",
+   "gold": "If Seattle has 20 sheep, Charleston has 4 * 20 sheep = <<20*4=80>>80 sheep\nToulouse has twice as many sheep as Charleston, which is 2 * 80 sheep = <<2*80=160>>160 sheep\nTogether, the three has 20 sheep + 160 sheep + 80 sheep = <<20+160+80=260>>260 sheep\n#### 260",
+   "pred": 260.0,
+   "correct": true,
+   "text": "To find the total number of sheep, we calculate the amount for each city based on the information provided:\n\n1.  **Seattle:** We are given that Seattle has **20 sheep**.\n2.  **Charleston:** Charleston has 4 times as many sheep as Seattle.\n    $20 \\times 4 = 80$ sheep.\n3.  **Toulouse:** Toulouse has twice as many sheep as Charleston.\n    $80 \\times 2 = 160$ sheep.\n\nTo find the total number of sheep, we add the amounts for all three cities together:\n$20 \\text{ (Seattle)} + 80 \\text{ (Charleston)} + 160 \\text{ (Toulouse)} = 260$\n\n#### 260",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 257,
+    "completion_tokens": 175,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2013064690399915
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-60",
+   "gold": "20% of 25 oranges is (20/100)*25 = <<(20/100)*25=5>>5 oranges\nThe total number of bad, unripe and sour oranges is therefore 1+5+2 = <<1+5+2=8>>8 oranges\nThe rest which is 25-8 = <<25-8=17>>17 oranges are good\n#### 17",
+   "pred": 17.0,
+   "correct": true,
+   "text": "To find the number of good oranges, we need to subtract all the oranges that are not \"good\" from the total.\n\n**Step 1: Identify the total number of oranges.**\nTotal = 25\n\n**Step 2: Calculate the number of unripe oranges.**\n20% of the oranges are unripe.\n$25 \\times 0.20 = 5$ unripe oranges.\n\n**Step 3: List the other non-good oranges.**\n*   Bad oranges = 1\n*   Sour oranges = 2\n\n**Step 4: Calculate the total number of non-good oranges.**\nTotal non-good = (Bad) + (Unripe) + (Sour)\nTotal non-good = $1 + 5 + 2 = 8$\n\n**Step 5: Subtract the non-good oranges from the total to find the good oranges.**\nGood oranges = Total - Total non-good\nGood oranges = $25 - 8 = 17$\n\n#### 17",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 77,
+    "total_tokens": 296,
+    "completion_tokens": 219,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.5933267259970307
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-61",
+   "gold": "The total cost of the broch was 500+800=$<<500+800=1300>>1300\nThe insurance was 1300*.1=$<<1300*.1=130>>130\nSo she pays 1300+130=$<<1300+130=1430>>1430\n#### 1430",
+   "pred": 1430.0,
+   "correct": true,
+   "text": "To find the total amount Janet paid, follow these steps:\n\n1.  **Calculate the cost of materials and construction:**\n    $500 (materials) + $800 (construction) = $1,300\n\n2.  **Calculate the insurance cost:**\n    The insurance is 10% of the total cost of the brooch.\n    10% of $1,300 = 0.10 * 1,300 = $130\n\n3.  **Calculate the total amount paid:**\n    $1,300 (brooch cost) + $130 (insurance) = $1,430\n\n#### 1430",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 252,
+    "completion_tokens": 153,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1085782500449568
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-62",
+   "gold": "First find how many years Marcy works after 20 years: 30 years - 20 years = <<30-20=10>>10 years\nThen multiply that number by the amount of her pension she gets per year: 10 years * 5% = 50%\nThen multiply that percentage by the total amount of the full pension to find how much she gets: $50,000 * 50% = $<<50000*50*.01=25000>>25,000\n#### 25000",
+   "pred": 25000.0,
+   "correct": true,
+   "text": "To find Marcy's annual pension after 30 years, we follow these steps:\n\n1.  **Identify the full pension value:**\n    The full pension after 40 years is $50,000 per year.\n\n2.  **Determine the entitlement period:**\n    Marcy becomes entitled to a portion of the pension starting after 20 years. Since she is quitting after 30 years, she has been eligible for the pension accrual for:\n    $30\\text{ years} - 20\\text{ years} = 10\\text{ years}$.\n\n3.  **Calculate the percentage earned:**\n    She earns 5% of the total pension value for each year she works past the 20-year mark.\n    $10\\text{ years} \\times 5\\%/\\text{year} = 50\\%$.\n\n4.  **Calculate the final annual pension amount:**\n    The annual pension is 50% of the full $50,000 pension.\n    $0.50 \\times \\$50,000 = \\$25,000$.\n\n#### 25000",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 108,
+    "total_tokens": 366,
+    "completion_tokens": 258,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.8650418110191822
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-63",
+   "gold": "A year has twelve months, so a half of the year is 12/2 = <<12/2=6>>6 months,\nFor the first six months, the streaming service charged her a total of 6*140 = $<<6*140=840>>840\nFor the next half of the year, the streaming service company charged her 10/100*140 = $<<10/100*140=14>>14 less\nShe paid $140-$14 = $<<140-14=126>>126 each month for the remaining half of the year,\nIn total, she paid 126*6 = $<<126*6=756>>756 for the other half of the year for the streaming service.\nThe total amount of money she paid at the end of the year is $840+$756 = $<<840+756=1596>>1596\n#### 1596",
+   "pred": 1596.0,
+   "correct": true,
+   "text": "To calculate the total amount Aleena paid for the streaming service for the year, follow these steps:\n\n**Step 1: Calculate the cost for the first half of the year.**\nThe monthly cost is $140. For the first 6 months:\n$140 \\times 6 = \\$840$\n\n**Step 2: Calculate the discounted monthly cost for the second half of the year.**\nThe cost is reduced by 10%.\nDiscount amount = $140 \\times 0.10 = \\$14$\nNew monthly cost = $140 - 14 = \\$126$\n\n**Step 3: Calculate the cost for the second half of the year.**\nFor the remaining 6 months:\n$126 \\times 6 = \\$756$\n\n**Step 4: Calculate the total annual cost.**\nAdd the cost of the first half and the second half:\n$\\$840 + \\$756 = \\$1,596$\n\n#### 1596",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 109,
+    "total_tokens": 337,
+    "completion_tokens": 228,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.6085713251959532
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-64",
+   "gold": "To find miles per gallon divide 100 miles / 4 gallons = <<100/4=25>>25 miles per gallon\nTo find how far Olivia can go on a single tank, multiply 25 miles per gallon x 12 gallons = <<25*12=300>>300 miles\n#### 300",
+   "pred": 300.0,
+   "correct": true,
+   "text": "To find out how many miles Sophia can drive on a single tank of gas, we need to determine her car's fuel efficiency (miles per gallon) and then multiply that by the total capacity of the tank.\n\n**Step 1: Calculate the fuel efficiency (miles per gallon).**\nSophia traveled 100 miles and used 4 gallons of gas.\n$\\text{Fuel Efficiency} = \\frac{\\text{Total Miles}}{\\text{Gallons Used}}$\n$\\text{Fuel Efficiency} = \\frac{100 \\text{ miles}}{4 \\text{ gallons}} = 25 \\text{ miles per gallon (mpg)}$\n\n**Step 2: Calculate the total distance for a full tank.**\nThe car's tank holds 12 gallons of gas. To find the total distance, multiply the fuel efficiency by the tank capacity.\n$\\text{Total Distance} = \\text{Fuel Efficiency} \\times \\text{Tank Capacity}$\n$\\text{Total Distance} = 25 \\text{ mpg} \\times 12 \\text{ gallons}$\n\n**Step 3: Perform the multiplication.**\n$25 \\times 12 = 300$\n\nSophia can drive 300 miles on a single tank of gas.\n\n#### 300",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 133,
+    "total_tokens": 408,
+    "completion_tokens": 275,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.62719407514669
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-65",
+   "gold": "He reads for 2/2=<<2/2=1>>1 hour a night\nSo he spends 2+1=<<2+1=3>>3 hours on these activities\nThat means he spends 3*3=<<3*3=9>>9 hours a week on them\nSo in 4 weeks, he spends 9*4=<<9*4=36>>36 hours on these activities\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "Step 1: Determine the time spent reading per session.\nJim watches TV for 2 hours. He reads for half as long as he watches TV.\nReading time = 2 hours / 2 = 1 hour.\n\nStep 2: Determine the total time spent on TV and reading per session.\nTotal time per session = 2 hours (TV) + 1 hour (reading) = 3 hours.\n\nStep 3: Determine the total time spent per week.\nHe does this 3 times a week.\nWeekly total = 3 hours * 3 times = 9 hours.\n\nStep 4: Determine the total time spent over 4 weeks.\nTotal time = 9 hours * 4 weeks = 36 hours.\n\n#### 36",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 252,
+    "completion_tokens": 165,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1474980087950826
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-66",
+   "gold": "Each school has sent 1 girls\u2019 basketball team + 1 boys\u2019 basketball team = <<1+1=2>>2 teams.\nSo each school has sent 2 teams * 5 players per team = <<2*5=10>>10 players.\nThey have also each sent 2 teams * 1 coach per team = <<2*1=2>>2 coaches.\nIn total, each school has sent 10 players + 2 coaches = <<10+2=12>>12 people.\nTherefore, the schools have sent a total of 12 people per school * 4 schools = <<12*4=48>>48 people.\n#### 48",
+   "pred": 48.0,
+   "correct": true,
+   "text": "To find the total number of people sent by all the schools, we can break the calculation down step by step:\n\n1.  **Calculate the number of people per school:**\n    *   **Girls' team:** 5 players + 1 coach = 6 people.\n    *   **Boys' team:** 5 players + 1 coach = 6 people.\n    *   **Total per school:** 6 (girls' team) + 6 (boys' team) = 12 people.\n\n2.  **Calculate the total for all schools:**\n    *   There are 4 schools competing.\n    *   **Total people:** 4 schools \u00d7 12 people per school = 48 people.\n\n#### 48",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 98,
+    "total_tokens": 259,
+    "completion_tokens": 161,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1103816719260067
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-67",
+   "gold": "There were 175 - 35 = <<175-35=140>>140 rubies in the treasure chest.\nThere were 140 x 2 = <<140*2=280>>280 emeralds in the treasure chest.\nSo, the total number of gems in the treasure chest is 175 + 140 + 280 = <<175+140+280=595>>595.\n#### 595",
+   "pred": 595.0,
+   "correct": true,
+   "text": "To find the total number of gems in the chest, we calculate the number of each type of gem step by step:\n\n1.  **Number of Diamonds:**\n    The problem states there are **175** diamonds.\n\n2.  **Number of Rubies:**\n    There are 35 fewer rubies than diamonds.\n    $175 - 35 = 140$ rubies.\n\n3.  **Number of Emeralds:**\n    There are twice as many emeralds as rubies.\n    $140 \\times 2 = 280$ emeralds.\n\n4.  **Total Number of Gems:**\n    To find the total, add the number of diamonds, rubies, and emeralds together:\n    $175 + 140 + 280$\n\n    Calculation:\n    $175 + 140 = 315$\n    $315 + 280 = 595$\n\n#### 595",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 93,
+    "total_tokens": 317,
+    "completion_tokens": 224,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.359052126063034
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-68",
+   "gold": "There are twice as many boys as girls, so if there are 60 girls, there are 2*60 = <<2*60=120>>120 boys\nThere are 120 + 60 = <<120+60=180>>180 students in total\nIf there are 5 students to each teacher, then 180 students would need 180/5 = <<180/5=36>>36 teachers\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "Step 1: Find the number of boys.\nThe problem states there are twice as many boys as girls.\nNumber of girls = 60\nNumber of boys = 60 * 2 = 120\n\nStep 2: Find the total number of students.\nTotal students = Number of girls + Number of boys\nTotal students = 60 + 120 = 180\n\nStep 3: Find the number of teachers.\nThe ratio is 5 students for every 1 teacher.\nNumber of teachers = Total students / 5\nNumber of teachers = 180 / 5 = 36\n\n#### 36",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 78,
+    "total_tokens": 221,
+    "completion_tokens": 143,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9788284590467811
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-69",
+   "gold": "In 8 weeks, Bailey receives $5 * 8 = $<<5*8=40>>40 in allowance\nBailey started with $100 - $40 = $<<100-40=60>>60\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "To find out how much money Bailey started with, we can follow these steps:\n\n1.  **Calculate the total amount received from the allowance:**\n    Bailey receives $5 per week for 8 weeks.\n    $5 \\times 8 = \\$40$\n\n2.  **Set up the equation for the total amount:**\n    The total amount is the sum of the starting money and the total allowance.\n    Starting Money + Total Allowance = Total Amount\n    Starting Money + $40 = $100\n\n3.  **Solve for the starting money:**\n    Subtract the total allowance from the final total.\n    Starting Money = $100 - $40\n    Starting Money = $60\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 91,
+    "total_tokens": 250,
+    "completion_tokens": 159,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0491173779591918
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-7",
+   "gold": "First find how many gigabytes are in 40% of the file: 200 GB * 40% = <<200*40*.01=80>>80 GB\nThen divide that number by the download rate to find the time until Windows restarts: 80 GB / 2 GB/minute = <<80/2=40>>40 minutes\nThen find the time to download the whole file after the restart: 200 GB / 2 GB/minute = <<200/2=100>>100 minutes\nThen add the time to download 40% of the file, to download the whole file, and to wait for Windows to update: 40 minutes + 100 minutes + 20 minutes = <<40+100+20=160>>160 minutes\n#### 160",
+   "pred": 160.0,
+   "correct": true,
+   "text": "To find the total time it takes for Carla to download the file, we break the process down into steps:\n\n1.  **Calculate the time for the first (interrupted) attempt:**\n    *   The file size is 200 GB.\n    *   The download is interrupted 40% of the way through.\n    *   Amount downloaded before interruption: $200\\text{ GB} \\times 0.40 = 80\\text{ GB}$.\n    *   Download speed is 2 GB/minute.\n    *   Time spent downloading before the crash: $80\\text{ GB} \\div 2\\text{ GB/min} = 40\\text{ minutes}$.\n\n2.  **Account for the system restart:**\n    *   The Windows update restart takes 20 minutes.\n\n3.  **Calculate the time for the second (successful) attempt:**\n    *   Since she has to restart from the beginning, she must download the full 200 GB.\n    *   Time spent on the final download: $200\\text{ GB} \\div 2\\text{ GB/min} = 100\\text{ minutes}$.\n\n4.  **Calculate the total time:**\n    *   Total time = (First attempt time) + (Restart time) + (Second attempt time)\n    *   Total time = $40\\text{ minutes} + 20\\text{ minutes} + 100\\text{ minutes} = 160\\text{ minutes}$.\n\n#### 160",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 110,
+    "total_tokens": 456,
+    "completion_tokens": 346,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.2025474740657955
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-70",
+   "gold": "She teaches 5 dance classes 5 days a week so that's 5*5 = <<5*5=25>>25 classes\nShe teaches 25 classes during the week and 8 classes on Saturday for a total of 25+8 = <<25+8=33>>33 classes\nThere are 15 students in each of the 33 classes so there are 15*33 = <<15*33=495>>495 students\nEach student pays $15.00 per class and there are 495 students so Judy makes 15*495 = $<<15*495=7425>>7,425\n#### 7425",
+   "pred": 7425.0,
+   "correct": true,
+   "text": "Step 1: Calculate the total number of classes Judy teaches in one week.\n- Weekdays: 5 classes per day \u00d7 5 days = 25 classes\n- Saturday: 8 classes\n- Total classes per week: 25 + 8 = 33 classes\n\nStep 2: Calculate the total number of students per week.\n- Each class has 15 students.\n- Total students: 33 classes \u00d7 15 students/class = 495 students\n\nStep 3: Calculate the total money made per week.\n- Each student pays $15.00.\n- Total money: 495 students \u00d7 $15.00 = $7,425\n\n#### 7425",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 92,
+    "total_tokens": 255,
+    "completion_tokens": 163,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0619208961725235
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-71",
+   "gold": "The second recipe has 2 * 20 instructions = <<2*20=40>>40 instructions.\nThe total for the two dishes is 40 instructions + 20 instructions = <<40+20=60>>60 instructions.\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "To find the total number of instructions Kelian has to read, follow these steps:\n\n1.  **Identify the number of instructions for the first recipe:**\n    The first recipe has 20 instructions.\n\n2.  **Calculate the number of instructions for the second recipe:**\n    The second recipe has twice as many instructions as the first one.\n    $20 \\times 2 = 40$ instructions.\n\n3.  **Calculate the total number of instructions for both recipes:**\n    Add the instructions from the first recipe and the second recipe together.\n    $20 + 40 = 60$ instructions.\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 84,
+    "total_tokens": 225,
+    "completion_tokens": 141,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.8991817669011652
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-72",
+   "gold": "Tommy raised 43 brownies x $3/brownie = $<<43*3=129>>129 by selling brownies.\nTommy raised 23 slices x $4 = $<<23*4=92>>92 by selling cheesecakes.\nIn total Tommy has raised $129 + $92 = $<<129+92=221>>221\n#### 221",
+   "pred": 221.0,
+   "correct": true,
+   "text": "To find the total amount of money Tommy raised, we calculate the earnings from each item separately and then add them together.\n\n**Step 1: Calculate the money raised from brownies.**\nTommy sold 43 brownies at $3 each.\n$43 \\times 3 = 129$\n\n**Step 2: Calculate the money raised from cheesecake.**\nTommy sold 23 slices of cheesecake at $4 each.\n$23 \\times 4 = 92$\n\n**Step 3: Calculate the total amount raised.**\nAdd the earnings from the brownies and the cheesecake together.\n$129 + 92 = 221$\n\n#### 221",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 86,
+    "total_tokens": 235,
+    "completion_tokens": 149,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9333211241755635
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-73",
+   "gold": "A $150 x 2/100 = $<<150*2/100=3>>3 interest will be charged for each unit.\nSo, each cell phone costs $150 + $3 = $<<150+3=153>>153.\nThe total amount to be paid for 5 cell phones is $153 x 5 = $<<153*5=765>>765.\nThus, Shiela will pay $765/3 = $<<765/3=255>>255 each month.\n#### 255",
+   "pred": 255.0,
+   "correct": true,
+   "text": "To find out how much Shiela will pay each month, we follow these steps:\n\n**Step 1: Calculate the total cost of the cell phones (Principal).**\nShiela bought 5 phones at $150 each.\nTotal Principal = $5 \\times 150 = \\$750$\n\n**Step 2: Calculate the total interest.**\nThe interest is 2% per unit. Since there are 5 units, the total interest is calculated on the total principal.\nInterest = $750 \\times 0.02 = \\$15$\n\n**Step 3: Calculate the total amount to be paid.**\nTotal Amount = Principal + Interest\nTotal Amount = $\\$750 + \\$15 = \\$765$\n\n**Step 4: Calculate the monthly payment.**\nThe total amount is paid over 3 months.\nMonthly Payment = $\\frac{765}{3} = \\$255$\n\n#### 255",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 85,
+    "total_tokens": 296,
+    "completion_tokens": 211,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.2492962039541453
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-74",
+   "gold": "Artie will round his marigolds up from $2.74 to $3, since the number following the 2 is 5 or higher.\nArtie will round his petunias up from $1.87 to $2, since the number following the 1 is 5 or higher.\nArtie will round his begonias down from $2.12 to $2, since the number following the 2 is less than 5.\nArtie sells 12 marigolds x $3 = $<<12*3=36>>36\nArtie sells 9 petunias x $2 = $<<9*2=18>>18\nArtie sells 17 begonias x $2 = $<<17*2=34>>34\nAltogether, Artie will make $36 + $18 + $34 = $<<36+18+34=88>>88\n#### 88",
+   "pred": 88.0,
+   "correct": true,
+   "text": "To find out how much Artie will make, we first need to determine the rounded prices for each type of flower.\n\n**Step 1: Round the prices to the nearest dollar.**\n*   Marigolds: $2.74 rounds to $3.00\n*   Petunias: $1.87 rounds to $2.00\n*   Begonias: $2.12 rounds to $2.00\n\n**Step 2: Calculate the total for each type of flower based on the quantity sold.**\n*   Marigolds: 12 pots \u00d7 $3.00 = $36.00\n*   Petunias: 9 pots \u00d7 $2.00 = $18.00\n*   Begonias: 17 pots \u00d7 $2.00 = $34.00\n\n**Step 3: Add the totals together to find the final amount.**\n$36.00 + $18.00 + $34.00 = $88.00\n\n#### 88",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 163,
+    "total_tokens": 399,
+    "completion_tokens": 236,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3320887659210712
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-75",
+   "gold": "Level 3 is 32 square feet because 16 x 2 = <<16*2=32>>32\nLevel 2 is 64 square feet because 32 x 2 = <<32*2=64>>64\nLevel 1 is 128 square feet because 64 x 2 = <<64*2=128>>128\nThe four levels total to 240 square feet because 128 + 64 + 32 + 16 = <<128+64+32+16=240>>240\nThe average square footage of a level is 60 because 240 / 4 = <<240/4=60>>60\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "To find the average square footage of a level, we first need to determine the square footage of each of the four levels.\n\n1.  **Identify the levels:**\n    The problem states that each level has half the square footage of the level below it. This means the levels increase in size as we go down.\n    *   Level 1 (Top): 16 sq ft\n    *   Level 2: Since Level 1 is half of Level 2, Level 2 is $16 \\times 2 = 32$ sq ft.\n    *   Level 3: Since Level 2 is half of Level 3, Level 3 is $32 \\times 2 = 64$ sq ft.\n    *   Level 4 (Bottom): Since Level 3 is half of Level 4, Level 4 is $64 \\times 2 = 128$ sq ft.\n\n2.  **Calculate the total square footage:**\n    Sum the square footage of all four levels:\n    Total = $16 + 32 + 64 + 128$\n    Total = $48 + 64 + 128$\n    Total = $112 + 128$\n    Total = $240$ sq ft.\n\n3.  **Calculate the average square footage:**\n    The average is the total square footage divided by the number of levels (4):\n    Average = $240 / 4$\n    Average = $60$\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 106,
+    "total_tokens": 444,
+    "completion_tokens": 338,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.691270514857024
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-76",
+   "gold": "The number of cups of dog food given for the first 180 days is 180 * 1 = <<180*1=180>>180 cups\nThe number of days left in the year is 365 - 180 = <<365-180=185>>185\nThe number of cups of dog food given for the rest of the first year is 185 * 2 = <<185*2=370>>370 cups\nThe total number of cups given in the first year is 180 + 370 = <<180+370=550>>550 cups\nThe number of bags of dog food used in the first year is 550 / 110 = <<550/110=5>>5 bags\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "To find the total number of bags of dog food Cecilia will use in the first year, we need to calculate the total amount of food consumed in 365 days.\n\n**Step 1: Calculate the food used for the first 180 days.**\nThe puppy eats 1 cup per day for 180 days.\n$180 \\text{ days} \\times 1 \\text{ cup/day} = 180 \\text{ cups}$\n\n**Step 2: Calculate the food used for the remainder of the first year.**\nA standard year has 365 days.\n$365 \\text{ days} - 180 \\text{ days} = 185 \\text{ days}$\nDuring these 185 days, the puppy eats 2 cups per day.\n$185 \\text{ days} \\times 2 \\text{ cups/day} = 370 \\text{ cups}$\n\n**Step 3: Calculate the total amount of food used in the first year.**\n$\\text{Total cups} = 180 \\text{ cups} + 370 \\text{ cups} = 550 \\text{ cups}$\n\n**Step 4: Calculate the number of bags needed.**\nOne bag contains 110 cups.\n$\\text{Number of bags} = \\frac{550 \\text{ cups}}{110 \\text{ cups/bag}}$\n$\\text{Number of bags} = 5$\n\n#### 5",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 125,
+    "total_tokens": 459,
+    "completion_tokens": 334,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.6703402029816061
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-77",
+   "gold": "If Sarah does 400 pounds of laundry, and Raymond does half as much laundry as Sarah, Raymond does 1/2*400 = 200 pounds of laundry.\nSara also does 4 times as much laundry as David, meaning David does 400/4 = <<400/4=100>>100 pounds of laundry.\nThe difference in the amount of laundry Raymond and David do is 200-100 = <<200-100=100>>100 pounds\n#### 100",
+   "pred": 100.0,
+   "correct": true,
+   "text": "To find the difference in the amount of laundry Raymond and David do, we follow these steps:\n\n1.  **Identify Sarah's amount:**\n    Sarah = 400 pounds.\n\n2.  **Calculate Raymond's amount:**\n    Raymond does half as much as Sarah.\n    Raymond = 400 / 2 = 200 pounds.\n\n3.  **Calculate David's amount:**\n    Sarah does 4 times as much as David.\n    David = Sarah / 4\n    David = 400 / 4 = 100 pounds.\n\n4.  **Calculate the difference between Raymond and David:**\n    Difference = Raymond - David\n    Difference = 200 - 100 = 100 pounds.\n\n#### 100",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 85,
+    "total_tokens": 260,
+    "completion_tokens": 175,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0226900200359523
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-78",
+   "gold": "Find how many packages of 3 would be needed which is 18 \u00f7 3 = <<18/3=6>>6.\nThe cost of using packages of 3 is 6 \u00d7 $2.50 = $<<6*2.5=15>>15.\nFind how many packages of 2 would be needed which is 18 \u00f7 2 = <<18/2=9>>9.\nThe cost of using packages of 2 is 9 \u00d7 $1 = $<<9*1=9>>9.\nVincent would save $15 - $9 = $<<15-9=6>>6.\n#### 6",
+   "pred": 6.0,
+   "correct": true,
+   "text": "To find out how much Vincent saves, we need to calculate the cost of buying 18 flowers using both available package options and determine which is cheaper.\n\n**Step 1: Calculate the cost using packages of 3.**\n*   Number of flowers needed: 18\n*   Package size: 3\n*   Number of packages needed: $18 \\div 3 = 6$ packages\n*   Price per package: $2.50\n*   Total cost: $6 \\times 2.50 = \\$15.00$\n\n**Step 2: Calculate the cost using packages of 2.**\n*   Number of flowers needed: 18\n*   Package size: 2\n*   Number of packages needed: $18 \\div 2 = 9$ packages\n*   Price per package: $1.00\n*   Total cost: $9 \\times 1.00 = \\$9.00$\n\n**Step 3: Compare the costs to find the savings.**\n*   Cost of the more expensive option: $15.00\n*   Cost of the cheaper option: $9.00\n*   Savings: $15.00 - 9.00 = \\$6.00$\n\n#### 6",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 363,
+    "completion_tokens": 281,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4600837409961969
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-79",
+   "gold": "The groomer gave a 100*.3=$<<100*.3=30>>30 discount\nSo the grooming cost 100-30=$<<100-30=70>>70\n#### 70",
+   "pred": 70.0,
+   "correct": true,
+   "text": "Step 1: Determine the original cost of the grooming.\nOriginal cost = $100\n\nStep 2: Calculate the amount of the discount.\nDiscount = 30% of $100\nDiscount = 0.30 * 100 = $30\n\nStep 3: Subtract the discount from the original cost to find the final price.\nFinal cost = $100 - $30 = $70\n\n#### 70",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 88,
+    "total_tokens": 189,
+    "completion_tokens": 101,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.6840077030938119
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-8",
+   "gold": "When he turned around he was 3*60=<<3*60=180>>180 miles from home\nHe was only able to drive 4-2=<<4-2=2>>2 hours in the first four hours\nIn half an hour he goes 30*.5=<<30*.5=15>>15 miles\nHe then drives another 2-.5=<<2-.5=1.5>>1.5 hours\nIn that time he goes 80*1.5=<<80*1.5=120>>120 miles\nSo he drove 120+15=<<120+15=135>>135 miles\nSo he is 180-135=<<180-135=45>>45 miles away from home\n#### 45",
+   "pred": 45.0,
+   "correct": true,
+   "text": "To find out how far John is from home, we first calculate the total distance he traveled away from home and then subtract the distance he traveled back toward home.\n\n**Step 1: Calculate the distance from home.**\nJohn drove for 3 hours at 60 mph.\nDistance = Speed \u00d7 Time\nDistance = 60 mph \u00d7 3 hours = 180 miles.\nJohn is 180 miles away from home when he turns around.\n\n**Step 2: Calculate the distance traveled back toward home during the 4-hour return trip.**\nThe return trip is broken into three segments:\n*   **Segment 1 (First 2 hours):** He is in standstill traffic.\n    Distance = 0 mph \u00d7 2 hours = 0 miles.\n*   **Segment 2 (Next half-hour):** He drives at 30 mph.\n    Distance = 30 mph \u00d7 0.5 hours = 15 miles.\n*   **Segment 3 (Remaining time):** He has spent 2.5 hours of the 4 hours (2 + 0.5). The remaining time is $4 - 2.5 = 1.5$ hours. He drives at 80 mph.\n    Distance = 80 mph \u00d7 1.5 hours = 120 miles.\n\n**Step 3: Calculate total distance traveled back.**\nTotal distance back = 0 + 15 + 120 = 135 miles.\n\n**Step 4: Calculate the remaining distance from home.**\nDistance from home = Initial distance - Distance traveled back\nDistance from home = 180 miles - 135 miles = 45 miles.\n\n#### 45",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 144,
+    "total_tokens": 519,
+    "completion_tokens": 375,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 2.306848251959309
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-80",
+   "gold": "Each of the girls got 24 x 1/6 = <<24*1/6=4>>4 liters of water.\nSo the two girls got a total of 4 x 2 = <<4*2=8>>8 liters.\nThus, a total of 8 + 6 = <<8+6=14>>14 liters of water were gotten by the two girls and the boy.\nTherefore, 24 - 14 = <<24-14=10>>10 liters of water were left.\n#### 10",
+   "pred": 10.0,
+   "correct": true,
+   "text": "Step 1: Calculate the amount of water each girl received.\nEach girl got 1/6 of 24 liters.\n$24 \\times \\frac{1}{6} = 4$ liters.\n\nStep 2: Calculate the total amount of water given to both girls.\nSince there are two girls:\n$4 \\text{ liters} \\times 2 = 8$ liters.\n\nStep 3: Add the amount of water given to the boy.\nThe boy got 6 liters.\nTotal water distributed = $8 \\text{ liters (girls)} + 6 \\text{ liters (boy)} = 14$ liters.\n\nStep 4: Calculate the remaining amount of water.\nSubtract the total distributed water from the initial amount:\n$24 \\text{ liters} - 14 \\text{ liters} = 10$ liters.\n\n#### 10",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 270,
+    "completion_tokens": 195,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1169922009576112
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-81",
+   "gold": "The total number of stickers is 10 + 21 + 23 = <<10+21+23=54>>54.\nThe number of stickers given away and used on the greeting card is 9 + 28 = <<9+28=37>>37.\nCharlie has 54 \u2212 37 = 17 stickers left.\n#### 17",
+   "pred": 17.0,
+   "correct": true,
+   "text": "Step 1: Calculate the total number of stickers Charlie had after getting more.\nStarting stickers: 10\nBought from store: 21\nBirthday stickers: 23\nTotal = 10 + 21 + 23 = 54 stickers.\n\nStep 2: Calculate the total number of stickers Charlie gave away or used.\nGiven to sister: 9\nUsed for card: 28\nTotal used = 9 + 28 = 37 stickers.\n\nStep 3: Subtract the used stickers from the total.\n54 - 37 = 17 stickers.\n\n#### 17",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 237,
+    "completion_tokens": 138,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9059367789886892
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-82",
+   "gold": "Alex weighs 125*4-2 = <<125*4-2=498>>498.\nTheir combined weights are 125+498 = <<125+498=623>>623 pounds.\n#### 623",
+   "pred": 623.0,
+   "correct": true,
+   "text": "Step 1: Identify Grace's weight.\nGrace = 125 pounds.\n\nStep 2: Calculate Alex's weight based on the description \"2 pounds less than 4 times what Grace weighs.\"\nAlex = (4 * Grace) - 2\nAlex = (4 * 125) - 2\nAlex = 500 - 2\nAlex = 498 pounds.\n\nStep 3: Calculate their combined weights.\nCombined Weight = Grace + Alex\nCombined Weight = 125 + 498\nCombined Weight = 623 pounds.\n\n#### 623",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 70,
+    "total_tokens": 206,
+    "completion_tokens": 136,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.8443190569523722
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-83",
+   "gold": "First find the total number of roses: 3 bushes * 25 roses/bush = <<3*25=75>>75 roses\nThen multiply the number of roses by the number of thorns per rose: 75 roses * 8 thorns/rose = <<75*8=600>>600 thorns\n#### 600",
+   "pred": 600.0,
+   "correct": true,
+   "text": "Step 1: Calculate the total number of roses.\n3 rose bushes \u00d7 25 roses per bush = 75 roses.\n\nStep 2: Calculate the total number of thorns.\n75 roses \u00d7 8 thorns per rose = 600 thorns.\n\n#### 600",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 70,
+    "total_tokens": 134,
+    "completion_tokens": 64,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.46235358295962214
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-84",
+   "gold": "Let L be the number of losses.\nThe number of wins is L + <<+8=8>>8.\nThe team played (L+8) + L = 2L + 8 = 22 games.\nSo, 2L = 22 - 8 = 14\nSo L = 14/2 = <<14/2=7>>7 losses.\nTherefore, the team won 22 \u2013 7 = <<22-7=15>>15 games.\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "To find the number of games won, we can set up a simple algebraic equation.\n\n1.  **Define the variables:**\n    Let $L$ be the number of games lost.\n    Let $W$ be the number of games won.\n\n2.  **Set up the equations based on the problem:**\n    *   The total number of games played is 22: $W + L = 22$\n    *   They won 8 more than they lost: $W = L + 8$\n\n3.  **Substitute the second equation into the first:**\n    Substitute $(L + 8)$ for $W$ in the total games equation:\n    $(L + 8) + L = 22$\n\n4.  **Solve for $L$:**\n    $2L + 8 = 22$\n    $2L = 22 - 8$\n    $2L = 14$\n    $L = 7$\n\n5.  **Solve for $W$:**\n    Since $W = L + 8$:\n    $W = 7 + 8$\n    $W = 15$\n\n**Check:**\nWins (15) + Losses (7) = 22 games.\nWins (15) is 8 more than Losses (7).\n\n#### 15",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 64,
+    "total_tokens": 361,
+    "completion_tokens": 297,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.4506833360064775
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-85",
+   "gold": "Gene has been on 34 - 23 = <<34-23=11>>11 years of vacations, so he has 11 rows of blocks.\nHe goes on 4 vacations a year, so he has been on 4 * 11 = <<4*11=44>>44 vacations.\nGene has 1 shirt from each vacation, so he has 44 * 1 = <<44*1=44>>44 quilt blocks in all.\n#### 44",
+   "pred": 44.0,
+   "correct": true,
+   "text": "To find the total number of quilt blocks, we need to determine the number of years Gene has been vacationing and multiply that by the number of vacations he takes per year.\n\n1.  **Calculate the number of years he has been vacationing:**\n    He started vacationing at age 23 and is now 34.\n    $34 - 23 = 11$ years.\n    (Note: Since he is \"now 34,\" we include the years from 23 up to and including the current year).\n\n2.  **Calculate the number of vacations per year:**\n    He goes on 4 vacations every year.\n\n3.  **Calculate the total number of blocks:**\n    Total blocks = (Number of years) \u00d7 (Vacations per year)\n    $11 \\times 4 = 44$\n\n#### 44",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 124,
+    "total_tokens": 312,
+    "completion_tokens": 188,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.0649366420693696
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-86",
+   "gold": "The second time Greg\u2019s alarm went off, it rang three times as long as the first, so it rang 3 * 4 = <<3*4=12>>12 times the second time.\nThe third time it went off, it rang half as long as the second, so it rang 12 / 2 = <<12/2=6>>6 times the third time.\nIn all, Greg\u2019s alarm rang 4 + 12 + 6 = <<4+12+6=22>>22 times.\n#### 22",
+   "pred": 22.0,
+   "correct": true,
+   "text": "To find the total number of times the alarm rang, we calculate the duration of each of the three alarms:\n\n1.  **First alarm:** The problem states it rang 4 times.\n    *   First alarm = 4\n\n2.  **Second alarm:** It rang for three times as long as the first time.\n    *   Second alarm = 4 * 3 = 12\n\n3.  **Third alarm:** It rang for half as long as the second time.\n    *   Third alarm = 12 / 2 = 6\n\n4.  **Total:** Add the rings from all three alarms together.\n    *   Total = 4 + 12 + 6 = 22\n\n#### 22",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 128,
+    "total_tokens": 288,
+    "completion_tokens": 160,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9376489499118179
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-87",
+   "gold": "In a month, Sylvie earns $600. which totals $600/month * 12 months/year = $7200 in a year.\nSylvie earnings will increase by 10/100 * $7200/year = $<<10/100*7200=720>>720/year after 5 years.\nIn three years, the total increase in her salary will be 3 years * $720/year = $<<3*720=2160>>2160\nAfter three years, Sylvie will be paid $7200 + $2160 = $<<7200+2160=9360>>9360\n#### 9360",
+   "pred": 9360.0,
+   "correct": true,
+   "text": "To find Sylvie's annual salary after three more years of service, we follow these steps:\n\n1.  **Calculate the initial monthly and annual salary:**\n    Monthly salary = $600\n    Annual salary = $600 $\\times$ 12 = $7,200\n\n2.  **Determine the annual increment amount:**\n    The policy states that employees receive an increase of 10% of the **initial** salary every year after five years of service.\n    Annual increment = 10% of $7,200 = 0.10 $\\times$ 7,200 = $720\n\n3.  **Calculate the total increments over the specified period:**\n    Sylvie has already completed 5 years. We need to find her salary after **three more years** of service.\n    Total increments = 3 years $\\times$ $720/year = $2,160\n\n4.  **Calculate the final annual salary:**\n    Final Annual Salary = Initial Annual Salary + Total Increments\n    Final Annual Salary = $7,200 + $2,160 = $9,360\n\n#### 9360",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 119,
+    "total_tokens": 380,
+    "completion_tokens": 261,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3660604390315711
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-88",
+   "gold": "Let m be the number of copies Marilyn sold and h be the number Harald sold. We know that m + h = 80,000 and m = 10h.\nSubstituting the second equation into the first, we get 10h + h = 88,000\nCombining like terms, we get 11h = 88,000\nDividing both sides by 11, we get h = 8,000\n#### 8000",
+   "pred": 8000.0,
+   "correct": true,
+   "text": "To find the number of copies Harald sold, we can set up a simple algebraic equation.\n\n1.  **Define the variables:**\n    Let $x$ be the number of copies Harald sold.\n    Since Marilyn sold 10 times as many copies as Harald, let $10x$ be the number of copies Marilyn sold.\n\n2.  **Set up the equation:**\n    The total number of copies sold combined is 88,000.\n    $x + 10x = 88,000$\n\n3.  **Simplify the equation:**\n    $11x = 88,000$\n\n4.  **Solve for $x$:**\n    Divide both sides by 11:\n    $x = 88,000 / 11$\n    $x = 8,000$\n\nHarald sold 8,000 copies.\n\n#### 8000",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 80,
+    "total_tokens": 290,
+    "completion_tokens": 210,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.1115758640225977
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-89",
+   "gold": "She needs 12 gift bags because 16 x .75 = <<16*.75=12>>12\nShe will spend $24 because 12 x 2 = <<12*2=24>>24\n#### 24",
+   "pred": 24.0,
+   "correct": true,
+   "text": "Step 1: Determine the number of guests invited.\nInvited guests = 16\n\nStep 2: Calculate the number of gift bags needed based on the provided ratio.\nThe problem states she needs .75 gift bags per invited guest.\n16 guests * 0.75 bags/guest = 12 bags\n\nStep 3: Calculate the total cost of the gift bags.\n12 bags * $2 per bag = $24\n\n#### 24",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 90,
+    "total_tokens": 193,
+    "completion_tokens": 103,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.6823298670351505
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-9",
+   "gold": "Eliza is entitled to 45 -40 = <<45-40=5>>5 hours overtime pay.\nHer hourly rate for the overtime pay is $10 x 1.2 = $<<10*1.2=12>>12.\nSo, Eliza will receive $12 x 5 =$<<12*5=60>>60 for overtime pay.\nHer regular weekly earning is $10 x 40 = $<<10*40=400>>400.\nThus, Eliza will receive a total of $400 + $60 = $<<400+60=460>>460 for this week's work.\n#### 460",
+   "pred": 460.0,
+   "correct": true,
+   "text": "To find Eliza's total earnings for the week, we need to calculate her regular pay and her overtime pay separately.\n\n**Step 1: Calculate regular pay for the first 40 hours.**\nEliza earns $10 per hour for the first 40 hours.\nRegular Pay = $40 \\text{ hours} \\times \\$10/\\text{hour} = \\$400$\n\n**Step 2: Calculate the overtime hourly rate.**\nOvertime pay is 1.2 times her regular hourly rate.\nOvertime Rate = $\\$10 \\times 1.2 = \\$12$ per hour\n\n**Step 3: Calculate the overtime pay for the remaining hours.**\nEliza worked 45 hours in total, so the overtime hours are:\nOvertime Hours = $45 \\text{ hours} - 40 \\text{ hours} = 5 \\text{ hours}$\nOvertime Pay = $5 \\text{ hours} \\times \\$12/\\text{hour} = \\$60$\n\n**Step 4: Calculate total earnings.**\nTotal Earnings = Regular Pay + Overtime Pay\nTotal Earnings = $\\$400 + \\$60 = \\$460$\n\n#### 460",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 100,
+    "total_tokens": 368,
+    "completion_tokens": 268,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.8300828961655498
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-90",
+   "gold": "Half of 10 pounds is 10/2=<<10/2=5>>5 pounds.\nTo feed 20 dinosaur adults, he will need 20*10=<<20*10=200>>200 pounds of potato salad.\nTo feed 5 dinosaur children, he will need 5*5=<<5*5=25>>25 pounds of potato salad.\nIn total, he will need to bring 200+25=<<200+25=225>>225 pounds of potato salad to the picnic.\n#### 225",
+   "pred": 225.0,
+   "correct": true,
+   "text": "To find out how many pounds of potato salad Ted needs, we can follow these steps:\n\n1.  **Calculate the amount for adults:**\n    There are 20 adults, and each adult eats 10 lbs.\n    $20 \\text{ adults} \\times 10 \\text{ lbs/adult} = 200 \\text{ lbs}$\n\n2.  **Calculate the amount for children:**\n    A child eats half as much as an adult.\n    $10 \\text{ lbs} \\div 2 = 5 \\text{ lbs per child}$\n    There are 5 children.\n    $5 \\text{ children} \\times 5 \\text{ lbs/child} = 25 \\text{ lbs}$\n\n3.  **Calculate the total amount:**\n    Add the adults' total and the children's total together.\n    $200 \\text{ lbs} + 25 \\text{ lbs} = 225 \\text{ lbs}$\n\n#### 225",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 126,
+    "total_tokens": 351,
+    "completion_tokens": 225,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.086351288948208
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-91",
+   "gold": "Marcia has 4 + 2 = <<4+2=6>>6 pets.\nJan has 3 * 6 = <<3*6=18>>18 pets\nIn total, the three have 4 + 6 + 18 = <<4+6+18=28>>28 pets.\n#### 28",
+   "pred": 28.0,
+   "correct": true,
+   "text": "Step 1: Determine how many pets Cindy has.\nCindy has 4 pets.\n\nStep 2: Determine how many pets Marcia has.\nMarcia has two more pets than Cindy.\n4 + 2 = 6 pets.\n\nStep 3: Determine how many pets Jan has.\nJan has three times as many pets as Marcia.\n6 * 3 = 18 pets.\n\nStep 4: Calculate the total number of pets for all three.\nCindy's pets + Marcia's pets + Jan's pets = Total\n4 + 6 + 18 = 28 pets.\n\n#### 28",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 74,
+    "total_tokens": 211,
+    "completion_tokens": 137,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.7854574189987034
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-92",
+   "gold": "James is 10 and 1 year younger than Corey, so Corey is 10 + 1 = <<10+1=11>>11 years old\nAmy is 2 years younger than Corey so is 11 - 2 = 9 years old\nAmy is also 5 years older than Jackson, so Jackson is 9 - 5 = <<9-5=4>>4 years old\n#### 4",
+   "pred": 4.0,
+   "correct": true,
+   "text": "To find Jackson's age, we can follow these steps based on the information provided:\n\n1.  **Find Corey's age:**\n    We are told that James is 10 years old and that James is 1 year younger than Corey.\n    Corey = James + 1\n    Corey = 10 + 1 = 11 years old.\n\n2.  **Find Amy's age:**\n    We are told that Amy is 2 years younger than Corey.\n    Amy = Corey - 2\n    Amy = 11 - 2 = 9 years old.\n\n3.  **Find Jackson's age:**\n    We are told that Amy is 5 years older than Jackson.\n    Amy = Jackson + 5\n    9 = Jackson + 5\n    Jackson = 9 - 5 = 4 years old.\n\n#### 4",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 91,
+    "total_tokens": 283,
+    "completion_tokens": 192,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.9466292429715395
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-93",
+   "gold": "If Lee runs the 400-meter hurdles in 38 seconds, which was two seconds faster than Gerald used to run the 400-meter hurdles, then Gerald initially would run the 400-meter hurdles in 38+2=<<38+2=40>>40 seconds.\n10% of 40 seconds is 40*0.1=<<40*0.1=4>>4 seconds.\nThe improved diet reduced Gerald's race time to 40-4=<<40-4=36>>36 seconds.\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "To find out how fast Gerald can run the 400-meter hurdles with his improved diet, we follow these steps:\n\n1.  **Determine Lee's time:**\n    Lee runs the 400-meter hurdles in 38 seconds.\n\n2.  **Determine Gerald's original time:**\n    The problem states that Lee used to be able to run the race two seconds faster than Gerald.\n    $\\text{Lee's time} = \\text{Gerald's original time} - 2$\n    $38 = \\text{Gerald's original time} - 2$\n    $\\text{Gerald's original time} = 38 + 2 = 40 \\text{ seconds}$.\n\n3.  **Calculate Gerald's improved time:**\n    Gerald's speed improved by 10%. In the context of running times, an improvement in speed means the time taken to complete the race decreases.\n    An improvement of 10% means his new time is 90% of his original time (or $100\\% - 10\\%$).\n    $\\text{Improved time} = \\text{Original time} \\times (1 - 0.10)$\n    $\\text{Improved time} = 40 \\times 0.90$\n    $\\text{Improved time} = 36 \\text{ seconds}$.\n\n#### 36",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 128,
+    "total_tokens": 435,
+    "completion_tokens": 307,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3743684710934758
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-94",
+   "gold": "If there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120\nThe combined number of cats and dogs is 120+60 = <<120+60=180>>180\nThe number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168\nThe total number of pets in the compound is 168+180 = <<168+180=348>>348\n#### 348",
+   "pred": 348.0,
+   "correct": true,
+   "text": "To find the total number of pets in the neighborhood, we will calculate the number of dogs, cats, and rabbits step by step.\n\n1.  **Find the number of dogs:**\n    The problem states that the number of dogs is 60.\n    $\\text{Dogs} = 60$\n\n2.  **Find the number of cats:**\n    The problem states there are two cats for every dog.\n    $\\text{Cats} = 2 \\times \\text{Dogs}$\n    $\\text{Cats} = 2 \\times 60 = 120$\n\n3.  **Find the combined number of dogs and cats:**\n    $\\text{Combined} = \\text{Dogs} + \\text{Cats}$\n    $\\text{Combined} = 60 + 120 = 180$\n\n4.  **Find the number of rabbits:**\n    The problem states the number of rabbits is twelve less than the combined number of dogs and cats.\n    $\\text{Rabbits} = \\text{Combined} - 12$\n    $\\text{Rabbits} = 180 - 12 = 168$\n\n5.  **Calculate the total number of pets:**\n    $\\text{Total} = \\text{Dogs} + \\text{Cats} + \\text{Rabbits}$\n    $\\text{Total} = 60 + 120 + 168$\n    $\\text{Total} = 180 + 168 = 348$\n\n#### 348",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 91,
+    "total_tokens": 440,
+    "completion_tokens": 349,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.5084871330764145
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-95",
+   "gold": "There are 200 x 2/5 = <<200*2/5=80>>80 boys in Grade 5.\nSo, 200 - 80 = <<200-80=120>>120 are girls.\nOut of the 120 girls, 120 x 2/3 = <<120*2/3=80>>80 are in the girl scout.\nTherefore, 120 - 80 = <<120-80=40>>40 girls are not in the girl scout.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "To find the number of girls who are not in the girl scout, follow these steps:\n\n1.  **Find the total number of boys:**\n    The total number of students is 200.\n    Number of boys = $\\frac{2}{5} \\times 200$\n    $200 \\div 5 = 40$\n    $40 \\times 2 = 80$ boys.\n\n2.  **Find the total number of girls:**\n    Total students - Total boys = Total girls\n    $200 - 80 = 120$ girls.\n\n3.  **Find the number of girls in the girl scout:**\n    $\\frac{2}{3}$ of the girls are in the girl scout.\n    $\\frac{2}{3} \\times 120$\n    $120 \\div 3 = 40$\n    $40 \\times 2 = 80$ girls are in the girl scout.\n\n4.  **Find the number of girls NOT in the girl scout:**\n    Total girls - Girls in girl scout = Girls not in girl scout\n    $120 - 80 = 40$ girls.\n\n#### 40",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 355,
+    "completion_tokens": 273,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.225883091101423
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-96",
+   "gold": "James slept 9 hours * 2/3 = <<9*2/3=6>>6 hours.\nSo, Harry slept 9 - 6 = <<9-6=3>>3 hours more than James.\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "Step 1: Determine how many hours Harry slept.\nHarry slept 9 hours.\n\nStep 2: Calculate how many hours James slept.\nJames slept 2/3 of what Harry slept.\nJames's sleep = 9 hours * (2/3)\nJames's sleep = (9 * 2) / 3\nJames's sleep = 18 / 3\nJames's sleep = 6 hours.\n\nStep 3: Calculate the difference between Harry's sleep and James's sleep.\nDifference = Harry's sleep - James's sleep\nDifference = 9 hours - 6 hours\nDifference = 3 hours.\n\n#### 3",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 72,
+    "total_tokens": 219,
+    "completion_tokens": 147,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.7418324500322342
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-97",
+   "gold": "Tomatoes lose half their volume when made into sauce, so Freda started with 32 * 2 = <<32*2=64>>64 ounces of tomatoes.\nAt 16 ounces per can, she used 64 / 16 = <<64/16=4>>4 cans of tomatoes.\nAt 3 tomatoes a can, Freda used 3 * 4 = <<3*4=12>>12 tomatoes.\n#### 12",
+   "pred": 12.0,
+   "correct": true,
+   "text": "To find the number of tomatoes Freda used, we can follow these steps:\n\n1.  **Determine the total volume of the raw tomatoes used:**\n    The problem states that the tomatoes lose half their volume when cooked into sauce. If the final sauce volume was 32 ounces, we can calculate the initial volume of the raw tomatoes:\n    $\\text{Initial Volume} = \\text{Final Volume} \\times 2$\n    $\\text{Initial Volume} = 32 \\text{ ounces} \\times 2 = 64 \\text{ ounces}$\n\n2.  **Determine how many cans were used:**\n    Each can contains 16 ounces of tomatoes. To find the number of cans used to get 64 ounces:\n    $\\text{Number of cans} = \\frac{\\text{Total Initial Volume}}{\\text{Volume per can}}$\n    $\\text{Number of cans} = \\frac{64}{16} = 4 \\text{ cans}$\n\n3.  **Calculate the total number of tomatoes:**\n    Each can contains three tomatoes. Since Freda used 4 cans:\n    $\\text{Total tomatoes} = \\text{Number of cans} \\times \\text{Tomatoes per can}$\n    $\\text{Total tomatoes} = 4 \\times 3 = 12$\n\n#### 12",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 95,
+    "total_tokens": 385,
+    "completion_tokens": 290,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.3253496009856462
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-98",
+   "gold": "The cars that exited do not need to be included so there were 30 original cars \u2013 5 cars that exited = <<30-5=25>>25 cars that drove through the traffic jam.\nMost of the cars exited in the final 15 minutes so in the first 15 minutes, there must have been 25 total cars \u2013 20 cars that drove through in the final 15 minutes = 5 cars that drove through the traffic jam.\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "To find out how many cars drove through the traffic jam in the first 15 minutes, we can follow these steps:\n\n1.  **Identify the total number of cars originally on the motorway:**\n    Total cars = 30\n\n2.  **Subtract the cars that took the exit:**\n    Cars that left = 5\n    Remaining cars = 30 - 5 = 25\n\n3.  **Identify how many cars drove through in the second 15-minute period:**\n    Cars in the second period = 20\n\n4.  **Calculate how many cars drove through in the first 15 minutes:**\n    Since the total number of cars that drove through is 25 (the original 30 minus the 5 that exited), and 20 of them drove through in the second period, the rest must have driven through in the first period.\n    Cars in the first period = Total remaining cars - Cars in the second period\n    Cars in the first period = 25 - 20 = 5\n\n#### 5",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 135,
+    "total_tokens": 363,
+    "completion_tokens": 228,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 128,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 1.095074265031144
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-99",
+   "gold": "Yesterday, before receiving the plants, Mary had 2*40 = <<2*40=80>>80 potted plants\nAfter receiving an additional 18 plants, she therefore had a total of 80 + 18 = <<80+18=98>>98 potted plants\nTomorrow, Mary\u2019s plant giveaway will be 40 *1 = <<40*1=40>>40 potted plants.\nShe will therefore remain with 98 - 40 = <<98-40=58>>58 potted plants.\n#### 58",
+   "pred": 58.0,
+   "correct": true,
+   "text": "To find out how many potted plants Mary will remain with, we can follow these steps:\n\n1.  **Calculate the number of plants she already had on the ledges:**\n    Mary has 40 window ledges, and each ledge has 2 plants.\n    $40 \\times 2 = 80$ plants.\n\n2.  **Add the new plants she received:**\n    She received 18 new plants.\n    $80 + 18 = 98$ plants.\n\n3.  **Calculate the number of plants she is giving away:**\n    She gives 1 plant from each of the 40 ledges.\n    $40 \\times 1 = 40$ plants.\n\n4.  **Calculate the final total:**\n    Subtract the plants given away from the total number of plants she had.\n    $98 - 40 = 58$ plants.\n\n#### 58",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 117,
+    "total_tokens": 322,
+    "completion_tokens": 205,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": null
+   },
+   "secs": 0.954827164998278
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "n": 4,
+ "tokens_target": 10000,
+ "prompt_tokens": [
+  8554,
+  10220,
+  9141,
+  8709
+ ],
+ "latencies_s": [
+  0.789,
+  2.093,
+  2.723,
+  2.972
+ ],
+ "wall_s": 2.974768877029419,
+ "prefill_tok_s": 12311.544699422982,
+ "trace": "/root/or/out/prof/rank0.1795323440972649153.pt.trace.json.gz",
+ "categories": {
+  "gemm": {
+   "us": 1779517.7689999924,
+   "share": 0.6060371858497192
+  },
+  "attention": {
+   "us": 1022671.7480000001,
+   "share": 0.34828374237264276
+  },
+  "other": {
+   "us": 132821.5460000001,
+   "share": 0.04523405012318786
+  },
+  "memcpy/memset": {
+   "us": 1306.7249999999988,
+   "share": 0.00044502165444770955
+  }
+ },
+ "top_kernels": [
+  {
+   "name": "void flashinfer::BatchPrefillWithPagedKVCacheKernel<true, flashinfer::KernelTraits<(flashinfer::MaskMode)1, 32u, 2u, 1u, 32u, 32u, 1u, 4u, (flashinfer::PosEncod",
+   "us": 715649.458,
+   "share": 0.24372343515565015
+  },
+  {
+   "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS1_10collective13CollectiveMmaINS1_42MainloopSm120TmaWarpSpecializedBlockScaledI",
+   "us": 569548.9619999999,
+   "share": 0.19396707138702932
+  },
+  {
+   "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS1_10collective13CollectiveMmaINS1_42MainloopSm120TmaWarpSpecializedBlockScaledI",
+   "us": 351854.8419999998,
+   "share": 0.11982859738068644
+  },
+  {
+   "name": "void flashinfer::BatchPrefillWithPagedKVCacheKernel<true, flashinfer::KernelTraits<(flashinfer::MaskMode)1, 64u, 1u, 4u, 16u, 16u, 4u, 1u, (flashinfer::PosEncod",
+   "us": 307022.2899999999,
+   "share": 0.10456030721699254
+  },
+  {
+   "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS1_10collective13CollectiveMmaINS1_42MainloopSm120TmaWarpSpecializedBlockScaledI",
+   "us": 254855.77800000005,
+   "share": 0.08679434461812417
+  },
+  {
+   "name": "triton_poi_fused_gelu_mul_scaled_fp4_quant_slice_1",
+   "us": 181099.40900000004,
+   "share": 0.061675684335022685
+  },
+  {
+   "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS1_10collective13CollectiveMmaINS1_42MainloopSm120TmaWarpSpecializedBlockScaledI",
+   "us": 164912.90400000007,
+   "share": 0.056163166219255316
+  },
+  {
+   "name": "void vllm::cvt_fp16_to_fp4<__nv_bfloat16, false, false>(int, int, int, int, __nv_bfloat16 const*, float const*, unsigned int*, unsigned int*)",
+   "us": 143210.8050000001,
+   "share": 0.04877224310844931
+  },
+  {
+   "name": "triton_red_fused_add_mul_rms_norm_scaled_fp4_quant_2",
+   "us": 63185.20700000001,
+   "share": 0.021518517940470282
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_3",
+   "us": 56306.752999999975,
+   "share": 0.019175973809821154
+  },
+  {
+   "name": "triton_red_fused_add_rms_norm_scaled_fp4_quant_0",
+   "us": 40807.772999999994,
+   "share": 0.013897600990863866
+  },
+  {
+   "name": "void vllm::reshape_and_cache_flash_kernel<__nv_bfloat16, unsigned char, (vllm::Fp8KVCacheDataType)1>(__nv_bfloat16 const*, __nv_bfloat16 const*, unsigned char*,",
+   "us": 29400.777999999984,
+   "share": 0.010012805194367466
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_4",
+   "us": 22285.49599999999,
+   "share": 0.0075896063059234485
+  },
+  {
+   "name": "triton_per_fused_rms_norm_split_with_sizes_view_5",
+   "us": 21378.418999999998,
+   "share": 0.007280689810676582
+  },
+  {
+   "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_64x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_64x1_tn_align8::",
+   "us": 5795.187,
+   "share": 0.001973623912126776
+  },
+  {
+   "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8",
+   "us": 3791.383,
+   "share": 0.0012912032258546534
+  },
+  {
+   "name": "triton_red_fused_add_mul_rms_norm_2",
+   "us": 1413.3739999999998,
+   "share": 0.00048134231443752707
+  },
+  {
+   "name": "Memset (Device)",
+   "us": 1144.035999999998,
+   "share": 0.0003896158667414639
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_1",
+   "us": 780.415,
+   "share": 0.00026578015608166183
+  },
+  {
+   "name": "triton_red_fused__to_copy_embedding_mul_rms_norm_scaled_fp4_quant_0",
+   "us": 455.519,
+   "share": 0.0001551327318390376
+  },
+  {
+   "name": "triton_per_fused_add_cat_index_select_mul_rms_norm_split_split_with_sizes_sub_unsqueeze_view_2",
+   "us": 410.62399999999997,
+   "share": 0.00013984317422253073
+  },
+  {
+   "name": "triton_per_fused_rms_norm_split_with_sizes_view_3",
+   "us": 390.52700000000004,
+   "share": 0.00013299888778932128
+  },
+  {
+   "name": "Memcpy HtoD (Pinned -> Device)",
+   "us": 155.64899999999977,
+   "share": 5.300822705093383e-05
+  },
+  {
+   "name": "_gumbel_sample_kernel",
+   "us": 75.614,
+   "share": 2.575129991345474e-05
+  },
+  {
+   "name": "_prepare_prefill_inputs_kernel",
+   "us": 60.160000000000004,
+   "share": 2.0488245599934366e-05
+  }
+ ],
+ "gpu_kernel_us_total": 2936317.7879999997,
+ "kernel_events": 6520
+}

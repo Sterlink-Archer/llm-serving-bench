@@ -1,0 +1,10 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:50:55Z] mfma mfma32 random hold 0.5s: 6.2164 PF at 1744.0 MHz (84.98% of clock-adjusted peak, 1186.0 W)
+[2026-11-22T08:50:58Z] mfma mfma32 random hold 3.0s: 6.2071 PF at 1724.8 MHz (85.8% of clock-adjusted peak, 1217.0 W)
+[2026-11-22T08:50:58Z] mfma mfma32 zero hold 0.5s: 8.7183 PF at 2337.9 MHz (88.91% of clock-adjusted peak, 888.0 W)
+[2026-11-22T08:51:01Z] mfma mfma32 zero hold 3.0s: 8.7373 PF at 2377.3 MHz (87.63% of clock-adjusted peak, 880.0 W)
+[2026-11-22T08:51:02Z] mfma mfma16 random hold 0.5s: 5.6402 PF at 2030.6 MHz (66.22% of clock-adjusted peak, 1275.0 W)
+[2026-11-22T08:51:05Z] mfma mfma16 random hold 3.0s: 5.6391 PF at 1999.1 MHz (67.25% of clock-adjusted peak, 1307.0 W)
+[2026-11-22T08:51:05Z] mfma mfma16 zero hold 0.5s: 6.8313 PF at 2361.1 MHz (68.98% of clock-adjusted peak, 859.0 W)
+[2026-11-22T08:51:09Z] mfma mfma16 zero hold 3.0s: 6.8312 PF at 2380.9 MHz (68.41% of clock-adjusted peak, 826.5 W)
+[2026-11-22T08:51:09Z] mfma done in 18s

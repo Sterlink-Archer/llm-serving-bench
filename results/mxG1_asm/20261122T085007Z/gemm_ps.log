@@ -1,0 +1,106 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[2026-11-22T09:00:18Z] ps qkv_s M=16: asm256 28.2 us, ctypes256 28.19 (err 0.0), ps 27.4 us (err 0.0), engine 12.305
+[2026-11-22T09:00:19Z] ps qkv_s M=64: asm256 28.7 us, ctypes256 28.717 (err 0.0), ps 27.5 us (err 0.0), engine 12.862
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[2026-11-22T09:00:20Z] ps qkv_s M=128: asm256 29.6 us, ctypes256 29.574 (err 0.0), ps 29.8 us (err 0.0), engine 14.683
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[2026-11-22T09:00:21Z] ps qkv_s M=256: asm256 31.6 us, ctypes256 31.634 (err 0.0), ps 30.9 us (err 0.0), engine 18.625
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[2026-11-22T09:00:21Z] ps qkv_s M=384: asm256 31.3 us, ctypes256 31.242 (err 0.0), ps 29.9 us (err 0.0), engine 24.448
+[aiter] shape is M:2048, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:22Z] ps qkv_s M=2048: asm256 75.8 us, ctypes256 75.802 (err 0.0), ps 74.9 us (err 0.0), engine 76.54
+[aiter] shape is M:4096, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:22Z] ps qkv_s M=4096: asm256 147.4 us, ctypes256 147.437 (err 0.0), ps 142.3 us (err 0.0), engine 148.109
+[aiter] shape is M:6912, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:23Z] ps qkv_s M=6912: asm256 260.1 us, ctypes256 260.284 (err 0.0), ps 248.8 us (err 0.0), engine 262.528
+[aiter] shape is M:8192, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:24Z] ps qkv_s M=8192: asm256 303.5 us, ctypes256 303.193 (err 0.0), ps 277.7 us (err 0.0), engine 303.228
+[aiter] shape is M:8576, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:24Z] ps qkv_s M=8576: asm256 331.8 us, ctypes256 331.788 (err 0.0), ps 305.0 us (err 0.0), engine 332.603
+[aiter] shape is M:16384, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:25Z] ps qkv_s M=16384: asm256 601.1 us, ctypes256 600.556 (err 0.0), ps 543.0 us (err 0.0), engine 601.086
+[2026-11-22T09:00:26Z] ps qkv_g M=16: asm256 28.6 us, ctypes256 28.638 (err 0.0), ps 27.8 us (err 0.0), engine 13.761
+[2026-11-22T09:00:26Z] ps qkv_g M=64: asm256 29.3 us, ctypes256 29.295 (err 0.0), ps 28.1 us (err 0.0), engine 15.361
+[aiter] shape is M:128, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[2026-11-22T09:00:27Z] ps qkv_g M=128: asm256 30.2 us, ctypes256 30.205 (err 0.0), ps 30.0 us (err 0.0), engine 19.955
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[2026-11-22T09:00:28Z] ps qkv_g M=256: asm256 32.6 us, ctypes256 32.575 (err 0.0), ps 31.3 us (err 0.0), engine 22.917
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[2026-11-22T09:00:29Z] ps qkv_g M=384: asm256 32.4 us, ctypes256 32.344 (err 0.0), ps 30.6 us (err 0.0), engine 30.094
+[aiter] shape is M:2048, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:29Z] ps qkv_g M=2048: asm256 106.6 us, ctypes256 106.467 (err 0.0), ps 105.1 us (err 0.0), engine 106.648
+[aiter] shape is M:4096, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:30Z] ps qkv_g M=4096: asm256 190.1 us, ctypes256 189.811 (err 0.0), ps 181.3 us (err 0.0), engine 190.79
+[aiter] shape is M:6912, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:30Z] ps qkv_g M=6912: asm256 335.3 us, ctypes256 335.498 (err 0.0), ps 308.6 us (err 0.0), engine 335.457
+[aiter] shape is M:8192, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:31Z] ps qkv_g M=8192: asm256 382.7 us, ctypes256 382.306 (err 0.0), ps 347.2 us (err 0.0), engine 382.557
+[aiter] shape is M:8576, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:32Z] ps qkv_g M=8576: asm256 411.7 us, ctypes256 411.387 (err 0.0), ps 377.8 us (err 0.0), engine 412.661
+[aiter] shape is M:16384, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:32Z] ps qkv_g M=16384: asm256 779.9 us, ctypes256 779.377 (err 0.0), ps 683.4 us (err 0.0), engine 779.845
+[2026-11-22T09:00:33Z] ps o_s M=16: asm256 37.1 us, ctypes256 37.152 (err 0.0), ps 33.9 us (err 0.0), engine 13.978
+[2026-11-22T09:00:34Z] ps o_s M=64: asm256 37.7 us, ctypes256 37.699 (err 0.0), ps 33.9 us (err 0.0), engine 14.806
+[2026-11-22T09:00:35Z] ps o_s M=128: asm256 39.1 us, ctypes256 39.053 (err 0.0), ps 39.1 us (err 0.0), engine 14.757
+[2026-11-22T09:00:36Z] ps o_s M=256: asm256 40.7 us, ctypes256 40.713 (err 0.0), ps 40.0 us (err 0.0), engine 16.889
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[2026-11-22T09:00:36Z] ps o_s M=384: asm256 40.2 us, ctypes256 40.251 (err 0.0), ps 39.2 us (err 0.0), engine 19.821
+[aiter] shape is M:2048, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:37Z] ps o_s M=2048: asm256 49.0 us, ctypes256 49.018 (err 0.0), ps 41.9 us (err 0.0), engine 47.335
+[aiter] shape is M:4096, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:37Z] ps o_s M=4096: asm256 90.1 us, ctypes256 89.99 (err 0.0), ps 81.5 us (err 0.0), engine 92.635
+[2026-11-22T09:00:38Z] ps o_s M=6912: asm256 141.8 us, ctypes256 141.768 (err 0.0), ps 128.7 us (err 0.0), engine 142.644
+[2026-11-22T09:00:38Z] ps o_s M=8192: asm256 162.0 us, ctypes256 161.913 (err 0.0), ps 142.9 us (err 0.0), engine 161.954
+[2026-11-22T09:00:39Z] ps o_s M=8576: asm256 163.6 us, ctypes256 163.586 (err 0.0), ps 145.4 us (err 0.0), engine 163.877
+[2026-11-22T09:00:40Z] ps o_s M=16384: asm256 327.5 us, ctypes256 327.371 (err 0.0), ps 275.9 us (err 0.0), engine 325.843
+[2026-11-22T09:00:41Z] ps o_g M=16: asm256 69.0 us, ctypes256 68.904 (err 0.0), ps 59.6 us (err 0.0), engine 24.861
+[2026-11-22T09:00:41Z] ps o_g M=64: asm256 69.6 us, ctypes256 69.7 (err 0.0), ps 60.2 us (err 0.0), engine 26.262
+[2026-11-22T09:00:42Z] ps o_g M=128: asm256 71.8 us, ctypes256 71.805 (err 0.0), ps 71.9 us (err 0.0), engine 25.878
+[2026-11-22T09:00:43Z] ps o_g M=256: asm256 73.7 us, ctypes256 73.762 (err 0.0), ps 73.3 us (err 0.0), engine 30.082
+[2026-11-22T09:00:44Z] ps o_g M=384: asm256 72.5 us, ctypes256 72.417 (err 0.0), ps 71.6 us (err 0.0), engine 35.758
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[2026-11-22T09:00:45Z] ps o_g M=2048: asm256 86.9 us, ctypes256 85.993 (err 0.0), ps 80.2 us (err 0.0), engine 83.499
+[2026-11-22T09:00:45Z] ps o_g M=4096: asm256 164.7 us, ctypes256 164.188 (err 0.0), ps 155.4 us (err 0.0), engine 155.463
+[2026-11-22T09:00:46Z] ps o_g M=6912: asm256 264.6 us, ctypes256 264.613 (err 0.0), ps 244.3 us (err 0.0), engine 266.716
+[2026-11-22T09:00:46Z] ps o_g M=8192: asm256 297.9 us, ctypes256 297.897 (err 0.0), ps 275.3 us (err 0.0), engine 297.941
+[2026-11-22T09:00:47Z] ps o_g M=8576: asm256 305.8 us, ctypes256 305.422 (err 0.0), ps 278.8 us (err 0.0), engine 305.872
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[2026-11-22T09:00:47Z] ps o_g M=16384: asm256 594.4 us, ctypes256 593.843 (err 0.0), ps 545.2 us (err 0.0), engine 601.849
+[aiter] import [module_gemm_a4w4_blockscale] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_gemm_a4w4_blockscale.so
+[2026-11-22T09:00:48Z] ps gate_up M=16: asm256 32.7 us, ctypes256 32.702 (err 0.0), ps 31.8 us (err 0.0), engine 23.541
+[2026-11-22T09:00:49Z] ps gate_up M=64: asm256 33.6 us, ctypes256 33.541 (err 0.0), ps 32.5 us (err 0.0), engine 27.203
+[2026-11-22T09:00:50Z] ps gate_up M=128: asm256 34.8 us, ctypes256 34.771 (err 0.0), ps 34.9 us (err 0.0), engine 30.002
+[2026-11-22T09:00:51Z] ps gate_up M=256: asm256 38.6 us, ctypes256 38.599 (err 0.0), ps 37.3 us (err 0.0), engine 38.087
+[2026-11-22T09:00:51Z] ps gate_up M=384: asm256 65.2 us, ctypes256 65.075 (err 0.0), ps 60.4 us (err 0.0), engine 58.357
+[aiter] shape is M:2048, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:52Z] ps gate_up M=2048: asm256 221.6 us, ctypes256 221.687 (err 0.0), ps 211.3 us (err 0.0), engine 221.895
+[aiter] shape is M:4096, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:52Z] ps gate_up M=4096: asm256 417.0 us, ctypes256 416.839 (err 0.0), ps 386.5 us (err 0.0), engine 418.493
+[aiter] shape is M:6912, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:53Z] ps gate_up M=6912: asm256 676.7 us, ctypes256 675.395 (err 0.0), ps 632.3 us (err 0.0), engine 676.619
+[aiter] shape is M:8192, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:54Z] ps gate_up M=8192: asm256 798.6 us, ctypes256 798.754 (err 0.0), ps 740.5 us (err 0.0), engine 798.258
+[aiter] shape is M:8576, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[2026-11-22T09:00:54Z] ps gate_up M=8576: asm256 857.5 us, ctypes256 857.389 (err 0.0), ps 794.2 us (err 0.0), engine 1016.379
+[aiter] shape is M:16384, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:00:55Z] ps gate_up M=16384: asm256 1644.3 us, ctypes256 1643.879 (err 0.0), ps 1449.9 us (err 0.0), engine 1627.487
+[2026-11-22T09:00:56Z] ps down M=16: asm256 91.8 us, ctypes256 91.8 (err 0.0), ps 77.2 us (err 0.0), engine 32.901
+[2026-11-22T09:00:56Z] ps down M=64: asm256 92.6 us, ctypes256 92.678 (err 0.0), ps 78.3 us (err 0.0), engine 34.595
+[2026-11-22T09:00:57Z] ps down M=128: asm256 95.0 us, ctypes256 94.939 (err 0.0), ps 94.7 us (err 0.0), engine 34.158
+[2026-11-22T09:00:58Z] ps down M=256: asm256 98.5 us, ctypes256 98.442 (err 0.0), ps 97.3 us (err 0.0), engine 39.752
+[2026-11-22T09:00:59Z] ps down M=384: asm256 95.4 us, ctypes256 95.395 (err 0.0), ps 93.7 us (err 0.0), engine 46.415
+[2026-11-22T09:01:00Z] ps down M=2048: asm256 112.2 us, ctypes256 111.513 (err 0.0), ps 104.2 us (err 0.0), engine 108.547
+[aiter] shape is M:4096, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T09:01:00Z] ps down M=4096: asm256 220.0 us, ctypes256 219.531 (err 0.0), ps 201.1 us (err 0.0), engine 215.719
+[2026-11-22T09:01:01Z] ps down M=6912: asm256 351.3 us, ctypes256 349.335 (err 0.0), ps 317.8 us (err 0.0), engine 368.902
+[2026-11-22T09:01:01Z] ps down M=8192: asm256 388.3 us, ctypes256 387.952 (err 0.0), ps 356.0 us (err 0.0), engine 387.674
+[2026-11-22T09:01:02Z] ps down M=8576: asm256 397.1 us, ctypes256 396.96 (err 0.0), ps 361.4 us (err 0.0), engine 393.543
+[2026-11-22T09:01:02Z] ps down M=16384: asm256 773.5 us, ctypes256 772.644 (err 0.0), ps 697.8 us (err 0.0), engine 778.052
+[2026-11-22T09:01:03Z] ps sq8k M=8192: asm256 212.1 us, ctypes256 212.131 (err 0.0), ps 199.1 us (err 0.0), engine 213.254
+[2026-11-22T09:01:03Z] ps sq16k M=16384: asm256 1567.3 us, ctypes256 1564.79 (err 0.0), ps 1510.7 us (err 0.0), engine 1564.647
+[2026-11-22T09:01:03Z] ps done in 49s

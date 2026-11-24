@@ -1,0 +1,8 @@
+2026-11-22T04:32:55Z [s1_l40s_w4a16_fi] creating spot sandbox (L40S x1, $2.0697/h, ttl 50 min, budget $2.5; project so far ~$2.93)
+2026-11-22T04:33:19Z [s1_l40s_w4a16_fi] system: ok | NVIDIA L40S, 46068 MiB, 580.126.16, 350.00 W | 12 | Mem:              70          10          57           0           9          60 | overlay         614G  245G  344G  42% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:36:06Z [s1_l40s_w4a16_fi] download w4a16qat_fi: rc=0 166s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:40:20Z [s1_l40s_w4a16_fi] server w4a16qat_fi ready=True after 253.2s; gpu mem 41719 MiB, 46068 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 69963 graphs 51
+2026-11-22T04:40:55Z [s1_l40s_w4a16_fi] gate_gsm8kor100 rc=0 34s :: [gate_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=27s
+2026-11-22T04:57:45Z [s1_l40s_w4a16_fi] protocol_w4a16qat_fi rc=0 1011s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=2570.3771535094857 tok/s -> /root/or/out/protocol_w4a16qat_fi/protocol_summary.json
+2026-11-22T05:00:03Z [s1_l40s_w4a16_fi] protocol_w4a16qat_fi_textclient rc=0 138s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.738); prefill=None tok/s -> /root/or/out/protocol_w4a16qat_fi_textclient/protocol_summary.json
+2026-11-22T05:00:24Z [s1_l40s_w4a16_fi] done: elapsed 27.5 min, est $0.95; project est $12.42

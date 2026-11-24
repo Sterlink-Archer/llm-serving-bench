@@ -1,0 +1,194 @@
+{
+ "label": "ik4_mi355x_aiter",
+ "stage": "ik-kernel",
+ "claim_group": "ik4_mi355x_aiter",
+ "model": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "price_bar": {
+  "name": "OpenRouter cheapest: PrimeIntellect thinkingmachines/inkling-2-mini (fp4)",
+  "in_usd_per_m": 0.075,
+  "out_usd_per_m": 0.3,
+  "cached_usd_per_m": 0.015,
+  "source": "research/raw/phase2_or_endpoints_thinkingmachines_inkling-2-mini_20261122T070046Z.json"
+ },
+ "price_bar_usd_per_req": 0.0008265,
+ "breakeven_rps_vs_bar": 1.5115,
+ "note": "Wave 4 (MI355X, SGLang inkling-2-mini-mi35x image): paired same-box AITER BF16 GEMM tuning for Inkling's logged shapes (N=8600 K=2304 qkv+rel projection, N=2304 K=3072 output projection; ik1 ran AITER's default 'torch solution:0' for all 263). Base -> tune (aiter gradlib gemm_tuner.py, box/aiter_tune.py) -> tuned. Each server: aiter_inspect (versions, tuner, Inkling2 quant code paths, untuned-shape count), GSM8K test[:100] gate at effort 'high', torch-profiler prefill summary (4x10K), column B 180 s rungs at 1.0/1.25/1.5/2.0x break-even with a real-text 16x10K prefill shot, seed 7.",
+ "snapshot": {
+  "name": "or-sglang-ik2m-mi35x-mi355x-c8m32d150",
+  "image": "lmsysorg/sglang:inkling-2-mini-mi35x",
+  "image_digest_amd64": "sha256:f53f969460964a88a203b41c8ac52efcd1cb99954f7d49c57489a3b4d761228a",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 140,
+ "budget_usd": 12.0,
+ "servers": [
+  {
+   "name": "base",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton",
+   "env": {
+    "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_base"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_base",
+     "cmd": "bash /root/or/ik/aiter_inspect.sh base",
+     "outputs": [
+      "out/aiter_inspect_base.txt"
+     ],
+     "est_s": 60
+    },
+    {
+     "type": "eval",
+     "name": "gate_base_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_base",
+     "est_s": 300,
+     "outputs": [
+      "out/profile_prefill_base.json"
+     ],
+     "cmd": "python3 bench/profile_prefill.py --model inkling --dir /root/or/out/prof_base --n 4 --tokens 10000 --out /root/or/out/profile_prefill_base.json"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_base_B_text",
+     "client": "traffic",
+     "breakeven_rps": 1.5115,
+     "rates": [
+      1.511,
+      1.889,
+      2.267,
+      3.023
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": true
+    },
+    {
+     "type": "sh",
+     "name": "aiter_tune",
+     "est_s": 2700,
+     "cmd": "python3 /root/or/ik/aiter_tune.py --log /root/or/server_base.log --out /root/or/out --timeout 2400",
+     "outputs": [
+      "out/aiter_untuned_inkling.csv",
+      "out/aiter_tuned_inkling.csv",
+      "out/aiter_tune_summary.json",
+      "out/aiter_tune.log"
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  },
+  {
+   "name": "tuned",
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "dir": "/root/models/inkling"
+    }
+   ],
+   "served_name": "inkling",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton",
+   "env": {
+    "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE",
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof_tuned"
+   },
+   "ready_timeout_s": 2400,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_tuned",
+     "cmd": "bash /root/or/ik/aiter_inspect.sh tuned",
+     "outputs": [
+      "out/aiter_inspect_tuned.txt"
+     ],
+     "est_s": 60
+    },
+    {
+     "type": "eval",
+     "name": "gate_tuned_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "max_tokens": 16384,
+     "chat_template_kwargs": {
+      "reasoning_effort": "high"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88
+     },
+     "est_s": 600
+    },
+    {
+     "type": "sh",
+     "name": "profile_prefill_tuned",
+     "est_s": 300,
+     "outputs": [
+      "out/profile_prefill_tuned.json"
+     ],
+     "cmd": "python3 bench/profile_prefill.py --model inkling --dir /root/or/out/prof_tuned --n 4 --tokens 10000 --out /root/or/out/profile_prefill_tuned.json"
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_tuned_B_text",
+     "client": "traffic",
+     "breakeven_rps": 1.5115,
+     "rates": [
+      1.511,
+      1.889,
+      2.267,
+      3.023
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 180,
+     "prefill_shot": true
+    }
+   ],
+   "delete_weights_after": false,
+   "startup_rules": {
+    "require_global_512": false,
+    "triton_ok": true
+   }
+  }
+ ],
+ "setup_cmd": "mkdir -p /root/or/ik /root/or/out\ncat > /root/or/ik/aiter_inspect.sh <<'IKEOF_AITER_INSPECT_SH'\n#!/bin/bash\n# aiter_inspect.sh: what the SGLang MI35x image actually runs for Inkling-2-Mini, before and after our AITER tuning.\n# Versions, the AITER BF16 GEMM tuner and its CSV formats, the Inkling2 quantization code paths on ROCm (which MoE and\n# GEMM functions an NVFP4 / MXFP8 expert reaches on gfx950), and how many \"not found tuned config\" shapes the running\n# server logged. Output: /root/or/out/aiter_inspect_<tag>.txt (pulled by the step).\nTAG=${1:-base}\nOUT=/root/or/out/aiter_inspect_${TAG}.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ) tag=$TAG\"\npython3 - <<'PY'\nimport importlib.util, importlib.metadata as md, os, glob, re\ndef ver(p):\n    try: return md.version(p)\n    except Exception as e: return f\"? ({e.__class__.__name__})\"\nfor p in (\"sglang\", \"torch\", \"triton\", \"amd-aiter\", \"aiter\", \"flashinfer-python\"):\n    print(f\"version {p}: {ver(p)}\")\na = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\ns = os.path.dirname(importlib.util.find_spec(\"sglang\").origin)\nroot = os.path.dirname(a)\nprint(\"aiter dir\", a, \"| sglang dir\", s)\nfor pat in (\"**/gemm_tuner.py\", \"**/gradlib/**/*.py\", \"**/*bf16*untuned*.csv\", \"**/bf16_tuned_gemm.csv\"):\n    hits = sorted(glob.glob(os.path.join(root, pat), recursive=True))[:8]\n    print(f\"find {pat}: {hits}\")\nfor f in sorted(glob.glob(os.path.join(a, \"configs\", \"*bf16*untuned*.csv\")))[:2] + sorted(glob.glob(os.path.join(a, \"configs\", \"bf16_tuned_gemm.csv\")))[:1]:\n    with open(f) as fh:\n        print(f\"head {f}:\", fh.readline().strip(), \"|\", fh.readline().strip())\nprint(\"model_configs bf16:\", sorted(os.path.basename(x) for x in glob.glob(os.path.join(a, \"configs\", \"model_configs\", \"*bf16*\"))))\nenvs = set()\nfor f in glob.glob(os.path.join(a, \"**\", \"*.py\"), recursive=True):\n    try:\n        t = open(f, errors=\"ignore\").read()\n    except Exception:\n        continue\n    envs.update(re.findall(r\"AITER_(?:CONFIG|TUNE)[A-Z0-9_]*\", t))\nprint(\"aiter env names:\", sorted(envs)[:40])\n# Inkling2 quantization on ROCm: which files mention it, and which MoE / GEMM entry points they call\nhits = []\nfor f in glob.glob(os.path.join(s, \"srt\", \"**\", \"*.py\"), recursive=True):\n    t = open(f, errors=\"ignore\").read()\n    if re.search(r\"inkling2\", t, re.I) and re.search(r\"quant|moe|fp4|mxfp8\", t, re.I):\n        hits.append(f)\nprint(\"sglang inkling2 quant/moe files:\", [os.path.relpath(h, s) for h in hits][:20])\nfor h in hits[:6]:\n    t = open(h, errors=\"ignore\").read()\n    calls = sorted(set(re.findall(r\"\\b(fused_moe\\w*|ck_moe\\w*|asm_moe\\w*|triton_kernel_moe\\w*|fused_experts\\w*|dequant\\w*|\"\n                                  r\"mxfp4\\w*|nvfp4\\w*|gemm_a\\w*|cutlass\\w*|flashinfer\\w*|_is_hip|is_hip|is_gfx95\\w*|aiter\\.\\w+)\", t)))\n    print(f\"calls in {os.path.relpath(h, s)}:\", calls[:40])\nPY\nfor L in /root/or/server_*.log; do\n  [ -f \"$L\" ] || continue\n  echo \"log $L: untuned-shape lines $(grep -c 'not found tuned config' \"$L\"), distinct $(grep -o 'shape is M:[0-9]*, N:[0-9]*, K:[0-9]*' \"$L\" | sort -u | wc -l)\"\ndone\n} > \"$OUT\" 2>&1\ntail -n 30 \"$OUT\"\nIKEOF_AITER_INSPECT_SH\ncat > /root/or/ik/aiter_tune.py <<'IKEOF_AITER_TUNE_PY'\n\"\"\"aiter_tune.py: tune AITER's BF16 GEMMs for the exact shapes Inkling-2-Mini runs on an MI355X, then drop the tuned CSV\nwhere AITER merges model tables (aiter/configs/model_configs/inkling2mini_bf16_tuned_gemm.csv), so the NEXT server start\npicks it up.\n\nShapes come from the running server's own log: every \"[aiter] shape is M:.., N:.., K:.. ... not found tuned config ...\nwill use default config! using torch solution:0\" line (ik1: 263 distinct shapes, all N=8600 K=2304 = the fused\nq/k/v/rel projection and N=2304 K=3072 = the output projection, M = SGLang's prefill-graph token buckets and decode batch\nsizes). The tuner is AITER's own gradlib gemm_tuner.py, located at run time; its CLI flags are read from --help, so a\nrenamed flag fails loudly instead of silently tuning nothing.\n\n  python3 aiter_tune.py --log /root/or/server_base.log --out /root/or/out [--timeout 2400] [--min-m 1]\n\nWrites <out>/aiter_untuned_inkling.csv, <out>/aiter_tuned_inkling.csv, <out>/aiter_tune_summary.json.\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport csv\nimport glob\nimport importlib.util\nimport json\nimport os\nimport re\nimport shutil\nimport subprocess\nimport sys\nimport time\n\nPAT = re.compile(r\"shape is M:(\\d+), N:(\\d+), K:(\\d+) dtype='([\\w.]+)' otype='([\\w.]+)' bias=(\\w+), scaleAB=(\\w+), \"\n                 r\"bpreshuffle=(\\w+), not found tuned config\")\n\n\ndef main():\n    ap = argparse.ArgumentParser()\n    ap.add_argument(\"--log\", action=\"append\", required=True)\n    ap.add_argument(\"--out\", required=True)\n    ap.add_argument(\"--timeout\", type=int, default=2400)\n    ap.add_argument(\"--min-m\", type=int, default=1)\n    a = ap.parse_args()\n    os.makedirs(a.out, exist_ok=True)\n    summ = dict(t_start=time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime()))\n    shapes = {}\n    for lg in a.log:\n        for m in PAT.finditer(open(lg, errors=\"replace\").read()):\n            M, N, K = int(m.group(1)), int(m.group(2)), int(m.group(3))\n            if M >= a.min_m:\n                shapes[(M, N, K)] = dict(dtype=m.group(4), outdtype=m.group(5), bias=m.group(6), scaleAB=m.group(7),\n                                         bpreshuffle=m.group(8))\n    summ[\"shapes\"] = len(shapes)\n    summ[\"nk\"] = sorted({f\"N={n},K={k}\" for _, n, k in shapes})\n    print(f\"[aiter_tune] {len(shapes)} untuned shapes from {a.log}: {summ['nk']}\", flush=True)\n    adir = os.path.dirname(importlib.util.find_spec(\"aiter\").origin)\n    root = os.path.dirname(adir)\n    tuners = sorted(glob.glob(os.path.join(root, \"**\", \"gradlib\", \"**\", \"gemm_tuner.py\"), recursive=True)) or \\\n        sorted(glob.glob(os.path.join(root, \"**\", \"gemm_tuner.py\"), recursive=True))\n    tmpl = (sorted(glob.glob(os.path.join(adir, \"configs\", \"bf16_untuned_gemm.csv\"))) +\n            sorted(glob.glob(os.path.join(adir, \"configs\", \"*bf16*untuned*.csv\"))))\n    summ.update(tuner=tuners[:1], template=tmpl[:1])\n    if not tuners or not shapes:\n        summ[\"error\"] = \"no tuner found\" if not tuners else \"no untuned shapes in the log\"\n        json.dump(summ, open(os.path.join(a.out, \"aiter_tune_summary.json\"), \"w\"), indent=1)\n        print(f\"[aiter_tune] ERROR {summ['error']}\", flush=True)\n        return 2\n    header = next(csv.reader(open(tmpl[0]))) if tmpl else [\"M\", \"N\", \"K\", \"bias\", \"dtype\", \"outdtype\", \"scaleAB\", \"bpreshuffle\"]\n    summ[\"untuned_header\"] = header\n    unt = os.path.join(a.out, \"aiter_untuned_inkling.csv\")\n    with open(unt, \"w\", newline=\"\") as f:\n        w = csv.writer(f)\n        w.writerow(header)\n        for (M, N, K), d in sorted(shapes.items(), key=lambda kv: (kv[0][1], kv[0][2], kv[0][0])):\n            row = dict(M=M, N=N, K=K, **d)\n            w.writerow([row.get(h.strip(), \"\") for h in header])\n    help_txt = subprocess.run([sys.executable, tuners[0], \"--help\"], capture_output=True, text=True, timeout=120,\n                              cwd=os.path.dirname(tuners[0])).stdout\n    flags = set(re.findall(r\"(--[\\w-]+)\", help_txt))\n    summ[\"tuner_flags\"] = sorted(flags)\n    tuned = os.path.join(a.out, \"aiter_tuned_inkling.csv\")\n    in_flag = next((f for f in (\"--input_file\", \"--untune_file\", \"--input\") if f in flags), None)\n    out_flag = next((f for f in (\"--tuned_file\", \"--output_file\", \"--output\") if f in flags), None)\n    if not in_flag or not out_flag:\n        summ[\"error\"] = f\"tuner flags not recognised: {sorted(flags)}\"\n        json.dump(summ, open(os.path.join(a.out, \"aiter_tune_summary.json\"), \"w\"), indent=1)\n        print(f\"[aiter_tune] ERROR {summ['error']}\", flush=True)\n        return 3\n    cmd = [sys.executable, tuners[0], in_flag, unt, out_flag, tuned]\n    summ[\"cmd\"] = cmd\n    print(f\"[aiter_tune] running {' '.join(cmd)}\", flush=True)\n    t0 = time.time()\n    try:\n        r = subprocess.run(cmd, capture_output=True, text=True, timeout=a.timeout, cwd=os.path.dirname(tuners[0]))\n        summ[\"rc\"] = r.returncode\n        open(os.path.join(a.out, \"aiter_tune.log\"), \"w\").write(r.stdout[-200000:] + \"\\n--- stderr ---\\n\" + r.stderr[-200000:])\n    except subprocess.TimeoutExpired as e:\n        summ[\"rc\"] = \"timeout\"\n        open(os.path.join(a.out, \"aiter_tune.log\"), \"w\").write(str(e.stdout or \"\")[-200000:])\n    summ[\"tune_s\"] = round(time.time() - t0, 1)\n    rows = list(csv.DictReader(open(tuned))) if os.path.exists(tuned) else []\n    summ[\"tuned_rows\"] = len(rows)\n    summ[\"tuned_header\"] = list(rows[0].keys()) if rows else None\n    if rows:\n        dst = os.path.join(adir, \"configs\", \"model_configs\", \"inkling2mini_bf16_tuned_gemm.csv\")\n        os.makedirs(os.path.dirname(dst), exist_ok=True)\n        shutil.copy(tuned, dst)\n        summ[\"installed_as\"] = dst\n        sol = {}\n        for r_ in rows:\n            sol[r_.get(\"libtype\") or r_.get(\"solidx\") or \"?\"] = sol.get(r_.get(\"libtype\") or r_.get(\"solidx\") or \"?\", 0) + 1\n        summ[\"solutions_by_lib\"] = sol\n    summ[\"t_end\"] = time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime())\n    json.dump(summ, open(os.path.join(a.out, \"aiter_tune_summary.json\"), \"w\"), indent=1)\n    print(f\"[aiter_tune] rc={summ.get('rc')} {summ['tune_s']}s tuned_rows={len(rows)} installed={summ.get('installed_as')}\", flush=True)\n    return 0 if rows else 4\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\nIKEOF_AITER_TUNE_PY"
+}

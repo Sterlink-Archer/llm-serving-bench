@@ -1,0 +1,10 @@
+[matrix smoke] 8 cells, ~3.7 min; calibration {'template_overhead_tokens': 14, 'cpt_prose': 4.067796610169491, 'cpt_table': 1.7482517482517483}
+[s1k_256__concurrency=1] C=1 win=16s done=4 err=0 drop=0 req/s=0.19 out=61 in=194 tok/s cache=0.00 TTFT p50=0.084s p95=0.117s TPOT p50=16.2ms srv=60.69807689355602
+[s1k_256__concurrency=16] C=16 win=16s done=44 err=0 drop=0 req/s=2.38 out=588 in=2296 tok/s cache=0.00 TTFT p50=0.131s p95=0.212s TPOT p50=26.5ms srv=589.0871052475154
+[prefix] C=8 win=16s done=90 err=0 drop=0 req/s=4.81 out=313 in=17690 tok/s cache=0.80 TTFT p50=0.102s p95=0.150s TPOT p50=24.2ms srv=312.9135939479445
+[ciu] R=8.0 win=16s done=100 err=0 drop=0 req/s=5.81 out=174 in=12231 tok/s cache=0.09 TTFT p50=0.366s p95=0.917s TPOT p50=110.9ms srv=173.78169854583433
+[fin] C=4 win=16s done=7 err=0 drop=0 req/s=0.44 out=113 in=5881 tok/s cache=0.02 TTFT p50=1.382s p95=1.425s TPOT p50=31.0ms srv=112.75335695158228
+[chat] C=8 win=16s done=16 err=0 drop=0 req/s=0.88 out=372 in=7615 tok/s cache=0.44 TTFT p50=0.108s p95=0.169s TPOT p50=21.3ms srv=371.3778112519997
+[natural] C=8 win=16s done=32 err=0 drop=0 req/s=2.00 out=426 in=399 tok/s cache=0.00 TTFT p50=0.057s p95=0.111s TPOT p50=18.4ms srv=426.46154727306146
+[longdoc] C=4 win=16s done=55 err=0 drop=0 req/s=3.19 out=199 in=27136 tok/s cache=0.93 TTFT p50=0.075s p95=0.088s TPOT p50=19.2ms srv=198.5047593438295
+[matrix smoke] done in 2.7 min -> /root/or/out/m_fp8dyn_smoke/matrix_summary.md

@@ -1,0 +1,2 @@
+[r0.881x_s7] R=1.5 win=240s done=418 err=0 drop=0 req/s=1.50 out=562 in=14021 tok/s cache=0.00 TTFT p50=1.332s p95=3.393s TPOT p50=28.9ms srv=561.6887874502507
+[protocol] max_rate_at_slo=1.5 req/s (break-even 1.7019); prefill=None tok/s -> /root/or/out/protocol_glm_mtp3_text/protocol_summary.json

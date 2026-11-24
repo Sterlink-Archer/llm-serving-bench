@@ -1,0 +1,8 @@
+{
+ "t": "2026-11-22T08:04:03Z",
+ "what": "aiter_tune.py replaced on the live box before its tune step ran",
+ "why": "the uploaded version preferred gradlib/gemm_tuner.py (hipBLASLt-only); the replacement uses AITER's multi-backend csrc/gemm_a16w16/gemm_tuner.py and tunes prefill shapes (M>=1024) by default",
+ "before": "bd506d96d1f93584e75720f68f68fd6c9d0191d90509b0b066b0f6adf250a271  /root/or/ik/aiter_tune.py\n7582 bash -c sha256sum /root/or/ik/aiter_tune.py; pgrep -fa aiter_tune || echo not-running",
+ "after": "431f9371ebb0e6c659437d43fb2592ea1dd9e46c5659edba557de101a6c8a424  /root/or/ik/aiter_tune.py",
+ "local_sha256": "431f9371ebb0e6c659437d43fb2592ea1dd9e46c5659edba557de101a6c8a424"
+}

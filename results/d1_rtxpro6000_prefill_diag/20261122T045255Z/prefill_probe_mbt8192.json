@@ -1,0 +1,25 @@
+{
+ "client": "vllm bench serve (OpenRelay's probe.sh)",
+ "concurrency": 16,
+ "prompt_tokens_target": 10000,
+ "runs": [
+  {
+   "run": 1,
+   "file": "prefill_probe_mbt8192_cell_run1.json",
+   "input_tok_s": 12125.129653030619,
+   "completed": 64,
+   "p95_ttft_s": 13.515346234699246,
+   "rc": 0
+  },
+  {
+   "run": 2,
+   "file": "prefill_probe_mbt8192_cell_run2.json",
+   "input_tok_s": 12105.251615888707,
+   "completed": 64,
+   "p95_ttft_s": 13.539910815877374,
+   "rc": 0
+  }
+ ],
+ "prefill_tok_s": 12105.251615888707,
+ "counted": "second run"
+}

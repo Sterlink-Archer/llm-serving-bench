@@ -1,0 +1,100 @@
+{
+ "schema": "protocol/1",
+ "run_id": "s1_h100_fp8/20261122T042445Z",
+ "config_id": "s1_h100_fp8:fp8dyn",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 1.3074,
+ "duration_s": 120.0,
+ "warmup_s": 24.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "synthetic",
+ "params": {
+  "input_dist": {
+   "uniform": [
+    1900,
+    17100
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  }
+ },
+ "calibration": {
+  "template_overhead_tokens": 14,
+  "cpt_prose": 4.067796610169491,
+  "cpt_table": 1.7482517482517483
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 1.0,
+   "rate": 1.3074,
+   "seeds": {
+    "7": "cells/r1x_1.3074rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "achieved_rps": 0.8333333333333334,
+     "arrived_rps": 1.3645833333333333,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 17.387938001193106,
+     "ttft_p95_s": 27.452800231520087,
+     "ttft_p99_s": 28.095293021854012,
+     "tpot_p50_s": 0.09493162161188906,
+     "tpot_p95_s": 0.10843459439538665,
+     "e2e_p50_s": 42.77744175540283,
+     "errors": 0,
+     "requests_sent": 161,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 392.7083333333333,
+     "in_tok_s": 8234.260416666666,
+     "cached_in_tok_s": 0.0,
+     "server_gen_tok_s": 392.70191595304266,
+     "spec_accept_len": null,
+     "preemptions": 0.0,
+     "peak_inflight": 81,
+     "client": "traffic.py (steady window)"
+    }
+   },
+   "kept_seed": 7,
+   "achieved_rps": 0.8333333333333334,
+   "arrived_rps": 1.3645833333333333,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 17.387938001193106,
+   "ttft_p95_s": 27.452800231520087,
+   "ttft_p99_s": 28.095293021854012,
+   "tpot_p50_s": 0.09493162161188906,
+   "tpot_p95_s": 0.10843459439538665,
+   "e2e_p50_s": 42.77744175540283,
+   "errors": 0,
+   "requests_sent": 161,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 392.7083333333333,
+   "in_tok_s": 8234.260416666666,
+   "cached_in_tok_s": 0.0,
+   "server_gen_tok_s": 392.70191595304266,
+   "spec_accept_len": null,
+   "preemptions": 0.0,
+   "peak_inflight": 81,
+   "client": "traffic.py (steady window)"
+  }
+ ],
+ "prefill": null,
+ "t_start": "2026-11-22T04:34:30Z",
+ "client": "traffic",
+ "max_rate_at_slo_rps": 0.0,
+ "max_goodput_rps": 0.0,
+ "t_end": "2026-11-22T04:36:31Z",
+ "wall_minutes": 2.0287881731987
+}

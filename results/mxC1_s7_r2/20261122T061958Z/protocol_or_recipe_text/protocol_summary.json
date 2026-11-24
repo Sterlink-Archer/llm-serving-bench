@@ -1,0 +1,189 @@
+{
+ "schema": "protocol/1",
+ "run_id": "mxC1_s7_r2/20261122T061958Z",
+ "config_id": "mxC1_s7_r2:or_recipe",
+ "source": "https://openrelay.inc/blog/gemma-4-agentic-kernel-engineering (2026-09-29); https://github.com/OpenRelayInc/inference-recipes/tree/main/gemma-4-31b-mi355x",
+ "slo": {
+  "ttft_p95_s": 4.0
+ },
+ "breakeven_rps": 1.6961,
+ "duration_s": 300.0,
+ "warmup_s": 60.0,
+ "seeds": [
+  7
+ ],
+ "kept": "worse",
+ "workload": "synthetic",
+ "params": {
+  "input_dist": {
+   "uniform": [
+    1900,
+    17100
+   ]
+  },
+  "output_dist": {
+   "uniform": [
+    76,
+    684
+   ]
+  }
+ },
+ "calibration": {
+  "tokenizer": "/root/models/mxfp4",
+  "exact_prose_tokens": true
+ },
+ "definitions": "goodput_rps: completed req/s in the steady window of one (rate, seed) cell when that cell meets the SLO (p95 TTFT < slo, errors < 1%, no drops), else 0. max_rate_at_slo_rps: the highest offered rate whose worse seed meets the SLO.",
+ "ladder": [
+  {
+   "multiple": 1.916,
+   "rate": 3.25,
+   "seeds": {
+    "7": "cells/r1.916x_3.25rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "achieved_rps": 3.033333333333333,
+     "arrived_rps": 3.254166666666667,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 0.8320919210091233,
+     "ttft_p95_s": 4.909899777080865,
+     "ttft_p99_s": 5.699522967301309,
+     "tpot_p50_s": 0.03698763763487778,
+     "tpot_p95_s": 0.06586514437543718,
+     "e2e_p50_s": 12.65630489308387,
+     "errors": 0,
+     "requests_sent": 975,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 1170.2166666666667,
+     "in_tok_s": 30204.9,
+     "cached_in_tok_s": 0.0,
+     "server_gen_tok_s": 1170.190845657325,
+     "spec_accept_len": 2.374315899882424,
+     "preemptions": 0.0,
+     "peak_inflight": 89,
+     "spec_acceptance_rate": 0.6871579499412118,
+     "server_prompt_tok_s": 30204.233524271804,
+     "prompt_tok_xcheck_ratio": 0.9999779348473857,
+     "prompt_tok_xcheck_pass": true,
+     "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+     "client": "traffic.py (steady window)",
+     "prompt_tokens_mean": 9529.83596214511,
+     "completion_tokens_mean": 363.5720294426919,
+     "exact_arrivals": true,
+     "stratified_lengths": true
+    }
+   },
+   "kept_seed": 7,
+   "achieved_rps": 3.033333333333333,
+   "arrived_rps": 3.254166666666667,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 0.8320919210091233,
+   "ttft_p95_s": 4.909899777080865,
+   "ttft_p99_s": 5.699522967301309,
+   "tpot_p50_s": 0.03698763763487778,
+   "tpot_p95_s": 0.06586514437543718,
+   "e2e_p50_s": 12.65630489308387,
+   "errors": 0,
+   "requests_sent": 975,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 1170.2166666666667,
+   "in_tok_s": 30204.9,
+   "cached_in_tok_s": 0.0,
+   "server_gen_tok_s": 1170.190845657325,
+   "spec_accept_len": 2.374315899882424,
+   "preemptions": 0.0,
+   "peak_inflight": 89,
+   "spec_acceptance_rate": 0.6871579499412118,
+   "server_prompt_tok_s": 30204.233524271804,
+   "prompt_tok_xcheck_ratio": 0.9999779348473857,
+   "prompt_tok_xcheck_pass": true,
+   "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+   "client": "traffic.py (steady window)",
+   "prompt_tokens_mean": 9529.83596214511,
+   "completion_tokens_mean": 363.5720294426919,
+   "exact_arrivals": true,
+   "stratified_lengths": true
+  },
+  {
+   "multiple": 2.064,
+   "rate": 3.5,
+   "seeds": {
+    "7": "cells/r2.064x_3.5rps_s7.json"
+   },
+   "results": {
+    "7": {
+     "achieved_rps": 3.1458333333333335,
+     "arrived_rps": 3.5125,
+     "goodput_rps": 0.0,
+     "ttft_p50_s": 3.6556930819060653,
+     "ttft_p95_s": 13.830345143051819,
+     "ttft_p99_s": 14.843996318089776,
+     "tpot_p50_s": 0.04818413250659314,
+     "tpot_p95_s": 0.06043321230030881,
+     "e2e_p50_s": 21.930573035031557,
+     "errors": 0,
+     "requests_sent": 1050,
+     "dropped": 0,
+     "slo_pass": false,
+     "out_tok_s": 1222.3583333333333,
+     "in_tok_s": 31671.404166666667,
+     "cached_in_tok_s": 0.0,
+     "server_gen_tok_s": 1222.2924196146862,
+     "spec_accept_len": 2.376316024087597,
+     "preemptions": 0.0,
+     "peak_inflight": 122,
+     "spec_acceptance_rate": 0.6881580120437986,
+     "server_prompt_tok_s": 31669.69633683766,
+     "prompt_tok_xcheck_ratio": 0.9999460765989402,
+     "prompt_tok_xcheck_pass": true,
+     "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+     "client": "traffic.py (steady window)",
+     "prompt_tokens_mean": 9486.245472837021,
+     "completion_tokens_mean": 366.5372233400402,
+     "exact_arrivals": true,
+     "stratified_lengths": true
+    }
+   },
+   "kept_seed": 7,
+   "achieved_rps": 3.1458333333333335,
+   "arrived_rps": 3.5125,
+   "goodput_rps": 0.0,
+   "ttft_p50_s": 3.6556930819060653,
+   "ttft_p95_s": 13.830345143051819,
+   "ttft_p99_s": 14.843996318089776,
+   "tpot_p50_s": 0.04818413250659314,
+   "tpot_p95_s": 0.06043321230030881,
+   "e2e_p50_s": 21.930573035031557,
+   "errors": 0,
+   "requests_sent": 1050,
+   "dropped": 0,
+   "slo_pass": false,
+   "out_tok_s": 1222.3583333333333,
+   "in_tok_s": 31671.404166666667,
+   "cached_in_tok_s": 0.0,
+   "server_gen_tok_s": 1222.2924196146862,
+   "spec_accept_len": 2.376316024087597,
+   "preemptions": 0.0,
+   "peak_inflight": 122,
+   "spec_acceptance_rate": 0.6881580120437986,
+   "server_prompt_tok_s": 31669.69633683766,
+   "prompt_tok_xcheck_ratio": 0.9999460765989402,
+   "prompt_tok_xcheck_pass": true,
+   "prompt_tok_xcheck_basis": "steady window: server counter delta between the window-edge scrapes vs client prompt tokens / window",
+   "client": "traffic.py (steady window)",
+   "prompt_tokens_mean": 9486.245472837021,
+   "completion_tokens_mean": 366.5372233400402,
+   "exact_arrivals": true,
+   "stratified_lengths": true
+  }
+ ],
+ "prefill": null,
+ "t_start": "2026-11-22T06:36:25Z",
+ "client": "traffic",
+ "max_rate_at_slo_rps": 0.0,
+ "max_goodput_rps": 0.0,
+ "t_end": "2026-11-22T06:46:30Z",
+ "wall_minutes": 10.088180581728617
+}

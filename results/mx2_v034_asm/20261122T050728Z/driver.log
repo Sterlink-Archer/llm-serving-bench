@@ -1,0 +1,15 @@
+2026-11-22T05:07:28Z [mx2_v034_asm] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$17.34)
+2026-11-22T05:07:47Z [mx2_v034_asm] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:08:20Z [mx2_v034_asm] download v034_asm: rc=0 32s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:11:01Z [mx2_v034_asm] server v034_asm ready=True after 159.6s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 286953 MB
+        FREE_VRAM: 7639 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 286953 MB
+        FREE_VISIBLE_VRAM: 7639 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 1062402 graphs 40
+2026-11-22T05:11:03Z [mx2_v034_asm] inspect_v034_asm rc=0 2s :: PATCH force_asm_fp4: applied (kernels/linear/mxfp4/aiter.py)
+2026-11-22T05:11:16Z [mx2_v034_asm] gate_v034_asm_gsm8kor100 rc=0 13s :: [gate_v034_asm_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=3s
+2026-11-22T05:23:55Z [mx2_v034_asm] protocol_v034_asm rc=0 759s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=41910.1438822667 tok/s -> /root/or/out/protocol_v034_asm/protocol_summary.json
+2026-11-22T05:24:17Z [mx2_v034_asm] done: elapsed 16.8 min, est $1.33; project est $31.7

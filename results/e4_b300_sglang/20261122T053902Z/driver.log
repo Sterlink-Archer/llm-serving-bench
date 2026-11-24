@@ -1,0 +1,4 @@
+2026-11-22T05:39:02Z [e4_b300_sglang] building snapshot or-sglang0523-b300-c8m64d300 from lmsysorg/sglang:v0.5.23
+2026-11-22T05:39:33Z [e4_b300_sglang] signal 15: tearing down
+2026-11-22T05:39:38Z [e4_b300_sglang] done: elapsed 0.0 min, est $0.00; project est $41.38
+2026-11-22T05:39:43Z [e4_b300_sglang] done: elapsed 0.0 min, est $0.00; project est $41.43

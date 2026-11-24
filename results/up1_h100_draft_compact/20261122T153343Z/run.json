@@ -1,0 +1,22 @@
+{
+ "label": "up1_h100_draft_compact",
+ "run_id": "up1_h100_draft_compact/20261122T153343Z",
+ "config_file": "configs/up1_h100_draft_compact.json",
+ "t_start": "2026-11-22T15:33:43Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {},
+ "servers": {},
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T15:34:46Z",
+ "project_spend": {
+  "est_usd": 314.49,
+  "metered_usd": 283.5388
+ }
+}

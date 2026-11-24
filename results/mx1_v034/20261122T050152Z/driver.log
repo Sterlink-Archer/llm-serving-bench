@@ -1,0 +1,18 @@
+2026-11-22T05:01:53Z [mx1_v034] building snapshot or-vllmrocm0340-mi355x-c8m48d150 from vllm/vllm-openai-rocm:v0.34.0
+2026-11-22T05:02:09Z [mx1_v034] creating spot sandbox (MI355X x1, $4.7565/h, ttl 80 min, budget $7.0; project so far ~$13.18)
+2026-11-22T05:02:25Z [mx1_v034] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:02:48Z [mx1_v034] download v034_stock: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:06:01Z [mx1_v034] server v034_stock ready=True after 192.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 286853 MB
+        FREE_VRAM: 7739 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 286853 MB
+        FREE_VISIBLE_VRAM: 7739 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 1061998 graphs 40
+2026-11-22T05:06:04Z [mx1_v034] inspect_v034_stock rc=0 2s :: PATCH force_asm_fp4: applied
+2026-11-22T05:06:17Z [mx1_v034] gate_v034_stock_gsm8kor100 rc=0 13s :: [gate_v034_stock_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=7s
+2026-11-22T05:15:48Z [mx1_v034] protocol_v034_stock rc=0 571s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=24499.24390954078 tok/s -> /root/or/out/protocol_v034_stock/protocol_summary.json
+2026-11-22T05:15:59Z [mx1_v034] signal 15: tearing down
+2026-11-22T05:16:09Z [mx1_v034] done: elapsed 14.0 min, est $1.11; project est $25.23
+2026-11-22T05:16:13Z [mx1_v034] done: elapsed 14.1 min, est $1.11; project est $25.29

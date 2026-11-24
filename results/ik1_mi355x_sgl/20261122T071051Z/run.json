@@ -1,0 +1,125 @@
+{
+ "label": "ik1_mi355x_sgl",
+ "run_id": "ik1_mi355x_sgl/20261122T071051Z",
+ "config_file": "recipes/inkling/configs/ik1_mi355x_sgl.json",
+ "t_start": "2026-11-22T07:10:51Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0157,
+  "total": 4.4973
+ },
+ "phases": {
+  "snapshot_build_s": 739.6,
+  "create_s": 9.3
+ },
+ "servers": {
+  "sgl": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.7,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:  25%|\u2588\u2588\u258c       | 3/12 [00:00<00:00, 29.44it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:00<00:00, 10.21it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:01<00:00,  7.70it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:08<00:00,  1.41it/s]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590715 secs=8.8 GBps=2.305 method=huggingface_hub\n",
+    "bytes": 20191590715,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 235.7,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton",
+    "env": {
+     "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE"
+    },
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 277520 MB\n        FREE_VRAM: 17072 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 277520 MB\n        FREE_VISIBLE_VRAM: 17072 MB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "triton",
+     "global_512": "triton"
+    },
+    "kv_cache_tokens": 4828288,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "Triton attention on global 512-dim layers",
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend triton",
+     "env": {
+      "ROCM_QUICK_REDUCE_QUANTIZATION": "NONE"
+     },
+     "ok": true,
+     "rejected": true,
+     "reason": "Triton attention on global 512-dim layers"
+    }
+   ],
+   "steps": {
+    "setup_vllm_client": {
+     "rc": 0,
+     "secs": 32.4,
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "tail": "[setup_vllm_client] vllm==0.33.0 client in /root/vb after 15 s: \n"
+    },
+    "gate_sgl_gsm8kor100": {
+     "rc": 0,
+     "secs": 53.2,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 16384 --label gate_sgl_gsm8kor100 --out /root/or/out/gate_sgl_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_sgl_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=48s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.97,
+      "n": 100,
+      "passed": 97,
+      "pass": true
+     }
+    },
+    "protocol_sgl_A_random": {
+     "rc": 0,
+     "secs": 621.7,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_A_random --breakeven-rps 1.5115 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/inkling --rates 1.511,2.267,3.023,4.534,6.046,7.557 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik1_mi355x_sgl/20261122T071051Z --config-id ik1_mi355x_sgl:sgl --prefill-shot --max-minutes 91.5",
+     "tail": "[vllmbench r=2.267 s=7] done=272 failed=0 req/s=1.6629596012850572 p95 TTFT=2.821305558690801 median TPOT=219.01484604619404 ms in tok/s=16272\n[vllmbench r=3.023 s=7] done=362 failed=0 req/s=1.767598819787933 p95 TTFT=10.432126969099045 median TPOT=310.9102866703197 ms in tok/s=17496\n[protocol] max_rate_at_slo=2.267 req/s (break-even 1.5115); prefill=27599.009912053494 tok/s -> /root/or/out/protocol_sgl_A_random/protocol_summary.json\n",
+     "breakeven_rps": 1.5115
+    },
+    "protocol_sgl_B_text": {
+     "rc": 0,
+     "secs": 249.4,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_B_text --breakeven-rps 1.5115 --client traffic --stratify --tokenizer /root/models/inkling --rates 1.511,2.267,3.023,4.534,6.046,7.557 --seeds 7 --duration 120 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ik1_mi355x_sgl/20261122T071051Z --config-id ik1_mi355x_sgl:sgl --max-minutes 81.1",
+     "tail": " type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r1.5x_s7] R=2.267 win=96s done=38 err=0 drop=0 req/s=0.34 out=353 in=19044 tok/s cache=0.00 TTFT p50=6.287s p95=19.947s TPOT p50=288.2ms srv=57.25083732153224\n[protocol] max_rate_at_slo=1.511 req/s (break-even 1.5115); prefill=None tok/s -> /root/or/out/protocol_sgl_B_text/protocol_summary.json\n",
+     "breakeven_rps": 1.5115
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 100.52,
+  "this_run_ceiling_usd": 7.87,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 238,
+ "sandbox_id": "38a12a44-8af9-495d-811a-2bdffe65153b",
+ "elapsed_s": 1263.4,
+ "est_cost_usd": 1.578,
+ "t_saved": "2026-11-22T07:44:14Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: AMD Instinct MI355X VF\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x21AE2C88D0E224EC\n        OAM_ID: 1\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n        FLAGS: 258\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n192\nMem:            2015          91        1618           0         322        1924\noverlay         150G  6.8M  150G   1% /\nPython 3.12.3\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.11.0+rocm10.0.0 cuda None\n",
+ "deleted": "2026-11-22T07:43:54Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 111.3,
+  "metered_usd": 91.9923
+ }
+}

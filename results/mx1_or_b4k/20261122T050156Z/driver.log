@@ -1,0 +1,15 @@
+2026-11-22T05:01:56Z [mx1_or_b4k] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$13.05)
+2026-11-22T05:02:20Z [mx1_or_b4k] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:03:13Z [mx1_or_b4k] download or_b4096: rc=0 52s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:06:10Z [mx1_or_b4k] server or_b4096 ready=True after 176.5s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268667 MB
+        FREE_VRAM: 25925 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268667 MB
+        FREE_VISIBLE_VRAM: 25925 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 1615920 graphs 19
+2026-11-22T05:06:14Z [mx1_or_b4k] inspect_or_b4096 rc=0 2s :: mx file: inspect.sh
+2026-11-22T05:06:26Z [mx1_or_b4k] gate_or_b4096_gsm8kor100 rc=0 13s :: [gate_or_b4096_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=5s
+2026-11-22T05:19:05Z [mx1_or_b4k] protocol_or_b4096 rc=0 759s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=40767.86110707112 tok/s -> /root/or/out/protocol_or_b4096/protocol_summary.json
+2026-11-22T05:19:27Z [mx1_or_b4k] done: elapsed 17.5 min, est $1.39; project est $28.04

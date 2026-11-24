@@ -1,0 +1,1 @@
+[profile] prefill 9025 tok/s over 4x10000; gemm=69.9% attention=10.9% fused_elementwise=10.7% other=8.4% memcpy/memset=0.0%

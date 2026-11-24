@@ -1,0 +1,22 @@
+{
+ "label": "e4_b300_sglang",
+ "run_id": "e4_b300_sglang/20261122T053902Z",
+ "config_file": "configs/e4_b300_sglang.json",
+ "t_start": "2026-11-22T05:39:02Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.4032,
+  "mem": 1.0368,
+  "disk": 0.0319,
+  "total": 6.6419
+ },
+ "phases": {},
+ "servers": {},
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T05:39:43Z",
+ "project_spend": {
+  "est_usd": 41.43,
+  "metered_usd": 29.4063
+ }
+}

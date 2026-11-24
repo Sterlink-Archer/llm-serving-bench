@@ -1,0 +1,106 @@
+{
+ "label": "d1_h100_prefill_diag",
+ "stage": "diagnose (brainstorm round 2)",
+ "note": "Where does prefill time go, and does chunk size move it? Same model/flags as s1_h100_fp8. Server 1 (max-num-batched-tokens 8192, torch profiler on): profile 4 concurrent 10K-token prefills -> GPU kernel time by GEMM / attention / other; then OpenRelay's prefill probe. Servers 2-3: the probe at max-num-batched-tokens 16384 and 32768 (engine restart on the same box, weights kept).",
+ "snapshot": {
+  "name": "or-vllm0330-h100-c8m48d150",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 50,
+ "budget_usd": 3.5,
+ "servers": [
+  {
+   "name": "fp8dyn_mbt8192",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --profiler-config '{\"profiler\":\"torch\",\"torch_profiler_dir\":\"/root/or/out/prof\",\"torch_profiler_with_stack\":false}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "profile_prefill_4x10k",
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "outputs": [
+      "out/profile_prefill_4x10k.json"
+     ],
+     "est_s": 300
+    },
+    {
+     "type": "sh",
+     "name": "prefill_probe_mbt8192",
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt8192.json",
+     "outputs": [
+      "out/prefill_probe_mbt8192.json",
+      "out/prefill_probe_mbt8192_cell_run2.json"
+     ],
+     "est_s": 240
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "fp8dyn_mbt16384",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 16384 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "prefill_probe_mbt16384",
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt16384.json",
+     "outputs": [
+      "out/prefill_probe_mbt16384.json",
+      "out/prefill_probe_mbt16384_cell_run2.json"
+     ],
+     "est_s": 240
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "fp8dyn_mbt32768",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 32768 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "prefill_probe_mbt32768",
+     "cmd": "python3 bench/prefill_probe.py --model gemma --tokenizer /root/models/fp8dyn --out /root/or/out/prefill_probe_mbt32768.json",
+     "outputs": [
+      "out/prefill_probe_mbt32768.json",
+      "out/prefill_probe_mbt32768_cell_run2.json"
+     ],
+     "est_s": 240
+    }
+   ],
+   "delete_weights_after": true
+  }
+ ]
+}

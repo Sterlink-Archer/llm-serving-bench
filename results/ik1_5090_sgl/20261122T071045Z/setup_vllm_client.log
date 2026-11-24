@@ -1,0 +1,1 @@
+[setup_vllm_client] vllm==0.33.0 client in /root/vb after 67 s: 0.33.0

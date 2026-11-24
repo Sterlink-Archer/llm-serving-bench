@@ -1,0 +1,37 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": null,
+  "global_512": null
+ },
+ "attention_backend_lines": [],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": null,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": null,
+ "max_concurrency_at_max_len": null,
+ "max_model_len": null,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "missing": [
+  "kv_cache_tokens",
+  "cuda_graph_sizes"
+ ],
+ "startup_rules": {
+  "require_global_512": false,
+  "triton_ok": true
+ },
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+ "schema": "startup_facts/1",
+ "run_id": "ik9_mi355x_aiter/20261122T085622Z",
+ "config_id": "ik9_mi355x_aiter:tune",
+ "image": "lmsysorg/sglang:inkling-2-mini-mi35x",
+ "image_digest": "sha256:f53f969460964a88a203b41c8ac52efcd1cb99954f7d49c57489a3b4d761228a",
+ "model_repo": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+ "source_log": "results/ik9_mi355x_aiter/20261122T085622Z/server_tune.log",
+ "sub_phases": []
+}

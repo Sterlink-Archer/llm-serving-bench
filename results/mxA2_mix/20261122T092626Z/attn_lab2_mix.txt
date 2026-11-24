@@ -1,0 +1,54 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+split40 D=512: one launch 2.873 ms | prefill 2.293 + decode 0.477 | split saves +0.103 ms/layer = +1.03 ms per mixed step (10 layers)
+split40 D=256: one launch 0.362 ms | prefill 0.264 + decode 0.067 | split saves +0.032 ms/layer = +1.58 ms per mixed step (50 layers)
+m40_512: 24 done, 0 failed of 24 (46 s this worker)
+m40_512: default 2.872 ms (median over 24 interleaved baselines); 0 configs aborted
+   1.113x  2.564 ms vs 2.855  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.999x  2.867 ms vs 2.865  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.740x  3.866 ms vs 2.862  err=0.0015  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.726x  3.934 ms vs 2.858  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.717x  3.999 ms vs 2.869  err=0.0011  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.674x  4.240 ms vs 2.859  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+m40_256: 12 done, 0 failed of 12 (13 s this worker)
+m40_256: default 0.374 ms (median over 12 interleaved baselines); 0 configs aborted
+   0.997x  0.362 ms vs 0.361  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.882x  0.423 ms vs 0.373  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.874x  0.428 ms vs 0.374  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 2}}
+   0.823x  0.451 ms vs 0.371  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 2}}
+   0.809x  0.460 ms vs 0.373  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.771x  0.481 ms vs 0.371  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+m96_512: 18 done, 1 failed of 24 (55 s this worker)
+m96_512: 23 done, 1 failed of 24 (19 s this worker)
+m96_512: default 4.015 ms (median over 23 interleaved baselines); 1 configs aborted
+   1.001x  3.992 ms vs 3.997  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.821x  4.868 ms vs 3.998  err=0.0013  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.790x  5.078 ms vs 4.013  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.766x  5.225 ms vs 4.004  err=0.0010  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.765x  5.208 ms vs 3.984  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.698x  5.714 ms vs 3.990  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   aborted: {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}} (LLVM ERROR: Found 1 machine code errors.)
+=== summary
+split40 D=512: one launch 2.873 ms | prefill 2.293 + decode 0.477 | split saves +0.103 ms/layer = +1.03 ms per mixed step (10 layers)
+split40 D=256: one launch 0.362 ms | prefill 0.264 + decode 0.067 | split saves +0.032 ms/layer = +1.58 ms per mixed step (50 layers)
+m40_512: default 2.872 ms (median over 24 interleaved baselines); 0 configs aborted
+   1.113x  2.564 ms vs 2.855  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.999x  2.867 ms vs 2.865  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.740x  3.866 ms vs 2.862  err=0.0015  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.726x  3.934 ms vs 2.858  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.717x  3.999 ms vs 2.869  err=0.0011  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.674x  4.240 ms vs 2.859  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+m40_256: default 0.374 ms (median over 12 interleaved baselines); 0 configs aborted
+   0.997x  0.362 ms vs 0.361  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.882x  0.423 ms vs 0.373  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.874x  0.428 ms vs 0.374  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 2}}
+   0.823x  0.451 ms vs 0.371  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 2}}
+   0.809x  0.460 ms vs 0.373  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.771x  0.481 ms vs 0.371  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+m96_512: default 4.015 ms (median over 23 interleaved baselines); 1 configs aborted
+   1.001x  3.992 ms vs 3.997  err=0.0000  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.821x  4.868 ms vs 3.998  err=0.0013  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.790x  5.078 ms vs 4.013  err=0.0013  {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 128, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   0.766x  5.225 ms vs 4.004  err=0.0010  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 32, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}}
+   0.765x  5.208 ms vs 3.984  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}}
+   0.698x  5.714 ms vs 3.990  err=0.0000  {'attn_2d': {'BLOCK_M': 64, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 1}}
+   aborted: {'attn_2d': {'BLOCK_M': 128, 'TILE_SIZE': 64, 'num_warps': 4, 'num_stages': 2, 'waves_per_eu': 1}} (LLVM ERROR: Found 1 machine code errors.)

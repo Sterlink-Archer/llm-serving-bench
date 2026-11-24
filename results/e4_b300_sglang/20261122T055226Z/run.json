@@ -1,0 +1,130 @@
+{
+ "label": "e4_b300_sglang",
+ "run_id": "e4_b300_sglang/20261122T055226Z",
+ "config_file": "configs/e4_b300_sglang.json",
+ "t_start": "2026-11-22T05:52:26Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.4032,
+  "mem": 1.0368,
+  "disk": 0.0319,
+  "total": 6.6419
+ },
+ "phases": {
+  "create_s": 7.5
+ },
+ "servers": {
+  "sgl_nvfp4_nv": {
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "resolved_sha": "4135a98a9b728a548947683219633b25682223ac",
+     "files": 12,
+     "bytes": 32665856087
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 73.4,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:   8%|\u258a         | 1/12 [00:00<00:02,  4.52it/s]\rFetching 12 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 8/12 [00:01<00:00,  6.26it/s]\rFetching 12 files:  75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 9/12 [00:26<00:12,  4.03s/it]\rFetching 12 files:  83%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e | 10/12 [00:58<00:18,  9.21s/it]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [01:06<00:08,  8.86s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:09<00:00,  7.72s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [01:09<00:00,  5.83s/it]\nDL repo=nvidia/Gemma-4-31B-IT-NVFP4 rev=4135a98a9b files=12 bytes=32665860283 secs=70.4 GBps=0.464 method=huggingface_hub\n",
+    "bytes": 32665860283,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 425.0,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --quantization modelopt_fp4 --attention-backend trtllm_mha",
+    "env": {
+     "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+    },
+    "gpu_mem_after_load": "245215 MiB, 275040 MiB",
+    "smoke": "t\",\"content\":\"Hi! How can I help you today\",\"reasoning_content\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":0,\"completion_tokens_details\":null},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "trtllm_mha",
+     "global_512": "trtllm_mha"
+    },
+    "kv_cache_tokens": 591296,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --quantization modelopt_fp4 --attention-backend trtllm_mha",
+     "env": {
+      "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "setup_vllm_client": {
+     "rc": 0,
+     "secs": 43.8,
+     "cmd": "bash bench/setup_vllm_client.sh",
+     "tail": "[setup_vllm_client] vllm==0.33.0 client in /root/vb after 17 s: 0.33.0\n"
+    },
+    "gate_gsm8kor100": {
+     "rc": 0,
+     "secs": 12.2,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label gate_gsm8kor100 --out /root/or/out/gate_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.965",
+     "tail": "[gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=9s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965,
+      "acc": 0.99,
+      "n": 100,
+      "passed": 99,
+      "pass": true
+     }
+    },
+    "profile_prefill_4x10k": {
+     "rc": 0,
+     "secs": 179.0,
+     "cmd": "python3 bench/profile_prefill.py --model gemma --dir /root/or/out/prof --n 4 --tokens 10000 --out /root/or/out/profile_prefill_4x10k.json",
+     "tail": "[profile] prefill 9025 tok/s over 4x10000; gemm=69.9% attention=10.9% fused_elementwise=10.7% other=8.4% memcpy/memset=0.0%\n"
+    },
+    "protocol_sgl_b300_A_random": {
+     "rc": 0,
+     "secs": 918.8,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_b300_A_random --breakeven-rps 2.3684 --client vllmbench --vllm-bin /root/vb/bin/vllm --tokenizer /root/models/nvfp4_modelopt --multiples 1.0,1.5 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id e4_b300_sglang/20261122T055226Z --config-id e4_b300_sglang:sgl_nvfp4_nv --prefill-shot --max-minutes 74.6",
+     "tail": "[vllmbench r=2.3684 s=7] done=710 failed=0 req/s=2.3094015319183607 p95 TTFT=2.1385643658461038 median TPOT=41.00957915912153 ms in tok/s=22270\n[vllmbench r=3.5526 s=7] done=1065 failed=0 req/s=2.5543417896691136 p95 TTFT=105.28930175118148 median TPOT=57.48462738047599 ms in tok/s=24701\n[protocol] max_rate_at_slo=2.3684 req/s (break-even 2.3684); prefill=34512.444455878234 tok/s -> /root/or/out/protocol_sgl_b300_A_random/protocol_summary.json\n",
+     "breakeven_rps": 2.3683853943802595
+    },
+    "protocol_sgl_b300_B_text": {
+     "rc": 0,
+     "secs": 616.2,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_sgl_b300_B_text --breakeven-rps 2.3684 --client traffic --stratify --tokenizer /root/models/nvfp4_modelopt --multiples 1.0,1.5 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id e4_b300_sglang/20261122T055226Z --config-id e4_b300_sglang:sgl_nvfp4_nv --max-minutes 59.2",
+     "tail": "[r1x_s7] R=2.3684 win=240s done=693 err=0 drop=0 req/s=2.50 out=941 in=22080 tok/s cache=0.00 TTFT p50=0.640s p95=3.066s TPOT p50=36.5ms srv=969.7988671826654\n[r1.5x_s7] R=3.5526 win=240s done=726 err=0 drop=0 req/s=2.61 out=1001 in=24919 tok/s cache=0.00 TTFT p50=42.859s p95=65.907s TPOT p50=57.3ms srv=994.0298055282918\n[protocol] max_rate_at_slo=2.3684 req/s (break-even 2.3684); prefill=None tok/s -> /root/or/out/protocol_sgl_b300_B_text/protocol_summary.json\n",
+     "breakeven_rps": 2.3683853943802595
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 52.18,
+  "this_run_ceiling_usd": 10.52,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 1,
+ "sandbox_id": "60b37c75-d0c9-47a8-b294-d2750bc2d912",
+ "elapsed_s": 2344.1,
+ "est_cost_usd": 4.325,
+ "t_saved": "2026-11-22T06:31:30Z",
+ "system": "ok\nNVIDIA B300 SXM6 PC, 275040 MiB, 595.91.07, 1100.00 W\n224\nMem:            3527         105        2385           0        1058        3422\noverlay         300G  5.2M  300G   1% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.5.23\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T06:31:12Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 84.28,
+  "metered_usd": 66.3804
+ }
+}

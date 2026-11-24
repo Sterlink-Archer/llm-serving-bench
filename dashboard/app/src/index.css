@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tokens. Series slots follow the dataviz reference palette in its validated order (adjacent CVD dE >= 8.4,
+   normal-vision >= 19.3, both modes); dark steps are their own values, not a flip. */
+:root {
+  --bg: #f6f6f4;
+  --panel: #ffffff;
+  --panel-2: #f3f3f0;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --line: #e7e6e1;
+  --line-2: #d9d8d2;
+  --grid: #ecebe6;
+  --axis: #c3c2b7;
+  --ref: #0b0b0b;
+  --accent: #2a78d6;
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #d03b3b;
+  --good-ink: #006300; --warn-ink: #7a5200; --crit-ink: #b42323;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+  --o1: #86b6ef; --o2: #3987e5; --o3: #1c5cab; --o4: #0d366b;
+  --demo: #fff4d6;
+  color-scheme: light;
+}
+.dark {
+  --bg: #0b0b0b;
+  --panel: #161615;
+  --panel-2: #1e1e1d;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #8f8d87;
+  --line: #262624;
+  --line-2: #33332f;
+  --grid: #232321;
+  --axis: #3a3a36;
+  --ref: #f0efec;
+  --accent: #3987e5;
+  --good-ink: #2bc22b; --warn-ink: #fab219; --crit-ink: #f07a7a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  --o1: #256abf; --o2: #3987e5; --o3: #6da7ec; --o4: #b7d3f6;
+  --demo: #3a2f12;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-accent: var(--accent);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-crit: var(--crit);
+  --color-good-ink: var(--good-ink);
+  --color-warn-ink: var(--warn-ink);
+  --color-crit-ink: var(--crit-ink);
+  --color-demo: var(--demo);
+}
+
+html, body, #root { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+.tnum { font-variant-numeric: tabular-nums; }
+::selection { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.recharts-surface:focus, .recharts-wrapper:focus, .recharts-sector:focus { outline: none; }
+.recharts-text { font-family: var(--font-sans); }
+.recharts-tooltip-wrapper { z-index: 20; }
+@keyframes pulse-dot { 50% { opacity: .35; } }
+.live-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+@media print { .no-print { display: none !important; } }

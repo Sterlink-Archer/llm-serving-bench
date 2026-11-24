@@ -1,0 +1,472 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:51:17Z] sweep qkv_s N=16384 K=5376: 18 weight copies of 44.6 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:51:22Z]   qkv_s M=16: engine 12.4 us 0.228 PF | best asm_32x128 12.3 us 0.229 PF (1.006x) clk 2393.2 | 34 variants 5s
+[aiter] shape is M:32, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:51:26Z]   qkv_s M=32: engine 15.5 us 0.363 PF | best asm_32x128 13.0 us 0.434 PF (1.195x) clk 2392.2 | 34 variants 4s
+[2026-11-22T08:51:30Z]   qkv_s M=48: engine 12.4 us 0.680 PF | best asm_32x128 12.4 us 0.681 PF (1.001x) clk 2377.5 | 34 variants 4s
+[2026-11-22T08:51:33Z]   qkv_s M=64: engine 13.2 us 0.853 PF | best asm_32x128 12.8 us 0.879 PF (1.030x) clk 2381.1 | 34 variants 4s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:51:38Z]   qkv_s M=96: engine 13.6 us 1.245 PF | best asm_64x128 13.6 us 1.248 PF (1.002x) clk 2371.5 | 42 variants 4s
+[2026-11-22T08:51:42Z]   qkv_s M=128: engine 14.7 us 1.536 PF | best asm_96x128 14.5 us 1.560 PF (1.015x) clk 2330.2 | 42 variants 4s
+[2026-11-22T08:51:47Z]   qkv_s M=160: engine 15.6 us 1.807 PF | best asm_128x128 15.5 us 1.823 PF (1.009x) clk 2320.4 | 42 variants 4s
+[2026-11-22T08:51:51Z]   qkv_s M=192: engine 16.5 us 2.049 PF | best asm_128x128 16.4 us 2.059 PF (1.005x) clk 2299.5 | 42 variants 4s
+[2026-11-22T08:51:56Z]   qkv_s M=256: engine 19.0 us 2.375 PF | best asm_128x128 18.6 us 2.429 PF (1.023x) clk 2344.2 | 42 variants 4s
+[2026-11-22T08:52:00Z]   qkv_s M=320: engine 23.2 us 2.432 PF | best asm_160x128 20.6 us 2.739 PF (1.127x) clk 2274.2 | 42 variants 5s
+[2026-11-22T08:52:05Z]   qkv_s M=384: engine 24.6 us 2.754 PF | best asm_192x128 22.6 us 3.000 PF (1.089x) clk 2241.6 | 42 variants 5s
+[aiter] shape is M:1024, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:08Z]   qkv_s M=1024: engine 40.5 us 4.459 PF | best asm_default 40.1 us 4.499 PF (1.009x) clk 1824.5 | 30 variants 3s
+[aiter] shape is M:2048, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:12Z]   qkv_s M=2048: engine 76.9 us 4.693 PF | best asm_default 75.9 us 4.755 PF (1.013x) clk 1822.8 | 30 variants 3s
+[aiter] shape is M:3072, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:15Z]   qkv_s M=3072: engine 113.0 us 4.788 PF | best asm_256x256 112.0 us 4.831 PF (1.009x) clk 1720.1 | 28 variants 3s
+[aiter] shape is M:4096, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:18Z]   qkv_s M=4096: engine 148.4 us 4.862 PF | best asm_256x256 147.4 us 4.895 PF (1.007x) clk 1716.4 | 28 variants 3s
+[aiter] shape is M:5120, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:21Z]   qkv_s M=5120: engine 185.9 us 4.851 PF | best asm_default 185.1 us 4.873 PF (1.005x) clk 1825.2 | 28 variants 3s
+[aiter] shape is M:6144, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:25Z]   qkv_s M=6144: engine 227.7 us 4.753 PF | best asm_default 226.0 us 4.789 PF (1.007x) clk 1850.8 | 28 variants 3s
+[aiter] shape is M:6912, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:28Z]   qkv_s M=6912: engine 261.1 us 4.663 PF | best asm_256x256 260.8 us 4.670 PF (1.001x) clk 1732.4 | 28 variants 3s
+[aiter] shape is M:7680, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:32Z]   qkv_s M=7680: engine 292.2 us 4.630 PF | best engine 292.2 us 4.630 PF (1.000x) clk 2047.6 | 28 variants 4s
+[aiter] shape is M:8192, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:35Z]   qkv_s M=8192: engine 301.8 us 4.782 PF | best engine 301.8 us 4.782 PF (1.000x) clk 2034.8 | 28 variants 4s
+[aiter] shape is M:8576, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:39Z]   qkv_s M=8576: engine 319.7 us 4.725 PF | best asm_256x256 317.4 us 4.759 PF (1.007x) clk 1857.2 | 28 variants 4s
+[aiter] shape is M:16384, N:16384, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:52:43Z]   qkv_s M=16384: engine 600.0 us 4.810 PF | best engine 600.0 us 4.810 PF (1.000x) clk 1791.9 | 28 variants 4s
+[2026-11-22T08:52:43Z] sweep done in 89s
+[2026-11-22T08:52:44Z] sweep qkv_s: rc 0 in 91s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:52:48Z] sweep qkv_g N=20480 K=5376: 14 weight copies of 55.8 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:52:52Z]   qkv_g M=16: engine 13.6 us 0.259 PF | best asm_32x128 13.2 us 0.268 PF (1.034x) clk 2389.9 | 34 variants 5s
+[2026-11-22T08:52:56Z]   qkv_g M=32: engine 13.8 us 0.510 PF | best asm_32x128 13.8 us 0.510 PF (1.000x) clk 2393.3 | 34 variants 3s
+[2026-11-22T08:52:59Z]   qkv_g M=48: engine 14.7 us 0.718 PF | best engine 14.7 us 0.718 PF (1.000x) clk 2380.7 | 34 variants 3s
+[2026-11-22T08:53:03Z]   qkv_g M=64: engine 16.1 us 0.874 PF | best asm_64x128 15.4 us 0.913 PF (1.045x) clk 2387.5 | 34 variants 3s
+[aiter] shape is M:96, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:53:07Z]   qkv_g M=96: engine 18.7 us 1.128 PF | best asm_96x128 17.6 us 1.202 PF (1.066x) clk 2381.8 | 42 variants 4s
+[aiter] shape is M:128, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:11Z]   qkv_g M=128: engine 20.1 us 1.405 PF | best asm_128x128 18.9 us 1.488 PF (1.059x) clk 2387.2 | 42 variants 4s
+[2026-11-22T08:53:15Z]   qkv_g M=160: engine 22.5 us 1.568 PF | best asm_160x128 20.3 us 1.737 PF (1.108x) clk 2386.8 | 42 variants 4s
+[2026-11-22T08:53:19Z]   qkv_g M=192: engine 23.3 us 1.817 PF | best asm_64x256 21.2 us 1.990 PF (1.095x) clk 2376.2 | 42 variants 4s
+[2026-11-22T08:53:24Z]   qkv_g M=256: engine 23.5 us 2.396 PF | best asm_96x256 22.9 us 2.461 PF (1.027x) clk 2340.8 | 42 variants 4s
+[2026-11-22T08:53:28Z]   qkv_g M=320: engine 28.4 us 2.483 PF | best asm_128x256 24.8 us 2.844 PF (1.145x) clk 2220.4 | 42 variants 4s
+[2026-11-22T08:53:32Z]   qkv_g M=384: engine 30.2 us 2.797 PF | best asm_128x256 26.3 us 3.212 PF (1.148x) clk 2248.6 | 42 variants 4s
+[2026-11-22T08:53:35Z]   qkv_g M=1024: engine 63.1 us 3.576 PF | best engine 63.1 us 3.576 PF (1.000x) clk 2149.8 | 30 variants 3s
+[aiter] shape is M:2048, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:39Z]   qkv_g M=2048: engine 108.5 us 4.155 PF | best asm_256x256 106.8 us 4.222 PF (1.016x) clk 1891.2 | 30 variants 3s
+[aiter] shape is M:3072, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:42Z]   qkv_g M=3072: engine 149.9 us 4.514 PF | best asm_256x256 149.1 us 4.538 PF (1.005x) clk 1699.4 | 28 variants 3s
+[aiter] shape is M:4096, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:45Z]   qkv_g M=4096: engine 191.2 us 4.717 PF | best asm_256x256 191.0 us 4.722 PF (1.001x) clk 1684.3 | 28 variants 3s
+[aiter] shape is M:5120, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:48Z]   qkv_g M=5120: engine 259.4 us 4.347 PF | best asm_256x256 257.7 us 4.376 PF (1.007x) clk 1743.4 | 28 variants 3s
+[aiter] shape is M:6144, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:51Z]   qkv_g M=6144: engine 300.4 us 4.504 PF | best asm_256x256 300.3 us 4.505 PF (1.000x) clk 1714.2 | 28 variants 3s
+[aiter] shape is M:6912, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:54Z]   qkv_g M=6912: engine 337.1 us 4.515 PF | best asm_256x256 334.9 us 4.545 PF (1.007x) clk 1697.1 | 28 variants 3s
+[aiter] shape is M:7680, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:53:58Z]   qkv_g M=7680: engine 373.0 us 4.534 PF | best asm_256x256 372.1 us 4.545 PF (1.002x) clk 1702.9 | 28 variants 3s
+[aiter] shape is M:8192, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:54:01Z]   qkv_g M=8192: engine 383.6 us 4.702 PF | best asm_256x256 382.4 us 4.717 PF (1.003x) clk 1687.4 | 28 variants 3s
+[aiter] shape is M:8576, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:54:05Z]   qkv_g M=8576: engine 413.5 us 4.567 PF | best asm_default 411.9 us 4.585 PF (1.004x) clk 1713.9 | 28 variants 3s
+[aiter] shape is M:16384, N:20480, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:54:09Z]   qkv_g M=16384: engine 778.2 us 4.636 PF | best asm_128x512 762.4 us 4.732 PF (1.021x) clk 1664.1 | 28 variants 4s
+[2026-11-22T08:54:09Z] sweep done in 84s
+[2026-11-22T08:54:10Z] sweep qkv_g: rc 0 in 86s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:54:13Z] sweep o_s N=5376 K=8192: 35 weight copies of 22.3 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:54:18Z]   o_s M=16: engine 14.0 us 0.101 PF | best asm_32x128 13.9 us 0.101 PF (1.001x) clk 2395.8 | 30 variants 5s
+[2026-11-22T08:54:21Z]   o_s M=32: engine 14.9 us 0.189 PF | best engine 14.9 us 0.189 PF (1.000x) clk 2395.8 | 30 variants 3s
+[2026-11-22T08:54:25Z]   o_s M=48: engine 14.0 us 0.301 PF | best engine 14.0 us 0.301 PF (1.000x) clk 2396.1 | 30 variants 3s
+[2026-11-22T08:54:28Z]   o_s M=64: engine 14.8 us 0.382 PF | best asm_32x128 14.8 us 0.382 PF (1.001x) clk 2394.8 | 30 variants 3s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:54:32Z]   o_s M=96: engine 14.6 us 0.580 PF | best asm_32x128 14.6 us 0.580 PF (1.000x) clk 2392.4 | 38 variants 4s
+[2026-11-22T08:54:36Z]   o_s M=128: engine 14.6 us 0.771 PF | best engine 14.6 us 0.771 PF (1.000x) clk 2392.7 | 38 variants 4s
+[2026-11-22T08:54:40Z]   o_s M=160: engine 15.5 us 0.911 PF | best asm_32x128 14.6 us 0.963 PF (1.056x) clk 2385.7 | 38 variants 4s
+[2026-11-22T08:54:45Z]   o_s M=192: engine 16.7 us 1.012 PF | best asm_32x128 14.7 us 1.154 PF (1.140x) clk 2380.6 | 38 variants 4s
+[2026-11-22T08:54:49Z]   o_s M=256: engine 16.8 us 1.338 PF | best asm_64x128 16.8 us 1.340 PF (1.001x) clk 2384.7 | 38 variants 4s
+[2026-11-22T08:54:53Z]   o_s M=320: engine 16.8 us 1.682 PF | best asm_96x128 16.7 us 1.687 PF (1.003x) clk 2374.0 | 38 variants 4s
+[2026-11-22T08:54:57Z]   o_s M=384: engine 19.8 us 1.707 PF | best asm_64x128 17.0 us 1.992 PF (1.167x) clk 2374.2 | 38 variants 4s
+[aiter] shape is M:1024, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:55:00Z]   o_s M=1024: engine 26.9 us 3.354 PF | best asm_default 26.6 us 3.386 PF (1.009x) clk 1920.0 | 28 variants 3s
+[aiter] shape is M:2048, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:55:03Z]   o_s M=2048: engine 46.7 us 3.859 PF | best asm_default 46.1 us 3.913 PF (1.014x) clk 2052.6 | 28 variants 3s
+[aiter] shape is M:3072, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:55:07Z]   o_s M=3072: engine 58.4 us 4.632 PF | best asm_256x256 57.6 us 4.694 PF (1.013x) clk 1718.9 | 27 variants 3s
+[aiter] shape is M:4096, N:5376, K:8192, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:55:10Z]   o_s M=4096: engine 91.3 us 3.951 PF | best asm_128x384 84.5 us 4.271 PF (1.081x) clk 1981.8 | 27 variants 3s
+[2026-11-22T08:55:13Z]   o_s M=5120: engine 102.3 us 4.407 PF | best asm_256x256 101.3 us 4.450 PF (1.010x) clk 1910.2 | 27 variants 3s
+[2026-11-22T08:55:16Z]   o_s M=6144: engine 113.2 us 4.779 PF | best asm_256x256 112.7 us 4.800 PF (1.004x) clk 1663.8 | 27 variants 3s
+[2026-11-22T08:55:19Z]   o_s M=6912: engine 141.4 us 4.307 PF | best asm_128x384 131.5 us 4.630 PF (1.075x) clk 1840.5 | 27 variants 3s
+[2026-11-22T08:55:23Z]   o_s M=7680: engine 150.0 us 4.509 PF | best asm_256x256 149.4 us 4.528 PF (1.004x) clk 1894.8 | 27 variants 3s
+[2026-11-22T08:55:26Z]   o_s M=8192: engine 158.3 us 4.557 PF | best asm_160x384 153.8 us 4.690 PF (1.029x) clk 1809.6 | 27 variants 3s
+[2026-11-22T08:55:30Z]   o_s M=8576: engine 163.8 us 4.612 PF | best asm_160x384 156.1 us 4.840 PF (1.049x) clk 1741.5 | 27 variants 3s
+[2026-11-22T08:55:34Z]   o_s M=16384: engine 327.3 us 4.409 PF | best asm_160x384 326.4 us 4.422 PF (1.003x) clk 1973.6 | 27 variants 4s
+[2026-11-22T08:55:34Z] sweep done in 83s
+[2026-11-22T08:55:35Z] sweep o_s: rc 0 in 85s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:55:38Z] sweep o_g N=5376 K=16384: 18 weight copies of 44.6 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:55:43Z]   o_g M=16: engine 24.9 us 0.113 PF | best asm_256x256_ks3 22.9 us 0.123 PF (1.086x) clk 2382.0 | 30 variants 5s
+[2026-11-22T08:55:46Z]   o_g M=32: engine 26.6 us 0.212 PF | best engine 26.6 us 0.212 PF (1.000x) clk 2397.1 | 30 variants 3s
+[2026-11-22T08:55:50Z]   o_g M=48: engine 25.0 us 0.338 PF | best asm_32x128 25.0 us 0.338 PF (1.001x) clk 2395.1 | 30 variants 3s
+[2026-11-22T08:55:53Z]   o_g M=64: engine 26.3 us 0.428 PF | best asm_32x128 26.3 us 0.429 PF (1.001x) clk 2391.9 | 30 variants 3s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:55:57Z]   o_g M=96: engine 26.0 us 0.651 PF | best engine 26.0 us 0.651 PF (1.000x) clk 2393.1 | 38 variants 4s
+[2026-11-22T08:56:01Z]   o_g M=128: engine 26.0 us 0.868 PF | best engine 26.0 us 0.868 PF (1.000x) clk 2390.2 | 38 variants 4s
+[2026-11-22T08:56:05Z]   o_g M=160: engine 27.7 us 1.016 PF | best asm_32x128 25.8 us 1.091 PF (1.074x) clk 2385.5 | 38 variants 4s
+[2026-11-22T08:56:10Z]   o_g M=192: engine 30.2 us 1.121 PF | best asm_32x128 25.9 us 1.305 PF (1.164x) clk 2368.2 | 38 variants 4s
+[2026-11-22T08:56:14Z]   o_g M=256: engine 30.3 us 1.489 PF | best asm_64x128 30.2 us 1.492 PF (1.002x) clk 2385.9 | 38 variants 4s
+[2026-11-22T08:56:18Z]   o_g M=320: engine 29.5 us 1.911 PF | best asm_96x128 29.4 us 1.916 PF (1.003x) clk 2360.2 | 38 variants 4s
+[2026-11-22T08:56:22Z]   o_g M=384: engine 35.8 us 1.889 PF | best asm_64x128 30.5 us 2.216 PF (1.173x) clk 2336.3 | 38 variants 4s
+[aiter] shape is M:1024, N:5376, K:16384, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:56:25Z]   o_g M=1024: engine 47.9 us 3.764 PF | best asm_default 47.1 us 3.828 PF (1.017x) clk 1796.8 | 28 variants 3s
+[2026-11-22T08:56:28Z]   o_g M=2048: engine 82.5 us 4.371 PF | best asm_default 82.4 us 4.379 PF (1.002x) clk 1963.9 | 28 variants 3s
+[2026-11-22T08:56:31Z]   o_g M=3072: engine 134.0 us 4.038 PF | best asm_256x256 105.4 us 5.134 PF (1.272x) clk 1668.8 | 27 variants 3s
+[2026-11-22T08:56:35Z]   o_g M=4096: engine 155.7 us 4.636 PF | best asm_128x384 151.7 us 4.758 PF (1.026x) clk 1855.0 | 27 variants 3s
+[2026-11-22T08:56:38Z]   o_g M=5120: engine 193.7 us 4.655 PF | best asm_160x384 185.8 us 4.853 PF (1.042x) clk 1720.6 | 27 variants 3s
+[2026-11-22T08:56:41Z]   o_g M=6144: engine 209.6 us 5.163 PF | best asm_256x256 208.2 us 5.198 PF (1.007x) clk 1618.4 | 27 variants 3s
+[2026-11-22T08:56:44Z]   o_g M=6912: engine 267.4 us 4.553 PF | best asm_128x384 257.1 us 4.736 PF (1.040x) clk 1902.2 | 27 variants 3s
+[2026-11-22T08:56:48Z]   o_g M=7680: engine 291.4 us 4.643 PF | best asm_160x384 283.8 us 4.768 PF (1.027x) clk 1819.6 | 27 variants 3s
+[2026-11-22T08:56:51Z]   o_g M=8192: engine 298.0 us 4.843 PF | best asm_160x384 293.6 us 4.914 PF (1.015x) clk 1827.9 | 27 variants 3s
+[2026-11-22T08:56:55Z]   o_g M=8576: engine 305.7 us 4.943 PF | best asm_160x384 302.2 us 4.999 PF (1.011x) clk 1779.4 | 27 variants 4s
+[2026-11-22T08:56:59Z]   o_g M=16384: engine 603.3 us 4.784 PF | best asm_256x256 580.5 us 4.972 PF (1.039x) clk 1802.8 | 27 variants 4s
+[2026-11-22T08:56:59Z] sweep done in 84s
+[2026-11-22T08:57:00Z] sweep o_g: rc 0 in 85s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:57:04Z] sweep gate_up N=43008 K=5376: 7 weight copies of 117.1 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] import [module_gemm_a4w4_blockscale] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_gemm_a4w4_blockscale.so
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:57:08Z]   gate_up M=16: engine 24.6 us 0.301 PF | best asm_32x256 23.6 us 0.313 PF (1.041x) clk 2392.7 | 34 variants 5s
+[2026-11-22T08:57:12Z]   gate_up M=32: engine 24.3 us 0.608 PF | best asm_32x256 24.3 us 0.610 PF (1.003x) clk 2392.7 | 34 variants 3s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[2026-11-22T08:57:15Z]   gate_up M=48: engine 25.7 us 0.864 PF | best asm_64x256 25.1 us 0.884 PF (1.022x) clk 2389.0 | 34 variants 3s
+[2026-11-22T08:57:18Z]   gate_up M=64: engine 28.5 us 1.040 PF | best asm_64x256 25.9 us 1.144 PF (1.100x) clk 2383.3 | 34 variants 3s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:57:22Z]   gate_up M=96: engine 28.1 us 1.579 PF | best asm_96x256 27.8 us 1.598 PF (1.012x) clk 2380.5 | 42 variants 4s
+[2026-11-22T08:57:26Z]   gate_up M=128: engine 29.9 us 1.982 PF | best asm_128x256 29.6 us 1.998 PF (1.008x) clk 2368.1 | 42 variants 4s
+[2026-11-22T08:57:30Z]   gate_up M=160: engine 34.1 us 2.167 PF | best asm_160x256 32.1 us 2.302 PF (1.062x) clk 2313.4 | 42 variants 4s
+[2026-11-22T08:57:35Z]   gate_up M=192: engine 35.5 us 2.498 PF | best asm_96x384 34.6 us 2.564 PF (1.026x) clk 2313.5 | 42 variants 4s
+[2026-11-22T08:57:39Z]   gate_up M=256: engine 42.4 us 2.792 PF | best asm_128x384 37.9 us 3.121 PF (1.118x) clk 2199.7 | 42 variants 4s
+[2026-11-22T08:57:43Z]   gate_up M=320: engine 54.3 us 2.727 PF | best asm_160x384 42.2 us 3.504 PF (1.285x) clk 2111.7 | 42 variants 4s
+[2026-11-22T08:57:47Z]   gate_up M=384: engine 58.7 us 3.027 PF | best asm_default 50.5 us 3.518 PF (1.162x) clk 2028.1 | 42 variants 4s
+[aiter] shape is M:1024, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:57:51Z]   gate_up M=1024: engine 115.1 us 4.114 PF | best asm_default 114.4 us 4.140 PF (1.007x) clk 1814.1 | 30 variants 3s
+[aiter] shape is M:2048, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:57:54Z]   gate_up M=2048: engine 226.9 us 4.174 PF | best asm_default 225.8 us 4.195 PF (1.005x) clk 1823.4 | 30 variants 3s
+[aiter] shape is M:3072, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:57:57Z]   gate_up M=3072: engine 308.7 us 4.602 PF | best asm_default 308.0 us 4.613 PF (1.002x) clk 1728.5 | 28 variants 3s
+[aiter] shape is M:4096, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:00Z]   gate_up M=4096: engine 420.0 us 4.510 PF | best asm_256x256 417.0 us 4.542 PF (1.007x) clk 1702.6 | 28 variants 3s
+[aiter] shape is M:5120, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:03Z]   gate_up M=5120: engine 501.2 us 4.724 PF | best asm_256x256 497.3 us 4.761 PF (1.008x) clk 1826.9 | 28 variants 3s
+[aiter] shape is M:6144, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:07Z]   gate_up M=6144: engine 588.2 us 4.830 PF | best asm_256x256 584.6 us 4.860 PF (1.006x) clk 1790.6 | 28 variants 3s
+[aiter] shape is M:6912, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:10Z]   gate_up M=6912: engine 679.0 us 4.707 PF | best asm_default 677.2 us 4.720 PF (1.003x) clk 1695.8 | 28 variants 3s
+[aiter] shape is M:7680, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:13Z]   gate_up M=7680: engine 753.3 us 4.715 PF | best asm_256x256 750.7 us 4.731 PF (1.003x) clk 1687.4 | 28 variants 3s
+[aiter] shape is M:8192, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:17Z]   gate_up M=8192: engine 799.5 us 4.738 PF | best asm_default 798.2 us 4.746 PF (1.002x) clk 1720.6 | 28 variants 3s
+[aiter] shape is M:8576, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:20Z]   gate_up M=8576: engine 1033.8 us 3.836 PF | best asm_256x256 858.6 us 4.619 PF (1.204x) clk 1799.1 | 28 variants 4s
+[aiter] shape is M:16384, N:43008, K:5376, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:58:25Z]   gate_up M=16384: engine 1640.0 us 4.620 PF | best engine 1640.0 us 4.620 PF (1.000x) clk 1796.0 | 28 variants 4s
+[2026-11-22T08:58:25Z] sweep done in 84s
+[2026-11-22T08:58:26Z] sweep gate_up: rc 0 in 86s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:58:29Z] sweep down N=5376 K=21504: 14 weight copies of 58.6 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_32x896.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:58:34Z]   down M=16: engine 32.9 us 0.113 PF | best asm_256x256_ks3 26.4 us 0.140 PF (1.245x) clk 2379.0 | 30 variants 5s
+[2026-11-22T08:58:37Z]   down M=32: engine 35.3 us 0.210 PF | best asm_256x256_ks3 29.8 us 0.248 PF (1.182x) clk 2384.4 | 30 variants 3s
+[2026-11-22T08:58:41Z]   down M=48: engine 32.9 us 0.337 PF | best engine 32.9 us 0.337 PF (1.000x) clk 2397.4 | 30 variants 3s
+[2026-11-22T08:58:44Z]   down M=64: engine 34.7 us 0.427 PF | best asm_32x128 34.6 us 0.428 PF (1.002x) clk 2392.7 | 30 variants 3s
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[2026-11-22T08:58:48Z]   down M=96: engine 34.0 us 0.652 PF | best asm_32x128 34.0 us 0.652 PF (1.000x) clk 2390.0 | 38 variants 4s
+[2026-11-22T08:58:52Z]   down M=128: engine 34.2 us 0.864 PF | best asm_32x128 34.2 us 0.865 PF (1.001x) clk 2390.2 | 38 variants 4s
+[2026-11-22T08:58:56Z]   down M=160: engine 36.6 us 1.011 PF | best asm_32x128 34.1 us 1.086 PF (1.075x) clk 2383.9 | 38 variants 4s
+[2026-11-22T08:59:01Z]   down M=192: engine 39.8 us 1.116 PF | best asm_32x128 34.1 us 1.303 PF (1.167x) clk 2371.3 | 38 variants 4s
+[2026-11-22T08:59:05Z]   down M=256: engine 39.8 us 1.486 PF | best asm_64x128 39.8 us 1.487 PF (1.000x) clk 2382.0 | 38 variants 4s
+[2026-11-22T08:59:09Z]   down M=320: engine 38.7 us 1.910 PF | best asm_96x128 38.6 us 1.916 PF (1.003x) clk 2357.2 | 38 variants 4s
+[2026-11-22T08:59:13Z]   down M=384: engine 46.6 us 1.905 PF | best asm_64x128 40.2 us 2.211 PF (1.161x) clk 2324.0 | 38 variants 4s
+[aiter] shape is M:1024, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:59:16Z]   down M=1024: engine 61.4 us 3.856 PF | best asm_default 60.4 us 3.919 PF (1.016x) clk 1774.4 | 28 variants 3s
+[2026-11-22T08:59:19Z]   down M=2048: engine 107.2 us 4.417 PF | best asm_default 106.1 us 4.464 PF (1.011x) clk 1972.4 | 28 variants 3s
+[aiter] shape is M:3072, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:59:22Z]   down M=3072: engine 137.9 us 5.152 PF | best asm_default 135.3 us 5.250 PF (1.019x) clk 1719.8 | 27 variants 3s
+[aiter] shape is M:4096, N:5376, K:21504, not found tuned config in /tmp/aiter_configs/a4w4_blockscale_tuned_gemm.csv, will use default config!
+[2026-11-22T08:59:26Z]   down M=4096: engine 218.0 us 4.345 PF | best asm_128x384 213.4 us 4.437 PF (1.021x) clk 1897.9 | 27 variants 3s
+[2026-11-22T08:59:29Z]   down M=5120: engine 247.9 us 4.775 PF | best asm_256x256 244.5 us 4.842 PF (1.014x) clk 1755.2 | 27 variants 3s
+[2026-11-22T08:59:32Z]   down M=6144: engine 336.9 us 4.217 PF | best asm_256x256 272.4 us 5.215 PF (1.237x) clk 1613.7 | 27 variants 3s
+[2026-11-22T08:59:36Z]   down M=6912: engine 357.7 us 4.468 PF | best asm_128x384 330.6 us 4.835 PF (1.082x) clk 1967.6 | 27 variants 3s
+[2026-11-22T08:59:39Z]   down M=7680: engine 371.9 us 4.775 PF | best asm_256x256 365.3 us 4.861 PF (1.018x) clk 1744.8 | 27 variants 3s
+[2026-11-22T08:59:42Z]   down M=8192: engine 388.1 us 4.880 PF | best asm_160x384 382.4 us 4.954 PF (1.015x) clk 1830.3 | 27 variants 3s
+[2026-11-22T08:59:46Z]   down M=8576: engine 394.1 us 5.031 PF | best asm_160x384 388.7 us 5.101 PF (1.014x) clk 1810.5 | 27 variants 4s
+[2026-11-22T08:59:50Z]   down M=16384: engine 766.1 us 4.945 PF | best asm_256x256 752.9 us 5.032 PF (1.017x) clk 1791.9 | 27 variants 4s
+[2026-11-22T08:59:50Z] sweep done in 84s
+[2026-11-22T08:59:51Z] sweep down: rc 0 in 85s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T08:59:55Z] sweep sq8k N=8192 K=8192: 23 weight copies of 34.0 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T08:59:58Z]   sq8k M=8192: engine 212.3 us 5.179 PF | best asm_256x256 212.2 us 5.181 PF (1.000x) clk 1709.3 | 28 variants 4s
+[2026-11-22T08:59:58Z] sweep done in 6s
+[2026-11-22T08:59:59Z] sweep sq8k: rc 0 in 8s
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T09:00:03Z] sweep sq16k N=16384 K=16384: 6 weight copies of 136.0 MiB
+[aiter] merge tuned file under model_configs/ and configs/ /usr/local/lib/python3.12/dist-packages/aiter/configs/a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/dsv3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/kimik3_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/q3vl_a4w4_blockscale_tuned_gemm.csv:/usr/local/lib/python3.12/dist-packages/aiter/configs/model_configs/gemma4_a4w4_blockscale_tuned_gemm.csv
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x512.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_128x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x256.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_192x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_224x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_256x128.co
+[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x1024.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x640.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x768.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_64x896.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x128.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x256.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x384.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x512.co
+[aiter] LoadKernel: _ZN5aiter41f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_96x640.co
+[2026-11-22T09:00:07Z]   sq16k M=16384: engine 1554.8 us 5.657 PF | best asm_256x256 1545.9 us 5.690 PF (1.006x) clk 1672.4 | 28 variants 4s
+[2026-11-22T09:00:07Z] sweep done in 7s
+[2026-11-22T09:00:08Z] sweep sq16k: rc 0 in 9s
+[2026-11-22T09:00:08Z] sweep done in 535s

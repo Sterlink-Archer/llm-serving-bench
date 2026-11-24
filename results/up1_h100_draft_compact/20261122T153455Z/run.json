@@ -1,0 +1,284 @@
+{
+ "label": "up1_h100_draft_compact",
+ "run_id": "up1_h100_draft_compact/20261122T153455Z",
+ "config_file": "configs/up1_h100_draft_compact.json",
+ "t_start": "2026-11-22T15:34:55Z",
+ "usd_per_h": {
+  "gpu": 2.47,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 3.6665
+ },
+ "phases": {
+  "snapshot_build_s": 710.1,
+  "create_s": 10.9
+ },
+ "servers": {
+  "tests": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.0,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 0.9,
+    "launch": "python3 -m http.server 8099 --bind 127.0.0.1 --directory /root/or",
+    "env": {},
+    "gpu_mem_after_load": "0 MiB, 81559 MiB",
+    "smoke": ""
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8099 --bind 127.0.0.1 --directory /root/or",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes"
+    }
+   ],
+   "steps": {
+    "t_unit_base": {
+     "rc": 1,
+     "secs": 21.5,
+     "cmd": "cd /root/vtest && PYTHONPATH=/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/worker/test_gpu_target_dependent_ar_speculator.py -k q_only_draft_prefill 2>&1",
+     "tail": "=========================== short test summary info ============================\nFAILED tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_q_only_draft_prefill_keeps_last_token_rows\n======================= 1 failed, 35 deselected in 2.68s =======================\n"
+    },
+    "t_unit_patched": {
+     "rc": 0,
+     "secs": 31.7,
+     "cmd": "cd /root/vtest && PYTHONPATH=/root/patched:/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/worker/test_gpu_target_dependent_ar_speculator.py  2>&1",
+     "tail": "tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_q_only_draft_prefill_keeps_last_token_rows PASSED\n\n============================= 36 passed in 14.84s ==============================\n"
+    },
+    "t_e2e_base": {
+     "rc": 1,
+     "secs": 168.2,
+     "cmd": "cd /root/vtest && PYTHONPATH=/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py -k last_tokens_only 2>&1",
+     "tail": "=========================== short test summary info ============================\nFAILED tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py::test_draft_prefill_runs_on_last_tokens_only\n============ 1 failed, 1 deselected, 1 warning in 148.71s (0:02:28) ============\n"
+    },
+    "t_e2e_patched": {
+     "rc": 1,
+     "secs": 113.7,
+     "cmd": "cd /root/vtest && VLLM_GPU_SYNC_CHECK=error PYTHONPATH=/root/patched:/root/vtest python3 -m pytest -v -s -p no:cacheprovider tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py -k last_tokens_only 2>&1",
+     "tail": "=========================== short test summary info ============================\nFAILED tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py::test_draft_prefill_runs_on_last_tokens_only\n============ 1 failed, 1 deselected, 1 warning in 98.54s (0:01:38) =============\n"
+    }
+   },
+   "end": "ok"
+  },
+  "unpatched_s7": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "resolved_sha": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "files": 5,
+     "bytes": 971215445
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 32.1,
+    "tail": "[00:20<00:00, 107.71it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:27<00:00,  2.20s/it] \rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:27<00:00,  1.75s/it]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469170 secs=28.2 GBps=1.181 method=huggingface_hub\n\rFetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 5 files:  80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588  | 4/5 [00:00<00:00,  9.72it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:00<00:00,  4.34it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:00<00:00,  5.00it/s]\nDL repo=google/gemma-4-31B-it-assistant rev=627c5ec145 files=5 bytes=971217341 secs=1.2 GBps=0.812 method=huggingface_hub\n",
+    "bytes": 34271686511,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 157.4,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --enable-prompt-tokens-details --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/assistant\",\"num_speculative_tokens\":2}'",
+    "env": {},
+    "gpu_mem_after_load": "71619 MiB, 81559 MiB",
+    "smoke": "null,\"system_fingerprint\":\"vllm-0.34.0rc1.dev1133+g647a76866-bc9c4033\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": 162867,
+    "kv_cache_gib": 36.45,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 40960
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --enable-prompt-tokens-details --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/assistant\",\"num_speculative_tokens\":2}'",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "verify_unpatched_s7": {
+     "rc": 0,
+     "secs": 11.3,
+     "cmd": "python3 -c 'import vllm.v1.worker.gpu.spec_decode.target_dependent_ar.speculator as s; print(s.__file__, \"compact_prefill_inputs\" in dir(s))'; grep -i -m12 'gemma4 mtp\\|backend\\|max_num_batched\\|GPU KV cache size\\|Maximum concurrency\\|cudagraph\\|speculative' server_unpatched_s7.log; true",
+     "tail": "(EngineCore pid=4554) INFO 11-22 15:54:31 [utils.py:417]   layer     | count | backend                        | modules\r\n(EngineCore pid=4554) INFO 11-22 15:54:32 [speculator.py:166] Gemma4 MTP: draft layer 0 (sliding_attention) -> language_model.model.layers.58.self_attn.attn\n(EngineCore pid=4554) INFO 11-22 15:54:32 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn\n"
+    },
+    "idprobe_unpatched_c1": {
+     "rc": 0,
+     "secs": 113.6,
+     "cmd": "python3 /root/or/mx/identity_probe.py --conc 1 --out out/idprobe_unpatched_c1.json",
+     "tail": "identity_probe: 60 requests, conc 1, 104s -> out/idprobe_unpatched_c1.json; lengths [256]\n"
+    },
+    "pr_unpatched_s7": {
+     "rc": 0,
+     "secs": 1128.1,
+     "cmd": "python3 bench/protocol.py --model gemma --metrics http://127.0.0.1:8000/metrics --out /root/or/out/pr_unpatched_s7 --breakeven-rps 1.3074 --client vllmbench --tokenizer /root/models/fp8dyn --rates 0.6,0.75,0.9 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id up1_h100_draft_compact/20261122T153455Z --config-id up1_h100_draft_compact:unpatched_s7 --prefill-shot --max-minutes 141.0",
+     "tail": "[vllmbench r=0.75 s=7] done=225 failed=0 req/s=0.7331406758636508 p95 TTFT=3.8993070811033235 median TPOT=23.336063700938414 ms in tok/s=7207\n[vllmbench r=0.9 s=7] done=270 failed=0 req/s=0.8797884830728593 p95 TTFT=4.909629160258918 median TPOT=41.74933083884215 ms in tok/s=8627\n[protocol] max_rate_at_slo=0.75 req/s (break-even 1.3074); prefill=12369.14150088992 tok/s -> /root/or/out/pr_unpatched_s7/protocol_summary.json\n",
+     "breakeven_rps": 1.307409784624162
+    }
+   },
+   "end": "ok"
+  },
+  "patched_s7": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "resolved_sha": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "files": 5,
+     "bytes": 971215445
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 11.1,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:00<00:00, 731.51it/s]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469170 secs=0.2 GBps=209.149 method=huggingface_hub\n\rFetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]\rFetching 5 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:00<00:00, 525.38it/s]\nDL repo=google/gemma-4-31B-it-assistant rev=627c5ec145 files=5 bytes=971217341 secs=0.1 GBps=6.723 method=huggingface_hub\n",
+    "bytes": 34271686511,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 75.0,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --enable-prompt-tokens-details --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/assistant\",\"num_speculative_tokens\":2}'",
+    "env": {
+     "PYTHONPATH": "/root/patched"
+    },
+    "gpu_mem_after_load": "71619 MiB, 81559 MiB",
+    "smoke": "null,\"system_fingerprint\":\"vllm-0.34.0rc1.dev1133+g647a76866-bc9c4033\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":null},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": 162867,
+    "kv_cache_gib": 36.45,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 40960
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --max-model-len 40960 --language-model-only --gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --enable-prompt-tokens-details --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/assistant\",\"num_speculative_tokens\":2}'",
+     "env": {
+      "PYTHONPATH": "/root/patched"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "verify_patched_s7": {
+     "rc": 0,
+     "secs": 11.3,
+     "cmd": "PYTHONPATH=/root/patched python3 -c 'import vllm.v1.worker.gpu.spec_decode.target_dependent_ar.speculator as s; print(s.__file__, \"compact_prefill_inputs\" in dir(s))'; grep -i -m12 'gemma4 mtp\\|backend\\|max_num_batched\\|GPU KV cache size\\|Maximum concurrency\\|cudagraph\\|speculative' server_patched_s7.log; true",
+     "tail": "(EngineCore pid=8627) INFO 11-22 16:18:24 [utils.py:417]   layer     | count | backend                        | modules\r\n(EngineCore pid=8627) INFO 11-22 16:18:24 [speculator.py:166] Gemma4 MTP: draft layer 0 (sliding_attention) -> language_model.model.layers.58.self_attn.attn\n(EngineCore pid=8627) INFO 11-22 16:18:24 [speculator.py:166] Gemma4 MTP: draft layer 1 (sliding_attention) -> language_model.model.layers.58.self_attn.attn\n"
+    },
+    "idprobe_patched_c1": {
+     "rc": 0,
+     "secs": 103.4,
+     "cmd": "python3 /root/or/mx/identity_probe.py --conc 1 --out out/idprobe_patched_c1.json",
+     "tail": "identity_probe: 60 requests, conc 1, 102s -> out/idprobe_patched_c1.json; lengths [256]\n"
+    },
+    "idcompare_unpatched_vs_patched": {
+     "rc": 0,
+     "secs": 1.0,
+     "cmd": "python3 /root/or/mx/identity_probe.py --compare out/idprobe_unpatched_c1.json out/idprobe_patched_c1.json | tee out/idcompare_unpatched_vs_patched.json",
+     "tail": " \"differing\": 0,\n \"first_divergence\": []\n}\n"
+    },
+    "pr_patched_s7": {
+     "excluded": "evicted"
+    }
+   }
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 314.49,
+  "this_run_ceiling_usd": 9.5,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 362,
+ "sandbox_id": "cf1234e9-5732-4970-bb4b-c3dbfbb9bba2",
+ "elapsed_s": 2758.3,
+ "est_cost_usd": 2.809,
+ "t_saved": "2026-11-22T16:32:43Z",
+ "system": "ok\nNVIDIA H100 80GB HBM3, 81559 MiB, 595.71.05, 700.00 W\n192\nMem:            2015         297         675          14        1072        1717\noverlay         150G  8.4M  150G   1% /\nPython 3.14.10\n/usr/bin/curl\nvllm 0.34.0rc1.dev1133+g647a76866\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "rget_dependent_ar_speculator.py /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n2a115377e7cf59ff36debc9712fdeaafca0f69b4746579f7e26e9f32fb7f66f5  /root/vtest/tests/v1/worker/test_gpu_target_dependent_ar_speculator.py\n20b92b9ca2c5ad4e43f9cb53e42de05b79c30e8433f320cf337af50c3f55bc7a  /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n+ cp /root/or/up/test_unit.py /root/vtest/tests/v1/worker/test_gpu_target_dependent_ar_speculator.py\n+ cp /root/or/up/test_e2e.py /root/vtest/tests/v1/e2e/spec_decode/mtp/gemma4/test_mtp.py\n+ tail -3\nBytecode compiled 5 files in 44ms\n + pytest-asyncio==1.5.0\n + tblib==3.2.2\n+ python3 -m pytest --version\npytest 9.2.0\n+ nvidia-smi --query-gpu=name,clocks.max.sm,power.limit --format=csv,noheader\nNVIDIA H100 80GB HBM3, 1980 MHz, 700.00 W\n+ true\n"
+ },
+ "error": "ApiError('HTTP 404 on https://proxy.app.daytona.io/toolbox/cf1234e9-5732-4970-bb4b-c3dbfbb9bba2/process/execute: {\"statusCode\":404,\"message\":\"not found: sandbox cf1234e9-5732-4970-bb4b-c3dbfbb9bba2 not found (it has been deleted)\",\"code\":\"NOT_FOUND\",\"timestamp\":\"2026-11-22T16:32:23.290176451Z\",\"path\":\"/toolbox/cf1234e9-5732-4970-bb4b-c3dbfbb9bba2/process/execute\",\"method\":\"POST\"}')",
+ "evicted": {
+  "event": "evicted",
+  "run_id": "up1_h100_draft_compact/20261122T153455Z",
+  "sandbox_id": "cf1234e9-5732-4970-bb4b-c3dbfbb9bba2",
+  "gpu": "H100",
+  "gpus": 1,
+  "state": "destroyed",
+  "spotEvictedAt": "2026-11-22T16:32:16.315Z",
+  "evicted_at": "2026-11-22T16:32:16Z",
+  "last_good_t": "2026-11-22T16:21:06Z",
+  "interrupted": {
+   "server": "patched_s7",
+   "step": "pr_patched_s7"
+  },
+  "minutes_lost": 11.16,
+  "usd_lost": 0.6822,
+  "usd_per_h": 3.6665,
+  "label": "spot preemption, outside our control"
+ },
+ "deleted": "2026-11-22T16:32:23Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 317.59,
+  "metered_usd": 286.2054
+ }
+}

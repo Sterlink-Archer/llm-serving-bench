@@ -1,0 +1,15 @@
+2026-11-22T07:53:50Z [glm2_vllm_b16k] creating spot sandbox (MI355X x1, $4.7727/h, ttl 110 min, budget $9.5; project so far ~$120.70)
+2026-11-22T07:54:15Z [glm2_vllm_b16k] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:55:59Z [glm2_vllm_b16k] download glm_b16k: rc=0 103s 185.1 GB via ['huggingface_hub']
+2026-11-22T08:01:43Z [glm2_vllm_b16k] server glm_b16k ready=True after 343.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 279676 MB
+        FREE_VRAM: 14916 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 279676 MB
+        FREE_VISIBLE_VRAM: 14916 MB; attn {'sliding': 'ROCM_AITER_MLA_SPARSE', 'global_512': 'ROCM_AITER_MLA_SPARSE'} kv_tokens 4096000 graphs 19
+2026-11-22T08:01:46Z [glm2_vllm_b16k] inspect_glm_b16k rc=0 2s ::         TARGET_GRAPHICS_VERSION: gfx950
+2026-11-22T08:02:20Z [glm2_vllm_b16k] gate_glm_b16k_gsm8kor250 rc=0 33s :: [gate_glm_b16k_gsm8kor250] gsm8kor: 0.976 (244/250, noans 0, err 0, trunc 0) wall=29s
+2026-11-22T08:21:10Z [glm2_vllm_b16k] protocol_glm_b16k rc=0 1130s :: [protocol] max_rate_at_slo=1.5 req/s (break-even 1.7019); prefill=24423.514064549163 tok/s -> /root/or/out/protocol_glm_b16k/protocol_summary.json
+2026-11-22T08:21:40Z [glm2_vllm_b16k] done: elapsed 27.8 min, est $2.21; project est $140.53

@@ -1,0 +1,33 @@
+{
+ "label": "mxS3_vllm_fp8",
+ "run_id": "mxS3_vllm_fp8/20261122T080305Z",
+ "config_file": "recipes/mi355x/configs/mxS3_vllm_fp8.json",
+ "t_start": "2026-11-22T08:03:05Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 4.3
+ },
+ "servers": {},
+ "spend_guard": {
+  "project_est_usd_before": 128.52,
+  "this_run_ceiling_usd": 3.96,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 241,
+ "sandbox_id": "0714fc55-39f5-4926-8563-659ad4742df6",
+ "elapsed_s": 41.5,
+ "est_cost_usd": 0.055,
+ "t_saved": "2026-11-22T08:03:47Z",
+ "deleted": "2026-11-22T08:03:17Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 128.85,
+  "metered_usd": 108.2668
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "label": "e4_b300_sglang",
+ "run_id": "e4_b300_sglang/20261122T054136Z",
+ "config_file": "configs/e4_b300_sglang.json",
+ "t_start": "2026-11-22T05:41:36Z",
+ "usd_per_h": {
+  "gpu": 5.17,
+  "cpu": 0.4032,
+  "mem": 1.0368,
+  "disk": 0.0319,
+  "total": 6.6419
+ },
+ "phases": {
+  "snapshot_build_s": 362.5
+ },
+ "servers": {},
+ "spend_guard": {
+  "project_est_usd_before": 47.63,
+  "this_run_ceiling_usd": 10.52,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 0,
+ "error": "RuntimeError('no spot B300 x1 free right now')",
+ "elapsed_s": 0.0,
+ "est_cost_usd": 0.0,
+ "t_saved": "2026-11-22T05:47:44Z",
+ "project_spend": {
+  "est_usd": 47.63,
+  "metered_usd": 30.8903
+ }
+}

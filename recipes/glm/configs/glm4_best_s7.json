@@ -1,0 +1,105 @@
+{
+ "label": "glm4_best_s7",
+ "stage": "glm-claim",
+ "note": "GLM-5.3-Flash on ONE MI355X, best effort (screens: glm1/glm2): vLLM 0.34.0 ROCm by digest, amd Quark MXFP4, TP1, --max-num-batched-tokens 16384, MTP k=3, MX_FORCE_ASM_FP4=1 (box/patch_force_asm_fp4.py; not separately ablated). GSM8K test[:250] >= 95% (GLM gate), their client seed 7 at 1.25/1.5/1.75/2.0 + prefill probe, real text at 1.5/1.75. Bar: OpenRelay glm-5.3-flash $0.000496/request (~2.7 req/s at $4.77/h).",
+ "price_model": "openrelay/glm-5.3-flash",
+ "snapshot": {
+  "name": "or-vllmrocm0340-mi355x-c8m48d300",
+  "image": "vllm/vllm-openai-rocm:v0.34.0",
+  "image_digest_amd64": "sha256:2a6642bc2e5a76f42145d816031dc518258902e22ebdf2b74f71ecf78a9f5574",
+  "gpu": "MI355X",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 300
+ },
+ "max_minutes": 120,
+ "budget_usd": 10.0,
+ "setup_cmd": "mkdir -p /root/or/mx /root/or/out\ncat > /root/or/mx/inspect.sh <<'MXEOF_INSPECT_SH'\n#!/bin/bash\n# inspect.sh (GLM): engine/library versions and GLM-5.3-Flash support markers, before any engine starts (setup_cmd).\nOUT=/root/or/out/inspect.txt; mkdir -p /root/or/out\n{\necho \"== date $(date -u +%FT%TZ)\"\npython3 - <<'PY'\nimport importlib.metadata as md, importlib.util, os\nfor p in (\"vllm\", \"sglang\", \"torch\", \"triton\", \"amd-aiter\", \"transformers\", \"tilelang\"):\n    try: print(f\"version {p}: {md.version(p)}\")\n    except Exception as e: print(f\"version {p}: - ({e.__class__.__name__})\")\nfor mod, rel in ((\"vllm\", \"model_executor/models/glm5next.py\"), (\"vllm\", \"models/glm5next.py\"), (\"sglang\", \"srt/models/glm5_next.py\")):\n    s = importlib.util.find_spec(mod)\n    if s:\n        f = os.path.join(os.path.dirname(s.origin), rel)\n        print(f\"{mod}:{rel} exists={os.path.exists(f)}\")\nPY\namd-smi static --asic 2>/dev/null | grep -E \"MARKET_NAME|TARGET_GRAPHICS\" | head -3\n} > \"$OUT\" 2>&1\ntail -n 20 \"$OUT\"\nMXEOF_INSPECT_SH\ncat > /root/or/mx/patch_force_asm_fp4.py <<'MXEOF_PATCH_FORCE_ASM_FP4_PY'\n\"\"\"vLLM >= 0.31 (ROCm): let MX_FORCE_ASM_FP4=1 restore v0.30's behaviour of running every MXFP4 linear on AITER's\nassembly GEMM (gemm_a4w4).\n\nWhy: v0.30 always used the assembly kernel on gfx950 (later builds: VLLM_ROCM_USE_AITER_FP4_ASM_GEMM=1). v0.34 drops\nthe variable; `AiterMxfp4LinearKernel.process_weights_after_loading` sets\n  use_asm_gemm = is_asm_fp4_gemm_tuned(n, k)            # AITER a4w4 CSV has rows for this (N, K) at M=1024 AND M=8192\n                 and is_triton_gemm_afp4wfp4_presh_ws_tuned(n, k)   # a gfx950 Triton preshuffle JSON exists for (N, K)\nAITER v0.1.28.post1's Gemma 4 31B rows (ROCm/aiter#5928) keep only rows >= 3% better than the default, so several\nshapes have no M=1024/8192 row, and there is no gfx950 preshuffle JSON for any K=5376 shape: every Gemma 4 linear would\nfall back to AITER's Triton FP4 GEMM (OpenRelay, vllm#59153: 1.89 vs 2.77 prefill req/s).\nWith the override, M <= 64 still takes the Triton preshuffle kernel only where it is tuned; everything else runs\ngemm_a4w4 on (16,16)-shuffled weights, exactly as v0.30 did.\n\nEnv-gated (read at weight load), so a stock server on the same box is untouched. Idempotent; writes a PATCH line.\"\"\"\nimport importlib.util\nimport os\nimport sys\n\np = os.path.join(os.path.dirname(importlib.util.find_spec(\"vllm\").origin), \"model_executor/kernels/linear/mxfp4/aiter.py\")\ns = open(p).read()\nstatus = \"/root/or/mx/patch_force_asm_fp4.status\"\nif \"MX_FORCE_ASM_FP4\" in s:\n    msg = \"PATCH force_asm_fp4: already applied\"\nelse:\n    anchor = \"        if self.use_asm_gemm and not _asm_fp4_scale_swizzle_supported(\\n\"\n    if s.count(anchor) != 1 or \"self.use_asm_gemm = rocm_aiter_ops.is_asm_fp4_gemm_tuned(\" not in s:\n        msg = \"PATCH force_asm_fp4: ANCHOR NOT FOUND (not applied)\"\n    else:\n        s = s.replace(anchor, \"        import os as _mx_os\\n\"\n                      \"        if _mx_os.environ.get(\\\"MX_FORCE_ASM_FP4\\\") == \\\"1\\\" and self.asm_gemm_supported:\\n\"\n                      \"            self.use_asm_gemm = True\\n\" + anchor, 1)\n        open(p, \"w\").write(s)\n        msg = \"PATCH force_asm_fp4: applied (kernels/linear/mxfp4/aiter.py)\"\nos.makedirs(os.path.dirname(status), exist_ok=True)\nopen(status, \"w\").write(msg + \"\\n\")\nprint(msg, file=sys.stderr)\nMXEOF_PATCH_FORCE_ASM_FP4_PY\npython3 /root/or/mx/patch_force_asm_fp4.py\nbash /root/or/mx/inspect.sh",
+ "servers": [
+  {
+   "name": "glm_best",
+   "weights": [
+    {
+     "repo": "amd/GLM-5.3-Flash-Quark-MXFP4",
+     "rev": "b5688f25491202978c19c4d036eef579f61bbe07",
+     "dir": "/root/models/glm"
+    }
+   ],
+   "served_name": "glm",
+   "env": {
+    "VLLM_ROCM_USE_AITER": "1",
+    "VLLM_ROCM_USE_AITER_FUSION_SHARED_EXPERTS": "1",
+    "VLLM_ROCM_USE_AITER_TRITON_SPARSE_MLA": "1",
+    "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+    "MX_FORCE_ASM_FP4": "1"
+   },
+   "launch": "vllm serve /root/models/glm --served-model-name glm --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 32768 --max-num-seqs 64 --max-num-batched-tokens 16384 --attention-backend ROCM_AITER_MLA_SPARSE --enable-prompt-tokens-details --language-model-only --reasoning-parser glm47 --speculative-config '{\"method\":\"mtp\",\"num_speculative_tokens\":3}'",
+   "ready_timeout_s": 3600,
+   "steps": [
+    {
+     "type": "sh",
+     "name": "inspect_glm_best",
+     "cmd": "tail -n 12 out/inspect.txt",
+     "outputs": [
+      "out/inspect.txt"
+     ],
+     "est_s": 10
+    },
+    {
+     "type": "eval",
+     "name": "gate_glm_best_gsm8kor250",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 250,
+     "conc": 64,
+     "max_tokens": 8192,
+     "chat_template_kwargs": {
+      "reasoning_effort": "low"
+     },
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.95
+     },
+     "est_s": 1200
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_glm_best",
+     "client": "vllmbench",
+     "rates": [
+      1.25,
+      1.5,
+      1.75,
+      2.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_glm_best_text",
+     "client": "traffic",
+     "rates": [
+      1.5,
+      1.75
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": false
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true,
+   "claim_group": "glm_best_C",
+   "origin": "ours",
+   "fallbacks": [
+    "--enforce-eager"
+   ]
+  }
+ ]
+}

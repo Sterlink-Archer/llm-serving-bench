@@ -1,0 +1,123 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASH_ATTN/FA3",
+  "global_512": "FLASH_ATTN/FA4"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=671) INFO 11-22 04:33:39 [config.py:344] Gemma4 model has heterogeneous head dimensions {'sliding_attention': 256, 'full_attention': 512}. Using per-layer FA3/FA4 selection for FP8 KV cache on SM90.",
+  "(EngineCore pid=935) INFO 11-22 04:33:54 [cuda.py:508] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN'].",
+  "(EngineCore pid=935) INFO 11-22 04:33:54 [flash_attn.py:1122] Using FlashAttention version 3",
+  "(EngineCore pid=935) INFO 11-22 04:33:54 [fa_utils.py:162] FA3 does not support head_size=512 on SM90: upgrading FlashAttention 3 -> 4",
+  "(EngineCore pid=935) INFO 11-22 04:33:54 [flash_attn.py:1122] Using FlashAttention version 4"
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 380783,
+ "kv_cache_gib": 91.98,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 11.62,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.33.0",
+ "missing": [],
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "s1_h200_fp8/20261122T042702Z",
+ "config_id": "s1_h200_fp8:fp8dyn",
+ "image": "vllm/vllm-openai:v0.33.0",
+ "image_digest": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+ "model_repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+ "model_rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+ "gpu_mem_after_load": "129727 MiB, 143771 MiB",
+ "source_log": "results/s1_h200_fp8/20261122T042702Z/server_fp8dyn.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T04:33:54Z",
+   "t_end": "2026-11-22T04:34:04Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T04:34:05Z",
+   "t_end": "2026-11-22T04:34:57Z",
+   "detail": {
+    "compile_s": 51.3
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:34:59Z",
+   "t_end": "2026-11-22T04:35:20Z",
+   "detail": {
+    "s": 21.0,
+    "gib": 2.04
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T04:35:26Z",
+   "t_end": "2026-11-22T04:35:42Z",
+   "detail": {
+    "s": 16.0,
+    "gib": 1.79
+   }
+  }
+ ]
+}

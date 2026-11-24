@@ -1,0 +1,43 @@
+{
+ "label": "e3a_h100_sglang_fp8",
+ "note": "Engine comparison: SGLang v0.5.23 on the same FP8-dynamic weights, FP8 KV, 1x H100 (vLLM's point is e1a/fp8dyn).",
+ "snapshot": {
+  "name": "or-sglang0523-h100-c8m48d150",
+  "image": "lmsysorg/sglang:v0.5.23",
+  "image_digest_amd64": "sha256:f7876bef696ccf9cf75a2bf7ccb82970f5fac577f082fb8ca95c9a59d2160eb5",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 50,
+ "budget_usd": 4.0,
+ "servers": [
+  {
+   "name": "sglang_fp8",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/fp8dyn --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 40960 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --enable-metrics --enable-cache-report --reasoning-parser gemma4",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "quick"
+    },
+    {
+     "type": "eval",
+     "name": "eval_sglang_fp8",
+     "conc": 64,
+     "est_s": 480
+    }
+   ]
+  }
+ ]
+}

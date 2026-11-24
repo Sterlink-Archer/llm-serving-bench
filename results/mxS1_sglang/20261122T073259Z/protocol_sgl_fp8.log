@@ -1,0 +1,4 @@
+[setup_vllm_client] vllm==0.33.0 client in /root/vb after 33 s: 
+
+[vllmbench r=2.5 s=8] done=750 failed=0 req/s=1.2880129042894692 p95 TTFT=261.95264091044663 median TPOT=105.98416870170047 ms in tok/s=12338
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=17217.341358580703 tok/s -> /root/or/out/protocol_sgl_fp8/protocol_summary.json

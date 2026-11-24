@@ -1,0 +1,74 @@
+{
+ "label": "s1_h200_fp8",
+ "stage": "1-screen",
+ "note": "Stage-1 screen: H200 141GB HBM3e (+$0.40/h GPU vs H100), RedHat FP8-dynamic + FP8 KV, max-len 32768, MTP off. Same flags as s1_h100_fp8; the question is whether 4.8 TB/s and ~3x the KV room beat H100 on $/request at the SLO. Host right-sized to 8 vCPU / 32 GiB.",
+ "snapshot": {
+  "name": "or-vllm0330-h200-c8m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H200",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 60,
+ "budget_usd": 4.5,
+ "servers": [
+  {
+   "name": "fp8dyn",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_fp8dyn",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_fp8dyn_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ]
+}

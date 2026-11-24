@@ -1,0 +1,11 @@
+2026-11-22T08:15:07Z [ik5_pro6000_dspark] creating spot sandbox (RTX-PRO-6000 x1, $2.8873/h, ttl 90 min, budget $6.0; project so far ~$137.20)
+2026-11-22T08:15:31Z [ik5_pro6000_dspark] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          18          93           0          39         123 | overlay         713G  371G  313G  55% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:16:26Z [ik5_pro6000_dspark] download base: rc=0 53s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:19:59Z [ik5_pro6000_dspark] server base ready=True after 212.9s; gpu mem 91763 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1250560 graphs 36
+2026-11-22T08:21:05Z [ik5_pro6000_dspark] gate_base_gsm8kor100 rc=0 65s :: [gate_base_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=61s
+2026-11-22T08:28:46Z [ik5_pro6000_dspark] protocol_base_B_text rc=0 461s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_base_B_text/protocol_summary.json
+2026-11-22T08:29:00Z [ik5_pro6000_dspark] download dspark: rc=0 2s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:31:18Z [ik5_pro6000_dspark] server dspark ready=True after 137.0s; gpu mem 85903 MiB, 97887 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 1003136 graphs 0 REJECTED: missing cuda_graph_sizes
+2026-11-22T08:31:52Z [ik5_pro6000_dspark] gate_dspark_gsm8kor100 rc=0 34s :: [gate_dspark_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=30s
+2026-11-22T08:39:34Z [ik5_pro6000_dspark] protocol_dspark_B_text rc=0 461s :: [protocol] max_rate_at_slo=0.97 req/s (break-even 0.9704); prefill=None tok/s -> /root/or/out/protocol_dspark_B_text/protocol_summary.json
+2026-11-22T08:40:04Z [ik5_pro6000_dspark] done: elapsed 25.0 min, est $1.20; project est $147.06

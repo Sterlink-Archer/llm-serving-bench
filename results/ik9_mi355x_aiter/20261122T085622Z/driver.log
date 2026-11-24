@@ -1,0 +1,27 @@
+2026-11-22T08:56:22Z [ik9_mi355x_aiter] creating spot sandbox (MI355X x1, $4.4973/h, ttl 200 min, budget $16.0; project so far ~$153.06)
+2026-11-22T08:56:43Z [ik9_mi355x_aiter] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:56:56Z [ik9_mi355x_aiter] download tune: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:56:58Z [ik9_mi355x_aiter] server tune ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T09:22:28Z [ik9_mi355x_aiter] aiter_tune rc=143 1529s :: Terminated
+2026-11-22T09:22:51Z [ik9_mi355x_aiter] download base: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:26:48Z [ik9_mi355x_aiter] server base ready=True after 235.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 277520 MB
+        FREE_VRAM: 17072 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 277520 MB
+        FREE_VISIBLE_VRAM: 17072 MB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 4828288 graphs 52
+2026-11-22T09:27:01Z [ik9_mi355x_aiter] inspect_base rc=0 12s :: log /root/or/server_tune.log: untuned-shape lines 0, distinct 0
+2026-11-22T09:27:44Z [ik9_mi355x_aiter] gate_base_gsm8kor100 rc=0 44s :: [gate_base_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=35s
+2026-11-22T09:27:57Z [ik9_mi355x_aiter] profile_prefill_base rc=0 12s :: [profile] prefill 25693 tok/s over 4x10000; other=61.9% gemm=27.2% attention=9.8% fused_elementwise=0.9% memcpy/memset=0.2%
+2026-11-22T09:31:27Z [ik9_mi355x_aiter] signal 15: tearing down
+2026-11-22T09:31:49Z [ik9_mi355x_aiter] done: elapsed 35.4 min, est $2.66; project est $179.39
+2026-11-22T09:32:05Z [ik9_mi355x_aiter] done: elapsed 35.7 min, est $2.68; project est $179.71

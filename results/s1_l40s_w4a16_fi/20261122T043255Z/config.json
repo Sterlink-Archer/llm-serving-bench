@@ -1,0 +1,74 @@
+{
+ "label": "s1_l40s_w4a16_fi",
+ "stage": "1-screen",
+ "note": "Stage-1 screen: L40S 48GB (Ada, no FP4), Google QAT W4A16 (Marlin) + FP8 KV, max-len 32768. Rejected automatically if the global 512-dim layers run on TRITON_ATTN. FIX: vLLM 0.33 forces TRITON_ATTN on Gemma 4 when FA4 is unavailable (SM89 (Ada)); its config.py only forces when attention_config.backend is None, so --attention-backend FLASHINFER selects FlashInfer for all layers (the playbook's #47547 path).",
+ "snapshot": {
+  "name": "or-vllm0330-l40s-c8m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "L40S",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 50,
+ "budget_usd": 2.5,
+ "servers": [
+  {
+   "name": "w4a16qat_fi",
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it-qat-w4a16-ct",
+     "rev": "52f3f65bc7a02d555763bc923bd1d9094898219d",
+     "dir": "/root/models/w4a16qat"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/w4a16qat --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_w4a16qat_fi",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_w4a16qat_fi_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ]
+}

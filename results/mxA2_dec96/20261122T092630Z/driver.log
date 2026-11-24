@@ -1,0 +1,13 @@
+2026-11-22T09:26:30Z [mxA2_dec96] creating spot sandbox (MI355X x1, $4.7565/h, ttl 55 min, budget $4.5; project so far ~$173.12)
+2026-11-22T09:26:58Z [mxA2_dec96] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T09:27:01Z [mxA2_dec96] download nogpu: rc=0 1s 0.0 GB via []
+2026-11-22T09:27:03Z [mxA2_dec96] server nogpu ready=True after 1.3s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 285 MB
+        FREE_VRAM: 294307 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 285 MB
+        FREE_VISIBLE_VRAM: 294307 MB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512
+2026-11-22T09:27:27Z [mxA2_dec96] attn_lab2_dec96 rc=0 23s ::    1.001x  1.403 ms vs 1.403  err=0.0000  {'kv_split': {'NUM_SEGMENTS': 32, 'TILE_SIZE': 128}, 'attn_3d': {'num_warps': 2, 'num_stages': 1, 'waves_per_eu': 2}}
+2026-11-22T09:27:59Z [mxA2_dec96] done: elapsed 1.5 min, est $0.12; project est $174.74

@@ -1,0 +1,19 @@
+[counter_probe] stream=True L=500: usage.prompt=608 server delta=608.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=500: usage.prompt=545 server delta=545.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=500: usage.prompt=468 server delta=468.0 (mid-request 0.0) gen usage=143 server=143.0
+[counter_probe] stream=True L=2000: usage.prompt=1805 server delta=1805.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=2000: usage.prompt=1726 server delta=1726.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=2000: usage.prompt=1886 server delta=1886.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=9500: usage.prompt=8716 server delta=8716.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=9500: usage.prompt=9780 server delta=9780.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=True L=9500: usage.prompt=8388 server delta=8388.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=500: usage.prompt=467 server delta=467.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=500: usage.prompt=576 server delta=576.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=500: usage.prompt=476 server delta=476.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=2000: usage.prompt=2474 server delta=2474.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=2000: usage.prompt=1886 server delta=1886.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=2000: usage.prompt=1965 server delta=1965.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=9500: usage.prompt=11122 server delta=11122.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=9500: usage.prompt=9144 server delta=9144.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] stream=False L=9500: usage.prompt=10025 server delta=10025.0 (mid-request 0.0) gen usage=200 server=200.0
+[counter_probe] server/usage = 1.0000; per-request offsets [0.0]; counted before finish in 0/18

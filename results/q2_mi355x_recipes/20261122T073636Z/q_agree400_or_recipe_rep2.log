@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/or/bench/evalrun.py", line 110, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/or/bench/evalrun.py", line 85, in main
+    rows.append(dict(task=t, id=it["id"], gold=it["answer"], pred=pred, correct=scoring.is_correct(t, pred, it["answer"]),
+                                               ~~^^^^^^^^^^
+KeyError: 'answer'

@@ -1,0 +1,11 @@
+2026-11-22T08:51:29Z [ik8_5090_c4] creating spot sandbox (RTX-5090 x1, $1.3461/h, ttl 80 min, budget $3.0; project so far ~$150.91)
+2026-11-22T08:52:27Z [ik8_5090_c4] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          22          82           0         155         231 | overlay         1.8T  539G  1.2T  31% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:53:29Z [ik8_5090_c4] download mem81: rc=0 58s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:57:10Z [ik8_5090_c4] server mem81 ready=True after 219.7s; gpu mem 30022 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 138368 graphs 10
+2026-11-22T08:58:57Z [ik8_5090_c4] gate_mem81_gsm8kor100 rc=0 94s :: [gate_mem81_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=87s
+2026-11-22T09:10:30Z [ik8_5090_c4] protocol_mem81_B_text rc=0 693s :: [protocol] max_rate_at_slo=0.452 req/s (break-even 0.4524); prefill=None tok/s -> /root/or/out/protocol_mem81_B_text/protocol_summary.json
+2026-11-22T09:10:57Z [ik8_5090_c4] download mem81_mixed: rc=0 9s 20.2 GB via ['huggingface_hub']
+2026-11-22T09:12:08Z [ik8_5090_c4] server mem81_mixed ready=True after 67.1s; gpu mem 30022 MiB, 32607 MiB; attn {'sliding': 'fa4', 'global_512': 'fa4'} kv_tokens 138368 graphs 10
+2026-11-22T09:13:30Z [ik8_5090_c4] gate_mem81_mixed_gsm8kor100 rc=0 78s :: [gate_mem81_mixed_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=56s
+2026-11-22T09:24:58Z [ik8_5090_c4] protocol_mem81_mixed_B_text rc=0 688s :: [protocol] max_rate_at_slo=0.452 req/s (break-even 0.4524); prefill=None tok/s -> /root/or/out/protocol_mem81_mixed_B_text/protocol_summary.json
+2026-11-22T09:25:34Z [ik8_5090_c4] done: elapsed 34.1 min, est $0.76; project est $171.77

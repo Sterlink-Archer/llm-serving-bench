@@ -1,0 +1,7 @@
+# built output: regenerate with python3 -I dashboard/build.py [--demo]
+site/
+site-demo/
+# mock fixtures: regenerate with python3 -I dashboard/demo/make_demo.py
+demo/results/
+demo/ledger.jsonl
+__pycache__/

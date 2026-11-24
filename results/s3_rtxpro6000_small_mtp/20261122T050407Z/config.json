@@ -1,0 +1,188 @@
+{
+ "label": "s3_rtxpro6000_small_mtp",
+ "stage": "2-promote (RTX PRO 6000)",
+ "note": "Stage 2 on the cheapest NVIDIA card that came close (s1_rtxpro6000_nvfp4_fi: SLO miss at break-even 1.03 req/s, 0.79 req/s done). Two levers, one box: (1) host right-sized from 8 vCPU/32 GiB to 4 vCPU/16 GiB; measured on a live PRO 6000 box mid-run, anon memory was 4.6 GB (the rest of the 32 GB peak was reclaimable weight page cache) and CPU averaged ~1.4 cores. $/h 2.88 -> 2.42, so break-even 1.03 -> 0.86 req/s. p6_small_base re-measures s1's flags on the small host (CPU starvation would show as TTFT). (2) MTP with Google's assistant head (OpenRelay's recipe uses MTP 2 on MI355X): at ~0.8 req/s the box carries ~50 running requests at ~10K context, so each decode step re-reads a lot of KV; MTP cuts the number of decode steps per output token. Text client at 0.86 req/s gives MTP acceptance on real text (random tokens overstate it). Rates are absolute req/s; 120 s screen, seed 7.",
+ "snapshot": {
+  "name": "or-vllm0330-rtx-pro-6000-c4m16d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 4,
+  "mem": 16,
+  "disk": 80
+ },
+ "max_minutes": 90,
+ "budget_usd": 5.0,
+ "servers": [
+  {
+   "name": "p6_small_base",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/nvfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_p6_small_base",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "rates": [
+      0.7,
+      0.86,
+      1.03
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "p6_small_mtp2",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/nvfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/nvfp4/assistant\",\"num_speculative_tokens\":2}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_p6_small_mtp2",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "rates": [
+      0.86,
+      1.03,
+      1.2
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_p6_small_mtp2_textclient",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false,
+     "rates": [
+      0.86
+     ]
+    }
+   ],
+   "delete_weights_after": false
+  },
+  {
+   "name": "p6_small_mtp3",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    },
+    {
+     "repo": "google/gemma-4-31B-it-assistant",
+     "rev": "627c5ec1458b9086b841a91e0512fd31fd2fbbf1",
+     "dir": "/root/models/nvfp4/assistant"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768 --attention-backend FLASHINFER --speculative-config '{\"method\":\"mtp\",\"model\":\"/root/models/nvfp4/assistant\",\"num_speculative_tokens\":3}'",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_p6_small_mtp3",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false,
+     "rates": [
+      0.86,
+      1.03,
+      1.2
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_p6_small_mtp3_textclient",
+     "client": "traffic",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false,
+     "rates": [
+      0.86
+     ]
+    }
+   ]
+  }
+ ]
+}

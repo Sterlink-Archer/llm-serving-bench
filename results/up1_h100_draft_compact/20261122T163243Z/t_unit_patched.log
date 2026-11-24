@@ -1,0 +1,50 @@
+/usr/local/lib/python3.14/dist-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.14.10, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: /root/vtest
+configfile: pyproject.toml
+plugins: asyncio-1.5.0, anyio-4.16.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 36 items
+
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_pcp_draft_metadata_keeps_graph_padding_in_decode[NONE] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_pcp_draft_metadata_keeps_graph_padding_in_decode[FULL] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_speculator_uses_draft_model_hidden_size[None-64] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_speculator_uses_draft_model_hidden_size[4-256] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_mm_support_configured_after_model_load PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_load_model_keeps_mm_support_for_capable_drafter PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_load_model_disables_mm_support_for_text_only_drafter PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_module_mm_support_configured_after_model_load PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_module_mtp_reprefill_uses_only_cached_request_history[False] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_module_mtp_reprefill_uses_only_cached_request_history[True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[EagleLlama4ForCausalLM-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[EagleMistralForCausalLM-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[EagleMistralLarge3ForCausalLM-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[Exaone4_5_MTP-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[NemotronHMTP-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_draft_model_multimodal_embedding_capability[Eagle3LlamaForCausalLM-False] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_mm_capable_drafter_merges_multimodal_embeddings[EagleLlama4ForCausalLM] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_mm_capable_drafter_merges_multimodal_embeddings[EagleMistralLarge3ForCausalLM] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_nemotron_h_mtp_merges_multimodal_embeddings PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_run_model_unpacks_tuple_return_for_mtp PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_run_model_reuses_tensor_return_for_mtp PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_run_model_uses_complete_pcp_padding[False] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_run_model_uses_complete_pcp_padding[True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_step_decode_replays_captured_graph_as_expected[_multi_step_decode-NONE-4-3-0] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_step_decode_replays_captured_graph_as_expected[_multi_step_decode-FULL-4-0-3] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_step_decode_replays_captured_graph_as_expected[_run_fused_multi_step_decode-NONE-4-3-0] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_step_decode_replays_captured_graph_as_expected[_run_fused_multi_step_decode-FULL-4-0-1] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_multi_step_decode_replays_captured_graph_as_expected[_multi_step_decode-FULL-3-0-2] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_fused_full_graph_maps_split_group_block_tables PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_update_draft_decode_metadata_updates_fa3_scheduler_metadata PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_update_draft_decode_metadata_skips_without_scheduler_metadata PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_decode_metadata_update_needs_draft_decode_steps[1-False] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_decode_metadata_update_needs_draft_decode_steps[3-True] PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_rebuilt_prefill_metadata_uses_target_batch_slots PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_captured_draft_update_reads_reduced_max_model_len PASSED
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py::test_q_only_draft_prefill_keeps_last_token_rows PASSED
+
+============================= 36 passed in 13.66s ==============================

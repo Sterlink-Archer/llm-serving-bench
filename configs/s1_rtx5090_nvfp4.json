@@ -1,0 +1,74 @@
+{
+ "label": "s1_rtx5090_nvfp4",
+ "stage": "1-screen",
+ "note": "Stage-1 screen: RTX 5090 (32 GB), RedHat NVFP4 23.3 GB, FP8 KV, max-len 20480 (17.8K needed). The KV-token count in the startup log decides whether 10K prompts fit; no public 32-256 concurrency data exists for this card.",
+ "snapshot": {
+  "name": "or-vllm0330-rtx-5090-c8m32d80",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "RTX-5090",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 80
+ },
+ "max_minutes": 50,
+ "budget_usd": 2.0,
+ "servers": [
+  {
+   "name": "nvfp4",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "dir": "/root/models/nvfp4"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.96 --max-model-len 20480",
+   "ready_timeout_s": 1500,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4",
+     "client": "vllmbench",
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": true,
+     "multiples": [
+      1.0,
+      1.5,
+      2.0
+     ]
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_nvfp4_textclient",
+     "client": "traffic",
+     "multiples": [
+      1.0
+     ],
+     "seeds": [
+      7
+     ],
+     "duration": 120,
+     "prefill_shot": false
+    }
+   ]
+  }
+ ]
+}

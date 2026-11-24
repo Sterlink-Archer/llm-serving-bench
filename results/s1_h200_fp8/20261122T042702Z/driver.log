@@ -1,0 +1,9 @@
+2026-11-22T04:27:02Z [s1_h200_fp8] building snapshot or-vllm0330-h200-c8m32d80 from vllm/vllm-openai:v0.33.0
+2026-11-22T04:31:35Z [s1_h200_fp8] creating spot sandbox (H200 x1, $3.7997/h, ttl 60 min, budget $4.5; project so far ~$2.62)
+2026-11-22T04:31:55Z [s1_h200_fp8] system: ok | NVIDIA H200, 143771 MiB, 595.91.07, 700.00 W | 24 | Mem:             235          15         111           0         116         220 | overlay          80G  5.2M   80G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:33:18Z [s1_h200_fp8] download fp8dyn: rc=0 82s 33.3 GB via ['huggingface_hub']
+2026-11-22T04:35:49Z [s1_h200_fp8] server fp8dyn ready=True after 150.3s; gpu mem 129727 MiB, 143771 MiB; attn {'sliding': 'FLASH_ATTN/FA3', 'global_512': 'FLASH_ATTN/FA4'} kv_tokens 380783 graphs 51
+2026-11-22T04:36:12Z [s1_h200_fp8] gate_gsm8kor100 rc=0 23s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=18s
+2026-11-22T04:41:34Z [s1_h200_fp8] protocol_fp8dyn rc=0 321s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.3549); prefill=13165.829080994034 tok/s -> /root/or/out/protocol_fp8dyn/protocol_summary.json
+2026-11-22T04:43:39Z [s1_h200_fp8] protocol_fp8dyn_textclient rc=0 126s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.3549); prefill=None tok/s -> /root/or/out/protocol_fp8dyn_textclient/protocol_summary.json
+2026-11-22T04:43:56Z [s1_h200_fp8] done: elapsed 12.4 min, est $0.78; project est $6.67

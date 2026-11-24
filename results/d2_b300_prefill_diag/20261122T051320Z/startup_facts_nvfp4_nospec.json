@@ -1,0 +1,80 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": "FLASHINFER",
+  "global_512": "FLASHINFER"
+ },
+ "attention_backend_lines": [
+  "(APIServer pid=852) INFO 11-22 05:15:06 [startup.py:96] non-default args: {'model_tag': '/root/models/nvfp4', 'enable_prompt_tokens_details': True, 'model': '/root/models/nvfp4', 'max_model_len': 32768, 'served_model_name': ['gemma'], 'attention_backend': 'FLASHINFER', 'reasoning_parser': 'gemma4', ",
+  "(EngineCore pid=1397) INFO 11-22 05:15:56 [cuda.py:489] Using AttentionBackendEnum.FLASHINFER backend.",
+  "(EngineCore pid=1397) INFO 11-22 05:15:56 [cuda.py:489] Using AttentionBackendEnum.FLASHINFER backend."
+ ],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  48,
+  64,
+  80,
+  96,
+  112,
+  128,
+  160,
+  192,
+  224,
+  256,
+  320,
+  384
+ ],
+ "kv_cache_tokens": 919768,
+ "kv_cache_gib": 224.51,
+ "kv_cache_dtype": "fp8",
+ "max_concurrency_at_max_len": 28.07,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "compressed-tensors",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.34.0",
+ "missing": [],
+ "rejected": false,
+ "reject_reason": null,
+ "schema": "startup_facts/1",
+ "run_id": "d2_b300_prefill_diag/20261122T051320Z",
+ "config_id": "d2_b300_prefill_diag:nvfp4_nospec",
+ "image": "vllm/vllm-openai:v0.34.0",
+ "image_digest": "sha256:cf5b2fdd087eb4f6d261736967cc5cde974bd22ff4df50365f8fa419b6b4c484",
+ "model_repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+ "model_rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+ "gpu_mem_after_load": "250178 MiB, 275040 MiB",
+ "source_log": "results/d2_b300_prefill_diag/20261122T051320Z/server_nvfp4_nospec.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T05:15:56Z",
+   "t_end": "2026-11-22T05:16:04Z"
+  },
+  {
+   "phase": "torch_compile",
+   "t_start": "2026-11-22T05:16:14Z",
+   "t_end": "2026-11-22T05:16:53Z",
+   "detail": {
+    "compile_s": 39.08
+   }
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T05:17:50Z",
+   "t_end": "2026-11-22T05:17:59Z",
+   "detail": {
+    "s": 9.0,
+    "gib": 0.89
+   }
+  }
+ ]
+}

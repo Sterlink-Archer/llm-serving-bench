@@ -1,0 +1,2443 @@
+{
+ "label": "gate_glm_mtp5_gsm8kor100",
+ "args": {
+  "base": "http://127.0.0.1:8000",
+  "model": "glm",
+  "sets": "data/eval/gsm8kor_test.jsonl",
+  "concurrency": 64,
+  "max_tokens": 8192,
+  "think": false,
+  "limit": 100,
+  "timeout": 900,
+  "label": "gate_glm_mtp5_gsm8kor100",
+  "gate_task": "gsm8kor",
+  "gate_threshold": 0.965,
+  "chat_template_kwargs": "{\"reasoning_effort\": \"low\"}",
+  "api_key_env": "",
+  "out": "/root/or/out/gate_glm_mtp5_gsm8kor100.json"
+ },
+ "split": "gsm8kor_test[:100]",
+ "gate": {
+  "task": "gsm8kor",
+  "threshold": 0.965,
+  "acc": 0.98,
+  "n": 100,
+  "passed": 98,
+  "pass": true
+ },
+ "wall_s": 8.096865177154541,
+ "t_end": "2026-11-22T07:53:44Z",
+ "summary": {
+  "gsm8kor": {
+   "n": 100,
+   "correct": 98,
+   "acc": 0.98,
+   "no_answer": 0,
+   "errors": 0,
+   "truncated": 0,
+   "mean_completion_tokens": 81.46
+  }
+ },
+ "rows": [
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-0",
+   "gold": "Janet sells 16 - 3 - 4 = <<16-3-4=9>>9 duck eggs a day.\nShe makes 9 * 2 = $<<9*2=18>>18 every day at the farmer\u2019s market.\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "16 - 3 - 4 = 9 eggs sold; 9 \u00d7 $2 = $18.\n\n#### 18",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 130,
+    "completion_tokens": 27,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.7176263416185975
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-1",
+   "gold": "It takes 2/2=<<2/2=1>>1 bolt of white fiber\nSo the total amount of fabric is 2+1=<<2+1=3>>3 bolts of fabric\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "Blue fiber: 2 bolts\nWhite fiber: half of 2 = 1 bolt\nTotal: 2 + 1 = 3 bolts\n\n#### 3",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 65,
+    "total_tokens": 101,
+    "completion_tokens": 36,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.7808135570958257
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-10",
+   "gold": "The number of downloads of the program in the second month increased to 3*60 = <<3*60=180>>180\nIn the first two months, the total number of downloads of the program was 180+60 = <<180+60=240>>240\nIn the third month, the number of downloads of the program reduced by 30/100*180 = <<30/100*180=54>>54\nThere were 180-54 = <<180-54=126>>126 downloads in the third month.\nIn the three months, the total number of downloads of the program was 126+240 = <<126+240=366>>366\n#### 366",
+   "pred": 366.0,
+   "correct": true,
+   "text": "Month 1: 60 downloads.\nMonth 2: 3 \u00d7 60 = 180 downloads.\nMonth 3: 180 reduced by 30% \u2192 180 \u00d7 0.70 = 126 downloads.\n\nTotal: 60 + 180 + 126 = 366\n\n#### 366",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 97,
+    "total_tokens": 164,
+    "completion_tokens": 67,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.8974090572446585
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-11",
+   "gold": "The total charge for the doughnuts was 3 x $68 = $<<3*68=204>>204.\nThe total charge for the mini cupcakes was 2 x $80 = $<<2*80=160>>160.\nThe total charge for the mini cheesecakes was 6 x $55 = $<<6*55=330>>330.\nTherefore the total amount Toula paid for the pastries was $204 + $160 + $330 = $<<204+160+330=694>>694.\n#### 694",
+   "pred": 694.0,
+   "correct": true,
+   "text": "3 dozen donuts: 3 \u00d7 68 = 204\n2 dozen cupcakes: 2 \u00d7 80 = 160\n6 dozen cheesecakes: 6 \u00d7 55 = 330\n\nTotal: 204 + 160 + 330 = 694\n\n#### 694",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 101,
+    "total_tokens": 164,
+    "completion_tokens": 63,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.344490651972592
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-12",
+   "gold": "He makes $10.5 selling lemons each year because 7 x 1.5 = <<7*1.5=10.5>>10.5\nHe earns $7.5 each year from the lemon tree because 10.5 - 3 = <<10.5-3=7.5>>7.5\nIt will take 12 years to earn enough to pay off the tree because 90 / 7.5 = <<90/7.5=12>>12\nHe will make money in year 13 because 12 + 1 = <<12+1=13>>13\n#### 13",
+   "pred": 13.0,
+   "correct": true,
+   "text": "**Step 1: Calculate yearly revenue.**\n7 lemons \u00d7 $1.5 = $10.50 per year\n\n**Step 2: Calculate yearly costs.**\nWatering and feeding = $3 per year\n\n**Step 3: Calculate yearly profit.**\n$10.50 \u2212 $3 = $7.50 per year\n\n**Step 4: Determine when profits exceed the $90 planting cost.**\n$90 \u00f7 $7.50 = 12 years to break even.\n\nSo after 12 years he has recovered his cost, and he starts earning money in year 13.\n\n#### 13",
+   "reasoning": "Yearly profit: 7*1.5 - 3 = 10.5-3 = 7.5. Years to recoup 90: 90/7.5 = 12. So after 12 years he breaks even; starts earning in year 13.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 105,
+    "total_tokens": 293,
+    "completion_tokens": 188,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 59
+    }
+   },
+   "secs": 6.048854342661798
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-13",
+   "gold": "First multiply the five remaining vacuum cleaners by two to find out how many Melanie had before she visited the orange house: 5 * 2 = <<5*2=10>>10\nThen add two to figure out how many vacuum cleaners she had before visiting the red house: 10 + 2 = <<10+2=12>>12\nNow we know that 2/3 * x = 12, where x is the number of vacuum cleaners Melanie started with. We can find x by dividing each side of the equation by 2/3, which produces x = 18\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "**Step 1:** Let x = starting number. After green house: x \u2212 x/3 = 2x/3 left.\n\n**Step 2:** After red house: 2x/3 \u2212 2 left.\n\n**Step 3:** She sold half of that at the orange house, leaving half. So half of (2x/3 \u2212 2) = 5, meaning 2x/3 \u2212 2 = 10.\n\n**Step 4:** 2x/3 = 12 \u2192 x = 18.\n\nCheck: 18 \u2192 sell 6 \u2192 12 \u2192 sell 2 \u2192 10 \u2192 sell 5 \u2192 5 left. \u2713\n\n#### 18",
+   "reasoning": "Let x. Green: x/3, red: 2, left x/3-2... wait: remaining x - x/3 - 2 = 2x/3 - 2. Half sold at orange, half left = 5, so remaining before orange = 10. 2x/3 - 2 = 10 \u2192 x=18.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 97,
+    "total_tokens": 321,
+    "completion_tokens": 224,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 77
+    }
+   },
+   "secs": 6.36095488909632
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-14",
+   "gold": "There are 20 x 20/100 = <<20*20/100=4>>4 students who enrolled in contemporary dance.\nSo, 20 - 4 = <<20-4=16>>16 students are enrolled in either jazz or hip-hop dance.\nThere are 16 x 25/100 = <<16*25/100=4>>4 students who enrolled in jazz dance.\nHence, 16 - 4 = <<16-4=12>>12 students enrolled in hip-hop dance.\nThis is 12/20 x 100% = 60% of the entire students.\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "Step 1: Contemporary dance: 20% of students.\nStep 2: Remaining students: 100% \u2212 20% = 80%.\nStep 3: Jazz dance: 25% of the remaining = 25% \u00d7 80% = 20% of all students.\nStep 4: Hip-hop: 100% \u2212 20% \u2212 20% = 60%.\n\n#### 60",
+   "reasoning": "20% contemporary, 25% of remaining 80% = 20% jazz, rest 60%.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 88,
+    "total_tokens": 198,
+    "completion_tokens": 110,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 22
+    }
+   },
+   "secs": 5.2411615792661905
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-15",
+   "gold": "If he purchases jewelry, he will make a profit of 2.5% which is $5000*(2.5/100) = $<<5000*(2.5/100)=125>>125\nIf he purchases electronic gadgets, he will make a profit of 1.2% which is $8000*(1.2/100) = $<<8000*(1.2/100)=96>>96\nIf he wants to maximize profit, since $125 > $96, he will choose to purchase jewelry, thereby making a profit of $<<125=125>>125\n#### 125",
+   "pred": 125.0,
+   "correct": true,
+   "text": "**Step 1:** Jewelry profit: $5,000 \u00d7 2.5% = $125\n**Step 2:** Gadgets profit: $8,000 \u00d7 1.2% = $96\n**Step 3:** Maximum profit = $125 (jewelry)\n\n#### 125",
+   "reasoning": "Jewelry: 5000\u00d70.025=125; gadgets: 8000\u00d70.012=96. Max profit 125.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 129,
+    "total_tokens": 226,
+    "completion_tokens": 97,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 33
+    }
+   },
+   "secs": 4.959069848060608
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-16",
+   "gold": "On the first day, the trains covered 2 trains * 80 miles/train = <<2*80=160>>160 miles together.\nThey also covered 150 miles/train * 2 trains = <<150*2=300>>300 miles together on the second day.\nThe combined distance the two trains covered in the two days is 300 miles + 160 miles = <<300+160=460>>460 miles\nThe average distance for the two days is 460 miles / 2 trains = <<460/2=230>>230 miles/train\n#### 230",
+   "pred": 230.0,
+   "correct": true,
+   "text": "**Step 1:** Day 1 \u2014 each train travels 80 miles westward.\n\n**Step 2:** Day 2 \u2014 each train travels 150 miles northward.\n\n**Step 3:** Total distance per train = 80 + 150 = 230 miles.\n\n#### 230",
+   "reasoning": "80+150=230.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 89,
+    "total_tokens": 156,
+    "completion_tokens": 67,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 6
+    }
+   },
+   "secs": 3.8940730756148696
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-17",
+   "gold": "First find the total amount Jill makes per week teaching: $20/hour * 35 hours/week = $<<20*35=700>>700/week\nThen find the total amount Jill makes per week coaching: $30/hour * 15 hours/week = $<<30*15=450>>450/week\nThen add those two amounts to find the total amount Jill makes per week: $700/week + $450/week = $<<700+450=1150>>1150/week\nThen multiply that number by the number of weeks Jill works in a year to find her annual salary: $1150/week * 50 weeks/year = $<<1150*50=57500>>57,500\n#### 57500",
+   "pred": 57500.0,
+   "correct": true,
+   "text": "Teaching: 20 \u00d7 35 = $700/week\nCoaching: 30 \u00d7 15 = $450/week\nWeekly total: $1,150\nAnnual: 1,150 \u00d7 50 = $57,500\n\n#### 57500",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 92,
+    "total_tokens": 150,
+    "completion_tokens": 58,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.724289852194488
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-18",
+   "gold": "She eats 3 eggs every day and there are 7 days in a week so she eats 3*7 = <<3*7=21>>21 eggs a week\nAfter 4 weeks she will have eaten 4*21 = <<4*21=84>>84 eggs\nThere are 12 eggs in 1 dozen and she'll eat 84 eggs so that's 84/12 = <<84/12=7>>7 dozen eggs\n#### 7",
+   "pred": 7.0,
+   "correct": true,
+   "text": "Step 1: Eggs per day = 3.\nStep 2: Days in 4 weeks = 4 \u00d7 7 = 28.\nStep 3: Total eggs = 3 \u00d7 28 = 84.\nStep 4: Dozens = 84 \u00f7 12 = 7.\n\n#### 7",
+   "reasoning": "3*7*4=84 eggs; /12=7.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 68,
+    "total_tokens": 150,
+    "completion_tokens": 82,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 14
+    }
+   },
+   "secs": 4.652982070110738
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-19",
+   "gold": "First figure out how many hours it takes to hike a 12-mile trail at 4 mph by dividing the distance by the speed: 12 miles / 4 mph = <<12/4=3>>3 hours\nNext subtract the time Marissa already spent walking to find out how much time she has left: 3 hours - 1 hour - 1 hour = <<3-1-1=1>>1 hour\nNow figure out how much distance she has left by subtracting the distance she already traveled from the total distance: 12 miles - 4 miles - 2 miles = <<12-4-2=6>>6 miles\nNow divide the remaining distance by the remaining time to find out how fast in miles per hour Marissa has to travel: 6 miles / 1 hour = <<6/1=6>>6 mph\n#### 6",
+   "pred": 6.0,
+   "correct": true,
+   "text": "Total time allowed: 12 \u00f7 4 = 3 hours.\nTime used: 1 + 1 = 2 hours, so 1 hour remains.\nDistance left: 12 \u2212 6 = 6 miles.\nSpeed needed: 6 \u00f7 1 = 6 mph.\n\n#### 6",
+   "reasoning": "12 miles at 4 mph = 3 hours total. Used 2 hours, 6 miles remain, 1 hour left \u2192 6 mph.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 200,
+    "completion_tokens": 97,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 31
+    }
+   },
+   "secs": 5.293385332450271
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-2",
+   "gold": "The cost of the house and repairs came out to 80,000+50,000=$<<80000+50000=130000>>130,000\nHe increased the value of the house by 80,000*1.5=<<80000*1.5=120000>>120,000\nSo the new value of the house is 120,000+80,000=$<<120000+80000=200000>>200,000\nSo he made a profit of 200,000-130,000=$<<200000-130000=70000>>70,000\n#### 70000",
+   "pred": 70000.0,
+   "correct": true,
+   "text": "Step 1: Josh's total cost = $80,000 + $50,000 = $130,000.\n\nStep 2: The house's original value is $80,000. A 150% increase means the value went up by 1.5 \u00d7 $80,000 = $120,000.\n\nStep 3: New house value = $80,000 + $120,000 = $200,000.\n\nStep 4: Profit = $200,000 \u2212 $130,000 = $70,000.\n\n#### 70000",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 88,
+    "total_tokens": 203,
+    "completion_tokens": 115,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 5.194198307581246
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-20",
+   "gold": "There are 15 x 3/5 = <<15*3/5=9>>9 liters of water from the 15 liters pineapple drink.\nAfter 1 liter of orange drink was spilled, there were 10 - 1 = <<10-1=9>>9 liters of orange drink left.\nOut of the 9 liters, 9 x 2/3 = <<9*2/3=6>>6 liters are water.\nThus, there are a total of 9 + 6 = <<9+6=15>>15 liters of water out of the 24 liters.\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "**Step 1: Orange drink water.** 10 liters \u00d7 2/3 = 20/3 liters of water.\n\n**Step 2: Spill.** Spilling 1 liter removes 1 liter uniformly, so 9 liters remain with 9 \u00d7 2/3 = 6 liters of water.\n\n**Step 3: Pineapple drink water.** 15 liters \u00d7 3/5 = 9 liters of water.\n\n**Step 4: Total water.** 6 + 9 = 15 liters.\n\n#### 15",
+   "reasoning": "Orange: 10 L, 2/3 water = 20/3. Spill 1 L removes 2/3 water, leaving 9 L with 6 L water. Pineapple: 15 \u00d7 3/5 = 9. Total 6+9=15.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 277,
+    "completion_tokens": 178,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 61
+    }
+   },
+   "secs": 6.046219941228628
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-21",
+   "gold": "When Raymond's son was born Samantha was 23 - 6 = <<23-6=17>>17 years old.\nThus it has been 31 - 17 = <<31-17=14>>14 years since Raymond's son was born.\n#### 14",
+   "pred": 14.0,
+   "correct": true,
+   "text": "Raymond is 6 years older than Samantha, so he is 31 + 6 = 37 now.\n\nHis son was born when Raymond was 23, so the son was born 37 \u2212 23 = 14 years ago.\n\n#### 14",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 83,
+    "total_tokens": 137,
+    "completion_tokens": 54,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.341713620349765
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-22",
+   "gold": "His first 3 customers buy 3 * 1 = <<3*1=3>>3 DVDs.\nHis next 2 buy 2 * 2 = <<2*2=4>>4 DVDs.\nHe sells a total of 3 + 4 + 0 = <<3+4+0=7>>7 DVDs.\n#### 7",
+   "pred": 7.0,
+   "correct": true,
+   "text": "Step 1: First 3 customers buy 1 DVD each: 3 \u00d7 1 = 3 DVDs\nStep 2: Next 2 customers buy 2 DVDs each: 2 \u00d7 2 = 4 DVDs\nStep 3: Last 3 customers buy 0 DVDs: 0\nTotal: 3 + 4 + 0 = 7\n\n#### 7",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 94,
+    "total_tokens": 177,
+    "completion_tokens": 83,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.479521295055747
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-23",
+   "gold": "The candle burns for 5 - 1 = <<5-1=4>>4 hours.\nThus, the candle will be 2 * 4 = <<2*4=8>>8 centimeters shorter.\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "From 1:00 PM to 5:00 PM is 4 hours.\n\nThe candle melts 2 cm per hour: 4 \u00d7 2 = 8 cm.\n\n#### 8",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 77,
+    "total_tokens": 118,
+    "completion_tokens": 41,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.770716435275972
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-24",
+   "gold": "Let X be the original price of the book. The discounted price is X - X*25% = $19.50.\nCombining like terms, we get .75X = $19.50\nDividing both sides by .75, we get X = $26.\n#### 26",
+   "pred": 26.0,
+   "correct": true,
+   "text": "The sale price is 75% of the original price.\n\nOriginal price = $19.50 \u00f7 0.75 = $26\n\n#### 26",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 109,
+    "completion_tokens": 34,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.43419420812279
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-25",
+   "gold": "Five packs of milk cost $3 x 5 = $<<3*5=15>>15.\nFour apples cost $1.50 x 4 = $<<1.5*4=6>>6.\nThe total cost of the chicken meal, milk, and apples is $12 + $15 + $6 = $<<12+15+6=33>>33.\nThus, the boxes of pizza cost $50 - $33 = $<<50-33=17>>17.\nTherefore, Marie ordered $17/$8.50 = <<17/8.5=2>>2 boxes of pizza.\n#### 2",
+   "pred": 2.0,
+   "correct": true,
+   "text": "Chicken: $12\nMilk: 5 \u00d7 $3 = $15\nApples: 4 \u00d7 $1.50 = $6\nTotal so far: $12 + $15 + $6 = $33\n\nPizza cost: $50 \u2212 $33 = $17\nBoxes: $17 \u00f7 $8.50 = 2\n\n#### 2",
+   "reasoning": "12+15+6=33; 17/8.5=2",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 197,
+    "completion_tokens": 94,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 16
+    }
+   },
+   "secs": 5.183901134878397
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-26",
+   "gold": "3 * (16.50 + 22.50 + 42) = $<<3*(16.50+22.50+42)=243>>243\nMishka spent $243 on clothing.\n#### 243",
+   "pred": 243.0,
+   "correct": true,
+   "text": "3 \u00d7 16.50 = 49.50\n3 \u00d7 22.50 = 67.50\n3 \u00d7 42 = 126\n\nTotal: 49.50 + 67.50 + 126 = 243\n\n#### 243",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 103,
+    "total_tokens": 160,
+    "completion_tokens": 57,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.577622934244573
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-27",
+   "gold": "Each container of ice cream has 15 servings and she eats 1 serving a night so after 60 days she will need 60/15 = 4 containers of ice cream\nIf each carton costs $4.00 and she needs 4 containers then it will cost her 4*4 = $<<4*4=16.00>>16.00\n#### 16",
+   "pred": 16.0,
+   "correct": true,
+   "text": "60 servings \u00f7 15 servings per carton = 4 cartons. 4 \u00d7 $4.00 = $16.00.\n\n#### 16",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 95,
+    "total_tokens": 129,
+    "completion_tokens": 34,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.4338305983692408
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-28",
+   "gold": "He traveled 20 miles + 15 miles = <<20+15=35>>35 miles not counting the distance between stops.\nHenry traveled 60 miles - 35 miles = <<60-35=25>>25 miles between his first and second stop.\n#### 25",
+   "pred": 25.0,
+   "correct": true,
+   "text": "Step 1: First stop is at 20 miles.\nStep 2: Second stop is 15 miles before the end: 60 \u2212 15 = 45 miles.\nStep 3: Distance between stops: 45 \u2212 20 = 25 miles.\n\n#### 25",
+   "reasoning": "Second stop at 60-15=45. 45-20=25.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 86,
+    "total_tokens": 162,
+    "completion_tokens": 76,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 17
+    }
+   },
+   "secs": 4.171338627114892
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-29",
+   "gold": "The second pair of heels costs 33 * 2 = $<<33*2=66>>66.\nThe heels together cost 66 + 33 = $<<66+33=99>>99.\nThe boots cost $5 more than both pairs of heels together, so the boots cost 99 + 5 = $104.\n#### 104",
+   "pred": 104.0,
+   "correct": true,
+   "text": "Two pairs of heels: $33 + 2\u00d7$33 = $33 + $66 = $99.\nBoots cost $5 more than the heels: $99 + $5 = $104.\n\n#### 104",
+   "reasoning": "33+66=99, boots=104.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 107,
+    "total_tokens": 164,
+    "completion_tokens": 57,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 10
+    }
+   },
+   "secs": 3.890989936888218
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-3",
+   "gold": "He sprints 3*3=<<3*3=9>>9 times\nSo he runs 9*60=<<9*60=540>>540 meters\n#### 540",
+   "pred": 540.0,
+   "correct": true,
+   "text": "James runs 3 sprints per session, 3 times a week.\n\n- Sprints per week: 3 \u00d7 3 = 9 sprints\n- Each sprint is 60 meters: 9 \u00d7 60 = 540 meters\n\n#### 540",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 73,
+    "total_tokens": 130,
+    "completion_tokens": 57,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.588749227114022
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-30",
+   "gold": "The total ratio representing their ages is 7+11= <<7+11=18>>18\nSince the fraction of the ratio that represents Allen's age is 11/18, Allen's current age is 11/18*162 = <<11/18*162=99>>99\nIf Allen is currently 99 years old, in 10 years he will be 99+10 = <<99+10=109>>109 years old\n#### 109",
+   "pred": 109.0,
+   "correct": true,
+   "text": "Step 1: Ratio 7:11 means total parts = 7 + 11 = 18.\nStep 2: One part = 162 \u00f7 18 = 9.\nStep 3: Allen's age now = 11 \u00d7 9 = 99.\nStep 4: In 10 years: 99 + 10 = 109.\n\n#### 109",
+   "reasoning": "162/18=9, Allen=99, +10=109.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 74,
+    "total_tokens": 169,
+    "completion_tokens": 95,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 15
+    }
+   },
+   "secs": 5.005351210013032
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-31",
+   "gold": "The second person guessed 60 because 20 + (80/2)= <<20+(80/2)=60>>60\nThe second guessed 100 because 80 x 1.25 = <<80*1.25=100>>100\nThe total amount guessed is 240 because 80 + 60 + 100 = <<80+60+100=240>>240\nThe average amount guessed is 80 because 240 / 3 = <<240/3=80>>80\n#### 80",
+   "pred": 80.0,
+   "correct": true,
+   "text": "Step by step:\n- First guess: 80\n- Second: half of 80 = 40, plus 20 = 60\n- Third: 25% more than 80 = 80 + 20 = 100\n- Average: (80 + 60 + 100) / 3 = 240 / 3 = 80\n\n#### 80",
+   "reasoning": "80, 60, 100 \u2192 240/3=80",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 192,
+    "completion_tokens": 93,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 14
+    }
+   },
+   "secs": 5.1222014501690865
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-32",
+   "gold": "He spends 10*.5=<<10*.5=5>>5 hours per day\nThat means he spends 5*7=<<5*7=35>>35 hours per week\n#### 35",
+   "pred": 35.0,
+   "correct": true,
+   "text": "Step 1: Each dog takes 0.5 hours per day.\nStep 2: 10 dogs \u00d7 0.5 hours = 5 hours per day.\nStep 3: 5 hours/day \u00d7 7 days = 35 hours per week.\n\n#### 35",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 79,
+    "total_tokens": 138,
+    "completion_tokens": 59,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.8902745647355914
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-33",
+   "gold": "Let x be the number of silver coins Gretchen has\nGretchen has x+30 gold coins.\nx+x+30=110\n2*x=80\nx=<<40=40>>40\nGretchen has 40+30=<<40+30=70>>70 gold coins\n#### 70",
+   "pred": 70.0,
+   "correct": true,
+   "text": "Let silver coins = s, gold = s + 30.\n\ns + (s + 30) = 110\n2s = 80\ns = 40\n\nGold = 40 + 30 = 70\n\n#### 70",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 67,
+    "total_tokens": 119,
+    "completion_tokens": 52,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.030677341856062
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-34",
+   "gold": "Half of Raymond's jewels is 40/2 = <<40/2=20>>20\nSince Aaron has 5 more jewels than half of Raymond's jewels, he has 20+5 = <<5+20=25>>25 jewels.\nIf Siobhan has 2 fewer jewels than Aaron, he has 25-2 = 23 jewels.\n#### 23",
+   "pred": 23.0,
+   "correct": true,
+   "text": "Step 1: Raymond has 40 jewels.\nStep 2: Half of Raymond's jewels = 40 \u00f7 2 = 20.\nStep 3: Aaron has 5 more than that: 20 + 5 = 25.\nStep 4: Siobhan has 2 fewer than Aaron: 25 \u2212 2 = 23.\n\n#### 23",
+   "reasoning": "Raymond 40, half=20, Aaron 25, Siobhan 23.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 79,
+    "total_tokens": 177,
+    "completion_tokens": 98,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 19
+    }
+   },
+   "secs": 4.81109060999006
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-35",
+   "gold": "He scored 4*.25=<<4*.25=1>>1 point more in the second 20 minutes\nSo he scored 4+1=<<4+1=5>>5 points in the second 20 minutes\nSo in total, he scored 4+5=<<4+5=9>>9 points in the 40 minutes\n#### 9",
+   "pred": 9.0,
+   "correct": true,
+   "text": "First 20 minutes: 4 points.\nSecond 20 minutes: 25% more \u2192 4 \u00d7 1.25 = 5 points.\nTotal: 4 + 5 = 9 points.\n\n#### 9",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 135,
+    "completion_tokens": 48,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.43184338696301
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-36",
+   "gold": "He eats 2 yogurts a day so over 30 days he will need 2*30 = <<2*30=60>>60 yogurts\nThe yogurt is sold as 4 units for $5.00 and he needs 60 yogurts so that\u2019s 60/4 = <<60/4=15>>15 4-packs\nEach 4-pack is $5.00 and he needs 15 4-packs so he will spend $5*15 = $<<5*15=75.00>>75.00 on yogurt\n#### 75",
+   "pred": 75.0,
+   "correct": true,
+   "text": "Step 1: Terry eats 2 yogurts/day \u00d7 30 days = 60 yogurts.\nStep 2: 60 yogurts \u00f7 4 per pack = 15 packs.\nStep 3: 15 \u00d7 $5.00 = $75.00.\n\n#### 75",
+   "reasoning": "60 yogurts / 4 = 15 packs \u00d7 $5 = $75",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 79,
+    "total_tokens": 157,
+    "completion_tokens": 78,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 16
+    }
+   },
+   "secs": 4.648691168986261
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-37",
+   "gold": "He spent $160 on video games because 8 x 20 = <<8*20=160>>160\nHe earned $165 from his sale because 160 + 5 = <<160+5=165>>165\nHe sold 11 lego sets because 11 x 15 = <<11*15=165>>165\nHe has 2 sets left because 13 - 11 = <<13-11=2>>2\n#### 2",
+   "pred": 2.0,
+   "correct": true,
+   "text": "John sells lego sets at $15 each. He spends 8 \u00d7 $20 = $160 on games, plus $5 left over, so he earned $165 total. That's $165 \u00f7 $15 = 11 lego sets sold. He had 13, so he still has 13 \u2212 11 = 2.\n\n#### 2",
+   "reasoning": "13\u00d715=195; games cost 160+5=165; sold 165/15=11; left 2.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 201,
+    "completion_tokens": 102,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 27
+    }
+   },
+   "secs": 5.482482070103288
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-38",
+   "gold": "He has 7-1=<<7-1=6>>6 possible running days.\nHe runs half of those so he runs 6/2=<<6/2=3>>3 days.\nSo for two days, he runs 3/2=<<3/2=1.5>>1.5 hours.\nSo in total, he runs 3+1.5+1.5=<<3+1.5+1.5=6>>6 hours.\nSo he runs 60/6=<<60/6=10>>10 mph.\n#### 10",
+   "pred": 10.0,
+   "correct": true,
+   "text": "Step 1: First day he runs 3 hours.\nStep 2: The other two days he runs half as much: 3 \u00f7 2 = 1.5 hours each.\nStep 3: Total hours = 3 + 1.5 + 1.5 = 6 hours.\nStep 4: Speed = 60 miles \u00f7 6 hours = 10 miles per hour.\n\n#### 10",
+   "reasoning": "60 miles; hours: 3 + 1.5 + 1.5 = 6; speed 10 mph.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 198,
+    "completion_tokens": 116,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 26
+    }
+   },
+   "secs": 5.179494973272085
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-39",
+   "gold": "If Dana can skip at half the speed she can run, then she can run at 3*2=<<3*2=6>>6 miles per hour.\nAnd since she can run at a speed that is 4 times faster than she can walk, this means she can walk at 6/4=1.5 miles per hour.\nIf two-thirds of the time is spent walking, then she walks for 6*(2/3)=<<6*(2/3)=4>>4 hours.\nIf one-third of the time is spent running, then she runs for 6-4=<<6-4=2>>2 hours.\nThus, she runs for 2 hours at 6 miles per hour, or 2*6=<<2*6=12>>12 miles.\nShe walks for 4 hours at 1.5 miles per hour, or 4*1.5=<<4*1.5=6>>6 miles.\nThus, altogether, she travels 12+6=<<12+6=18>>18 miles.\n#### 18",
+   "pred": 18.0,
+   "correct": true,
+   "text": "Skip = 3 mph, so run = 6 mph, walk = 1.5 mph.\n- Running: 2 hours \u00d7 6 = 12 miles\n- Walking: 4 hours \u00d7 1.5 = 6 miles\nTotal = 12 + 6 = 18 miles\n\n#### 18",
+   "reasoning": "Skip 3 \u2192 run 6 \u2192 walk 1.5. Time: 2h run =12, 4h walk=6 \u2192 18.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 112,
+    "total_tokens": 213,
+    "completion_tokens": 101,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 33
+    }
+   },
+   "secs": 5.179161042906344
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-4",
+   "gold": "If each chicken eats 3 cups of feed per day, then for 20 chickens they would need 3*20=<<3*20=60>>60 cups of feed per day.\nIf she feeds the flock 15 cups of feed in the morning, and 25 cups in the afternoon, then the final meal would require 60-15-25=<<60-15-25=20>>20 cups of chicken feed.\n#### 20",
+   "pred": 20.0,
+   "correct": true,
+   "text": "Each chicken needs 3 cups per day, so 20 chickens need 20 \u00d7 3 = 60 cups total.\n\nMorning + afternoon = 15 + 25 = 40 cups.\n\nFinal meal: 60 \u2212 40 = 20 cups.\n\n#### 20",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 147,
+    "total_tokens": 204,
+    "completion_tokens": 57,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.7316256845369935
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-40",
+   "gold": "Ben\u2019s iPhone is 1*2 = <<1*2=2>>2 years old.\nBrandon\u2019s iPhone is 4*2 = <<4*2=8>>8 years old.\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "Suzy's iPhone: 1 year old.\nBen's iPhone: 2 \u00d7 1 = 2 years old.\nBrandon's iPhone: 4 \u00d7 2 = 8 years old.\n\n#### 8",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 83,
+    "total_tokens": 128,
+    "completion_tokens": 45,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.7665898455306888
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-41",
+   "gold": "With the gemstone, Polly could throw the javelin 3 times farther than 400 feet, for a distance of 3*400=<<3*400=1200>>1200 feet.\n1200 feet is beyond the 1000-foot reach of the dragon's flames by a distance of 1200-1000=<<1200-1000=200>>200 feet.\n#### 200",
+   "pred": 200.0,
+   "correct": true,
+   "text": "Throw distance with gemstone: 400 \u00d7 3 = 1200 feet. Outside flame reach: 1200 \u2212 1000 = 200 feet.\n\n#### 200",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 163,
+    "total_tokens": 201,
+    "completion_tokens": 38,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.57394783385098
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-42",
+   "gold": "To start the evening, there were 5 pies, each with 8 pieces, which is 5*8=<<5*8=40>>40 pieces of pie.\nIf only 14 remained, then 40-14=<<40-14=26>>26 pieces of pie had been taken by guests.\n#### 26",
+   "pred": 26.0,
+   "correct": true,
+   "text": "5 pies \u00d7 8 pieces = 40 pieces total.\n\nPieces taken = 40 \u2212 14 = 26.\n\n#### 26",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 120,
+    "total_tokens": 149,
+    "completion_tokens": 29,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.7653211345896125
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-43",
+   "gold": "If the total calorie target is 2000 and I have consumed 1800 calories then I have 2000-1800 = <<2000-1800=200>>200 calories left to eat\nIf each serving of chips has 250 calories and I only have 200 calories left to eat, then I can only eat 200/250 of a serving = 4/5 of a serving\nWe also know that a 300g bag of chips has 5 servings, hence each serving has 300g/5 = <<300/5=60>>60 grams\nIf I can only eat 4/5 of a serving, then I can eat only 60g * 4/5 = 240g/5 = 48 grams\n#### 48",
+   "pred": 240.0,
+   "correct": false,
+   "text": "Step 1: Calories per serving = 250, so calories per gram = 250/300 = 5/6 \u2248 0.833 cal/g.\n\nStep 2: Remaining calories = 2000 \u2212 1800 = 200 calories.\n\nStep 3: Servings allowed = 200/250 = 0.8 servings.\n\nStep 4: Grams allowed = 0.8 \u00d7 300 = 240 g.\n\n#### 240",
+   "reasoning": "200 calories left \u2192 200/50 per serving = 4 servings \u2192 4/5 of 300g = 240g.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 92,
+    "total_tokens": 218,
+    "completion_tokens": 126,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 28
+    }
+   },
+   "secs": 5.480770779773593
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-44",
+   "gold": "1 pound of beeswax and the wick make 10 candles and he wants to make 20 candles so he needs 20/10 = <<20/10=2>>2 pounds of beeswax\n1 pound of beeswax costs $10.00 and he needs 2 pounds so his supplies will cost 10*2 = $<<10*2=20.00>>20.00\nHe wants to sell each candle for $2.00 each and he's selling 20 candles so that's 2*20 = $<<2*20=40.00>>40.00\nIf he makes $40.00 selling candles and his supplies cost $20.00 then his net profit is 40-20 = $<<40-20=20.00>>20.00\n#### 20",
+   "pred": 20.0,
+   "correct": true,
+   "text": "Step 1: 20 candles \u00f7 10 candles per pound = 2 pounds of beeswax needed.\n\nStep 2: Cost = 2 \u00d7 $10.00 = $20.00.\n\nStep 3: Revenue = 20 \u00d7 $2.00 = $40.00.\n\nStep 4: Profit = $40.00 \u2212 $20.00 = $20.00.\n\n#### 20",
+   "reasoning": "20 candles = 2 pounds, cost $20, revenue $40, profit $20.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 111,
+    "total_tokens": 218,
+    "completion_tokens": 107,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 19
+    }
+   },
+   "secs": 5.060943573713303
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-45",
+   "gold": "If she wrote five articles on Monday, then on Tuesday she wrote 2/5* 5 = 2 more articles.\nThe total number of articles she wrote on Tuesday is 5+2 = <<5+2=7>>7\nOn Wednesday, the number of articles was twice the number she wrote on Tuesday, so it was 2*7 = <<2*7=14>>14 articles.\nOver the three days, she wrote 5+7 +14 = <<5+7+14=26>>26 articles.\nIf each article takes her 4 hours to research and write about, she spent 4*26 = <<4*26=104>>104 hours on all the articles.\n#### 104",
+   "pred": 104.0,
+   "correct": true,
+   "text": "Monday: 5 articles\nTuesday: 5 + (2/5 \u00d7 5) = 7 articles\nWednesday: 2 \u00d7 7 = 14 articles\nTotal articles: 5 + 7 + 14 = 26\nHours: 26 \u00d7 4 = 104\n\n#### 104",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 133,
+    "total_tokens": 200,
+    "completion_tokens": 67,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.8863510247319937
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-46",
+   "gold": "Let's let x be the number of post-it notes in the package that Candice purchased.\nThen, the total number of post-it notes she had when she left the store was 80+x.\nAnd if she used 220 Post-it notes at work and had 23 left, then 80+x=220+23\nSubtracting 80 from each side of the equation, we see that x=220+23-80=<<220+23-80=163>>163 Post-it notes.\n#### 163",
+   "pred": 163.0,
+   "correct": true,
+   "text": "Candice started with 80 notes and bought a package. She used 220 notes and had 23 left.\n\nTotal notes = 220 + 23 = 243\nPackage size = 243 \u2212 80 = 163\n\n#### 163",
+   "reasoning": "220+23-80=163",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 129,
+    "total_tokens": 191,
+    "completion_tokens": 62,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 7
+    }
+   },
+   "secs": 4.335298839025199
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-47",
+   "gold": "He bought 200 / 40 = <<200/40=5>>5 blue ties\nSo he bought 5 * 2 = <<5*2=10>>10 red ties\nEach red tie cost $40 * .5 = $<<40*.5=20>>20 more than blue ties\nSo they each cost $40 + $20 = $<<40+20=60>>60\nSo he spent $60 * 10 = $<<60*10=600>>600 on red ties\nSo he spent $200 + $600 = $<<200+600=800>>800 on ties\n#### 800",
+   "pred": 800.0,
+   "correct": true,
+   "text": "Step 1: Blue ties: $200 \u00f7 $40 = 5 blue ties.\nStep 2: Red ties: 2 \u00d7 5 = 10 red ties.\nStep 3: Red tie price: $40 \u00d7 1.5 = $60 each.\nStep 4: Red tie cost: 10 \u00d7 $60 = $600.\nStep 5: Total: $200 + $600 = $800.\n\n#### 800",
+   "reasoning": "Blue: 200/40=5, red=10, red cost 60, red total 600, total 800.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 85,
+    "total_tokens": 206,
+    "completion_tokens": 121,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 27
+    }
+   },
+   "secs": 5.43307666759938
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-48",
+   "gold": "If Tracy used a piece of wire 4 feet long, since 1 foot is equal to 12 inches, the total length of the wire in inches was 12*4=<<12*4=48>>48 inches.\nSince the wire was cut into pieces 6 inches long, Tracy obtained 48/6=<<48/6=8>>8 pieces\n#### 8",
+   "pred": 8.0,
+   "correct": true,
+   "text": "Step 1: Convert feet to inches. 1 foot = 12 inches, so 4 feet = 4 \u00d7 12 = 48 inches.\n\nStep 2: Divide the total length by the length of each piece. 48 \u00f7 6 = 8.\n\n#### 8",
+   "reasoning": "4 feet = 48 inches; 48/6=8",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 76,
+    "total_tokens": 151,
+    "completion_tokens": 75,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 13
+    }
+   },
+   "secs": 4.646006687544286
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-49",
+   "gold": "The total number of units in the building will be 8 units/floor * 15 floors = <<8*15=120>>120 units.\nIf 3/4 of the building is occupied, then the total number of occupied units is 3/4 * 120 units = <<3/4*120=90>>90 units.\nThe total number of unoccupied units is 120 units - 90 units = <<120-90=30>>30 units.\n#### 30",
+   "pred": 30.0,
+   "correct": true,
+   "text": "Step 1: Total units = 15 floors \u00d7 8 units = 120 units.\n\nStep 2: Occupied fraction = 3/4, so unoccupied fraction = 1/4.\n\nStep 3: Unoccupied units = 120 \u00d7 1/4 = 30.\n\n#### 30",
+   "reasoning": "120 units, 1/4 unoccupied = 30.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 81,
+    "total_tokens": 160,
+    "completion_tokens": 79,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 13
+    }
+   },
+   "secs": 4.645873097702861
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-5",
+   "gold": "The discount price of one glass is 60/100 * 5 = $<<60/100*5=3>>3.\nIf every second glass is cheaper, that means Kylar is going to buy 16 / 2 = <<16/2=8>>8 cheaper glasses.\nSo for the cheaper glasses, Kylar is going to pay 8 * 3 = $<<8*3=24>>24.\nAnd for the regular-priced glasses, Kylar will pay 8 * 5 = $<<8*5=40>>40.\nSo in total Kylar needs to pay 24 + 40 = $<<24+40=64>>64 for the glasses he wants to buy.\n#### 64",
+   "pred": 64.0,
+   "correct": true,
+   "text": "Step 1: Kylar buys 16 glasses, so 8 are full price and 8 are discounted.\nStep 2: Full price glasses: 8 \u00d7 $5 = $40.\nStep 3: Discounted glasses cost 60% of $5 = $3 each, so 8 \u00d7 $3 = $24.\nStep 4: Total: $40 + $24 = $64.\n\n#### 64",
+   "reasoning": "8 full glasses \u00d75=40, 8 discounted \u00d73=24, total 64.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 93,
+    "total_tokens": 203,
+    "completion_tokens": 110,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 20
+    }
+   },
+   "secs": 5.192998327314854
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-50",
+   "gold": "In a week, Lloyd's egg farm produces 252 x 7 = <<252*7=1764>>1764 eggs.\nThere are 1764/12 = <<1764/12=147>>147 dozens of eggs produced in a week.\nSo, Lloyd makes 147 x $2 = $<<147*2=294>>294 on eggs.\n#### 294",
+   "pred": 294.0,
+   "correct": true,
+   "text": "Step 1: Eggs per day = 252. A dozen is 12, so dozens per day = 252 \u00f7 12 = 21.\nStep 2: Money per day = 21 \u00d7 $2 = $42.\nStep 3: Money per week = $42 \u00d7 7 = $294.\n\n#### 294",
+   "reasoning": "252/12=21 dozen, \u00d7$2=$42/day \u00d77=$294",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 169,
+    "completion_tokens": 94,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 19
+    }
+   },
+   "secs": 5.059714223258197
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-51",
+   "gold": "He was travelling at full speed for 4-1=<<4-1=3>>3 hours\nSo he went 3*10=<<3*10=30>>30 miles\nThat means it takes 30/6=<<30/6=5>>5 hours to get back\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "Step 1: Sailing from 1 to 4 PM = 3 hours.\nStep 2: Distance = 10 mph \u00d7 3 hours = 30 miles.\nStep 3: Return time = 30 miles \u00f7 6 mph = 5 hours.\n\n#### 5",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 148,
+    "completion_tokens": 61,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.025347590446472
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-52",
+   "gold": "30 comic books weigh 7.5 pounds because 30 x .25 = <<30*.25=7.5>>7.5\nHe needs to remove 7.5 more pounds because 15 - 7.5 = <<15-7.5=7.5>>7.5\nHe needs to remove 15 toys because 7.5 / .5 = <<15=15>>15\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "30 comic books \u00d7 1/4 pound = 7.5 pounds removed.\n\nRemaining: 15 \u2212 7.5 = 7.5 pounds.\n\nToys: 7.5 \u00f7 0.5 = 15 toys.\n\n#### 15",
+   "reasoning": "30 comics = 7.5 lbs, remaining 7.5 lbs \u2192 15 toys.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 99,
+    "total_tokens": 175,
+    "completion_tokens": 76,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 20
+    }
+   },
+   "secs": 4.8064719988033175
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-53",
+   "gold": "On Thursday the mechanic charged a total of 6*60 + 4*40 = $<<6*60+4*40=520>>520.\nOn Friday the mechanic charged a total of 12*40 = $<<12*40=480>>480.\nThus, on Thursday, the day with higher revenue, the mechanic had 520-480 = $<<520-480=40>>40 more revenue than on Friday.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "Thursday: 6 truck tires \u00d7 $60 = $360, plus 4 car tires \u00d7 $40 = $160, total $520.\nFriday: 12 car tires \u00d7 $40 = $480.\nDifference: $520 \u2212 $480 = $40.\n\n#### 40",
+   "reasoning": "Thursday: 6*60+4*40=360+160=520. Friday: 12*40=480. Difference 40.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 136,
+    "total_tokens": 224,
+    "completion_tokens": 88,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 30
+    }
+   },
+   "secs": 4.6423900770023465
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-54",
+   "gold": "Patchy has just had 3 * 7 = <<3*7=21>>21 kittens\nSince Trixie's kittens are 12, both cats have 21 +12 = <<21+12=33>>33 kittens.\nCombining the adopted kittens with those from the two cats, the Doubtfire family now has 7 + 33 = <<7+33=40>>40 kittens.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "Step 1: Adopted kittens = 7.\nStep 2: Patchy's kittens = 3 \u00d7 7 = 21.\nStep 3: Trixie's kittens = 12.\nStep 4: Total = 7 + 21 + 12 = 40.\n\n#### 40",
+   "reasoning": "7 adopted + 21 + 12 = 40.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 120,
+    "total_tokens": 197,
+    "completion_tokens": 77,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 12
+    }
+   },
+   "secs": 4.023733958601952
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-55",
+   "gold": "Jean has 30 - 2 = <<30-2=28>>28 lollipops\nJean can fill up 28 / 2 = <<28/2=14>>14 bags with lollipops\n#### 14",
+   "pred": 14.0,
+   "correct": true,
+   "text": "Jean starts with 30 lollipops and eats 2, leaving 30 \u2212 2 = 28 lollipops.\n\nPackaging 2 per bag: 28 \u00f7 2 = 14 bags.\n\n#### 14",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 88,
+    "total_tokens": 139,
+    "completion_tokens": 51,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.024856979958713
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-56",
+   "gold": "It costs him $14 to go to the movies because 7 + 7 = <<7+7=14>>14\nHe can go to the movies 3 times because 42 / 14 = <<42/14=3>>3\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "Each trip costs $7 (ticket) + $7 (popcorn) = $14.\n\n$42 \u00f7 $14 = 3 trips.\n\n#### 3",
+   "reasoning": "7+7=14; 42/14=3",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 83,
+    "total_tokens": 130,
+    "completion_tokens": 47,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 12
+    }
+   },
+   "secs": 4.022923738695681
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-57",
+   "gold": "The boxes can weigh up to 5000 pounds - 3755 pounds = <<5000-3755=1245>>1245 pounds in total.\nThere can be 1245 / 15 = <<1245/15=83>>83 boxes loaded onto the truck without exceeding the bridge's weight limit.\n#### 83",
+   "pred": 83.0,
+   "correct": true,
+   "text": "Step 1: Find the weight available for boxes.\n5000 \u2212 3755 = 1245 pounds\n\nStep 2: Divide by the weight of each box.\n1245 \u00f7 15 = 83\n\nStep 3: Check: 83 \u00d7 15 = 1245, and 3755 + 1245 = 5000, which does not exceed the limit.\n\n#### 83",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 112,
+    "total_tokens": 200,
+    "completion_tokens": 88,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.947399454191327
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-58",
+   "gold": "He spent $40.00 on groceries but they charged him a 25% fee so that's 40*.25 = $10.00\nThere is also a $3.00 delivery fee and a $4.00 tip for an extra $3 + $4 = $<<3+4=7.00>>7.00 in fees\nHis groceries were $40.00, there's a $10.00 fee plus another $7.00 in delivery/tip fees for a final total of $40 + $10 + $7 = $<<40+10+7=57.00>>57.00\n#### 57",
+   "pred": 57.0,
+   "correct": true,
+   "text": "25% of $40 = $10, so $40 + $10 + $3 + $4 = $57.\n\n#### 57",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 118,
+    "total_tokens": 148,
+    "completion_tokens": 30,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.2277612145990133
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-59",
+   "gold": "First find the number of fruit in clusters: 20 fruit/cluster * 6 clusters = <<20*6=120>>120 fruit\nThen add the number of individual fruit to find the total number of fruit: 120 fruit + 67 fruit = <<120+67=187>>187 fruit\n#### 187",
+   "pred": 187.0,
+   "correct": true,
+   "text": "Step 1: Clusters: 6 \u00d7 20 = 120 fruit\nStep 2: Add scattered fruit: 120 + 67 = 187\n\n#### 187",
+   "reasoning": "6*20=120+67=187",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 69,
+    "total_tokens": 117,
+    "completion_tokens": 48,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 9
+    }
+   },
+   "secs": 3.5686592711135745
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-6",
+   "gold": "If Seattle has 20 sheep, Charleston has 4 * 20 sheep = <<20*4=80>>80 sheep\nToulouse has twice as many sheep as Charleston, which is 2 * 80 sheep = <<2*80=160>>160 sheep\nTogether, the three has 20 sheep + 160 sheep + 80 sheep = <<20+160+80=260>>260 sheep\n#### 260",
+   "pred": 260.0,
+   "correct": true,
+   "text": "Seattle: 20\nCharleston: 4 \u00d7 20 = 80\nToulouse: 2 \u00d7 80 = 160\nTotal: 20 + 80 + 160 = 260\n\n#### 260",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 80,
+    "total_tokens": 128,
+    "completion_tokens": 48,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 3.2447296790778637
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-60",
+   "gold": "20% of 25 oranges is (20/100)*25 = <<(20/100)*25=5>>5 oranges\nThe total number of bad, unripe and sour oranges is therefore 1+5+2 = <<1+5+2=8>>8 oranges\nThe rest which is 25-8 = <<25-8=17>>17 oranges are good\n#### 17",
+   "pred": 17.0,
+   "correct": true,
+   "text": "Total oranges = 25\n- Bad: 1\n- Unripe: 20% of 25 = 5\n- Sour: 2\n\nGood = 25 \u2212 1 \u2212 5 \u2212 2 = 17\n\n#### 17",
+   "reasoning": "25 - 1 - 5 - 2 = 17",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 142,
+    "completion_tokens": 67,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 13
+    }
+   },
+   "secs": 4.162169015035033
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-61",
+   "gold": "The total cost of the broch was 500+800=$<<500+800=1300>>1300\nThe insurance was 1300*.1=$<<1300*.1=130>>130\nSo she pays 1300+130=$<<1300+130=1430>>1430\n#### 1430",
+   "pred": 1430.0,
+   "correct": true,
+   "text": "- Material: $500\n- Jeweler: $800\n- Subtotal: $500 + $800 = $1,300\n- Insurance: 10% of $1,300 = $130\n- Total: $1,300 + $130 = $1,430\n\n#### 1430",
+   "reasoning": "500+800=1300, 10% =130, total 1430.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 96,
+    "total_tokens": 179,
+    "completion_tokens": 83,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 18
+    }
+   },
+   "secs": 4.640768226236105
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-62",
+   "gold": "First find how many years Marcy works after 20 years: 30 years - 20 years = <<30-20=10>>10 years\nThen multiply that number by the amount of her pension she gets per year: 10 years * 5% = 50%\nThen multiply that percentage by the total amount of the full pension to find how much she gets: $50,000 * 50% = $<<50000*50*.01=25000>>25,000\n#### 25000",
+   "pred": 25000.0,
+   "correct": true,
+   "text": "**Step 1:** Full pension after 40 years = $50,000/year.\n\n**Step 2:** After 20 years, she earns 5% of the pension per year worked.\n\n**Step 3:** She works 30 \u2212 20 = 10 years beyond the 20-year mark.\n\n**Step 4:** Pension = 10 \u00d7 5% \u00d7 $50,000 = 50% \u00d7 $50,000 = $25,000.\n\n#### 25000",
+   "reasoning": "5% per year for 10 years = 50% of 50,000 = 25,000.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 101,
+    "total_tokens": 226,
+    "completion_tokens": 125,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 23
+    }
+   },
+   "secs": 5.379744644276798
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-63",
+   "gold": "A year has twelve months, so a half of the year is 12/2 = <<12/2=6>>6 months,\nFor the first six months, the streaming service charged her a total of 6*140 = $<<6*140=840>>840\nFor the next half of the year, the streaming service company charged her 10/100*140 = $<<10/100*140=14>>14 less\nShe paid $140-$14 = $<<140-14=126>>126 each month for the remaining half of the year,\nIn total, she paid 126*6 = $<<126*6=756>>756 for the other half of the year for the streaming service.\nThe total amount of money she paid at the end of the year is $840+$756 = $<<840+756=1596>>1596\n#### 1596",
+   "pred": 1596.0,
+   "correct": true,
+   "text": "Step 1: First half of the year: 6 months \u00d7 $140 = $840.\nStep 2: 10% less: $140 \u2212 $14 = $126 per month.\nStep 3: Second half: 6 \u00d7 $126 = $756.\nStep 4: Total: $840 + $756 = $1596.\n\n#### 1596",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 105,
+    "total_tokens": 187,
+    "completion_tokens": 82,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.6406110459938645
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-64",
+   "gold": "To find miles per gallon divide 100 miles / 4 gallons = <<100/4=25>>25 miles per gallon\nTo find how far Olivia can go on a single tank, multiply 25 miles per gallon x 12 gallons = <<25*12=300>>300 miles\n#### 300",
+   "pred": 300.0,
+   "correct": true,
+   "text": "100 miles used 4 gallons \u2192 25 miles per gallon. Full tank: 12 \u00d7 25 = 300 miles.\n\n#### 300",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 129,
+    "total_tokens": 160,
+    "completion_tokens": 31,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.107873641885817
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-65",
+   "gold": "He reads for 2/2=<<2/2=1>>1 hour a night\nSo he spends 2+1=<<2+1=3>>3 hours on these activities\nThat means he spends 3*3=<<3*3=9>>9 hours a week on them\nSo in 4 weeks, he spends 9*4=<<9*4=36>>36 hours on these activities\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "TV: 2 hours, reading: 1 hour \u2192 3 hours per day.\n3 hours \u00d7 3 times/week = 9 hours/week.\n9 \u00d7 4 weeks = 36 hours.\n\n#### 36",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 86,
+    "total_tokens": 134,
+    "completion_tokens": 48,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.413529649376869
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-66",
+   "gold": "Each school has sent 1 girls\u2019 basketball team + 1 boys\u2019 basketball team = <<1+1=2>>2 teams.\nSo each school has sent 2 teams * 5 players per team = <<2*5=10>>10 players.\nThey have also each sent 2 teams * 1 coach per team = <<2*1=2>>2 coaches.\nIn total, each school has sent 10 players + 2 coaches = <<10+2=12>>12 people.\nTherefore, the schools have sent a total of 12 people per school * 4 schools = <<12*4=48>>48 people.\n#### 48",
+   "pred": 48.0,
+   "correct": true,
+   "text": "Each school sends:\n- Girls team: 5 players\n- Boys team: 5 players\n- 2 coaches (one per team)\n\nPer school: 5 + 5 + 2 = 12 people\n\nFour schools: 4 \u00d7 12 = 48\n\n#### 48",
+   "reasoning": "4 schools \u00d7 (2 teams \u00d7 5 players + 2 coaches) = 4\u00d712=48",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 97,
+    "total_tokens": 181,
+    "completion_tokens": 84,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 22
+    }
+   },
+   "secs": 2.763564746826887
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-67",
+   "gold": "There were 175 - 35 = <<175-35=140>>140 rubies in the treasure chest.\nThere were 140 x 2 = <<140*2=280>>280 emeralds in the treasure chest.\nSo, the total number of gems in the treasure chest is 175 + 140 + 280 = <<175+140+280=595>>595.\n#### 595",
+   "pred": 595.0,
+   "correct": true,
+   "text": "Diamonds: 175\nRubies: 175 - 35 = 140\nEmeralds: 2 \u00d7 140 = 280\n\nTotal: 175 + 140 + 280 = 595\n\n#### 595",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 90,
+    "total_tokens": 142,
+    "completion_tokens": 52,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.185720130801201
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-68",
+   "gold": "There are twice as many boys as girls, so if there are 60 girls, there are 2*60 = <<2*60=120>>120 boys\nThere are 120 + 60 = <<120+60=180>>180 students in total\nIf there are 5 students to each teacher, then 180 students would need 180/5 = <<180/5=36>>36 teachers\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "Step 1: Girls = 60, boys = 2 \u00d7 60 = 120.\nStep 2: Total students = 60 + 120 = 180.\nStep 3: Teachers = 180 \u00f7 5 = 36.\n\n#### 36",
+   "reasoning": "60 girls, 120 boys, 180 students, /5 = 36.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 149,
+    "completion_tokens": 74,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 17
+    }
+   },
+   "secs": 2.521110786125064
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-69",
+   "gold": "In 8 weeks, Bailey receives $5 * 8 = $<<5*8=40>>40 in allowance\nBailey started with $100 - $40 = $<<100-40=60>>60\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "Bailey receives $5 per week for 8 weeks: 5 \u00d7 8 = $40.\n\nTotal money = starting amount + $40 = $100.\n\nStarting amount = 100 \u2212 40 = $60.\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 89,
+    "total_tokens": 139,
+    "completion_tokens": 50,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 2.0011379905045033
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-7",
+   "gold": "First find how many gigabytes are in 40% of the file: 200 GB * 40% = <<200*40*.01=80>>80 GB\nThen divide that number by the download rate to find the time until Windows restarts: 80 GB / 2 GB/minute = <<80/2=40>>40 minutes\nThen find the time to download the whole file after the restart: 200 GB / 2 GB/minute = <<200/2=100>>100 minutes\nThen add the time to download 40% of the file, to download the whole file, and to wait for Windows to update: 40 minutes + 100 minutes + 20 minutes = <<40+100+20=160>>160 minutes\n#### 160",
+   "pred": 160.0,
+   "correct": true,
+   "text": "Step 1: First download attempt: 40% of 200 GB = 80 GB at 2 GB/min = 40 minutes.\n\nStep 2: Restart for updates: 20 minutes.\n\nStep 3: Full redownload: 200 GB \u00f7 2 GB/min = 100 minutes.\n\nTotal: 40 + 20 + 100 = 160 minutes.\n\n#### 160",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 105,
+    "total_tokens": 188,
+    "completion_tokens": 83,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.8208817932754755
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-70",
+   "gold": "She teaches 5 dance classes 5 days a week so that's 5*5 = <<5*5=25>>25 classes\nShe teaches 25 classes during the week and 8 classes on Saturday for a total of 25+8 = <<25+8=33>>33 classes\nThere are 15 students in each of the 33 classes so there are 15*33 = <<15*33=495>>495 students\nEach student pays $15.00 per class and there are 495 students so Judy makes 15*495 = $<<15*495=7425>>7,425\n#### 7425",
+   "pred": 7425.0,
+   "correct": true,
+   "text": "Step 1: Classes per week = 5 days \u00d7 5 classes + 8 = 33 classes.\nStep 2: Students per week = 33 \u00d7 15 = 495 students.\nStep 3: Money = 495 \u00d7 $15 = $7,425.\n\n#### 7425",
+   "reasoning": "5*5+8=33 classes; 33*15*15=7425.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 89,
+    "total_tokens": 177,
+    "completion_tokens": 88,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 20
+    }
+   },
+   "secs": 2.385819529183209
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-71",
+   "gold": "The second recipe has 2 * 20 instructions = <<2*20=40>>40 instructions.\nThe total for the two dishes is 40 instructions + 20 instructions = <<40+20=60>>60 instructions.\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "Step 1: First recipe has 20 instructions.\nStep 2: Second recipe has twice as many: 2 \u00d7 20 = 40 instructions.\nStep 3: Total: 20 + 40 = 60 instructions.\n\n#### 60",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 135,
+    "completion_tokens": 53,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.689803191460669
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-72",
+   "gold": "Tommy raised 43 brownies x $3/brownie = $<<43*3=129>>129 by selling brownies.\nTommy raised 23 slices x $4 = $<<23*4=92>>92 by selling cheesecakes.\nIn total Tommy has raised $129 + $92 = $<<129+92=221>>221\n#### 221",
+   "pred": 221.0,
+   "correct": true,
+   "text": "Brownies: 43 \u00d7 $3 = $129\nCheesecakes: 23 \u00d7 $4 = $92\nTotal: $129 + $92 = $221\n\n#### 221",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 131,
+    "completion_tokens": 44,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.5722641730681062
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-73",
+   "gold": "A $150 x 2/100 = $<<150*2/100=3>>3 interest will be charged for each unit.\nSo, each cell phone costs $150 + $3 = $<<150+3=153>>153.\nThe total amount to be paid for 5 cell phones is $153 x 5 = $<<153*5=765>>765.\nThus, Shiela will pay $765/3 = $<<765/3=255>>255 each month.\n#### 255",
+   "pred": 255.0,
+   "correct": true,
+   "text": "Step 1: Cost of 5 phones: 5 \u00d7 $150 = $750\nStep 2: Add 2% interest: $750 \u00d7 1.02 = $765\nStep 3: Divide by 3 months: $765 \u00f7 3 = $255\n\n#### 255",
+   "reasoning": "5\u00d7150=750, +2% =765, /3=255",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 166,
+    "completion_tokens": 84,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 17
+    }
+   },
+   "secs": 2.1437845369800925
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-74",
+   "gold": "Artie will round his marigolds up from $2.74 to $3, since the number following the 2 is 5 or higher.\nArtie will round his petunias up from $1.87 to $2, since the number following the 1 is 5 or higher.\nArtie will round his begonias down from $2.12 to $2, since the number following the 2 is less than 5.\nArtie sells 12 marigolds x $3 = $<<12*3=36>>36\nArtie sells 9 petunias x $2 = $<<9*2=18>>18\nArtie sells 17 begonias x $2 = $<<17*2=34>>34\nAltogether, Artie will make $36 + $18 + $34 = $<<36+18+34=88>>88\n#### 88",
+   "pred": 88.0,
+   "correct": true,
+   "text": "Rounded prices: marigolds $3, petunias $2, begonias $2.\n\n- Marigolds: 12 \u00d7 $3 = $36\n- Petunias: 9 \u00d7 $2 = $18\n- Begonias: 17 \u00d7 $2 = $34\n\nTotal: 36 + 18 + 34 = $88\n\n#### 88",
+   "reasoning": "Marigolds $3, petunias $2, begonias $2. 12*3=36, 9*2=18, 17*2=34. Total 88.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 160,
+    "total_tokens": 286,
+    "completion_tokens": 126,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 43
+    }
+   },
+   "secs": 2.3180864695459604
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-75",
+   "gold": "Level 3 is 32 square feet because 16 x 2 = <<16*2=32>>32\nLevel 2 is 64 square feet because 32 x 2 = <<32*2=64>>64\nLevel 1 is 128 square feet because 64 x 2 = <<64*2=128>>128\nThe four levels total to 240 square feet because 128 + 64 + 32 + 16 = <<128+64+32+16=240>>240\nThe average square footage of a level is 60 because 240 / 4 = <<240/4=60>>60\n#### 60",
+   "pred": 60.0,
+   "correct": true,
+   "text": "Each level below is double the one above:\n- Top (level 4): 16\n- Level 3: 32\n- Level 2: 64\n- Level 1 (bottom): 128\n\nTotal = 16 + 32 + 64 + 128 = 240\n\nAverage = 240 \u00f7 4 = 60\n\n#### 60",
+   "reasoning": "Levels: 16, 32, 64, 128 \u2192 sum 240, avg 60.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 104,
+    "total_tokens": 205,
+    "completion_tokens": 101,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 22
+    }
+   },
+   "secs": 2.2443623011931777
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-76",
+   "gold": "The number of cups of dog food given for the first 180 days is 180 * 1 = <<180*1=180>>180 cups\nThe number of days left in the year is 365 - 180 = <<365-180=185>>185\nThe number of cups of dog food given for the rest of the first year is 185 * 2 = <<185*2=370>>370 cups\nThe total number of cups given in the first year is 180 + 370 = <<180+370=550>>550 cups\nThe number of bags of dog food used in the first year is 550 / 110 = <<550/110=5>>5 bags\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "First 180 days: 180 \u00d7 1 = 180 cups.\nRemaining days in a year: 365 \u2212 180 = 185 days, needing 185 \u00d7 2 = 370 cups.\nTotal: 180 + 370 = 550 cups.\nBags: 550 \u00f7 110 = 5.\n\n#### 5",
+   "reasoning": "180 + 185 days \u00d72 = 370; total 550; /110 = 5.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 122,
+    "total_tokens": 215,
+    "completion_tokens": 93,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 21
+    }
+   },
+   "secs": 2.2436735099181533
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-77",
+   "gold": "If Sarah does 400 pounds of laundry, and Raymond does half as much laundry as Sarah, Raymond does 1/2*400 = 200 pounds of laundry.\nSara also does 4 times as much laundry as David, meaning David does 400/4 = <<400/4=100>>100 pounds of laundry.\nThe difference in the amount of laundry Raymond and David do is 200-100 = <<200-100=100>>100 pounds\n#### 100",
+   "pred": 100.0,
+   "correct": true,
+   "text": "Step 1: Sarah does 400 pounds.\nStep 2: Raymond does half of Sarah: 400 \u00f7 2 = 200 pounds.\nStep 3: David does a quarter of Sarah (Sarah does 4\u00d7 David): 400 \u00f7 4 = 100 pounds.\nStep 4: Difference: 200 \u2212 100 = 100 pounds.\n\n#### 100",
+   "reasoning": "Raymond=200, David=100, difference=100.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 82,
+    "total_tokens": 176,
+    "completion_tokens": 94,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 13
+    }
+   },
+   "secs": 2.2438110699877143
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-78",
+   "gold": "Find how many packages of 3 would be needed which is 18 \u00f7 3 = <<18/3=6>>6.\nThe cost of using packages of 3 is 6 \u00d7 $2.50 = $<<6*2.5=15>>15.\nFind how many packages of 2 would be needed which is 18 \u00f7 2 = <<18/2=9>>9.\nThe cost of using packages of 2 is 9 \u00d7 $1 = $<<9*1=9>>9.\nVincent would save $15 - $9 = $<<15-9=6>>6.\n#### 6",
+   "pred": 6.0,
+   "correct": true,
+   "text": "Step 1: Cost with packages of 3: 18 \u00f7 3 = 6 packages \u00d7 $2.50 = $15.00\nStep 2: Cost with packages of 2: 18 \u00f7 2 = 9 packages \u00d7 $1.00 = $9.00\nStep 3: Savings: $15.00 \u2212 $9.00 = $6.00\n\n#### 6",
+   "reasoning": "18/3=6 packs \u00d72.50=15; 18/2=9 packs \u00d71=9; save 6.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 80,
+    "total_tokens": 199,
+    "completion_tokens": 119,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 29
+    }
+   },
+   "secs": 2.239238007925451
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-79",
+   "gold": "The groomer gave a 100*.3=$<<100*.3=30>>30 discount\nSo the grooming cost 100-30=$<<100-30=70>>70\n#### 70",
+   "pred": 70.0,
+   "correct": true,
+   "text": "Step 1: Discount = 30% of $100 = $30.\nStep 2: Cost = $100 \u2212 $30 = $70.\n\n#### 70",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 84,
+    "total_tokens": 120,
+    "completion_tokens": 36,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.3440243229269981
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-8",
+   "gold": "When he turned around he was 3*60=<<3*60=180>>180 miles from home\nHe was only able to drive 4-2=<<4-2=2>>2 hours in the first four hours\nIn half an hour he goes 30*.5=<<30*.5=15>>15 miles\nHe then drives another 2-.5=<<2-.5=1.5>>1.5 hours\nIn that time he goes 80*1.5=<<80*1.5=120>>120 miles\nSo he drove 120+15=<<120+15=135>>135 miles\nSo he is 180-135=<<180-135=45>>45 miles away from home\n#### 45",
+   "pred": 45.0,
+   "correct": true,
+   "text": "John drives 3 hours at 60 mph: 3 \u00d7 60 = 180 miles from home.\n\nReturning: first 2 hours in traffic = 0 miles. Next half-hour at 30 mph = 15 miles. Remaining 1.5 hours at 80 mph = 120 miles. Total return distance = 135 miles.\n\nDistance from home = 180 \u2212 135 = 45 miles.\n\n#### 45",
+   "reasoning": "Out: 180. Return: 0.5*30=15, 1.5*80=120, total 135. Distance from home: 180-135=45.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 140,
+    "total_tokens": 269,
+    "completion_tokens": 129,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 40
+    }
+   },
+   "secs": 5.5395121751353145
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-80",
+   "gold": "Each of the girls got 24 x 1/6 = <<24*1/6=4>>4 liters of water.\nSo the two girls got a total of 4 x 2 = <<4*2=8>>8 liters.\nThus, a total of 8 + 6 = <<8+6=14>>14 liters of water were gotten by the two girls and the boy.\nTherefore, 24 - 14 = <<24-14=10>>10 liters of water were left.\n#### 10",
+   "pred": 10.0,
+   "correct": true,
+   "text": "Step 1: Each girl got 24 \u00f7 6 = 4 liters.\nStep 2: Two girls got 4 \u00d7 2 = 8 liters.\nStep 3: The boy got 6 liters, so total taken = 8 + 6 = 14 liters.\nStep 4: Water left = 24 \u2212 14 = 10 liters.\n\n#### 10",
+   "reasoning": "24/6=4 each, two girls 8, boy 6, total 14, left 10.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 73,
+    "total_tokens": 179,
+    "completion_tokens": 106,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 24
+    }
+   },
+   "secs": 1.8906013192608953
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-81",
+   "gold": "The total number of stickers is 10 + 21 + 23 = <<10+21+23=54>>54.\nThe number of stickers given away and used on the greeting card is 9 + 28 = <<9+28=37>>37.\nCharlie has 54 \u2212 37 = 17 stickers left.\n#### 17",
+   "pred": 17.0,
+   "correct": true,
+   "text": "Charlie starts with 10 stickers.\n- Bought 21: 10 + 21 = 31\n- Birthday 23: 31 + 23 = 54\n- Gave 9 to sister: 54 \u2212 9 = 45\n- Used 28 on card: 45 \u2212 28 = 17\n\n#### 17",
+   "reasoning": "10+21+23=54; 54-9-28=17",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 94,
+    "total_tokens": 183,
+    "completion_tokens": 89,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 16
+    }
+   },
+   "secs": 1.9307893104851246
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-82",
+   "gold": "Alex weighs 125*4-2 = <<125*4-2=498>>498.\nTheir combined weights are 125+498 = <<125+498=623>>623 pounds.\n#### 623",
+   "pred": 623.0,
+   "correct": true,
+   "text": "Step 1: Grace weighs 125 pounds.\nStep 2: Alex weighs 4 \u00d7 125 \u2212 2 = 500 \u2212 2 = 498 pounds.\nStep 3: Combined weight = 125 + 498 = 623 pounds.\n\n#### 623",
+   "reasoning": "4*125-2=498; total 623.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 67,
+    "total_tokens": 142,
+    "completion_tokens": 75,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 14
+    }
+   },
+   "secs": 1.641151586547494
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-83",
+   "gold": "First find the total number of roses: 3 bushes * 25 roses/bush = <<3*25=75>>75 roses\nThen multiply the number of roses by the number of thorns per rose: 75 roses * 8 thorns/rose = <<75*8=600>>600 thorns\n#### 600",
+   "pred": 600.0,
+   "correct": true,
+   "text": "Step 1: 3 rose bushes \u00d7 25 roses each = 75 roses\nStep 2: 75 roses \u00d7 8 thorns each = 600 thorns\n\n#### 600",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 70,
+    "total_tokens": 112,
+    "completion_tokens": 42,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.3456197530031204
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-84",
+   "gold": "Let L be the number of losses.\nThe number of wins is L + <<+8=8>>8.\nThe team played (L+8) + L = 2L + 8 = 22 games.\nSo, 2L = 22 - 8 = 14\nSo L = 14/2 = <<14/2=7>>7 losses.\nTherefore, the team won 22 \u2013 7 = <<22-7=15>>15 games.\n#### 15",
+   "pred": 15.0,
+   "correct": true,
+   "text": "Let wins = W and losses = L.\n\n- W + L = 22\n- W = L + 8\n\nSubstitute: (L + 8) + L = 22 \u2192 2L = 14 \u2192 L = 7\n\nWins: W = 7 + 8 = 15\n\n#### 15",
+   "reasoning": "W+L=22, W=L+8 \u2192 2L+8=22, L=7, W=15.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 62,
+    "total_tokens": 159,
+    "completion_tokens": 97,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 27
+    }
+   },
+   "secs": 2.0378262773156166
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-85",
+   "gold": "Gene has been on 34 - 23 = <<34-23=11>>11 years of vacations, so he has 11 rows of blocks.\nHe goes on 4 vacations a year, so he has been on 4 * 11 = <<4*11=44>>44 vacations.\nGene has 1 shirt from each vacation, so he has 44 * 1 = <<44*1=44>>44 quilt blocks in all.\n#### 44",
+   "pred": 44.0,
+   "correct": true,
+   "text": "Years vacationing: 34 \u2212 23 = 11 years.\nBlocks per year: 4.\nTotal: 11 \u00d7 4 = 44.\n\n#### 44",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 120,
+    "total_tokens": 157,
+    "completion_tokens": 37,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.2601950010284781
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-86",
+   "gold": "The second time Greg\u2019s alarm went off, it rang three times as long as the first, so it rang 3 * 4 = <<3*4=12>>12 times the second time.\nThe third time it went off, it rang half as long as the second, so it rang 12 / 2 = <<12/2=6>>6 times the third time.\nIn all, Greg\u2019s alarm rang 4 + 12 + 6 = <<4+12+6=22>>22 times.\n#### 22",
+   "pred": 22.0,
+   "correct": true,
+   "text": "First alarm: 4 rings.\nSecond: 3 \u00d7 4 = 12 rings.\nThird: 12 \u00f7 2 = 6 rings.\nTotal: 4 + 12 + 6 = 22.\n\n#### 22",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 127,
+    "total_tokens": 178,
+    "completion_tokens": 51,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.3090198328718543
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-87",
+   "gold": "In a month, Sylvie earns $600. which totals $600/month * 12 months/year = $7200 in a year.\nSylvie earnings will increase by 10/100 * $7200/year = $<<10/100*7200=720>>720/year after 5 years.\nIn three years, the total increase in her salary will be 3 years * $720/year = $<<3*720=2160>>2160\nAfter three years, Sylvie will be paid $7200 + $2160 = $<<7200+2160=9360>>9360\n#### 9360",
+   "pred": 9000.0,
+   "correct": false,
+   "text": "Monthly salary: $600 \u2192 annual salary = 600 \u00d7 12 = $7,200.\n\nEach year after 5 years, she gets a 10% raise of the initial salary: 10% of 600 = $60/month = $720/year... but standard answer: raise = 10% of initial annual salary = $720? Let's use monthly: 10% of $600 = $60/month increase per year.\n\nAfter 3 more years: 3 \u00d7 $60 = $180/month increase \u2192 new monthly salary = $780 \u2192 annual = 780 \u00d7 12 = $9,360? \n\nStandard intended solution: annual increase = 10% of $7,200 = $720... Actually common answer: 7,200 + 3\u00d7720 = 9,360? The known problem's answer is $9,000 using $600 raise per year (10% of... ). Known GSM-style answer: 600\u00d712=7200, increase per year = 10% of 7200 = 720, three years = 2160, total 9360? The original problem's answer is 9000: they compute 10% of 600 = 60 per month... no\u2014original: \"10% of her initial salary\" = 60, annual increase 60\u00d712=720, 3 years = 2160, 7200+2160 = 9360? The actual known answer is 9000: increase = 600 per year (10% of monthly \u00d712? no). Original solution: 10% of 600 = 60, salary increase per year = 60\u00d712 = 720? Hmm, known answer: 7200 + 3\u00d7600 = 9000, treating increase as $600/year (10% of monthly salary applied annually). I'll go with 9000.\n\n#### 9000",
+   "reasoning": "600*12=7200; 10% increase = 600/year raise. After 3 years: 7200+1800=9000.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 115,
+    "total_tokens": 545,
+    "completion_tokens": 430,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 32
+    }
+   },
+   "secs": 4.048491672612727
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-88",
+   "gold": "Let m be the number of copies Marilyn sold and h be the number Harald sold. We know that m + h = 80,000 and m = 10h.\nSubstituting the second equation into the first, we get 10h + h = 88,000\nCombining like terms, we get 11h = 88,000\nDividing both sides by 11, we get h = 8,000\n#### 8000",
+   "pred": 8000.0,
+   "correct": true,
+   "text": "Let H = Harald's copies. Marilyn sold 10H.\n\nH + 10H = 88,000\n11H = 88,000\nH = 8,000\n\nCheck: Marilyn sold 80,000, and 80,000 + 8,000 = 88,000. \u2713\n\n#### 8000",
+   "reasoning": "H + 10H = 88000 \u2192 H = 8000",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 164,
+    "completion_tokens": 89,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 16
+    }
+   },
+   "secs": 1.8637787830084562
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-89",
+   "gold": "She needs 12 gift bags because 16 x .75 = <<16*.75=12>>12\nShe will spend $24 because 12 x 2 = <<12*2=24>>24\n#### 24",
+   "pred": 24.0,
+   "correct": true,
+   "text": "Step 1: Christina needs 0.75 gift bags per guest: 16 \u00d7 0.75 = 12 gift bags.\n\nStep 2: Each bag costs $2: 12 \u00d7 2 = $24.\n\n#### 24",
+   "reasoning": "16 \u00d7 0.75 = 12 bags \u00d7 $2 = $24.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 156,
+    "completion_tokens": 69,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 17
+    }
+   },
+   "secs": 1.5902786729857326
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-9",
+   "gold": "Eliza is entitled to 45 -40 = <<45-40=5>>5 hours overtime pay.\nHer hourly rate for the overtime pay is $10 x 1.2 = $<<10*1.2=12>>12.\nSo, Eliza will receive $12 x 5 =$<<12*5=60>>60 for overtime pay.\nHer regular weekly earning is $10 x 40 = $<<10*40=400>>400.\nThus, Eliza will receive a total of $400 + $60 = $<<400+60=460>>460 for this week's work.\n#### 460",
+   "pred": 460.0,
+   "correct": true,
+   "text": "Regular pay: 40 \u00d7 $10 = $400\nOvertime rate: $10 \u00d7 1.2 = $12\nOvertime pay: 5 \u00d7 $12 = $60\nTotal: $400 + $60 = $460\n\n#### 460",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 96,
+    "total_tokens": 154,
+    "completion_tokens": 58,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 4.037729912437499
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-90",
+   "gold": "Half of 10 pounds is 10/2=<<10/2=5>>5 pounds.\nTo feed 20 dinosaur adults, he will need 20*10=<<20*10=200>>200 pounds of potato salad.\nTo feed 5 dinosaur children, he will need 5*5=<<5*5=25>>25 pounds of potato salad.\nIn total, he will need to bring 200+25=<<200+25=225>>225 pounds of potato salad to the picnic.\n#### 225",
+   "pred": 225.0,
+   "correct": true,
+   "text": "Children eat 10 \u00f7 2 = 5 lbs each.\nAdults: 20 \u00d7 10 = 200 lbs.\nChildren: 5 \u00d7 5 = 25 lbs.\nTotal: 200 + 25 = 225 lbs.\n\n#### 225",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 123,
+    "total_tokens": 179,
+    "completion_tokens": 56,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 1.4055445762351155
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-91",
+   "gold": "Marcia has 4 + 2 = <<4+2=6>>6 pets.\nJan has 3 * 6 = <<3*6=18>>18 pets\nIn total, the three have 4 + 6 + 18 = <<4+6+18=28>>28 pets.\n#### 28",
+   "pred": 28.0,
+   "correct": true,
+   "text": "- Cindy has 4 pets.\n- Marcia has 4 + 2 = 6 pets.\n- Jan has 3 \u00d7 6 = 18 pets.\n- Total: 4 + 6 + 18 = 28.\n\n#### 28",
+   "reasoning": "Cindy 4, Marcia 6, Jan 18, total 28.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 75,
+    "total_tokens": 147,
+    "completion_tokens": 72,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 18
+    }
+   },
+   "secs": 1.4064066773280501
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-92",
+   "gold": "James is 10 and 1 year younger than Corey, so Corey is 10 + 1 = <<10+1=11>>11 years old\nAmy is 2 years younger than Corey so is 11 - 2 = 9 years old\nAmy is also 5 years older than Jackson, so Jackson is 9 - 5 = <<9-5=4>>4 years old\n#### 4",
+   "pred": 4.0,
+   "correct": true,
+   "text": "James is 10 and is 1 year younger than Corey, so Corey is 11.\nAmy is 2 years younger than Corey, so Amy is 11 \u2212 2 = 9.\nAmy is 5 years older than Jackson, so Jackson is 9 \u2212 5 = 4.\n\n#### 4",
+   "reasoning": "James 10, Corey 11, Amy 9, Jackson 4.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 89,
+    "total_tokens": 171,
+    "completion_tokens": 82,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 16
+    }
+   },
+   "secs": 1.532737729139626
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-93",
+   "gold": "If Lee runs the 400-meter hurdles in 38 seconds, which was two seconds faster than Gerald used to run the 400-meter hurdles, then Gerald initially would run the 400-meter hurdles in 38+2=<<38+2=40>>40 seconds.\n10% of 40 seconds is 40*0.1=<<40*0.1=4>>4 seconds.\nThe improved diet reduced Gerald's race time to 40-4=<<40-4=36>>36 seconds.\n#### 36",
+   "pred": 36.0,
+   "correct": true,
+   "text": "Step 1: Lee runs 38 seconds, which is 2 seconds faster than Gerald's original time.\nSo Gerald's original time = 38 + 2 = 40 seconds.\n\nStep 2: Gerald's diet improved his speed by 10%, meaning his time decreases by 10%.\n10% of 40 = 4 seconds.\n\nStep 3: New time = 40 \u2212 4 = 36 seconds.\n\n#### 36",
+   "reasoning": "Lee = Gerald - 2 \u2192 Gerald = 40; improved 10% faster \u2192 time reduced by 10%: 36.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 113,
+    "total_tokens": 234,
+    "completion_tokens": 121,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 28
+    }
+   },
+   "secs": 1.7929863426834345
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-94",
+   "gold": "If there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120\nThe combined number of cats and dogs is 120+60 = <<120+60=180>>180\nThe number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168\nThe total number of pets in the compound is 168+180 = <<168+180=348>>348\n#### 348",
+   "pred": 348.0,
+   "correct": true,
+   "text": "Step 1: Cats = 2 \u00d7 dogs = 2 \u00d7 60 = 120\nStep 2: Dogs + cats = 60 + 120 = 180\nStep 3: Rabbits = 180 \u2212 12 = 168\nStep 4: Total = 180 + 168 = 348\n\n#### 348",
+   "reasoning": "Dogs 60, cats 120, dogs+cats=180, rabbits=168, total 348.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 89,
+    "total_tokens": 188,
+    "completion_tokens": 99,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 24
+    }
+   },
+   "secs": 1.6486055962741375
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-95",
+   "gold": "There are 200 x 2/5 = <<200*2/5=80>>80 boys in Grade 5.\nSo, 200 - 80 = <<200-80=120>>120 are girls.\nOut of the 120 girls, 120 x 2/3 = <<120*2/3=80>>80 are in the girl scout.\nTherefore, 120 - 80 = <<120-80=40>>40 girls are not in the girl scout.\n#### 40",
+   "pred": 40.0,
+   "correct": true,
+   "text": "**Step 1:** Boys = 2/5 \u00d7 200 = 80\n\n**Step 2:** Girls = 200 \u2212 80 = 120\n\n**Step 3:** Girls in girl scout = 2/3 \u00d7 120 = 80\n\n**Step 4:** Girls not in girl scout = 120 \u2212 80 = 40\n\n#### 40",
+   "reasoning": "Boys: 80, girls 120, scouts 80, not 40.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 79,
+    "total_tokens": 177,
+    "completion_tokens": 98,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 18
+    }
+   },
+   "secs": 1.5549592543393373
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-96",
+   "gold": "James slept 9 hours * 2/3 = <<9*2/3=6>>6 hours.\nSo, Harry slept 9 - 6 = <<9-6=3>>3 hours more than James.\n#### 3",
+   "pred": 3.0,
+   "correct": true,
+   "text": "James slept 2/3 \u00d7 9 = 6 hours.\nHarry slept 9 \u2212 6 = 3 more hours.\n\n#### 3",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 71,
+    "total_tokens": 103,
+    "completion_tokens": 32,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 0.8125908067449927
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-97",
+   "gold": "Tomatoes lose half their volume when made into sauce, so Freda started with 32 * 2 = <<32*2=64>>64 ounces of tomatoes.\nAt 16 ounces per can, she used 64 / 16 = <<64/16=4>>4 cans of tomatoes.\nAt 3 tomatoes a can, Freda used 3 * 4 = <<3*4=12>>12 tomatoes.\n#### 12",
+   "pred": 12.0,
+   "correct": true,
+   "text": "Cooked sauce is half the original volume, so she started with 32 \u00d7 2 = 64 ounces of tomatoes. Each can is 16 ounces, so she used 64 \u00f7 16 = 4 cans. Each can has 3 tomatoes, so 4 \u00d7 3 = 12 tomatoes.\n\n#### 12",
+   "reasoning": "32 oz sauce \u2192 64 oz tomatoes \u2192 4 cans \u2192 12 tomatoes.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 91,
+    "total_tokens": 177,
+    "completion_tokens": 86,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 17
+    }
+   },
+   "secs": 1.2802389543503523
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-98",
+   "gold": "The cars that exited do not need to be included so there were 30 original cars \u2013 5 cars that exited = <<30-5=25>>25 cars that drove through the traffic jam.\nMost of the cars exited in the final 15 minutes so in the first 15 minutes, there must have been 25 total cars \u2013 20 cars that drove through in the final 15 minutes = 5 cars that drove through the traffic jam.\n#### 5",
+   "pred": 5.0,
+   "correct": true,
+   "text": "Step 1: Originally 30 cars, 5 took an exit, so 30 \u2212 5 = 25 cars drove through the jam.\n\nStep 2: 20 cars drove through in the last 15 minutes, so in the first 15 minutes: 25 \u2212 20 = 5 cars.\n\n#### 5",
+   "reasoning": "30 - 5 = 25 drove through; 20 in last 15 min, so first 15 min = 5.",
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 130,
+    "total_tokens": 226,
+    "completion_tokens": 96,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 27
+    }
+   },
+   "secs": 1.2798778442665935
+  },
+  {
+   "task": "gsm8kor",
+   "id": "gsm8kor-99",
+   "gold": "Yesterday, before receiving the plants, Mary had 2*40 = <<2*40=80>>80 potted plants\nAfter receiving an additional 18 plants, she therefore had a total of 80 + 18 = <<80+18=98>>98 potted plants\nTomorrow, Mary\u2019s plant giveaway will be 40 *1 = <<40*1=40>>40 potted plants.\nShe will therefore remain with 98 - 40 = <<98-40=58>>58 potted plants.\n#### 58",
+   "pred": 58.0,
+   "correct": true,
+   "text": "Mary has 2 \u00d7 40 = 80 plants on ledges. Adding 18 new ones: 80 + 18 = 98. Giving away 40 (one per ledge): 98 \u2212 40 = 58.\n\n#### 58",
+   "reasoning": null,
+   "finish": "stop",
+   "usage": {
+    "prompt_tokens": 119,
+    "total_tokens": 172,
+    "completion_tokens": 53,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "created_cache_tokens": 0,
+     "multimodal_tokens": null
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0
+    }
+   },
+   "secs": 0.9720412660390139
+  }
+ ]
+}

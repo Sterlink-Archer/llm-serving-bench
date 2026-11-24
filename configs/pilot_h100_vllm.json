@@ -1,0 +1,61 @@
+{
+ "label": "pilot_h100_vllm_fp8",
+ "note": "Pilot (cap $3): prove spot create -> weights -> vLLM -> traffic matrix -> pull -> delete, cross-check traffic.py against `vllm bench serve`, then take the first real data point with the quick matrix.",
+ "snapshot": {
+  "name": "or-vllm0330-h100-c8m48d150",
+  "image": "vllm/vllm-openai:v0.33.0",
+  "image_digest_amd64": "sha256:91ee972ab751fb7180bc71c175865e36b091686600dca783d52b2511399810b3",
+  "gpu": "H100",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 48,
+  "disk": 150
+ },
+ "max_minutes": 42,
+ "budget_usd": 3.0,
+ "servers": [
+  {
+   "name": "fp8dyn",
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "dir": "/root/models/fp8dyn"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --max-model-len 40960 --language-model-only --kv-cache-dtype fp8 --gpu-memory-utilization 0.92 --reasoning-parser gemma4 --enable-prompt-tokens-details",
+   "ready_timeout_s": 1200,
+   "steps": [
+    {
+     "type": "matrix",
+     "preset": "smoke"
+    },
+    {
+     "type": "matrix",
+     "preset": "xcheck"
+    },
+    {
+     "type": "sh",
+     "name": "vllm_bench_c32",
+     "cmd": "vllm bench serve --backend openai-chat --endpoint /v1/chat/completions --base-url http://127.0.0.1:8000 --model gemma --tokenizer /root/models/fp8dyn --dataset-name random --random-input-len 1024 --random-output-len 256 --ignore-eos --max-concurrency 32 --num-prompts 320 --save-result --result-dir out --result-filename vllm_bench_c32.json",
+     "outputs": [
+      "out/vllm_bench_c32.json"
+     ],
+     "est_s": 150
+    },
+    {
+     "type": "eval",
+     "name": "eval_smoke",
+     "limit": 25,
+     "conc": 50,
+     "est_s": 180
+    },
+    {
+     "type": "matrix",
+     "preset": "quick"
+    }
+   ]
+  }
+ ]
+}

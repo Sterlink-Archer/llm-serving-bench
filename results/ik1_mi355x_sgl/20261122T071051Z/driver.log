@@ -1,0 +1,17 @@
+2026-11-22T07:10:51Z [ik1_mi355x_sgl] building or-sglang-ik2m-mi35x-mi355x-c8m32d150 from lmsysorg/sglang:inkling-2-mini-mi35x
+2026-11-22T07:23:11Z [ik1_mi355x_sgl] creating spot sandbox (MI355X x1, $4.4973/h, ttl 100 min, budget $9.0; project so far ~$100.52)
+2026-11-22T07:23:33Z [ik1_mi355x_sgl] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:23:46Z [ik1_mi355x_sgl] download sgl: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:27:42Z [ik1_mi355x_sgl] server sgl ready=True after 235.7s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 277520 MB
+        FREE_VRAM: 17072 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 277520 MB
+        FREE_VISIBLE_VRAM: 17072 MB; attn {'sliding': 'triton', 'global_512': 'triton'} kv_tokens 4828288 graphs 52 REJECTED: Triton attention on global 512-dim layers
+2026-11-22T07:28:15Z [ik1_mi355x_sgl] setup_vllm_client rc=0 33s :: [setup_vllm_client] vllm==0.33.0 client in /root/vb after 15 s:
+2026-11-22T07:29:09Z [ik1_mi355x_sgl] gate_sgl_gsm8kor100 rc=0 54s :: [gate_sgl_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=48s
+2026-11-22T07:39:32Z [ik1_mi355x_sgl] protocol_sgl_A_random rc=0 623s :: [protocol] max_rate_at_slo=2.267 req/s (break-even 1.5115); prefill=27599.009912053494 tok/s -> /root/or/out/protocol_sgl_A_random/protocol_summary.json
+2026-11-22T07:43:42Z [ik1_mi355x_sgl] protocol_sgl_B_text rc=0 250s :: [protocol] max_rate_at_slo=1.511 req/s (break-even 1.5115); prefill=None tok/s -> /root/or/out/protocol_sgl_B_text/protocol_summary.json
+2026-11-22T07:44:14Z [ik1_mi355x_sgl] done: elapsed 21.1 min, est $1.58; project est $111.3

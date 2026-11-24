@@ -1,0 +1,95 @@
+{
+ "run_id": "s3_rtxpro6000_small_mtp/20261122T050407Z",
+ "configs": [
+  {
+   "run_id": "s3_rtxpro6000_small_mtp/20261122T050407Z",
+   "config_id": "s3_rtxpro6000_small_mtp:p6_small_base",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.2016,
+    "mem": 0.2592,
+    "disk": 0.0081,
+    "total": 2.4189
+   },
+   "steady_usd": 0.4042,
+   "steady_gpu_usd": 0.3258,
+   "steady_host_usd": 0.0784,
+   "eval_usd": 0.0185,
+   "cold_start_usd": {
+    "weight_download": 0.0592,
+    "engine_start": 0.1442,
+    "warmup": 0.0012,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.6182,
+   "max_rate_at_slo_rps": 0.7,
+   "steady_usd_per_req": 0.0009598809523809523,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "s3_rtxpro6000_small_mtp/20261122T050407Z",
+   "config_id": "s3_rtxpro6000_small_mtp:p6_small_mtp2",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.2016,
+    "mem": 0.2592,
+    "disk": 0.0081,
+    "total": 2.4189
+   },
+   "steady_usd": 0.3855,
+   "steady_gpu_usd": 0.3108,
+   "steady_host_usd": 0.0747,
+   "eval_usd": 0.0186,
+   "cold_start_usd": {
+    "weight_download": 0.0024,
+    "engine_start": 0.1149,
+    "warmup": 0.0011,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.6182,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  },
+  {
+   "run_id": "s3_rtxpro6000_small_mtp/20261122T050407Z",
+   "config_id": "s3_rtxpro6000_small_mtp:p6_small_mtp3",
+   "gpu": "RTX-PRO-6000",
+   "usd_per_h": {
+    "gpu": 1.95,
+    "cpu": 0.2016,
+    "mem": 0.2592,
+    "disk": 0.0081,
+    "total": 2.4189
+   },
+   "steady_usd": 0.2909,
+   "steady_gpu_usd": 0.2345,
+   "steady_host_usd": 0.0564,
+   "eval_usd": 0.0185,
+   "cold_start_usd": {
+    "weight_download": 0.0025,
+    "engine_start": 0.0967,
+    "warmup": 0.0011,
+    "create_share": 0.0002
+   },
+   "eviction_usd": 0,
+   "failed_create_usd": 0,
+   "run_total_est_usd": 1.6182,
+   "max_rate_at_slo_rps": null,
+   "steady_usd_per_req": null,
+   "openrelay_sync_usd_per_req": 0.0007790000000000001,
+   "payback_min": null,
+   "basis": "cold start = this config's share of create + its download, engine start and warmup; payback = cold start / ((OpenRelay sync $/req - our steady $/req) x max_rate_at_slo x 60)"
+  }
+ ]
+}

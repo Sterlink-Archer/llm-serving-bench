@@ -1,0 +1,8 @@
+2026-11-22T08:18:02Z [ik6_5090_mem] creating spot sandbox (RTX-5090 x1, $1.6773/h, ttl 80 min, budget $3.0; project so far ~$139.00)
+2026-11-22T08:19:01Z [ik6_5090_mem] system: ok | NVIDIA GeForce RTX 5090, 32607 MiB, 595.91.07, 575.00 W | 144 | Mem:             253          27          57           0         174         226 | overlay         1.8T  558G  1.2T  32% / | Python 3.12.16 | /usr/bin/curl | sglang 0.0.0.dev1+inkling2
+2026-11-22T08:20:11Z [ik6_5090_mem] download mem88: rc=0 67s 20.2 GB via ['huggingface_hub']
+2026-11-22T08:20:26Z [ik6_5090_mem] server mem88 ready=False after 13.1s; gpu mem 2 MiB, 32607 MiB; attn {'sliding': None, 'global_512': None} kv_tokens None graphs 0 REJECTED: missing kv_cache_tokens, cuda_graph_sizes
+2026-11-22T08:20:26Z [ik6_5090_mem] engine mem88 failed; same-box fallback: +--mem-fraction-static 0.85 env {}
+2026-11-22T08:20:34Z [ik6_5090_mem] signal 15: tearing down
+2026-11-22T08:20:51Z [ik6_5090_mem] done: elapsed 2.8 min, est $0.08; project est $140.2
+2026-11-22T08:21:04Z [ik6_5090_mem] done: elapsed 3.0 min, est $0.08; project est $140.29

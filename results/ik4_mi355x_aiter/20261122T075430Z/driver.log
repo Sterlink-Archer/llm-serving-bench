@@ -1,0 +1,6 @@
+2026-11-22T07:54:30Z [ik4_mi355x_aiter] creating spot sandbox (MI355X x1, $4.4973/h, ttl 140 min, budget $12.0; project so far ~$121.32)
+2026-11-22T07:55:10Z [ik4_mi355x_aiter] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: AMD Instinct MI355X VF |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T07:55:23Z [ik4_mi355x_aiter] download base: rc=0 12s 20.2 GB via ['huggingface_hub']
+2026-11-22T07:56:02Z [ik4_mi355x_aiter] signal 15: tearing down
+2026-11-22T07:56:18Z [ik4_mi355x_aiter] done: elapsed 1.8 min, est $0.13; project est $122.93
+2026-11-22T07:56:29Z [ik4_mi355x_aiter] done: elapsed 2.0 min, est $0.15; project est $123.06

@@ -1,0 +1,39 @@
+{
+ "engine": "sglang",
+ "attention_backend": {
+  "sliding": "aiter",
+  "global_512": "aiter"
+ },
+ "attention_backend_lines": [
+  "[2026-11-22 07:46:35] server_args={'model_path': '/root/models/mxfp4', 'tokenizer_path': '/root/models/mxfp4', 'tokenizer_mode': 'auto', 'tokenizer_backend': 'huggingface', 'tokenizer_worker_num': 1, 'detokenizer_worker_num': 1, 'skip_tokenizer_init': False, 'load_format': 'auto', 'model_loader_extr"
+ ],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": null,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": "fp8_e4m3",
+ "max_concurrency_at_max_len": null,
+ "max_model_len": null,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "missing": [
+  "kv_cache_tokens",
+  "cuda_graph_sizes"
+ ],
+ "startup_rules": {
+  "require_global_512": true,
+  "triton_ok": false
+ },
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+ "schema": "startup_facts/1",
+ "run_id": "mxS1_sglang/20261122T073259Z",
+ "config_id": "mxS1_sglang:sgl_mxfp4",
+ "image": "lmsysorg/sglang:v0.5.23-rocm10-mi35x",
+ "image_digest": "sha256:cff45eca86da10fbe140f85df196ef241e932bbae8036afa45942e633c3ed6c5",
+ "model_repo": "amd/gemma-4-31B-it-MXFP4",
+ "model_rev": "0606edf12b2a926dc998b2f7684fe395ee6d2a69",
+ "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+ "source_log": "results/mxS1_sglang/20261122T073259Z/server_sgl_mxfp4.log",
+ "sub_phases": []
+}

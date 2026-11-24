@@ -1,0 +1,104 @@
+{
+ "label": "mxG1_alt",
+ "run_id": "mxG1_alt/20261122T085009Z",
+ "config_file": "recipes/mi355x/configs/mxG1_alt.json",
+ "t_start": "2026-11-22T08:50:09Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 0.7
+ },
+ "servers": {
+  "nogpu": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.4,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 1.3,
+    "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+    "env": {},
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+    "smoke": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error response</h1>\n        <p>Error code: 501</p>\n        <p>Message: Unsupported method ('POST').</p>\n        <p>Error code explanation: 501 - Server does not support this operation.</p>\n    </body>\n</html>\n"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512"
+    }
+   ],
+   "steps": {
+    "gemm_inventory": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py inventory --out /root/or/out/gemm",
+     "tail": "\", \"module_gemm_common.so\", \"module_groupnorm.so\", \"module_hipbsolgemm.so\", \"module_inverse_rope_group_quant.so\", \"module_mhc.so\", \"module_mla_asm.so\", \"module_mla_metadata.so\", \"module_mla_reduce.so\", \"module_mla_sparse_prefill_asm.so\", \"module_mla_v4_asm.so\", \"module_moe_asm.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage2.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_silu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_\n[2026-11-22T08:50:43Z] inventory done in 4s\n"
+    },
+    "gemm_hipblaslt": {
+     "rc": 0,
+     "secs": 53.2,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py hipblaslt --min-s 0.15 --out /root/or/out/gemm",
+     "tail": "[2026-11-22T08:51:36Z] hipblaslt sq8k M=8192: 345.3 us 3 TF/s\n[2026-11-22T08:51:36Z] hipblaslt sq16k M=16384: 3387.0 us 3 TF/s\n[2026-11-22T08:51:36Z] hipblaslt done in 44s\n"
+    },
+    "gemm_triton": {
+     "rc": 0,
+     "secs": 22.2,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py triton --min-s 0.12 --budget-s 600 --out /root/or/out/gemm",
+     "tail": "[2026-11-22T08:52:02Z] triton down M=8192 triton_bm128_bn128_bk256_g4_w4_s2_wpe2_mi32: 635.9 us 2.979 PF err 0.0\n[2026-11-22T08:52:02Z] triton down M=8192 triton_bm256_bn256_bk256_g8_w8_s2_wpe0_mi32: 519.9 us 3.643 PF err 0.0\n[2026-11-22T08:52:02Z] triton done in 16s\n"
+    },
+    "gemm_ck": {
+     "rc": 0,
+     "secs": 375.1,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py ck --min-s 0.08 --budget-s 900 --out /root/or/out/gemm",
+     "tail": "[aiter] LoadKernel: _ZN5aiter42f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384E hsaco: /usr/local/lib/python3.12/dist-packages/aiter_meta/hsa//gfx950/f4gemm/f4gemm_bf16_per1x32Fp4_BpreShuffle_160x384.co\n[2026-11-22T08:58:18Z] ck down M=8192: engine 385.8 us | best CK ck_18_sk0 549.5 us (0.702x)\n[2026-11-22T08:58:18Z] ck done in 369s\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 150.31,
+  "this_run_ceiling_usd": 5.0,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 251,
+ "sandbox_id": "cb64d6e8-05cd-4b10-bc96-ba1bd6a3f5f2",
+ "elapsed_s": 525.1,
+ "est_cost_usd": 0.694,
+ "t_saved": "2026-11-22T08:58:54Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x3F2572D96C69E2B0\n        OAM_ID: 6\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015          88         757         608        1169        1302\noverlay         150G  9.0M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "ENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64}\ntable kv_split D_GEQ_512.DT_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: gemm_headroom.py\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T08:58:35Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 154.11,
+  "metered_usd": 130.8549
+ }
+}

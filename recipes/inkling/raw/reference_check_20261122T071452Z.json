@@ -1,0 +1,9 @@
+{"t": "20261122T071452Z",
+ "full_precision_weights": {"found": false,
+   "evidence": ["hf_thinkingmachines_models_*.json: Thinking Machines' HF repos at the check time; Inkling-2-Mini exists only as the NVFP4 (experts L0-19) + MXFP8 (experts L20-23) + BF16 (rest) checkpoint @b85c3cf",
+                "hf_blog_excerpt_20261122T070615Z.txt (huggingface.co/blog/inkling2mini): calls NVFP4 + MXFP8 'the native ... quantization scheme' of the original checkpoint",
+                "TML-d24-varloop-research: same format (safetensors F32/BF16/F8_E4M3/U8, quant_method modelopt) and different weights (variable loop), so it is not a reference",
+                "community 'BF16' repos (pipenetwork/Inkling-2-Mini-MLX-bf16, IsValorum/...-Abliterated-BF16-GGUF) are upcasts or abliterations of this checkpoint"]},
+ "cloudflare_workers_ai": {"serves_inkling_2_mini": false, "method": "authenticated GET /accounts/{id}/ai/models/search?search=inkling and ?search=thinkingmachines",
+   "models_found": ["@cf/thinkingmachines/inkling-2-small"]},
+ "openrouter": {"providers": ["PrimeIntellect (fp4)", "Io Net (nvfp4)"], "result": "HTTP 402 on both: 'This account never purchased credits' (the only OpenRouter key on this machine)"}}

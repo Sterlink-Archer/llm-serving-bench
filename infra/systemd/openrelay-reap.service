@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenRelay Daytona reaper: deletes project=openrelay sandboxes past their deadline, orphans and dead ones
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/01_projects/137_openrelay
+ExecStart=/run/current-system/sw/bin/python3 -I %h/01_projects/137_openrelay/infra/reap.py
+SuccessExitStatus=3
+StandardOutput=append:%h/01_projects/137_openrelay/infra/reap.log
+StandardError=append:%h/01_projects/137_openrelay/infra/reap.log
+Nice=19

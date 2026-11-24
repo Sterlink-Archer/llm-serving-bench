@@ -1,0 +1,128 @@
+{"start": 0}
+{"ok": 0, "shape": {"part": "bisect", "ndec": 40, "width": 86, "pre": 8032, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 41, "maxq": 8032, "err_vs_s1": 0.0}
+{"start": 1}
+{"ok": 1, "shape": {"part": "bisect", "ndec": 40, "width": 86, "pre": 7808, "pctx": 9000, "dctx": 9500}, "T": 7968, "nseqs": 41, "maxq": 7808, "err_vs_s1": 0.0}
+{"start": 2}
+{"ok": 2, "shape": {"part": "bisect", "ndec": 40, "width": 102, "pre": 8032, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 41, "maxq": 8032, "err_vs_s1": 0.0}
+{"start": 3}
+{"ok": 3, "shape": {"part": "bisect", "ndec": 40, "width": 102, "pre": 7808, "pctx": 9000, "dctx": 9500}, "T": 7968, "nseqs": 41, "maxq": 7808, "err_vs_s1": 0.0}
+{"start": 4}
+{"fail": 4, "shape": {"part": "bisect", "ndec": 96, "width": 86, "pre": 8032, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 5}
+{"fail": 5, "shape": {"part": "bisect", "ndec": 96, "width": 86, "pre": 7808, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 6}
+{"fail": 6, "shape": {"part": "bisect", "ndec": 96, "width": 102, "pre": 8032, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 7}
+{"fail": 7, "shape": {"part": "bisect", "ndec": 96, "width": 102, "pre": 7808, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 8}
+{"ok": 8, "shape": {"part": "engine", "ndec": 0, "width": 256, "pre": 8192, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 1, "maxq": 8192, "err_vs_s1": 0.0}
+{"start": 9}
+{"ok": 9, "shape": {"part": "engine", "ndec": 0, "width": 256, "pre": 8192, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 1, "maxq": 8192, "err_vs_s1": 0.0}
+{"start": 10}
+{"ok": 10, "shape": {"part": "engine", "ndec": 0, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7001, "nseqs": 1, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 11}
+{"ok": 11, "shape": {"part": "engine", "ndec": 0, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7001, "nseqs": 1, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 12}
+{"ok": 12, "shape": {"part": "engine", "ndec": 1, "width": 256, "pre": 8188, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 2, "maxq": 8188, "err_vs_s1": 0.0}
+{"start": 13}
+{"ok": 13, "shape": {"part": "engine", "ndec": 1, "width": 256, "pre": 8188, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 2, "maxq": 8188, "err_vs_s1": 0.0}
+{"start": 14}
+{"ok": 14, "shape": {"part": "engine", "ndec": 1, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7005, "nseqs": 2, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 15}
+{"ok": 15, "shape": {"part": "engine", "ndec": 1, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7005, "nseqs": 2, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 16}
+{"ok": 16, "shape": {"part": "engine", "ndec": 15, "width": 256, "pre": 8132, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 16, "maxq": 8132, "err_vs_s1": 0.0}
+{"start": 17}
+{"ok": 17, "shape": {"part": "engine", "ndec": 15, "width": 256, "pre": 8132, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 16, "maxq": 8132, "err_vs_s1": 0.0}
+{"start": 18}
+{"ok": 18, "shape": {"part": "engine", "ndec": 15, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7061, "nseqs": 16, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 19}
+{"ok": 19, "shape": {"part": "engine", "ndec": 15, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7061, "nseqs": 16, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 20}
+{"ok": 20, "shape": {"part": "engine", "ndec": 16, "width": 256, "pre": 8128, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 17, "maxq": 8128, "err_vs_s1": 0.0}
+{"start": 21}
+{"ok": 21, "shape": {"part": "engine", "ndec": 16, "width": 256, "pre": 8128, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 17, "maxq": 8128, "err_vs_s1": 0.0}
+{"start": 22}
+{"ok": 22, "shape": {"part": "engine", "ndec": 16, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7065, "nseqs": 17, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 23}
+{"ok": 23, "shape": {"part": "engine", "ndec": 16, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7065, "nseqs": 17, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 24}
+{"ok": 24, "shape": {"part": "engine", "ndec": 35, "width": 256, "pre": 8052, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 36, "maxq": 8052, "err_vs_s1": 0.0}
+{"start": 25}
+{"ok": 25, "shape": {"part": "engine", "ndec": 35, "width": 256, "pre": 8052, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 36, "maxq": 8052, "err_vs_s1": 0.0}
+{"start": 26}
+{"ok": 26, "shape": {"part": "engine", "ndec": 35, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7141, "nseqs": 36, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 27}
+{"ok": 27, "shape": {"part": "engine", "ndec": 35, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7141, "nseqs": 36, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 28}
+{"fail": 28, "shape": {"part": "engine", "ndec": 63, "width": 256, "pre": 7940, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 29}
+{"fail": 29, "shape": {"part": "engine", "ndec": 63, "width": 256, "pre": 7940, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 30}
+{"fail": 30, "shape": {"part": "engine", "ndec": 63, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 31}
+{"fail": 31, "shape": {"part": "engine", "ndec": 63, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 32}
+{"fail": 32, "shape": {"part": "engine", "ndec": 96, "width": 256, "pre": 7808, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 33}
+{"fail": 33, "shape": {"part": "engine", "ndec": 96, "width": 256, "pre": 7808, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 34}
+{"fail": 34, "shape": {"part": "engine", "ndec": 96, "width": 256, "pre": 7001, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 35}
+{"fail": 35, "shape": {"part": "engine", "ndec": 96, "width": 256, "pre": 7001, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 36}
+{"ok": 36, "shape": {"part": "engine", "ndec": 0, "width": 2048, "pre": 8192, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 1, "maxq": 8192, "err_vs_s1": 0.0}
+{"start": 37}
+{"ok": 37, "shape": {"part": "engine", "ndec": 0, "width": 2048, "pre": 8192, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 1, "maxq": 8192, "err_vs_s1": 0.0}
+{"start": 38}
+{"ok": 38, "shape": {"part": "engine", "ndec": 0, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7001, "nseqs": 1, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 39}
+{"ok": 39, "shape": {"part": "engine", "ndec": 0, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7001, "nseqs": 1, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 40}
+{"ok": 40, "shape": {"part": "engine", "ndec": 1, "width": 2048, "pre": 8188, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 2, "maxq": 8188, "err_vs_s1": 0.0}
+{"start": 41}
+{"ok": 41, "shape": {"part": "engine", "ndec": 1, "width": 2048, "pre": 8188, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 2, "maxq": 8188, "err_vs_s1": 0.0}
+{"start": 42}
+{"ok": 42, "shape": {"part": "engine", "ndec": 1, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7005, "nseqs": 2, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 43}
+{"ok": 43, "shape": {"part": "engine", "ndec": 1, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7005, "nseqs": 2, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 44}
+{"ok": 44, "shape": {"part": "engine", "ndec": 15, "width": 2048, "pre": 8132, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 16, "maxq": 8132, "err_vs_s1": 0.0}
+{"start": 45}
+{"ok": 45, "shape": {"part": "engine", "ndec": 15, "width": 2048, "pre": 8132, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 16, "maxq": 8132, "err_vs_s1": 0.0}
+{"start": 46}
+{"ok": 46, "shape": {"part": "engine", "ndec": 15, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7061, "nseqs": 16, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 47}
+{"ok": 47, "shape": {"part": "engine", "ndec": 15, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7061, "nseqs": 16, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 48}
+{"ok": 48, "shape": {"part": "engine", "ndec": 16, "width": 2048, "pre": 8128, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 17, "maxq": 8128, "err_vs_s1": 0.0}
+{"start": 49}
+{"ok": 49, "shape": {"part": "engine", "ndec": 16, "width": 2048, "pre": 8128, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 17, "maxq": 8128, "err_vs_s1": 0.0}
+{"start": 50}
+{"ok": 50, "shape": {"part": "engine", "ndec": 16, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7065, "nseqs": 17, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 51}
+{"ok": 51, "shape": {"part": "engine", "ndec": 16, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7065, "nseqs": 17, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 52}
+{"ok": 52, "shape": {"part": "engine", "ndec": 35, "width": 2048, "pre": 8052, "pctx": 9000, "dctx": 9500}, "T": 8192, "nseqs": 36, "maxq": 8052, "err_vs_s1": 0.0}
+{"start": 53}
+{"ok": 53, "shape": {"part": "engine", "ndec": 35, "width": 2048, "pre": 8052, "pctx": 9001, "dctx": 9500}, "T": 8192, "nseqs": 36, "maxq": 8052, "err_vs_s1": 0.0}
+{"start": 54}
+{"ok": 54, "shape": {"part": "engine", "ndec": 35, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "T": 7141, "nseqs": 36, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 55}
+{"ok": 55, "shape": {"part": "engine", "ndec": 35, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "T": 7141, "nseqs": 36, "maxq": 7001, "err_vs_s1": 0.0}
+{"start": 56}
+{"fail": 56, "shape": {"part": "engine", "ndec": 63, "width": 2048, "pre": 7940, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 57}
+{"fail": 57, "shape": {"part": "engine", "ndec": 63, "width": 2048, "pre": 7940, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 58}
+{"fail": 58, "shape": {"part": "engine", "ndec": 63, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 59}
+{"fail": 59, "shape": {"part": "engine", "ndec": 63, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 60}
+{"fail": 60, "shape": {"part": "engine", "ndec": 96, "width": 2048, "pre": 7808, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 61}
+{"fail": 61, "shape": {"part": "engine", "ndec": 96, "width": 2048, "pre": 7808, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 62}
+{"fail": 62, "shape": {"part": "engine", "ndec": 96, "width": 2048, "pre": 7001, "pctx": 9000, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}
+{"start": 63}
+{"fail": 63, "shape": {"part": "engine", "ndec": 96, "width": 2048, "pre": 7001, "pctx": 9001, "dctx": 9500}, "stage": "s2", "rc": -6, "why": "LLVM ERROR: Found 1 machine code errors."}

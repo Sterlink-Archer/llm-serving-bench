@@ -1,0 +1,2 @@
+[vllmbench r=2.5 s=8] done=750 failed=0 req/s=2.1105316215821643 p95 TTFT=47.235095924569755 median TPOT=77.92674670199798 ms in tok/s=20217
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=29253.588513372313 tok/s -> /root/or/out/protocol_vllm_fp8/protocol_summary.json

@@ -1,0 +1,4 @@
+[vllmbench r=1.0 s=8] done=300 failed=0 req/s=0.9671997139870259 p95 TTFT=1.82441710466519 median TPOT=33.31210691690495 ms in tok/s=9216
+[vllmbench r=1.5 s=8] done=450 failed=0 req/s=1.4350274993041785 p95 TTFT=2.9901713285595166 median TPOT=68.87345826029478 ms in tok/s=13817
+[vllmbench r=2.0 s=8] done=600 failed=0 req/s=1.6111788768592314 p95 TTFT=58.38629654138349 median TPOT=99.94166285686909 ms in tok/s=15403
+[protocol] max_rate_at_slo=1.5 req/s (break-even 1.7019); prefill=24423.514064549163 tok/s -> /root/or/out/protocol_glm_b16k/protocol_summary.json

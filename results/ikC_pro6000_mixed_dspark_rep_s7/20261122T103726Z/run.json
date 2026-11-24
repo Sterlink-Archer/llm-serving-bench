@@ -1,0 +1,117 @@
+{
+ "label": "ikC_pro6000_mixed_dspark_rep_s7",
+ "run_id": "ikC_pro6000_mixed_dspark_rep_s7/20261122T103726Z",
+ "config_file": "recipes/inkling/configs/ikC_pro6000_mixed_dspark_rep_s7.json",
+ "t_start": "2026-11-22T10:37:26Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.2016,
+  "mem": 0.3888,
+  "disk": 0.0157,
+  "total": 2.5561
+ },
+ "phases": {
+  "create_s": 10.7
+ },
+ "servers": {
+  "mixed_dspark": {
+   "weights": [
+    {
+     "repo": "thinkingmachines/Inkling-2-Mini",
+     "rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "resolved_sha": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+     "files": 12,
+     "bytes": 20191586893
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 41.9,
+    "tail": "\rFetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 12 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 8/12 [00:00<00:00, 62.01it/s]\rFetching 12 files:  92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 11/12 [00:20<00:00, 62.01it/s]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:36<00:00,  3.78s/it]\rFetching 12 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 12/12 [00:36<00:00,  3.03s/it]\nDL repo=thinkingmachines/Inkling-2-Mini rev=b85c3cfa61 files=12 bytes=20191590713 secs=36.5 GBps=0.553 method=huggingface_hub\n",
+    "bytes": 20191590713,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 228.5,
+    "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --enable-mixed-chunk --speculative-algorithm DSPARK --speculative-num-draft-tokens 8 --max-running-requests 128",
+    "env": {
+     "SGLANG_OPT_INKLING2_VERIFY_REL_BIAS_KERNEL": "1",
+     "SGLANG_OPT_DSV41_DSPARK_MID_FOLD": "1",
+     "SGLANG_OPT_DSV41_DSPARK_PREPARE_INPUTS_ONCE": "1",
+     "SGLANG_OPT_DSV41_DSPARK_SKIP_PREFILLED_INPUTS": "1"
+    },
+    "gpu_mem_after_load": "85903 MiB, 97887 MiB",
+    "smoke": "t\":\"\",\"reasoning_content\":\"The user says \\\"Say hi\"},\"logprobs\":null,\"finish_reason\":\"length\",\"matched_stop\":null}],\"usage\":{\"prompt_tokens\":18,\"total_tokens\":26,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0},\"reasoning_tokens\":8,\"completion_tokens_details\":{\"reasoning_tokens\":8}},\"metadata\":{\"weight_version\":\"default\",\"weight_versions\":[{\"version\":\"default\",\"start\":0,\"end\":8}]}}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "fa4",
+     "global_512": "fa4"
+    },
+    "kv_cache_tokens": 1003136,
+    "kv_cache_gib": null,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m sglang.launch_server --model-path /root/models/inkling --served-model-name inkling --host 127.0.0.1 --port 8000 --tp 1 --ep 1 --dtype bfloat16 --page-size 128 --context-length 32768 --reasoning-parser inkling --enable-metrics --enable-cache-report --attention-backend fa4 --enable-mixed-chunk --speculative-algorithm DSPARK --speculative-num-draft-tokens 8 --max-running-requests 128",
+     "env": {
+      "SGLANG_OPT_INKLING2_VERIFY_REL_BIAS_KERNEL": "1",
+      "SGLANG_OPT_DSV41_DSPARK_MID_FOLD": "1",
+      "SGLANG_OPT_DSV41_DSPARK_PREPARE_INPUTS_ONCE": "1",
+      "SGLANG_OPT_DSV41_DSPARK_SKIP_PREFILLED_INPUTS": "1"
+     },
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "gate_rep_gsm8kor100": {
+     "rc": 0,
+     "secs": 31.5,
+     "cmd": "python3 bench/evalrun.py --model inkling --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --chat-template-kwargs '{\"reasoning_effort\": \"high\"}' --max-tokens 16384 --label gate_rep_gsm8kor100 --out /root/or/out/gate_rep_gsm8kor100.json --limit 100 --gate-task gsm8kor --gate-threshold 0.88",
+     "tail": "[gate_rep_gsm8kor100] gsm8kor: 0.970 (97/100, noans 0, err 0, trunc 0) wall=26s\n",
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.88,
+      "acc": 0.97,
+      "n": 100,
+      "passed": 97,
+      "pass": true
+     }
+    },
+    "protocol_rep_B_text": {
+     "rc": 0,
+     "secs": 746.3,
+     "cmd": "python3 bench/protocol.py --model inkling --metrics http://127.0.0.1:8000/metrics --out /root/or/out/protocol_rep_B_text --breakeven-rps 0.8591 --client traffic --stratify --ttft-basis token --tokenizer /root/models/inkling --rates 1.16,1.289 --seeds 7 --duration 300 --workload synthetic --params '{\"input_dist\": {\"uniform\": [1900, 17100]}, \"output_dist\": {\"uniform\": [76, 684]}}' --run-id ikC_pro6000_mixed_dspark_rep_s7/20261122T103726Z --config-id ikC_pro6000_mixed_dspark_rep_s7:mixed_dspark --max-minutes 52.1",
+     "tail": " type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.\n[r1.5x_s7] R=1.289 win=300s done=459 err=0 drop=0 req/s=1.35 out=507 in=12176 tok/s cache=0.00 TTFT p50=1.366s p95=3.554s TPOT p50=33.4ms srv=519.1247569198429\n[protocol] max_rate_at_slo=1.289 req/s (break-even 0.8591); prefill=None tok/s -> /root/or/out/protocol_rep_B_text/protocol_summary.json\n",
+     "breakeven_rps": 0.8591
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 244.14,
+  "this_run_ceiling_usd": 2.77,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 110,
+ "sandbox_id": "78194433-e08f-420f-92e1-3273d960647e",
+ "elapsed_s": 1109.0,
+ "est_cost_usd": 0.787,
+ "t_saved": "2026-11-22T10:55:55Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n30\nMem:             283          17          66           0         207         266\noverlay         1.4T  734G  635G  54% /\nPython 3.12.16\n/usr/bin/curl\nsglang 0.0.0.dev1+inkling2\ntorch 2.14.1+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T10:55:32Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 259.44,
+  "metered_usd": 208.4346
+ }
+}

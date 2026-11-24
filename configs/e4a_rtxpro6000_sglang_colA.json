@@ -1,0 +1,67 @@
+{
+ "label": "e4a_rtxpro6000_sglang_colA",
+ "stage": "engine comparison (Maks: 'perhaps try sglang instead of vllm?')",
+ "claim_group": "e4_rtxpro6000_sglang",
+ "note": "Column A + OpenRelay's prefill probe for SGLang on the PRO 6000, which e4_rtxpro6000_sglang lost: its client-only vLLM venv was set up by server 1, which SGLang could not serve (compressed-tensors NVFP4 crashes in mm_fp4), so server 2's column A had no client. Same snapshot, ModelOpt NVFP4, SGLang's own Gemma 4 attention on SM120 (Triton, labelled), 1.03 / 1.545 req/s, 300 s, seed 7. protocol.py now builds the client itself when it is missing.",
+ "snapshot": {
+  "name": "or-sglang0523-rtx-pro-6000-c8m32d150",
+  "image": "lmsysorg/sglang:v0.5.23",
+  "image_digest_amd64": "sha256:f7876bef696ccf9cf75a2bf7ccb82970f5fac577f082fb8ca95c9a59d2160eb5",
+  "gpu": "RTX-PRO-6000",
+  "gpus": 1,
+  "cpu": 8,
+  "mem": 32,
+  "disk": 150
+ },
+ "max_minutes": 60,
+ "budget_usd": 3.5,
+ "servers": [
+  {
+   "name": "sgl_nvfp4_nv",
+   "weights": [
+    {
+     "repo": "nvidia/Gemma-4-31B-IT-NVFP4",
+     "rev": "4135a98a9b728a548947683219633b25682223ac",
+     "dir": "/root/models/nvfp4_modelopt"
+    }
+   ],
+   "served_name": "gemma",
+   "launch": "python3 -m sglang.launch_server --model-path /root/models/nvfp4_modelopt --served-model-name gemma --host 127.0.0.1 --port 8000 --context-length 32768 --mem-fraction-static 0.88 --kv-cache-dtype fp8_e4m3 --chunked-prefill-size 8192 --enable-metrics --enable-cache-report --attention-backend triton --quantization modelopt_fp4",
+   "env": {
+    "SGLANG_TORCH_PROFILER_DIR": "/root/or/out/prof"
+   },
+   "ready_timeout_s": 1800,
+   "steps": [
+    {
+     "type": "eval",
+     "name": "gate_gsm8kor100",
+     "sets": "data/eval/gsm8kor_test.jsonl",
+     "limit": 100,
+     "conc": 64,
+     "gate": {
+      "task": "gsm8kor",
+      "threshold": 0.965
+     },
+     "est_s": 240
+    },
+    {
+     "type": "protocol",
+     "name": "protocol_sgl_nvfp4_nv_A_random",
+     "client": "vllmbench",
+     "vllm_bin": "/root/vb/bin/vllm",
+     "seeds": [
+      7
+     ],
+     "duration": 300,
+     "prefill_shot": true,
+     "rates": [
+      1.03,
+      1.545
+     ]
+    }
+   ],
+   "delete_weights_after": false,
+   "allow_rejected": true
+  }
+ ]
+}

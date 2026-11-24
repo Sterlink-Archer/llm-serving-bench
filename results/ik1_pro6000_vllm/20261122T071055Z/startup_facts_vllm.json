@@ -1,0 +1,102 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": null,
+  "global_512": null
+ },
+ "attention_backend_lines": [],
+ "cuda_graph_sizes": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  24,
+  32,
+  40,
+  48,
+  56,
+  64,
+  72,
+  80,
+  88,
+  96,
+  104,
+  112,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  176,
+  184,
+  192,
+  200,
+  208,
+  216,
+  224,
+  232,
+  240,
+  248,
+  256,
+  272,
+  288,
+  304,
+  320,
+  336,
+  352,
+  368,
+  384,
+  400,
+  416,
+  432,
+  448,
+  464,
+  480,
+  496,
+  512
+ ],
+ "kv_cache_tokens": 142607,
+ "kv_cache_gib": 73.23,
+ "kv_cache_dtype": "auto",
+ "max_concurrency_at_max_len": 4.35,
+ "max_model_len": 32768,
+ "quantization": {
+  "weights": "inkling2",
+  "detail": null
+ },
+ "spec_decode": null,
+ "engine_version": "0.1.dev25855+g7cb5dae22",
+ "missing": [
+  "attention_backend.global_512"
+ ],
+ "rejected": true,
+ "reject_reason": "missing attention_backend.global_512",
+ "schema": "startup_facts/1",
+ "run_id": "ik1_pro6000_vllm/20261122T071055Z",
+ "config_id": "ik1_pro6000_vllm:vllm",
+ "image": "vllm/vllm-openai:inkling-2-mini",
+ "image_digest": "sha256:a485440c62099c39659a7b723636073ed726dcb41f94cf6326e16af3a1d6f6bc",
+ "model_repo": "thinkingmachines/Inkling-2-Mini",
+ "model_rev": "b85c3cfa615fc413cc9af3379f491b963f3b586a",
+ "gpu_mem_after_load": "90867 MiB, 97887 MiB",
+ "source_log": "results/ik1_pro6000_vllm/20261122T071055Z/server_vllm.log",
+ "sub_phases": [
+  {
+   "phase": "weight_load",
+   "t_start": "2026-11-22T07:26:10Z",
+   "t_end": "2026-11-22T07:26:12Z"
+  },
+  {
+   "phase": "graph_capture",
+   "t_start": "2026-11-22T07:27:05Z",
+   "t_end": "2026-11-22T07:28:56Z",
+   "detail": {
+    "s": 111.0,
+    "gib": 0.85
+   }
+  }
+ ]
+}

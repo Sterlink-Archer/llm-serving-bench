@@ -1,0 +1,3 @@
+PATCH force_asm_fp4: applied (kernels/linear/mxfp4/aiter.py)
+PATCH g4_fuse_v034: applied to gemma4.py (active with G4_FUSE_GELU=1)
+PATCH ua3d: dispatch applied; table attn_3d/kv_split D_GEQ_512 set (was ({'BLOCK_M': 16, 'num_warps': 4, 'num_stages': 1, 'waves_per_eu': 2}, {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 32, 'TILE_SIZE_MAX': 64}))

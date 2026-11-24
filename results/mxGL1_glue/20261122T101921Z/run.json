@@ -1,0 +1,104 @@
+{
+ "label": "mxGL1_glue",
+ "run_id": "mxGL1_glue/20261122T101921Z",
+ "config_file": "recipes/mi355x/configs/mxGL1_glue.json",
+ "t_start": "2026-11-22T10:19:21Z",
+ "usd_per_h": {
+  "gpu": 3.56,
+  "cpu": 0.4032,
+  "mem": 0.7776,
+  "disk": 0.0157,
+  "total": 4.7565
+ },
+ "phases": {
+  "create_s": 2.5
+ },
+ "servers": {
+  "nogpu": {
+   "weights": [],
+   "download": {
+    "rc": 0,
+    "secs": 1.4,
+    "tail": "",
+    "bytes": 0,
+    "methods": []
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 1.3,
+    "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+    "env": {},
+    "gpu_mem_after_load": "GPU: 0\n    MEM_USAGE:\n        TOTAL_VRAM: 294592 MB\n        USED_VRAM: 285 MB\n        FREE_VRAM: 294307 MB\n        TOTAL_VISIBLE_VRAM: 294592 MB\n        USED_VISIBLE_VRAM: 285 MB\n        FREE_VISIBLE_VRAM: 294307 MB",
+    "smoke": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error response</h1>\n        <p>Error code: 501</p>\n        <p>Message: Unsupported method ('POST').</p>\n        <p>Error code explanation: 501 - Server does not support this operation.</p>\n    </body>\n</html>\n"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": null,
+     "global_512": null
+    },
+    "kv_cache_tokens": null,
+    "kv_cache_gib": null,
+    "rejected": true,
+    "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512",
+    "max_model_len": null
+   },
+   "launch_attempts": [
+    {
+     "launch": "python3 -m http.server 8000 --bind 127.0.0.1 --directory /root/or/hc",
+     "env": {},
+     "ok": true,
+     "rejected": true,
+     "reason": "missing kv_cache_tokens, cuda_graph_sizes, attention_backend.global_512"
+    }
+   ],
+   "steps": {
+    "gemm_inventory": {
+     "rc": 0,
+     "secs": 11.9,
+     "cmd": "python3 /root/or/mx/gemm_headroom.py inventory --out /root/or/out/gemm",
+     "tail": "\", \"module_gemm_common.so\", \"module_groupnorm.so\", \"module_hipbsolgemm.so\", \"module_inverse_rope_group_quant.so\", \"module_mhc.so\", \"module_mla_asm.so\", \"module_mla_metadata.so\", \"module_mla_reduce.so\", \"module_mla_sparse_prefill_asm.so\", \"module_mla_v4_asm.so\", \"module_moe_asm.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_gelu_no_mulWeightStage2.so\", \"module_moe_ck2stages_b16_b16_preshuffle_on_b16_silu_no_mulWeightStage1.so\", \"module_moe_ck2stages_b16_b16_preshuffle_\n[2026-11-22T10:19:56Z] inventory done in 4s\n"
+    },
+    "glue_inventory": {
+     "rc": 0,
+     "secs": 11.8,
+     "cmd": "python3 /root/or/mx/glue_headroom.py inventory --out /root/or/out/glue",
+     "tail": "[2026-11-22T10:20:09Z] per_1x32_f4_quant_hip: aiter.per_1x32_f4_quant_hip\n[2026-11-22T10:20:09Z] vllm reshape_and_cache_flash: vllm._custom_ops.reshape_and_cache_flash\n[2026-11-22T10:20:09Z] glue inventory done in 3s\n"
+    },
+    "glue_prep": {
+     "rc": 139,
+     "secs": 53.2,
+     "cmd": "python3 /root/or/mx/glue_headroom.py prep --out /root/or/out/glue",
+     "tail": "[2026-11-22T10:20:54Z] prep global M=8192 copy_only: 127.8 us {}\n[2026-11-22T10:20:54Z] glue prep done in 36s\n/root/or/jobs/014_glue_prep.sh: line 3:  1366 Segmentation fault      (core dumped) python3 /root/or/mx/glue_headroom.py prep --out /root/or/out/glue\n"
+    },
+    "glue_norm": {
+     "rc": 139,
+     "secs": 22.1,
+     "cmd": "python3 /root/or/mx/glue_headroom.py norm --out /root/or/out/glue",
+     "tail": "[2026-11-22T10:21:21Z] norm post_ff*s->next_input M=8192 rms_quant: 162.6 us {'err_resid': 0.0, 'fp4_bytes_equal': 0.83273, 'scale_bytes_equal': 0.83709}\n[2026-11-22T10:21:21Z] glue norm done in 10s\n/root/or/jobs/016_glue_norm.sh: line 3:  2074 Segmentation fault      (core dumped) python3 /root/or/mx/glue_headroom.py norm --out /root/or/out/glue\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 228.67,
+  "this_run_ceiling_usd": 3.96,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 245,
+ "sandbox_id": "e95f1bce-4032-4116-b03b-b47e21e6a6b4",
+ "elapsed_s": 166.9,
+ "est_cost_usd": 0.221,
+ "t_saved": "2026-11-22T10:22:08Z",
+ "system": "ok\n/root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found\nGPU: 0\n    ASIC:\n        MARKET_NAME: 0x75b3\n        VENDOR_ID: 0x1002\n        VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI]\n        SUBVENDOR_ID: 0x1002\n        DEVICE_ID: 0x75b3\n        SUBSYSTEM_ID: 0x75a3\n        REV_ID: 0x00\n        ASIC_SERIAL: 0x6E15706347689C8A\n        OAM_ID: 5\n        NUM_COMPUTE_UNITS: 256\n        TARGET_GRAPHICS_VERSION: gfx950\n    VRAM:\n        TYPE: HBM3E\n        VENDOR: MICRON\n        SIZE: 294592 MB\n        BIT_WIDTH: 2048\n        MAX_BANDWIDTH: 8192 GB/s\n\n192\nMem:            2015         473         948           9         594        1517\noverlay         150G  9.0M  150G   1% /\nPython 3.12.13\n/usr/bin/curl\nvllm 0.30.0\ntorch 2.12.0+git6bbd260 cuda None\n",
+ "setup_extra": {
+  "rc": 0,
+  "tail": "U': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64}\ntable kv_split D_GEQ_512.DT_fp8_fp8 {'MIN_SEGMENTS': 4, 'SEGMENTS_PER_CU': 4, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 64, 'TILE_SIZE_MAX': 64}\ntable kv_split D_GEQ_512 {'MIN_SEGMENTS': 16, 'SEGMENTS_PER_CU': 8, 'MAX_SEGMENTS': 128, 'SEGMENT_TILE_MAX': 64, 'TILE_SIZE_MIN': 1, 'TILE_SIZE_MAX': 64}\nmodel_config gemma4_a4w4_blockscale_tuned_gemm.csv 44 rows\nscaleM_pad constexpr in act_mul kernel: False\ngemma4.py Gemma4MLP anchor: True | g4 fuse applied: True\nvllm is_asm_fp4_gemm_tuned present: False | presh_ws gate in kernel: True | MX force patch: False\ngfx950 AFP4WFP4_PRESHUFFLED JSONs for K=5376: []\nVLLM_ROCM_USE_AITER_FP4_ASM_GEMM in envs: False\nmx file: gemm_headroom.py\nmx file: glue_headroom.py\nmx file: inspect.sh\n"
+ },
+ "deleted": "2026-11-22T10:21:45Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 230.9,
+  "metered_usd": 185.8103
+ }
+}

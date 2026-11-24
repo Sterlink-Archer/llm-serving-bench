@@ -1,0 +1,3 @@
+[r4.127x_s8] R=7.0 win=300s done=2478 err=0 drop=0 req/s=7.17 out=2735 in=67556 tok/s cache=0.75 TTFT p50=0.230s p95=4.112s TPOT p50=15.3ms srv=2734.3061988010295
+[r4.717x_s8] R=8.0 win=300s done=2726 err=0 drop=0 req/s=7.98 out=3021 in=75826 tok/s cache=0.74 TTFT p50=7.540s p95=13.076s TPOT p50=20.7ms srv=3020.5057249229853
+[protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c1fit/protocol_summary.json

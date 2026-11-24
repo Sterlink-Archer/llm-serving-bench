@@ -1,0 +1,5 @@
+[r2.358x_s7] R=4.0 win=300s done=1381 err=0 drop=0 req/s=3.94 out=1554 in=38840 tok/s cache=0.64 TTFT p50=0.158s p95=0.362s TPOT p50=8.6ms srv=1553.8669594557998
+[r2.948x_s7] R=5.0 win=300s done=1723 err=0 drop=0 req/s=4.96 out=1936 in=48786 tok/s cache=0.64 TTFT p50=0.191s p95=0.402s TPOT p50=11.4ms srv=1936.0312912443665
+[r3.538x_s7] R=6.0 win=300s done=2078 err=0 drop=0 req/s=6.05 out=2344 in=59180 tok/s cache=0.65 TTFT p50=0.226s p95=0.507s TPOT p50=15.5ms srv=2343.606983228588
+[r4.422x_s7] R=7.5 win=300s done=2271 err=0 drop=0 req/s=6.63 out=2573 in=64614 tok/s cache=0.62 TTFT p50=5.961s p95=13.550s TPOT p50=24.4ms srv=2573.3519246974306
+[protocol] max_rate_at_slo=6.0 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_recipe_c2agent/protocol_summary.json

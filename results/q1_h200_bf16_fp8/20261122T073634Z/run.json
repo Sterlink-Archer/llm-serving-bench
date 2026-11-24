@@ -1,0 +1,179 @@
+{
+ "label": "q1_h200_bf16_fp8",
+ "run_id": "q1_h200_bf16_fp8/20261122T073634Z",
+ "config_file": "configs/q1_h200_bf16_fp8.json",
+ "t_start": "2026-11-22T07:36:34Z",
+ "usd_per_h": {
+  "gpu": 2.87,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 3.7997
+ },
+ "phases": {
+  "create_s": 2.8
+ },
+ "servers": {
+  "bf16_ref": {
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it",
+     "rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "resolved_sha": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "files": 9,
+     "bytes": 62578656403
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 31.4,
+    "tail": "\rFetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 9 files:  78%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a  | 7/9 [00:00<00:00, 18.66it/s]\rFetching 9 files:  89%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589 | 8/9 [00:20<00:00, 18.66it/s]\rFetching 9 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 9/9 [00:21<00:00,  3.09s/it]\rFetching 9 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 9/9 [00:21<00:00,  2.38s/it]\nDL repo=google/gemma-4-31B-it rev=842da3794e files=9 bytes=62578659510 secs=21.6 GBps=2.891 method=huggingface_hub\n",
+    "bytes": 62578659510,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 140.8,
+    "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype auto --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "131707 MiB, 143771 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-2542e08d\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 141157,
+    "kv_cache_gib": 68.04,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype auto --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "q_gsm8kor250_bf16_ref": {
+     "rc": 0,
+     "secs": 42.1,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label q_gsm8kor250_bf16_ref --out /root/or/out/q_gsm8kor250_bf16_ref.json --limit 250",
+     "tail": "[q_gsm8kor250_bf16_ref] gsm8kor: 0.980 (245/250, noans 0, err 0, trunc 0) wall=33s\n"
+    },
+    "q_mmlupro200_bf16_ref": {
+     "rc": 0,
+     "secs": 72.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/mmlupro_200.jsonl --concurrency 64 --max-tokens 2048 --label q_mmlupro200_bf16_ref --out /root/or/out/q_mmlupro200_bf16_ref.json",
+     "tail": "[q_mmlupro200_bf16_ref] mmlupro: 0.865 (173/200, noans 2, err 0, trunc 2) wall=67s\n"
+    },
+    "q_agree400_bf16_ref": {
+     "rc": 1,
+     "secs": 144.3,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_bf16_ref --out /root/or/out/q_agree400_bf16_ref.json",
+     "tail": "    rows.append(dict(task=t, id=it[\"id\"], gold=it.get(\"answer\"), pred=pred, correct=scoring.is_correct(t, pred, it.get(\"answer\")) if t != \"agree\" else None,\n                                               ^^^^^^^^^^^^\nKeyError: 'answer'\n"
+    },
+    "q_agree400_bf16_ref_rep2": {
+     "rc": 0,
+     "secs": 144.3,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_bf16_ref_rep2 --out /root/or/out/q_agree400_bf16_ref_rep2.json",
+     "tail": "[q_agree400_bf16_ref_rep2] agree: 0.000 (0/400, noans 400, err 0, trunc 252) wall=139s\n"
+    }
+   },
+   "end": "ok"
+  },
+  "fp8dyn": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+     "rev": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "resolved_sha": "d4ab4f579dd3516f97d8a6a4c98d0653480bad15",
+     "files": 16,
+     "bytes": 33300464640
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 31.4,
+    "tail": "\rFetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 16 files:  81%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f | 13/16 [00:00<00:00, 126.71it/s]\rFetching 16 files:  94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 15/16 [00:20<00:00, 126.71it/s]\rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:20<00:00,  1.69s/it] \rFetching 16 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 16/16 [00:20<00:00,  1.28s/it]\nDL repo=RedHatAI/gemma-4-31B-it-FP8-dynamic rev=d4ab4f579d files=16 bytes=33300469167 secs=20.6 GBps=1.615 method=huggingface_hub\n",
+    "bytes": 33300469167,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 132.5,
+    "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "129727 MiB, 143771 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-0180c0ff\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN/FA3",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 380783,
+    "kv_cache_gib": 91.98,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/fp8dyn --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "q_gsm8kor250_fp8dyn": {
+     "rc": 0,
+     "secs": 42.1,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/gsm8kor_test.jsonl --concurrency 64 --max-tokens 2048 --label q_gsm8kor250_fp8dyn --out /root/or/out/q_gsm8kor250_fp8dyn.json --limit 250",
+     "tail": "[q_gsm8kor250_fp8dyn] gsm8kor: 0.976 (244/250, noans 0, err 0, trunc 0) wall=33s\n"
+    },
+    "q_mmlupro200_fp8dyn": {
+     "rc": 0,
+     "secs": 72.8,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/mmlupro_200.jsonl --concurrency 64 --max-tokens 2048 --label q_mmlupro200_fp8dyn --out /root/or/out/q_mmlupro200_fp8dyn.json",
+     "tail": "[q_mmlupro200_fp8dyn] mmlupro: 0.855 (171/200, noans 2, err 0, trunc 2) wall=64s\n"
+    },
+    "q_agree400_fp8dyn": {
+     "rc": 0,
+     "secs": 113.6,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_fp8dyn --out /root/or/out/q_agree400_fp8dyn.json",
+     "tail": "[q_agree400_fp8dyn] agree: 0.000 (0/400, noans 400, err 0, trunc 257) wall=108s\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 105.74,
+  "this_run_ceiling_usd": 6.02,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 138,
+ "sandbox_id": "7327edfb-afc8-4901-97e7-69d2bbc5ac32",
+ "elapsed_s": 1037.3,
+ "est_cost_usd": 1.095,
+ "t_saved": "2026-11-22T07:53:52Z",
+ "system": "ok\nNVIDIA H200, 143771 MiB, 595.91.07, 700.00 W\n24\nMem:             235          14         154           0          74         221\noverlay          80G  8.4M   80G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:53:36Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 120.58,
+  "metered_usd": 98.093
+ }
+}

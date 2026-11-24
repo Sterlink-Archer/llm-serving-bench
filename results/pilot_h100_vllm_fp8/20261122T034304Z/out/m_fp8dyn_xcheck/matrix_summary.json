@@ -1,0 +1,58 @@
+{
+ "meta": {
+  "spec": "bench/presets/xcheck.json",
+  "spec_name": "xcheck",
+  "model": "gemma",
+  "base": "http://127.0.0.1:8000",
+  "t_start": "2026-11-22T04:00:50Z",
+  "calibration": {
+   "template_overhead_tokens": 14,
+   "cpt_prose": 4.067796610169491,
+   "cpt_table": 1.7482517482517483
+  },
+  "usd_per_hour": 3.6665,
+  "scale_duration": 1.0,
+  "cells_planned": 1,
+  "est_minutes": 1.1333333333333333,
+  "t_end": "2026-11-22T04:01:50Z",
+  "wall_minutes": 1.0290359417597452
+ },
+ "rows": [
+  {
+   "cell": "s1k_256_c32",
+   "series": "s1k_256_c32",
+   "workload": "synthetic",
+   "mode": "closed",
+   "C": 32,
+   "rate": null,
+   "in_p50": 947.0,
+   "out_p50": 256.0,
+   "req_s": 3.229921875,
+   "out_tok_s": 826.86,
+   "in_tok_s": 3237.38,
+   "cached_in_tok_s": 0.0,
+   "cache_hit": 0.0,
+   "srv_out_tok_s": 826.8299019457271,
+   "srv_pc_hit": 0.0,
+   "ttft_p50": 0.15971112111583352,
+   "ttft_p95": 0.2789479541126639,
+   "ttft_p99": 0.2934831009618938,
+   "tpot_p50": 0.038084946039552786,
+   "tpot_p95": 0.04034157839543119,
+   "itl_p99": 0.13862398229539394,
+   "e2e_p50": 9.873912625946105,
+   "e2e_p95": 9.935357918590308,
+   "ttft_cold_p50": null,
+   "ttft_warm_p50": null,
+   "errors": 0,
+   "dropped": 0,
+   "completed": 189,
+   "peak_inflight": 32,
+   "req_s_basis": "out tok/s / output_tokens",
+   "usd_per_m_out_all": 1.231734782456791,
+   "usd_per_req": 0.0003153241043089385,
+   "slo_ok": true
+  }
+ ],
+ "knees": {}
+}

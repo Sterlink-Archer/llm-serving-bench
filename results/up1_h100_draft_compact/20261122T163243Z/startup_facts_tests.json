@@ -1,0 +1,37 @@
+{
+ "engine": "vllm",
+ "attention_backend": {
+  "sliding": null,
+  "global_512": null
+ },
+ "attention_backend_lines": [],
+ "cuda_graph_sizes": null,
+ "kv_cache_tokens": null,
+ "kv_cache_gib": null,
+ "kv_cache_dtype": null,
+ "max_concurrency_at_max_len": null,
+ "max_model_len": null,
+ "quantization": null,
+ "spec_decode": null,
+ "engine_version": null,
+ "missing": [
+  "kv_cache_tokens",
+  "cuda_graph_sizes"
+ ],
+ "startup_rules": {
+  "require_global_512": false,
+  "triton_ok": true
+ },
+ "rejected": true,
+ "reject_reason": "missing kv_cache_tokens, cuda_graph_sizes",
+ "schema": "startup_facts/1",
+ "run_id": "up1_h100_draft_compact/20261122T163243Z",
+ "config_id": "up1_h100_draft_compact:tests",
+ "image": "vllm/vllm-openai:nightly-647a76866b4559a74e27d1c6b55fbffe85c07ce4",
+ "image_digest": "sha256:27db8f48ffe20e9387e594b794c0d4a0d3ff6b9ed41b391ad1907a45b90daacb",
+ "model_repo": null,
+ "model_rev": null,
+ "gpu_mem_after_load": "0 MiB, 81559 MiB",
+ "source_log": "results/up1_h100_draft_compact/20261122T163243Z/server_tests.log",
+ "sub_phases": []
+}

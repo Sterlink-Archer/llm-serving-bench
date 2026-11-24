@@ -1,0 +1,15 @@
+2026-11-22T05:10:07Z [s2_mi355x_or_recipe_text_seed7] creating spot sandbox (MI355X x1, $4.7565/h, ttl 75 min, budget $6.5; project so far ~$19.63)
+2026-11-22T05:10:24Z [s2_mi355x_or_recipe_text_seed7] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:10:57Z [s2_mi355x_or_recipe_text_seed7] download or_recipe: rc=0 32s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:13:38Z [s2_mi355x_or_recipe_text_seed7] server or_recipe ready=True after 160.0s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268499 MB
+        FREE_VRAM: 26093 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268499 MB
+        FREE_VISIBLE_VRAM: 26093 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 977076 graphs 19
+2026-11-22T05:13:52Z [s2_mi355x_or_recipe_text_seed7] gate_gsm8kor100 rc=0 13s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T05:15:33Z [s2_mi355x_or_recipe_text_seed7] signal 15: tearing down
+2026-11-22T05:15:42Z [s2_mi355x_or_recipe_text_seed7] done: elapsed 5.6 min, est $0.44; project est $24.81
+2026-11-22T05:15:46Z [s2_mi355x_or_recipe_text_seed7] done: elapsed 5.6 min, est $0.45; project est $24.87

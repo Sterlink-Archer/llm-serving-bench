@@ -1,0 +1,1 @@
+[profile] prefill 6473 tok/s over 4x10000; gemm=95.7% other=4.3% memcpy/memset=0.0%

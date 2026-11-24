@@ -1,0 +1,4 @@
+2026-11-22T07:10:53Z [ik1_h100_vllm] building or-vllm-ik2m-h100-c8m32d150 from vllm/vllm-openai:inkling-2-mini
+2026-11-22T07:50:05Z [ik1_h100_vllm] signal 15: tearing down
+2026-11-22T07:50:16Z [ik1_h100_vllm] done: elapsed 0.0 min, est $0.00; project est $117.12
+2026-11-22T07:50:26Z [ik1_h100_vllm] done: elapsed 0.0 min, est $0.00; project est $117.29

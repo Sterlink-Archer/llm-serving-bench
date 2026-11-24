@@ -1,0 +1,76 @@
+{
+ "label": "s1_rtxpro6000_nvfp4",
+ "run_id": "s1_rtxpro6000_nvfp4/20261122T042443Z",
+ "config_file": "configs/s1_rtxpro6000_nvfp4.json",
+ "t_start": "2026-11-22T04:24:43Z",
+ "usd_per_h": {
+  "gpu": 1.95,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 2.8797
+ },
+ "phases": {
+  "snapshot_build_s": 287.8,
+  "create_s": 12.4
+ },
+ "servers": {
+  "nvfp4": {
+   "weights": [
+    {
+     "repo": "RedHatAI/gemma-4-31B-it-NVFP4",
+     "rev": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "resolved_sha": "5df75ccad9b74546f5be758a2a68acc2e16bbc9b",
+     "files": 15,
+     "bytes": 23297636207
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 114.2,
+    "tail": "\rFetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 15 files:  13%|\u2588\u258e        | 2/15 [00:00<00:00, 17.85it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:01<00:00, 11.32it/s]\rFetching 15 files:  93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 14/15 [00:20<00:00, 11.32it/s]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:48<00:00, 10.46s/it]\rFetching 15 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 15/15 [01:48<00:00,  7.26s/it]\nDL repo=RedHatAI/gemma-4-31B-it-NVFP4 rev=5df75ccad9 files=15 bytes=23297640258 secs=109.2 GBps=0.213 method=huggingface_hub\n",
+    "bytes": 23297640258,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 153.0,
+    "launch": "vllm serve /root/models/nvfp4 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype fp8 --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "88709 MiB, 97887 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-40a5fb70\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":24,\"completion_tokens\":8,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "TRITON_ATTN",
+     "global_512": "TRITON_ATTN"
+    },
+    "kv_cache_tokens": 269346,
+    "kv_cache_gib": 64.91,
+    "rejected": true,
+    "reject_reason": "TRITON_ATTN on global 512-dim layers",
+    "max_model_len": 32768
+   },
+   "end": "rejected: TRITON_ATTN on global 512-dim layers"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 2.29,
+  "this_run_ceiling_usd": 3.12,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 116,
+ "sandbox_id": "a729020e-916f-44f6-961e-93e2c83b8b71",
+ "elapsed_s": 321.8,
+ "est_cost_usd": 0.257,
+ "t_saved": "2026-11-22T04:34:52Z",
+ "system": "ok\nNVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W\n16\nMem:             141          16          70           0          62         125\noverlay         713G  297G  387G  44% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T04:34:47Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 3.64,
+  "metered_usd": null
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "t": "2026-11-22T09:22:23Z",
+ "what": "AITER tuning stopped on the live box (hipBLASLt pass at ~shape 25/117 after 23 min; flydsl not started)",
+ "why": "The torch-default (hipBLASLt heuristic) baseline, measured with the GPU free, already runs the projection GEMMs at 1.25-1.37 PFLOPS on the large prefill shapes (aiter_tuned_torch.csv: M=16384 N=8600 K=2304 484.5 us / 1340 TFLOPS; M=16384 N=2304 K=3072 186.2 us / 1246 TFLOPS). They are ~2.6 GFLOP of ~10 per token, ~5% of the ~36 us/token prefill time at 27.6K tok/s, so tuning them cannot move the knee by more than ~2%. The box continues to the base server's prefill profile (where the time does go) and column B; it is stopped before the redundant tuned server.",
+ "stub_released": "Terminated"
+}

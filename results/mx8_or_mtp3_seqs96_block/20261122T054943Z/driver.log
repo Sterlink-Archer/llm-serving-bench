@@ -1,0 +1,16 @@
+2026-11-22T05:49:44Z [mx8_or_mtp3_seqs96_block] creating spot sandbox (MI355X x1, $4.7565/h, ttl 60 min, budget $5.5; project so far ~$49.48)
+2026-11-22T05:50:02Z [mx8_or_mtp3_seqs96_block] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T05:50:25Z [mx8_or_mtp3_seqs96_block] download or_mtp3_seqs96_block: rc=0 22s 20.5 GB via ['huggingface_hub']
+2026-11-22T05:53:05Z [mx8_or_mtp3_seqs96_block] server or_mtp3_seqs96_block ready=True after 159.8s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268296 MB
+        FREE_VRAM: 26296 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268296 MB
+        FREE_VISIBLE_VRAM: 26296 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 974307 graphs 23
+2026-11-22T05:53:09Z [mx8_or_mtp3_seqs96_block] inspect_or_mtp3_seqs96_block rc=0 2s :: mx file: inspect.sh
+2026-11-22T05:53:21Z [mx8_or_mtp3_seqs96_block] gate_or_mtp3_seqs96_block_gsm8kor100 rc=0 13s :: [gate_or_mtp3_seqs96_block_gsm8kor100] gsm8kor: 0.980 (98/100, noans 0, err 0, trunc 0) wall=4s
+2026-11-22T06:11:40Z [mx8_or_mtp3_seqs96_block] protocol_or_mtp3_seqs96_block rc=0 1099s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=42680.489440519086 tok/s -> /root/or/out/protocol_or_mtp3_seqs96_block/protocol_summary.json
+2026-11-22T06:21:53Z [mx8_or_mtp3_seqs96_block] protocol_or_mtp3_seqs96_block_text rc=0 613s :: [protocol] max_rate_at_slo=3.25 req/s (break-even 1.6961); prefill=None tok/s -> /root/or/out/protocol_or_mtp3_seqs96_block_text/protocol_summary.json
+2026-11-22T06:22:18Z [mx8_or_mtp3_seqs96_block] done: elapsed 32.6 min, est $2.58; project est $78.4

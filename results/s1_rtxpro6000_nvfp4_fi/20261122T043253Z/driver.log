@@ -1,0 +1,8 @@
+2026-11-22T04:32:53Z [s1_rtxpro6000_nvfp4_fi] creating spot sandbox (RTX-PRO-6000 x1, $2.8797/h, ttl 60 min, budget $4.0; project so far ~$2.92)
+2026-11-22T04:33:08Z [s1_rtxpro6000_nvfp4_fi] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 16 | Mem:             141          15          26           0         107         125 | overlay         713G  312G  372G  46% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T04:34:31Z [s1_rtxpro6000_nvfp4_fi] download nvfp4_fi: rc=0 82s 23.3 GB via ['huggingface_hub']
+2026-11-22T04:37:17Z [s1_rtxpro6000_nvfp4_fi] server nvfp4_fi ready=True after 165.0s; gpu mem 89735 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 265537 graphs 51
+2026-11-22T04:37:39Z [s1_rtxpro6000_nvfp4_fi] gate_gsm8kor100 rc=0 22s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=15s
+2026-11-22T04:42:47Z [s1_rtxpro6000_nvfp4_fi] protocol_nvfp4_fi rc=0 308s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.0269); prefill=12082.243672552611 tok/s -> /root/or/out/protocol_nvfp4_fi/protocol_summary.json
+2026-11-22T04:44:51Z [s1_rtxpro6000_nvfp4_fi] protocol_nvfp4_fi_textclient rc=0 124s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.0269); prefill=None tok/s -> /root/or/out/protocol_nvfp4_fi_textclient/protocol_summary.json
+2026-11-22T04:45:09Z [s1_rtxpro6000_nvfp4_fi] done: elapsed 12.3 min, est $0.59; project est $7.12

@@ -1,0 +1,18 @@
+2026-11-22T05:04:07Z [s3_rtxpro6000_small_mtp] building snapshot or-vllm0330-rtx-pro-6000-c4m16d80 from vllm/vllm-openai:v0.33.0
+2026-11-22T05:04:23Z [s3_rtxpro6000_small_mtp] creating spot sandbox (RTX-PRO-6000 x1, $2.4189/h, ttl 90 min, budget $5.0; project so far ~$14.96)
+2026-11-22T05:04:56Z [s3_rtxpro6000_small_mtp] system: ok | NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB, 595.91.07, 600.00 W | 60 | Mem:             176          21         115           0          44         155 | overlay          80G  5.2M   80G   1% / | Python 3.12.3 | /usr/bin/curl | vllm 0.33.0
+2026-11-22T05:06:27Z [s3_rtxpro6000_small_mtp] download p6_small_base: rc=0 88s 24.3 GB via ['huggingface_hub']
+2026-11-22T05:10:03Z [s3_rtxpro6000_small_mtp] server p6_small_base ready=True after 214.7s; gpu mem 89735 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 265537 graphs 51
+2026-11-22T05:10:32Z [s3_rtxpro6000_small_mtp] gate_gsm8kor100 rc=0 28s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=21s
+2026-11-22T05:20:34Z [s3_rtxpro6000_small_mtp] protocol_p6_small_base rc=0 602s :: [protocol] max_rate_at_slo=0.7 req/s (break-even 0.8625); prefill=12091.791701674525 tok/s -> /root/or/out/protocol_p6_small_base/protocol_summary.json
+2026-11-22T05:20:51Z [s3_rtxpro6000_small_mtp] download p6_small_mtp2: rc=0 4s 25.2 GB via ['huggingface_hub']
+2026-11-22T05:23:43Z [s3_rtxpro6000_small_mtp] server p6_small_mtp2 ready=True after 171.0s; gpu mem 90497 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 260877 graphs 60
+2026-11-22T05:24:12Z [s3_rtxpro6000_small_mtp] gate_gsm8kor100 rc=0 28s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=17s
+2026-11-22T05:31:31Z [s3_rtxpro6000_small_mtp] protocol_p6_small_mtp2 rc=0 438s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=11509.248010676414 tok/s -> /root/or/out/protocol_p6_small_mtp2/protocol_summary.json
+2026-11-22T05:33:46Z [s3_rtxpro6000_small_mtp] protocol_p6_small_mtp2_textclient rc=0 135s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=None tok/s -> /root/or/out/protocol_p6_small_mtp2_textclient/protocol_summary.json
+2026-11-22T05:34:04Z [s3_rtxpro6000_small_mtp] download p6_small_mtp3: rc=0 4s 25.2 GB via ['huggingface_hub']
+2026-11-22T05:36:29Z [s3_rtxpro6000_small_mtp] server p6_small_mtp3 ready=True after 143.9s; gpu mem 90597 MiB, 97887 MiB; attn {'sliding': 'FLASHINFER', 'global_512': 'FLASHINFER'} kv_tokens 261536 graphs 51
+2026-11-22T05:36:58Z [s3_rtxpro6000_small_mtp] gate_gsm8kor100 rc=0 27s :: [gate_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=14s
+2026-11-22T05:41:55Z [s3_rtxpro6000_small_mtp] protocol_p6_small_mtp3 rc=0 297s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=None tok/s -> /root/or/out/protocol_p6_small_mtp3/protocol_summary.json
+2026-11-22T05:44:11Z [s3_rtxpro6000_small_mtp] protocol_p6_small_mtp3_textclient rc=0 135s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 0.8625); prefill=None tok/s -> /root/or/out/protocol_p6_small_mtp3_textclient/protocol_summary.json
+2026-11-22T05:44:37Z [s3_rtxpro6000_small_mtp] done: elapsed 40.2 min, est $1.62; project est $44.67

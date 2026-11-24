@@ -1,0 +1,49 @@
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+[2026-11-22T10:20:32Z] prep sliding M=256 engine: 40.2 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:35Z] prep sliding M=256 rope_kv: 38.3 us {'err_q': 0.00331, 'err_k': 0.0129, 'err_v': 0.0}
+[2026-11-22T10:20:38Z] prep sliding M=256 qkv_fused: 35.5 us {'err_q': 1.00281, 'err_k': 0.98895, 'err_v': 0.0}
+[aiter] import [module_fused_qk_norm_rope_cache_quant_shuffle] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_fused_qk_norm_rope_cache_quant_shuffle.so
+[2026-11-22T10:20:38Z] prep sliding M=256 hip_fused: 28.5 us {'err_q': 0.00278, 'err_k': 0.01105, 'err_v': 0.0}
+[2026-11-22T10:20:38Z] prep sliding M=256 copy_only: 6.2 us {}
+[2026-11-22T10:20:41Z] prep sliding M=1024 engine: 83.7 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:42Z] prep sliding M=1024 rope_kv: 73.7 us {'err_q': 0.00331, 'err_k': 0.01295, 'err_v': 0.0}
+[2026-11-22T10:20:43Z] prep sliding M=1024 qkv_fused: 76.2 us {'err_q': 1.00285, 'err_k': 0.98925, 'err_v': 0.0}
+[2026-11-22T10:20:43Z] prep sliding M=1024 hip_fused: 62.8 us {'err_q': 0.00277, 'err_k': 0.01097, 'err_v': 0.0}
+[2026-11-22T10:20:43Z] prep sliding M=1024 copy_only: 12.4 us {}
+[2026-11-22T10:20:43Z] prep sliding M=2048 engine: 141.5 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:43Z] prep sliding M=2048 rope_kv: 112.7 us {'err_q': 0.00331, 'err_k': 0.01295, 'err_v': 0.0}
+[2026-11-22T10:20:43Z] prep sliding M=2048 qkv_fused: 124.6 us {'err_q': 1.00288, 'err_k': 0.98926, 'err_v': 0.0}
+[2026-11-22T10:20:44Z] prep sliding M=2048 hip_fused: 114.7 us {'err_q': 0.00277, 'err_k': 0.01101, 'err_v': 0.0}
+[2026-11-22T10:20:44Z] prep sliding M=2048 copy_only: 21.5 us {}
+[2026-11-22T10:20:44Z] prep sliding M=4096 engine: 263.5 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:44Z] prep sliding M=4096 rope_kv: 192.5 us {'err_q': 0.00331, 'err_k': 0.01288, 'err_v': 0.0}
+[2026-11-22T10:20:44Z] prep sliding M=4096 qkv_fused: 226.2 us {'err_q': 1.00289, 'err_k': 0.98918, 'err_v': 0.0}
+[2026-11-22T10:20:45Z] prep sliding M=4096 hip_fused: 214.7 us {'err_q': 0.00277, 'err_k': 0.01096, 'err_v': 0.0}
+[2026-11-22T10:20:45Z] prep sliding M=4096 copy_only: 54.0 us {}
+[2026-11-22T10:20:45Z] prep sliding M=8192 engine: 508.3 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:45Z] prep sliding M=8192 rope_kv: 372.3 us {'err_q': 0.00331, 'err_k': 0.01291, 'err_v': 0.0}
+[2026-11-22T10:20:46Z] prep sliding M=8192 qkv_fused: 423.8 us {'err_q': 1.00281, 'err_k': 0.98928, 'err_v': 0.0}
+[2026-11-22T10:20:46Z] prep sliding M=8192 hip_fused: 421.6 us {'err_q': 0.00277, 'err_k': 0.01096, 'err_v': 0.0}
+[2026-11-22T10:20:46Z] prep sliding M=8192 copy_only: 103.1 us {}
+[2026-11-22T10:20:48Z] prep global M=256 engine: 42.9 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:49Z] prep global M=256 rope_kv: 47.0 us {'err_q': 0.00167, 'err_k': 0.00642, 'err_v': 0.0}
+[2026-11-22T10:20:50Z] prep global M=256 qkv_fused: 33.5 us {'err_q': 0.9899, 'err_k': 0.99183, 'err_v': 0.0}
+[2026-11-22T10:20:50Z] prep global M=256 copy_only: 6.6 us {}
+[2026-11-22T10:20:50Z] prep global M=1024 engine: 92.0 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:50Z] prep global M=1024 rope_kv: 84.5 us {'err_q': 0.00167, 'err_k': 0.0064, 'err_v': 0.0}
+[2026-11-22T10:20:50Z] prep global M=1024 qkv_fused: 74.3 us {'err_q': 0.98985, 'err_k': 0.99195, 'err_v': 0.0}
+[2026-11-22T10:20:51Z] prep global M=1024 copy_only: 14.7 us {}
+[2026-11-22T10:20:51Z] prep global M=2048 engine: 160.8 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:51Z] prep global M=2048 rope_kv: 122.5 us {'err_q': 0.00167, 'err_k': 0.00638, 'err_v': 0.0}
+[2026-11-22T10:20:51Z] prep global M=2048 qkv_fused: 127.1 us {'err_q': 0.98987, 'err_k': 0.99193, 'err_v': 0.0}
+[2026-11-22T10:20:51Z] prep global M=2048 copy_only: 35.2 us {}
+[2026-11-22T10:20:52Z] prep global M=4096 engine: 303.9 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:52Z] prep global M=4096 rope_kv: 225.8 us {'err_q': 0.00167, 'err_k': 0.00638, 'err_v': 0.0}
+[2026-11-22T10:20:52Z] prep global M=4096 qkv_fused: 230.5 us {'err_q': 0.9899, 'err_k': 0.99197, 'err_v': 0.0}
+[2026-11-22T10:20:52Z] prep global M=4096 copy_only: 66.0 us {}
+[2026-11-22T10:20:53Z] prep global M=8192 engine: 585.7 us {'err_q': 0.0, 'err_k': 0.0, 'err_v': 0.0}
+[2026-11-22T10:20:53Z] prep global M=8192 rope_kv: 431.7 us {'err_q': 0.00167, 'err_k': 0.00641, 'err_v': 0.0}
+[2026-11-22T10:20:54Z] prep global M=8192 qkv_fused: 455.6 us {'err_q': 0.98988, 'err_k': 0.99199, 'err_v': 0.0}
+[2026-11-22T10:20:54Z] prep global M=8192 copy_only: 127.8 us {}
+[2026-11-22T10:20:54Z] glue prep done in 36s
+/root/or/jobs/014_glue_prep.sh: line 3:  1366 Segmentation fault      (core dumped) python3 /root/or/mx/glue_headroom.py prep --out /root/or/out/glue

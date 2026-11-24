@@ -1,0 +1,5 @@
+[vllmbench r=3.25 s=7] done=975 failed=0 req/s=3.215794277611483 p95 TTFT=1.6201355832396074 median TPOT=19.429041261117764 ms in tok/s=31239
+[vllmbench r=3.5 s=7] done=1049 failed=1 req/s=3.45637064330146 p95 TTFT=2.1746119659394023 median TPOT=28.700473721615257 ms in tok/s=33507
+[vllmbench r=3.75 s=7] done=1125 failed=0 req/s=3.636005396169165 p95 TTFT=4.248523965058847 median TPOT=53.18334191470402 ms in tok/s=34991
+[vllmbench r=4.0 s=7] done=1200 failed=0 req/s=3.7497874972205403 p95 TTFT=14.728932986536527 median TPOT=56.2843906280162 ms in tok/s=36101
+[protocol] max_rate_at_slo=3.5 req/s (break-even 1.4856); prefill=44776.48826850261 tok/s -> /root/or/out/protocol_mx_stack/protocol_summary.json

@@ -1,0 +1,98 @@
+{
+ "label": "q1_h200_bf16_fp8",
+ "run_id": "q1_h200_bf16_fp8/20261122T074352Z",
+ "config_file": "configs/q1_h200_bf16_fp8_agreefix.json",
+ "t_start": "2026-11-22T07:43:52Z",
+ "usd_per_h": {
+  "gpu": 2.87,
+  "cpu": 0.4032,
+  "mem": 0.5184,
+  "disk": 0.0081,
+  "total": 3.7997
+ },
+ "phases": {
+  "create_s": 4.2
+ },
+ "servers": {
+  "bf16_ref": {
+   "weights": [
+    {
+     "repo": "google/gemma-4-31B-it",
+     "rev": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "resolved_sha": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+     "files": 9,
+     "bytes": 62578656403
+    }
+   ],
+   "download": {
+    "rc": 0,
+    "secs": 31.7,
+    "tail": "\rFetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rFetching 9 files:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 6/9 [00:00<00:00, 43.14it/s]\rFetching 9 files:  89%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589 | 8/9 [00:20<00:00, 43.14it/s]\rFetching 9 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 9/9 [00:21<00:00,  3.00s/it]\rFetching 9 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 9/9 [00:21<00:00,  2.40s/it]\nDL repo=google/gemma-4-31B-it rev=842da3794e files=9 bytes=62578659512 secs=21.9 GBps=2.863 method=huggingface_hub\n",
+    "bytes": 62578659512,
+    "methods": [
+     "huggingface_hub"
+    ]
+   },
+   "serve": {
+    "ready": true,
+    "ready_s": 150.1,
+    "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype auto --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+    "env": {},
+    "gpu_mem_after_load": "131707 MiB, 143771 MiB",
+    "smoke": "er\":null,\"system_fingerprint\":\"vllm-0.33.0-2542e08d\",\"usage\":{\"prompt_tokens\":16,\"total_tokens\":19,\"completion_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0,\"created_cache_tokens\":0,\"multimodal_tokens\":null},\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"prompt_logprobs\":null,\"prompt_token_ids\":null,\"prompt_text\":null,\"kv_transfer_params\":null,\"ec_transfer_params\":null,\"metrics\":null}"
+   },
+   "startup_facts": {
+    "attention_backend": {
+     "sliding": "FLASH_ATTN",
+     "global_512": "FLASH_ATTN/FA4"
+    },
+    "kv_cache_tokens": 141157,
+    "kv_cache_gib": 68.04,
+    "rejected": false,
+    "reject_reason": null,
+    "max_model_len": 32768
+   },
+   "launch_attempts": [
+    {
+     "launch": "vllm serve /root/models/bf16 --served-model-name gemma --port 8000 --language-model-only --kv-cache-dtype auto --async-scheduling --max-num-batched-tokens 8192 --enable-prompt-tokens-details --reasoning-parser gemma4 --gpu-memory-utilization 0.94 --max-model-len 32768",
+     "env": {},
+     "ok": true,
+     "rejected": false,
+     "reason": null
+    }
+   ],
+   "steps": {
+    "q_agree400_bf16_ref": {
+     "rc": 0,
+     "secs": 145.3,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_bf16_ref --out /root/or/out/q_agree400_bf16_ref.json",
+     "tail": "[q_agree400_bf16_ref] agree: 0.000 (0/400, noans 400, err 0, trunc 253) wall=142s\n"
+    },
+    "q_agree400_bf16_ref_rep2": {
+     "rc": 0,
+     "secs": 145.4,
+     "cmd": "python3 bench/evalrun.py --model gemma --sets data/eval/agree_400.jsonl --concurrency 16 --max-tokens 192 --label q_agree400_bf16_ref_rep2 --out /root/or/out/q_agree400_bf16_ref_rep2.json",
+     "tail": "[q_agree400_bf16_ref_rep2] agree: 0.000 (0/400, noans 400, err 0, trunc 252) wall=139s\n"
+    }
+   },
+   "end": "ok"
+  }
+ },
+ "spend_guard": {
+  "project_est_usd_before": 111.14,
+  "this_run_ceiling_usd": 2.85,
+  "replan_usd": 500.0
+ },
+ "spot_capacity_at_start": 139,
+ "sandbox_id": "53aa8d0f-cdb3-4ad8-9475-08022d303377",
+ "elapsed_s": 532.2,
+ "est_cost_usd": 0.562,
+ "t_saved": "2026-11-22T07:52:44Z",
+ "system": "ok\nNVIDIA H200, 143771 MiB, 595.91.07, 700.00 W\n24\nMem:             235          15          80           0         147         220\noverlay          80G  8.4M   80G   1% /\nPython 3.12.3\n/usr/bin/curl\nvllm 0.33.0\ntorch 2.14.0+cu130 cuda 13.0\n",
+ "deleted": "2026-11-22T07:52:28Z",
+ "delete_confirmed": true,
+ "project_spend": {
+  "est_usd": 119.53,
+  "metered_usd": 97.1663
+ }
+}

@@ -1,0 +1,15 @@
+2026-11-22T08:03:25Z [mxS3_vllm_fp8] creating spot sandbox (MI355X x1, $4.7565/h, ttl 45 min, budget $4.0; project so far ~$128.75)
+2026-11-22T08:04:02Z [mxS3_vllm_fp8] system: ok | /root/or/jobs/001_setup.sh: line 3: nvidia-smi: command not found | GPU: 0 |     ASIC: |         MARKET_NAME: 0x75b3 |         VENDOR_ID: 0x1002 |         VENDOR_NAME: Advanced Micro Devices Inc. [AMD/ATI] |         SUBVENDOR_ID: 0x1002
+2026-11-22T08:04:25Z [mxS3_vllm_fp8] download vllm_fp8: rc=0 22s 33.3 GB via ['huggingface_hub']
+2026-11-22T08:06:49Z [mxS3_vllm_fp8] server vllm_fp8 ready=True after 142.9s; gpu mem GPU: 0
+    MEM_USAGE:
+        TOTAL_VRAM: 294592 MB
+        USED_VRAM: 268589 MB
+        FREE_VRAM: 26003 MB
+        TOTAL_VISIBLE_VRAM: 294592 MB
+        USED_VISIBLE_VRAM: 268589 MB
+        FREE_VISIBLE_VRAM: 26003 MB; attn {'sliding': 'ROCM_AITER_UNIFIED_ATTN', 'global_512': 'ROCM_AITER_UNIFIED_ATTN'} kv_tokens 941357 graphs 19
+2026-11-22T08:06:53Z [mxS3_vllm_fp8] inspect_vllm_fp8 rc=0 2s :: mx file: inspect.sh
+2026-11-22T08:07:06Z [mxS3_vllm_fp8] gate_vllm_fp8_gsm8kor100 rc=0 13s :: [gate_vllm_fp8_gsm8kor100] gsm8kor: 0.990 (99/100, noans 0, err 0, trunc 0) wall=8s
+2026-11-22T08:14:54Z [mxS3_vllm_fp8] protocol_vllm_fp8 rc=0 468s :: [protocol] max_rate_at_slo=0.0 req/s (break-even 1.6961); prefill=29253.588513372313 tok/s -> /root/or/out/protocol_vllm_fp8/protocol_summary.json
+2026-11-22T08:15:35Z [mxS3_vllm_fp8] done: elapsed 12.2 min, est $0.96; project est $137.39

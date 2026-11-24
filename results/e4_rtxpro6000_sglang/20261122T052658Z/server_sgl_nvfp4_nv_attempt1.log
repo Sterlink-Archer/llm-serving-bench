@@ -1,0 +1,22 @@
+/sgl-workspace/sglang/python/sglang/launch_server.py:71: UserWarning: 'python -m sglang.launch_server' is still supported, but 'sglang serve' is the recommended entrypoint.
+  Example: sglang serve --model-path <model> [options]
+  warnings.warn(
+[2026-11-22 05:41:09] Hybrid SWA model detected. architectures=['Gemma4ForConditionalGeneration']
+[2026-11-22 05:41:09] Breakable CUDA graph is incompatible with multimodal model; disabling prefill CUDA graph.
+[2026-11-22 05:41:09] kill_process_tree called: parent_pid=3021, include_parent=False, pid=3021
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/sgl-workspace/sglang/python/sglang/launch_server.py", line 84, in <module>
+    run_server(server_args)
+  File "/sgl-workspace/sglang/python/sglang/launch_server.py", line 29, in run_server
+    server_args.resolve_once()
+  File "/sgl-workspace/sglang/python/sglang/srt/server_args.py", line 277, in resolve_once
+    run_resolution_pipeline(self)
+  File "/sgl-workspace/sglang/python/sglang/srt/arg_groups/pipeline.py", line 225, in run_resolution_pipeline
+    run_hook(handle_model_specific_adjustments, server_args)
+  File "/sgl-workspace/sglang/python/sglang/srt/arg_groups/resolution_hooks.py", line 139, in run_hook
+    step(server_args)
+  File "/sgl-workspace/sglang/python/sglang/srt/arg_groups/model_hook.py", line 656, in handle_model_specific_adjustments
+    prefill_backend in accepted_backends and decode_backend in accepted_backends
+AssertionError: Gemma4 only supports trtllm_mha, triton, fa4, ascend, intel_xpu, intel_amx, or aiter attention backend, got prefill=flashinfer, decode=flashinfer
